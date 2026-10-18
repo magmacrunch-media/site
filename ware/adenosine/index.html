@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>adenosine — magmacrunch media</title>
+  <meta property="og:title" content="adenosine — magmacrunch media">
+  <meta property="og:description" content="lightweight web game engines · try every package live">
+  <meta property="og:image" content="https://magmacrunch.com/og/ware.png?v=1">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta property="og:site_name" content="magmacrunch media">
+  <meta property="og:locale" content="en_US">
+  <link rel="icon" type="image/x-icon" href="../../favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Courier+Prime:wght@400;700&display=swap">
+  <link rel="stylesheet" href="../../style.css?v=53e9e146">
+  <style>
+    :root { color-scheme: dark; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font: 14px/1.6 'Courier Prime', ui-monospace, SFMono-Regular, Menlo, monospace;
+      background: #14141b; color: #e8e6f0;
+      min-height: 100vh;
+      display: flex; flex-direction: column;
+    }
+
+    /* A column flex container sizes its line to the widest child's max-content,
+       so one wide <pre> pushed the whole page past a phone's viewport and every
+       other section scrolled sideways with it. A definite width pins the line to
+       the container instead. max-width: 100% does not do it -- the line is
+       already too wide by the time it would apply. */
+    body > * { width: 100%; }
+
+    /* ── Hero ──────────────────────────────────────────── */
+
+    .hero {
+      text-align: center;
+      padding: 3.5rem 1.5rem 2.5rem;
+    }
+
+    .hero h1 {
+      font-family: 'Press Start 2P', monospace;
+      font-size: clamp(24px, 4vw, 48px);
+      font-weight: 400;
+      color: #ff6ec7;
+      text-shadow:
+        3px 3px 0 #33304a,
+        6px 6px 0 #1c1b26;
+      letter-spacing: 0.08em;
+      margin-bottom: .75rem;
+    }
+
+    .hero .tagline {
+      font-size: 13px;
+      color: #9d99b5;
+      margin-bottom: 2rem;
+    }
+
+    /* ── Tool cards ────────────────────────────────────── */
+
+    .tools {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1rem;
+      max-width: 600px;
+      margin: 0 auto 3rem;
+      padding: 0 1.5rem;
+    }
+
+    .tool-card {
+      display: block;
+      background: #1c1b26;
+      border: 1px solid #33304a;
+      border-radius: 12px;
+      padding: 1.25rem;
+      text-decoration: none;
+      color: inherit;
+      transition: border-color .15s, transform .15s;
+    }
+    .tool-card:hover {
+      border-color: #7cc7ff;
+      transform: translateY(-2px);
+    }
+
+    .tool-card .icon {
+      font-size: 24px;
+      margin-bottom: .5rem;
+    }
+
+    .tool-card h2 {
+      font-family: 'Press Start 2P', monospace;
+      font-size: 10px; font-weight: 400;
+      color: #e8e6f0;
+      margin-bottom: .4rem;
+    }
+
+    .tool-card p {
+      font-size: 12px;
+      color: #9d99b5;
+      line-height: 1.5;
+    }
+
+    /* ── Packages ──────────────────────────────────────── */
+
+    .packages {
+      max-width: 600px;
+      margin: 0 auto 3rem;
+      padding: 0 1.5rem;
+    }
+
+    .packages h2,
+    .about h2 {
+      font-family: 'Press Start 2P', monospace;
+      font-size: 10px; font-weight: 400;
+      color: #ff6ec7;
+      margin-bottom: .75rem;
+      letter-spacing: 0.05em;
+    }
+
+    .pkg-table {
+      font-size: 12px;
+      border: 1px solid #33304a;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .pkg-row {
+      display: grid;
+      grid-template-columns: 1fr 2fr auto;
+      gap: 0 .75rem;
+      padding: .5rem .75rem;
+      align-items: center;
+    }
+
+    .pkg-row + .pkg-row {
+      border-top: 1px solid #2a2940;
+    }
+
+    .pkg-header {
+      background: #1c1b26;
+      font-family: 'Press Start 2P', monospace;
+      font-size: 7px;
+      color: #9d99b5;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .pkg-header span { pointer-events: none; }
+
+    .pkg-row a {
+      color: #7cc7ff;
+      text-decoration: none;
+    }
+    .pkg-row a:hover { text-decoration: underline; }
+
+    .pkg-row span {
+      color: #9d99b5;
+    }
+
+    .pkg-row .pkg-name {
+      color: #7cc7ff;
+      font-weight: 400;
+    }
+
+    /* ── Lead ────────────────────────────── */
+
+    /* What this is, before what it contains. Brighter than .about so it reads
+       as the opening rather than as another block of body copy. */
+    .lead {
+      max-width: 600px;
+      margin: 0 auto 2.75rem;
+      padding: 0 1.5rem;
+      font-size: 13px;
+      line-height: 1.7;
+      color: #b8b4cc;
+    }
+
+    .lead p { margin-bottom: .6rem; }
+    .lead p:last-child { margin-bottom: 0; }
+    .lead strong { color: #e8e6f0; }
+    .lead code { font-family: 'Courier Prime', monospace; font-size: 12px; }
+    .lead .about-links { margin: 1.25rem 0 0; }
+
+    /* ── About ─────────────────────────────────────────── */
+
+    .about {
+      max-width: 600px;
+      margin: 0 auto 3rem;
+      padding: 0 1.5rem;
+      font-size: 12px;
+      color: #9d99b5;
+      line-height: 1.6;
+    }
+
+    .about h3 {
+      font-family: 'Press Start 2P', monospace;
+      font-size: 8px; font-weight: 400;
+      color: #e8e6f0;
+      margin: 1.5rem 0 .5rem;
+      letter-spacing: 0.05em;
+    }
+
+    .about p { margin-bottom: .5rem; }
+
+    .about pre {
+      background: #1c1b26;
+      border: 1px solid #33304a;
+      border-radius: 6px;
+      padding: .6rem .75rem;
+      overflow-x: auto;
+      margin-bottom: .5rem;
+    }
+
+    .about code {
+      font-family: 'Courier Prime', monospace;
+      font-size: 11px;
+      color: #7cc7ff;
+    }
+
+    .about-label {
+      color: #666;
+      font-size: 11px;
+      margin-bottom: .25rem;
+    }
+
+    .about-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin: 1.5rem 0 .75rem;
+    }
+
+    .about-links a {
+      color: #7cc7ff;
+      text-decoration: none;
+      font-family: 'Press Start 2P', monospace;
+      font-size: 8px;
+      padding: .4rem .6rem;
+      border: 1px solid #33304a;
+      border-radius: 6px;
+      transition: border-color .15s;
+    }
+    .about-links a:hover { border-color: #7cc7ff; }
+
+    .about-license {
+      color: #555;
+      font-size: 11px;
+      margin-top: 1rem;
+    }
+
+    /* ── Footer ────────────────────────────────────────── */
+
+    footer {
+      margin-top: auto;
+      padding: 1.5rem;
+      text-align: center;
+      font-size: 12px;
+      color: #9d99b5;
+      border-top: 1px solid #33304a;
+    }
+
+    footer span {
+      color: #7cc7ff;
+    }
+
+    @media (max-width: 480px) {
+      .hero { padding: 2.5rem 1.25rem 1.75rem; }
+      .lead { margin-bottom: 2rem; }
+      /* A code block that scrolls sideways inside a page is unfindable on a
+         phone, so wrap instead -- pre-wrap keeps the indentation. */
+      .about pre { white-space: pre-wrap; overflow-wrap: anywhere; }
+      .about-links { gap: .6rem; }
+      /* 44px is the smallest comfortable tap target; these were 26px. */
+      .about-links a { padding: .55rem .9rem; min-height: 44px; display: inline-flex; align-items: center; }
+      .tools { grid-template-columns: 1fr; }
+      .pkg-row { grid-template-columns: 1fr; gap: .15rem 0; }
+      .pkg-header span:not(:first-child) { display: none; }
+      .pkg-row span { display: none; }
+      .pkg-row a:last-child { font-size: 10px; }
+    }
+
+    /* ── Override style.css conflicts ─────────────────── */
+    .tool-nav {
+      margin-top: 48px;
+      padding: 8px 24px;
+      border-bottom: 1px solid #33304a;
+      background: #14141b;
+      flex-shrink: 0;
+    }
+    .tool-nav .back-link {
+      font-family: 'Press Start 2P', monospace;
+      font-size: 7px;
+      color: #9d99b5;
+      background: #1c1b26;
+      padding: 6px 10px;
+      border: 1px solid #33304a;
+      text-decoration: none;
+      letter-spacing: 0.1em;
+      transition: color 0.15s, border-color 0.15s;
+    }
+    .tool-nav .back-link:hover {
+      color: #e8e6f0;
+      border-color: #7cc7ff;
+    }
+    body {
+      background: #14141b;
+      background-image: none;
+      color: #e8e6f0;
+    }
+    a { color: #7cc7ff; }
+    footer {
+      font-family: 'Courier Prime', monospace;
+      font-size: 12px;
+      border-top: 1px solid #33304a;
+    }
+    footer span { color: #7cc7ff; }
+
+    /* -- Source access --------------------------------- */
+
+    /* The repository is private, so the page carries the way to ask rather
+       than a link that 404s for everyone who is not signed in. */
+    .src-note {
+      max-width: 600px;
+      margin: 0 auto 3rem;
+      padding: 0 1.5rem;
+    }
+
+    .src-note-box {
+      border: 1px solid #33304a;
+      border-left: 3px solid #7cc7ff;
+      border-radius: 6px;
+      background: rgba(255, 255, 255, .02);
+      padding: .9rem 1rem;
+    }
+
+    .src-note-label {
+      font-family: 'Press Start 2P', monospace;
+      font-size: 8px;
+      color: #7cc7ff;
+      letter-spacing: 0.05em;
+      margin-bottom: .6rem;
+    }
+
+    .src-note p {
+      margin: 0;
+      font-size: 12px;
+      line-height: 1.7;
+      color: #9d99b5;
+    }
+
+    .src-note p + p { margin-top: .5rem; }
+    .src-note a { color: #7cc7ff; }
+  </style>
+</head>
+<body>
+
+<nav id="auto-nav" data-depth="../../"></nav>
+
+<div class="tool-nav">
+    <a href="../dev/" class="back-link">&larr; developer tools</a>
+</div>
+
+  <div class="hero">
+    <h1>adenosine</h1>
+    <p class="tagline">lightweight game engines by magmacrunch media</p>
+  </div>
+
+  <div class="lead">
+    <p>A collection of lightweight web game engines by <a href="https://magmacrunch.com">magmacrunch media</a>.
+      TypeScript and JavaScript, zero runtime dependencies, built for browsers. Powering the
+      <a href="https://magmacrunch.com/arcade/">magmacrunch web arcade</a> since 2026.</p>
+
+    <div class="about-links">
+      <a href="https://www.npmjs.com/org/magmacrunch" target="_blank" rel="noopener">npm</a>
+      <a href="mailto:info@magmacrunch.com?subject=adenosine">contact</a>
+      <a href="https://magmacrunch.com" target="_blank" rel="noopener">magmacrunch.com</a>
+    </div>
+  </div>
+
+  <div class="tools">
+    <a href="playground.html" class="tool-card">
+      <div class="icon">&#9654;</div>
+      <h2>Playground</h2>
+      <p>Try every package live. Code editor with syntax highlighting, pre-loaded examples, and console output.</p>
+    </a>
+    <a href="tiles.html" class="tool-card">
+      <div class="icon">&#9634;</div>
+      <h2>Tile Map Editor</h2>
+      <p>Draw tile maps for the RPG engine. Paint, fill, export JSON, preview with AdRPG.</p>
+    </a>
+    <a href="theme.html" class="tool-card">
+      <div class="icon">&#9998;</div>
+      <h2>Theme Customizer</h2>
+      <p>Customize CSS colors for cards, puzzle, chat, and multiplayer packages.</p>
+    </a>
+  </div>
+
+  <div class="packages">
+    <h2>packages</h2>
+    <div class="pkg-table">
+      <div class="pkg-row pkg-header">
+        <span>Package</span><span>Description</span><span>npm</span>
+      </div>
+      <div class="pkg-row"><strong class="pkg-name">rpg</strong><span>2D tile-based RPG engine</span><a href="https://www.npmjs.com/package/@magmacrunch/adenosine-rpg">v0.4.0</a></div>
+      <div class="pkg-row"><strong class="pkg-name">puzzle</strong><span>Sliding tile puzzle framework</span><a href="https://www.npmjs.com/package/@magmacrunch/adenosine-puzzle">v0.5.0</a></div>
+      <div class="pkg-row"><strong class="pkg-name">cards</strong><span>Card deck, pixel-art SVG, chips</span><a href="https://www.npmjs.com/package/@magmacrunch/adenosine-cards">v0.10.0</a></div>
+      <div class="pkg-row"><strong class="pkg-name">audio</strong><span>Web Audio music + SFX engine</span><a href="https://www.npmjs.com/package/@magmacrunch/adenosine-audio">v0.5.0</a></div>
+      <div class="pkg-row"><strong class="pkg-name">score-client</strong><span>WebSocket high-score client</span><a href="https://www.npmjs.com/package/@magmacrunch/adenosine-score-client">v0.4.0</a></div>
+      <div class="pkg-row"><strong class="pkg-name">multiplayer</strong><span>Multiplayer WebSocket client</span><a href="https://www.npmjs.com/package/@magmacrunch/adenosine-multiplayer">v0.6.0</a></div>
+      <div class="pkg-row"><strong class="pkg-name">chat</strong><span>Real-time chat widget</span><a href="https://www.npmjs.com/package/@magmacrunch/adenosine-chat">v0.7.0</a></div>
+      <div class="pkg-row"><strong class="pkg-name">race</strong><span>Track, home-run and capture rules for race board games</span><a href="https://www.npmjs.com/package/@magmacrunch/adenosine-race">v0.2.0</a></div>
+      <div class="pkg-row"><strong class="pkg-name">spectrum</strong><span>Colour science for light</span><a href="https://www.npmjs.com/package/@magmacrunch/adenosine-spectrum">v0.1.0</a></div>
+      <div class="pkg-row"><strong class="pkg-name">synth</strong><span>Chiptune synth and sequencer</span><a href="https://www.npmjs.com/package/@magmacrunch/adenosine-synth">v0.2.0</a></div>
+    </div>
+  </div>
+
+  <div class="about">
+    <h2>install</h2>
+    <p class="about-label">CDN, no build step:</p>
+    <pre><code>&lt;script src="https://cdn.jsdelivr.net/npm/@magmacrunch/adenosine-rpg@0.4.0/dist/index.global.js"&gt;&lt;/script&gt;</code></pre>
+    <p class="about-label">npm:</p>
+    <pre><code>npm install @magmacrunch/adenosine-rpg</code></pre>
+
+    <p class="about-license">PolyForm Noncommercial 1.0.0 · Copyright 2026 magmacrunch media.
+      Apache-2.0 until 2026-10-15; versions published to npm before then stay available under it.</p>
+  </div>
+
+  <div class="src-note">
+    <div class="src-note-box">
+      <div class="src-note-label">// source access //</div>
+      <p>Every package above is published on npm and free to use today.
+        The engine source itself is not public.</p>
+      <p>For source access, licensing, or anything else, email
+        <a href="mailto:info@magmacrunch.com?subject=adenosine">info@magmacrunch.com</a>.</p>
+    </div>
+  </div>
+
+  <footer>
+      &copy; 2026 <span>magmacrunch media</span>
+  </footer>
+
+  <script src="../../nav.js?v=a1127215"></script>
+</body>
+</html>

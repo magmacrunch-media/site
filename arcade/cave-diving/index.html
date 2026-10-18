@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>CAVE DIVING (NOT EVEN ONCE) — magmacrunch media</title>
+    <meta property="og:title" content="CAVE DIVING — magmacrunch media">
+    <meta property="og:description" content="A one-song dive into a flooded cave. Your headlamp is the only light.">
+    <meta property="og:image" content="https://magmacrunch.com/og/arcade-cave-diving.png?v=1">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="magmacrunch media">
+    <meta property="og:locale" content="en_US">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="description" content="A one-song dive into a flooded cave. Your headlamp is the only light, every stroke costs air, and the passage narrows behind you. Built around Juanito Thompson's cave diving (not even once).">
+    <link rel="icon" href="favicon.svg?v=3471cc82" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../shared/arcade-base.css?v=de5e0d7b">
+    <link rel="stylesheet" href="css/base.css?v=e320ca92">
+    <link rel="stylesheet" href="css/start-screen.css?v=54baae1f">
+    <link rel="stylesheet" href="css/game.css?v=64f05f13">
+    <link rel="stylesheet" href="css/modals.css?v=255d91f2">
+</head>
+<body>
+<a href="../action/" class="mc-back">action games</a>
+
+<!-- Title -->
+<div id="titleScreen" class="title-screen">
+    <h1>CAVE DIVING<br><span class="sub-title">(not even once)</span></h1>
+    <div class="start-prompt">PRESS SPACE</div>
+    <button id="btnStart" class="touch-start">DIVE</button>
+    <button id="btnSound" class="sound-toggle" aria-pressed="false">SOUND: ON</button>
+    <p id="audioWarning" class="audio-warning" hidden></p>
+    <p class="copyright">&copy; 2026 MAGMACRUNCH MEDIA</p>
+</div>
+
+<!-- Canvas -->
+<div id="gameContainer" class="game-container">
+    <canvas id="gameCanvas" width="480" height="270"></canvas>
+</div>
+
+<!-- HUD -->
+<div id="hud" class="hud hidden">
+    <div class="hud-left">
+        <div class="hud-label">AIR</div>
+        <div class="air-bar"><div id="airFill" class="air-fill"></div></div>
+    </div>
+    <div class="hud-mid">
+        <div class="hud-label">DEPTH</div>
+        <div class="hud-value" id="depthDisplay">0m</div>
+    </div>
+    <div class="hud-mid">
+        <div class="hud-label">PEARLS</div>
+        <div class="hud-value" id="pearlDisplay">0</div>
+    </div>
+    <div class="hud-right">
+        <div class="hud-label" id="musicDisplay">M: ON</div>
+        <div class="hud-value zone" id="zoneDisplay">THE ENTRY</div>
+    </div>
+</div>
+
+<!-- Pause -->
+<div id="pauseOverlay" class="overlay hidden">
+    <div class="panel">
+        <h2>PAUSED</h2>
+        <p class="panel-note">the cave waits</p>
+        <div class="controls-hint">
+            ARROWS / WASD: swim &middot; Z / SPACE: stroke<br>
+            M: sound &middot; P: pause &middot; Q: quit to title
+        </div>
+        <button id="btnResume" class="btn">RESUME</button>
+        <button id="btnQuit" class="btn btn-quiet">QUIT TO TITLE</button>
+    </div>
+</div>
+
+<!-- At a surface: bank, or dive on -->
+<div id="surfaceOverlay" class="overlay hidden">
+    <div class="panel">
+        <h2 id="surfaceName">THE ENTRANCE</h2>
+        <p class="panel-note">you can breathe here. your tank cannot fill.</p>
+        <div class="breakdown" id="surfaceHaul"></div>
+        <button id="btnBank" class="btn">BANK 0</button>
+        <button id="btnDiveOn" class="btn">DIVE ON</button>
+        <div class="controls-hint">ENTER: bank &middot; SPACE: dive on</div>
+    </div>
+</div>
+
+<!-- Game over -->
+<div id="gameOverOverlay" class="overlay hidden">
+    <div class="panel">
+        <h2 id="overTitle">OUT OF AIR</h2>
+        <div class="final-score" id="finalScore">0</div>
+        <div class="breakdown" id="finalBreakdown"></div>
+
+        <div id="initialsPrompt" class="initials hidden">
+            <label for="initialsInput">INITIALS</label>
+            <input id="initialsInput" maxlength="3" autocomplete="off" spellcheck="false" value="AAA">
+            <button id="initialsSubmit" class="btn">SAVE</button>
+        </div>
+
+        <table class="scores">
+            <thead><tr><th>#</th><th>WHO</th><th>SCORE</th></tr></thead>
+            <tbody id="scoresBody"><tr><td colspan="3">loading</td></tr></tbody>
+        </table>
+
+        <div class="btn-row">
+            <button id="btnRetry" class="btn">DIVE AGAIN</button>
+            <button id="btnTitle" class="btn btn-quiet">TITLE</button>
+        </div>
+        <div class="credit">
+            music: <strong>cave diving (not even once)</strong> by
+            <a href="../../music/jukebox/">Juanito Thompson</a>,
+            from <em>Spooked</em> (2025)
+        </div>
+    </div>
+</div>
+
+<div class="scanlines"></div>
+
+<script src="../shared/adenosine-rpg.js?v=ffe9a960"></script>
+<script src="../shared/adenosine-score-client.js?v=565e71be"></script>
+<script src="../shared/score-server.js?v=9acd988c"></script>
+<script>const scoreClient = new AdScore.ScoreClient().auto(MC_SCORE_OPTS);</script>
+<script src="js/config.js?v=72aea458"></script>
+<script src="js/pixels.js?v=3c7c6684"></script>
+<script src="js/sfx.js?v=f7b39bd4"></script>
+<script src="js/music.js?v=11fcddec"></script>
+<script src="js/input.js?v=a30886cc"></script>
+<script src="js/renderer.js?v=ec6fcb4c"></script>
+<script src="js/light.js?v=7e2e5051"></script>
+<script src="js/title.js?v=ab7e6c40"></script>
+<script src="js/player.js?v=497a0e2e"></script>
+<script src="js/world.js?v=f50d300a"></script>
+<script src="js/entities.js?v=2a2fab2c"></script>
+<script src="js/guideline.js?v=985609dc"></script>
+<script src="js/creatures.js?v=cd7b7fc1"></script>
+<script src="js/main.js?v=51b4c74f"></script>
+</body>
+</html>

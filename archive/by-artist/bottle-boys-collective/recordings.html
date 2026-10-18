@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bottle Boys Collective — recordings — magmacrunch media</title>
+    <link rel="icon" type="image/x-icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../style.css?v=53e9e146">
+    <link rel="stylesheet" href="../../../assets/archive.css?v=3ed2f2cb">
+    <link rel="stylesheet" href="bbc-shared.css">
+    <link rel="stylesheet" href="../../../templates/artist-recordings.css">
+    <style>
+        :root { --section-accent: var(--bbc-warm); }
+        body.bbc-page.bbc-recordings-page .breadcrumb a { color: var(--section-accent); }
+        body.bbc-page.bbc-recordings-page .breadcrumb a:hover { color: var(--cream, #f0ead8); }
+        body.bbc-page.bbc-recordings-page .breadcrumb .sep { color: var(--section-accent); opacity: 0.6; }
+        body.bbc-page.bbc-recordings-page .breadcrumb .current { color: var(--section-accent); }
+        body.bbc-page.bbc-recordings-page .artist-label { color: var(--section-accent); }
+        body.bbc-page.bbc-recordings-page .page-title { color: var(--section-accent); text-shadow: 0 0 20px rgba(192,120,72,0.45); }
+        body.bbc-page.bbc-recordings-page .nav-card.c-back { color: var(--section-accent); border-color: var(--section-accent); }
+        body.bbc-page.bbc-recordings-page .nav-card.c-back:hover { background: var(--section-accent); color: var(--black, #080808); }
+    </style>
+    <script>
+    window.COLLECTIVE_CONFIG = {
+        ids:       [
+            'e33d1006-01a5-4266-aade-b7f6c1dff8e3',
+            'dc2aa366-6f44-48dd-b1f9-a9aa705a6452',
+        ],
+        slug:      'bottle-boys-collective',
+        name:      'bottle boys collective',
+        abbr:      'BBC',
+        accent:    'warm',
+        backColor: 'c-back',
+        siblings:  ['about', 'links', 'photography', 'releases', 'works'],
+        depth:     '../../../',
+        cssVarPrefix: 'bbc',
+        ticker:    ['bottle boys collective', 'magmacrunch media'],
+        accentRgbMap: { warm: '120,168,200' },
+    };
+    </script>
+</head>
+<body class="bbc-page bbc-recordings-page">
+<nav id="auto-nav" data-depth="../../../"></nav>
+<main>
+    <div class="breadcrumb"></div>
+
+    <div class="page-header">
+        <div class="artist-label" id="artist-label"></div>
+        <div class="page-title">RECORDINGS</div>
+        <div class="sub-nav" id="sub-nav"></div>
+    </div>
+    <div class="catalog-wrap">
+        <div id="status-bar">loading recordings…</div>
+        <div id="count-bar"></div>
+        <div id="recordings-list"></div>
+    </div>
+</main>
+<footer>&copy; 2026 <span>magmacrunch media</span></footer>
+<script src="../../../nav.js?v=a1127215"></script>
+<script src="../../../templates/entity-map.js"></script>
+<script src="../../../templates/collective_recordings.js"></script>
+</body>
+</html>

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>pay2play</title>
+    <meta property="og:title" content="pay2play — magmacrunch media">
+    <meta property="og:description" content="Play pay2play in the magmacrunch arcade">
+    <meta property="og:image" content="https://magmacrunch.com/og/arcade-pay2play.png?v=1">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="magmacrunch media">
+    <meta property="og:locale" content="en_US">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="icon" href="../../favicon.ico" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="pay2play.css?v=e7d2a040">
+</head>
+<body>
+<a href="../" class="mc-back">magmacrunch arcade</a>
+<div id="game-container">
+    <div id="outer-frame">
+        <canvas id="outer-frame-canvas" width="600" height="700"></canvas>
+    </div>
+
+    <div class="ascii-border">○ ○ ○ ○ ○ ○ ○ ○ ○ ○ ○ ○ ○ ○ ○ ○ ○ ○ ○ ○</div>
+
+    <pre class="ascii-art">
+            ▄▄▄     ▀█                          ▄▄▄     ▀█                          ▄▄▄     ▀█                          ▄▄▄     ▀█
+  █▀█ ▀▀█ █ █ ▄▄█ █▀█  █  ▀▀█ █ █     █▀█ ▀▀█ █ █ ▄▄█ █▀█  █  ▀▀█ █ █     █▀█ ▀▀█ █ █ ▄▄█ █▀█  █  ▀▀█ █ █     █▀█ ▀▀█ █ █ ▄▄█ █▀█  █  ▀▀█ █ █
+  █▄█ ███ █▄█ █▄▄ █▄█  █▄ ███ █▄█     █▄█ ███ █▄█ █▄▄ █▄█  █▄ ███ █▄█     █▄█ ███ █▄█ █▄▄ █▄█  █▄ ███ █▄█     █▄█ ███ █▄█ █▄▄ █▄█  █▄ ███ █▄█
+  █       ▄▄█     █           ▄▄█     █       ▄▄█     █           ▄▄█     █       ▄▄█     █           ▄▄█     █       ▄▄█     █           ▄▄█</pre>
+
+    <div class="subtitle">MAKE MORE MONEY GO OUT FOR THE WEEKEND</div>
+
+    <div id="slot-machine">
+        <div id="machine-frame">
+            <canvas id="machine-frame-canvas"></canvas>
+        </div>
+        <div id="machine-body">
+            <div id="reels-container">
+                <div id="reels">
+                    <div class="reel-column">
+                        <div id="reel1" class="reel"></div>
+                        <button id="stop1" class="stop-btn" disabled>STOP</button>
+                    </div>
+                    <div class="reel-column">
+                        <div id="reel2" class="reel"></div>
+                        <button id="stop2" class="stop-btn" disabled>STOP</button>
+                    </div>
+                    <div class="reel-column">
+                        <div id="reel3" class="reel"></div>
+                        <button id="stop3" class="stop-btn" disabled>STOP</button>
+                    </div>
+                </div>
+                <div id="message">pull the lever...</div>
+            </div>
+            <div id="lever-container">
+                <div class="lever-label">PULL</div>
+                <div id="lever">
+                    <canvas id="lever-canvas" width="80" height="200"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="stats">
+        <div class="stat" id="coins-display">
+            <div class="stat-label">
+                <img id="coin-icon" width="20" height="20" style="vertical-align:middle;">
+                MONEY
+            </div>
+            <div class="stat-value" id="coins">0¢</div>
+        </div>
+        <div class="stat" id="attention-display">
+            <div class="stat-label">ATTENTION</div>
+            <div class="stat-value" id="attention">0</div>
+        </div>
+        <div class="stat">
+            <div class="stat-label">SPINS</div>
+            <div class="stat-value" id="spins">0</div>
+        </div>
+    </div>
+
+    <div style="text-align:center;margin-top:18px;">
+        <button id="cash-out-btn" class="cash-out-btn">I SHOULD STOP<br>BUT I LIKE THE ATTENTION</button>
+    </div>
+</div>
+
+<!-- PRIZE MODAL -->
+<div id="prize-modal">
+    <div id="prize-modal-content">
+        <div class="end-title" id="end-title">GAME OVER</div>
+
+        <div class="prize-stats">
+            <div>
+                <div class="prize-stat-label">Spins</div>
+                <div class="prize-stat-value" id="final-spins">0</div>
+            </div>
+            <div>
+                <div class="prize-stat-label">Attention</div>
+                <div class="prize-stat-value" id="final-attention">0</div>
+            </div>
+            <div>
+                <div class="prize-stat-label">Debt</div>
+                <div class="prize-stat-value debt" id="final-debt">$0.00</div>
+            </div>
+        </div>
+
+        <div class="end-message" id="end-message-text">The house always wins.</div>
+
+        <div class="ascii-prize-label">◆ ◆ ◆</div>
+        <pre id="prize-ascii-display"></pre>
+
+        <div style="text-align:center;">
+            <button id="prize-close-btn" class="close-btn">Play Again</button>
+        </div>
+    </div>
+</div>
+
+<!-- adenosine-audio is vendored, not loaded from a CDN, so the page still opens
+     from file:// with no network. See vendor/README.md. -->
+<script src="vendor/adenosine-audio.js?v=144a2764"></script>
+<script src="audio.js?v=51248280"></script>
+<script src="prizes.js?v=80d6c7cb"></script>
+<script src="game.js?v=35dddadd"></script>
+</body>
+</html>

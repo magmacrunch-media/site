@@ -1,0 +1,337 @@
+:root {
+  --mc-back-color: #ff8a3a;
+  --mc-back-glow: 0 0 8px #ff5a1f;
+}
+
+html, body {
+  margin: 0;
+  height: 100%;
+  background: radial-gradient(ellipse at 50% 100%, #3a0e04 0%, #0b0605 60%);
+  overflow: hidden;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#wrap {
+  position: relative;
+  /* So the title card can size its type to the canvas, not the window. */
+  container-type: size;
+  width: 480px;
+  height: 720px;
+  box-shadow: 0 0 60px rgba(255, 90, 31, 0.25), 0 0 0 2px #2b2421;
+}
+
+canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  image-rendering: pixelated;
+  /* The canvas is the touch surface: no scrolling, no double-tap zoom. */
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* ---- The title card ----------------------------------------------------
+   Sits in the dark of the upper shaft, below the crater mouth, leaving the
+   pool and the climber clear. Only the top is darkened, enough for the type
+   to sit on; the scene shows through everywhere else. */
+
+.title-screen {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 2.4cqh;
+  padding-top: 24cqh;
+  text-align: center;
+  font-family: 'Press Start 2P', monospace;
+  background: linear-gradient(to bottom,
+    rgba(5, 3, 3, 0) 0%,
+    rgba(5, 3, 3, 0.45) 22%,
+    rgba(5, 3, 3, 0.45) 46%,
+    rgba(5, 3, 3, 0) 64%);
+}
+
+.title-screen[hidden] { display: none; }
+
+.title-screen h1 {
+  margin: 0;
+  font-size: 11cqw;
+  font-weight: normal;
+  letter-spacing: 0.08em;
+  color: #ff6a1f;
+  text-shadow:
+    0 0 2.5cqw rgba(255, 90, 31, 0.7),
+    0 0 7cqw rgba(255, 60, 0, 0.35),
+    0 0.6cqw 0 #2a0700;
+  animation: smoulder 3.2s ease-in-out infinite;
+}
+
+@keyframes smoulder {
+  50% { color: #ff8a3a; text-shadow:
+    0 0 3.5cqw rgba(255, 140, 50, 0.85),
+    0 0 9cqw rgba(255, 70, 0, 0.45),
+    0 0.6cqw 0 #2a0700; }
+}
+
+.sub-title {
+  margin: 0;
+  font-size: 2.3cqw;
+  letter-spacing: 0.14em;
+  color: #ffd9a0;
+  text-shadow: 0 0 1.5cqw rgba(255, 200, 120, 0.4);
+}
+
+.start-prompt {
+  margin-top: 4cqh;
+  font: inherit;
+  font-size: 2.6cqw;
+  letter-spacing: 0.12em;
+  color: #fff3d0;
+  background: none;
+  border: none;
+  padding: 2cqw 4cqw;
+  cursor: pointer;
+  animation: blink 1.15s steps(2, start) infinite;
+}
+
+.start-prompt:focus-visible { outline: 1px solid #ff6a1f; }
+
+@keyframes blink {
+  to { opacity: 0.25; }
+}
+
+.copyright {
+  position: absolute;
+  bottom: 1.6cqh;
+  margin: 0;
+  font-size: 1.3cqw;
+  letter-spacing: 0.08em;
+  color: rgba(255, 220, 190, 0.55);
+}
+
+/* ---- Keyboard or thumb -------------------------------------------------
+   One label for each, swapped by what the device says it has. */
+
+.touch-only { display: none; }
+
+@media (hover: none), (pointer: coarse) {
+  .touch-only { display: inline; }
+  .keys-only { display: none; }
+}
+
+/* ---- Panels over the canvas: initials, game over ------------------------ */
+
+.panel {
+  position: absolute;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 3cqw;
+  font-family: 'Press Start 2P', monospace;
+}
+
+.panel[hidden], .btn-pause[hidden] { display: none; }
+
+.panel-initials { top: 52cqh; }
+.panel-over { bottom: 9cqh; }
+
+.btn {
+  font: inherit;
+  font-size: 2.6cqw;
+  letter-spacing: 0.1em;
+  color: #1a0700;
+  background: #ff6a1f;
+  border: none;
+  padding: 3cqw 5cqw;
+  /* A 44px thumb target at the smallest size the page scales to. */
+  min-height: 44px;
+  cursor: pointer;
+  touch-action: manipulation;
+  box-shadow: 0 0 3cqw rgba(255, 90, 31, 0.5);
+}
+
+.btn:hover, .btn:focus-visible { background: #ff8a3a; outline: none; }
+
+#initialsInput {
+  width: 22cqw;
+  font: inherit;
+  font-size: 6cqw;
+  text-align: center;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #fff3d0;
+  background: rgba(0, 0, 0, 0.6);
+  border: 2px solid #ff6a1f;
+  padding: 1.5cqw 1cqw;
+}
+
+#initialsInput:focus { outline: none; box-shadow: 0 0 3cqw rgba(255, 90, 31, 0.6); }
+
+.btn-pause {
+  position: absolute;
+  top: 1.2cqh;
+  left: 50%;
+  transform: translateX(-50%);
+  min-width: 44px;
+  min-height: 44px;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 12px;
+  color: rgba(255, 217, 160, 0.8);
+  background: rgba(0, 0, 0, 0.35);
+  border: 1px solid rgba(255, 217, 160, 0.3);
+  cursor: pointer;
+  touch-action: manipulation;
+}
+
+.sound-toggle {
+  font: inherit;
+  font-size: 1.6cqw;
+  letter-spacing: 0.1em;
+  color: rgba(255, 217, 160, 0.7);
+  background: transparent;
+  border: 1px solid rgba(255, 217, 160, 0.35);
+  padding: 1.6cqw 2.6cqw;
+  min-height: 34px;
+  cursor: pointer;
+  touch-action: manipulation;
+}
+
+.sound-toggle:hover, .sound-toggle:focus-visible {
+  color: #fff3d0;
+  border-color: #fff3d0;
+  outline: none;
+}
+
+.sound-toggle[aria-pressed="true"] { color: #ff6a6a; border-color: rgba(255, 106, 106, 0.55); }
+
+@media (hover: none), (pointer: coarse) {
+  .sound-toggle { min-height: 44px; }
+}
+
+/* ---- The climber select ----------------------------------------------
+   Moonlight Drift's character modal, in this game's colours: a dimmed
+   backdrop, a framed panel, a grid of cards with a drawn preview, name and
+   star ratings, and DONE. */
+
+.char-modal {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(5, 3, 3, 0.78);
+  font-family: 'Press Start 2P', monospace;
+}
+
+.char-modal[hidden] { display: none; }
+
+.char-modal-content {
+  width: 90cqw;
+  /* Never taller than the canvas: with nine climbers the grid scrolls
+     instead, as Moonlight Drift's does once its roster passes three rows. */
+  max-height: 96cqh;
+  box-sizing: border-box;
+  padding: 4cqw 3cqw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2.2cqh;
+  background: #1a100c;
+  border: 2px solid #ff6a1f;
+  box-shadow: 0 0 4cqw rgba(255, 90, 31, 0.35), inset 0 0 0 2px #2b1a12;
+}
+
+.char-modal h2 {
+  margin: 0;
+  font-size: 3.2cqw;
+  font-weight: normal;
+  color: #ff8a3a;
+  letter-spacing: 0.08em;
+}
+
+.char-grid {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.6cqw;
+  min-height: 0;
+  overflow-y: auto;
+  padding: 0.5cqw;
+  box-sizing: border-box;
+  scrollbar-color: #ff6a1f #1a100c;
+}
+
+.char-card {
+  font: inherit;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6cqh;
+  padding: 1.4cqw 1cqw;
+  color: #ffd9a0;
+  background: #24160f;
+  border: 2px solid #3d2a20;
+  cursor: pointer;
+  touch-action: manipulation;
+}
+
+.char-card canvas {
+  width: 12cqw;
+  height: 12cqw;
+  image-rendering: pixelated;
+  background: #120b0a;
+}
+
+.char-card:hover { border-color: #8a5a3a; }
+
+.char-card.selected {
+  border-color: #ff6a1f;
+  box-shadow: 0 0 2.5cqw rgba(255, 90, 31, 0.55);
+  background: #33190d;
+}
+
+.char-name { font-size: max(1.6cqw, 7px); color: #fff3d0; line-height: 1.5; text-align: center; }
+.char-role { font-size: max(1.3cqw, 6px); color: #ff8a3a; letter-spacing: 0.1em; }
+
+.char-stats { width: 100%; display: flex; flex-direction: column; gap: 0.4cqh; }
+
+.stat-row {
+  display: flex;
+  justify-content: space-between;
+  /* Floors on the small sizes: on a phone the canvas is 360px wide and
+     1.15cqw would be four pixels. */
+  font-size: max(1.15cqw, 6px);
+  color: rgba(255, 217, 160, 0.75);
+}
+
+.stars { color: #ff6a1f; letter-spacing: 0.05em; font-family: sans-serif; font-size: max(1.6cqw, 9px); }
+
+.char-blurb {
+  margin: 0;
+  min-height: 2em;
+  font-size: max(1.5cqw, 7px);
+  color: rgba(255, 217, 160, 0.8);
+  text-align: center;
+  line-height: 1.6;
+}
+
+.char-keys { margin: 0; font-size: 1.2cqw; color: rgba(255, 217, 160, 0.5); }
+
+.btn-ghost {
+  color: #ffd9a0;
+  background: transparent;
+  border: 1px solid rgba(255, 217, 160, 0.45);
+  box-shadow: none;
+}
+
+.btn-ghost:hover, .btn-ghost:focus-visible { background: rgba(255, 217, 160, 0.1); }

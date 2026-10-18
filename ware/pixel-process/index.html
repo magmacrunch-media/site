@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>crunchscope — magmacrunch media</title>
+    <meta name="theme-color" content="#ff6b2b">
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <!-- Press Start 2P and Courier Prime are self-hosted by the shell. VT323,
+         for the readouts and the .sys-stat chips, is the one face fetched
+         from Google, and the iOS build replaces this request with a bundled
+         copy (ios/package.mjs). -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../shell/fonts.css?v=08818834">
+    <link rel="stylesheet" href="../shell/app-shell.css?v=2eb63ac6">
+    <link rel="stylesheet" href="../shell/toast.css?v=2c51118f">
+    <link rel="stylesheet" href="css/style.css?v=fb0d209a">
+</head>
+<body>
+    <!-- The title screen. Its wordmark is not written here: js/title.js reads
+         the <h1> below and draws it, so the app's name stays in one place and
+         a rename stays cheap. The canvas is sized and labeled by that file
+         too. -->
+    <div class="title-screen" id="titleScreen">
+        <div class="title-inner">
+            <canvas id="titleCanvas" class="title-canvas"></canvas>
+            <p class="title-sub">a signal chain for images</p>
+            <button class="title-enter" id="titleEnter" type="button">ENTER</button>
+            <p class="title-hint">or press any key</p>
+        </div>
+
+        <!-- The publisher's mark, as the games carry it: the logo above the
+             name rather than beside it, so it reads as a signature block. The
+             image is derived from the website's own logo by
+             scripts/make-logo.py, and is not a link: the footer carries that
+             on the website, and in the app there is nowhere for a link to go
+             that is not Safari. -->
+        <div class="title-publisher">
+            <img class="title-publisher-mark" src="img/mc-logo.png" alt="" width="26" height="32">
+            <span>magmacrunch media</span>
+        </div>
+    </div>
+
+    <header>
+        <div class="header-left">
+            <h1 class="glitch" data-text="CRUNCH//SCOPE">CRUNCH//SCOPE</h1>
+        </div>
+        <div class="header-right">
+            <span class="sys-stat" id="resStat">256×256</span>
+            <span class="sys-stat" id="chainStat">0 EFFECTS</span>
+        </div>
+    </header>
+
+    <nav class="tool-nav">
+        <a href="../utilities/" class="back-link chip"><span class="chrome" data-text="← UTILITIES">← creative utilities</span></a>
+    </nav>
+
+    <div class="workspace">
+        <!-- LEFT PANEL: Input & Sources -->
+        <aside class="panel input-panel">
+            <div class="panel-label">INPUT</div>
+
+            <button class="action-btn" id="uploadBtn">UPLOAD IMAGE</button>
+            <input type="file" id="fileInput" accept="image/*" hidden>
+
+            <div class="panel-divider"></div>
+
+            <div class="panel-label">SOURCES</div>
+            <p class="panel-hint">generators replace the input image</p>
+
+            <div class="custom-dropdown" id="generatorDropdown">
+                <div class="dropdown-selected">
+                    <span>SELECT</span>
+                    <span class="dropdown-arrow">&#9662;</span>
+                </div>
+                <div class="dropdown-options">
+                    <div class="dropdown-option" data-value="white-noise">WHITE NOISE</div>
+                    <div class="dropdown-option" data-value="perlin-noise">PERLIN NOISE</div>
+                    <div class="dropdown-option" data-value="h-gradient">H GRADIENT</div>
+                    <div class="dropdown-option" data-value="v-gradient">V GRADIENT</div>
+                    <div class="dropdown-option" data-value="radial-gradient">RADIAL GRADIENT</div>
+                    <div class="dropdown-option" data-value="color-bars">COLOR BARS</div>
+                    <div class="dropdown-option" data-value="checkerboard">CHECKERBOARD</div>
+                    <div class="dropdown-option" data-value="solid-color">SOLID COLOR</div>
+                </div>
+            </div>
+
+            <div class="prop-group" id="solidColorGroup" hidden>
+                <label class="prop-label">COLOR</label>
+                <div class="color-row">
+                    <input type="color" id="genColor" value="#ff8c42" class="color-input">
+                    <input type="text" id="genHex" class="color-hex-input" value="#ff8c42" maxlength="7">
+                </div>
+            </div>
+
+            <div class="prop-group" id="seedGroup" hidden>
+                <label class="prop-label">SEED</label>
+                <div class="seed-row">
+                    <input type="number" id="genSeed" class="seed-input" value="0" min="0" step="1">
+                    <button class="seed-btn" id="rerollBtn">REROLL</button>
+                </div>
+            </div>
+
+            <div class="prop-group" id="gradColorGroup" hidden>
+                <label class="prop-label">COLOR A</label>
+                <div class="color-row">
+                    <input type="color" id="gradColorA" value="#ff8c42" class="color-input">
+                    <input type="text" id="gradHexA" class="color-hex-input" value="#ff8c42" maxlength="7">
+                </div>
+                <label class="prop-label">COLOR B</label>
+                <div class="color-row">
+                    <input type="color" id="gradColorB" value="#d4a030" class="color-input">
+                    <input type="text" id="gradHexB" class="color-hex-input" value="#d4a030" maxlength="7">
+                </div>
+            </div>
+
+            <div class="panel-divider"></div>
+
+            <div class="panel-label">WORK SIZE</div>
+            <div class="size-row">
+                <span class="size-label">W</span>
+                <input type="number" id="sizeW" class="size-input" value="256" min="16" max="2048">
+                <span class="size-label">H</span>
+                <input type="number" id="sizeH" class="size-input" value="256" min="16" max="2048">
+            </div>
+            <div class="custom-dropdown" id="presetDropdown">
+                <div class="dropdown-selected">
+                    <span>PRESETS</span>
+                    <span class="dropdown-arrow">&#9662;</span>
+                </div>
+                <div class="dropdown-options">
+                    <div class="dropdown-option" data-value="128x128">128 × 128</div>
+                    <div class="dropdown-option" data-value="256x256">256 × 256</div>
+                    <div class="dropdown-option" data-value="512x512">512 × 512</div>
+                    <div class="dropdown-option" data-value="640x480">640 × 480</div>
+                    <div class="dropdown-option" data-value="800x600">800 × 600</div>
+                    <div class="dropdown-option" data-value="1024x768">1024 × 768</div>
+                </div>
+            </div>
+
+            <div class="panel-divider"></div>
+
+            <div class="prop-group">
+                <label class="prop-label">FILE NAME</label>
+                <input type="text" id="fileName" class="file-input" value="crunchscope">
+            </div>
+            <button class="export-btn" id="exportBtn">EXPORT PNG</button>
+        </aside>
+
+        <!-- CENTER: Display Canvas -->
+        <div class="center-area">
+            <div class="canvas-wrap" id="canvasWrap">
+                <canvas id="displayCanvas"></canvas>
+                <button type="button" class="grat-toggle" id="gratToggle" aria-pressed="true"
+                        title="Show or hide the graticule">GRID</button>
+                <div class="drop-overlay" id="dropOverlay">
+                    <span>DROP IMAGE</span>
+                </div>
+            </div>
+            <!-- The monitor. js/meter.js owns everything inside it and draws
+                 on every repaint; canvas.js calls it and reads nothing back. -->
+            <section class="meter" id="meter" aria-label="signal monitor">
+                <div class="meter-head">
+                    <button type="button" class="meter-power" id="meterPower"
+                            aria-pressed="true" title="Switch the monitor off">MON</button>
+                    <div class="meter-modes" role="group" aria-label="monitor mode">
+                        <button type="button" class="meter-mode" data-mode="levels">LEVELS</button>
+                        <button type="button" class="meter-mode" data-mode="spectrum">SPECTRUM</button>
+                    </div>
+                    <span class="meter-readout" id="meterReadout"></span>
+                </div>
+                <canvas id="meterScreen" class="meter-screen"></canvas>
+            </section>
+
+            <div class="canvas-hint">drag &amp; drop · ctrl+v paste · upload image · add effects →</div>
+        </div>
+
+        <!-- RIGHT PANEL: Signal Chain -->
+        <aside class="panel chain-panel">
+            <div class="panel-label">SIGNAL CHAIN</div>
+            <p class="panel-hint">effects process the source image</p>
+
+            <div class="panel-label">CHAIN SEED</div>
+            <p class="panel-hint">one number, a whole chain</p>
+            <div class="seed-row">
+                <input type="number" id="chainSeed" class="seed-input" value="0" min="0" step="1">
+                <button class="seed-btn" id="diceBtn">DICE</button>
+            </div>
+            <div class="lab-row" id="rollRow">
+                <button class="lab-btn" id="mutateBtn">MUTATE</button>
+                <button class="lab-btn" id="undoBtn">UNDO</button>
+            </div>
+
+            <!-- Under their own heading, not under CHAIN SEED. These two carry
+                 the whole chain as text, which is the thing a seed cannot do:
+                 a seed replays a roll, and nothing else replays a chain you
+                 tuned by hand. Sat in one row with MUTATE and UNDO they read
+                 as two more operations on the number above them, and on a
+                 phone, where MUTATE and UNDO are hidden because the action bar
+                 carries them, they were the only two buttons left under a seed
+                 box. -->
+            <div class="panel-label">PRESET</div>
+            <p class="panel-hint">the whole chain, as text</p>
+            <div class="lab-row">
+                <button class="lab-btn" id="copyBtn">COPY</button>
+                <button class="lab-btn" id="pasteBtn">PASTE</button>
+            </div>
+
+            <div class="panel-divider"></div>
+
+            <!-- Below 768px the chain is a row of chips and only the selected
+                 card is shown. Rendered by js/ui.js; empty on a wide screen. -->
+            <div class="chain-chips" id="chainChips" aria-label="effects in the chain"></div>
+
+            <div class="chain-list" id="chainList">
+                <!-- effect cards rendered by JS -->
+            </div>
+
+            <div class="add-effect-wrap">
+                <div class="custom-dropdown" id="addEffectDropdown">
+                    <div class="dropdown-selected add-btn">
+                        <span>+ ADD EFFECT</span>
+                        <span class="dropdown-arrow">&#9662;</span>
+                    </div>
+                    <div class="dropdown-options">
+                        <div class="dropdown-option" data-value="channel-shift">CHANNEL SHIFT</div>
+                        <div class="dropdown-option" data-value="channel-swap">CHANNEL SWAP</div>
+                        <div class="dropdown-option" data-value="invert">INVERT</div>
+                        <div class="dropdown-option" data-value="posterize">POSTERIZE</div>
+                        <div class="dropdown-option" data-value="threshold">THRESHOLD</div>
+                        <div class="dropdown-option" data-value="pixel-sort">PIXEL SORT</div>
+                        <div class="dropdown-option" data-value="row-displace">ROW DISPLACE</div>
+                        <div class="dropdown-option" data-value="wave-distort">WAVE DISTORTION</div>
+                        <div class="dropdown-option" data-value="block-corrupt">BLOCK CORRUPT</div>
+                        <div class="dropdown-option" data-value="dead-pixels">DEAD PIXELS</div>
+                        <div class="dropdown-option" data-value="fft-filter">FFT FILTER</div>
+                        <div class="dropdown-option" data-value="fft-spectrum">SPECTRUM</div>
+                        <div class="dropdown-option" data-value="fft-scramble">PHASE SCRAMBLE</div>
+                        <div class="dropdown-option" data-value="fft-wedge">ANGULAR WEDGE</div>
+                        <div class="dropdown-option" data-value="feedback">FEEDBACK ECHO</div>
+                    </div>
+                </div>
+            </div>
+        </aside>
+    </div>
+
+    <!-- The phone action bar. Every button forwards to the real control
+         elsewhere on the page, so each action has one handler rather than
+         two that can drift. tests/test-page.js checks every target exists. -->
+    <nav class="mobile-bar" aria-label="actions">
+        <button type="button" data-forward="uploadBtn">UPLOAD</button>
+        <button type="button" data-forward="diceBtn">DICE</button>
+        <button type="button" data-forward="mutateBtn">MUTATE</button>
+        <button type="button" data-forward="undoBtn">UNDO</button>
+        <button type="button" data-forward="exportBtn">EXPORT</button>
+    </nav>
+
+    <footer>
+        <span class="footer-text">CRUNCH//SCOPE v1.1 &mdash; <span>MAGMACRUNCH MEDIA</span></span>
+    </footer>
+
+    <script src="../shell/toast.js?v=d87a2776"></script>
+    <script src="../shell/dropdown.js?v=2aa77ebe"></script>
+    <script src="js/canvas.js?v=f999ce51"></script>
+    <script src="js/chain.js?v=5b362bdc"></script>
+    <script src="js/generators.js?v=f2e49cb8"></script>
+    <script src="js/effects/channels.js?v=6ad998ab"></script>
+    <script src="js/effects/sort.js?v=fd949ab6"></script>
+    <script src="js/effects/displace.js?v=b372d3ac"></script>
+    <script src="js/effects/corrupt.js?v=987639f6"></script>
+    <script src="js/effects/fft.js?v=3194a438"></script>
+    <script src="js/effects/feedback.js?v=2210a612"></script>
+    <!-- After the effects: SPECTRUM mode uses the transform fft.js exposes
+         as Chain.fft, and before canvas.js repaints anything real. -->
+    <script src="js/meter.js?v=e5fed789"></script>
+    <script src="js/ui.js?v=6a9cd34e"></script>
+    <script src="js/app.js?v=16f4d115"></script>
+    <!-- After app.js: it reads the page's own script tags to find the
+         stamped core files, and hands them to a worker. -->
+    <script src="js/render.js?v=1147d332"></script>
+    <!-- preset.js is the logic and lab.js the buttons; both need Chain,
+         Canvas and UI to exist, so they follow app.js. -->
+    <script src="js/preset.js?v=dc5c3382"></script>
+    <script src="js/lab.js?v=183a049b"></script>
+    <!-- Last: it reads the effect registry the files above fill in. -->
+    <script src="js/title.js?v=ded209c5"></script>
+    <script>if("serviceWorker" in navigator){navigator.serviceWorker.register("sw.js");}</script>
+</body>
+</html>

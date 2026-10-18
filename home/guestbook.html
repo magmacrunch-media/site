@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>guestbook — magmacrunch media</title>
+    <meta property="og:title" content="guestbook — magmacrunch media">
+    <meta property="og:description" content="sign the guestbook">
+    <meta property="og:image" content="https://magmacrunch.com/og/guestbook.png?v=2">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta property="og:site_name" content="magmacrunch media">
+    <meta property="og:locale" content="en_US">
+    <link rel="icon" type="image/x-icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../style.css?v=53e9e146">
+    <link rel="stylesheet" href="guestbook.css">
+    <link rel="stylesheet" href="../assets/counter.css?v=ac448052">
+</head>
+<body>
+
+<nav id="auto-nav" data-depth="../"></nav>
+
+<main>
+
+    <div class="breadcrumb">
+        <a href="../">home</a>
+        <span class="sep">›</span>
+        <span class="current">guestbook</span>
+    </div>
+
+    <h1 class="page-title">// guestbook //</h1>
+    <p class="page-subtitle">say hi ✦ leave a note ✦ you were here</p>
+
+    <pre class="ascii-art">
+  __                                                                  
+ (`/\                                                                 
+ `=\/\ __...--~~~~~-._   _.-~~~~~--...__                              
+  `=\/\               \ /               \\                            
+   `=\/                V                 \\                           
+   //_\___--~~~~~~-._  |  _.-~~~~~~--...__\\                          
+  //  ) (..----~~~~._\ | /_.~~~~----.....__\\                         
+ ===( INK )==========\\|//====================                        
+__ejm\___/________dwb`---`____________________________________________
+    </pre>
+
+    <div class="guestbook-wrap">
+
+        <!-- FORM -->
+        <div class="form-container">
+            <input type="text" id="name" placeholder="your name" maxlength="80">
+            <textarea id="message" placeholder="leave a message..."></textarea>
+            <button class="submit-btn" onclick="submitEntry()">[ send ]</button>
+            <div class="submit-status" id="submitStatus"></div>
+        </div>
+
+        <!-- ENTRIES -->
+        <div class="entries-header">// entries //</div>
+        <div id="entries">
+            <div class="loading-msg">loading entries...</div>
+        </div>
+
+    </div>
+
+    <!-- Site-wide visitor count. Rendered here and nowhere else, which is
+         what docs/ops/scores-counter.md always said -- but the element it
+         named existed in no HTML file in the repo, so the counter had been
+         incrementing into a file that nothing on the site displayed. -->
+    <div class="counter-wrap"><div id="hit-counter"></div></div>
+
+</main>
+
+<footer>
+    &copy; 2026 <span>magmacrunch media</span>
+</footer>
+
+<script src="../nav.js?v=a1127215"></script>
+<!-- nav.js lazy-loads counter-client.js on every page and calls increment(),
+     but skips that injection when the tag is already present. This page also
+     DISPLAYS the count, so it loads the script itself, which means increment()
+     has to be called here or a visitor landing directly on the guestbook would
+     never be counted. increment() is debounced per session, so this is safe. -->
+<script src="../assets/counter-client.js?v=6e8c2d55"></script>
+<script>
+    CounterClient.display('#hit-counter');
+    CounterClient.increment();
+</script>
+<script>
+    // ── Google Apps Script backend (unchanged from original) ──
+    const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzIKFyhLKbCR3VnOzl1vkKu8vQdWw8ENmUiHVgTBGSlQLYeTMn7hDiANlGbZACGElvc/exec';
+
+    function escapeHtml(text) {
+        const div = document.createElement('div');
+        div.textContent = text;
+        return div.innerHTML;
+    }
+
+    function loadEntries() {
+        fetch(SCRIPT_URL)
+            .then(r => r.json())
+            .then(data => {
+                const container = document.getElementById('entries');
+                if (!data.length) {
+                    container.innerHTML = '<div class="loading-msg">no entries yet — be the first!</div>';
+                    return;
+                }
+                container.innerHTML = '<div class="entries-list"></div>';
+                const list = container.querySelector('.entries-list');
+                [...data].reverse().forEach(entry => {
+                    const div = document.createElement('div');
+                    div.className = 'entry';
+                    div.innerHTML = `
+                        <div class="entry-name">${escapeHtml(entry.name)}</div>
+                        <div class="entry-message">${escapeHtml(entry.message)}</div>
+                        <div class="entry-time">${new Date(entry.timestamp).toLocaleString()}</div>
+                    `;
+                    list.appendChild(div);
+                });
+            })
+            .catch(() => {
+                document.getElementById('entries').innerHTML =
+                    '<div class="loading-msg">error loading entries</div>';
+            });
+    }
+
+    function submitEntry() {
+        const name    = document.getElementById('name').value.trim();
+        const message = document.getElementById('message').value.trim();
+        const status  = document.getElementById('submitStatus');
+
+        if (!name || !message) {
+            status.textContent = '! please fill in both fields';
+            status.className = 'submit-status error';
+            return;
+        }
+
+        status.textContent = 'sending...';
+        status.className = 'submit-status';
+
+        const formData = new FormData();
+        formData.append('name', name);
+        formData.append('message', message);
+
+        fetch(SCRIPT_URL, { method: 'POST', body: formData })
+            .then(r => r.json())
+            .then(data => {
+                if (data.status === 'success') {
+                    document.getElementById('name').value    = '';
+                    document.getElementById('message').value = '';
+                    status.textContent = '✦ message sent!';
+                    status.className = 'submit-status ok';
+                    loadEntries();
+                    setTimeout(() => { status.textContent = ''; }, 4000);
+                }
+            })
+            .catch(() => {
+                status.textContent = '! error sending — please try again';
+                status.className = 'submit-status error';
+            });
+    }
+
+    loadEntries();
+    const gbPollId = setInterval(loadEntries, 30000);
+    window.__pageCleanup = function() { clearInterval(gbPollId); };
+</script>
+
+</body>
+</html>

@@ -1,0 +1,319 @@
+        :root {
+            --nav-accent: #00FFFF;
+            --nav-glow: rgba(0,255,255,0.4);
+            --nav-brand: #C45FFF;
+            --nav-brand-glow: rgba(196,95,255,0.7);
+        }
+
+        /* ── CYAN TERMINAL PALETTE ── */
+        body {
+            --cyan: #00FFFF;
+            --cyan-dim: #007A7A;
+            --cyan-glow: rgba(0,255,255,0.4);
+            --cyan-bright: #7DF9FF;
+            /* The terminal was teal-black (#040c0c) with cyan scanlines, which
+               is what the cyan chrome was designed against. The volcano lamp
+               that now sits on this page is violet glass over warm lava, and
+               teal-black read as a different room to it. This is the same
+               terminal a shade violet instead, which the lamp's liquid belongs
+               in and which cyan still reads well against; the scanlines keep a
+               little cyan so the CRT feel survives the change. */
+            background: #07060f;
+            background-image: repeating-linear-gradient(
+                0deg, transparent, transparent 2px,
+                rgba(120,220,255,0.028) 2px, rgba(120,220,255,0.028) 4px
+            );
+        }
+
+        footer {
+            border-top-color: var(--cyan-dim);
+        }
+        footer span {
+            color: var(--cyan);
+        }
+
+        .breadcrumb {
+            font-family: 'Press Start 2P', monospace;
+            font-size: 7px;
+            color: var(--cyan-dim);
+            letter-spacing: 0.1em;
+            margin-top: -8px;
+            margin-bottom: 16px;
+            align-self: flex-start;
+        }
+        .breadcrumb a { color: var(--cyan-dim); text-decoration: none; transition: color 0.15s; }
+        .breadcrumb a:hover { color: var(--cyan); }
+        .breadcrumb .sep { margin: 0 8px; color: var(--cyan); opacity: 0.7; }
+        .breadcrumb .current { color: var(--cyan); }
+
+        main {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 80px 20px 60px;
+        }
+
+        /* ── TERMINAL PROMPT ── */
+        .terminal-prompt {
+            font-family: 'Press Start 2P', monospace;
+            font-size: 10px;
+            color: var(--cyan);
+            margin-bottom: 8px;
+            animation: fadeUp 0.5s ease both;
+        }
+        .terminal-prompt .cursor {
+            animation: blink-cyan 1s step-end infinite;
+        }
+
+        .page-title {
+            font-family: 'Press Start 2P', monospace;
+            font-size: 18px;
+            color: var(--cyan);
+            text-shadow:
+                0 0 10px rgba(0,255,255,0.6),
+                0 0 30px rgba(0,255,255,0.3),
+                0 0 60px rgba(0,255,255,0.1);
+            margin-bottom: 10px;
+            letter-spacing: 0.1em;
+            animation: fadeUp 0.5s 0.05s ease both;
+        }
+
+        .page-subtitle {
+            font-family: 'Courier Prime', monospace;
+            font-size: 12px;
+            color: var(--cyan-dim);
+            letter-spacing: 0.05em;
+            margin-bottom: 48px;
+            animation: fadeUp 0.5s 0.1s ease both;
+        }
+
+        /* ── VOLCANO LAMP ──
+           200x240 canvas shown at exactly 2x so image-rendering: pixelated has
+           whole pixels; the mobile fallback is 64x64 and square, hence the
+           aspect-ratio switch in the media query at the foot of this file. */
+        .ware-lamp {
+            position: relative;
+            width: min(400px, 80vw);
+            aspect-ratio: 5 / 6;
+            margin: -12px 0 34px;
+            animation: fadeUp 0.5s 0.15s ease both;
+        }
+        /* The lamp lights the page it stands on. Anchored to the element
+           rather than painted into the body background, so it stays behind the
+           glass however far the page is scrolled or however tall it gets. */
+        .ware-lamp::before {
+            content: '';
+            position: absolute;
+            inset: -22% -38%;
+            z-index: -1;
+            pointer-events: none;
+            background: radial-gradient(closest-side,
+                rgba(255,106,0,0.14),
+                rgba(196,95,255,0.07) 55%,
+                transparent 78%);
+        }
+        .ware-lamp canvas {
+            display: block;
+            width: 100%;
+            height: 100%;
+            image-rendering: pixelated;
+            image-rendering: crisp-edges;
+        }
+
+        @keyframes blink-cyan {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        /* ── TOOL CARDS ── */
+        .tool-cards {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+            width: min(520px, 90vw);
+            animation: fadeUp 0.5s 0.15s ease both;
+        }
+
+        .tool-card {
+            display: flex;
+            align-items: stretch;
+            text-decoration: none;
+            border: 2px solid var(--cyan-dim);
+            border-bottom: none;
+            background: rgba(0,255,255,0.02);
+            transition: background 0.15s, border-color 0.15s, box-shadow 0.15s,
+                        background-size 0.15s;
+            position: relative;
+            overflow: hidden;
+            /* three-segment bar along the bottom edge */
+            background-image: linear-gradient(90deg,
+                var(--accent) 0 33.334%,
+                var(--a2)     33.334% 66.667%,
+                var(--a3)     66.667% 100%);
+            background-repeat: no-repeat;
+            background-size: 100% 4px;
+            background-position: left bottom;
+        }
+        .tool-card:last-child {
+            border-bottom: 2px solid var(--cyan-dim);
+        }
+
+        .tool-card::before {
+            content: '';
+            display: block;
+            width: 4px;
+            flex-shrink: 0;
+            background: var(--accent, var(--cyan));
+            transition: width 0.15s;
+        }
+
+        .tool-card:hover {
+            background-color: rgba(0,255,255,0.05);
+            border-color: var(--accent, var(--cyan));
+            box-shadow: 0 0 20px rgba(0,255,255,0.15),
+                        inset 0 0 40px rgba(0,255,255,0.02);
+            background-size: 100% 7px;
+        }
+        .tool-card:hover::before { width: 7px; }
+        .tool-card:hover .tc-arrow { opacity: 1; transform: translateX(0); }
+
+        /* Per-tool card themes */
+        .t-adenosine  { --accent:#ff6ec7; --a2:#ff3d8a; --a3:#c94ba0; --ink:#ffd0e8; } /* pink */
+        .t-texastoast { --accent:#ffe03a; --a2:#f0c020; --a3:#d4a010; --ink:#fff8d0; } /* yellow */
+        .t-magmascript { --accent:#ff3d3d; --a2:#e02020; --a3:#c01010; --ink:#ffd0d0; } /* red */
+        .t-magnolia   { --accent:#00f5ff; --a2:#00c0d0; --a3:#0090a0; --ink:#d0f8ff; } /* cyan */
+        .t-hologram   { --accent:#c45fff; --a2:#9040d0; --a3:#6030a0; --ink:#e8d0ff; } /* purple */
+        .t-hypnopompia { --accent:#b98cf5; --a2:#9060d0; --a3:#7040b0; --ink:#e0d0f8; } /* lavender */
+        .t-crunch-c   { --accent:#7cc7ff; --a2:#4090d0; --a3:#2060a0; --ink:#d0e8ff; } /* blue */
+        /* Daffodil gold: the trumpet rather than the petal, so it stays clear
+           of t-texastoast's #ffe03a above and t-album-art's amber below. */
+        .t-daffodil   { --accent:#ffbe0b; --a2:#e09200; --a3:#b07400; --ink:#fff0c0; } /* daffodil gold */
+        .t-crunchscope { --accent:#ff8c42; --a2:#e06020; --a3:#c04010; --ink:#ffe0c0; } /* orange */
+        .t-tone-grating { --accent:#35e0d0; --a2:#20b0a0; --a3:#108080; --ink:#d0f8f0; } /* teal */
+        .t-sprite-forge { --accent:#ff3d6e; --a2:#e02050; --a3:#c01040; --ink:#ffd0e0; } /* rose */
+        .t-album-art  { --accent:#f0a030; --a2:#d08020; --a3:#b06010; --ink:#f8e0c0; } /* amber */
+        .t-media-search { --accent:#2ee8a5; --a2:#20b080; --a3:#108060; --ink:#d0f8e8; } /* green */
+
+        .tc-inner {
+            padding: 20px 22px;
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+        }
+
+        .tc-label {
+            font-family: 'Press Start 2P', monospace;
+            font-size: 9px;
+            color: var(--accent, var(--cyan));
+            letter-spacing: 0.08em;
+            margin-bottom: 7px;
+            display: block;
+            text-shadow: 0 0 8px rgba(0,255,255,0.4);
+        }
+
+        .tc-desc {
+            font-family: 'Courier Prime', monospace;
+            font-size: 12px;
+            color: var(--cyan-dim);
+            line-height: 1.5;
+        }
+
+        .tc-arrow {
+            font-family: 'Press Start 2P', monospace;
+            font-size: 10px;
+            color: var(--accent, var(--cyan));
+            opacity: 0;
+            transform: translateX(-6px);
+            transition: opacity 0.15s, transform 0.15s;
+            flex-shrink: 0;
+            text-shadow: 0 0 8px rgba(0,255,255,0.6);
+        }
+
+        /* ── CATEGORY GRID (ware root) ── */
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            width: min(560px, 90vw);
+            animation: fadeUp 0.5s 0.15s ease both;
+        }
+
+        .category-card {
+            display: flex;
+            align-items: stretch;
+            text-decoration: none;
+            border: 2px solid var(--cyan-dim);
+            background: rgba(0,255,255,0.02);
+            transition: background 0.15s, border-color 0.15s, box-shadow 0.15s, transform 0.15s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .category-card::before {
+            content: '';
+            display: block;
+            width: 4px;
+            flex-shrink: 0;
+            background: var(--accent, var(--cyan));
+            transition: width 0.15s;
+        }
+
+        .category-card:hover {
+            background: rgba(0,255,255,0.05);
+            border-color: var(--accent, var(--cyan));
+            box-shadow: 0 0 24px rgba(0,255,255,0.2),
+                        inset 0 0 40px rgba(0,255,255,0.02);
+            transform: translateY(-3px);
+        }
+        .category-card:hover::before { width: 7px; }
+        .category-card:hover .cc-arrow { opacity: 1; transform: translateX(0); }
+
+        /* Per-category card themes */
+        .cat-utilities { --accent:#ff8c42; --a2:#e06020; --a3:#c04010; --ink:#ffe0c0; } /* orange */
+        .cat-dev      { --accent:#7cc7ff; --a2:#4090d0; --a3:#2060a0; --ink:#d0e8ff; } /* blue */
+
+        .cc-inner {
+            padding: 24px 20px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .cc-label {
+            font-family: 'Press Start 2P', monospace;
+            font-size: 10px;
+            color: var(--accent, var(--cyan));
+            letter-spacing: 0.08em;
+            text-shadow: 0 0 8px rgba(0,255,255,0.4);
+        }
+
+        .cc-desc {
+            font-family: 'Courier Prime', monospace;
+            font-size: 12px;
+            color: var(--cyan-dim);
+            line-height: 1.5;
+        }
+
+        .cc-arrow {
+            font-family: 'Press Start 2P', monospace;
+            font-size: 10px;
+            color: var(--accent, var(--cyan));
+            opacity: 0;
+            transform: translateX(-6px);
+            transition: opacity 0.15s, transform 0.15s;
+            text-shadow: 0 0 8px rgba(0,255,255,0.6);
+            margin-top: auto;
+            align-self: flex-start;
+        }
+
+        @media (max-width: 640px) {
+            .page-title { font-size: 13px; }
+            .tc-label { font-size: 8px; }
+            .category-grid { grid-template-columns: 1fr; }
+            /* The fallback canvas is 64x64, so its box is square. */
+            .ware-lamp { aspect-ratio: 1 / 1; margin: -4px 0 24px; }
+        }

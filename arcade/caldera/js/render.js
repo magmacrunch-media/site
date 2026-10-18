@@ -1,0 +1,494 @@
+// render.js -- everything that paints. Reads game state, never changes it.
+//
+// Effects (sparks, shake, banners) live here rather than in the logic,
+// driven by CA.game events, so Math.random below cannot perturb a seeded run.
+
+// The cast's sprite files (web/js/cast/, copied from moonlight-drift) only
+// register themselves if this registry already exists, so it is made here,
+// before their script tags.
+window.characters = window.characters || {};
+
+CA.render = {
+
+  ctx: null,
+  fx: [],          // sparks and embers, screen-agnostic world particles
+  shake: 0,
+  banner: null,    // { text, sub, until }
+  t: 0,            // frames drawn, for animation that is not gameplay
+
+  init(canvas) {
+    this.ctx = canvas.getContext('2d');
+    CA.game.on((type, data) => this.onEvent(type, data));
+  },
+
+  onEvent(type, data) {
+    const g = CA.main && CA.main.g;
+    if (!g) return;
+    const p = g.player;
+    const feetX = p.x + p.P.w / 2, feetY = p.y + p.P.h;
+    if (type === 'land') this.burst(feetX, feetY, 5, '#ffb070', 2);
+    if (type === 'wall') this.burst(p.vx > 0 ? CA.WALL : CA.W - CA.WALL, p.y + 16, 8, '#ffd9a0', 3);
+    if (type === 'launch') { this.burst(feetX, feetY, 26, '#e8e2d0', 4); this.shake = 6; }
+    if (type === 'crumble') this.burst(data.x + data.w / 2, data.y, 14, '#8a5a3a', 2.5);
+    if (type === 'crunch') {
+      this.shake = Math.min(12, 3 + data.floors / 6);
+      this.banner = { text: `CRUNCH x${data.floors}`, sub: `+${data.points}`, until: this.t + 90 };
+    }
+    if (type === 'chamber') {
+      const style = CA.tower.chamberStyle(g.best);
+      this.banner = { text: style.name, sub: `CHAMBER ${data + 1}`, until: this.t + 150 };
+    }
+    if (type === 'dead') {
+      this.burst(feetX, g.magma.y, 40, '#ff7a2a', 6);
+      this.shake = 14;
+      this.banner = null;   // or it shows through the end card
+    }
+  },
+
+  burst(x, y, n, color, speed) {
+    for (let i = 0; i < n; i++) {
+      const a = Math.random() * Math.PI * 2;
+      const s = speed * (0.4 + Math.random());
+      this.fx.push({ x, y, vx: Math.cos(a) * s, vy: Math.sin(a) * s - 1, life: 30 + Math.random() * 20, color });
+    }
+  },
+
+  // ---------------------------------------------------------------
+  //  THE RUN
+  // ---------------------------------------------------------------
+  drawPlay(g) {
+    const c = this.ctx;
+    this.t++;
+    const style = CA.tower.chamberStyle(g.best);
+
+    // Embers drift up out of the magma all the time.
+    if (Math.random() < 0.5) {
+      this.fx.push({
+        x: CA.WALL + Math.random() * (CA.W - 2 * CA.WALL), y: g.magma.y,
+        vx: (Math.random() - 0.5) * 0.6, vy: -1 - Math.random() * 2.2,
+        life: 60 + Math.random() * 80, color: style.glow, ember: true,
+      });
+    }
+
+    c.save();
+    if (this.shake > 0) {
+      c.translate((Math.random() - 0.5) * this.shake, (Math.random() - 0.5) * this.shake);
+      this.shake *= 0.85;
+      if (this.shake < 0.3) this.shake = 0;
+    }
+
+    this.drawBackdrop(g, style);
+    c.translate(0, -Math.round(g.camY));
+    for (const l of g.ledges) this.drawLedge(g, l);
+    this.drawPlayer(g, style);
+    this.drawFx();
+    this.drawMagma(g, style);
+    c.restore();
+
+    this.drawWalls(g, style);
+    this.drawHud(g, style);
+    CA.touch.draw(c);
+    CA.hints.draw(c);
+  },
+
+  drawBackdrop(g, style) {
+    const c = this.ctx;
+    c.fillStyle = style.sky;
+    c.fillRect(0, 0, CA.W, CA.H);
+    // Heat from below: the nearer the magma, the redder the shaft.
+    const magmaScreen = g.magma.y - g.camY;
+    const grad = c.createLinearGradient(0, magmaScreen - CA.H, 0, magmaScreen);
+    grad.addColorStop(0, 'rgba(0,0,0,0)');
+    grad.addColorStop(1, this.alpha(style.glow, 0.35));
+    c.fillStyle = grad;
+    c.fillRect(0, 0, CA.W, CA.H);
+    // Far rock strata, scrolling at a third of the speed, for depth.
+    c.fillStyle = this.alpha(style.rock2, 0.5);
+    const off = (-g.camY / 3) % 90;
+    for (let y = -90 + off; y < CA.H; y += 90) {
+      for (let i = 0; i < 5; i++) {
+        const x = CA.WALL + ((i * 97 + Math.floor((y - off - g.camY / 3) / 90) * 53) % (CA.W - 2 * CA.WALL));
+        c.fillRect(x, y + (i * 17) % 60, 46, 4);
+      }
+    }
+  },
+
+  drawLedge(g, l) {
+    const c = this.ctx;
+    const T = CA.TOWER;
+    const top = l.y, h = T.thickness;
+    const style = CA.tower.chamberStyle(l.floor);
+
+    if (l.kind === 'obsidian') {
+      c.fillStyle = '#0d0b14';
+      c.fillRect(l.x, top, l.w, h);
+      c.fillStyle = 'rgba(190,170,255,0.55)';
+      c.fillRect(l.x + 4, top + 2, l.w - 8, 2);
+      c.fillStyle = 'rgba(255,255,255,0.8)';
+      const glint = (this.t * 2 + l.floor * 37) % (l.w + 60) - 30;
+      if (glint > 0 && glint < l.w - 8) c.fillRect(l.x + glint, top + 2, 6, 2);
+    } else if (l.kind === 'crust') {
+      const left = l.crumbleAt < 0 ? 1 : Math.max(0, (l.crumbleAt - g.frame) / CA.LEDGE.crustFrames);
+      c.fillStyle = l.falling ? '#3b2618' : '#5a3a24';
+      c.fillRect(l.x, top, l.w, h);
+      // The magma shows through the cracks as it gives way.
+      c.strokeStyle = this.alpha('#ff6a1a', l.falling ? 0.9 : 0.35 + 0.6 * (1 - left));
+      c.lineWidth = 2;
+      c.beginPath();
+      for (let x = l.x + 10; x < l.x + l.w - 6; x += 18) {
+        c.moveTo(x, top + 2);
+        c.lineTo(x + 5, top + h / 2);
+        c.lineTo(x - 2, top + h - 2);
+      }
+      c.stroke();
+    } else {
+      c.fillStyle = style.rock2;
+      c.fillRect(l.x, top, l.w, h);
+      c.fillStyle = style.rock;
+      c.fillRect(l.x, top + h - 5, l.w, 5);
+      c.fillStyle = 'rgba(255,255,255,0.08)';
+      c.fillRect(l.x, top, l.w, 2);
+      if (l.kind === 'fumarole') this.drawVent(g, l);
+    }
+
+    if (l.chamber && l.floor > 0) {
+      c.fillStyle = style.glow;
+      c.font = '10px "Press Start 2P", monospace';
+      c.textAlign = 'center';
+      c.fillText(`${l.floor}`, CA.W / 2, top + 11);
+    } else if (l.floor % 10 === 0 && l.floor > 0) {
+      c.fillStyle = 'rgba(255,255,255,0.5)';
+      c.font = '8px "Press Start 2P", monospace';
+      c.textAlign = 'left';
+      c.fillText(`${l.floor}`, l.x + 4, top + 11);
+    }
+  },
+
+  drawVent(g, l) {
+    const c = this.ctx;
+    const state = CA.tower.ventState(l, g.frame);
+    const cx = l.x + l.w / 2;
+    c.fillStyle = state === 'idle' ? '#1a1410' : '#ffcf4a';
+    c.fillRect(cx - 9, l.y - 2, 18, 4);
+    if (state === 'warn' && this.t % 3 === 0) {
+      this.fx.push({ x: cx + (Math.random() - 0.5) * 10, y: l.y - 2, vx: (Math.random() - 0.5) * 0.4,
+        vy: -0.6 - Math.random(), life: 25, color: '#c8c0a8' });
+    }
+    if (state === 'fire') {
+      c.fillStyle = 'rgba(232,226,208,0.55)';
+      c.fillRect(cx - 14, l.y - 120, 28, 118);
+      c.fillStyle = 'rgba(255,207,74,0.35)';
+      c.fillRect(cx - 6, l.y - 160, 12, 158);
+    }
+  },
+
+  // The climber: a chunk of cooled rock with a molten core, which glows
+  // brighter the longer your CRUNCH chain runs.
+  drawPlayer(g, style) {
+    const c = this.ctx;
+    const p = g.player;
+    const P = p.P;
+    const sq = p.squash / 6;
+    const stretch = p.grounded ? 0 : Math.min(0.25, Math.abs(p.vy) / 60);
+    const w = P.w * (1 + sq * 0.25 - stretch * 0.5);
+    const h = P.h * (1 - sq * 0.2 + stretch);
+    const x = p.x + (P.w - w) / 2;
+    const y = p.y + P.h - h;
+
+    // Running on the ground: a stride bob and a lean into the motion, for
+    // the sprites that are single poses. A pixel climber has its own walk
+    // cycle, which already bobs, so it gets the lean and not the bob.
+    const running = p.grounded && Math.abs(p.vx) > 1;
+    const pixel = this.pixelOf(p.character);
+    const bob = running && !pixel ? Math.abs(Math.sin(this.t * 0.35)) * -2 : 0;
+    const lean = Math.max(-0.18, Math.min(0.18, p.vx * 0.02));
+    // The stride advances with speed, so a slow walk does not windmill.
+    this.stride = (this.stride || 0) + (running ? Math.abs(p.vx) / 22 : 0);
+    const pose = !p.grounded ? { name: 'air', frame: 0 }
+      : running ? { name: 'run', frame: Math.floor(this.stride) }
+      : { name: 'idle', frame: Math.floor(this.t / 32) };
+    this.drawCharacter(c, p.character, x, y + bob, w, h, p.facing,
+      Math.min(1, g.chain.floors / 30), style.glow, lean, P, pose);
+  },
+
+  pixelOf(id) {
+    const sp = CA.CAST[id] && CA.CAST[id].sprite;
+    const ch = sp && window.characters[sp.id];
+    return ch && ch.pixel ? ch : null;
+  },
+
+  // The CRUNCH heat: a soft round glow that is only there while a chain is
+  // running, brighter the longer it gets. It was a filled rectangle drawn at
+  // a base strength even at rest, which read as an orange box round every
+  // climber, on the select cards included.
+  drawHeat(c, x, y, w, h, heat, glow) {
+    if (heat <= 0.02) return;
+    const cx = x + w / 2, cy = y + h / 2, r = Math.max(w, h) * 0.95;
+    const g = c.createRadialGradient(cx, cy, r * 0.2, cx, cy, r);
+    g.addColorStop(0, this.alpha(glow, 0.55 * heat));
+    g.addColorStop(1, this.alpha(glow, 0));
+    c.fillStyle = g;
+    c.fillRect(cx - r, cy - r, r * 2, r * 2);
+  },
+
+  // One cast member in a box with its feet on the box's bottom edge. CINDER
+  // is drawn by drawClimber; everyone else is their moonlight-drift sprite,
+  // its BODY (CA.CAST[id].sprite) scaled into the box. The heat aura is the
+  // same for all, so a chain reads the same whoever is climbing.
+  drawCharacter(c, id, x, y, w, h, facing, heat, glow, lean = 0, P = CA.player.statsFor(id),
+                pose = { name: 'idle', frame: 0 }) {
+    const member = CA.CAST[id];
+    const sp = member && member.sprite;
+    const ch = sp && window.characters[sp.id];
+    if (!ch) {
+      this.drawClimber(c, x, y, w, h, facing, heat, glow);
+      return;
+    }
+    this.drawHeat(c, x, y, w, h, heat, glow);
+
+    // A pixel-art climber (dag-pixel.js): whole frames, scaled to the box.
+    if (ch.pixel) {
+      c.save();
+      c.translate(x + w / 2, y + h);
+      c.rotate(lean);
+      c.scale(w / ch.pixel.w, h / ch.pixel.h);
+      try { ch.drawFrame(c, -ch.pixel.w / 2, -ch.pixel.h, pose.name, pose.frame, facing > 0); } catch (err) { /* never stops the game */ }
+      c.restore();
+      return;
+    }
+
+    c.save();
+    const sy = h / sp.h;
+    const sx = (P.h / sp.h) * (w / P.w);
+    c.translate(x + w / 2, y + h);
+    c.rotate(lean);
+    c.scale(facing < 0 ? -sx : sx, sy);
+    c.translate(-(sp.x + sp.w / 2), -(sp.y + sp.h));
+    try { ch.draw(c, 0, 0, false, false, 0); } catch (err) { /* a broken sprite never stops the game */ }
+    c.restore();
+  },
+
+  // The sprite on its own, so the title scene draws the same climber.
+  drawClimber(c, x, y, w, h, facing, heat, glow) {
+    this.drawHeat(c, x, y, w, h, heat, glow);
+
+    c.fillStyle = '#26201c';
+    c.fillRect(x, y, w, h);
+    c.fillStyle = '#3a312b';
+    c.fillRect(x + 3, y + 3, w - 6, 6);
+    // Molten seams.
+    c.fillStyle = this.mix('#ff5a1f', '#fff3b0', heat);
+    c.fillRect(x + 4, y + h * 0.55, w - 8, 3);
+    c.fillRect(x + w * 0.45, y + h * 0.55, 3, h * 0.35);
+    // Eyes, looking the way you run.
+    c.fillStyle = '#ffe9c0';
+    const ex = facing > 0 ? x + w * 0.5 : x + w * 0.18;
+    c.fillRect(ex, y + h * 0.28, 4, 5);
+    c.fillRect(ex + 7, y + h * 0.28, 4, 5);
+  },
+
+  drawFx() {
+    const c = this.ctx;
+    const keep = [];
+    for (const f of this.fx) {
+      f.x += f.vx; f.y += f.vy;
+      if (!f.ember) f.vy += 0.12;
+      f.life--;
+      if (f.life <= 0) continue;
+      keep.push(f);
+      c.fillStyle = this.alpha(f.color, Math.min(1, f.life / 30));
+      c.fillRect(f.x, f.y, f.ember ? 2 : 3, f.ember ? 2 : 3);
+    }
+    this.fx = keep.length > 600 ? keep.slice(-600) : keep;
+  },
+
+  drawMagma(g, style) {
+    const c = this.ctx;
+    const top = g.magma.y;
+    c.fillStyle = this.alpha(style.glow, 0.25);
+    c.fillRect(0, top - 26, CA.W, 26);
+    c.beginPath();
+    c.moveTo(0, top + 400);
+    for (let x = 0; x <= CA.W; x += 12) {
+      c.lineTo(x, top + Math.sin(x * 0.05 + this.t * 0.07) * 4 + Math.sin(x * 0.13 - this.t * 0.11) * 2);
+    }
+    c.lineTo(CA.W, top + 400);
+    c.closePath();
+    const grad = c.createLinearGradient(0, top, 0, top + 120);
+    grad.addColorStop(0, '#fff0a0');
+    grad.addColorStop(0.15, style.glow);
+    grad.addColorStop(1, '#5a0a00');
+    c.fillStyle = grad;
+    c.fill();
+  },
+
+  drawWalls(g, style) {
+    const c = this.ctx;
+    const brick = 36;
+    const off = ((-g.camY) % brick + brick) % brick;
+    for (const side of [0, CA.W - CA.WALL]) {
+      c.fillStyle = style.rock;
+      c.fillRect(side, 0, CA.WALL, CA.H);
+      c.fillStyle = style.rock2;
+      for (let y = off - brick; y < CA.H; y += brick) {
+        c.fillRect(side + 2, y + 2, CA.WALL - 4, brick - 6);
+      }
+      c.fillStyle = this.alpha(style.glow, 0.5);
+      for (let y = off - brick; y < CA.H; y += brick * 3) {
+        c.fillRect(side + (side ? 0 : CA.WALL - 3), y + 10, 3, 14);
+      }
+    }
+  },
+
+  drawHud(g, style) {
+    const c = this.ctx;
+    c.font = '12px "Press Start 2P", monospace';
+    c.textAlign = 'left';
+    c.fillStyle = '#fff';
+    c.fillText(`FLOOR ${g.best}`, CA.WALL + 8, 26);
+    c.textAlign = 'right';
+    c.fillText(`${g.score}`, CA.W - CA.WALL - 8, 26);
+
+    // The CRUNCH clock, Icy Tower's left-hand timer turned into a heat gauge.
+    if (g.chain.jumps > 0) {
+      const frac = g.chain.timer / CA.CRUNCH.windowFrames;
+      const bh = 180;
+      c.fillStyle = 'rgba(0,0,0,0.55)';
+      c.fillRect(6, 60, 16, bh);
+      c.fillStyle = this.mix(style.glow, '#fff3b0', Math.min(1, g.chain.floors / 30));
+      c.fillRect(8, 62 + (bh - 4) * (1 - frac), 12, (bh - 4) * frac);
+      c.save();
+      c.translate(16, 60 + bh + 14);
+      c.textAlign = 'left';
+      c.font = '10px "Press Start 2P", monospace';
+      c.fillStyle = '#fff';
+      c.fillText(`x${g.chain.floors}`, -10, 0);
+      c.restore();
+    }
+
+    // HOW CLOSE THE MAGMA IS, when it is off the bottom of the screen. It
+    // was a thin pulsing bar, which said that it existed and not how near it
+    // was, and the leash means it can be close when you fall back down. Now
+    // the heat climbs the screen as it closes, and a readout says how many
+    // floors below your feet it is, pulsing faster inside two.
+    const below = g.magma.y - (g.camY + CA.H);
+    if (g.magma.active && below > 0) {
+      const feetGap = (g.magma.y - (g.player.y + g.player.P.h)) / CA.TOWER.gap;
+      const near = Math.max(0, Math.min(1, 1 - below / (CA.MAGMA.leash + CA.H * 0.25)));
+      const h = 30 + 110 * near;
+      const heat = c.createLinearGradient(0, CA.H - h, 0, CA.H);
+      heat.addColorStop(0, this.alpha(style.glow, 0));
+      heat.addColorStop(1, this.alpha(style.glow, 0.25 + 0.4 * near));
+      c.fillStyle = heat;
+      c.fillRect(CA.WALL, CA.H - h, CA.W - 2 * CA.WALL, h);
+
+      const urgent = feetGap < 2;
+      const pulse = 0.6 + 0.4 * Math.sin(this.t * (urgent ? 0.4 : 0.12));
+      c.fillStyle = this.alpha(urgent ? '#fff0a0' : '#ffd9a0', pulse);
+      c.font = '8px "Press Start 2P", monospace';
+      c.textAlign = 'center';
+      const floors = feetGap < 10 ? feetGap.toFixed(1) : Math.round(feetGap);
+      // Above touch.js's guides, which sit at the very bottom.
+      c.fillText(`MAGMA ${floors} FLOORS BELOW`, CA.W / 2, CA.H - 36);
+    }
+
+    if (this.banner && this.t < this.banner.until) {
+      const a = Math.min(1, (this.banner.until - this.t) / 30);
+      c.textAlign = 'center';
+      c.fillStyle = this.alpha('#000000', 0.5 * a);
+      c.fillRect(CA.WALL, 120, CA.W - 2 * CA.WALL, 64);
+      c.fillStyle = this.alpha(style.glow, a);
+      c.font = '18px "Press Start 2P", monospace';
+      c.fillText(this.banner.text, CA.W / 2, 150);
+      c.fillStyle = this.alpha('#ffffff', a);
+      c.font = '10px "Press Start 2P", monospace';
+      c.fillText(this.banner.sub, CA.W / 2, 172);
+    }
+  },
+
+  // ---------------------------------------------------------------
+  //  SCREENS
+  // ---------------------------------------------------------------
+  // Title, game over and initials entry, drawn over a still of the run.
+  drawScreen(m) {
+    const c = this.ctx;
+    if (m.g) this.drawPlay(m.g);
+    c.fillStyle = 'rgba(8,4,3,0.72)';
+    c.fillRect(0, 0, CA.W, CA.H);
+    c.textAlign = 'center';
+    const style = CA.CHAMBERS[0];
+
+    if (m.state === 'paused') {
+      c.fillStyle = '#fff';
+      c.font = '20px "Press Start 2P", monospace';
+      c.fillText('PAUSED', CA.W / 2, 220);
+      // The controls live here and nowhere else: the title card explains
+      // nothing, as cave-diving's does.
+      this.lines([
+        'ARROWS / A D   RUN',
+        'SPACE / UP     JUMP',
+        'P / ENTER      RESUME',
+        'M              SOUND',
+        '',
+        'RUN FASTER, JUMP HIGHER.',
+        'BOUNCE OFF THE WALLS.',
+        'SKIP 2+ FLOORS A JUMP',
+        'TO KEEP A CRUNCH GOING.',
+      ], 290, 24, '#ffd9a0', 10);
+    } else if (m.state === 'initials' || m.state === 'over') {
+      const g = m.g;
+      c.fillStyle = style.glow;
+      c.font = '26px "Press Start 2P", monospace';
+      c.fillText('MELTED', CA.W / 2, 170);
+      this.lines([
+        `FLOOR ${g.best}`,
+        `SCORE ${g.score}`,
+        `BEST CRUNCH x${g.bestChain}`,
+      ], 220, 26, '#ffffff', 12);
+      // The field and the buttons are HTML (index.html), so a thumb can
+      // reach them; the canvas only says what happened.
+      if (m.state === 'initials') {
+        c.fillStyle = '#ffd9a0';
+        c.font = '10px "Press Start 2P", monospace';
+        c.fillText('NEW HIGH SCORE. YOUR INITIALS:', CA.W / 2, 350);
+      } else {
+        this.table(m, 360);
+      }
+    }
+  },
+
+  table(m, y) {
+    const c = this.ctx;
+    const rows = CA.scores.cached;
+    if (!rows.length) return;
+    c.font = '10px "Press Start 2P", monospace';
+    c.fillStyle = CA.CHAMBERS[0].glow;
+    c.fillText('HIGH SCORES', CA.W / 2, y);
+    rows.slice(0, 5).forEach((r, i) => {
+      c.fillStyle = '#fff';
+      // Who climbed it, so a TOAD score and a KING score read as different
+      // things. Older entries have no character and show none.
+      const key = CA.CAST.renamed[r.character] || r.character;
+      const who = CA.CAST.order.includes(key) ? CA.CAST[key].tag : '';
+      c.fillText(`${i + 1}. ${(r.initials || r.name || '???').padEnd(3)} ${who.padEnd(4)} ${String(r.score).padStart(7)}`, CA.W / 2, y + 20 + i * 16);
+    });
+  },
+
+  lines(list, y, step, color, size) {
+    const c = this.ctx;
+    c.fillStyle = color;
+    c.font = `${size}px "Press Start 2P", monospace`;
+    list.forEach((s, i) => c.fillText(s, CA.W / 2, y + i * step));
+  },
+
+  alpha(hex, a) {
+    const n = parseInt(hex.slice(1), 16);
+    return `rgba(${n >> 16},${(n >> 8) & 255},${n & 255},${a})`;
+  },
+
+  mix(h1, h2, t) {
+    const a = parseInt(h1.slice(1), 16), b = parseInt(h2.slice(1), 16);
+    const ch = s => Math.round(((a >> s) & 255) * (1 - t) + ((b >> s) & 255) * t);
+    return `rgb(${ch(16)},${ch(8)},${ch(0)})`;
+  },
+};

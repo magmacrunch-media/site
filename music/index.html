@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>music — magmacrunch media</title>
+    <meta property="og:title" content="music — magmacrunch media">
+    <meta property="og:description" content="distributed music / jukebox / physical media">
+    <meta property="og:image" content="https://magmacrunch.com/og/music.png?v=2">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta property="og:site_name" content="magmacrunch media">
+    <meta property="og:locale" content="en_US">
+    <link rel="icon" type="image/x-icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../style.css?v=53e9e146">
+    <link rel="stylesheet" href="music.css">
+</head>
+<body class="dorfic">
+
+<nav id="auto-nav" data-depth="../"></nav>
+
+<main>
+
+    <div class="breadcrumb">
+        <a href="../">home</a>
+        <span class="sep">›</span>
+        <span class="current">music</span>
+    </div>
+
+    <h1 class="page-title">// music //</h1>
+
+    <!-- ANIMATED WAVEFORM -->
+    <div class="waveform-wrap">
+        <canvas id="waveCanvas" width="600" height="60"></canvas>
+    </div>
+
+    <!-- MUSIC NAV CARDS -->
+    <div class="music-cards">
+
+        <a href="jukebox/" class="music-card" style="--card-accent: #C89000;">
+            <div class="mc-inner">
+                <div class="mc-text">
+                    <span class="mc-label" style="color:#C89000;">jukebox</span>
+                    <span class="mc-desc">local streaming · choose a song</span>
+                </div>
+                <span class="mc-arrow" style="color:#C89000;">▶</span>
+            </div>
+        </a>
+
+        <a href="distributed-music/" class="music-card" style="--card-accent: #606878;">
+            <div class="mc-inner">
+                <div class="mc-text">
+                    <span class="mc-label" style="color:#606878;">on streaming services</span>
+                    <span class="mc-desc">distributed via LANDR · all major platforms</span>
+                </div>
+                <span class="mc-arrow" style="color:#606878;">▶</span>
+            </div>
+        </a>
+
+        <a href="music-videos.html" class="music-card" style="--card-accent: #989898;">
+            <div class="mc-inner">
+                <div class="mc-text">
+                    <span class="mc-label" style="color:#989898;">music videos</span>
+                    <span class="mc-desc">no-budget video productions · YouTube</span>
+                </div>
+                <span class="mc-arrow" style="color:#989898;">▶</span>
+            </div>
+        </a>
+
+        <a href="physical-media/" class="music-card" style="--card-accent: #E87820;">
+            <div class="mc-inner">
+                <div class="mc-text">
+                    <span class="mc-label" style="color:#E87820;">physical media</span>
+                    <span class="mc-desc">floppy disk · CD · tapes in the works</span>
+                </div>
+                    <span class="mc-arrow" style="color:#E87820;">▶</span>
+            </div>
+        </a>
+
+    </div>
+
+    <!-- COMING SOON -->
+    <!--<div class="coming-soon">
+        <p>more releases coming soon<br><span>✦</span><br>tape production also in the works</p>
+    </div> -->
+
+</main>
+
+<footer>
+    &copy; 2026 <span>magmacrunch media</span>
+</footer>
+
+<script src="../nav.js?v=a1127215"></script>
+<script>
+// ── ANIMATED WAVEFORM ──
+(function () {
+    const canvas = document.getElementById('waveCanvas');
+    const ctx = canvas.getContext('2d');
+    const W = canvas.width;
+    const H = canvas.height;
+    const cols = [
+        '#1A1E28', '#F8F8F8', '#A8A8A8',
+        '#343848', '#F0B800', '#787878'
+    ];
+    const resolvedCols = ['#1A1E28','#F8F8F8','#A8A8A8','#343848','#F0B800','#787878'];
+
+    // Each "bar" in the waveform
+    const BAR_W = 3;
+    const GAP   = 1;
+    const COUNT = Math.floor(W / (BAR_W + GAP));
+
+    // Seed heights with a mix of sine waves
+    const phases  = Array.from({length: COUNT}, (_, i) => Math.random() * Math.PI * 2);
+    const speeds  = Array.from({length: COUNT}, (_, i) => 0.018 + Math.random() * 0.024);
+    const heights = Array.from({length: COUNT}, (_, i) => 0.3 + Math.random() * 0.7);
+    const colorIdx = Array.from({length: COUNT}, (_, i) => i % resolvedCols.length);
+
+    let t = 0;
+
+    let animId;
+    function draw() {
+        ctx.clearRect(0, 0, W, H);
+        const mid = H / 2;
+
+        for (let i = 0; i < COUNT; i++) {
+            const amp = heights[i] * (mid - 2);
+            const y   = Math.sin(phases[i] + t * speeds[i] * 60) * amp;
+            const barH = Math.max(2, Math.abs(y) * 2);
+            const x   = i * (BAR_W + GAP);
+
+            ctx.fillStyle = resolvedCols[colorIdx[i]];
+            ctx.globalAlpha = 0.55 + 0.45 * Math.abs(Math.sin(phases[i] + t * speeds[i] * 60));
+            ctx.fillRect(x, mid - barH / 2, BAR_W, barH);
+        }
+        ctx.globalAlpha = 1;
+        t++;
+        animId = requestAnimationFrame(draw);
+    }
+
+    draw();
+    window.__pageCleanup = function() { cancelAnimationFrame(animId); };
+
+    document.addEventListener('visibilitychange', () => {
+        if (document.hidden) {
+            cancelAnimationFrame(animId);
+        } else {
+            draw();
+        }
+    });
+})();
+</script>
+
+</body>
+</html>

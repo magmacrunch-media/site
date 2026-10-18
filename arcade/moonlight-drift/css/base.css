@@ -1,0 +1,50 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#backgroundGradient {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100vw;
+    height: 100vh;
+    max-width: 177.78vh; /* Match game container aspect ratio */
+    max-height: 56.25vw;
+    background: linear-gradient(to bottom, #0f0c29 0%, #302b63 50%, #24243e 100%);
+    z-index: -2;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: #000000; /* Black letterbox bars */
+    font-family: 'Montserrat', sans-serif;
+    padding: 0;
+    margin: 0;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Input wording. Every prompt carries both versions; the device decides
+   which shows, so a phone says "tap" and a desktop keeps "[space] or click".
+   pointer: coarse is a touch screen as its main input, which is also what an
+   iPad with a keyboard attached still reports, and "tap" is right there. */
+.on-touch { display: none; }
+
+@media (pointer: coarse) {
+    .on-touch { display: inline; }
+    .on-pointer { display: none; }
+}
+
+/* "tap to drift again" has to work wherever the tap lands. The panel sits
+   over the canvas and holds nothing to press, so let input fall through to
+   the canvas, whose touchstart and mousedown start the next run. */
+#gameOver {
+    pointer-events: none;
+}

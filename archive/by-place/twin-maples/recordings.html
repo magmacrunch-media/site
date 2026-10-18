@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Twin Maples — recordings — magmacrunch media</title>
+    <link rel="icon" type="image/x-icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../style.css?v=53e9e146">
+    <link rel="stylesheet" href="../../../assets/archive.css?v=3ed2f2cb">
+    <link rel="stylesheet" href="tm-shared.css">
+    <link rel="stylesheet" href="../../../templates/artist-recordings.css">
+    <style>
+        :root { --section-accent: var(--tm-accent); }
+        body.tm-page.tm-recordings-page .breadcrumb a { color: var(--section-accent); }
+        body.tm-page.tm-recordings-page .breadcrumb a:hover { color: var(--tm-cream); }
+        body.tm-page.tm-recordings-page .breadcrumb .sep { color: var(--section-accent); opacity: 0.6; }
+        body.tm-page.tm-recordings-page .breadcrumb .current { color: var(--section-accent); }
+        body.tm-page.tm-recordings-page .place-label { color: var(--section-accent); }
+        body.tm-page.tm-recordings-page .page-title { color: var(--section-accent); text-shadow: 0 0 20px rgba(192,120,72,0.45); }
+        body.tm-page.tm-recordings-page .nav-card.c-back { color: var(--section-accent); border-color: var(--section-accent); }
+        body.tm-page.tm-recordings-page .nav-card.c-back:hover { background: var(--section-accent); color: var(--black, #080808); }
+    </style>
+    <script>
+    window.PLACE_CONFIG = {
+        id:        'e697fa03-e300-421a-8fd3-3b026d8d4f13',
+        name:      'Twin Maples',
+        abbr:      'twin maples',
+        backColor: 'c-recordings',
+        siblings:  ['about', 'links', 'personnel', 'photography', 'recordings', 'works'],
+        depth:     '../../../',
+        accent:    'tm-accent',
+    };
+    </script>
+</head>
+<body class="tm-page tm-recordings-page">
+<nav id="auto-nav" data-depth="../../../"></nav>
+<main>
+    <div class="breadcrumb"></div>
+
+    <div class="page-header">
+        <div class="place-label" id="place-label"></div>
+        <div class="page-title">RECORDINGS</div>
+        <div class="sub-nav" id="sub-nav"></div>
+    </div>
+    <div class="catalog-wrap">
+        <div id="status-bar">loading recordings…</div>
+        <div id="count-bar"></div>
+        <div id="recordings-list"></div>
+    </div>
+</main>
+<footer>&copy; 2026 <span>magmacrunch media</span></footer>
+<script src="../../../nav.js?v=a1127215"></script>
+<script src="../../../templates/entity-map.js"></script>
+<script src="../../../templates/place_recordings.js"></script>
+</body>
+</html>

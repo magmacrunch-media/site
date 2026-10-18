@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>C.P. Rutledge — photography — magmacrunch media</title>
+    <link rel="icon" type="image/x-icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../style.css?v=53e9e146">
+    <link rel="stylesheet" href="../../../assets/archive.css?v=3ed2f2cb">
+    <link rel="stylesheet" href="cpr-shared.css">
+    <link rel="stylesheet" href="cpr-photography.css">
+    <script>
+    window.ARTIST_CONFIG = {
+        id:        '44c1e0bd-be4c-4a0b-8f06-864c8e2fedcc',
+        name:      'C.P. Rutledge',
+        abbr:      'CPR',
+        accent:    'purple',
+        backColor: 'c-back',
+        siblings:  ['about', 'games', 'links', 'lyrics', 'photography', 'recordings', 'releases', 'works'],
+        depth:     '../../../',
+    };
+    </script>
+</head>
+<body class="cpr-page cpr-photography-page">
+
+<nav id="auto-nav" data-depth="../../../"></nav>
+
+<main>
+    <div class="breadcrumb">
+        <a href="../../../archive/">archive</a>
+        <span class="sep">›</span>
+        <a href="../../../archive/by-artist/">by artist</a>
+        <span class="sep">›</span>
+        <a href="./">cpr</a>
+    </div>
+
+    <div class="page-header">
+        <div class="artist-label">// C.P. Rutledge //</div>
+        <div class="page-title">PHOTOGRAPHY</div>
+        <div class="sub-nav">
+            <a href="./"        class="nav-card c-back">← back</a>
+            <a href="about.html"        class="nav-card c-about">about</a>
+            <a href="games.html"        class="nav-card c-games">games</a>
+            <a href="links.html"        class="nav-card c-links">links</a>
+            <a href="lyrics.html"       class="nav-card c-lyrics">lyrics</a>
+            <a href="recordings.html"   class="nav-card c-recordings">recordings</a>
+            <a href="releases.html"     class="nav-card c-releases">releases</a>
+            <a href="works.html"        class="nav-card c-works">works</a>
+        </div>
+    </div>
+
+    <div class="photo-strip-section">
+        <div class="section-label" style="margin-bottom:16px;">// photos //</div>
+        <div class="photo-strip-wrap" id="cprStripWrap">
+            <div class="photo-strip" id="cprStrip">
+
+                <div class="photo-item portrait" data-index="0">
+                    <img src="../../../assets/photos/brother_dynamo/brother-dynamo.jpg" alt="C.P. Rutledge" loading="lazy">
+                    <div class="photo-caption">C.P. Rutledge</div>
+                </div>
+
+                <div class="photo-item portrait" data-index="1">
+                    <img src="../../../assets/photos/brother_dynamo/9E506BFA-E582-4BBB-905E-79AD8B26D398.jpeg" alt="Brother Dynamo" loading="lazy">
+                    <div class="photo-caption">Brother Dynamo</div>
+                </div>
+
+                <div class="photo-item portrait" data-index="2">
+                    <img src="../../../assets/photos/brother_dynamo/3D3E0296-8D19-42E7-94AF-1C74B53FFDA4.jpeg" alt="Brother Dynamo" loading="lazy">
+                    <div class="photo-caption">Brother Dynamo</div>
+                </div>
+
+                <div class="photo-item portrait" data-index="3">
+                    <img src="../../../assets/photos/brother_dynamo/850137F9-3E08-4D4C-B3FF-43C4F5C99127.jpeg" alt="Brother Dynamo" loading="lazy">
+                    <div class="photo-caption">Brother Dynamo</div>
+                </div>
+
+            </div>
+            <div class="strip-scroll-hint" id="cprScrollHint">scroll →</div>
+        </div>
+    </div>
+
+    <!-- PHOTO LIGHTBOX -->
+    <div class="photo-lightbox" id="cprLightbox">
+        <button class="lb-close" id="cprLbClose">[ close ]</button>
+        <div class="lb-img-wrap"><img id="cprLbImg" src="" alt=""></div>
+        <div class="lb-cap" id="cprLbCap"></div>
+        <div class="lb-nav">
+            <button class="lb-btn" id="cprLbPrev">← prev</button>
+            <span class="lb-counter" id="cprLbCounter"></span>
+            <button class="lb-btn" id="cprLbNext">next →</button>
+        </div>
+    </div>
+</main>
+
+<footer>&copy; 2026 <span>magmacrunch media</span></footer>
+
+
+<script>
+(function() {
+    const strip = document.getElementById('cprStrip');
+    const wrap  = document.getElementById('cprStripWrap');
+    let isDown = false, startX, scrollLeft;
+    strip.addEventListener('mousedown', e => { isDown = true; strip.classList.add('dragging'); startX = e.pageX - strip.offsetLeft; scrollLeft = strip.scrollLeft; });
+    strip.addEventListener('mouseleave', () => { isDown = false; strip.classList.remove('dragging'); });
+    strip.addEventListener('mouseup',    () => { isDown = false; strip.classList.remove('dragging'); });
+    strip.addEventListener('mousemove',  e => { if (!isDown) return; e.preventDefault(); strip.scrollLeft = scrollLeft - (e.pageX - strip.offsetLeft - startX) * 1.2; });
+    strip.addEventListener('scroll', () => { if (strip.scrollLeft > 30) wrap.classList.add('scrolled'); }, { passive: true });
+})();
+
+(function() {
+    const items   = document.querySelectorAll('#cprStrip .photo-item');
+    const lb      = document.getElementById('cprLightbox');
+    const lbImg   = document.getElementById('cprLbImg');
+    const lbCap   = document.getElementById('cprLbCap');
+    const lbCount = document.getElementById('cprLbCounter');
+    const strip   = document.getElementById('cprStrip');
+    const photos  = Array.from(items).map(item => ({ src: item.querySelector('img').src, alt: item.querySelector('img').alt, caption: item.querySelector('.photo-caption').textContent.trim() }));
+    let current = 0;
+    function open(index) { current = index; show(); lb.classList.add('open'); document.body.style.overflow = 'hidden'; }
+    function close() { lb.classList.remove('open'); document.body.style.overflow = ''; }
+    function show() { lbImg.src = photos[current].src; lbImg.alt = photos[current].alt; lbCap.textContent = photos[current].caption; lbCount.textContent = `${current + 1} / ${photos.length}`; }
+    function nav(dir) { current = (current + dir + photos.length) % photos.length; show(); }
+    items.forEach(item => { item.addEventListener('click', () => { if (!strip.classList.contains('dragging')) open(parseInt(item.dataset.index)); }); });
+    document.getElementById('cprLbClose').addEventListener('click', close);
+    document.getElementById('cprLbPrev').addEventListener('click', () => nav(-1));
+    document.getElementById('cprLbNext').addEventListener('click', () => nav(1));
+    lb.addEventListener('click', e => { if (e.target === lb) close(); });
+    document.addEventListener('keydown', e => { if (!lb.classList.contains('open')) return; if (e.key === 'Escape') close(); if (e.key === 'ArrowLeft') nav(-1); if (e.key === 'ArrowRight') nav(1); });
+})();
+</script>
+<script src="../../../nav.js?v=a1127215"></script>
+</body>
+</html>

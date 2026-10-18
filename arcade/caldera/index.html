@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>CALDERA · magmacrunch media</title>
+<meta property="og:title" content="CALDERA · magmacrunch media">
+<meta property="og:description" content="Climb the vent. Outrun the magma. Run to jump higher, and chain the floors.">
+<meta property="og:image" content="https://magmacrunch.com/og/arcade-caldera.png?v=1">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="magmacrunch media">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="description" content="Climb a volcanic vent ahead of rising magma. Speed is height: run, rebound off the walls and skip floors to keep a CRUNCH chain alive.">
+<link rel="icon" href="favicon.svg?v=e43a20aa" type="image/svg+xml">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="../shared/arcade-base.css?v=de5e0d7b">
+<link rel="stylesheet" href="css/game.css?v=ce81d70f">
+</head>
+<body>
+<a href="../action/" class="mc-back">action games</a>
+
+<div id="wrap">
+  <!-- width/height must match CA.W and CA.H in js/config.js. -->
+  <canvas id="c" width="480" height="720"></canvas>
+
+  <!-- The title card. It explains nothing: the scene behind it is drawn by
+       js/title.js on the canvas, and the controls are on the pause screen. -->
+  <div id="title" class="title-screen">
+    <h1>CALDERA</h1>
+    <p class="sub-title">the only way out is up</p>
+    <button id="btnStart" class="start-prompt">
+      <span class="keys-only">PRESS ENTER</span><span class="touch-only">TAP TO CLIMB</span>
+    </button>
+    <button id="btnSound" class="sound-toggle" aria-pressed="false">SOUND: ON</button>
+    <p class="copyright">&copy; 2026 MAGMACRUNCH MEDIA</p>
+  </div>
+
+  <!-- Everything a thumb has to press is HTML; the canvas behind these draws
+       the result and the table. -->
+  <div id="initials" class="panel panel-initials" hidden>
+    <input id="initialsInput" maxlength="3" autocomplete="off" autocapitalize="characters"
+           spellcheck="false" placeholder="AAA" aria-label="Your initials">
+    <button id="initialsSave" class="btn">SAVE</button>
+  </div>
+
+  <div id="over" class="panel panel-over" hidden>
+    <button id="btnAgain" class="btn">
+      <span class="keys-only">ENTER: </span>CLIMB AGAIN
+    </button>
+    <button id="btnChange" class="btn btn-ghost">CHANGE CLIMBER</button>
+  </div>
+
+  <!-- The climber select, shaped like Moonlight Drift's character modal. -->
+  <div id="charModal" class="char-modal" hidden>
+    <div class="char-modal-content">
+      <h2>select your climber</h2>
+      <div id="charGrid" class="char-grid" role="listbox" aria-label="Climbers"></div>
+      <p id="charBlurb" class="char-blurb"></p>
+      <button id="charDone" class="btn">DONE</button>
+      <p class="char-keys keys-only">ARROWS: CHOOSE &middot; ENTER: DONE</p>
+    </div>
+  </div>
+
+  <button id="btnPause" class="btn-pause" aria-label="Pause" hidden>II</button>
+</div>
+
+<!--
+  Classic scripts in dependency order, not ES modules. The page is written
+  against the arcade's arcade/caldera/, so ../shared/ is the website's
+  arcade/shared/: in a checkout of this repo, `node tools/link-shared.mjs`
+  links it, and the page is served from the repo root and opened at /web/.
+
+  The logic files (config through game) are also what tools/sim.mjs loads, in
+  this order. Add one here and add it to SCRIPTS there.
+-->
+<script src="../shared/adenosine-rpg.js?v=ffe9a960"></script>
+<script src="../shared/adenosine-score-client.js?v=565e71be"></script>
+<script src="../shared/score-server.js?v=9acd988c"></script>
+<script src="../shared/adenosine-audio.js?v=2b54f50b"></script>
+
+<script src="js/config.js?v=3a3648ab"></script>
+<script src="js/tower.js?v=95dce3ff"></script>
+<script src="js/player.js?v=c8643a4b"></script>
+<script src="js/score.js?v=537a3804"></script>
+<script src="js/game.js?v=3b87d441"></script>
+<script src="js/render.js?v=315caeb1"></script>
+<script src="js/cast/dag-pixel.js?v=c9c82828"></script>
+<script src="js/cast/fire-toad.js?v=27fa07b4"></script>
+<script src="js/cast/f-joel-young-king.js?v=14d28443"></script>
+<script src="js/cast/vinny-bobarino.js?v=b5ebf640"></script>
+<script src="js/cast/carl-spatski.js?v=2686d01a"></script>
+<script src="js/cast/grocery-harrison.js?v=facf8926"></script>
+<script src="js/cast/juanito-thompson.js?v=b6224503"></script>
+<script src="js/cast/prince-vince.js?v=02fe18b8"></script>
+<script src="js/title.js?v=068e11f2"></script>
+<script src="js/touch.js?v=0a54e693"></script>
+<script src="js/hints.js?v=920fa397"></script>
+<script src="js/sfx.js?v=a752445e"></script>
+<script src="js/scores.js?v=46e26590"></script>
+<script src="js/main.js?v=9c796d10"></script>
+</body>
+</html>

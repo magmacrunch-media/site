@@ -1,0 +1,490 @@
+/* game-layout.css — Cribbage game layout | MagmaCrunch Media © 2026 */
+
+.game-screen {
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+    padding: 10px;
+    align-items: center;
+}
+
+/* Header */
+.game-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 20px;
+    background: var(--bg-mid);
+    border-bottom: 2px solid var(--wood);
+    margin-bottom: 10px;
+    width: 100%;
+    max-width: 1000px;
+}
+
+.game-header h1 {
+    font-family: var(--font-pixel);
+    font-size: 18px;
+    color: var(--accent);
+}
+
+/* ══ Two-column layout ══ */
+.game-layout {
+    display: flex;
+    gap: 20px;
+    width: 100%;
+    max-width: 1000px;
+    justify-content: center;
+    align-items: flex-start;
+    flex: 0 0 auto;
+}
+
+/* Left column: Board */
+.board-column {
+    flex-shrink: 0;
+    width: 420px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+}
+
+.board-toggle {
+    font-family: var(--font-pixel);
+    font-size: 9px;
+    padding: 6px 14px;
+    background: transparent;
+    border: 1px solid var(--accent);
+    color: var(--accent);
+    cursor: pointer;
+    transition: all 0.2s;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.board-toggle:hover {
+    background: var(--accent);
+    color: var(--bg-dark);
+}
+
+/* Right column: Card play areas */
+.play-column {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    min-width: 0;
+}
+
+/* Section titles */
+.section-title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    font-family: var(--font-pixel);
+    font-size: 10px;
+    color: var(--accent);
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+.count-badge {
+    font-family: var(--font-pixel);
+    font-size: 10px;
+    color: var(--bg-dark);
+    background: var(--accent);
+    border-radius: 4px;
+    padding: 5px 9px;
+    letter-spacing: 0.05em;
+    white-space: nowrap;
+}
+
+/* AI hand area */
+.ai-hand-area {
+    background: var(--bg-mid);
+    border: 2px solid var(--wood);
+    border-radius: 8px;
+    padding: 12px;
+}
+
+.hand-cards {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    flex-wrap: wrap;
+    min-height: calc(var(--card-w) * 1.4);
+}
+
+/* The starter and the cards laid so far this go. Nothing used to show the
+   cards already played, which is most of what pegging is. */
+.table-area {
+    background: var(--bg-mid);
+    border: 2px solid var(--felt-light);
+    border-radius: 8px;
+    padding: 12px;
+}
+
+.table-area .section-title {
+    color: var(--green);
+}
+
+.table-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+}
+
+.starter-slot {
+    flex: 0 0 auto;
+    padding-right: 14px;
+    border-right: 1px solid var(--wood);
+}
+
+.played-slot {
+    flex: 1;
+    min-width: 0;
+}
+
+.slot-label {
+    font-family: var(--font-mono);
+    font-size: 14px;
+    color: var(--cream);
+    opacity: 0.6;
+    margin-bottom: 4px;
+}
+
+.played-slot .hand-cards {
+    justify-content: flex-start;
+}
+
+.played-slot .hand-cards:empty::after {
+    content: 'nothing yet';
+    font-family: var(--font-mono);
+    font-size: 15px;
+    color: var(--cream);
+    opacity: 0.35;
+    align-self: center;
+}
+
+/* Crib area */
+.crib-area {
+    background: var(--bg-mid);
+    border: 2px dashed var(--wood-light);
+    border-radius: 8px;
+    padding: 12px;
+}
+
+.crib-area .section-title {
+    color: var(--wood-light);
+}
+
+.starter-card {
+    display: inline-block;
+    min-height: calc(var(--card-w) * 1.4);
+}
+
+.crib-area .card {
+    --card-w: 46px;
+}
+
+/* Player hand area */
+.player-hand-area {
+    background: var(--bg-mid);
+    border: 2px solid var(--accent);
+    border-radius: 8px;
+    padding: 12px;
+}
+
+.player-hand-area .section-title {
+    color: var(--accent);
+}
+
+/* ══ Card styling ══
+   The shell and the pip layout come from ../shared/cards/cards.css, which is
+   drawn for a 100px-wide card in fixed pixels. Everything here is expressed as
+   a fraction of --card-w instead, so one variable resizes a card and its
+   contents together and the pips never spill out on a phone. The fractions are
+   the cards.css values over 100px, so --card-w: 100px reproduces it exactly. */
+:root {
+    --card-w: 66px;
+}
+
+.card {
+    width: var(--card-w);
+    height: calc(var(--card-w) * 1.4);
+    flex: 0 0 auto;
+    transition: transform 0.15s, box-shadow 0.15s;
+}
+
+.card .card-corner.top-left {
+    top: calc(var(--card-w) * 0.04);
+    left: calc(var(--card-w) * 0.04);
+}
+
+.card .card-corner.bottom-right {
+    bottom: calc(var(--card-w) * 0.04);
+    right: calc(var(--card-w) * 0.04);
+}
+
+.card .corner-rank {
+    font-size: calc(var(--card-w) * 0.13);
+}
+
+.card .corner-suit {
+    font-size: calc(var(--card-w) * 0.11);
+}
+
+.card .card-suit-center {
+    max-width: calc(var(--card-w) * 0.7);
+    padding: calc(var(--card-w) * 0.18) calc(var(--card-w) * 0.04);
+}
+
+.card .card-suit-center[data-rank="8"],
+.card .card-suit-center[data-rank="9"],
+.card .card-suit-center[data-rank="10"] {
+    padding-top: calc(var(--card-w) * 0.1);
+    padding-bottom: calc(var(--card-w) * 0.1);
+}
+
+.card .suit-row {
+    gap: calc(var(--card-w) * 0.06);
+}
+
+.card .pip {
+    font-size: calc(var(--card-w) * 0.25);
+}
+
+.card .pip-ace {
+    font-size: calc(var(--card-w) * 0.52);
+}
+
+.card.face-up.selected {
+    transform: translateY(-12px);
+    box-shadow: 0 12px 24px rgba(255, 215, 0, 0.4);
+}
+
+/* Cards that would carry the count past 31 are not choices right now */
+.card.unplayable {
+    opacity: 0.4;
+    filter: grayscale(0.5);
+    cursor: not-allowed;
+}
+
+.card.unplayable:hover {
+    transform: none;
+}
+
+/* Message area */
+.message-area {
+    background: var(--bg-mid);
+    border: 1px solid var(--wood);
+    border-radius: 8px;
+    padding: 12px;
+    margin-top: 10px;
+    text-align: center;
+    width: 100%;
+    max-width: 1000px;
+}
+
+.game-message {
+    font-family: var(--font-mono);
+    font-size: 18px;
+    color: var(--cream);
+    white-space: pre-line;
+}
+
+/* Action buttons */
+.action-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    margin-top: 10px;
+    min-height: 50px;
+}
+
+.action-btn {
+    font-family: var(--font-pixel);
+    font-size: 11px;
+    padding: 12px 24px;
+    border: 2px solid var(--accent);
+    background: transparent;
+    color: var(--accent);
+    cursor: pointer;
+    transition: all 0.2s;
+    text-transform: uppercase;
+}
+
+.action-btn:hover {
+    background: var(--accent);
+    color: var(--bg-dark);
+}
+
+.action-btn.confirm {
+    border-color: var(--green);
+    color: var(--green);
+}
+
+.action-btn.confirm:hover {
+    background: var(--green);
+    color: var(--bg-dark);
+}
+
+.action-btn.go {
+    border-color: var(--red);
+    color: var(--red);
+}
+
+.action-btn.go:hover {
+    background: var(--red);
+    color: var(--bg-dark);
+}
+
+.selection-hint {
+    font-family: var(--font-mono);
+    font-size: 16px;
+    color: var(--cream);
+    opacity: 0.7;
+}
+
+/* Game over */
+.game-over-message {
+    text-align: center;
+    padding: 30px;
+}
+
+.game-over-message h2 {
+    font-family: var(--font-pixel);
+    font-size: 24px;
+    margin-bottom: 15px;
+}
+
+.game-over-message.win h2 {
+    color: var(--accent);
+}
+
+.game-over-message.lose h2 {
+    color: var(--red);
+}
+
+.game-over-message p {
+    font-family: var(--font-mono);
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+/* Game Controls */
+.game-controls {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 10px;
+    padding-bottom: 10px;
+}
+
+.control-btn {
+    font-family: var(--font-pixel);
+    font-size: 10px;
+    padding: 8px 15px;
+    background: transparent;
+    border: 1px solid var(--accent);
+    color: var(--accent);
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.control-btn:hover {
+    background: var(--accent);
+    color: var(--bg-dark);
+}
+
+/* ══ Responsive ══ */
+@media (max-width: 900px) {
+    /* Stacked, the two columns are taller than the viewport, so the screen
+       scrolls rather than centering — centering a column taller than its box
+       pushes the top of the board off the screen and clips the hand off the
+       bottom, which is what used to happen here. */
+    .game-layout {
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+    }
+
+    .board-column {
+        width: 100%;
+        max-width: 500px;
+    }
+
+    .play-column {
+        width: 100%;
+        max-width: 500px;
+    }
+
+    /* Six cards and their gaps, never wider than the column */
+    :root {
+        --card-w: clamp(38px, calc((100vw - 73px) / 6), 70px);
+    }
+
+    .hand-cards {
+        gap: 5px;
+    }
+
+    .table-row {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .starter-slot {
+        padding-right: 0;
+        padding-bottom: 8px;
+        border-right: none;
+        border-bottom: 1px solid var(--wood);
+        width: 100%;
+    }
+}
+
+@media (max-width: 600px) {
+    /* The arcade back link is fixed at the top-left; leave it room */
+    .game-screen {
+        padding-top: 32px;
+    }
+
+    .game-header {
+        padding: 8px 12px;
+    }
+
+    .game-header h1 {
+        font-size: 14px;
+    }
+
+    .section-title {
+        font-size: 9px;
+        margin-bottom: 6px;
+    }
+
+    .count-badge {
+        font-size: 9px;
+        padding: 4px 7px;
+    }
+
+    .ai-hand-area,
+    .table-area,
+    .crib-area,
+    .player-hand-area {
+        padding: 8px;
+    }
+
+    .slot-label {
+        font-size: 13px;
+    }
+
+    .game-message {
+        font-size: 16px;
+    }
+
+    .action-btn {
+        font-size: 10px;
+        padding: 10px 18px;
+    }
+}

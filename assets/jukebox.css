@@ -1,0 +1,493 @@
+/* ═══════════════════════════════════════════════
+   magmacrunch media — retro jukebox mini-player
+   assets/jukebox.css
+   ═══════════════════════════════════════════════ */
+
+/* ── ROOT CONTAINER ──
+   A flex child of the nav, in the dead center of the bar. flex-grow - not
+   the nav's own auto margins, which resolve after it - takes the whole gap
+   between the brand and the section links, so the pill centers in the space
+   that is actually there and its label truncates rather than colliding with
+   the links. Stretched to the nav's full height so the drop panel anchors to
+   the bar's bottom edge, the same edge the nav dropdowns hang from. */
+.mcj {
+    position: relative;
+    flex: 1 1 auto;
+    min-width: 0;
+    align-self: stretch;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Press Start 2P', monospace;
+    color: var(--white, #f0ead8);
+    user-select: none;
+}
+
+/* ── COLLAPSED PILL (in the nav) ──
+   Nav furniture, not a widget sitting in the nav. It carried a 2px rose
+   border, a dark fill and a 12px glow until 2026-10-12, which made it the only
+   boxed, lit element in a masthead that is otherwise flat text: the brand, the
+   eight section links and the search are all unboxed. That chrome is what
+   pulled the eye, not the label, and it did it at every width - so stripping
+   the frame is what calms it down, and dropping the label (tried in 79ddd5c4,
+   reverted 2026-09-26) was never the fix. The label is dimmed instead, and
+   lifts on hover.
+
+   Capped at 320px, which is the other half. .mcj is flex: 1 1 auto, so a
+   playing track grew this pill to the whole gap between the brand and the
+   links - 758px at a 1440px window, measured, and still ellipsing the longest
+   title. A now-playing readout belongs in the bar as a line of text, not as a
+   banner across it. The cap is below the ~370px the longest title would want,
+   so that line still truncates; it is meant to.
+
+   Height is 32px of the 48px bar, so it reads as sitting in the nav rather
+   than covering it. ── */
+.mcj-bar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    height: 32px;
+    max-width: 320px;
+    min-width: 0;
+    padding: 0 8px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+/* No border or glow left to light up, so the hover lives on the contents.
+   Yellow is the same hover accent the old border used. */
+.mcj-bar:hover .mcj-bar-label {
+    opacity: 1;
+    color: var(--yellow, #ffe03a);
+}
+
+.mcj-bar:hover .mcj-mini-vinyl {
+    opacity: 1;
+}
+
+.mcj-bar:focus-visible {
+    outline: 2px solid var(--yellow, #ffe03a);
+    outline-offset: 3px;
+}
+
+/* ── COLLAPSED LABEL (the now-playing readout) ──
+   Idle it names the button; playing, jukebox.js swaps in the track line.
+   Track titles here run to 76 characters and the gap shrinks with the
+   window, so it ellipses rather than colliding with the links. */
+.mcj-bar-label {
+    font-size: 7px;
+    letter-spacing: 0.1em;
+    line-height: 1;
+    white-space: nowrap;
+    color: var(--nav-accent, var(--rose, #ff3d6e));
+    /* 7px and 0.55 to sit at the weight of .nav-links a, which is 7px at full
+       opacity in --white: close enough to read as part of the bar, dim enough
+       not to compete with the eight links for the eye. */
+    opacity: 0.55;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    transition: opacity 0.15s, color 0.15s;
+}
+
+/* Expanded, the header says "// JUKEBOX //" and the window carries the track
+   - the pill would say it twice. */
+.mcj.expanded .mcj-bar-label {
+    display: none;
+}
+
+/* ── VINYL DISC (in the pill) ── */
+.mcj-mini-vinyl {
+    /* 16px, down from 20px with the frame gone: the pill is no longer a button
+       the disc has to fill, and the grooves are repeating gradients at 1-2px,
+       so going much below this muddies them into a gray dot. */
+    width: 16px;
+    height: 16px;
+    opacity: 0.7;
+    transition: opacity 0.15s;
+    border-radius: 50%;
+    border: 1px solid #444;
+    background:
+        radial-gradient(circle,
+            var(--black, #080808) 0%,
+            var(--black, #080808) 15%,
+            transparent 16%
+        ),
+        radial-gradient(circle,
+            transparent 0%,
+            transparent 15%,
+            #2a1a1e 16%,
+            #2a1a1e 30%,
+            transparent 31%
+        ),
+        repeating-radial-gradient(circle,
+            #333 0, #333 1px,
+            #222 1px, #222 2px
+        );
+    animation: mcj-spin 3s linear infinite;
+    animation-play-state: paused;
+}
+
+.mcj.playing .mcj-mini-vinyl {
+    animation-play-state: running;
+}
+
+@keyframes mcj-spin {
+    from { transform: rotate(0deg); }
+    to   { transform: rotate(360deg); }
+}
+
+/* ── DROP PANEL ──
+   The same pattern as a nav dropdown: absolutely anchored below the 48px bar,
+   centered on the pill's container. 300px at the center of the window cannot
+   clip above ~640px, and below 900px the widget is not shown at all - see the
+   NARROW block at the foot of this file. One wrapper carries header + window
+   so both keep their separate max-height transitions at a single anchor. ── */
+.mcj-drop {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ── EXPANDED HEADER ──
+   The panel's title strip. It is the top edge of the panel now, not the
+   underside of the pill it used to connect to, so it carries a top border
+   and rounded top corners. ── */
+.mcj-header {
+    background: var(--nav-accent, var(--rose, #ff3d6e));
+    color: var(--black, #080808);
+    font-family: 'Press Start 2P', monospace;
+    font-size: 8px;
+    letter-spacing: 0.1em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-shrink: 0;
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    padding: 0 12px;
+    border: 2px solid var(--nav-accent, var(--rose, #ff3d6e));
+    border-radius: 12px 12px 0 0;
+    transition: max-height 0.3s ease, opacity 0.2s ease, padding 0.3s ease;
+}
+
+.mcj.expanded .mcj-header {
+    max-height: 40px;
+    opacity: 1;
+    padding: 8px 12px;
+}
+
+.mcj.minimized .mcj-header {
+    max-height: 0;
+    opacity: 0;
+    padding: 0 12px;
+}
+
+.mcj-minimize {
+    background: none;
+    border: none;
+    color: var(--black, #080808);
+    font-size: 14px;
+    cursor: pointer;
+    padding: 0 4px;
+    line-height: 1;
+}
+
+.mcj-minimize:hover {
+    opacity: 0.7;
+}
+
+/* ── EXPANDED WINDOW ── */
+.mcj-window {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    background:
+        repeating-linear-gradient(
+            0deg,
+            transparent,
+            transparent 3px,
+            rgba(255,255,255,0.015) 3px,
+            rgba(255,255,255,0.015) 4px
+        ),
+        var(--black, #080808);
+    border: 2px solid var(--nav-accent, var(--rose, #ff3d6e));
+    border-top: none;
+    border-radius: 0 0 12px 12px;
+    display: flex;
+    flex-direction: column;
+    transition: max-height 0.3s ease, opacity 0.2s ease;
+}
+
+.mcj.expanded .mcj-window {
+    max-height: 400px;
+    opacity: 1;
+}
+
+/* ── EXPANDED INNER LAYOUT ── */
+.mcj-expanded-inner {
+    display: flex;
+    gap: 12px;
+    padding: 12px;
+}
+
+/* ── VINYL (expanded) ── */
+.mcj-vinyl {
+    width: 96px;
+    height: 96px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    position: relative;
+    background:
+        radial-gradient(circle,
+            var(--black, #080808) 0%,
+            var(--black, #080808) 10.75%,
+            transparent 11%
+        ),
+        radial-gradient(circle,
+            transparent 0%,
+            transparent 10.75%,
+            var(--nav-accent, var(--rose, #ff3d6e)) 11%,
+            var(--nav-accent, var(--rose, #ff3d6e)) 25.5%,
+            transparent 26%
+        ),
+        repeating-radial-gradient(circle,
+            #1a1a1a 0, #1a1a1a 1px,
+            #111 1px, #111 3px
+        ),
+        radial-gradient(circle, #1a1a1a 0%, #0d0d0d 100%);
+    box-shadow: 0 0 0 2px var(--nav-accent, var(--rose, #ff3d6e)),
+                0 0 16px var(--nav-glow, rgba(255, 61, 110, 0.4));
+    animation: mcj-spin 3s linear infinite;
+    animation-play-state: paused;
+}
+
+.mcj-vinyl::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    background: linear-gradient(
+        135deg,
+        rgba(255,255,255,0.08) 0%,
+        transparent 40%,
+        transparent 60%,
+        rgba(255,255,255,0.04) 100%
+    );
+    pointer-events: none;
+}
+
+.mcj.playing .mcj-vinyl {
+    animation-play-state: running;
+}
+
+/* ── TRACK INFO (expanded) ── */
+.mcj-info {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 6px;
+}
+
+.mcj-title {
+    font-size: 7px;
+    color: var(--yellow, #ffe03a);
+    text-shadow: 0 0 8px rgba(255, 224, 58, 0.5);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.mcj-artist {
+    font-size: 6px;
+    color: var(--cyan, #00f5ff);
+    text-shadow: 0 0 6px rgba(0, 245, 255, 0.4);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.mcj-time {
+    font-size: 6px;
+    color: var(--white, #f0ead8);
+    opacity: 0.5;
+}
+
+/* ── PROGRESS BAR ── */
+.mcj-progress-wrap {
+    padding: 0 12px 8px;
+}
+
+.mcj-progress {
+    width: 100%;
+    height: 6px;
+    background: rgba(240, 234, 216, 0.12);
+    cursor: pointer;
+    position: relative;
+}
+
+.mcj-progress-fill {
+    height: 100%;
+    width: var(--progress, 0%);
+    background: linear-gradient(to right, var(--rose, #ff3d6e), var(--orange, #ff7c1f));
+    pointer-events: none;
+    transition: width 0.2s linear;
+}
+
+.mcj-progress:hover .mcj-progress-fill {
+    background: linear-gradient(to right, var(--yellow, #ffe03a), var(--orange, #ff7c1f));
+}
+
+/* ── TRANSPORT CONTROLS (expanded) ── */
+.mcj-controls {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 0 12px 10px;
+}
+
+.mcj-btn {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 8px;
+    color: var(--yellow, #ffe03a);
+    background: none;
+    border: 1px solid var(--nav-accent, var(--rose, #ff3d6e));
+    padding: 5px 8px;
+    cursor: pointer;
+    line-height: 1;
+    flex-shrink: 0;
+    transition: background 0.15s, color 0.15s;
+}
+
+.mcj-btn:hover {
+    background: var(--nav-accent, var(--rose, #ff3d6e));
+    color: var(--black, #080808);
+}
+
+.mcj-btn-play {
+    min-width: 32px;
+    text-align: center;
+}
+
+.mcj-btn-skip {
+    font-size: 6px;
+    padding: 5px 6px;
+}
+
+/* ── VOLUME ── */
+.mcj-vol-wrap {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    margin-left: auto;
+    flex-shrink: 0;
+}
+
+.mcj-vol {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 44px;
+    height: 4px;
+    background: linear-gradient(
+        to right,
+        var(--rose, #ff3d6e) 0%,
+        var(--rose, #ff3d6e) var(--vol-pct, 70%),
+        rgba(240, 234, 216, 0.15) var(--vol-pct, 70%),
+        rgba(240, 234, 216, 0.15) 100%
+    );
+    outline: none;
+    border-radius: 0;
+    cursor: pointer;
+    opacity: 0.8;
+    transition: opacity 0.15s;
+}
+
+.mcj-vol:hover { opacity: 1; }
+.mcj-vol.muted { opacity: 0.4; }
+
+.mcj-vol::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 8px;
+    height: 8px;
+    background: var(--yellow, #ffe03a);
+    border: none;
+    cursor: pointer;
+}
+
+.mcj-vol::-moz-range-thumb {
+    width: 8px;
+    height: 8px;
+    background: var(--yellow, #ffe03a);
+    border: none;
+    cursor: pointer;
+    border-radius: 0;
+}
+
+.mcj-mute {
+    font-size: 10px;
+    padding: 3px 5px;
+}
+
+.mcj-vol-label {
+    font-size: 6px;
+    color: var(--yellow, #ffe03a);
+    opacity: 0.5;
+    min-width: 14px;
+    text-align: right;
+}
+
+.mcj-vol-label.muted {
+    opacity: 0.3;
+    text-decoration: line-through;
+}
+
+.mcj-mute.muted {
+    opacity: 0.4;
+}
+
+/* ── JUKEBOX LINK ── */
+.mcj-link {
+    display: block;
+    text-align: center;
+    padding: 8px 12px 10px;
+    border-top: 1px solid var(--nav-accent, rgba(255, 61, 110, 0.2));
+}
+
+.mcj-link a {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 6px;
+    color: var(--cyan, #00f5ff);
+    text-decoration: none;
+    text-shadow: 0 0 6px rgba(0, 245, 255, 0.4);
+    transition: color 0.15s;
+}
+
+.mcj-link a:hover {
+    color: var(--yellow, #ffe03a);
+}
+
+/* ── HIDE ON FULL JUKEBOX PAGE ── */
+body:has(main .jukebox) .mcj {
+    display: none !important;
+}
+
+/* ── NARROW ──
+   nav.js no longer loads the widget under 900px or on a coarse pointer, so
+   this block is reached only by a desktop window dragged narrow after the
+   page loaded. The center gap between the brand and the eight section links
+   is not wide enough to hold the pill below 900px (brand + padding + links
+   come to ~670px), so it hides rather than squeezing the links. ── */
+@media (max-width: 900px) {
+    .mcj {
+        display: none;
+    }
+}

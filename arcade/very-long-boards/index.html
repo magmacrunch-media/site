@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Very Long Boards</title>
+    <meta property="og:title" content="Very Long Boards — magmacrunch media">
+    <meta property="og:description" content="Play Very Long Boards in the magmacrunch arcade">
+    <meta property="og:image" content="https://magmacrunch.com/og/arcade-very-long-boards.png?v=1">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="magmacrunch media">
+    <meta property="og:locale" content="en_US">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="icon" type="image/x-icon" href="../../favicon.ico">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../shared/arcade-base.css?v=de5e0d7b">
+    <link rel="stylesheet" href="css/style.css?v=c96b338d">
+</head>
+<body>
+    <a href="../action/" class="mc-back">action games</a>
+
+    <div id="game-container">
+        <canvas id="renderCanvas"></canvas>
+        <canvas id="garageCanvas" width="960" height="540" style="display:none; position:absolute; inset:0; z-index:1; pointer-events:none;"></canvas>
+
+        <!-- TITLE SCREEN -->
+        <div id="titleScreen" class="overlay active">
+            <div class="title-text">
+                <div class="title-main">VERY LONG<br>BOARDS</div>
+                <div class="title-sub">downhill skateboarding</div>
+                <div class="title-carl">a carl spatski game</div>
+            </div>
+            <div class="insert-coin" id="startPrompt">— PRESS ENTER TO START —</div>
+        </div>
+
+        <!-- CHARACTER SELECT -->
+        <div id="charSelect" class="overlay">
+            <div class="cs-title">SELECT YOUR CARL</div>
+            <!-- Built from CHARACTERS in js/config.js by renderCharCards(). -->
+            <div class="cs-cards" id="charCards"></div>
+            <div class="cs-hint">← → TO SELECT &nbsp; ENTER TO PLAY</div>
+        </div>
+
+        <!-- BOARD SELECT -->
+        <div id="boardSelect" class="overlay">
+            <div class="bs-title">CHOOSE YOUR BOARD</div>
+            <div class="bs-cards" id="boardCards"></div>
+            <div class="cs-hint">← → TO SELECT &nbsp; ENTER TO RIDE</div>
+        </div>
+
+        <!-- COUNTDOWN -->
+        <div id="countdownOverlay" class="overlay" style="background:rgba(10,6,18,0.6);">
+            <div id="countdownText" style="font-size:72px; color:#ffe03a; text-shadow:0 0 30px rgba(255,224,58,0.8);">3</div>
+        </div>
+
+        <!-- HUD -->
+        <div id="hud" style="display:none;">
+            <div class="hud-score">SCORE: <span id="hudScore">0</span></div>
+            <div class="hud-speed">SPEED: <span id="hudSpeed">0</span> km/h</div>
+            <div class="hud-dist">DIST: <span id="hudDist">0</span>m</div>
+            <div id="hudTrick" style="position:absolute; top:50%; left:0; right:0; text-align:center; font-size:14px; color:#ffe03a; text-shadow:0 0 15px rgba(255,224,58,0.8); opacity:0; transition:opacity 0.1s; pointer-events:none;">TRICK!</div>
+            <div id="kickPrompt" style="position:absolute; bottom:60px; left:0; right:0; text-align:center; font-size:10px; color:#ffe03a; text-shadow:0 0 10px rgba(255,224,58,0.6);">PRESS &#x2191; TO KICK OFF</div>
+        </div>
+
+        <!-- GAME OVER -->
+        <div id="gameOver" class="overlay">
+            <div class="go-title">GAME OVER</div>
+            <div class="go-cause" id="goCause">SPLAT!</div>
+            <div class="go-score">SCORE: <span id="goScore">0</span></div>
+            <div class="go-dist">DISTANCE: <span id="goDist">0</span>m</div>
+            <div class="go-best">BEST: <span id="goBest">0</span></div>
+
+            <div class="go-leaderboard">
+                <div class="lb-title">TOP RIDERS</div>
+                <div id="goBoard" class="lb-list"></div>
+            </div>
+
+            <div id="goRanked" class="go-ranked"></div>
+
+            <div id="goInitials" class="go-initials">
+                <label for="goInitialsInput">YOU RANKED — ENTER INITIALS</label>
+                <input id="goInitialsInput" maxlength="3" autocomplete="off"
+                       spellcheck="false" aria-label="Your initials, three letters">
+            </div>
+
+            <div class="go-actions">
+                <div class="go-action" data-action="retry">
+                    <span class="go-key">ENTER</span> RIDE AGAIN
+                </div>
+                <div class="go-action" data-action="setup">
+                    <span class="go-key">TAB</span> NEW SETUP
+                </div>
+            </div>
+        </div>
+
+        <!-- PAUSE -->
+        <div id="pauseScreen" class="overlay">
+            <div class="pause-text">PAUSED</div>
+            <div class="insert-coin">— PRESS ESC TO RESUME —</div>
+        </div>
+    </div>
+
+    <script src="https://cdn.babylonjs.com/babylon.js"></script>
+    <script src="../shared/adenosine-score-client.js?v=565e71be"></script>
+    <script src="../shared/score-server.js?v=9acd988c"></script>
+    <script>const scoreClient = new AdScore.ScoreClient().auto(MC_SCORE_OPTS);</script>
+    <script src="js/config.js?v=51711360"></script>
+    <script src="js/characters.js?v=e1349e81"></script>
+    <script src="js/scene.js?v=af9d23d2"></script>
+    <script src="js/terrain.js?v=03d83204"></script>
+    <script src="js/player.js?v=b6d38e7e"></script>
+    <script src="js/obstacles.js?v=3b855a89"></script>
+    <script src="js/scenery.js?v=8f75d2c0"></script>
+    <script src="js/particles.js?v=6f52f3b7"></script>
+    <script src="js/statbars.js?v=ee25dafc"></script>
+    <script src="js/hud.js?v=a1dae853"></script>
+    <script src="js/input.js?v=3ed920fe"></script>
+    <script src="js/audio.js?v=3e5902f5"></script>
+    <script src="js/garage.js?v=a73e1665"></script>
+    <script src="js/main.js?v=7bdcfc0f"></script>
+
+</body>
+</html>

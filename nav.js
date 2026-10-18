@@ -1,0 +1,1000 @@
+/* ═══════════════════════════════════════════════
+    magmacrunch media — shared nav script
+    nav.js
+    ═══════════════════════════════════════════════ */
+
+/* ── NAV CONFIG ──
+   Update this config to change nav across all pages at once.
+   Used by the auto-nav generator below. */
+
+window.NAV_CONFIG = {
+    brand: { href: './', text: 'magmacrunch.com' },
+    sections: [
+        { label: 'home', href: './' },
+        { label: 'about', href: 'home/about.html', items: [
+            { href: 'home/about.html', label: 'about' },
+            { href: 'home/donate.html', label: 'donate' },
+            { href: 'home/guestbook.html', label: 'guestbook' },
+            { href: 'home/email-list.html', label: 'email list' }
+        ]},
+        { label: 'music', href: 'music/', items: [
+            { href: 'music/jukebox/', label: 'jukebox' },
+            { href: 'music/distributed-music/', label: 'distributed music' },
+            { href: 'music/music-videos.html', label: 'music videos' },
+            { href: 'music/physical-media/', label: 'physical media' }
+        ]},
+        { label: 'visual', href: 'visual/', items: [
+            { href: 'visual/tv/', label: 'TV' },
+            { href: 'visual/collage.html', label: 'collage' },
+            { href: 'visual/photography/', label: 'photography' }
+        ]},
+        { label: 'archive', href: 'archive/', items: [
+            { href: 'archive/by-artist/', label: 'by artist' },
+            { href: 'archive/by-place/', label: 'by place' },
+            { href: 'archive/by-label/', label: 'by label' },
+            { href: 'archive/by-contributor/', label: 'by contributor' }
+        ]},
+        { label: 'arcade', href: 'arcade/', items: [
+            { href: 'arcade/board-games/', label: 'board games' },
+            { href: 'arcade/card-games/', label: 'card games' },
+            { href: 'arcade/puzzles/', label: 'puzzles' },
+            { href: 'arcade/action/', label: 'action' }
+        ]},
+        { label: 'press', href: 'press/', items: [
+            { href: 'press/scientific/', label: 'scientific' },
+            { href: 'press/experimental/', label: 'experimental' }
+        ]},
+        { label: 'ware', href: 'ware/', items: [
+            { href: 'ware/utilities/', label: 'creative utilities' },
+            { href: 'ware/dev/', label: 'developer tools' }
+        ]}
+    ]
+};
+
+/* ── AUTO-NAV GENERATOR ──
+   If a page has <nav id="auto-nav">, generates nav from NAV_CONFIG.
+   Respects relative paths for pages in subdirectories. */
+
+(function () {
+    const autoNav = document.getElementById('auto-nav');
+    if (!autoNav || !window.NAV_CONFIG) return;
+
+    const cfg = window.NAV_CONFIG;
+    const depth = autoNav.dataset.depth || '';
+
+    // Build nav HTML
+    let navHTML = `<a href="${depth}${cfg.brand.href}" class="nav-brand">${cfg.brand.text}</a>\n<ul class="nav-links" id="navLinks">`;
+
+    for (const sec of cfg.sections) {
+        const href = depth + sec.href;
+        if (sec.items && sec.items.length) {
+            // Dropdown item
+            navHTML += `\n<li><a href="${href}">${sec.label}</a><div class="dropdown">`;
+            // The top line reads "view all <section>" for sections whose href is
+            // an index page. When an item already links there (about →
+            // home/about.html), that item takes the top line instead, so the
+            // same page is not listed twice.
+            const landing = sec.items.find(item => item.href === sec.href);
+            const topLabel = landing ? landing.label : `view all ${sec.label}`;
+            navHTML += `\n<a href="${href}" class="dropdown-view-all">${topLabel}</a>`;
+            for (const item of sec.items) {
+                if (item === landing) continue;
+                navHTML += `\n<a href="${depth}${item.href}">${item.label}</a>`;
+            }
+            navHTML += '</div></li>';
+        } else {
+            // Simple item
+            navHTML += `\n<li><a href="${href}">${sec.label}</a></li>`;
+        }
+    }
+    navHTML += '\n</ul>';
+    navHTML += '\n<button class="hamburger" id="hamburger" aria-label="menu"><span></span><span></span><span></span></button>';
+
+    autoNav.innerHTML = navHTML;
+})();
+
+/* ── FAVICON ──
+   Every page declares its own <link rel="icon"> pointing at the root
+   favicon.ico. There used to be a JS injector here for pages without one; it
+   was unreachable (it required both a missing icon link AND <nav id="auto-nav">,
+   a combination no page has) and it targeted a favicon.ico that didn't exist.
+   The real file at the site root now covers those pages via the browser's own
+   /favicon.ico fallback, which works without scripting. The SPA router keeps
+   the icon in sync on navigation — see the favicon block in navigate(). */
+
+/* ═══════════════════════════════════════════════
+   INTERACTIVE FUNCTIONALITY
+   (hamburger, dropdowns, active link)
+   ═══════════════════════════════════════════════ */
+
+(function () {
+    const hamburger = document.getElementById('hamburger');
+    const navLinks  = document.getElementById('navLinks');
+
+    // ── MOBILE HAMBURGER ──
+    if (hamburger && navLinks) {
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('open');
+        });
+    }
+
+    // ── MOBILE DROPDOWN TOGGLE ──
+    // On mobile, tapping a nav item with a dropdown toggles it open/closed.
+    // On desktop, CSS :hover handles it — JS only needed for mobile.
+    if (navLinks) {
+        navLinks.querySelectorAll('li').forEach(li => {
+            const dropdown = li.querySelector('.dropdown');
+            if (!dropdown) return;
+
+            li.querySelector('a').addEventListener('click', (e) => {
+                // Only intercept on mobile (hamburger visible)
+                if (window.getComputedStyle(hamburger).display !== 'none') {
+                    e.preventDefault();
+                    // Close siblings
+                    navLinks.querySelectorAll('li.open').forEach(openLi => {
+                        if (openLi !== li) openLi.classList.remove('open');
+                    });
+                    li.classList.toggle('open');
+                }
+            });
+        });
+
+        // Close mobile menu when a dropdown link is clicked
+        navLinks.querySelectorAll('.dropdown a').forEach(a => {
+            a.addEventListener('click', () => {
+                navLinks.classList.remove('open');
+                navLinks.querySelectorAll('li.open').forEach(li => li.classList.remove('open'));
+            });
+        });
+
+        // ── TAP OUTSIDE TO CLOSE ──
+        // Until this, the only ways out of the open mobile panel were the
+        // hamburger and a link inside it: tapping the page behind left it open,
+        // with nothing on screen saying how to dismiss it. The SPA router's
+        // document listener looks like it covers this and does not — it returns
+        // on a click that is not an eligible link, before it reaches its own
+        // menu-close lines.
+        //
+        // Clicks anywhere inside <nav> are left alone. The hamburger lives there
+        // and its own listener has already toggled by the time this bubbles up,
+        // so closing here too would undo the tap that opened the menu.
+        document.addEventListener('click', (e) => {
+            if (!navLinks.classList.contains('open')) return;
+            if (!(e.target instanceof Element) || e.target.closest('nav')) return;
+            navLinks.classList.remove('open');
+            navLinks.querySelectorAll('li.open').forEach(li => li.classList.remove('open'));
+        });
+    }
+
+    // ── ACTIVE LINK HIGHLIGHT ──
+    // Disabled — caused too many edge-case issues with relative paths
+    // Re-enable by restoring the matching logic when ready
+})();
+
+/* ═══════════════════════════════════════════════
+   DROPDOWN EDGE FLIP
+   ───────────────────────────────────────────────
+   A dropdown anchors to its nav item's left edge, and the nav items sit hard
+   against the right of the window, so the rightmost ones open off-screen and
+   are clipped — at 1000px wide, `ware` loses most of "creative utilities" and
+   `press` has started to go. Those get anchored to their item's right edge
+   instead, which opens them inward.
+
+   Which items overflow depends on the window width, so this cannot be a static
+   rule: the widths are measured. Measuring needs the box laid out and a
+   dropdown is `display: none` until hovered, so each is displayed with
+   visibility hidden and restored in the same synchronous block — the browser
+   cannot paint in between, so nothing flickers.
+   ═══════════════════════════════════════════════ */
+
+(function () {
+    function align() {
+        const navLinks = document.getElementById('navLinks');
+        if (!navLinks) return;
+        const dropdowns = navLinks.querySelectorAll('.dropdown');
+
+        // Mobile dropdowns are `position: static` and open inline, so the
+        // offsets would be ignored anyway. Clear the class rather than leave a
+        // stale one behind for the resize back up.
+        if (window.matchMedia('(max-width: 640px)').matches) {
+            dropdowns.forEach(d => d.classList.remove('align-right'));
+            return;
+        }
+
+        // clientWidth, not innerWidth: it excludes the vertical scrollbar,
+        // which is real space the dropdown cannot open into.
+        const room = document.documentElement.clientWidth;
+
+        dropdowns.forEach(d => {
+            const li = d.closest('li');
+            if (!li) return;
+            d.classList.remove('align-right');
+
+            const display = d.style.display;
+            const visibility = d.style.visibility;
+            d.style.visibility = 'hidden';
+            d.style.display = 'flex';
+            const box = d.getBoundingClientRect();
+            const item = li.getBoundingClientRect();
+            d.style.display = display;
+            d.style.visibility = visibility;
+
+            // Flip only where it helps. One wider than the distance from its
+            // item's right edge to the window's left would just be clipped at
+            // the other end instead.
+            if (box.right > room && item.right - box.width >= 0) {
+                d.classList.add('align-right');
+            }
+        });
+    }
+
+    align();
+
+    // The nav is set in 'Press Start 2P'. Measuring before it loads measures
+    // the fallback font, and the two are not the same width.
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(align);
+
+    let pending;
+    window.addEventListener('resize', () => {
+        clearTimeout(pending);
+        pending = setTimeout(align, 100);
+    });
+
+    // The SPA router swaps page CSS on navigation, which can change these
+    // metrics even though the nav element itself survives the swap.
+    window.__mcAlignDropdowns = align;
+})();
+
+/* ═══════════════════════════════════════════════
+    archive sub-nav auto-inject
+    ───────────────────────────────────────────────
+    Add  data-siblings="events,personnel,recordings,works"
+    (or whichever subset exist) to <main> on any
+    artist or place archive sub-page. This script
+    will inject a .sub-nav block with a ← back
+    button plus one nav-card per sibling, skipping
+    whichever page is currently active.
+
+    Inject target (in order of preference):
+      1. first  .sub-nav already in .page-header  → replaced
+      2. after  .page-title inside .page-header    → inserted after
+      3. after  .page-header itself                → inserted after
+      4. top of <main>                             → prepended
+    ═══════════════════════════════════════════════ */
+
+(function () {
+    const main = document.querySelector('main[data-siblings]');
+    if (!main) return;
+
+    const siblings = main.dataset.siblings
+        .split(',')
+        .map(s => s.trim())
+        .filter(Boolean);
+    if (!siblings.length) return;
+
+    // color map for sibling nav cards
+    const COLOR_MAP = {
+        events: 'c-rose',
+        links: 'c-links',
+        recordings: 'c-cyan',
+        releases: 'c-cyan',
+        works: 'c-purple',
+        personnel: 'c-green',
+        about: 'c-yellow',
+        members: 'c-green',
+        photography: 'c-orange',
+    };
+
+    // derive current page slug from filename (e.g. "recordings")
+    const currentPage = window.location.pathname.split('/').pop().replace('.html', '');
+
+    // back button color: use data-back-color attribute if set, else default to c-orange
+    const backColor = main.dataset.backColor || 'c-orange';
+
+    // always include ← back to parent index
+    const cards = [`<a href="./" class="nav-card ${backColor}">← back</a>`];
+    for (const s of siblings) {
+        if (s === currentPage) continue;
+        cards.push(`<a href="${s}.html" class="nav-card ${COLOR_MAP[s] || 'c-cyan'}">${s}</a>`);
+    }
+
+    // if a hand-authored .sub-nav already exists inside .page-header, replace it
+    // so there's no duplication if someone starts adding them manually mid-migration
+    const pageHeader   = main.querySelector('.page-header');
+    const existingNav  = pageHeader && pageHeader.querySelector('.sub-nav');
+
+    const subNav = document.createElement('div');
+    subNav.className = 'sub-nav';
+    subNav.innerHTML = cards.join('\n');
+
+    if (existingNav) {
+        existingNav.replaceWith(subNav);
+    } else if (pageHeader) {
+        const titleEl = pageHeader.querySelector('.page-title');
+        if (titleEl) {
+            titleEl.insertAdjacentElement('afterend', subNav);
+        } else {
+            pageHeader.appendChild(subNav);
+        }
+    } else {
+        main.prepend(subNav);
+    }
+})();
+
+/* ═══════════════════════════════════════════════
+   AUTO BREADCRUMB INJECTOR
+   ───────────────────────────────────────────────
+   Detects archive subpages (by-artist, by-place)
+   and auto-generates breadcrumbs based on URL path.
+
+   Add <div id="breadcrumb"></div> where you want
+   the breadcrumb to appear. If not present, injects
+   at top of <main>.
+
+   Supports:
+   - archive/by-artist/[artist]/index.html
+   - archive/by-artist/[artist]/recordings.html
+   - archive/by-place/[place]/index.html
+   - archive/by-place/[place]/recordings.html
+    ═══════════════════════════════════════════════ */
+
+/* ═══════════════════════════════════════════════
+   JUKEBOX MINI-PLAYER LOADER
+   ───────────────────────────────────────────────
+   Loads assets/jukebox.css and assets/jukebox.js
+   on every page that has a <nav> element. Arcade
+   games don't load nav.js, so they're
+   automatically excluded.
+
+   The widget is a pill in the dead center of the
+   nav bar - the gap between the brand and the
+   section links - whose panel drops from the bar
+   like a dropdown. Not on touch: the widget wires
+   up MediaSession, so once a track is playing the
+   lock screen carries the controls. And not under
+   900px, where the center gap is not wide enough
+   to hold the pill (brand + padding + the eight
+   section links come to ~670px). The nav's own
+   'jukebox' link still reaches music/jukebox/ on
+   every device.
+
+   (pointer: coarse) rather than width alone, so a
+   phone held in landscape - wider than 900px - is
+   still a phone.
+   ═══════════════════════════════════════════════ */
+
+(function () {
+    const nav = document.querySelector('nav');
+    if (!nav || document.body.classList.contains('no-jukebox')) return;
+    if (window.matchMedia &&
+        window.matchMedia('(max-width: 900px), (pointer: coarse)').matches) return;
+
+    // Compute base path to site root from current page
+    const depth = window.location.pathname.split('/').length - 2;
+    const root = depth > 0 ? '../'.repeat(depth) : '';
+
+    // Load CSS immediately — prevents FOUT when widget is created.
+    // Stamped like the search loader's refs below: a nav.js edit deploys both
+    // of these files' loader, and an unstamped ref would keep serving whichever
+    // of the pair the browser already had — a new jukebox.js against an old
+    // jukebox.css positions a widget that no longer exists.
+    let cssReady;
+    if (!document.querySelector('link[href*="jukebox.css"]')) {
+        const link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.href = root + 'assets/jukebox.css?v=38c699bc';
+        cssReady = new Promise((resolve) => {
+            link.addEventListener('load', resolve, { once: true });
+            link.addEventListener('error', resolve, { once: true });
+        });
+        document.head.appendChild(link);
+    } else {
+        cssReady = Promise.resolve();
+    }
+
+    // Defer JS loading until browser is idle — widget is small and non-essential
+    function loadJukeboxJS() {
+        if (!document.querySelector('script[src*="jukebox.js"]')) {
+            window.__jukeboxReady = cssReady.then(() => new Promise((resolve) => {
+                const script = document.createElement('script');
+                script.src = root + 'assets/jukebox.js?v=e3795c24';
+                script.onload = resolve;
+                script.onerror = resolve;
+                document.body.appendChild(script);
+            }));
+        } else {
+            window.__jukeboxReady = Promise.resolve();
+        }
+    }
+
+    if ('requestIdleCallback' in window) {
+        requestIdleCallback(loadJukeboxJS, { timeout: 2000 });
+    } else {
+        setTimeout(loadJukeboxJS, 100);
+    }
+})();
+
+/* ═══════════════════════════════════════════════
+   SEARCH LOADER
+   ───────────────────────────────────────────────
+   Loads assets/search.css and assets/search.js
+   on every page that has a <nav> element.
+   ═══════════════════════════════════════════════ */
+
+(function () {
+    const nav = document.querySelector('nav');
+    if (!nav || document.body.classList.contains('no-search')) return;
+
+    const depth = window.location.pathname.split('/').length - 2;
+    const root = depth > 0 ? '../'.repeat(depth) : '';
+
+    /* Load CSS, keeping a promise for when it's actually applied. */
+    let cssReady;
+    if (!document.querySelector('link[href*="search.css"]')) {
+        const link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.href = root + 'assets/search.css?v=ccac4dfb';
+        cssReady = new Promise((resolve) => {
+            link.addEventListener('load', resolve, { once: true });
+            link.addEventListener('error', resolve, { once: true });
+        });
+        document.head.appendChild(link);
+    } else {
+        cssReady = Promise.resolve();
+    }
+
+    /* Load JS only once the stylesheet is live — same unstyled-markup race as
+       the jukebox above. */
+    if (!document.querySelector('script[src*="search.js"]')) {
+        cssReady.then(() => {
+            const script = document.createElement('script');
+            script.src = root + 'assets/search.js?v=44627a79';
+            document.body.appendChild(script);
+        });
+    }
+})();
+
+/* ═══════════════════════════════════════════════
+    HIT COUNTER LOADER
+    ───────────────────────────────────────────────
+    Loads assets/counter-client.js on every page
+    that has a <nav> element. Increments the
+    counter once per session (fire-and-forget).
+    Deferred via requestIdleCallback to avoid
+    competing with critical rendering.
+    ═══════════════════════════════════════════════ */
+
+(function () {
+    const nav = document.querySelector('nav');
+    if (!nav || document.body.classList.contains('no-counter')) return;
+
+    const depth = window.location.pathname.split('/').length - 2;
+    const root = depth > 0 ? '../'.repeat(depth) : '';
+
+    function loadCounter() {
+        if (!document.querySelector('script[src*="counter-client.js"]')) {
+            const script = document.createElement('script');
+            script.src = root + 'assets/counter-client.js';
+            script.onload = function () {
+                if (window.CounterClient) CounterClient.increment();
+            };
+            document.body.appendChild(script);
+        }
+    }
+
+    if ('requestIdleCallback' in window) {
+        requestIdleCallback(loadCounter, { timeout: 2000 });
+    } else {
+        setTimeout(loadCounter, 100);
+    }
+})();
+
+/* ── ABSOLUTIZE NAV HREFS ──
+   Convert all <nav> links to absolute paths so
+   they survive pushState URL changes from the SPA
+   router. Must run before the SPA router inits.  ── */
+document.querySelectorAll('nav a[href]').forEach(a => {
+    try {
+        const url = new URL(a.getAttribute('href'), location.href);
+        if (url.origin === location.origin) a.href = url.pathname;
+    } catch {}
+});
+
+/* ═══════════════════════════════════════════════
+   SPA-STYLE AJAX ROUTER
+   ───────────────────────────────────────────────
+   Intercepts same-site <a> clicks, fetches the
+   target page, parses it, swaps <main> content,
+   and manages CSS/script lifecycle. Audio in <nav>
+   persists across navigations.
+   ═══════════════════════════════════════════════ */
+
+(function () {
+    const mainEl = document.querySelector('main');
+    const navEl  = document.querySelector('nav');
+    if (!mainEl || !navEl) return;
+
+    const SPA = 'data-spa';
+
+    /* ── GLOBAL CSS: never removed ── */
+    const GLOBAL_CSS_PATTERNS = [
+        'style.css',
+        'assets/archive.css',
+        'assets/jukebox.css',
+        'assets/jukebox.min',
+        'assets/search.css',
+        'fonts/'
+    ];
+
+    /* ── EXCLUDED PATHS: full page load ── */
+    const EXCLUDE_PATHS = ['/arcade/', '/by-contributor/', '/by-label/', '/ware/'];
+
+    /* ── HELPERS ── */
+    function abs(href, base) {
+        try { return new URL(href, base).href; } catch { return href; }
+    }
+
+    function isGlobal(href) {
+        return GLOBAL_CSS_PATTERNS.some(p => href.includes(p));
+    }
+
+    function shouldExclude(path) {
+        return EXCLUDE_PATHS.some(p => path.includes(p));
+    }
+
+    function isSPAEligible(a) {
+        if (!a) return false;
+        if (a.target === '_blank' || a.hasAttribute('download')) return false;
+        const h = a.getAttribute('href');
+        if (!h || h.startsWith('mailto:') || h.startsWith('tel:') || h.startsWith('#')) return false;
+        try {
+            const url = new URL(h, location.href);
+            if (url.origin !== location.origin) return false;
+            if (shouldExclude(url.pathname)) return false;
+            if (url.pathname === location.pathname && !url.hash) return false;
+            return true;
+        } catch { return false; }
+    }
+
+    async function fetchDoc(url) {
+        const r = await fetch(url);
+        if (!r.ok) throw new Error(r.status + ' ' + url);
+        return new DOMParser().parseFromString(await r.text(), 'text/html');
+    }
+
+    /* ── CSS MANAGEMENT ── */
+    function collectHrefs(doc, base) {
+        const set = new Set();
+        doc.querySelectorAll('link[rel="stylesheet"]').forEach(el => {
+            const h = el.getAttribute('href');
+            if (h) set.add(abs(h, base));
+        });
+        return set;
+    }
+
+    function swapCSS(doc, baseURL) {
+        const newHrefs = collectHrefs(doc, baseURL);
+        const loadPromises = [];
+
+        // Collect the outgoing page's CSS but DON'T remove it yet. These files
+        // hold the per-artist/per-place palette (the :root --xx-* vars) and the
+        // sub-page layout; dropping them here would leave the still-visible old
+        // content unstyled for the length of the stylesheet fetch — the page
+        // title falls back to the archive default and the breadcrumb jumps to
+        // the top-left corner. The caller removes these via commit() only
+        // once the new sheets are live and the new content is in the DOM.
+        const stale = [];
+        document.querySelectorAll('link[' + SPA + ']').forEach(el => {
+            const existingAbs = abs(el.getAttribute('href'), location.href);
+            if (!newHrefs.has(existingAbs)) stale.push(el);
+        });
+        document.querySelectorAll('style[' + SPA + ']').forEach(e => stale.push(e));
+        // Template-injected <style> tags from the outgoing page (no data-spa).
+        //
+        // MathJax's own stylesheet is NOT one of them, and removing it breaks
+        // maths for the rest of the session. MathJax injects #MJX-CHTML-styles
+        // and adds to it lazily, a rule at a time, as it first meets each
+        // construct. Sweeping it out here detaches the element, so every
+        // insertRule() after that throws "Cannot read properties of null" into
+        // MathJax's own warning handler and the rule is lost for good: after one
+        // SPA hop the sheet carries 264 rules against 297 on a cold load, and
+        // the 33 missing ones are mjx-under, mjx-munder, mjx-over and mjx-mover.
+        // Maths still TYPESETS -- the container count is identical -- so it
+        // looks fine until a formula uses a limit, an overline or a stacked
+        // accent, which then renders unstyled. Reloading rebuilt the sheet,
+        // which is what made this read as a caching problem.
+        document.querySelectorAll('head style:not([' + SPA + '])').forEach(e => {
+            if (e.id && e.id.startsWith('MJX-')) return;
+            stale.push(e);
+        });
+
+        // Add new page-specific CSS. Each sheet goes in with a non-matching
+        // media so the browser downloads it (and still fires load) WITHOUT
+        // applying it: the outgoing page is on screen for the whole `ready`
+        // await, and incoming rules must not touch it. assets/archive.css is
+        // the clearest offender — it styles bare `main`, so injecting it live
+        // strips the index's 80px top padding and jumps the grid upward before
+        // the content has swapped. commit() flips them on.
+        const pending = [];
+        const addSheet = (href, spa) => {
+            if (document.querySelector('link[href="' + href + '"]')) return;
+            const c = document.createElement('link');
+            c.rel = 'stylesheet';
+            c.href = href;
+            c.media = 'print';
+            if (spa) c.setAttribute(SPA, '');
+            pending.push(c);
+            loadPromises.push(new Promise(resolve => {
+                c.addEventListener('load', resolve, { once: true });
+                c.addEventListener('error', resolve, { once: true });
+                // Guard: a sheet that somehow fires neither event must not wedge
+                // navigation behind an unresolved promise.
+                setTimeout(resolve, 3000);
+            }));
+            document.head.appendChild(c);
+        };
+        doc.querySelectorAll('link[rel="stylesheet"]').forEach(el => {
+            const raw = el.getAttribute('href');
+            if (!raw) return;
+            const a = abs(raw, baseURL);
+            addSheet(a, !isGlobal(a));
+        });
+
+        // Clone the incoming page's inline <style> blocks but DON'T append them
+        // yet. Unlike stylesheets they need no load time, so there is nothing to
+        // wait on — and appending them here would apply the incoming rules to
+        // the outgoing page's still-visible DOM for the whole length of the
+        // `ready` await. Most inline blocks on this site style bare `main`,
+        // `.card`, `.breadcrumb` and `.page-title` rather than scoping to a body
+        // class, so the old content visibly reflows before it is swapped: going
+        // from an artist page to the by-artist index, `main` jumps from
+        // `padding: 0` to `padding: 80px 20px 60px` and grows 140px taller.
+        // They are appended in commit() instead, after the incoming link sheets,
+        // so head order matches a cold page load and inline still wins.
+        const inlineStyles = [];
+        doc.querySelectorAll('style').forEach(el => {
+            const c = el.cloneNode(true);
+            c.setAttribute(SPA, '');
+            inlineStyles.push(c);
+        });
+
+        // `ready` resolves once every newly-added stylesheet has loaded (or
+        // failed), so callers can wait for CSS to be ready before swapping in
+        // content that depends on it. `commit` installs the incoming inline
+        // styles and tears down the outgoing page's CSS; it must be called
+        // synchronously alongside the content swap, so the browser never paints
+        // an unstyled in-between state — nor the outgoing content under the
+        // incoming page's rules.
+        return {
+            ready: Promise.all(loadPromises),
+            commit: () => {
+                // Order matters only in that all three are synchronous: the
+                // sheets switch on, the inline styles land after them (as on a
+                // cold load, so inline still wins), and only then does the
+                // outgoing page's CSS go. No frame is painted in between.
+                pending.forEach(el => el.removeAttribute('media'));
+                inlineStyles.forEach(el => document.head.appendChild(el));
+                stale.forEach(el => el.remove());
+            },
+        };
+    }
+
+    /* ── SCRIPT MANAGEMENT ── */
+    async function runScripts(doc, baseURL) {
+        const configs   = [];
+        const externals = [];
+        const inits     = [];
+
+        doc.querySelectorAll('head script:not([src])').forEach(s => {
+            const t = s.textContent.trim();
+            if (t && !t.includes('NAV_CONFIG')) configs.push(t);
+        });
+
+        // Collect head external scripts (e.g. MathJax CDN)
+        doc.querySelectorAll('head script[src]').forEach(s => {
+            const src = abs(s.getAttribute('src'), baseURL);
+            if (src && !src.includes('nav.js') && !src.includes('jukebox')) {
+                externals.push(src);
+            }
+        });
+
+        doc.querySelectorAll('body script').forEach(s => {
+            const src = s.getAttribute('src');
+            if (src) {
+                if (!src.includes('nav.js') && !src.includes('jukebox.js') && !src.includes('jukebox.css')) {
+                    externals.push(abs(src, baseURL));
+                }
+            } else {
+                const t = s.textContent.trim();
+                if (t && !t.includes('NAV_CONFIG')) {
+                    // Config scripts (window.*_CONFIG = ...) must run before templates
+                    if (/window\.[A-Z_]+CONFIG\s*=/.test(t)) {
+                        configs.push(t);
+                    } else {
+                        inits.push(t);
+                    }
+                }
+            }
+        });
+
+        for (const t of configs) {
+            // Special handling: MathJax config — merge macros without destroying runtime
+            if (t.includes('MathJax') && t.includes('tex')) {
+                try {
+                    // The trailing semicolon has to go. Every page writes the
+                    // config as `MathJax = {...};`, and stripping only the
+                    // assignment leaves `return ({...};)`, which is a
+                    // SyntaxError -- so the whole config was thrown away by
+                    // the catch below and MathJax started on its DEFAULTS.
+                    // Those do not treat $...$ as an inline delimiter, which
+                    // is why arriving at a maths page through the nav showed
+                    // every inline expression as raw source while the display
+                    // equations, delimited $$...$$, rendered fine. Reloading
+                    // ran the page's own script and looked like a fix.
+                    const valueStr = t
+                        .replace(/^[\s;]*(?:window\.)?MathJax\s*=\s*/, '')
+                        .replace(/[\s;]+$/, '');
+                    // Deliberate. The SPA swaps pages without a reload, so a fetched
+                    // page inline <script> has to be executed here or its config never
+                    // applies -- this is the feature, not an oversight. The content is
+                    // our own pages rather than anything a visitor supplies.
+                    // eslint-disable-next-line no-new-func
+                    const cfg = new Function('return (' + valueStr + ')')();
+                    // window.MathJax, not a bare MathJax: arriving from a page
+                    // with no maths leaves the identifier undeclared, and a
+                    // bare read throws ReferenceError into the same catch.
+                    const mj = window.MathJax;
+                    if (mj && mj.config && mj.config.tex) {
+                        // MathJax already loaded — merge macros into running config
+                        if (cfg && cfg.tex && cfg.tex.macros) {
+                            if (!mj.config.tex.macros) mj.config.tex.macros = {};
+                            Object.assign(mj.config.tex.macros, cfg.tex.macros);
+                        }
+                    } else {
+                        // MathJax not yet loaded — set config for CDN script to read
+                        window.MathJax = cfg;
+                    }
+                } catch (e) { console.warn('SPA MathJax config:', e); }
+                continue;
+            }
+            const m = t.match(/window\.([\w]+)\s*=\s*([\s\S]+?)\s*;?\s*$/);
+            if (m) {
+                const varName = m[1];
+                const valueStr = m[2];
+                if (window[varName] !== undefined) {
+                    try { delete window[varName]; } catch {}
+                }
+                // Deliberate. The SPA swaps pages without a reload, so a fetched
+                // page inline <script> has to be executed here or its config never
+                // applies -- this is the feature, not an oversight. The content is
+                // our own pages rather than anything a visitor supplies.
+                // eslint-disable-next-line no-new-func
+                try { window[varName] = new Function('return (' + valueStr + ')')(); } catch (e) { console.warn('SPA config:', e); }
+            }
+        }
+
+        for (const src of externals) {
+            try {
+                const bustSrc = src + (src.includes('?') ? '&' : '?') + '_spa=' + Date.now();
+                await new Promise((res, rej) => {
+                    const s = document.createElement('script');
+                    s.src = bustSrc;
+                    s.onload = () => { s.remove(); res(); };
+                    s.onerror = () => { s.remove(); rej(); };
+                    document.body.appendChild(s);
+                });
+            } catch (e) { console.warn('SPA external:', src, e); }
+        }
+
+        for (const t of inits) {
+            // Deliberate. The SPA swaps pages without a reload, so a fetched
+            // page inline <script> has to be executed here or its config never
+            // applies -- this is the feature, not an oversight. The content is
+            // our own pages rather than anything a visitor supplies.
+            // eslint-disable-next-line no-new-func
+            try { new Function(t)(); } catch (e) { console.warn('SPA init:', e); }
+        }
+    }
+
+    /* ── NAVIGATION ── */
+    let navigating = false;
+    // What document is on screen, ignoring the fragment. popstate fires for
+    // in-page #anchors too, and telling the two apart needs this.
+    let renderedDoc = location.pathname + location.search;
+    // Monotonic token identifying the current page instance. Templates capture
+    // this at load time and compare before mutating shared DOM (e.g. footer
+    // attribution badges) from a slow-finishing async fetch, so stale work from
+    // a page the user has already left can't write into the current page.
+    window.__mcNavId = window.__mcNavId || 0;
+
+    async function navigate(url, push) {
+        if (navigating) return;
+        navigating = true;
+
+        try {
+            if (typeof window.__pageCleanup === 'function') {
+                window.__pageCleanup();
+                window.__pageCleanup = null;
+            }
+            window.__MB_CACHE = null;
+            window.__mcPageAborted = true;
+            window.__mcNavId++;
+
+            // Reset scroll lock from lightboxes
+            document.body.style.overflow = '';
+
+            const doc = await fetchDoc(url);
+
+            // Load the incoming CSS first; the outgoing page keeps its own
+            // styles (and colors) until the commit block below.
+            const css = swapCSS(doc, url);
+            await css.ready;
+
+            // Update favicon. Read the raw attribute and resolve it against the
+            // TARGET url: fetchDoc() builds `doc` with DOMParser, and a DOMParser
+            // document inherits the baseURI of the page that created it — the one
+            // we're leaving — so newFavicon.href would resolve against the old
+            // path and 404 on any deep→shallow navigation. Same reason
+            // collectHrefs() and runScripts() go through abs().
+            const newFavicon = doc.querySelector('link[rel="icon"], link[rel="shortcut icon"]');
+            const newFaviconHref = newFavicon && newFavicon.getAttribute('href');
+            if (newFaviconHref) {
+                // Replace rather than mutate: assigning .href on the live element
+                // is unreliable (Safari/Firefox often keep the committed icon).
+                // Removing every match also stops duplicates accumulating when a
+                // page uses rel="shortcut icon".
+                document.querySelectorAll('link[rel="icon"], link[rel="shortcut icon"]')
+                    .forEach(el => el.remove());
+                const favicon = document.createElement('link');
+                favicon.rel = 'icon';
+                favicon.href = abs(newFaviconHref, url);
+                const faviconType = newFavicon.getAttribute('type');
+                if (faviconType) favicon.type = faviconType;
+                document.head.appendChild(favicon);
+            }
+
+            const newMain = doc.querySelector('main');
+            if (newMain) {
+                // Resolve relative src/href to absolute using target page URL.
+                // Operates on the detached document, so nothing is visible yet.
+                newMain.querySelectorAll('[src]').forEach(el => {
+                    const src = el.getAttribute('src');
+                    if (src && !src.startsWith('http') && !src.startsWith('/') && !src.startsWith('data:')) {
+                        el.setAttribute('src', new URL(src, url).href);
+                    }
+                });
+                newMain.querySelectorAll('[href]').forEach(el => {
+                    const href = el.getAttribute('href');
+                    if (href && !href.startsWith('http') && !href.startsWith('/') && !href.startsWith('#') && !href.startsWith('mailto:') && !href.startsWith('tel:')) {
+                        el.setAttribute('href', new URL(href, url).href);
+                    }
+                });
+            }
+
+            const newFooter = doc.querySelector('footer');
+            const curFooter = document.querySelector('footer');
+
+            // ── COMMIT ──────────────────────────────────────────────────
+            // Body class, content, the incoming inline styles and the old-CSS
+            // teardown all happen in one synchronous block. No await in here, so
+            // the browser cannot paint a half-swapped page: the outgoing content
+            // is never shown with the incoming body class, never shown with its
+            // own CSS removed, and never shown under the incoming page's rules.
+            document.body.className = doc.body.className;
+
+            // Sync <meta name="referrer"> from incoming page so referrer
+            // policy doesn't leak across SPA navigations.
+            document.querySelectorAll('meta[name="referrer"]').forEach(m => m.remove());
+            const incomingReferrer = doc.querySelector('meta[name="referrer"]');
+            if (incomingReferrer) {
+                document.head.appendChild(incomingReferrer.cloneNode(true));
+            }
+
+            if (newMain) mainEl.innerHTML = newMain.innerHTML;
+            if (newFooter && curFooter) curFooter.innerHTML = newFooter.innerHTML;
+            css.commit();
+            // ────────────────────────────────────────────────────────────
+
+            // Hide chat widget on non-arcade pages
+            const chatWidget = document.getElementById('arcadeChatWidget');
+            if (chatWidget) {
+                chatWidget.style.display = url.includes('/arcade/') ? '' : 'none';
+            }
+
+            document.title = doc.title;
+
+            // The page's CSS has just changed under a nav that survived the
+            // swap; re-measure which dropdowns have to open inward.
+            if (typeof window.__mcAlignDropdowns === 'function') window.__mcAlignDropdowns();
+
+            await runScripts(doc, url);
+            window.__mcPageAborted = false;
+
+            // Re-render MathJax if present (for pages with equations)
+            if (window.MathJax) {
+                const doTypeset = async () => {
+                    if (MathJax.typesetClear) MathJax.typesetClear();
+                    if (MathJax.typesetPromise) await MathJax.typesetPromise();
+                };
+                if (MathJax.typesetPromise) {
+                    try { await doTypeset(); } catch (e) {}
+                } else if (MathJax.startup) {
+                    await new Promise(r => {
+                        const check = setInterval(() => {
+                            if (MathJax.typesetPromise) { clearInterval(check); doTypeset().then(r).catch(r); }
+                        }, 100);
+                        setTimeout(() => { clearInterval(check); r(); }, 5000);
+                    });
+                }
+            }
+
+            if (push) history.pushState({ spa: true }, '', url);
+            renderedDoc = new URL(url, location.href).pathname + new URL(url, location.href).search;
+
+            // Re-inject jukebox widget if missing after SPA navigation
+            if (!document.querySelector('.mcj') && window.__jukeboxReady) {
+                await window.__jukeboxReady;
+                if (typeof window.__initJukeboxPlayer === 'function' && !document.querySelector('.mcj')) {
+                    window.__initJukeboxPlayer();
+                }
+            }
+
+            // Land on the fragment if the URL has one, rather than always at
+            // the top -- a link to another page's #section used to arrive there
+            // and then scroll away from it.
+            let landed = false;
+            const frag = new URL(url, location.href).hash.slice(1);
+            if (frag) {
+                const el = document.getElementById(decodeURIComponent(frag));
+                if (el) { el.scrollIntoView(); landed = true; }
+            }
+            if (!landed) window.scrollTo(0, 0);
+
+        } catch (e) {
+            console.error('SPA nav failed:', e);
+            location.href = url;
+        } finally {
+            navigating = false;
+        }
+    }
+
+    /* ── CLICK INTERCEPTION ── */
+    document.addEventListener('click', function (e) {
+        if (e.defaultPrevented) return;
+        const a = e.target.closest('a');
+        if (!isSPAEligible(a)) return;
+        e.preventDefault();
+
+        // Close mobile menu
+        const nl = document.getElementById('navLinks');
+        if (nl) {
+            nl.classList.remove('open');
+            nl.querySelectorAll('li.open').forEach(li => li.classList.remove('open'));
+        }
+
+        navigate(abs(a.getAttribute('href'), location.href), true);
+    });
+
+    /* ── BACK/FORWARD ── */
+    // A same-document fragment navigation fires popstate as well as a real
+    // back/forward. Re-rendering the page for one replaces the element the
+    // browser has just scrolled to and then runs window.scrollTo(0, 0) over
+    // the top of it, so every in-page #anchor on the site did nothing at all
+    // and cost a full re-fetch for the privilege. Only navigate when the
+    // document itself changed; let the browser handle a fragment on its own.
+    window.addEventListener('popstate', function () {
+        const target = location.pathname + location.search;
+        if (target === renderedDoc) return;
+        renderedDoc = target;
+        navigate(location.href, false);
+    });
+
+    /* ── TAG INITIAL PAGE-SPECIFIC ELEMENTS ── */
+    document.querySelectorAll('link[rel="stylesheet"]').forEach(el => {
+        const h = el.getAttribute('href') || '';
+        if (!isGlobal(h)) el.setAttribute(SPA, '');
+    });
+    document.querySelectorAll('style').forEach(el => {
+        el.setAttribute(SPA, '');
+    });
+})();

@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Woah. — photography — magmacrunch media</title>
+    <link rel="icon" type="image/x-icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../style.css?v=53e9e146">
+    <link rel="stylesheet" href="../../../assets/archive.css?v=3ed2f2cb">
+    <link rel="stylesheet" href="woah-shared.css">
+    <link rel="stylesheet" href="woah-photography.css">
+</head>
+<body class="woah-page woah-photography-page">
+
+<nav id="auto-nav" data-depth="../../../"></nav>
+
+<main>
+    <div class="breadcrumb">
+        <a href="../../../archive/">archive</a>
+        <span class="sep">›</span>
+        <a href="../../../archive/by-artist/">by artist</a>
+        <span class="sep">›</span>
+        <a href="./">woah.</a>
+    </div>
+
+    <div class="page-header">
+        <div class="artist-label">// woah. //</div>
+        <div class="page-title">PHOTOGRAPHY</div>
+        <div class="sub-nav">
+            <a href="./"          class="nav-card c-back">← back</a>
+            <a href="about.html"        class="nav-card c-about">about</a>
+            <a href="links.html" class="nav-card c-links">links</a>
+            <a href="recordings.html"   class="nav-card c-recordings">recordings</a>
+            <a href="releases.html"      class="nav-card c-releases">releases</a>
+            <a href="videos.html" class="nav-card c-videos">videos</a>
+            <a href="works.html"        class="nav-card c-works">works</a>
+        </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="photo-strip-section">
+        <div class="section-label">// summer 2012 //</div>
+        <div class="photo-strip-wrap" id="woahStripWrap">
+            <div class="photo-strip" id="woahStrip">
+                <div class="photo-item landscape" data-index="0">
+                    <img src="../../../assets/photos/summer-12/summer-12-1.jpg" alt="Summer 2012" loading="lazy">
+                    <div class="photo-caption">summer 2012</div>
+                </div>
+                <div class="photo-item landscape" data-index="1">
+                    <img src="../../../assets/photos/summer-12/summer-12-2.jpg" alt="Summer 2012" loading="lazy">
+                    <div class="photo-caption">summer 2012</div>
+                </div>
+                <div class="photo-item landscape" data-index="2">
+                    <img src="../../../assets/photos/summer-12/summer-12-3.jpg" alt="Summer 2012" loading="lazy">
+                    <div class="photo-caption">summer 2012</div>
+                </div>
+                <div class="photo-item landscape" data-index="3">
+                    <img src="../../../assets/photos/summer-12/summer-12-4.jpg" alt="Summer 2012" loading="lazy">
+                    <div class="photo-caption">summer 2012</div>
+                </div>
+                <div class="photo-item landscape" data-index="4">
+                    <img src="../../../assets/photos/summer-12/summer-12-5.jpg" alt="Summer 2012" loading="lazy">
+                    <div class="photo-caption">summer 2012</div>
+                </div>
+                <div class="photo-item landscape" data-index="5">
+                    <img src="../../../assets/photos/summer-12/summer-12-6.jpg" alt="Summer 2012" loading="lazy">
+                    <div class="photo-caption">summer 2012</div>
+                </div>
+                <div class="photo-item landscape" data-index="6">
+                    <img src="../../../assets/photos/summer-12/summer-12-7.jpg" alt="Summer 2012" loading="lazy">
+                    <div class="photo-caption">summer 2012</div>
+                </div>
+            </div>
+            <div class="strip-scroll-hint" id="woahScrollHint">← drag to scroll →</div>
+        </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="photo-strip-section">
+        <div class="section-label">// digital overlays //</div>
+        <div class="photo-strip-wrap" id="doStripWrap">
+            <div class="photo-strip" id="doStrip">
+                <div class="photo-item square" data-index="0">
+                    <img src="../../../assets/photos/woah/woah/woah1.JPG" alt="Digital overlay by Jake McCoy" loading="lazy">
+                    <div class="photo-caption">digital overlays by Jake McCoy</div>
+                </div>
+                <div class="photo-item square" data-index="1">
+                    <img src="../../../assets/photos/woah/woah/woah2.JPG" alt="Digital overlay by Jake McCoy" loading="lazy">
+                    <div class="photo-caption">digital overlays by Jake McCoy</div>
+                </div>
+                <div class="photo-item square" data-index="2">
+                    <img src="../../../assets/photos/woah/woah/woah3.JPG" alt="Digital overlay by Jake McCoy" loading="lazy">
+                    <div class="photo-caption">digital overlays by Jake McCoy</div>
+                </div>
+            </div>
+            <div class="strip-scroll-hint">← drag to scroll →</div>
+        </div>
+    </div>
+
+    <div class="photo-lightbox" id="woahLightbox">
+        <button class="lb-close" id="woahLbClose">[ close ]</button>
+        <div class="lb-img-wrap"><img id="woahLbImg" src="" alt=""></div>
+        <div class="lb-cap" id="woahLbCap"></div>
+        <div class="lb-nav">
+            <button class="lb-btn" id="woahLbPrev">← prev</button>
+            <span class="lb-counter" id="woahLbCounter"></span>
+            <button class="lb-btn" id="woahLbNext">next →</button>
+        </div>
+    </div>
+</main>
+
+<footer>&copy; 2026 <span>magmacrunch media</span></footer>
+
+<script src="../../../nav.js?v=a1127215"></script>
+<script>
+(function() {
+    document.querySelectorAll('.photo-strip').forEach(strip => {
+        const wrap = strip.closest('.photo-strip-wrap');
+        let isDown = false, startX, scrollLeft;
+        strip.addEventListener('mousedown', e => { isDown = true; strip.classList.add('dragging'); startX = e.pageX - strip.offsetLeft; scrollLeft = strip.scrollLeft; });
+        strip.addEventListener('mouseleave', () => { isDown = false; strip.classList.remove('dragging'); });
+        strip.addEventListener('mouseup',    () => { isDown = false; strip.classList.remove('dragging'); });
+        strip.addEventListener('mousemove',  e => { if (!isDown) return; e.preventDefault(); strip.scrollLeft = scrollLeft - (e.pageX - strip.offsetLeft - startX) * 1.2; });
+        strip.addEventListener('scroll', () => { if (strip.scrollLeft > 30) wrap.classList.add('scrolled'); }, { passive: true });
+    });
+})();
+(function() {
+    const items   = document.querySelectorAll('#woahStrip .photo-item, #doStrip .photo-item');
+    const lb      = document.getElementById('woahLightbox');
+    const lbImg   = document.getElementById('woahLbImg');
+    const lbCap   = document.getElementById('woahLbCap');
+    const lbCount = document.getElementById('woahLbCounter');
+    const strip   = document.getElementById('woahStrip');
+
+    const photos = Array.from(items).map(item => ({
+        src:     item.querySelector('img').src,
+        alt:     item.querySelector('img').alt,
+        caption: item.querySelector('.photo-caption').textContent.trim()
+    }));
+
+    let current = 0;
+
+    function open(index) {
+        current = index;
+        show();
+        lb.classList.add('open');
+        document.body.style.overflow = 'hidden';
+    }
+    function close() {
+        lb.classList.remove('open');
+        document.body.style.overflow = '';
+    }
+    function show() {
+        lbImg.src = photos[current].src;
+        lbImg.alt = photos[current].alt;
+        lbCap.textContent = photos[current].caption;
+        lbCount.textContent = `${current + 1} / ${photos.length}`;
+    }
+    function nav(dir) {
+        current = (current + dir + photos.length) % photos.length;
+        show();
+    }
+
+    items.forEach(item => {
+        item.addEventListener('click', () => {
+            if (!strip.classList.contains('dragging'))
+                open(parseInt(item.dataset.index));
+        });
+    });
+
+    document.getElementById('woahLbClose').addEventListener('click', close);
+    document.getElementById('woahLbPrev').addEventListener('click', () => nav(-1));
+    document.getElementById('woahLbNext').addEventListener('click', () => nav(1));
+    lb.addEventListener('click', e => { if (e.target === lb) close(); });
+    document.addEventListener('keydown', e => {
+        if (!lb.classList.contains('open')) return;
+        if (e.key === 'Escape')      close();
+        if (e.key === 'ArrowLeft')   nav(-1);
+        if (e.key === 'ArrowRight')  nav(1);
+    });
+})();
+</script>
+</body>
+</html>

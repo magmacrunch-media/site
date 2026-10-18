@@ -1,0 +1,22 @@
+/* Jon McCoy — photography page — dusty plum accent */
+body.jm-page.jm-photography-page main { padding: 72px 20px 60px; }
+
+body.jm-page.jm-photography-page main .breadcrumb { position: relative; top: auto; left: auto; z-index: 10; margin: 0 0 16px; align-self: flex-start; }
+body.jm-page.jm-photography-page .breadcrumb { color: var(--dim); }
+body.jm-page.jm-photography-page .breadcrumb a { color: var(--jm-dusty-plum); }
+body.jm-page.jm-photography-page .breadcrumb a:hover { color: var(--jm-cream); }
+body.jm-page.jm-photography-page .breadcrumb .sep { color: var(--jm-dusty-plum); opacity: 0.6; }
+body.jm-page.jm-photography-page .breadcrumb .current { color: var(--jm-dusty-plum); }
+
+body.jm-page.jm-photography-page .page-header { width: 100%; max-width: 960px; margin-top: 16px; margin-bottom: 32px; animation: fadeUp 0.5s ease both; }
+body.jm-page.jm-photography-page .artist-label { font-family: 'Press Start 2P', monospace; font-size: 10px; color: var(--jm-dusty-plum); letter-spacing: 0.2em; margin-bottom: 8px; opacity: 0.8; }
+body.jm-page.jm-photography-page .page-title { font-family: 'Press Start 2P', monospace; font-size: clamp(12px, 2.5vw, 20px); color: var(--jm-dusty-plum); letter-spacing: 0.08em; line-height: 1.6; margin-bottom: 20px; text-shadow: 0 0 20px rgba(120, 104, 120, 0.5); }
+
+body.jm-page.jm-photography-page .divider { width: 100%; max-width: 960px; height: 1px; background: linear-gradient(90deg, transparent, var(--jm-dusty-plum), var(--jm-periwinkle), var(--jm-dusty-plum), transparent); margin: 0 0 36px; opacity: 0.4; }
+
+body.jm-page.jm-photography-page .nav-card.c-back { background: transparent; color: var(--jm-dusty-plum); border-color: var(--jm-dusty-plum); }
+body.jm-page.jm-photography-page .nav-card.c-back:hover { background: var(--jm-dusty-plum); color: var(--jm-cream); }
+body.jm-page.jm-photography-page .nav-card.c-deep { background: var(--jm-mid-cool); color: var(--jm-cream); border-color: var(--jm-mid-cool); }
+body.jm-page.jm-photography-page .nav-card.c-deep:hover { background: var(--jm-light-cool); border-color: var(--jm-light-cool); color: var(--jm-bg); }
+
+body.jm-page.jm-photography-page .nav-card::after { display: none; }
