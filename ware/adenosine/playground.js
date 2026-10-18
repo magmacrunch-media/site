@@ -21,10 +21,10 @@ const PACKAGES = {
 const EXAMPLES = {
   rpg:          ["rpg-basic","rpg-camera","rpg-npcs","rpg-enemies","rpg-inventory","rpg-health","rpg-transitions","rpg-events"],
   puzzle:       ["puzzle-15","puzzle-2048"],
-  cards:        ["cards-deal","cards-poker"],
+  cards:        ["game-draw-poker","cards-deal","cards-poker","cards-showdown","cards-cribbage"],
   audio:        ["audio-tone"],
   "score-client":["score-basic"],
-  multiplayer:  ["mp-template"],
+  multiplayer:  ["mp-loopback","mp-template"],
   chat:         ["chat-widget"],
   race:         ["race-track"],
   spectrum:     ["spectrum-light"],
