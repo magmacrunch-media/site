@@ -32,20 +32,34 @@
     body > * { width: 100%; }
     a { color: #7cc7ff; }
 
-    /* The category pages' breadcrumb, from ware.css. Copied rather than
-       linking ware.css, which also restyles body and footer for those pages.
-       The top margin clears the fixed site nav, which is 48px tall and sits
-       over the top of the page rather than pushing it down. */
-    .breadcrumb {
-      max-width: 640px; margin: calc(48px + 1.5rem) auto 0; padding: 0 1.5rem;
-      font: 7px/1.8 'Press Start 2P', monospace;
-      letter-spacing: 0.1em;
-      color: #007A7A;
+    /* The back bar every ware product page carries, as on hologram's: a
+       strip under the fixed 48px site nav with one chip back to the
+       category. The margin is what keeps it out from under the nav. */
+    .tool-nav {
+      margin-top: 48px;
+      padding: 8px 24px;
+      border-bottom: 1px solid var(--line);
+      background: #14141b;
+      flex-shrink: 0;
     }
-    .breadcrumb a { color: #007A7A; text-decoration: none; transition: color 0.15s; }
-    .breadcrumb a:hover { color: #00FFFF; }
-    .breadcrumb .sep { margin: 0 8px; color: #00FFFF; opacity: 0.7; }
-    .breadcrumb .current { color: #00FFFF; }
+    .tool-nav .back-link {
+      font-family: 'Press Start 2P', monospace;
+      font-size: 7px;
+      color: var(--dim);
+      background: var(--panel);
+      padding: 6px 10px;
+      border: 1px solid var(--line);
+      text-decoration: none;
+      letter-spacing: 0.1em;
+      transition: color 0.15s, border-color 0.15s;
+    }
+    .tool-nav .back-link:hover { color: #e8e6f0; border-color: var(--green); }
+    footer {
+      font-family: 'Courier Prime', monospace;
+      font-size: 12px;
+      border-top: 1px solid var(--line);
+    }
+    footer span { color: #7cc7ff; }
 
     /* ── Hero ──────────────────────────────────────────── */
 
@@ -159,7 +173,7 @@
 
     @media (max-width: 560px) {
       .hero { padding: 2rem 1rem 1.5rem; }
-      .section, .breadcrumb { padding: 0 1rem; }
+      .section { padding: 0 1rem; }
       .platform { grid-template-columns: 1fr; gap: .45rem; }
       .built { grid-template-columns: 1fr; }
       .play-btn { min-height: 44px; display: inline-flex; align-items: center; }
@@ -170,14 +184,8 @@
 
 <nav id="auto-nav" data-depth="../../"></nav>
 
-<div class="breadcrumb">
-  <a href="../../">home</a>
-  <span class="sep">›</span>
-  <a href="../">ware</a>
-  <span class="sep">›</span>
-  <a href="../games/">video games</a>
-  <span class="sep">›</span>
-  <span class="current">george boole</span>
+<div class="tool-nav">
+  <a href="../games/" class="back-link">&larr; video games</a>
 </div>
 
 <div class="hero">
