@@ -32,9 +32,20 @@
     body > * { width: 100%; }
     a { color: #7cc7ff; }
 
-    .tool-nav { max-width: 640px; margin: 1rem auto 0; padding: 0 1.5rem; }
-    .back-link { font-size: 12px; color: var(--dim); text-decoration: none; }
-    .back-link:hover { color: #e8e6f0; }
+    /* The category pages' breadcrumb, from ware.css. Copied rather than
+       linking ware.css, which also restyles body and footer for those pages.
+       The top margin clears the fixed site nav, which is 48px tall and sits
+       over the top of the page rather than pushing it down. */
+    .breadcrumb {
+      max-width: 640px; margin: calc(48px + 1.5rem) auto 0; padding: 0 1.5rem;
+      font: 7px/1.8 'Press Start 2P', monospace;
+      letter-spacing: 0.1em;
+      color: #007A7A;
+    }
+    .breadcrumb a { color: #007A7A; text-decoration: none; transition: color 0.15s; }
+    .breadcrumb a:hover { color: #00FFFF; }
+    .breadcrumb .sep { margin: 0 8px; color: #00FFFF; opacity: 0.7; }
+    .breadcrumb .current { color: #00FFFF; }
 
     /* ── Hero ──────────────────────────────────────────── */
 
@@ -148,7 +159,7 @@
 
     @media (max-width: 560px) {
       .hero { padding: 2rem 1rem 1.5rem; }
-      .section { padding: 0 1rem; }
+      .section, .breadcrumb { padding: 0 1rem; }
       .platform { grid-template-columns: 1fr; gap: .45rem; }
       .built { grid-template-columns: 1fr; }
       .play-btn { min-height: 44px; display: inline-flex; align-items: center; }
@@ -159,8 +170,14 @@
 
 <nav id="auto-nav" data-depth="../../"></nav>
 
-<div class="tool-nav">
-  <a href="../games/" class="back-link">&larr; video games</a>
+<div class="breadcrumb">
+  <a href="../../">home</a>
+  <span class="sep">›</span>
+  <a href="../">ware</a>
+  <span class="sep">›</span>
+  <a href="../games/">video games</a>
+  <span class="sep">›</span>
+  <span class="current">george boole</span>
 </div>
 
 <div class="hero">
