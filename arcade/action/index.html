@@ -67,22 +67,12 @@
             overflow-x: auto;
         }
 
-        .page-title-ascii {
-            display: inline-block;
-            font-family: 'Courier Prime', monospace;
-            font-size: 9px;
-            line-height: 1.1;
-            color: #ff2e9c;
-            text-shadow: 0 0 8px rgba(255,46,156,0.5);
-            white-space: pre;
-            text-align: left;
-            margin: 0;
-            flex-shrink: 0;
+        .page-title-art {
+            display: block;
+            width: min(340px, 76vw);
+            height: auto;
+            filter: drop-shadow(0 0 8px rgba(255,46,156,0.5));
         }
-
-        @media (max-width: 1200px) { .page-title-ascii { font-size: 8px; } }
-        @media (max-width: 900px)  { .page-title-ascii { font-size: 7px; } }
-        @media (max-width: 600px)  { .page-title-ascii { font-size: 6px; } }
 
         .page-subtitle {
             font-family: 'Press Start 2P', monospace;
@@ -233,13 +223,10 @@
 
     <!-- Header -->
     <div class="page-header">
-        <div class="page-title-ascii-wrap"><pre class="page-title-ascii">
- █████╗  ██████╗████████╗██╗ ██████╗ ███╗   ██╗
-██╔══██╗██╔════╝╚══██╔══╝██║██╔═══██╗████╗  ██║
-███████║██║        ██║   ██║██║   ██║██╔██╗ ██║
-██╔══██║██║        ██║   ██║██║   ██║██║╚██╗██║
-██║  ██║╚██████╗   ██║   ██║╚██████╔╝██║ ╚████║
-╚═╝  ╚═╝ ╚═════╝   ╚═╝   ╚═╝ ╚═════╝ ╚═╝  ╚═══╝</pre></div>
+        <!-- Drawn as rects, not text: Courier Prime has no block or box-drawing glyphs, so a <pre>
+             took each from a fallback font with its own width and the columns drifted.
+             Solid cells are the face, the box-drawing cells of the ANSI Shadow art the shadow. -->
+        <div class="page-title-ascii-wrap"><svg class="page-title-art" viewBox="0 0 47 12" role="img" aria-label="ACTION" shape-rendering="crispEdges"><g fill="#7a1650"><rect x="6" y="0" width="1" height="2"/><rect x="15" y="0" width="1" height="2"/><rect x="24" y="0" width="1" height="2"/><rect x="27" y="0" width="1" height="2"/><rect x="35" y="0" width="1" height="2"/><rect x="40" y="0" width="1" height="2"/><rect x="46" y="0" width="1" height="2"/><rect x="2" y="2" width="3" height="2"/><rect x="7" y="2" width="1" height="2"/><rect x="10" y="2" width="9" height="2"/><rect x="21" y="2" width="4" height="2"/><rect x="27" y="2" width="1" height="2"/><rect x="30" y="2" width="4" height="2"/><rect x="36" y="2" width="1" height="2"/><rect x="41" y="2" width="1" height="2"/><rect x="46" y="2" width="1" height="2"/><rect x="7" y="4" width="1" height="2"/><rect x="10" y="4" width="1" height="2"/><rect x="21" y="4" width="1" height="2"/><rect x="27" y="4" width="1" height="2"/><rect x="30" y="4" width="1" height="2"/><rect x="36" y="4" width="1" height="2"/><rect x="39" y="4" width="1" height="2"/><rect x="42" y="4" width="1" height="2"/><rect x="46" y="4" width="1" height="2"/><rect x="2" y="6" width="3" height="2"/><rect x="7" y="6" width="1" height="2"/><rect x="10" y="6" width="1" height="2"/><rect x="21" y="6" width="1" height="2"/><rect x="27" y="6" width="1" height="2"/><rect x="30" y="6" width="1" height="2"/><rect x="36" y="6" width="1" height="2"/><rect x="39" y="6" width="2" height="2"/><rect x="43" y="6" width="1" height="2"/><rect x="46" y="6" width="1" height="2"/><rect x="2" y="8" width="1" height="2"/><rect x="7" y="8" width="2" height="2"/><rect x="15" y="8" width="1" height="2"/><rect x="21" y="8" width="1" height="2"/><rect x="27" y="8" width="2" height="2"/><rect x="35" y="8" width="2" height="2"/><rect x="39" y="8" width="1" height="2"/><rect x="41" y="8" width="1" height="2"/><rect x="46" y="8" width="1" height="2"/><rect x="0" y="10" width="3" height="2"/><rect x="5" y="10" width="3" height="2"/><rect x="9" y="10" width="7" height="2"/><rect x="19" y="10" width="3" height="2"/><rect x="25" y="10" width="3" height="2"/><rect x="29" y="10" width="7" height="2"/><rect x="37" y="10" width="3" height="2"/><rect x="42" y="10" width="5" height="2"/></g><g fill="#ff2e9c"><rect x="1" y="0" width="5" height="2"/><rect x="9" y="0" width="6" height="2"/><rect x="16" y="0" width="8" height="2"/><rect x="25" y="0" width="2" height="2"/><rect x="29" y="0" width="6" height="2"/><rect x="37" y="0" width="3" height="2"/><rect x="44" y="0" width="2" height="2"/><rect x="0" y="2" width="2" height="2"/><rect x="5" y="2" width="2" height="2"/><rect x="8" y="2" width="2" height="2"/><rect x="19" y="2" width="2" height="2"/><rect x="25" y="2" width="2" height="2"/><rect x="28" y="2" width="2" height="2"/><rect x="34" y="2" width="2" height="2"/><rect x="37" y="2" width="4" height="2"/><rect x="44" y="2" width="2" height="2"/><rect x="0" y="4" width="7" height="2"/><rect x="8" y="4" width="2" height="2"/><rect x="19" y="4" width="2" height="2"/><rect x="25" y="4" width="2" height="2"/><rect x="28" y="4" width="2" height="2"/><rect x="34" y="4" width="2" height="2"/><rect x="37" y="4" width="2" height="2"/><rect x="40" y="4" width="2" height="2"/><rect x="44" y="4" width="2" height="2"/><rect x="0" y="6" width="2" height="2"/><rect x="5" y="6" width="2" height="2"/><rect x="8" y="6" width="2" height="2"/><rect x="19" y="6" width="2" height="2"/><rect x="25" y="6" width="2" height="2"/><rect x="28" y="6" width="2" height="2"/><rect x="34" y="6" width="2" height="2"/><rect x="37" y="6" width="2" height="2"/><rect x="41" y="6" width="2" height="2"/><rect x="44" y="6" width="2" height="2"/><rect x="0" y="8" width="2" height="2"/><rect x="5" y="8" width="2" height="2"/><rect x="9" y="8" width="6" height="2"/><rect x="19" y="8" width="2" height="2"/><rect x="25" y="8" width="2" height="2"/><rect x="29" y="8" width="6" height="2"/><rect x="37" y="8" width="2" height="2"/><rect x="42" y="8" width="4" height="2"/></g></svg></div>
         <div class="page-subtitle">// run, dodge, survive //</div>
     </div>
 
@@ -263,6 +250,7 @@
         <a href="../very-long-boards/" class="game-card" style="--card-color: #b537f2">
             <div class="card-inner">
                 <div class="card-tags">
+                    <span class="card-tag" style="color: #ffb000">PROTOTYPE</span>
                     <span class="card-tag" style="color: #39ff6e">MOBILE</span>
                     <span class="card-tag" style="color: #ff2e9c">CARL SPATSKI</span>
                 </div>
@@ -278,6 +266,7 @@
         <a href="../roderick-tron/" class="game-card" style="--card-color: #00f0ff">
             <div class="card-inner">
                 <div class="card-tags">
+                    <span class="card-tag" style="color: #ffb000">PROTOTYPE</span>
                     <span class="card-tag card-tag-demo">NEW</span>
                 </div>
                 <div class="card-title">RODERICK<br>TRON</div>
@@ -306,6 +295,7 @@
         <a href="../jovian-humanitarian-conflict/" class="game-card" style="--card-color: #ffc247">
             <div class="card-inner">
                 <div class="card-tags">
+                    <span class="card-tag" style="color: #ffb000">PROTOTYPE</span>
                     <span class="card-tag card-tag-demo">NEW</span>
                 </div>
                 <div class="card-title">JOVIAN<br>HUMANITARIAN<br>CONFLICT</div>
@@ -320,6 +310,7 @@
         <a href="../cave-diving/" class="game-card" style="--card-color: #3fe0d0">
             <div class="card-inner">
                 <div class="card-tags">
+                    <span class="card-tag" style="color: #ffb000">PROTOTYPE</span>
                     <span class="card-tag card-tag-demo">NEW</span>
                     <span class="card-tag" style="color: #39ff6e">MOBILE</span>
                 </div>
@@ -335,6 +326,7 @@
         <a href="../caldera/" class="game-card" style="--card-color: #ff5a1f">
             <div class="card-inner">
                 <div class="card-tags">
+                    <span class="card-tag" style="color: #ffb000">PROTOTYPE</span>
                     <span class="card-tag card-tag-demo">NEW</span>
                     <span class="card-tag" style="color: #39ff6e">MOBILE</span>
                 </div>
@@ -352,7 +344,7 @@
                 <div class="card-tags">
                     <span class="card-tag card-tag-demo">NEW</span>
                     <span class="card-tag" style="color: #39ff6e">MOBILE</span>
-                    <span class="card-tag" style="color: #a8e6ff">PROTOTYPE</span>
+                    <span class="card-tag" style="color: #ffb000">PROTOTYPE</span>
                 </div>
                 <div class="card-title">GROCERY HARRISON</div>
                 <div class="card-canvas-wrap">
