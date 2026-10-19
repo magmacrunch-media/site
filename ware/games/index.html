@@ -16,6 +16,28 @@
     <link rel="icon" type="image/x-icon" href="../../favicon.ico">
     <link rel="stylesheet" href="../../style.css?v=53e9e146">
     <link rel="stylesheet" href="../ware.css?v=0f9ae897">
+    <!-- The group headings are this page's alone, so they live here rather
+         than in ware.css, whose stamp every ware page shares. -->
+    <style>
+        .game-group {
+            font-family: 'Press Start 2P', monospace;
+            font-size: 10px; font-weight: 400;
+            color: var(--cyan);
+            letter-spacing: 0.1em;
+            width: min(520px, 90vw);
+            margin: 0 0 6px;
+            animation: fadeUp 0.5s 0.12s ease both;
+        }
+        .game-group-blurb {
+            font-family: 'Courier Prime', monospace;
+            font-size: 12px;
+            color: var(--cyan-dim);
+            width: min(520px, 90vw);
+            margin: 0 0 14px;
+            animation: fadeUp 0.5s 0.12s ease both;
+        }
+        .tool-cards + .game-group { margin-top: 44px; }
+    </style>
 </head>
 <body>
 
@@ -40,6 +62,8 @@
          better served by the arcade linking straight to play. The colours are
          inline rather than in ware.css so adding a game never re-stamps the
          stylesheet every ware page shares. -->
+    <h2 class="game-group">// originals //</h2>
+    <p class="game-group-blurb">games made here, from scratch</p>
     <div class="tool-cards">
 
         <a href="../george-boole/" class="tool-card" style="--accent:#39ff84; --a2:#20d060; --a3:#109040; --ink:#d0ffe0;">
@@ -52,7 +76,6 @@
             </div>
         </a>
 
-
         <a href="../moonlight-drift/" class="tool-card" style="--accent:#ff2e9c; --a2:#f1007f; --a3:#a60057; --ink:#f0f0f8;">
             <div class="tc-inner">
                 <div class="tc-text">
@@ -62,6 +85,7 @@
                 <span class="tc-arrow">▶</span>
             </div>
         </a>
+
         <a href="../texas-holdem-lava-dome/" class="tool-card" style="--accent:#ff6a2b; --a2:#ee4700; --a3:#a43100; --ink:#f0f0f8;">
             <div class="tc-inner">
                 <div class="tc-text">
@@ -71,6 +95,7 @@
                 <span class="tc-arrow">▶</span>
             </div>
         </a>
+
         <a href="../jovian-humanitarian-conflict/" class="tool-card" style="--accent:#ffc247; --a2:#ffac06; --a3:#b37800; --ink:#f0f0f8;">
             <div class="tc-inner">
                 <div class="tc-text">
@@ -80,6 +105,7 @@
                 <span class="tc-arrow">▶</span>
             </div>
         </a>
+
         <a href="../makemecookies/" class="tool-card" style="--accent:#ff5fa2; --a2:#ff1979; --a3:#c10051; --ink:#f0f0f8;">
             <div class="tc-inner">
                 <div class="tc-text">
@@ -89,6 +115,7 @@
                 <span class="tc-arrow">▶</span>
             </div>
         </a>
+
         <a href="../very-long-boards/" class="tool-card" style="--accent:#b537f2; --a2:#9b0fdf; --a3:#6b0a99; --ink:#f0f0f8;">
             <div class="tc-inner">
                 <div class="tc-text">
@@ -98,6 +125,7 @@
                 <span class="tc-arrow">▶</span>
             </div>
         </a>
+
         <a href="../caldera/" class="tool-card" style="--accent:#ff5a1f; --a2:#e53c00; --a3:#9d2900; --ink:#f0f0f8;">
             <div class="tc-inner">
                 <div class="tc-text">
@@ -107,6 +135,7 @@
                 <span class="tc-arrow">▶</span>
             </div>
         </a>
+
         <a href="../roderick-tron/" class="tool-card" style="--accent:#00f0ff; --a2:#00c0cc; --a3:#00848c; --ink:#f0f0f8;">
             <div class="tc-inner">
                 <div class="tc-text">
@@ -116,6 +145,13 @@
                 <span class="tc-arrow">▶</span>
             </div>
         </a>
+
+    </div>
+
+    <h2 class="game-group">// classics //</h2>
+    <p class="game-group-blurb">board, card &amp; puzzle classics, rebuilt for the arcade and the terminal</p>
+    <div class="tool-cards">
+
         <a href="../backgammon/" class="tool-card" style="--accent:#00f5ff; --a2:#00c4cc; --a3:#00878c; --ink:#f0f0f8;">
             <div class="tc-inner">
                 <div class="tc-text">
@@ -125,6 +161,7 @@
                 <span class="tc-arrow">▶</span>
             </div>
         </a>
+
         <a href="../checkers/" class="tool-card" style="--accent:#00f5ff; --a2:#00c4cc; --a3:#00878c; --ink:#f0f0f8;">
             <div class="tc-inner">
                 <div class="tc-text">
@@ -134,6 +171,7 @@
                 <span class="tc-arrow">▶</span>
             </div>
         </a>
+
         <a href="../chess/" class="tool-card" style="--accent:#00f5ff; --a2:#00c4cc; --a3:#00878c; --ink:#f0f0f8;">
             <div class="tc-inner">
                 <div class="tc-text">
@@ -143,6 +181,7 @@
                 <span class="tc-arrow">▶</span>
             </div>
         </a>
+
         <a href="../chinese-checkers/" class="tool-card" style="--accent:#c45fff; --a2:#aa19ff; --a3:#7a00c1; --ink:#f0f0f8;">
             <div class="tc-inner">
                 <div class="tc-text">
@@ -152,6 +191,7 @@
                 <span class="tc-arrow">▶</span>
             </div>
         </a>
+
         <a href="../cribbage/" class="tool-card" style="--accent:#ffd700; --a2:#ccac00; --a3:#8c7600; --ink:#f0f0f8;">
             <div class="tc-inner">
                 <div class="tc-text">
@@ -161,15 +201,7 @@
                 <span class="tc-arrow">▶</span>
             </div>
         </a>
-        <a href="../nelikko/" class="tool-card" style="--accent:#9fd8ff; --a2:#4cb6ff; --a3:#0087e4; --ink:#f0f0f8;">
-            <div class="tc-inner">
-                <div class="tc-text">
-                    <span class="tc-label">NELIKKO</span>
-                    <span class="tc-desc">falling-block puzzle &middot; browser &middot; terminal</span>
-                </div>
-                <span class="tc-arrow">▶</span>
-            </div>
-        </a>
+
         <a href="../tarot/" class="tool-card" style="--accent:#ffd700; --a2:#ccac00; --a3:#8c7600; --ink:#f0f0f8;">
             <div class="tc-inner">
                 <div class="tc-text">
@@ -179,6 +211,17 @@
                 <span class="tc-arrow">▶</span>
             </div>
         </a>
+
+        <a href="../nelikko/" class="tool-card" style="--accent:#9fd8ff; --a2:#4cb6ff; --a3:#0087e4; --ink:#f0f0f8;">
+            <div class="tc-inner">
+                <div class="tc-text">
+                    <span class="tc-label">NELIKKO</span>
+                    <span class="tc-desc">falling-block puzzle &middot; browser &middot; terminal</span>
+                </div>
+                <span class="tc-arrow">▶</span>
+            </div>
+        </a>
+
     </div>
 
 </main>
