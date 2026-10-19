@@ -1,0 +1,522 @@
+// produce-render.js -- drawing the produce aisle's things, added onto
+// GH.render.
+//
+// Wooden crates of fruit, the blueberry clamshell, lettuce leaves that
+// glisten when wet, herb vines, the misting pipes and their rain, fruit
+// flies, Pete Pepper and the runaway blueberry. Render-only, so
+// Math.random is fine.
+
+Object.assign(GH.render, {
+
+  P: {
+    wood: '#a8743f',
+    woodDark: '#7a5129',
+    leaf: '#6fbf4a',
+    leafDark: '#3f8a2e',
+    stem: '#4a7a2a',
+    pipe: '#7f8c96',
+    berry: '#3b4fa8',
+    berryLight: '#6a7fd6',
+    pepper: '#d6332b',
+    fly: '#2b2318',
+  },
+
+  // The scale everything in this aisle is drawn to. Harrison is 36 px tall
+  // and the size of a cornflake, about 2 cm, so a centimetre is 18 px and a
+  // lemon is wider than three of him. Get this wrong and the jungle reads as
+  // a fruit bowl.
+  CM: 18,
+
+  // Each fruit: its half-length in cm, its height as a share of that, and
+  // how to paint it. Keyed by the label on its crate or bin.
+  FRUIT: {
+    LEMONS: { cm: 3.5, ry: 0.72, color: '#f4d03f', dark: '#c9a227', nub: true, pores: true },
+    LIMES: { cm: 2.8, ry: 0.9, color: '#7dbf3a', dark: '#4f8a22', nub: true, pores: true },
+    ONIONS: { cm: 4, ry: 0.9, color: '#b07ab0', dark: '#6e3f6e', stripes: true, tip: true },
+    POTATOES: { cm: 4.5, ry: 0.62, color: '#b08a58', dark: '#7a5a34', eyes: true },
+    MANGOES: { cm: 5.5, ry: 0.68, color: '#f39c33', dark: '#c0392b', blush: '#e74c3c' },
+    PEARS: { cm: 4.5, ry: 1, color: '#c8d65a', dark: '#8a9a2e', pear: true },
+    PLUMS: { cm: 2.5, ry: 0.95, color: '#7a3a7a', dark: '#4a1f4a', crease: true },
+    AVOCADOS: { cm: 5, ry: 0.75, color: '#3f5a24', dark: '#24361a', pores: true, pear: true },
+    BANANAS: { cm: 9.5, banana: true, color: '#f1c40f', dark: '#b7950b' },
+    CARROTS: { cm: 9, carrot: true, color: '#e67e22', dark: '#a04f12' },
+    KALE: { cm: 8, leafy: true, color: '#2f6b3a', dark: '#1d4a26' },
+  },
+
+  // One fruit, centred at (x, y), at r px for half its length.
+  drawFruit(c, f, x, y, r, tilt = 0) {
+    c.save();
+    c.translate(x, y);
+    c.rotate(tilt);
+    if (f.banana) {
+      // A hand of four, fanned out from one stem: each a tapered curve
+      // rather than a tube, ridged along its length, brown at the tip.
+      for (let k = 3; k >= 0; k--) {
+        c.save();
+        c.translate(-r * 0.75, -r * 0.25 + k * r * 0.05);
+        c.rotate(-0.35 + k * 0.2);
+        this.drawBanana(c, f, r, k === 3 ? 0.25 : k * 0.08);
+        c.restore();
+      }
+      c.restore();
+      return;
+    }
+    if (f.carrot) {
+      c.fillStyle = '#4fa83a';
+      for (const a of [-0.4, 0, 0.4]) {
+        c.beginPath(); c.ellipse(Math.sin(a) * r * 0.2, -r - r * 0.2, r * 0.07, r * 0.3, a, 0, Math.PI * 2); c.fill();
+      }
+      c.fillStyle = f.color;
+      c.beginPath(); c.moveTo(-r * 0.22, -r); c.lineTo(r * 0.22, -r); c.lineTo(0, r); c.closePath(); c.fill();
+      c.strokeStyle = f.dark;
+      c.lineWidth = 2;
+      for (let k = -0.7; k < 0.8; k += 0.3) {
+        const half = r * 0.22 * (1 - (k + 1) / 2);
+        c.beginPath(); c.moveTo(-half, k * r); c.lineTo(half * 0.3, k * r + 3); c.stroke();
+      }
+      c.restore();
+      return;
+    }
+    if (f.leafy) {
+      this.drawKaleLeaf(c, f, r);
+      c.restore();
+      return;
+    }
+    const ry = r * f.ry;
+    const g = c.createRadialGradient(-r * 0.35, -ry * 0.4, r * 0.1, 0, 0, r * 1.1);
+    g.addColorStop(0, f.blush ? '#ffd27a' : '#fffbe0');
+    g.addColorStop(0.18, f.color);
+    g.addColorStop(1, f.blush || f.dark);
+    c.fillStyle = g;
+    c.beginPath();
+    if (f.pear) {
+      // A pear (or an avocado): a small top on a large bottom.
+      c.ellipse(0, ry * 0.25, r * 0.78, ry * 0.75, 0, 0, Math.PI * 2);
+      c.ellipse(0, -ry * 0.45, r * 0.48, ry * 0.5, 0, 0, Math.PI * 2);
+    } else {
+      c.ellipse(0, 0, r, ry, 0, 0, Math.PI * 2);
+    }
+    c.fill();
+    if (f.nub) {
+      c.fillStyle = f.color;
+      c.beginPath(); c.ellipse(r * 0.98, 0, r * 0.12, r * 0.09, 0, 0, Math.PI * 2); c.fill();
+      c.beginPath(); c.ellipse(-r * 0.98, 0, r * 0.1, r * 0.08, 0, 0, Math.PI * 2); c.fill();
+    }
+    if (f.pores) {
+      // Peel pores: at this scale you can see every one.
+      c.fillStyle = 'rgba(0, 0, 0, 0.12)';
+      for (let i = 0; i < 40; i++) {
+        const a = i * 2.39996, d = Math.sqrt(i / 40) * 0.85;
+        c.fillRect(Math.cos(a) * r * d, Math.sin(a) * ry * d, 2, 2);
+      }
+    }
+    if (f.stripes) {
+      c.strokeStyle = 'rgba(255, 230, 255, 0.35)';
+      c.lineWidth = 2;
+      for (let k = -0.6; k <= 0.61; k += 0.3) {
+        c.beginPath(); c.ellipse(0, 0, Math.abs(k) * r + 1, ry, 0, -Math.PI / 2, Math.PI / 2, k < 0); c.stroke();
+      }
+    }
+    if (f.tip) {
+      c.fillStyle = '#8a6a40';
+      c.beginPath(); c.moveTo(-r * 0.1, -ry * 0.9); c.lineTo(0, -ry * 1.25); c.lineTo(r * 0.1, -ry * 0.9); c.fill();
+    }
+    if (f.eyes) {
+      c.fillStyle = f.dark;
+      for (const [ex, ey] of [[-0.4, -0.2], [0.3, 0.25], [0.55, -0.3], [-0.1, 0.4]]) {
+        c.beginPath(); c.ellipse(ex * r, ey * ry, r * 0.05, r * 0.03, 0, 0, Math.PI * 2); c.fill();
+      }
+    }
+    if (f.crease) {
+      c.strokeStyle = 'rgba(0, 0, 0, 0.3)';
+      c.lineWidth = 2;
+      c.beginPath(); c.moveTo(0, -ry); c.quadraticCurveTo(r * 0.25, 0, 0, ry); c.stroke();
+    }
+    if (f.pear) {
+      c.strokeStyle = '#5a3a1a';
+      c.lineWidth = r * 0.06;
+      c.beginPath(); c.moveTo(0, -ry * 0.92); c.lineTo(r * 0.08, -ry * 1.2); c.stroke();
+    }
+    // Shine.
+    c.fillStyle = 'rgba(255, 255, 255, 0.28)';
+    c.beginPath(); c.ellipse(-r * 0.4, -ry * 0.45, r * 0.18, ry * 0.1, -0.5, 0, Math.PI * 2); c.fill();
+    c.restore();
+  },
+
+  // One banana, its stem at the origin, curving off along +x with the
+  // inside of the curve upwards. `shade` darkens the ones behind.
+  drawBanana(c, f, r, shade) {
+    const len = r * 2, R = r * 1.5, span = len / R, W = r * 0.36;
+    const cx = 0, cy = -R;  // centre of curvature, above the banana
+    const at = (t, off) => {
+      const a = Math.PI / 2 + span / 2 - t * span;
+      return [cx + Math.cos(a) * (R + off) + R * Math.sin(span / 2), cy + Math.sin(a) * (R + off) + R * (1 - Math.cos(span / 2))];
+    };
+    const width = t => W * Math.max(0.12, Math.pow(Math.sin(Math.PI * Math.min(1, 0.08 + t)), 0.55));
+    c.beginPath();
+    for (let i = 0; i <= 24; i++) { const t = i / 24; const [px, py] = at(t, width(t) / 2); i ? c.lineTo(px, py) : c.moveTo(px, py); }
+    for (let i = 24; i >= 0; i--) { const t = i / 24; const [px, py] = at(t, -width(t) / 2); c.lineTo(px, py); }
+    c.closePath();
+    const g = c.createLinearGradient(0, -W, 0, W * 1.5);
+    g.addColorStop(0, '#fff2a0');
+    g.addColorStop(0.4, f.color);
+    g.addColorStop(1, f.dark);
+    c.fillStyle = g;
+    c.fill();
+    c.strokeStyle = 'rgba(120, 90, 10, 0.6)';
+    c.lineWidth = 1.5;
+    c.stroke();
+    // The ridge down its length.
+    c.strokeStyle = 'rgba(150, 110, 10, 0.45)';
+    c.beginPath();
+    for (let i = 2; i <= 22; i++) { const [px, py] = at(i / 24, width(i / 24) * 0.12); i > 2 ? c.lineTo(px, py) : c.moveTo(px, py); }
+    c.stroke();
+    // The brown tip, and the green-brown stem.
+    const [tx, ty] = at(1, 0);
+    c.fillStyle = '#3a2a12';
+    c.beginPath(); c.arc(tx, ty, r * 0.05, 0, Math.PI * 2); c.fill();
+    const [sx, sy] = at(0, 0);
+    c.strokeStyle = '#6b6a2a';
+    c.lineWidth = r * 0.09;
+    c.beginPath(); c.moveTo(sx, sy); c.lineTo(sx - r * 0.18, sy - r * 0.06); c.stroke();
+    if (shade) {
+      c.globalAlpha = shade;
+      c.fillStyle = '#000';
+      c.beginPath();
+      for (let i = 0; i <= 24; i++) { const t = i / 24; const [px, py] = at(t, width(t) / 2); i ? c.lineTo(px, py) : c.moveTo(px, py); }
+      for (let i = 24; i >= 0; i--) { const t = i / 24; const [px, py] = at(t, -width(t) / 2); c.lineTo(px, py); }
+      c.fill();
+      c.globalAlpha = 1;
+    }
+  },
+
+  // A kale leaf, stem at -x, tip at +x: long, with a tightly ruffled edge,
+  // a pale rib and veins.
+  drawKaleLeaf(c, f, r) {
+    const outline = (scale, ruffle) => {
+      c.beginPath();
+      for (let i = 0; i <= 120; i++) {
+        const th = (i / 120) * Math.PI * 2;
+        // No ruffle near the stem end, full ruffle along the blade.
+        const blade = Math.min(1, Math.max(0, (Math.cos(th) + 0.85) / 0.6));
+        const m = 1 + blade * ruffle * (0.09 * Math.sin(th * 26) + 0.05 * Math.sin(th * 61));
+        const px = Math.cos(th) * r * scale * m, py = Math.sin(th) * r * 0.42 * scale * m;
+        i ? c.lineTo(px, py) : c.moveTo(px, py);
+      }
+      c.closePath();
+    };
+    c.fillStyle = f.dark;
+    outline(1, 1.2); c.fill();
+    c.fillStyle = f.color;
+    outline(0.9, 1); c.fill();
+    // Puckers in the blade.
+    c.fillStyle = 'rgba(10, 40, 20, 0.35)';
+    for (let i = 0; i < 14; i++) {
+      const u = -0.6 + (i % 7) * 0.22, v = (i < 7 ? -1 : 1) * 0.2;
+      c.beginPath(); c.ellipse(u * r, v * r, r * 0.05, r * 0.025, 0.4 * v, 0, Math.PI * 2); c.fill();
+    }
+    // The rib, running out past the stem end, and its veins.
+    c.strokeStyle = '#b7d6a2';
+    c.lineWidth = r * 0.05;
+    c.beginPath(); c.moveTo(-r * 1.25, 0); c.lineTo(r * 0.8, 0); c.stroke();
+    c.lineWidth = r * 0.015;
+    for (let u = -0.6; u < 0.7; u += 0.22) {
+      for (const sgn of [-1, 1]) {
+        c.beginPath(); c.moveTo(u * r, 0); c.quadraticCurveTo((u + 0.1) * r, sgn * r * 0.15, (u + 0.2) * r, sgn * r * 0.3); c.stroke();
+      }
+    }
+  },
+
+  // A wooden crate of fruit, which at this scale is a building: two or three
+  // giant fruits fill it, cut off by its edges, and its slats are as thick
+  // as Harrison's arm. Its top edge is the ground.
+  drawCrate(c, x0, x1, top, bottom, label) {
+    const P = this.P;
+    const f = this.FRUIT[label] || this.FRUIT.LEMONS;
+    const w = x1 - x0, h = bottom - top;
+    const r = f.cm * this.CM, ry = r * (f.ry || 1);
+    // The gaps between fruits are more fruit, further in and in shadow.
+    c.fillStyle = f.dark;
+    c.fillRect(x0, top, w, h);
+    c.fillStyle = 'rgba(0, 0, 0, 0.45)';
+    c.fillRect(x0, top, w, h);
+    c.save();
+    c.beginPath(); c.rect(x0, top, w, h); c.clip();
+    // Packed in from the bottom, each row offset, a fixed jumble per crate.
+    const seed = (x0 * 7 + top * 3) % 97;
+    for (let row = 0, y = bottom - ry * 0.55; y > top - ry; row++, y -= ry * 1.5) {
+      const off = ((seed + row * 37) % 60) / 60 * r - r * 0.4;
+      for (let x = x0 + off; x < x1 + r; x += r * 1.85) {
+        this.drawFruit(c, f, x, y, r, ((seed + row * 13 + x) % 7 - 3) * 0.08);
+      }
+    }
+    c.restore();
+    // The slats, at true scale, and the posts at the corners.
+    const slat = Math.min(12, h * 0.22);
+    c.fillStyle = P.wood;
+    c.fillRect(x0, top, w, slat);
+    if (h > 70) c.fillRect(x0, top + h * 0.55, w, slat);
+    c.fillStyle = P.woodDark;
+    c.fillRect(x0, top + slat - 2, w, 2);
+    c.fillStyle = P.wood;
+    c.fillRect(x0, top, 8, h);
+    c.fillRect(x1 - 8, top, 8, h);
+    // Grain.
+    c.fillStyle = 'rgba(60, 35, 15, 0.35)';
+    for (let x = x0 + 14; x < x1 - 10; x += 23) c.fillRect(x, top + 3, 10, 1);
+    // The tag, stapled to the top slat.
+    c.font = '7px "Press Start 2P", monospace';
+    const tw = Math.min(w - 24, c.measureText(label).width + 8);
+    c.fillStyle = 'rgba(255, 246, 220, 0.92)';
+    c.fillRect(x0 + 12, top + slat + 2, tw, 11);
+    c.fillStyle = '#3a2410';
+    c.textAlign = 'left';
+    c.save();
+    c.beginPath(); c.rect(x0 + 12, top + slat + 2, tw, 11); c.clip();
+    c.fillText(label, x0 + 16, top + slat + 11);
+    c.restore();
+  },
+
+  // A display bin on the far shelf: a wooden front with its sign, and a heap
+  // of fruit piled above it, each one many times Harrison's size even this
+  // far back. `shelf` is where the bin stands; the heap rises off the top of
+  // the screen if it has to.
+  drawProduceBin(c, x0, x1, shelf, label) {
+    const P = this.P;
+    const f = this.FRUIT[label] || this.FRUIT.LEMONS;
+    const far = 0.6;
+    const r = f.cm * this.CM * far;
+    const ry = r * (f.ry || 0.6);
+    const lip = shelf - 120;
+    c.save();
+    c.beginPath(); c.rect(x0, -50, x1 - x0, shelf + 50); c.clip();
+    // The heap: rows narrowing upwards from the lip.
+    const step = f.banana ? r * 1.6 : f.carrot || f.leafy ? r * 0.75 : r * 1.7;
+    for (let row = 0; row < 4; row++) {
+      const y = lip + ry * 0.3 - row * ry * (f.banana ? 0.9 : 1.35);
+      const inset = row * step * 0.45;
+      for (let x = x0 + inset + ((row * 29) % 20); x < x1 - inset + r * 0.5; x += step) {
+        const jig = ((x + row * 7) % 5 - 2);
+        // Kale stands in its bin stem down, leaves fanning up.
+        const tilt = f.carrot ? 0.3 + ((x * 3 + row) % 5) * 0.25 : f.leafy ? -Math.PI / 2 + jig * 0.28 : jig * 0.12;
+        this.drawFruit(c, f, x, y, r, tilt);
+      }
+    }
+    c.restore();
+    // The bin's front.
+    c.fillStyle = P.woodDark;
+    c.fillRect(x0, lip, x1 - x0, shelf - lip);
+    c.fillStyle = P.wood;
+    for (let y = lip; y < shelf; y += 30) c.fillRect(x0, y, x1 - x0, 20);
+    c.fillStyle = '#fff6dc';
+    c.fillRect(x0 + 20, lip + 30, x1 - x0 - 40, 26);
+    c.fillStyle = '#1d4a26';
+    c.textAlign = 'center';
+    this.fitLabel(c, label, (x0 + x1) / 2, lip + 48, x1 - x0 - 50);
+  },
+
+  // The clamshell: a clear plastic box of blueberries, lid shut until the
+  // runaway is back.
+  drawClamshell(c, x0, x1, top, bottom, label) {
+    const P = this.P;
+    const w = x1 - x0, h = bottom - top;
+    c.fillStyle = 'rgba(200, 230, 255, 0.18)';
+    c.fillRect(x0, top, w, h);
+    c.fillStyle = P.berry;
+    // Blueberries at true scale: about 1.2 cm, so as big as the runaway.
+    for (let row = 0, y = bottom - 12; y > top + 40; row++, y -= 21) {
+      for (let x = x0 + 13 + (row % 2) * 11; x < x1 - 10; x += 23) {
+        c.fillStyle = P.berry;
+        c.beginPath(); c.arc(x, y, 11, 0, Math.PI * 2); c.fill();
+        c.fillStyle = P.berryLight;
+        c.beginPath(); c.arc(x - 4, y - 4, 3, 0, Math.PI * 2); c.fill();
+      }
+    }
+    c.strokeStyle = 'rgba(220, 240, 255, 0.7)';
+    c.lineWidth = 2;
+    c.strokeRect(x0 + 1, top + 1, w - 2, h - 2);
+    c.lineWidth = 1;
+    c.fillStyle = 'rgba(255, 255, 255, 0.35)';
+    c.fillRect(x0 + 6, top + 6, 4, h - 12);
+    c.fillStyle = '#e8f4ff';
+    c.fillRect(x0 + 14, top + 12, w - 28, 16);
+    c.fillStyle = '#23336e';
+    c.textAlign = 'center';
+    this.fitLabel(c, label, (x0 + x1) / 2, top + 24, w - 34);
+  },
+
+  // The clamshell's lid, open and waiting at the home spot.
+  drawClamshellHome(c, h) {
+    c.strokeStyle = 'rgba(220, 240, 255, 0.7)';
+    c.lineWidth = 2;
+    c.beginPath(); c.moveTo(h.x0 - 20, h.y); c.lineTo(h.x0 - 34, h.y - 40); c.stroke();
+    c.lineWidth = 1;
+  },
+
+  drawLeaf(c, o) {
+    const P = this.P;
+    const w = o.x1 - o.x0, mid = (o.x0 + o.x1) / 2;
+    c.fillStyle = P.leafDark;
+    c.beginPath(); c.ellipse(mid, o.y + 5, w / 2 + 4, 8, 0, 0, Math.PI * 2); c.fill();
+    c.fillStyle = o.slick ? '#86d860' : P.leaf;
+    c.beginPath(); c.ellipse(mid, o.y + 3, w / 2, 7, 0, 0, Math.PI * 2); c.fill();
+    c.strokeStyle = 'rgba(230, 255, 210, 0.6)';
+    c.beginPath(); c.moveTo(o.x0 + 4, o.y + 3); c.lineTo(o.x1 - 4, o.y + 3); c.stroke();
+    for (let x = o.x0 + 12; x < o.x1 - 8; x += 14) {
+      c.beginPath(); c.moveTo(x, o.y + 3); c.lineTo(x + 6, o.y - 1); c.stroke();
+    }
+    if (o.slick) {
+      // Wet: beads of water catching the light.
+      c.fillStyle = 'rgba(220, 245, 255, 0.85)';
+      for (let i = 0; i < 4; i++) c.fillRect(o.x0 + 8 + i * (w - 16) / 3, o.y + ((i * 3 + (this.t >> 3)) % 4), 3, 3);
+    }
+  },
+
+  drawVines(c, g) {
+    const P = this.P;
+    for (const v of g.world.vines) {
+      c.strokeStyle = P.stem;
+      c.lineWidth = 8;
+      c.beginPath();
+      for (let y = v.bottom; y >= v.top; y -= 8) c.lineTo(v.x + Math.sin(y / 18) * 3, y);
+      c.stroke();
+      c.lineWidth = 1;
+      // Pairs of herb leaves up the stem, each longer than Harrison is tall.
+      c.fillStyle = v.herb === 'MINT' ? '#5fbf8a' : '#4fa83a';
+      for (let y = v.bottom - 30; y > v.top + 20; y -= 46) {
+        const sx = v.x + Math.sin(y / 18) * 3;
+        c.beginPath(); c.ellipse(sx - 24, y, 24, 10, -0.35, 0, Math.PI * 2); c.fill();
+        c.beginPath(); c.ellipse(sx + 24, y - 20, 24, 10, 0.35, 0, Math.PI * 2); c.fill();
+      }
+    }
+  },
+
+  // The misting pipe along the top, a nozzle over each stretch, sputtering
+  // in warning before it rains.
+  drawMisters(c, g) {
+    const P = this.P;
+    c.fillStyle = P.pipe;
+    c.fillRect(0, 34, g.world.width, 6);
+    for (const m of g.world.mists) {
+      const state = GH.game.mistState(g, m);
+      for (let x = m.x0 + 20; x < m.x1; x += 70) {
+        c.fillStyle = P.pipe;
+        c.fillRect(x - 3, 40, 6, 10);
+        if (state === 'warn' && (this.t >> 2) % 2 === 0) {
+          c.fillStyle = 'rgba(220, 245, 255, 0.8)';
+          c.fillRect(x - 1, 52, 2, 4);
+        }
+      }
+    }
+  },
+
+  // Rain under a running mister, in front of everything.
+  drawRain(c, g) {
+    for (const m of g.world.mists) {
+      if (GH.game.mistState(g, m) !== 'on') continue;
+      c.strokeStyle = 'rgba(200, 235, 255, 0.35)';
+      c.beginPath();
+      for (let i = 0; i < 40; i++) {
+        const x = m.x0 + ((i * 47 + this.t * 3) % (m.x1 - m.x0));
+        const y = 52 + ((i * 89 + this.t * 9) % 380);
+        c.moveTo(x, y); c.lineTo(x - 1, y + 9);
+      }
+      c.stroke();
+      c.fillStyle = 'rgba(200, 235, 255, 0.05)';
+      c.fillRect(m.x0, 50, m.x1 - m.x0, GH.level.FLOOR_Y - 50);
+    }
+  },
+
+  drawFly(c, f) {
+    const P = this.P;
+    const flap = f.stun > 0 ? 0 : Math.sin(this.t * 1.3) * 5;
+    c.save();
+    c.translate(f.x, f.y - GH.FLY.h / 2);
+    // Drawn to the old 20 px design and shrunk to the hitbox in config.js.
+    c.scale(GH.FLY.w / 20, GH.FLY.w / 20);
+    c.fillStyle = 'rgba(220, 235, 255, 0.55)';
+    c.beginPath(); c.ellipse(-4, -6 - flap * 0.4, 6, 3 + Math.abs(flap) * 0.3, -0.6, 0, Math.PI * 2); c.fill();
+    c.beginPath(); c.ellipse(4, -6 - flap * 0.4, 6, 3 + Math.abs(flap) * 0.3, 0.6, 0, Math.PI * 2); c.fill();
+    c.fillStyle = P.fly;
+    c.beginPath(); c.ellipse(0, 0, 8, 5, 0, 0, Math.PI * 2); c.fill();
+    c.fillStyle = '#c0392b';
+    c.fillRect(f.dir > 0 ? 4 : -7, -3, 3, 3);
+    c.restore();
+    if (f.stun > 0) {
+      c.fillStyle = this.C.tag;
+      c.font = '8px sans-serif';
+      c.textAlign = 'center';
+      c.fillText('★', f.x + Math.cos(this.t / 8) * 9, f.y - 18);
+    }
+  },
+
+  // Pete Pepper: a bell pepper with a curly stem and a cheerful face, at
+  // true scale. A bell pepper is about 8 cm tall, so at 18 px a centimetre
+  // he stands four Harrisons high. Drawn small and scaled up, so the
+  // drawing below reads in his own units: feet at 0, about 40 tall.
+  PETE_SCALE: 3.6,
+
+  drawPete(c, n, g) {
+    const P = this.P;
+    const s = this.PETE_SCALE;
+    const bob = Math.sin(this.t / 24) * 1.2;
+    c.save();
+    c.translate(n.x, n.y);
+    c.scale(s, s);
+    // Lobes, darker at the edges, with the creases between them.
+    c.fillStyle = '#9e1f1a';
+    for (const dx of [-8, 8]) {
+      c.beginPath(); c.ellipse(dx, -16 + bob, 9.5, 16, 0, 0, Math.PI * 2); c.fill();
+    }
+    c.fillStyle = P.pepper;
+    for (const dx of [-7.5, 7.5]) {
+      c.beginPath(); c.ellipse(dx, -16 + bob, 8.5, 15.5, 0, 0, Math.PI * 2); c.fill();
+    }
+    c.beginPath(); c.ellipse(0, -16 + bob, 9, 16, 0, 0, Math.PI * 2); c.fill();
+    c.strokeStyle = 'rgba(90, 10, 10, 0.5)';
+    c.lineWidth = 0.6;
+    for (const dx of [-4, 4]) {
+      c.beginPath(); c.moveTo(dx, -29 + bob); c.quadraticCurveTo(dx * 1.4, -16 + bob, dx, -2 + bob); c.stroke();
+    }
+    // The shine a wet pepper has.
+    c.fillStyle = 'rgba(255, 255, 255, 0.35)';
+    c.beginPath(); c.ellipse(-10, -20 + bob, 1.6, 6, 0.1, 0, Math.PI * 2); c.fill();
+    c.fillStyle = 'rgba(255, 255, 255, 0.15)';
+    c.beginPath(); c.ellipse(5, -24 + bob, 1.2, 3.5, 0.1, 0, Math.PI * 2); c.fill();
+    // The calyx and the curly stem.
+    c.fillStyle = '#3f6a22';
+    c.beginPath(); c.ellipse(0, -30.5 + bob, 6, 2, 0, 0, Math.PI * 2); c.fill();
+    c.strokeStyle = P.stem;
+    c.lineWidth = 2.2;
+    c.lineCap = 'round';
+    c.beginPath(); c.moveTo(0, -31 + bob); c.quadraticCurveTo(2, -40 + bob, 8, -38 + bob); c.stroke();
+    // The face.
+    c.fillStyle = '#222';
+    c.beginPath(); c.arc(-4.5, -20 + bob, 1.3, 0, Math.PI * 2); c.fill();
+    c.beginPath(); c.arc(4.5, -20 + bob, 1.3, 0, Math.PI * 2); c.fill();
+    c.fillStyle = 'rgba(255, 255, 255, 0.9)';
+    c.fillRect(-4.9, -20.8 + bob, 0.6, 0.6);
+    c.fillRect(4.1, -20.8 + bob, 0.6, 0.6);
+    c.strokeStyle = '#222';
+    c.lineWidth = 0.9;
+    c.beginPath(); c.arc(0, -14 + bob, 3.5, 0.25, Math.PI - 0.25); c.stroke();
+    c.restore();
+    // His runaway would sit beside him, at its own (true) size.
+    if (g.item.state === 'giver') this.drawBerry(c, n.x + 18 * s, n.y, false);
+    this.talkPrompt(c, g, n, n.y - 44 * s + bob);
+  },
+
+  // The runaway blueberry, with its little crown, feet at (x, y).
+  drawBerry(c, x, y, blink) {
+    if (blink && Math.floor(this.t / 4) % 2 === 0) return;
+    const P = this.P;
+    c.fillStyle = P.berry;
+    c.beginPath(); c.arc(x, y - 11, 11, 0, Math.PI * 2); c.fill();
+    c.fillStyle = P.berryLight;
+    c.beginPath(); c.arc(x - 4, y - 15, 4, 0, Math.PI * 2); c.fill();
+    c.fillStyle = '#1f2a5e';
+    c.beginPath();
+    c.moveTo(x - 4, y - 21); c.lineTo(x - 2, y - 18); c.lineTo(x, y - 22); c.lineTo(x + 2, y - 18); c.lineTo(x + 4, y - 21);
+    c.lineTo(x + 3, y - 17); c.lineTo(x - 3, y - 17); c.closePath(); c.fill();
+  },
+});

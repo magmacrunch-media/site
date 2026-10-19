@@ -193,7 +193,7 @@
     "c": "page",
     "u": "/arcade/action/index.html",
     "d": "pixel art action games",
-    "b": "action — arcade — magmacrunch media home › arcade › action ▄▄▄▄▄▄▄▄▄▄▄ ▄▄▄▄▄▄▄▄▄▄▄ ▄▄▄▄▄▄▄▄▄▄▄ ▄▄▄▄▄▄▄▄▄▄▄ ▄▄▄▄▄▄▄▄▄▄▄ ▄▄ ▄ ▐░░░░░░░░░░░▌▐░░░░░░░░░░░▌▐░░░░░░░░░░░▌▐░░░░░░░░░░░▌▐░░░░░░░░░░░▌▐░░▌ ▐░▌ ▐░█▀▀▀▀▀▀▀█░▌▐░█▀▀▀▀▀▀▀▀▀ ▀▀▀▀█░█▀▀▀▀ ▀▀▀▀█░█▀▀▀▀ ▐░█▀▀▀▀▀▀▀█░▌▐░▌░▌ ▐░▌ ▐░▌ ▐░▌▐░▌ ▐░▌ ▐░▌ ▐░▌ ▐░▌▐░▌▐░▌ ▐░▌ ▐░█▄▄▄▄▄▄▄█░▌▐░▌ ▐░▌ ▐░▌ ▐░▌ ▐░▌▐░▌ ▐░▌ ▐░▌ ▐░░░░░░░░░░░▌▐░▌ ▐░▌ ▐░▌ ▐░▌ ▐░▌▐░▌ ▐░▌ ▐░▌ ▐░█▀▀▀▀▀▀▀█░▌▐░▌ ▐░▌ ▐░▌ ▐░▌ ▐░▌▐░▌ ▐░▌ ▐░▌ ▐░▌ ▐░▌▐░▌ ▐░▌ ▐░▌ ▐░▌ ▐░▌▐░▌ ▐░▌▐░▌ ▐░▌ ▐░▌▐░█▄▄▄▄▄▄▄▄▄ ▐░▌ ▄▄▄▄█░█▄▄▄▄ ▐░█▄▄▄▄▄▄▄█░▌▐░▌ ▐░▐░▌ ▐░▌ ▐░▌▐░░░░░░░░░░░▌ ▐░▌ ▐░░░░░░░░░░░▌▐░░░░░░░░░░░▌▐░▌ ▐░░▌ ▀ ▀ ..."
+    "b": "action — arcade — magmacrunch media home › arcade › action █████╗ ██████╗████████╗██╗ ██████╗ ███╗ ██╗ ██╔══██╗██╔════╝╚══██╔══╝██║██╔═══██╗████╗ ██║ ███████║██║ ██║ ██║██║ ██║██╔██╗ ██║ ██╔══██║██║ ██║ ██║██║ ██║██║╚██╗██║ ██║ ██║╚██████╗ ██║ ██║╚██████╔╝██║ ╚████║ ╚═╝ ╚═╝ ╚═════╝ ╚═╝ ╚═╝ ╚═════╝ ╚═╝ ╚═══╝ // run, dodge, survive // MOBILE MOONLIGHT DRIFT coast through space. dodge obstacles. ride the moon. ▶ PLAY _ MOBILE CARL SPATSKI VERY LONG BOARDS downhill longboarding. choose your carl. dodge everything. ▶ PLAY _ NEW RODERICK TRON robot composer on 1810s rooftops. run, roll, stomp. find ..."
   },
   {
     "t": "press",
@@ -1887,6 +1887,13 @@
     "c": "arcade",
     "u": "/arcade/caldera/",
     "d": "Climb a volcanic vent ahead of rising magma. Speed is height: run, rebound off the walls and skip floors to keep a CRUNCH chain alive.",
+    "b": ""
+  },
+  {
+    "t": "GROCERY HARRISON · magmacrunch media",
+    "c": "arcade",
+    "u": "/arcade/grocery-harrison/",
+    "d": "Grocery Harrison, shrunk to the size of a cornflake, puts a very big grocery store back in order, one aisle at a time.",
     "b": ""
   },
   {

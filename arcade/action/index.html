@@ -347,6 +347,22 @@
             </div>
         </a>
 
+        <a href="../grocery-harrison/" class="game-card" style="--card-color: #ffd84a">
+            <div class="card-inner">
+                <div class="card-tags">
+                    <span class="card-tag card-tag-demo">NEW</span>
+                    <span class="card-tag" style="color: #39ff6e">MOBILE</span>
+                    <span class="card-tag" style="color: #a8e6ff">PROTOTYPE</span>
+                </div>
+                <div class="card-title">GROCERY HARRISON</div>
+                <div class="card-canvas-wrap">
+                    <canvas id="cGroceryHarrison" width="72" height="72"></canvas>
+                </div>
+                <div class="card-desc">the size of a cornflake. put the store back in order, aisle by aisle.</div>
+                <div class="card-play">&#9654; PLAY<span class="card-arrow">_</span></div>
+            </div>
+        </a>
+
     </div>
 
 </main>
@@ -826,6 +842,73 @@
     ctx.fillRect(24, 56, 2, 2);
     ctx.fillRect(28, 59, 3, 3);
     ctx.fillRect(25, 62, 2, 2);
+})();
+
+// -- grocery-harrison preview --
+// The scale is the whole idea: a tiny figure on the shelf between a cereal
+// box and a carton too big for the card, the oat ring over his head.
+(function() {
+    const c = document.getElementById('cGroceryHarrison');
+    if (!c) return;
+    const ctx = c.getContext('2d');
+
+    const air = ctx.createLinearGradient(0, 0, 0, 72);
+    air.addColorStop(0, '#0b0d1e');
+    air.addColorStop(1, '#2a1f3d');
+    ctx.fillStyle = air;
+    ctx.fillRect(0, 0, 72, 72);
+
+    // A cereal box, cropped by the card's edge.
+    ctx.fillStyle = '#c0392b';
+    ctx.fillRect(0, 4, 24, 56);
+    ctx.fillStyle = '#ffd84a';
+    ctx.fillRect(2, 14, 18, 5);
+    ctx.fillStyle = '#e8a93a';
+    ctx.fillRect(5, 34, 4, 3);
+    ctx.fillRect(11, 32, 4, 3);
+    // A carton, gable top and all.
+    ctx.fillStyle = '#e2d2ad';
+    ctx.fillRect(52, 18, 20, 42);
+    ctx.fillStyle = '#c9b88f';
+    ctx.fillRect(54, 12, 18, 6);
+    ctx.fillStyle = '#3f6fae';
+    ctx.fillRect(52, 40, 20, 3);
+
+    // A light from above, on him.
+    ctx.fillStyle = 'rgba(255, 240, 210, 0.08)';
+    ctx.beginPath();
+    ctx.moveTo(32, 0); ctx.lineTo(42, 0); ctx.lineTo(48, 60); ctx.lineTo(26, 60);
+    ctx.closePath();
+    ctx.fill();
+
+    // The shelf.
+    ctx.fillStyle = '#b7bcc6';
+    ctx.fillRect(0, 60, 72, 2);
+    ctx.fillStyle = '#2c3140';
+    ctx.fillRect(0, 62, 72, 10);
+
+    // Harrison, small: jeans, flannel, beard, guitar.
+    ctx.fillStyle = '#4169e1';
+    ctx.fillRect(35, 55, 1, 5);
+    ctx.fillRect(38, 55, 1, 5);
+    ctx.fillStyle = '#8b0000';
+    ctx.fillRect(34, 49, 6, 6);
+    ctx.fillStyle = '#d2691e';
+    ctx.fillRect(32, 51, 3, 3);
+    ctx.fillStyle = '#f4d5b5';
+    ctx.fillRect(35, 45, 4, 4);
+    ctx.fillStyle = '#4a3020';
+    ctx.fillRect(35, 44, 4, 1);
+    ctx.fillRect(35, 48, 4, 1);
+
+    // The oat ring he is carrying, and a flake drifting down.
+    ctx.strokeStyle = '#d9a85b';
+    ctx.lineWidth = 2;
+    ctx.beginPath();
+    ctx.arc(37, 38, 3, 0, Math.PI * 2);
+    ctx.stroke();
+    ctx.fillStyle = '#e8a93a';
+    ctx.fillRect(43, 22, 5, 2);
 })();
 
 // -- caldera preview --

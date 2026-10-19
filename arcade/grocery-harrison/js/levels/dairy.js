@@ -1,0 +1,112 @@
+// levels/dairy.js -- aisle 5, the dairy case.
+//
+// Cold where cereal was warm, slick where it was sticky. Inside the fridge
+// case: yogurt cups as steps, milk cartons as towers, wire shelves, butter
+// pats that are ice underfoot, fridge doors that swing open on a timer and
+// blow you back, a rolling cheese wheel and soured curds.
+//
+// And the non-dairy stock shelved in with it, as every real store does: the
+// quest giver is Ollie Oatmilk (Granny Granola's grandson, and put out to be
+// in DAIRY at all), the cap goes up to his sister Ally Almond, and the way
+// there climbs soy yogurt, coconut yogurt and VEGAN CHEEZ.
+
+GH.levels.dairy = {
+
+  id: 'dairy',
+  aisle: 5,
+  name: 'DAIRY',
+  title: 'DAIRY CASE',
+  theme: { wall: '#0d1c28', wallLow: '#17323f' },
+  // Its words, the quest's lines and goals included, are in dialogue.js.
+  item: 'cap',
+
+  WORLD_W: 3000,
+  PITS: [[1500, 1560]],
+
+  build() {
+    const F = GH.level.FLOOR_Y;
+    const solid = (shape, id, x0, x1, top, label, color) => ({ id, x0, x1, top, bottom: F, shape, label, color });
+    const butter = (id, x0, x1, y) => ({ id, x0, x1, y, style: 'butter', slick: true });
+    const wire = (id, x0, x1, y) => ({ id, x0, x1, y, style: 'wire' });
+    return {
+      width: this.WORLD_W,
+      pits: this.PITS,
+      solids: [
+        ...GH.level.floors(this.WORLD_W, this.PITS),
+        solid('cup', 'Y1', 380, 440, 400, 'SOY', '#f2d4e4'),
+        solid('cup', 'Y2', 440, 500, 360, 'GREEK', '#eef2ff'),
+        solid('carton', 'M1', 560, 640, 280, 'WHOLE MILK', '#f7f7f2'),
+        solid('cup', 'Y3', 1100, 1150, 410, 'COCONUT', '#f5efe0'),
+        solid('block', 'V', 1150, 1290, 380, 'VEGAN CHEEZ', '#f3d36b'),
+        solid('block', 'C2', 1560, 1680, 380, 'CHEDDAR', '#f0a830'),
+        solid('carton', 'O1', 2140, 2240, 270, 'OAT MILK', '#e2d2ad'),
+        solid('block', 'E', 2240, 2400, 330, 'FREE RANGE EGGS', '#c9b48a'),
+        solid('carton', 'F', 2600, 2720, 230, 'ALMOND MILK', '#b8e0d2'),
+      ],
+      oneways: [
+        butter('B1', 510, 560, 320),
+        wire('W1', 1290, 1400, 340),
+        wire('W2', 1400, 1490, 300),
+        butter('B2', 1740, 1840, 390),
+        butter('B3', 1870, 1970, 350),
+        butter('B4', 2000, 2100, 310),
+        wire('W3', 2430, 2500, 300),
+        wire('W4', 2530, 2600, 265),
+      ],
+      sticky: [],
+      // Two fridge doors. Each swings open for `open` frames of every
+      // `period` and blows anyone in front of it back the way they came.
+      gusts: [
+        { x0: 700, x1: 1100, period: 300, open: 100, push: -1.4, phase: 0 },
+        { x0: 1700, x1: 2130, period: 300, open: 100, push: -1.2, phase: 150 },
+      ],
+      falling: [],
+
+      foes: [
+        GH.level.foe('wheel', 690, 1080, F, { speed: 2.0 }),
+        GH.level.foe('curd', 1700, 2120, F),
+        GH.level.foe('curd', 2255, 2385, 330),
+      ],
+
+      npcs: [{ id: 'ollie', kind: 'ollie', name: GH.DIALOGUE.dairy.speaker, x: 230, y: F }],
+
+      // The cap goes to Ally, on top of the ALMOND MILK.
+      home: { x0: 2620, x1: 2700, y: 230, kind: 'ally' },
+
+      checkpoints: [
+        { x: 100, y: F },
+        { x: 1060, y: F },
+        { x: 1700, y: F },
+      ],
+
+      sugar: [
+        [410, 370], [470, 330], [535, 290], [600, 250],
+        [760, 410], [900, 380], [1040, 410],
+        [1125, 380], [1220, 350], [1345, 310], [1445, 270],
+        [1530, 330], [1620, 350],
+        [1790, 360], [1920, 320], [2050, 280],
+        [2190, 240], [2300, 300], [2370, 300],
+        [2465, 270], [2565, 235], [2660, 200],
+        [1900, 410], [2500, 410],
+      ].map(([x, y]) => ({ x, y, taken: false })),
+
+      // The back of the fridge case, through the frost.
+      backdrop: [
+        { x: 60, w: 120, h: 260, label: 'KEFIR', color: '#6f8fa8' },
+        { x: 260, w: 140, h: 320, label: 'SOY MILK', color: '#8a9c6a' },
+        { x: 500, w: 160, h: 280, label: 'HALF & HALF', color: '#9c8a74' },
+        { x: 780, w: 130, h: 340, label: 'RICE MILK', color: '#a0a6b8' },
+        { x: 1000, w: 170, h: 300, label: 'BUTTERMILK', color: '#b49a5c' },
+        { x: 1300, w: 150, h: 330, label: 'CASHEW MILK', color: '#a37f5a' },
+        { x: 1600, w: 180, h: 290, label: 'SKIM', color: '#5f86a6' },
+      ],
+    };
+  },
+
+  ROUTE: [
+    ['floor1', 'Y1'], ['Y1', 'Y2'], ['Y2', 'B1'], ['B1', 'M1'],
+    ['floor1', 'Y3'], ['Y3', 'V'], ['V', 'W1'], ['W1', 'W2'], ['W2', 'C2'],
+    ['floor2', 'B2'], ['B2', 'B3'], ['B3', 'B4'], ['B4', 'O1'], ['O1', 'E'],
+    ['E', 'W3'], ['W3', 'W4'], ['W4', 'F'],
+  ],
+};
