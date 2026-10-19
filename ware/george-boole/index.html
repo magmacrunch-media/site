@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>george boole has entered the chat · magmacrunch media</title>
+  <meta name="description" content="a logic-gate puzzle game for the browser, the terminal, the Wii, and soon iPhone and iPad">
+  <meta property="og:title" content="george boole has entered the chat · magmacrunch media">
+  <meta property="og:description" content="a logic-gate puzzle game for the browser, the terminal, the Wii, and soon iPhone and iPad">
+  <meta property="og:image" content="https://magmacrunch.com/og/arcade-george-boole.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta property="og:site_name" content="magmacrunch media">
+  <meta property="og:locale" content="en_US">
+  <link rel="icon" type="image/x-icon" href="../../favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Courier+Prime:wght@400;700&display=swap">
+  <link rel="stylesheet" href="../../style.css?v=53e9e146">
+  <style>
+    :root { color-scheme: dark; --green: #39ff84; --line: #33304a; --panel: #1c1b26; --dim: #9d99b5; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font: 14px/1.6 'Courier Prime', ui-monospace, SFMono-Regular, Menlo, monospace;
+      background: #14141b; color: #e8e6f0;
+      min-height: 100vh;
+      display: flex; flex-direction: column;
+    }
+    body > * { width: 100%; }
+    a { color: #7cc7ff; }
+
+    .tool-nav { max-width: 640px; margin: 1rem auto 0; padding: 0 1.5rem; }
+    .back-link { font-size: 12px; color: var(--dim); text-decoration: none; }
+    .back-link:hover { color: #e8e6f0; }
+
+    /* ── Hero ──────────────────────────────────────────── */
+
+    .hero { text-align: center; padding: 2.5rem 1.5rem 2rem; }
+    .hero img {
+      width: 96px; height: 96px;
+      image-rendering: pixelated;
+      margin-bottom: 1.25rem;
+    }
+    .hero h1 {
+      font-family: 'Press Start 2P', monospace;
+      font-size: clamp(16px, 3.4vw, 30px);
+      font-weight: 400;
+      line-height: 1.5;
+      color: var(--green);
+      text-shadow: 3px 3px 0 #33304a, 6px 6px 0 #1c1b26;
+      letter-spacing: 0.06em;
+      margin-bottom: .9rem;
+    }
+    .hero .tagline { font-size: 13px; color: var(--dim); }
+
+    .section { max-width: 640px; margin: 0 auto 2.75rem; padding: 0 1.5rem; }
+    .section h2 {
+      font-family: 'Press Start 2P', monospace;
+      font-size: 10px; font-weight: 400;
+      color: var(--green);
+      margin-bottom: .9rem;
+      letter-spacing: 0.05em;
+    }
+    .lead p { color: #c9c6d9; margin-bottom: .7rem; }
+    .lead p:last-child { margin-bottom: 0; }
+
+    /* ── Where to play ─────────────────────────────────── */
+
+    /* One row per platform. The browser row is the call to action, so it is
+       the only one with a filled button; the rest are instructions. */
+    .platforms { display: grid; gap: .6rem; }
+    .platform {
+      display: grid;
+      grid-template-columns: 7.5rem 1fr;
+      gap: 1rem;
+      align-items: center;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: .9rem 1rem;
+    }
+    .platform .name {
+      font-family: 'Press Start 2P', monospace;
+      font-size: 9px; line-height: 1.6;
+      color: #e8e6f0;
+    }
+    .platform .how { font-size: 12px; color: var(--dim); }
+    .platform .how strong { color: #e8e6f0; font-weight: 700; }
+    .platform code {
+      display: inline-block;
+      font: 12px 'Courier Prime', monospace;
+      color: var(--green);
+      background: #14141b;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      padding: .2rem .5rem;
+      margin: .15rem 0;
+      overflow-wrap: anywhere;
+    }
+    .platform.soon { opacity: .6; }
+    .badge {
+      font: 8px/1 'Press Start 2P', monospace;
+      color: var(--green);
+      border: 1px solid currentColor;
+      border-radius: 4px;
+      padding: .25rem .4rem;
+      margin: .3rem 0 0 .35rem;
+      display: inline-block;
+      white-space: nowrap;
+      vertical-align: middle;
+    }
+
+    .play-btn {
+      display: inline-block;
+      font: 10px/1 'Press Start 2P', monospace;
+      color: #14141b;
+      background: var(--green);
+      border-radius: 6px;
+      padding: .7rem 1rem;
+      text-decoration: none;
+      margin-right: .6rem;
+      box-shadow: 3px 3px 0 #109040;
+      transition: transform .1s, box-shadow .1s;
+    }
+    .play-btn:hover { transform: translate(-1px, -1px); box-shadow: 4px 4px 0 #109040; }
+
+    /* ── Built with / credits ──────────────────────────── */
+
+    .built { display: grid; grid-template-columns: 1fr 1fr; gap: .5rem; }
+    .built a, .built div {
+      display: block;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: .6rem .75rem;
+      text-decoration: none;
+      color: inherit;
+    }
+    .built a:hover { border-color: #7cc7ff; }
+    .built strong { display: block; color: #7cc7ff; font-size: 11px; margin-bottom: .1rem; }
+    .built span { color: var(--dim); font-size: 11px; }
+
+    .credits p { font-size: 12px; color: var(--dim); margin-bottom: .55rem; }
+    .credits strong { color: #e8e6f0; }
+
+    @media (max-width: 560px) {
+      .hero { padding: 2rem 1rem 1.5rem; }
+      .section { padding: 0 1rem; }
+      .platform { grid-template-columns: 1fr; gap: .45rem; }
+      .built { grid-template-columns: 1fr; }
+      .play-btn { min-height: 44px; display: inline-flex; align-items: center; }
+    }
+  </style>
+</head>
+<body>
+
+<nav id="auto-nav" data-depth="../../"></nav>
+
+<div class="tool-nav">
+  <a href="../games/" class="back-link">&larr; video games</a>
+</div>
+
+<div class="hero">
+  <img src="img/boole-pixel.png" alt="George Boole, in pixels" width="96" height="96">
+  <h1>GEORGE BOOLE<br>HAS ENTERED<br>THE CHAT</h1>
+  <p class="tagline">a logic-gate puzzle game &middot; true or false? and, or, not.</p>
+</div>
+
+<div class="section lead">
+  <p>Slide the board, merge the bits, and let the logic gates do the rest.
+    It started from Gabriele Cirulli's <em>2048</em> and swaps the addition
+    for Boolean logic: AND, OR, XOR and NOT drop onto the board, and every
+    tile that scores shows you the math.</p>
+  <p>It runs on four kinds of machine. Each version suits the one it runs
+    on, and all of them play by exactly the same rules.</p>
+</div>
+
+<div class="section">
+  <h2>// where to play //</h2>
+  <div class="platforms">
+
+    <div class="platform">
+      <div class="name">BROWSER</div>
+      <div class="how">
+        <a class="play-btn" href="../../arcade/george-boole/">&#9654; PLAY</a>
+        free, in the <a href="../../arcade/">arcade</a>. Every mode, nothing to install.
+      </div>
+    </div>
+
+    <div class="platform">
+      <div class="name">TERMINAL</div>
+      <div class="how">
+        <code>pipx install magmacrunch-george-boole</code><br>
+        then run <strong>george-boole</strong>. Also included in the
+        <a href="https://pypi.org/project/magmacrunch/">magmacrunch</a> terminal arcade.
+      </div>
+    </div>
+
+    <div class="platform">
+      <div class="name">WII</div>
+      <div class="how">
+        runs from the <strong>Homebrew Channel</strong> with a gamepad, built on
+        <a href="../magnolia/">magnolia</a>.
+        <span class="badge">DOWNLOAD SOON</span>
+      </div>
+    </div>
+
+    <div class="platform soon">
+      <div class="name">IPHONE<br>&amp; IPAD</div>
+      <div class="how">
+        the version that teaches: adds the LEARN bench and the gate codex,
+        with Game Center, offline play and haptics.
+        <span class="badge">COMING SOON</span>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="section">
+  <h2>// built with //</h2>
+  <div class="built">
+    <a href="../adenosine/"><strong>adenosine</strong><span>browser &amp; app &middot; JavaScript</span></a>
+    <a href="../magnolia/"><strong>magnolia</strong><span>Wii &middot; C</span></a>
+    <a href="https://pypi.org/project/magmacrunch/"><strong>magmacrunch.engine</strong><span>terminal &middot; Python</span></a>
+    <a href="../hypnopompia/"><strong>hypnopompia</strong><span>iPhone &amp; iPad shell</span></a>
+  </div>
+</div>
+
+<div class="section credits">
+  <h2>// credits //</h2>
+  <p><strong>game by</strong> magmacrunch media</p>
+  <p><strong>music</strong> "George Boole Has Entered the Chat" by
+    <a href="https://linktr.ee/juanitothompson">Juanito Thompson</a></p>
+  <p><strong>sound effects</strong> played on a MOOG <em>GRANDMOTHER</em> synthesizer</p>
+  <p><strong>original concept</strong> inspired by Gabriele Cirulli's <em>2048</em> (2014),
+    reimagined with Boolean logic instead of addition</p>
+</div>
+
+<footer>
+  &copy; 2026 <span>magmacrunch media</span>
+</footer>
+
+<script src="../../nav.js?v=a1127215"></script>
+</body>
+</html>
