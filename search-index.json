@@ -193,7 +193,7 @@
     "c": "page",
     "u": "/arcade/action/index.html",
     "d": "pixel art action games",
-    "b": "action — arcade — magmacrunch media home › arcade › action █████╗ ██████╗████████╗██╗ ██████╗ ███╗ ██╗ ██╔══██╗██╔════╝╚══██╔══╝██║██╔═══██╗████╗ ██║ ███████║██║ ██║ ██║██║ ██║██╔██╗ ██║ ██╔══██║██║ ██║ ██║██║ ██║██║╚██╗██║ ██║ ██║╚██████╗ ██║ ██║╚██████╔╝██║ ╚████║ ╚═╝ ╚═╝ ╚═════╝ ╚═╝ ╚═╝ ╚═════╝ ╚═╝ ╚═══╝ // run, dodge, survive // MOBILE MOONLIGHT DRIFT coast through space. dodge obstacles. ride the moon. ▶ PLAY _ MOBILE CARL SPATSKI VERY LONG BOARDS downhill longboarding. choose your carl. dodge everything. ▶ PLAY _ NEW RODERICK TRON robot composer on 1810s rooftops. run, roll, stomp. find ..."
+    "b": "action — arcade — magmacrunch media home › arcade › action // run, dodge, survive // MOBILE MOONLIGHT DRIFT coast through space. dodge obstacles. ride the moon. ▶ PLAY _ PROTOTYPE MOBILE CARL SPATSKI VERY LONG BOARDS downhill longboarding. choose your carl. dodge everything. ▶ PLAY _ PROTOTYPE NEW RODERICK TRON robot composer on 1810s rooftops. run, roll, stomp. find T-R-O-N. ▶ PLAY _ NEW MAKEME COOKIES!X4 one song, one shift. five stations. ship cookies. ▶ PLAY _ PROTOTYPE NEW JOVIAN HUMANITARIAN CONFLICT on-rails over jupiter. read the transponder before you fire. ▶ PLAY _ PROTOTYPE NEW MOBI..."
   },
   {
     "t": "press",
@@ -221,7 +221,7 @@
     "c": "page",
     "u": "/ware/index.html",
     "d": "software · creative utilities & developer tools",
-    "b": "ware — magmacrunch media home › ware // ware // software · creative utilities & developer tools CREATIVE UTILITIES browser-based tools for art, media & image processing ▶ DEVELOPER TOOLS game engines, scripting language, C API reference & memory course ▶"
+    "b": "ware — magmacrunch media home › ware // ware // software · creative utilities & developer tools VIDEO GAMES every game, every platform: browser, terminal, Wii & iPhone ▶ CREATIVE UTILITIES browser-based tools for art, media & image processing ▶ DEVELOPER TOOLS game engines, scripting language, C API reference & memory course ▶"
   },
   {
     "t": "creative utilities",
@@ -403,7 +403,7 @@
     "c": "artist",
     "u": "/archive/by-artist/c-p-rutledge/games.html",
     "d": "C P Rutledge — Games",
-    "b": "C.P. Rutledge — games — magmacrunch media GAMES ← back about links lyrics photography recordings releases works Music-inspired games from the magmacrunch arcade. MOONLIGHT DRIFT PLAY coast through space. dodge obstacles. ride the moon. music-inspired named after a C.P. Rutledge song"
+    "b": "C.P. Rutledge — games — magmacrunch media GAMES ← back about links lyrics photography recordings releases works Music-inspired games from the magmacrunch arcade. MOONLIGHT DRIFT MORE coast through space. dodge obstacles. ride the moon. music-inspired named after a C.P. Rutledge song"
   },
   {
     "t": "C.P. Rutledge",
@@ -837,7 +837,7 @@
     "c": "artist",
     "u": "/archive/by-artist/juanito-thompson/games.html",
     "d": "Juanito Thompson — Games",
-    "b": "juanito thompson — games — magmacrunch media GAMES ← back about links network photography recordings releases videos works Music-inspired games from the magmacrunch arcade. GEORGE BOOLE HAS ENTERED THE CHAT PLAY boolean logic puzzles. true or false? and, or, not. music-inspired named after a Juanito Thompson song"
+    "b": "juanito thompson — games — magmacrunch media GAMES ← back about links network photography recordings releases videos works Music-inspired games from the magmacrunch arcade. GEORGE BOOLE HAS ENTERED THE CHAT MORE boolean logic puzzles. true or false? and, or, not. music-inspired named after a Juanito Thompson song CAVE DIVING (NOT EVEN ONCE) PLAY one song, one tank. your lamp is the only light down there. music-inspired the dive lasts exactly as long as Juanito Thompson's cave diving (not even once)"
   },
   {
     "t": "Juanito Thompson",
@@ -1019,7 +1019,7 @@
     "c": "artist",
     "u": "/archive/by-artist/thld/games.html",
     "d": "Thld — Games",
-    "b": "THLD — games — magmacrunch media GAMES ← back about events links lyrics photography recordings releases videos works Music-inspired games from the magmacrunch arcade. TEXAS HOLD'EM LAVA DOME PLAY poker solitaire. build hands. score big. don't get burned. music-inspired named after a THLD song"
+    "b": "THLD — games — magmacrunch media GAMES ← back about events links lyrics photography recordings releases videos works Music-inspired games from the magmacrunch arcade. TEXAS HOLD'EM LAVA DOME MORE poker solitaire. build hands. score big. don't get burned. music-inspired named after a THLD song"
   },
   {
     "t": "THLD",
@@ -1964,7 +1964,7 @@
     "c": "tool",
     "u": "/ware/adenosine/",
     "d": "lightweight web game engines · try every package live",
-    "b": "adenosine — magmacrunch media ← developer tools adenosine lightweight game engines by magmacrunch media A collection of lightweight web game engines by magmacrunch media . TypeScript and JavaScript, zero runtime dependencies, built for browsers. Powering the magmacrunch web arcade since 2026. npm contact magmacrunch.com ▶ Playground Try every package live. Code editor with syntax highlighting, pre-loaded examples, and console output. ▢ Tile Map Editor Draw tile maps for the RPG engine. Paint, fill, export JSON, preview with AdRPG. ✎ Theme Customizer Customize CSS colors for cards, puzzle, chat..."
+    "b": "adenosine — magmacrunch media home › ware › developer tools › adenosine adenosine lightweight game engines by magmacrunch media A collection of lightweight web game engines by magmacrunch media . TypeScript and JavaScript, zero runtime dependencies, built for browsers. Powering the magmacrunch web arcade since 2026. npm contact magmacrunch.com ▶ Playground Try every package live. Code editor with syntax highlighting, pre-loaded examples, and console output. ▢ Tile Map Editor Draw tile maps for the RPG engine. Paint, fill, export JSON, preview with AdRPG. ✎ Theme Customizer Customize CSS colors..."
   },
   {
     "t": "GATE//FOLD",
@@ -1972,6 +1972,48 @@
     "u": "/ware/album-art-maker/",
     "d": "pixel art editor for album covers · text, shapes, images",
     "b": "GATE//FOLD This tool is best experienced on a desktop or laptop. Please visit on a wider screen for the full workspace. GATE//FOLD 1024×1024 0 ELEMENTS UNDO REDO DELETE CLEAR ALL CANVAS 1024 ▾ BG ► SELECT T TEXT ▢ IMAGE RECT ▾ FREQUENCY 5 WAVE MODE FILLED OPEN REFERENCE ▾ UPLOAD IMAGE × click to sample color BASIC ▭ RECT ○ CIRCLE ╱ LINE ▵ TRI ⬣ PENTA ⬤ HEXA ◇ DIAMOND ★ STAR ➤ ARROW ◯ R. RECT WAVES ∿ SINE ⊝ SQUARE ⊾ SAWTOOTH ⊿ TRI WAVE ∖ STEP ⊟ PULSE CLIP ART LAYERS ▾ PROPERTIES FILL ‒ STROKE ‒ STROKE WIDTH 4 ROTATION − + 0° STEPS 5 DUTY CYCLE 20% OPACITY 100% FIT TO CANVAS ■ COVER □ FIT SCALE ..."
+  },
+  {
+    "t": "backgammon · magmacrunch media",
+    "c": "tool",
+    "u": "/ware/backgammon/",
+    "d": "neon backgammon for the browser and the terminal",
+    "b": "backgammon · magmacrunch media home › ware › video games › backgammon BACKGAMMON neon edition · vs the computer or a friend · doubling cube Backgammon in the arcade's neon edition: a purple-black board, cyan against magenta, pixel-art pieces and CRT scanlines. Play the computer or a friend online with chat, with hitting, the bar, bearing off and a doubling cube. The terminal version plays the same computer opponent. // where to play // BROWSER ▶ PLAY free, in the arcade , with online play against friends. TERMINAL pipx install magmacrunch-backgammon then run backgammon . Also in the magmacrunc..."
+  },
+  {
+    "t": "caldera · magmacrunch media",
+    "c": "tool",
+    "u": "/ware/caldera/",
+    "d": "a volcanic vertical climber for the browser and the terminal",
+    "b": "caldera · magmacrunch media home › ware › video games › caldera CALDERA climb the vent · outrun the magma · speed is height Run, jump and bounce off the walls to climb a volcanic vent while the magma rises under you. Speed turns into height, and jumps that clear several floors chain into a CRUNCH combo. Crumbling crust and gas vents change the climb. Pick from nine climbers, most of them pilots from Moonlight Drift . // where to play // BROWSER ▶ PLAY free, in the arcade . Keyboard or phone. TERMINAL pipx install magmacrunch-caldera then run caldera . Also in the magmacrunch terminal arcade. /..."
+  },
+  {
+    "t": "checkers · magmacrunch media",
+    "c": "tool",
+    "u": "/ware/checkers/",
+    "d": "neon checkers for the browser and the terminal",
+    "b": "checkers · magmacrunch media home › ware › video games › checkers CHECKERS neon edition · mandatory jumps · king promotion Checkers in the arcade's neon edition, cyan pieces against magenta under CRT scanlines. Play the computer or a friend online with chat, with mandatory jumps, multi-jump chains and king promotion. The terminal version plays the same computer opponent. // where to play // BROWSER ▶ PLAY free, in the arcade , with online play against friends. TERMINAL pipx install magmacrunch-checkers then run checkers . Also in the magmacrunch terminal arcade. // built with // adenosine brow..."
+  },
+  {
+    "t": "chess · magmacrunch media",
+    "c": "tool",
+    "u": "/ware/chess/",
+    "d": "neon chess for the browser and the terminal",
+    "b": "chess · magmacrunch media home › ware › video games › chess CHESS neon edition · three difficulty levels · blitz to classical Chess in the arcade's neon edition, cyan against magenta in pixel art under CRT scanlines. Play the computer at easy, medium or hard, with no clock or a blitz, rapid or classical one, or play a friend online with chat. Moves are kept in algebraic notation. // where to play // BROWSER ▶ PLAY free, in the arcade , with online play against friends. TERMINAL pipx install magmacrunch-chess then run chess . Also in the magmacrunch terminal arcade. // built with // adenosine b..."
+  },
+  {
+    "t": "chinese checkers · magmacrunch media",
+    "c": "tool",
+    "u": "/ware/chinese-checkers/",
+    "d": "neon chinese checkers for two to six players, in the browser and the terminal",
+    "b": "chinese checkers · magmacrunch media home › ware › video games › chinese checkers CHINESE CHECKERS neon edition · hexagonal star · hop to win Chinese checkers in the arcade's neon edition, on a hexagonal star with ten marbles each. Play two, three, four or six players against the computer, or friends online with room codes and chat. Steps light up green, hops yellow, and hops chain. // where to play // BROWSER ▶ PLAY free, in the arcade , with online rooms for up to six. TERMINAL pipx install magmacrunch-chinese-checkers then run chinese-checkers . Also in the magmacrunch terminal arcade. // b..."
+  },
+  {
+    "t": "cribbage · magmacrunch media",
+    "c": "tool",
+    "u": "/ware/cribbage/",
+    "d": "two-player cribbage for the browser and the terminal",
+    "b": "cribbage · magmacrunch media home › ware › video games › cribbage CRIBBAGE first to 121 · pegging, hands and the crib Two-player cribbage, first to 121, against the computer or a friend online with room codes and lobby chat. A walnut peg board on green felt, a rules screen that walks through the deal, the crib, the starter, pegging and scoring, a choice of deck designs, and solo wins on the arcade's high-score board. // where to play // BROWSER ▶ PLAY free, in the arcade , with online play against friends. TERMINAL pipx install magmacrunch-cribbage then run cribbage . Also in the magmacrunch t..."
   },
   {
     "t": "crunch-c",
@@ -1985,35 +2027,63 @@
     "c": "tool",
     "u": "/ware/daffodil/",
     "d": "A C99 heightfield terrain engine: real-world landscape at 1:1, measured, not invented.",
-    "b": "daffodil — magmacrunch media ← developer tools daffodil heightfield terrain engine · real-world landscape at 1:1 v0.1.0-dev PolyForm Noncommercial C99 + sokol A C99 heightfield terrain engine by magmacrunch media . daffodil draws real ground: it reads a heightfield built offline from LiDAR elevation data, reprojected, tiled and written as raw float32 meters, then renders it faithfully and lets you walk on it. The landscape is surveyed, not sculpted . There's no procedural generation and no terrain sculpting: the shape of the ground comes from the survey, and the engine's job is to reproduce it..."
+    "b": "daffodil — magmacrunch media home › ware › developer tools › daffodil daffodil heightfield terrain engine · real-world landscape at 1:1 v0.1.0-dev PolyForm Noncommercial C99 + sokol A C99 heightfield terrain engine by magmacrunch media . daffodil draws real ground: it reads a heightfield built offline from LiDAR elevation data, reprojected, tiled and written as raw float32 meters, then renders it faithfully and lets you walk on it. The landscape is surveyed, not sculpted . There's no procedural generation and no terrain sculpting: the shape of the ground comes from the survey, and the engine's..."
+  },
+  {
+    "t": "video games · ware · magmacrunch media",
+    "c": "tool",
+    "u": "/ware/games/",
+    "d": "every game, every platform: browser, terminal, Wii & iPhone",
+    "b": "video games · ware · magmacrunch media home › ware › video games // video games // one page per game, with every way to play it. to play in your browser right now, the arcade has them all. // originals // games made here, from scratch GEORGE BOOLE HAS ENTERED THE CHAT logic-gate puzzle · browser · terminal · Wii, iPhone & iPad soon ▶ MOONLIGHT DRIFT cave flyer · browser · terminal · Wii soon ▶ TEXAS HOLD'EM LAVA DOME solo poker · browser · terminal · Wii soon ▶ THE JOVIAN HUMANITARIAN CONFLICT on-rails shooter · browser · terminal · Wii soon ▶ MAKEMECOOKIES!X4 cookie factory · browser · Wii & ..."
+  },
+  {
+    "t": "george boole has entered the chat · magmacrunch media",
+    "c": "tool",
+    "u": "/ware/george-boole/",
+    "d": "a logic-gate puzzle game for the browser and the terminal, with Wii, iPhone and iPad versions on the way",
+    "b": "george boole has entered the chat · magmacrunch media home › ware › video games › george boole GEORGE BOOLE HAS ENTERED THE CHAT a logic-gate puzzle game · true or false? and, or, not. Slide the board, merge the bits, and let the logic gates do the rest. It started from Gabriele Cirulli's 2048 and swaps the addition for Boolean logic: AND, OR, XOR and NOT drop onto the board, and every tile that scores shows you the math. It is being made for four kinds of machine. Each version suits the one it runs on, and all of them play by exactly the same rules. // where to play // BROWSER ▶ PLAY free, in..."
   },
   {
     "t": "hologram",
     "c": "tool",
     "u": "/ware/hologram/",
     "d": "optics-first 3D game engine: a spectral ray tracer where light obeys physics",
-    "b": "hologram — magmacrunch media ← developer tools hologram an optics-first 3D game engine: a spectral ray tracer where light obeys physics v0.1.0 PolyForm Noncommercial C99 + HLSL/GLSL/MSL 📚 Modules Reference The public C API across twelve modules. Structs, constants and every function the umbrella header exposes. ✉ Get in touch The engine is not publicly distributed. Email for source access, licensing, or the deeper reference. what it does that other engines don't Every effect below is computed from the physics rather than approximated by a shader trick, and every one is pinned by a host test a..."
+    "b": "hologram — magmacrunch media home › ware › developer tools › hologram hologram an optics-first 3D game engine: a spectral ray tracer where light obeys physics v0.1.0 PolyForm Noncommercial C99 + HLSL/GLSL/MSL 📚 Modules Reference The public C API across twelve modules. Structs, constants and every function the umbrella header exposes. ✉ Get in touch The engine is not publicly distributed. Email for source access, licensing, or the deeper reference. what it does that other engines don't Every effect below is computed from the physics rather than approximated by a shader trick, and every one is ..."
   },
   {
     "t": "hypnopompia",
     "c": "tool",
     "u": "/ware/hypnopompia/",
     "d": "the iOS shell for magmacrunch arcade games: Game Center plugin, bundle pipeline, store tooling",
-    "b": "hypnopompia — magmacrunch media ← developer tools hypnopompia the iOS shell for magmacrunch arcade games The Capacitor and Xcode half of an App Store build, the native Game Center plugin, and the store tooling, by magmacrunch media . It is to iOS what magnolia is to the Wii: the part that's the same every time. It runs no game logic. A game’s rules live in that game’s repo, once per platform. This holds what every App Store build needs and no game should have to reinvent: a plugin, a project, a pipeline and a checklist that fails loudly. contact what's here native/ The Game Center plugin and v..."
+    "b": "hypnopompia — magmacrunch media home › ware › developer tools › hypnopompia hypnopompia the iOS shell for magmacrunch arcade games The Capacitor and Xcode half of an App Store build, the native Game Center plugin, and the store tooling, by magmacrunch media . It is to iOS what magnolia is to the Wii: the part that's the same every time. It runs no game logic. A game’s rules live in that game’s repo, once per platform. This holds what every App Store build needs and no game should have to reinvent: a plugin, a project, a pipeline and a checklist that fails loudly. contact what's here native/ Th..."
+  },
+  {
+    "t": "the jovian humanitarian conflict · magmacrunch media",
+    "c": "tool",
+    "u": "/ware/jovian-humanitarian-conflict/",
+    "d": "an on-rails shooter over Jupiter for the browser and the terminal, with a Wii version on the way",
+    "b": "the jovian humanitarian conflict · magmacrunch media home › ware › video games › the jovian humanitarian conflict THE JOVIAN HUMANITARIAN CONFLICT on-rails over jupiter · read the transponder before you fire An on-rails shooter over the cloud decks of Jupiter. Aid convoys fly among the hostiles, blinking a double-flash transponder. Shoot the hostiles hunting them and never the convoys: three convoy kills and the run is over. Know what you are shooting at. // where to play // BROWSER ▶ PLAY free, in the arcade . Nothing to install. TERMINAL pipx install magmacrunch-jhc then run jovian . Also in..."
   },
   {
     "t": "magmascript",
     "c": "tool",
     "u": "/ware/magmascript/",
     "d": "a Python-inspired mini language for magmacrunch infrastructure",
-    "b": "magmascript — magmacrunch media ← developer tools magmascript a Python-inspired mini language for magmacrunch infrastructure A Python-inspired mini scripting language by magmacrunch media . Write .mgs scripts that combine general-purpose programming with infrastructure automation via the domain bridge. Tree-walk interpreter, no compilation step, runs in your terminal or browser. Docs PyPI magmacrunch.com ▶ Playground Write and run .mgs scripts in-browser with Pyodide. 14 examples, syntax highlighting, console output. 📖 Language Reference Syntax cheat sheet: variables, functions, classes, cont..."
+    "b": "magmascript — magmacrunch media home › ware › developer tools › magmascript magmascript a Python-inspired mini language for magmacrunch infrastructure A Python-inspired mini scripting language by magmacrunch media . Write .mgs scripts that combine general-purpose programming with infrastructure automation via the domain bridge. Tree-walk interpreter, no compilation step, runs in your terminal or browser. Docs PyPI magmacrunch.com ▶ Playground Write and run .mgs scripts in-browser with Pyodide. 14 examples, syntax highlighting, console output. 📖 Language Reference Syntax cheat sheet: variables..."
   },
   {
     "t": "magnolia",
     "c": "tool",
     "u": "/ware/magnolia/",
     "d": "lightweight C engine for Wii homebrew score-attack games",
-    "b": "magnolia — magmacrunch media ← developer tools magnolia lightweight C engine for Wii homebrew games A lightweight C engine for Wii homebrew by magmacrunch media . It handles initialization, input, rendering, scoring, audio, and the game state shell, so you only write the gameplay. Built with devkitPPC and GRRLIB . API reference contact 📚 API Reference 153 functions across 12 modules. Interactive search, module tabs, code examples with syntax highlighting. 🛠 Scaffold Generate a new game project with the magnolia engine pre-configured. coming soon modules core Engine init, SD mount, asset path..."
+    "b": "magnolia — magmacrunch media home › ware › developer tools › magnolia magnolia lightweight C engine for Wii homebrew games A lightweight C engine for Wii homebrew by magmacrunch media . It handles initialization, input, rendering, scoring, audio, and the game state shell, so you only write the gameplay. Built with devkitPPC and GRRLIB . API reference contact 📚 API Reference 153 functions across 12 modules. Interactive search, module tabs, code examples with syntax highlighting. 🛠 Scaffold Generate a new game project with the magnolia engine pre-configured. coming soon modules core Engine ini..."
+  },
+  {
+    "t": "makemecookies!x4 · magmacrunch media",
+    "c": "tool",
+    "u": "/ware/makemecookies/",
+    "d": "a cookie factory game for the browser, with Wii and iPhone versions on the way",
+    "b": "makemecookies!x4 · magmacrunch media home › ware › video games › makemecookies!x4 MAKEME COOKIES!X4 one song, one shift · five stations · ship cookies Run a kitsch cookie factory, five stations at once: flour into the hopper, dough out of the mixer, along the belt, golden out of the oven, boxed and shipped. A shift lasts exactly one play of the song. There is no losing, only how much you shipped and how much mess you left, and make too much mess and the health inspector stops the line. // where to play // BROWSER ▶ PLAY free, in the arcade . Keys 1 to 5, or tap on a phone. WII a Homebrew Chann..."
   },
   {
     "t": "media//search",
@@ -2023,11 +2093,32 @@
     "b": "media//search — magmacrunch media MEDIA//SEARCH 0 RESULTS SOURCES TYPE ALL ▾ ALL PHOTOS ILLUSTRATIONS VIDEO AUDIO LICENSE ALL ▾ ALL PUBLIC DOMAIN CC0 NO ATTRIBUTION ORIENTATION ALL ▾ ALL HORIZONTAL VERTICAL SQUARE CLEAR GO ◆ SEARCH ACROSS FREE MEDIA SOURCES Pexels, Pixabay, Openverse, Met Museum, Smithsonian, Internet Archive SEARCHING... LOAD MORE ← → × OPEN IN TAB DOWNLOAD COPY URL"
   },
   {
+    "t": "moonlight drift · magmacrunch media",
+    "c": "tool",
+    "u": "/ware/moonlight-drift/",
+    "d": "a cave flyer for the browser and the terminal, with a Wii version on the way",
+    "b": "moonlight drift · magmacrunch media home › ware › video games › moonlight drift MOONLIGHT DRIFT coast through space · dodge obstacles · ride the moon Hold thrust to rise, let go to fall, and keep clear of the cave walls as they close in. Pick one of twenty pilots, each with their own handling, and see how far you can drift. It descends from the Flash-era helicopter games, and it plays the same on every machine it runs on. // where to play // BROWSER ▶ PLAY free demo in the arcade : the endless game, nothing to install. TERMINAL pipx install magmacrunch-moonlight-drift then run moonlight-drift ..."
+  },
+  {
+    "t": "nelikko · magmacrunch media",
+    "c": "tool",
+    "u": "/ware/nelikko/",
+    "d": "the falling-block puzzle as Finland invented it, Helsinki 1989, for the browser and the terminal",
+    "b": "nelikko · magmacrunch media home › ware › video games › nelikko NELIKKO the falling-block puzzle, as finland invented it · helsinki 1989 The falling-block puzzle as Finland invented it, in a parallel Helsinki in 1989. Nelikko is Finnish for a group of four. The screens are in Finnish, under snowfall, aurora and the silhouette of Uspenski Cathedral. Hold a piece, see the next one, soft or hard drop, climb the levels, and put your initials on the top ten. The terminal version shares the browser's scoreboard. // where to play // BROWSER ▶ PLAY free, in the arcade . Nothing to install. TERMINAL pi..."
+  },
+  {
     "t": "crunchscope",
     "c": "tool",
     "u": "/ware/pixel-process/",
     "d": "an image signal chain you play like an instrument · pixel sort, FFT filter, feedback",
     "b": "crunchscope — magmacrunch media a signal chain for images ENTER or press any key magmacrunch media CRUNCH//SCOPE 256×256 0 EFFECTS INPUT UPLOAD IMAGE SOURCES generators replace the input image SELECT ▾ WHITE NOISE PERLIN NOISE H GRADIENT V GRADIENT RADIAL GRADIENT COLOR BARS CHECKERBOARD SOLID COLOR COLOR SEED REROLL COLOR A COLOR B WORK SIZE W H PRESETS ▾ 128 × 128 256 × 256 512 × 512 640 × 480 800 × 600 1024 × 768 FILE NAME EXPORT PNG GRID DROP IMAGE MON LEVELS SPECTRUM drag & drop · ctrl+v paste · upload image · add effects → SIGNAL CHAIN effects process the source image CHAIN SEED one numb..."
+  },
+  {
+    "t": "roderick tron · magmacrunch media",
+    "c": "tool",
+    "u": "/ware/roderick-tron/",
+    "d": "a platformer about a robot composer, for the browser and the terminal",
+    "b": "roderick tron · magmacrunch media home › ware › video games › roderick tron RODERICK TRON robot composer on 1810s rooftops · run, roll, stomp · find T-R-O-N A side-scrolling platformer about a robot composer on the rooftops of an 1810s Dutch city. Run, roll, stomp and fire musical notes, find the letters T-R-O-N, and reach the lit door. The levels are built by hand, with chimney draughts, bell cannons and coal trolleys in the way. // where to play // BROWSER ▶ PLAY free, in the arcade . Nothing to install. TERMINAL pipx install magmacrunch-roderick-tron then run roderick-tron . Three hand-buil..."
   },
   {
     "t": "sprite forge",
@@ -2037,11 +2128,25 @@
     "b": "sprite forge — magmacrunch media This tool is best experienced on a desktop or laptop. Please visit on a wider screen for the full workspace. SPRITE//FORGE 32×32 1 FRAME − 16× + ⇲ FIT ▦ GRID ⇋ MIRROR ◎ ONION 1 ◫ PREVIEW 32 × 32 animation sheet; click a frame to edit it, drag to reorder surface ◀ ▶ EXPORT OUTPUT COPY COLOR #000000 + ADD RAMP SPRITES ADD DUP DEL every sprite here shares one palette, so a character's facings cannot drift onto different browns. each exports as its own sheet, named by the name above. TARGETS engine ADD FOLDER… the sheet lands in the engine's own directory under the..."
   },
   {
+    "t": "french tarot · magmacrunch media",
+    "c": "tool",
+    "u": "/ware/tarot/",
+    "d": "four-player French Tarot against the computer, in the browser and the terminal",
+    "b": "french tarot · magmacrunch media home › ware › video games › french tarot FRENCH TAROT 78-card deck · bidding · the classic french trick-taker French Tarot for four, you against three computer players, on a custom 78-card magmacrunch deck with a vaporwave card back. The bids keep their French names, Passe, Prise, Garde, Garde Sans and Garde Contre, beside English labels, and a hand runs through the bidding, the dog and eighteen tricks. // where to play // BROWSER ▶ PLAY free, in the arcade . Nothing to install. TERMINAL pipx install magmacrunch-tarot then run tarot . Also in the magmacrunch te..."
+  },
+  {
+    "t": "texas hold'em lava dome · magmacrunch media",
+    "c": "tool",
+    "u": "/ware/texas-holdem-lava-dome/",
+    "d": "a solo poker card game for the browser and the terminal, with a Wii version on the way",
+    "b": "texas hold'em lava dome · magmacrunch media home › ware › video games › texas hold'em lava dome TEXAS HOLD'EM LAVA DOME solo hold'em against the dome · bank it or let it ride Texas Hold'Em with no opponent but the dome. Each round raises the ante and scores your hand against a climbing threshold: beat it to win chips, miss it and lose the bet. Between hands, bank your chips to keep them or leave them riding, until you go bust or escape the dome. // where to play // BROWSER ▶ PLAY free, in the arcade . Nothing to install. TERMINAL pipx install magmacrunch-thld then run lava-dome . Also in the m..."
+  },
+  {
     "t": "texastoast",
     "c": "tool",
     "u": "/ware/texastoast/",
     "d": "Python RPG engine with I2C hardware abstraction for magmacrunch game systems",
-    "b": "texastoast — magmacrunch media ← developer tools texastoast Python RPG engine with I2C hardware abstraction for magmacrunch game systems v0.5.0 PolyForm Noncommercial 1.0.0 Python 3.10+ A tkinter-based 2D game engine by magmacrunch media , inspired by adenosine and built for the same kind of small RPGs, but in Python, and able to read real controllers over I2C when it runs on a Raspberry Pi. Game logic never depends on tkinter, and hardware degrades gracefully to the keyboard when it's absent. It also ships a hardware dev kit: a bus-level simulator that runs the real I2C stack against imaginar..."
+    "b": "texastoast — magmacrunch media home › ware › developer tools › texastoast texastoast Python RPG engine with I2C hardware abstraction for magmacrunch game systems v0.5.0 PolyForm Noncommercial 1.0.0 Python 3.10+ A tkinter-based 2D game engine by magmacrunch media , inspired by adenosine and built for the same kind of small RPGs, but in Python, and able to read real controllers over I2C when it runs on a Raspberry Pi. Game logic never depends on tkinter, and hardware degrades gracefully to the keyboard when it's absent. It also ships a hardware dev kit: a bus-level simulator that runs the real I..."
   },
   {
     "t": "tone grating",
@@ -2049,5 +2154,12 @@
     "u": "/ware/tone-grating/",
     "d": "FM synthesis and a diffraction grating are the same calculation · one Bessel column, two domains",
     "b": "tone grating — magmacrunch media This instrument wants two panels side by side. Please visit on a wider screen. TONE//GRATING β 2.405 CARRIER NULL SHARED one number, both panels MODULATION INDEX β 2.405 0 2.405 5.520 8.654 TIME DOMAIN CARRIER f c 440 Hz RATIO f m /f c 0.25 modulator f m 110 Hz PLAY TONE at β = 2.405 the pitch you started on is the one frequency missing SPACE DOMAIN GROOVE SPACING d 2.00 µm WAVELENGTH λ 500 nm groove depth (p–v) 191.4 nm highest order ±4 TIME sidebands at f c + m·f m a carrier phase-modulated by β·sin(2πf m t) SPACE orders at sin&thinsp;&theta; = mλ/d a wavefro..."
+  },
+  {
+    "t": "very long boards · magmacrunch media",
+    "c": "tool",
+    "u": "/ware/very-long-boards/",
+    "d": "downhill longboarding: an endless run in the browser, and a desktop version in development",
+    "b": "very long boards · magmacrunch media home › ware › video games › very long boards VERY LONG BOARDS downhill longboarding · choose your carl · dodge everything Downhill skateboarding as Carl Spatski, in one of three looks: the everyman, the maniac or the enigma, each riding differently. In the browser it is an endless run: steer around obstacles, pull tricks for points and keep your stability up. The desktop version is a different, calmer game: timed runs down measured New Hampshire and Block Island roads. // where to play // BROWSER ▶ PLAY free, in the arcade . Nothing to install. DESKTOP a se..."
   }
 ]
