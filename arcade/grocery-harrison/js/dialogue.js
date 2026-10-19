@@ -25,6 +25,19 @@
 
 GH.DIALOGUE = {
 
+  // ---- The opening: how it happened ----------------------------------------
+  // One caption per beat of the scene in opening.js, in order: on break, the
+  // room, the chord, the hum, the shrink, the way out. Six beats, so keep six
+  // lines; each fits the caption box as a dialogue line does.
+  opening: [
+    `4:12 AM. Break time, in the walk-in cooler behind the dairy aisle.`,
+    `Best acoustics in the store, and nobody comes back here at this hour.`,
+    `Harrison tries a chord he has never played before.`,
+    `The cooler hums it back.`,
+    `And the walk-in is suddenly very, very big.`,
+    `The shift ends at 6. Somewhere out in the store is a way back to full size.`,
+  ],
+
   // ---- Aisle 4: cereal ------------------------------------------------------
   cereal: {
     intro: `5:00 AM, and you are the size of a cornflake`,
@@ -32,7 +45,7 @@ GH.DIALOGUE = {
     talk: {
       start: [
         `Oh! A tall one. Well. You WERE tall, dear.`,
-        `Something in aisle 7 does that to the night shift. Nobody likes to talk about it.`,
+        `Whatever you played in that walk-in, the whole store heard it. Every aisle.`,
         `My oat ring rolled out of the TOASTED O's box. All the way down here.`,
         `Carry it home for me? It's at the far end of the aisle, up top.`,
         `It's heavier than it looks. Mind the weevils.`,

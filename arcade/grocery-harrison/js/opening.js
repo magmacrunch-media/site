@@ -1,0 +1,268 @@
+// opening.js -- how it happened: a short painted scene, not a level.
+//
+// The walk-in cooler behind dairy, 4 AM, on break. Harrison at full size on a
+// milk crate with his guitar, a chord nobody has played before, the cooler
+// humming it back, and then the same room, enormous. One caption a beat;
+// Enter, Space or a tap moves on and Escape skips the lot. The captions are
+// in dialogue.js under `opening`.
+//
+// It plays the first time the title is left in a browser, and again whenever
+// the title is left with O instead of Enter. Browser half only, so
+// Math.random is fine.
+
+GH.opening = {
+
+  KEY: 'grocery-harrison-opening-seen',
+  beat: 0,
+  t0: 0,
+  notes: [],
+
+  seen() {
+    try { return localStorage.getItem(this.KEY) === '1'; } catch (err) { return false; }
+  },
+
+  markSeen() {
+    try { localStorage.setItem(this.KEY, '1'); } catch (err) { /* plays again next time */ }
+  },
+
+  begin(t) {
+    this.beat = 0;
+    this.t0 = t;
+    this.notes = [];
+  },
+
+  // On to the next beat; false once there are none left.
+  next(t) {
+    if (this.beat >= GH.DIALOGUE.opening.length - 1) return false;
+    this.beat++;
+    this.t0 = t;
+    // The sound of each beat, played as it arrives.
+    const cue = ['', 'strum', 'strum', 'magma', 'fall', 'checkpoint'][this.beat];
+    if (cue) GH.sound.play(cue);
+    return true;
+  },
+
+  draw(c, t) {
+    const dt = t - this.t0;
+    const big = this.beat >= 4;
+    // The hum shakes the room; the shrink is a white flash fading out.
+    const shake = this.beat === 3 ? Math.sin(t * 1.7) * Math.min(3, dt / 20) : 0;
+    c.save();
+    c.translate(shake, 0);
+    if (big) this.drawGiantRoom(c, t);
+    else this.drawRoom(c, t);
+    c.restore();
+    if (this.beat === 4 && dt < 50) {
+      c.fillStyle = `rgba(235, 250, 255, ${1 - dt / 50})`;
+      c.fillRect(0, 0, GH.W, GH.H);
+    }
+    this.drawCaption(c, t);
+  },
+
+  // ---- At full size --------------------------------------------------------
+  drawRoom(c, t) {
+    const W = GH.W, H = GH.H, FLOOR = 380;
+    const flicker = this.beat === 3 && Math.random() < 0.25;
+    // Stainless walls, seamed, cold.
+    const wall = c.createLinearGradient(0, 0, 0, FLOOR);
+    wall.addColorStop(0, flicker ? '#3a4656' : '#5c6b7c');
+    wall.addColorStop(1, flicker ? '#232b36' : '#3a4656');
+    c.fillStyle = wall;
+    c.fillRect(0, 0, W, FLOOR);
+    c.fillStyle = 'rgba(0, 0, 0, 0.18)';
+    for (let x = 60; x < W; x += 120) c.fillRect(x, 0, 2, FLOOR);
+    // The light: one caged bulb.
+    const glow = c.createRadialGradient(320, 30, 4, 320, 30, 260);
+    glow.addColorStop(0, flicker ? 'rgba(255, 240, 200, 0.05)' : 'rgba(255, 240, 200, 0.45)');
+    glow.addColorStop(1, 'rgba(255, 240, 200, 0)');
+    c.fillStyle = glow;
+    c.fillRect(0, 0, W, FLOOR);
+    c.fillStyle = flicker ? '#665f50' : '#fff3c4';
+    c.beginPath(); c.arc(320, 28, 9, 0, Math.PI * 2); c.fill();
+    c.strokeStyle = '#2a2f38';
+    c.beginPath(); c.moveTo(320, 0); c.lineTo(320, 19); c.stroke();
+    // The evaporator fan, up in the corner, that does the humming.
+    this.drawFan(c, 520, 60, 1, t);
+    // Wire shelving, stacked with milk crates and gallon jugs.
+    this.drawShelf(c, 30, 140, 190, FLOOR, 1);
+    // The floor: grey quarry tile.
+    c.fillStyle = '#2d333d';
+    c.fillRect(0, FLOOR, W, H - FLOOR);
+    c.strokeStyle = 'rgba(0, 0, 0, 0.3)';
+    for (let x = 0; x < W; x += 64) { c.beginPath(); c.moveTo(x, FLOOR); c.lineTo(x - 40, H); c.stroke(); }
+    // The time clock by the door, reading 4:12.
+    c.fillStyle = '#d9d4c3';
+    c.fillRect(470, 190, 70, 52);
+    c.fillStyle = '#1f2a1f';
+    c.fillRect(478, 198, 54, 18);
+    c.fillStyle = '#7ee08a';
+    c.font = '9px "Press Start 2P", monospace';
+    c.textAlign = 'center';
+    c.fillText('4:12', 505, 212);
+    c.fillStyle = '#8a8476';
+    for (let i = 0; i < 4; i++) c.fillRect(480 + i * 13, 224, 9, 12);
+    // Harrison on a milk crate, playing, at four and a half times game size.
+    this.drawCrate(c, 330, FLOOR, 1);
+    c.save();
+    c.translate(330, FLOOR - 60 - 38 * 4.5);
+    c.scale(4.5, 4.5);
+    drawGroceryHarrison(c, -23, 0, this.beat >= 1, true, t * 16);
+    c.restore();
+    // His breath, in the cold.
+    for (let i = 0; i < 3; i++) {
+      const k = ((t + i * 40) % 120) / 120;
+      c.fillStyle = `rgba(230, 240, 255, ${0.25 * (1 - k)})`;
+      c.beginPath(); c.arc(300 - k * 40, 250 - k * 30, 6 + k * 14, 0, Math.PI * 2); c.fill();
+    }
+    // Notes rising from the guitar, and in the hum, swirling round the room.
+    if (this.beat >= 1) this.drawNotes(c, t, 360, 270, this.beat === 3);
+    if (this.beat === 3) {
+      c.strokeStyle = 'rgba(180, 230, 255, 0.35)';
+      for (let i = 0; i < 4; i++) {
+        const r = ((t * 3 + i * 60) % 240);
+        c.beginPath(); c.arc(520, 60, r, 0, Math.PI * 2); c.stroke();
+      }
+    }
+  },
+
+  drawFan(c, x, y, s, t) {
+    c.fillStyle = '#8a96a3';
+    c.fillRect(x - 70 * s, y - 34 * s, 140 * s, 68 * s);
+    c.fillStyle = '#2a2f38';
+    c.beginPath(); c.arc(x, y, 26 * s, 0, Math.PI * 2); c.fill();
+    c.strokeStyle = '#c3ccd6';
+    c.lineWidth = 3 * s;
+    const a = t * (this.beat === 3 ? 0.9 : 0.25);
+    for (let i = 0; i < 3; i++) {
+      c.beginPath(); c.moveTo(x, y);
+      c.lineTo(x + Math.cos(a + i * 2.09) * 22 * s, y + Math.sin(a + i * 2.09) * 22 * s);
+      c.stroke();
+    }
+    c.lineWidth = 1;
+    c.strokeStyle = 'rgba(0, 0, 0, 0.35)';
+    for (let gx = -60; gx <= 60; gx += 10) {
+      c.beginPath(); c.moveTo(x + gx * s, y - 30 * s); c.lineTo(x + gx * s, y + 30 * s); c.stroke();
+    }
+  },
+
+  drawShelf(c, x0, x1, top, floor, s) {
+    c.strokeStyle = '#a9b3bd';
+    c.lineWidth = 3 * s;
+    for (const x of [x0, x1]) { c.beginPath(); c.moveTo(x, top); c.lineTo(x, floor); c.stroke(); }
+    for (let y = top; y < floor; y += 90 * s) {
+      c.beginPath(); c.moveTo(x0, y); c.lineTo(x1, y); c.stroke();
+      // A gallon jug and a crate on each.
+      c.fillStyle = '#f2f2ec';
+      c.fillRect(x0 + 12 * s, y - 52 * s, 34 * s, 52 * s);
+      c.fillStyle = '#d93a3a';
+      c.fillRect(x0 + 12 * s, y - 30 * s, 34 * s, 12 * s);
+      c.fillStyle = '#2e6fb5';
+      c.fillRect(x0 + 56 * s, y - 40 * s, Math.min(50 * s, x1 - x0 - 64 * s), 40 * s);
+    }
+    c.lineWidth = 1;
+  },
+
+  drawCrate(c, x, floor, s) {
+    const w = 110 * s, h = 60 * s;
+    c.fillStyle = '#c0392b';
+    c.fillRect(x - w / 2, floor - h, w, h);
+    c.fillStyle = 'rgba(0, 0, 0, 0.35)';
+    for (let i = 0; i < 4; i++) c.fillRect(x - w / 2 + 10 * s + i * 25 * s, floor - h + 12 * s, 14 * s, h - 24 * s);
+  },
+
+  drawNotes(c, t, x, y, swirl) {
+    if (Math.random() < (swirl ? 0.3 : 0.08)) {
+      this.notes.push({ x: x + Math.random() * 20, y, a: Math.random() * 6.28, born: t });
+    }
+    c.fillStyle = '#ffe9a8';
+    c.font = '16px sans-serif';
+    c.textAlign = 'center';
+    this.notes = this.notes.filter(n => t - n.born < 160);
+    for (const n of this.notes) {
+      const k = (t - n.born) / 160;
+      const px = swirl ? 320 + Math.cos(n.a + k * 6) * (60 + k * 220) : n.x + Math.sin(k * 8 + n.a) * 14;
+      const py = swirl ? 200 + Math.sin(n.a + k * 6) * (40 + k * 120) : n.y - k * 180;
+      c.globalAlpha = 1 - k;
+      c.fillText(n.a > 3 ? '♪' : '♫', px, py);
+    }
+    c.globalAlpha = 1;
+  },
+
+  // ---- After: the same room, enormous ---------------------------------------
+  drawGiantRoom(c, t) {
+    // The floor sits above the caption box, so tiny Harrison is not under it.
+    const W = GH.W, H = GH.H, FLOOR = 350;
+    // Only the bottom of everything fits now: a crate's corner is a cliff,
+    // the shelf post a pillar, a jug a white tower going up out of frame.
+    const wall = c.createLinearGradient(0, 0, 0, FLOOR);
+    wall.addColorStop(0, '#2b3442');
+    wall.addColorStop(1, '#4a5868');
+    c.fillStyle = wall;
+    c.fillRect(0, 0, W, FLOOR);
+    c.fillStyle = 'rgba(0, 0, 0, 0.2)';
+    c.fillRect(250, 0, 8, FLOOR);
+    // The shelf post and the bottom shelf's wire, far overhead.
+    c.fillStyle = '#a9b3bd';
+    c.fillRect(40, 0, 26, FLOOR);
+    c.fillRect(0, 70, 240, 12);
+    // A gallon jug's base, on that shelf.
+    c.fillStyle = '#f2f2ec';
+    c.fillRect(70, -40, 150, 110);
+    // The milk crate, a red cliff with windows in it.
+    c.fillStyle = '#c0392b';
+    c.fillRect(380, 40, 300, FLOOR - 40);
+    c.fillStyle = 'rgba(0, 0, 0, 0.35)';
+    for (let y = 70; y < FLOOR - 20; y += 120) c.fillRect(420, y, 90, 80);
+    c.fillStyle = 'rgba(255, 255, 255, 0.12)';
+    c.fillRect(380, 40, 10, FLOOR - 40);
+    // A dropped guitar pick, the size of a door.
+    c.fillStyle = '#e8b04a';
+    c.beginPath(); c.moveTo(290, FLOOR); c.quadraticCurveTo(300, FLOOR - 70, 340, FLOOR - 64); c.quadraticCurveTo(360, FLOOR - 30, 330, FLOOR); c.fill();
+    // The floor, and one tile seam running into the distance.
+    c.fillStyle = '#2d333d';
+    c.fillRect(0, FLOOR, W, H - FLOOR);
+    c.fillStyle = 'rgba(0, 0, 0, 0.35)';
+    c.fillRect(0, FLOOR + 22, W, 4);
+    // Under the door at the right, the light from the dairy aisle.
+    if (this.beat >= 5) {
+      const lit = c.createLinearGradient(W, 0, W - 160, 0);
+      lit.addColorStop(0, 'rgba(255, 246, 200, 0.55)');
+      lit.addColorStop(1, 'rgba(255, 246, 200, 0)');
+      c.fillStyle = lit;
+      c.fillRect(W - 160, FLOOR - 18, 160, 18);
+    }
+    // Harrison, actual size, standing up and looking about.
+    c.save();
+    c.translate(200, FLOOR - 38);
+    if (this.beat >= 5) c.scale(-1, 1);
+    drawGroceryHarrison(c, -23, 0, false, true, t * 16);
+    c.restore();
+    // A cold drip, falling past him like a boulder.
+    const k = ((t - this.t0) % 90) / 90;
+    c.fillStyle = 'rgba(200, 230, 255, 0.7)';
+    c.beginPath(); c.ellipse(150, k * FLOOR, 7, 10, 0, 0, Math.PI * 2); c.fill();
+  },
+
+  drawCaption(c, t) {
+    const line = GH.DIALOGUE.opening[this.beat];
+    // Short of the right edge, where the sound button sits.
+    const w = GH.W - 84;
+    c.fillStyle = 'rgba(10, 8, 20, 0.86)';
+    c.fillRect(20, GH.H - 92, w, 72);
+    c.strokeStyle = GH.render.C.tag;
+    c.strokeRect(20.5, GH.H - 91.5, w - 1, 71);
+    c.fillStyle = GH.render.C.hud;
+    c.font = '8px "Press Start 2P", monospace';
+    c.textAlign = 'left';
+    GH.render.wrap(c, line, 36, GH.H - 66, w - 40, 16);
+    if (Math.floor(t / 20) % 2 === 0) {
+      c.textAlign = 'right';
+      c.fillStyle = GH.render.C.tag;
+      c.fillText('▼', 20 + w - 14, GH.H - 30);
+    }
+    c.fillStyle = 'rgba(255, 246, 220, 0.35)';
+    c.font = '6px "Press Start 2P", monospace';
+    c.textAlign = 'right';
+    c.fillText(GH.touch.seen ? 'TAP' : 'ESC: SKIP', GH.W - 26, 14);
+  },
+};

@@ -55,6 +55,13 @@ GH.touch = {
 
     canvas.addEventListener('pointerdown', e => {
       const p = toCanvas(e);
+      // The opening moves on for a click or a tap alike.
+      if (main.state === 'opening') {
+        e.preventDefault();
+        if (e.pointerType !== 'mouse' && !this.seen) { this.seen = true; main.syncUi(); }
+        main.advanceOpening();
+        return;
+      }
       // The directory answers mouse and touch alike.
       if (main.state === 'directory') {
         e.preventDefault();

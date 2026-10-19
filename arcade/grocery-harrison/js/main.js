@@ -16,7 +16,7 @@
 
 GH.main = {
 
-  state: 'title',     // title | directory | checkout | playing | talking | paused | over
+  state: 'title',     // title | opening | directory | checkout | playing | talking | paused | over
   pick: 0,            // the directory row the cursor is on
   PROGRESS_KEY: 'grocery-harrison-restored',
   SAVE_KEY: 'grocery-harrison-save',   // sugar banked, crystals found, upgrades bought
@@ -50,7 +50,7 @@ GH.main = {
     });
     const tap = fn => e => { e.stopPropagation(); e.currentTarget.blur(); fn(); };
     document.getElementById('btnStart').addEventListener('click', tap(() => {
-      if (this.state === 'title') this.openDirectory();
+      if (this.state === 'title') this.leaveTitle(false);
     }));
     document.getElementById('btnAgain').addEventListener('click', tap(() => {
       if (this.state === 'over') this.openDirectory();
@@ -99,6 +99,26 @@ GH.main = {
     this.syncUi();
     loop.start();
     this.scaleToFit();
+  },
+
+  // ---- The opening -------------------------------------------------------------
+  // The walk-in cooler, the chord, the shrink (opening.js). It plays the
+  // first time the title is left, and whenever it is left with O.
+  leaveTitle(replay) {
+    if (!replay && GH.opening.seen()) { this.openDirectory(); return; }
+    GH.sound.unlock();
+    GH.opening.begin(GH.render.t);
+    this.setState('opening');
+  },
+
+  advanceOpening() {
+    GH.sound.play('talk');
+    if (!GH.opening.next(GH.render.t)) this.endOpening();
+  },
+
+  endOpening() {
+    GH.opening.markSeen();
+    this.openDirectory();
   },
 
   // ---- The store directory -------------------------------------------------
@@ -278,7 +298,17 @@ GH.main = {
       if (k === 'enter' || k === ' ') this.setState('playing');
       return;
     }
-    if (this.state === 'title' || this.state === 'over') {
+    if (this.state === 'opening') {
+      if (k === 'escape') this.endOpening();
+      else if (k === 'enter' || k === ' ' || k === 'x' || k === 'z') this.advanceOpening();
+      return;
+    }
+    if (this.state === 'title') {
+      if (k === 'enter') this.leaveTitle(false);
+      else if (k === 'o') this.leaveTitle(true);
+      return;
+    }
+    if (this.state === 'over') {
       if (k === 'enter') this.openDirectory();
       return;
     }
@@ -335,6 +365,7 @@ GH.main = {
   render() {
     const c = GH.render.ctx;
     if (this.state === 'title') GH.render.drawTitle(c);
+    else if (this.state === 'opening') { GH.render.t++; GH.opening.draw(c, GH.render.t); }
     else if (this.state === 'directory') GH.render.drawDirectory(c, this.pick, this.restored(), this.save().sugar);
     else if (this.state === 'checkout') GH.render.drawCheckout(c, this.shopPick, this.save(), this.shopSay);
     else if (this.state === 'playing') {
