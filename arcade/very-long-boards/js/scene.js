@@ -56,24 +56,52 @@ window.createScene = function(canvas) {
         const pPos = playerMesh.position;
         const slopeFactor = Math.max(0, Math.min(1, -slope / 2));
 
-        const camHeight = 5 + slopeFactor * 3;
-        const camDist = 7 + slopeFactor * 2;
+        // Closer and lower than it was (5 up, 7 back), so Carl fills about a third
+        // as much again of the frame: from 7 m he was a 25 px figure at 800 px
+        // wide. The look-at point is raised to his waist so the extra height goes
+        // to him and the road ahead rather than to the tarmac under the board.
+        const camHeight = 3.6 + slopeFactor * 2;
+        const camDist = 6 + slopeFactor * 1.5;
 
-        camera.position.x = pPos.x * 0.5;
+        camera.position.x = pPos.x * 0.75;
         camera.position.y = pPos.y + camHeight;
         camera.position.z = pPos.z - camDist;
 
         const lookAhead = 15;
         const curveOffset = roadCurve * 40;
         camera.setTarget(new BABYLON.Vector3(
-            pPos.x + curveOffset,
-            pPos.y,
+            pPos.x * 0.8 + curveOffset,
+            pPos.y + 0.4,
             pPos.z + lookAhead
         ));
     }
 
+    /**
+     * A portrait phone gets a near-square canvas. With the vertical FOV fixed,
+     * narrowing the canvas narrowed the view to less than the road, so below a
+     * 1.2 aspect the HORIZONTAL field is pinned instead and the road keeps its
+     * full width on screen.
+     */
+    function applyFov() {
+        engine.resize();
+        if (engine.getAspectRatio(camera) < 1.2) {
+            camera.fovMode = BABYLON.Camera.FOVMODE_HORIZONTAL_FIXED;
+            camera.fov = 1.25;
+        } else {
+            camera.fovMode = BABYLON.Camera.FOVMODE_VERTICAL_FIXED;
+            camera.fov = 1.05;
+        }
+    }
+    // The engine was never told about a resize, so rotating a phone or resizing
+    // the window stretched the first frame's buffer for the rest of the session.
+    window.addEventListener('resize', applyFov);
+    applyFov();
+
     function updateSky(playerMesh) {
+        // Height follows Carl as x and z do. The road descends forever, and a
+        // sky pinned at 80 was above the view a few kilometres in.
         sky.position.x = playerMesh.position.x * 0.3;
+        sky.position.y = playerMesh.position.y + 80;
         sky.position.z = playerMesh.position.z + 350;
     }
 

@@ -48,18 +48,62 @@ const CONFIG = {
     // measured against each rider's own ceiling - see player.js - which raised
     // the term it multiplies and would otherwise have doubled everyone's drain.
     STABILITY_DECAY: 0.195,
-    STABILITY_GAIN: 6.0,
     STABILITY_MAX: 100,
     STABILITY_WOBBLE_AT: 55,
     STABILITY_BAIL_AT: 0,
 
+    // ── Carving ──
+    //
+    // The refill is paid for SIDEWAYS DISTANCE ACTUALLY TRAVELLED, not for a key
+    // being down. It used to be a flat 6 per frame whenever left or right was
+    // held, which made a 120 ms tap worth ~40 points and made holding one key
+    // worth a full meter for ever - including pinned against the edge of the
+    // road, where Carl is not moving sideways at all.
+    //
+    // CARVE_GAIN is stability per world unit of lateral travel, before the
+    // speed and turn-rate terms in player.js. A carve also goes stale: the
+    // refill fades to nothing over CARVE_FRESH_SECS of turning the same way, so
+    // a carve means swinging back, not leaning into one long arc.
+    //
+    // Measured by stepping the physics at 60 fps with no hazards, swinging in
+    // 1.2 s phases and carving for some fraction of each: Office Carl on a
+    // Standard holds with about a third of the time spent carving, Office Carl on
+    // Old School with a quarter, Party Carl on a Cruiser needs about half. Riding
+    // dead straight bails in 13 to 21 s depending on the pairing.
+    CARVE_GAIN: 10,
+    CARVE_FRESH_SECS: 1.2,
+
     COUNTDOWN_SECS: 3,
 
-    OBS_FIRST: 2000,
-    OBS_MIN_GAP: 1000,
-    OBS_MAX_GAP: 2000,
+    // ── Obstacles ──
+    //
+    // Distances are world units along the road. The gap between hazards closes
+    // from GAP_START to GAP_END over RAMP_DIST and then holds, so the run gets
+    // harder the further you go instead of staying flat for ever. Hazards spawn
+    // across the full rideable width (SPAWN_HALF_W, matching the rider's own
+    // clamp in player.js), so there is no lane at the edge they cannot reach.
+    OBS_FIRST: 60,
+    OBS_GAP_START: 60,
+    OBS_GAP_END: 22,
+    OBS_GAP_JITTER: 24,
+    OBS_RAMP_DIST: 3000,
+    OBS_PAIR_FROM: 800,       // from here on some hazards come in pairs
+    OBS_PAIR_CHANCE_MAX: 0.45,
+    OBS_SPAWN_HALF_W: 3.4,
+    RIDE_HALF_W: 3.5,
 
+    // Small hazards (pinecones, sticks, puddles) are a stumble, not a wipeout:
+    // they knock this much off the balance meter and give a moment's grace.
+    STUMBLE_COST: 40,
+    STUMBLE_GRACE_FRAMES: 45,
+
+    // ── Tricks ──
+    // An ollie lifts Carl clear of anything on the road for the middle of its
+    // arc, and costs balance to land. That is the whole trade: points and a way
+    // over a hazard, paid for out of the same meter carving fills.
     TRICK_POINTS: 200,
+    TRICK_FRAMES: 26,
+    TRICK_COST: 14,
     NEAR_MISS_POINTS: 75,
 };
 

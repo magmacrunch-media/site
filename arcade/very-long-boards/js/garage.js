@@ -102,21 +102,24 @@ window.drawGarage = function(ctx, w, h) {
     ctx.lineWidth = 2;
     ctx.strokeRect(260, 40, 120, 80);
 
-    // Shelf on right wall
+    // Shelf on right wall, beside the window rather than under it: at w - 200
+    // it ran 70px into the window's span, which is drawn after it and covered
+    // the green bottle and the box.
+    const shelfX = w - 290;
     ctx.fillStyle = '#5a3d1e';
-    ctx.fillRect(w - 200, 80, 140, 8);
-    ctx.fillRect(w - 200, 80, 6, 40);
-    ctx.fillRect(w - 66, 80, 6, 40);
+    ctx.fillRect(shelfX, 80, 140, 8);
+    ctx.fillRect(shelfX, 80, 6, 40);
+    ctx.fillRect(shelfX + 134, 80, 6, 40);
 
     // Items on shelf
     ctx.fillStyle = '#4a90d9';
-    ctx.fillRect(w - 190, 62, 16, 18); // bottle
+    ctx.fillRect(shelfX + 10, 62, 16, 18); // bottle
     ctx.fillStyle = '#ff4444';
-    ctx.fillRect(w - 160, 66, 12, 14); // can
+    ctx.fillRect(shelfX + 40, 66, 12, 14); // can
     ctx.fillStyle = '#44cc44';
-    ctx.fillRect(w - 130, 64, 14, 16); // bottle
+    ctx.fillRect(shelfX + 70, 64, 14, 16); // bottle
     ctx.fillStyle = '#ffaa00';
-    ctx.fillRect(w - 100, 68, 20, 12); // box
+    ctx.fillRect(shelfX + 100, 68, 20, 12); // box
 
     // Window
     const winX = w - 130;
@@ -198,27 +201,60 @@ window.drawGarage = function(ctx, w, h) {
     ctx.fill();
 };
 
+/**
+ * The board seen from above, nose to the right. Each board has its own outline,
+ * because four ellipses differing only in colour told you nothing about which
+ * was which: the Standard is a symmetric drop-through, the Cruiser has a
+ * kicktail, the Carver is a pintail and the Old School a swallowtail with a
+ * fat nose.
+ */
+const BOARD_OUTLINES = {
+    // Each returns points around half the outline (top edge, tail to nose) as
+    // [x, halfWidth] in 0..1 of length; the bottom edge is the mirror.
+    'standard':   [[0, 0.55], [0.06, 0.9], [0.15, 1], [0.85, 1], [0.94, 0.9], [1, 0.55]],
+    'cruiser':    [[0, 0.35], [0.08, 0.75], [0.2, 0.95], [0.6, 1], [0.85, 0.95], [0.96, 0.75], [1, 0.4]],
+    'carver':     [[0, 0.1], [0.12, 0.55], [0.35, 0.95], [0.6, 1], [0.82, 0.7], [1, 0.08]],
+    'old-school': [[0, 0.9], [0.05, 0.35], [0.1, 0.7], [0.3, 0.85], [0.75, 1], [0.92, 0.9], [1, 0.5]],
+};
+
+function boardPath(ctx, key, cx, cy, len, halfW) {
+    const pts = BOARD_OUTLINES[key] || BOARD_OUTLINES.standard;
+    const x0 = cx - len / 2;
+    ctx.beginPath();
+    pts.forEach(([u, v], i) => {
+        const px = x0 + u * len, py = cy - v * halfW;
+        if (i === 0) ctx.moveTo(px, py); else ctx.lineTo(px, py);
+    });
+    for (let i = pts.length - 1; i >= 0; i--) {
+        const [u, v] = pts[i];
+        ctx.lineTo(x0 + u * len, cy + v * halfW);
+    }
+    ctx.closePath();
+}
+
 window.drawBoardPreview = function(ctx, boardKey, x, y, w, h) {
     const board = BOARDS[boardKey];
     if (!board) return;
+    const rgb = (c, k = 1) => `rgb(${c[0] * 255 * k | 0},${c[1] * 255 * k | 0},${c[2] * 255 * k | 0})`;
+    const cx = x + w / 2, cy = y + h / 2;
+    const len = w * 0.9, halfW = h * 0.32;
 
-    const deckC = board.deckColor;
-    const gripC = board.gripColor;
-
-    // Deck
-    ctx.fillStyle = `rgb(${deckC[0]*255},${deckC[1]*255},${deckC[2]*255})`;
-    ctx.beginPath();
-    ctx.ellipse(x + w/2, y + h/2, w * 0.4, h * 0.12, 0, 0, Math.PI * 2);
+    ctx.clearRect(x, y, w, h);
+    // Trucks and wheels first, so the deck sits over them.
+    ctx.fillStyle = '#1b1b1b';
+    for (const u of [0.24, 0.76]) {
+        const wx = cx - len / 2 + u * len;
+        ctx.fillRect(wx - 3, cy - halfW - 2, 6, 4);
+        ctx.fillRect(wx - 3, cy + halfW - 2, 6, 4);
+    }
+    // Deck edge in the board colour, grip on top inset by two pixels.
+    ctx.fillStyle = rgb(board.deckColor);
+    boardPath(ctx, boardKey, cx, cy, len, halfW);
     ctx.fill();
-
-    // Grip tape
-    ctx.fillStyle = `rgb(${gripC[0]*255},${gripC[1]*255},${gripC[2]*255})`;
-    ctx.beginPath();
-    ctx.ellipse(x + w/2, y + h/2 - 1, w * 0.35, h * 0.08, 0, 0, Math.PI * 2);
+    ctx.fillStyle = rgb(board.gripColor);
+    boardPath(ctx, boardKey, cx, cy, len - 6, halfW - 2.5);
     ctx.fill();
-
-    // Wheels
-    ctx.fillStyle = '#333';
-    ctx.fillRect(x + w * 0.2, y + h * 0.58, 6, 4);
-    ctx.fillRect(x + w * 0.7, y + h * 0.58, 6, 4);
+    // A stripe of the deck colour down the grip, so the colour reads at a glance.
+    ctx.fillStyle = rgb(board.deckColor, 0.9);
+    ctx.fillRect(cx - len * 0.3, cy - 1, len * 0.6, 2);
 };

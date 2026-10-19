@@ -122,7 +122,7 @@ function makeBed(filterType, freq, q, gain) {
     g.connect(gain || masterGain);
     src.start();
 
-    return { src, filter, gain: g };
+    return { src, filter, gain: g, freq };
 }
 
 function buildBeds() {
@@ -158,11 +158,22 @@ function buildBeds() {
     return { wheels, wind, rattle, scrub };
 }
 
-/** Chase a bed's gain toward a target without zippering. */
+/**
+ * Chase a bed's gain toward a target without zippering, and its pitch.
+ *
+ * Pitch moves the FILTER, not the source. This used to set the noise source's
+ * playbackRate, but the source is white noise ahead of the filter: played
+ * faster or slower it is still white, the filter cuts the same band out of it,
+ * and nothing changes that you can hear. What gives a bed its pitch is where
+ * the filter sits, so that is what scales with speed - the wheels' lowpass
+ * rising from 385 to 1190 Hz, which is the "wheels turning faster" the pitch
+ * ranges above were written for.
+ */
 function setBed(bed, target, pitch) {
     if (!bed) return;
-    bed.gain.gain.setTargetAtTime(Math.max(0, target), audioCtx.currentTime, CHASE);
-    if (pitch !== undefined) bed.src.playbackRate.value = Math.max(0.05, pitch);
+    const now = audioCtx.currentTime;
+    bed.gain.gain.setTargetAtTime(Math.max(0, target), now, CHASE);
+    if (pitch !== undefined) bed.filter.frequency.setTargetAtTime(bed.freq * Math.max(0.05, pitch), now, CHASE);
 }
 
 function lerp(a, b, t) { return a + (b - a) * t; }

@@ -15,7 +15,10 @@ window.createParticles = function(scene, particleTex) {
     trailSystem.maxLifeTime = 0.6;
     trailSystem.minSize = 0.05;
     trailSystem.maxSize = 0.15;
-    trailSystem.emitRate = 80;
+    // Off until a run sets it. At 80 it smoked from the world's origin before
+    // anything had happened: at Carl's feet on the title screen, and then as a
+    // puff hanging in the air once the title's road had scrolled down the hill.
+    trailSystem.emitRate = 0;
     trailSystem.direction1 = new BABYLON.Vector3(-0.3, 0.1, -1);
     trailSystem.direction2 = new BABYLON.Vector3(0.3, 0.4, -0.5);
     trailSystem.minEmitPower = 0.5;
@@ -34,7 +37,7 @@ window.createParticles = function(scene, particleTex) {
     shadowTrail.maxLifeTime = 0.8;
     shadowTrail.minSize = 0.08;
     shadowTrail.maxSize = 0.2;
-    shadowTrail.emitRate = 40;
+    shadowTrail.emitRate = 0;
     shadowTrail.direction1 = new BABYLON.Vector3(-0.2, 0, -0.8);
     shadowTrail.direction2 = new BABYLON.Vector3(0.2, 0.2, -0.3);
     shadowTrail.minEmitPower = 0.3;
@@ -89,7 +92,9 @@ window.createParticles = function(scene, particleTex) {
 
 window.updateTrailParticles = function(charTrailType, speed) {
     if (!trailSystem) return;
-    const active = speed > 0.05 && player.alive && !player.bailing;
+    // Kicked off, too: the countdown leaves him at speed 0.1 on the start line,
+    // and standing there he kicked up dust as if he were moving.
+    const active = speed > 0.05 && player.kicked && player.alive && !player.bailing;
     trailSystem.emitRate = active ? 60 + speed * 200 : 0;
     shadowTrail.emitRate = active && charTrailType === 'shadow' ? 30 + speed * 100 : 0;
 
@@ -97,6 +102,13 @@ window.updateTrailParticles = function(charTrailType, speed) {
         trailSystem.emitter = playerMesh.position.clone();
         shadowTrail.emitter = playerMesh.position.clone();
     }
+};
+
+/** Stop both trails: the run is over. */
+window.stopTrailParticles = function() {
+    if (!trailSystem) return;
+    trailSystem.emitRate = 0;
+    shadowTrail.emitRate = 0;
 };
 
 window.spawnCrashParticles = function() {

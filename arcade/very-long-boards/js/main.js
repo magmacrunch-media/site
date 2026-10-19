@@ -18,6 +18,11 @@ let terrain = null;
 let titleDist = 0;
 let menuNavCooldown = 0;
 
+// Set when a hazard knocks Carl off, so the game-over screen, which waits for
+// the fall to finish, can say why. fallStarted keeps the crash sound to one.
+let wipeoutCause = null;
+let fallStarted = false;
+
 const titleScreen = document.getElementById('titleScreen');
 const charSelect = document.getElementById('charSelect');
 const boardSelect = document.getElementById('boardSelect');
@@ -166,8 +171,13 @@ function gameLogic() {
             const elapsed = (Date.now() - countdownStart) / 1000;
             const remaining = CONFIG.COUNTDOWN_SECS - elapsed;
             if (remaining <= 0) {
+                // GO! is shown here, on the frame the run starts, and held for a
+                // moment over the start of play. renderCountdown's zero case was
+                // never reached before: it was only ever called while time
+                // remained, and the overlay was hidden the moment it ran out.
+                renderCountdown(0);
+                goTimer = GO_SECS;
                 gameState = 'playing';
-                hideOverlay(countdownOverlay);
                 hud.style.display = 'block';
             } else {
                 const countNum = Math.ceil(remaining);
@@ -178,7 +188,12 @@ function gameLogic() {
         }
 
         case 'playing':
+            if (goTimer > 0) {
+                goTimer -= dt;
+                if (goTimer <= 0) hideOverlay(countdownOverlay);
+            }
             if (inp.escape) {
+                hideGo();
                 gameState = 'paused';
                 showOverlay(pauseScreen);
                 window.silenceAudioBeds();
@@ -187,6 +202,7 @@ function gameLogic() {
             }
 
             terrain.update(player.distance);
+            const from = player.distance;
             const result = window.updatePlayer(inp, terrain, dt);
             window.updateObstacles(sceneObj.scene, terrain);
             window.updateScenery(sceneObj.scene);
@@ -196,21 +212,36 @@ function gameLogic() {
             window.updateTrailParticles(CHARACTERS[currentCharacter].trail, player.speed);
 
             if (result === 'bail') {
+                // Either way in, the run ends when the fall has played out.
+                if (wipeoutCause) endGame(wipeoutCause, 'OLLIE WITH (UP) TO CLEAR ROCKS AND BRANCHES');
+                else endGame('LOST YOUR BALANCE!', 'CARVE SIDE TO SIDE TO STAY STEADY');
+                break;
+            }
+            if (result === 'falling' && !wipeoutCause && !fallStarted) {
+                fallStarted = true;
                 window.spawnCrashParticles();
                 playCrashSound();
-                endGame('BAIL!');
-                break;
             }
             if (result === 'trick') {
                 window.spawnTrickParticles();
                 playTrickSound();
                 showTrickText();
             }
-            if (window.checkObstacleCollisions(terrain)) {
+            const hit = window.checkObstacleCollisions(terrain, from);
+            if (hit === 'wipeout') {
+                // Fall over first. The game-over screen used to arrive on the
+                // same frame as the hit, over a Carl still standing on his board.
                 window.spawnCrashParticles();
                 playCrashSound();
-                endGame('WIPED OUT!');
-                break;
+                wipeoutCause = 'WIPED OUT!';
+                fallStarted = true;
+                window.startBail();
+            }
+            if (hit === 'stumble') {
+                window.stumblePlayer();
+                window.spawnCrashParticles();
+                playCrashSound();
+                showTrickText('STUMBLE!', '#ff6b35');
             }
 
             const curve2 = terrain.curveAt(player.distance);
@@ -218,13 +249,13 @@ function gameLogic() {
             sceneObj.updateCamera(playerMesh, slope2, curve2);
             sceneObj.updateSky(playerMesh);
             updateHUD();
-            updateTrickText();
+            updateTrickText(dt);
             break;
 
         case 'paused':
             terrain.update(player.distance);
             window.updatePlayerMesh(terrain, frame);
-            if (inp.escape) {
+            if (inp.escape || inp.enter) {
                 gameState = 'playing';
                 hideOverlay(pauseScreen);
                 playSelectSound();
@@ -236,7 +267,14 @@ function gameLogic() {
             window.updatePlayerMesh(terrain, frame);
             // While initials are being entered the keyboard belongs to the input
             // field, or Enter would restart the run instead of submitting them.
-            if (isAwaitingInitials()) break;
+            // An Enter that reaches the game means the field has lost focus (Tab
+            // moves it on, a click takes it away), which used to leave the
+            // prompt waiting on a field nothing was typing into: submit what is
+            // in it.
+            if (isAwaitingInitials()) {
+                if (inp.enter) submitInitials(document.getElementById('goInitialsInput').value, player.score);
+                break;
+            }
             if (inp.enter) {
                 startCountdown();
             } else if (inp.tab) {
@@ -244,12 +282,19 @@ function gameLogic() {
                 showOverlay(charSelect);
                 gameState = 'select';
                 showGarage();
+                // Stand Carl back up. Nothing else resets him before the next
+                // countdown, so after a bail the title and select screens showed
+                // him upside down where the bail left him.
+                window.resetPlayer();
+                window.updatePlayerMesh(terrain, frame);
             }
             break;
     }
 }
 
 function startCountdown() {
+    wipeoutCause = null;
+    fallStarted = false;
     hideInitialsPrompt();
     submittedScore = null;
     setRankedNote('');
@@ -273,8 +318,15 @@ function startCountdown() {
     playStartSound();
 }
 
-function endGame(cause) {
+function endGame(cause, hint) {
     player.alive = false;
+    player.invincible = false;
+    window.hideBeacons();
+    hideGo();
+    // The trail is only ever updated while playing, so without this it kept
+    // the rate it had at the crash and smoked on the spot through the game-over
+    // screen, the menus and the next countdown.
+    window.stopTrailParticles();
     gameState = 'gameover';
     hud.style.display = 'none';
     window.silenceAudioBeds();
@@ -288,7 +340,13 @@ function endGame(cause) {
     document.getElementById('goBest').textContent = bestScore;
     const causeEl = document.getElementById('goCause');
     if (causeEl) causeEl.textContent = cause || 'SPLAT!';
+    const hintEl = document.getElementById('goHint');
+    if (hintEl) hintEl.innerHTML = hint ? window.withGlyphs(hint) : "";
 
+    // Redraw without a highlight first. The board was only ever redrawn when a
+    // score was filed, so after a run that did not rank the last run that did
+    // was still marked pink as if it were new.
+    renderLeaderboard();
     if (madeLeaderboard(player.score)) {
         playHighScoreSound();
         recordRankedScore(player.score);
@@ -340,7 +398,8 @@ async function loadLeaderboard() {
     renderLeaderboard();
 }
 
-function renderLeaderboard(highlightScore) {
+/** highlightIndex: the row to mark as just filed, if any. */
+function renderLeaderboard(highlightIndex) {
     const list = document.getElementById('goBoard');
     if (!list) return;
     list.innerHTML = '';
@@ -353,16 +412,12 @@ function renderLeaderboard(highlightScore) {
         return;
     }
 
-    let highlighted = false;
     leaderboard.slice(0, LEADERBOARD_SIZE).forEach((entry, i) => {
         const row = document.createElement('div');
         row.className = 'lb-row';
-        // Highlight one row only: with a repeated score the first match is the
-        // one just inserted, since it sorted in ahead of the equal older entry.
-        if (!highlighted && highlightScore !== undefined && entry.score === highlightScore) {
-            row.classList.add('lb-new');
-            highlighted = true;
-        }
+        // By position, not by score: a score equal to an older one goes in
+        // below it, and matching on the score marked the older row instead.
+        if (i === highlightIndex) row.classList.add('lb-new');
         row.innerHTML =
             '<span class="lb-rank">' + (i + 1) + '</span>' +
             '<span class="lb-initials"></span>' +
@@ -429,6 +484,12 @@ function showInitialsPrompt(score, prefill) {
     field.onkeydown = (e) => {
         e.stopPropagation();
         if (e.key === 'Enter') submitInitials(field.value, score);
+        // A way out that is not typing something. There was none, so a player
+        // who did not want to be on the board had to put AAA on it to carry on.
+        else if (e.key === 'Escape' || e.key === 'Tab') {
+            e.preventDefault();
+            skipInitials();
+        }
     };
 }
 
@@ -436,6 +497,14 @@ function showInitialsPrompt(score, prefill) {
 function setRankedNote(text) {
     const el = document.getElementById('goRanked');
     if (el) el.textContent = text;
+}
+
+/** Leave the run off the board and give the keyboard back to the game. */
+function skipInitials() {
+    hideInitialsPrompt();
+    const field = document.getElementById('goInitialsInput');
+    if (field) field.blur();
+    setRankedNote('NOT SAVED');
 }
 
 function hideInitialsPrompt() {
@@ -457,9 +526,12 @@ function submitInitials(raw, score) {
     }
 
     // Insert locally first so the board on screen is right whether or not the
-    // backend is reachable; scoreClient owns the actual persistence.
-    leaderboard.push({ initials, score });
-    leaderboard.sort((a, b) => b.score - a.score);
+    // backend is reachable; scoreClient owns the actual persistence. Inserted at
+    // rankFor's place, below any equal score, which is where a stable sort put
+    // it too; the rank and the highlight below used to look it up by score and
+    // initials instead, and found the older equal entry above it.
+    const rank = rankFor(score);
+    leaderboard.splice(rank - 1, 0, { initials, score });
     leaderboard = leaderboard.slice(0, LEADERBOARD_SIZE);
     try {
         scoreClient.save('very-long-boards', initials, score);
@@ -468,10 +540,8 @@ function submitInitials(raw, score) {
     }
 
     hideInitialsPrompt();
-    renderLeaderboard(score);
-
-    const rank = leaderboard.findIndex((e) => e.score === score && e.initials === initials) + 1;
-    setRankedNote(rank > 0 ? 'RANKED #' + rank + ' AS ' + initials : 'RANKED AS ' + initials);
+    renderLeaderboard(rank - 1);
+    setRankedNote('RANKED #' + rank + ' AS ' + initials);
 }
 
 function updateCharSelection() {
@@ -497,6 +567,7 @@ function renderCharCards() {
         const card = document.createElement('div');
         card.className = 'cs-card' + (i === selectedCharIndex ? ' selected' : '');
         card.dataset.char = key;
+        card.addEventListener('click', () => pickCard('select', i));
 
         const preview = document.createElement('canvas');
         preview.className = 'cs-preview';
@@ -521,6 +592,37 @@ function renderCharCards() {
     });
 }
 
+/**
+ * A click or tap on a card. The first picks it, a second on the same card is
+ * Enter. The cards always said cursor: pointer and did nothing when clicked,
+ * and on a phone there was no way to choose a Carl but cycling with the edges
+ * of the screen.
+ */
+function pickCard(state, i) {
+    if (gameState !== state) return;
+    if (state === 'select') {
+        if (i === selectedCharIndex) { input.enter = true; return; }
+        selectedCharIndex = i;
+        currentCharacter = charKeys[i];
+        updateCharSelection();
+        updatePlayerColors(currentCharacter);
+    } else {
+        if (i === selectedBoardIndex) { input.enter = true; return; }
+        selectedBoardIndex = i;
+        currentBoard = boardKeys[i];
+        updateBoardSelection();
+        updatePlayerBoardColor(currentBoard);
+    }
+    playSelectSound();
+}
+
+document.addEventListener('click', (e) => {
+    const action = e.target.closest && e.target.closest('.go-action');
+    if (!action || gameState !== 'gameover' || isAwaitingInitials()) return;
+    if (action.dataset.action === 'retry') input.enter = true;
+    else if (action.dataset.action === 'setup') input.tab = true;
+});
+
 function showGarage() {
     garageCanvas.style.display = 'block';
     const ctx = garageCanvas.getContext('2d');
@@ -540,6 +642,7 @@ function renderBoardCards() {
         const board = BOARDS[key];
         const card = document.createElement('div');
         card.className = 'bs-card' + (i === selectedBoardIndex ? ' selected' : '');
+        card.addEventListener('click', () => pickCard('boardSelect', i));
 
         const preview = document.createElement('canvas');
         preview.className = 'bs-preview';
@@ -578,6 +681,21 @@ function renderCountdown(count) {
     }
 }
 
+/** How long GO! stays up once the run has started, in seconds. */
+const GO_SECS = 0.6;
+let goTimer = 0;
+
+function hideGo() {
+    goTimer = 0;
+    hideOverlay(countdownOverlay);
+}
+
+/**
+ * How long the TRICK! banner stays up, in seconds. It was 40 frames, which is
+ * two-thirds of a second at 60 Hz but under a third at 144 Hz - the same
+ * refresh-rate dependence the score was fixed for.
+ */
+const TRICK_TEXT_SECS = 40 / 60;
 let trickTextTimer = 0;
 
 /**
@@ -586,17 +704,20 @@ let trickTextTimer = 0;
  * number on screen drifted away from the number actually banked as Carl slowed
  * down through the landing — the award is made once, at the speed he had.
  */
-function showTrickText() {
+function showTrickText(text, color) {
     const el = document.getElementById('hudTrick');
-    if (el) el.textContent = 'TRICK! +' + player.lastTrickScore;
-    trickTextTimer = 40;
+    if (el) {
+        el.textContent = text || 'OLLIE! +' + player.lastTrickScore;
+        el.style.color = color || '#ffe03a';
+    }
+    trickTextTimer = TRICK_TEXT_SECS;
 }
 
-function updateTrickText() {
+function updateTrickText(dt) {
     const el = document.getElementById('hudTrick');
     if (!el) return;
     if (trickTextTimer > 0) {
-        trickTextTimer--;
+        trickTextTimer -= dt;
         el.style.opacity = 1;
     } else {
         el.style.opacity = 0;
@@ -606,6 +727,7 @@ function updateTrickText() {
 document.addEventListener('DOMContentLoaded', init);
 document.addEventListener('visibilitychange', () => {
     if (document.hidden && gameState === 'playing') {
+        hideGo();
         gameState = 'paused';
         showOverlay(pauseScreen);
         window.silenceAudioBeds();
