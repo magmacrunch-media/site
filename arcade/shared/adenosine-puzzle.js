@@ -1,4 +1,4 @@
-/*! @magmacrunch/adenosine-puzzle v0.5.0
+/*! @magmacrunch/adenosine-puzzle v0.5.1
  * SPDX-License-Identifier: PolyForm-Noncommercial-1.0.0
  * Required Notice: Copyright 2026 magmacrunch media (https://magmacrunch.com)
  */
@@ -585,7 +585,9 @@ var AdPuzzle = (() => {
     function loadScores() {
       try {
         const data = localStorage.getItem(storageKey);
-        return data ? JSON.parse(data) : [];
+        const parsed = data ? JSON.parse(data) : [];
+        if (!Array.isArray(parsed)) return [];
+        return parsed.filter((e) => e !== null && typeof e === "object" && typeof e.score === "number" && Number.isFinite(e.score));
       } catch {
         return [];
       }

@@ -7,10 +7,10 @@ import { oneDark } from "https://esm.sh/@codemirror/theme-one-dark@6";
 
 const PACKAGES = {
   rpg:           { global: "AdRPG",      version: "0.4.0",  css: [] },
-  puzzle:        { global: "AdPuzzle",   version: "0.5.0",  css: ["puzzle-base.css","puzzle-grid.css","puzzle-modals.css","puzzle-responsive.css"] },
+  puzzle:        { global: "AdPuzzle",   version: "0.5.1",  css: ["puzzle-base.css","puzzle-grid.css","puzzle-modals.css","puzzle-responsive.css"] },
   cards:         { global: "AdCards",    version: "0.10.0", css: ["cards.css","chip-animation.css"] },
   audio:         { global: "AdAudio",    version: "0.5.0",  css: [] },
-  "score-client":{ global: "AdScore",    version: "0.4.0",  css: [] },
+  "score-client":{ global: "AdScore",    version: "0.4.1",  css: [] },
   multiplayer:   { global: "AdMP",       version: "0.6.0",  css: ["lobby.css"] },
   chat:          { global: "AdChat",     version: "0.7.0",  css: ["chat-widget.css"] },
   race:          { global: "AdRace",     version: "0.2.0",  css: [] },

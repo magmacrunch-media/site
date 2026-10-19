@@ -1,4 +1,4 @@
-/*! @magmacrunch/adenosine-score-client v0.4.0
+/*! @magmacrunch/adenosine-score-client v0.4.1
  * SPDX-License-Identifier: PolyForm-Noncommercial-1.0.0
  * Required Notice: Copyright 2026 magmacrunch media (https://magmacrunch.com)
  */
@@ -33,6 +33,23 @@ var AdScore = (() => {
   var RECONNECT_DELAY = 3e3;
   var REQUEST_TIMEOUT = 5e3;
   var DEFAULT_PORT = 8781;
+  var MAX_KEPT = 100;
+  function cleanScores(value) {
+    if (!Array.isArray(value)) return [];
+    return value.filter((e) => e !== null && typeof e === "object" && !Array.isArray(e) && typeof e.initials === "string" && typeof e.score === "number" && Number.isFinite(e.score));
+  }
+  function cleanPending(value) {
+    if (!Array.isArray(value)) return [];
+    return value.filter((p) => p !== null && typeof p === "object" && typeof p.game === "string" && typeof p.name === "string" && typeof p.score === "number" && Number.isFinite(p.score));
+  }
+  function parseStored(raw) {
+    if (raw == null) return [];
+    try {
+      return JSON.parse(raw);
+    } catch {
+      return [];
+    }
+  }
   var ScoreClient = class {
     ws = null;
     _url = "";
@@ -49,8 +66,7 @@ var AdScore = (() => {
     // ── localStorage helpers ──────────────────────────────────────
     lsLoadPending() {
       try {
-        const raw = localStorage.getItem(this.pendingKey);
-        return raw ? JSON.parse(raw) : [];
+        return cleanPending(parseStored(localStorage.getItem(this.pendingKey)));
       } catch {
         return [];
       }
@@ -66,8 +82,7 @@ var AdScore = (() => {
     }
     lsLoad(game) {
       try {
-        const raw = localStorage.getItem(this.lsKey(game));
-        return raw ? JSON.parse(raw) : [];
+        return cleanScores(parseStored(localStorage.getItem(this.lsKey(game))));
       } catch {
         return [];
       }
@@ -232,7 +247,7 @@ var AdScore = (() => {
       if (this._connected) {
         try {
           const res = await this.send({ action: "score_load", game });
-          const scores = res.scores || [];
+          const scores = cleanScores(res.scores);
           this.lsSave(game, scores);
           return scores;
         } catch {
@@ -248,13 +263,17 @@ var AdScore = (() => {
      * falls outside the top 100 that get persisted.
      */
     async save(game, name, score, extra) {
-      const scores = this.lsLoad(game);
-      const entry = { initials: name.toUpperCase().slice(0, 3), score };
-      if (extra) Object.assign(entry, extra);
-      scores.push(entry);
-      scores.sort((a, b) => (b.score || 0) - (a.score || 0));
-      const rank = scores.indexOf(entry) + 1;
-      this.lsSave(game, scores.slice(0, 100));
+      let rank = 0;
+      try {
+        const scores = this.lsLoad(game);
+        const entry = { ...extra, initials: String(name).toUpperCase().slice(0, 3), score };
+        scores.push(entry);
+        scores.sort((a, b) => b.score - a.score);
+        rank = scores.indexOf(entry) + 1;
+        this.lsSave(game, scores.slice(0, MAX_KEPT));
+      } catch (e) {
+        console.warn("adenosine-score-client: local copy not updated", e);
+      }
       if (this._connected) {
         try {
           await this.send({ action: "score_save", game, name, score, extra });
