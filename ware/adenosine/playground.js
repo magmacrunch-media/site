@@ -242,9 +242,12 @@ exampleSelect.addEventListener("change", () => {
 runBtn.addEventListener("click", run);
 resetBtn.addEventListener("click", reset);
 
-// No source toggle on the site: there is no packages/ sibling to load from, so
-// the markup is not shipped here and this matches nothing. Kept so this file
-// stays a small diff away from the standalone copy in the adenosine repo.
+// The Local source loads ../packages/<pkg>/, which exists only beside this
+// file in the adenosine repo. magmacrunch.com serves this same file, copied
+// byte for byte by its sync-adenosine-playground workflow, under a
+// playground.html that omits the toggle markup. So both halves below must cope
+// with the toggle being absent: the query matches nothing, and the hide is
+// guarded rather than assuming the element exists.
 document.querySelectorAll('input[name="source"]').forEach(r => {
   r.addEventListener("change", (e) => {
     state.mode = e.target.value;
@@ -252,6 +255,11 @@ document.querySelectorAll('input[name="source"]').forEach(r => {
     loadCSS(state.package);
   });
 });
+
+const sourceToggle = document.querySelector(".source-toggle");
+if (sourceToggle && location.hostname === "magmacrunch.com") {
+  sourceToggle.style.display = "none";
+}
 
 /* ── Split pane drag ─────────────────────────────────── */
 
