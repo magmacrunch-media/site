@@ -33,6 +33,7 @@ async function playMusic() {
     if (musicStarted) return;
     await AdAudio.playMusic();
     musicStarted = true;
+    startBeatClock();
 }
 
 function toggleMute() {
@@ -65,6 +66,91 @@ function playButtonSound2() {
 window.playCrashSound = playCrashSound;
 window.playButtonSound = playButtonSound;
 window.playButtonSound2 = playButtonSound2;
+
+// ── moments ──────────────────────────────────────────────────────────────────
+// The game announces what happened as `drift:*` CustomEvents on document, named
+// for the game rather than for any platform. On the website nothing listens.
+// In the App Store build, ios/shim/ listens and turns them into haptics; it
+// never reaches into the game, so nothing there re-derives a rule.
+//
+// Dispatched here and not in player.js or obstacles.js, because those are the
+// rules the Wii, tui and Roblox versions port line for line, and the seam goes
+// where the ports are not (HOUSE.md in hypnopompia, "The seam, and the shims").
+//
+//   drift:start      a run begins                    { mode }
+//   drift:pass       obstacles passed this tick      { count, score }
+//   drift:milestone  a milestone obstacle passed     { milestone, score }
+//   drift:crash      the run ends in a crash         { cause: 'edge' | 'obstacle', score, best, mode }
+//   drift:set-end    a moonlight set flown to time   { score, best }
+//   drift:unlock     a pilot opened                  { pilot, locked }
+//
+// `pass` carries a count rather than repeating, so two obstacles cleared in one
+// tick are one moment. `best` is whether the score makes the current mode's
+// board, which is the same isHighScore() the game-over screen asks. `locked`
+// is how many pilots are still closed after this one opened, so 0 is the whole
+// roster; unlocks.js decides that, and a listener need not ask it.
+function announce(name, detail = {}) {
+    document.dispatchEvent(new CustomEvent('drift:' + name, { detail }));
+}
+
+// ── modes ────────────────────────────────────────────────────────────────────
+// Web and iOS only, like the pilot unlocks: the Wii, tui and Roblox versions
+// are endless. A mode is a layer around the run, not a rule of it, so
+// player.js and obstacles.js do not know which one is being played.
+//
+// endless   the game as it always was: fly until you crash.
+// set       a timed flight of SET_SECONDS, counted in game ticks rather than
+//           read from the audio, so it is immune to muting, a paused song or a
+//           backgrounded app. The song loops under it as in endless; the
+//           shipped loop is 11 seconds, far too short to be a round itself.
+//
+// Each mode keeps its own board, so a 90-second score never shares a table
+// with an endless one.
+const SET_SECONDS = 90;
+const MODES = {
+    endless: { board: 'moonlight-drift', label: 'endless', best: 'best drifts' },
+};
+const MODE_KEY = 'drift_mode';
+
+function readMode() {
+    try {
+        const saved = localStorage.getItem(MODE_KEY);
+        if (saved && MODES[saved]) return saved;
+    } catch (e) {
+        // Private mode or storage disabled: endless.
+    }
+    return 'endless';
+}
+
+let mode = readMode();
+
+function setTicks() {
+    return Math.round(SET_SECONDS * 1000 / TICK_MS);
+}
+
+// Choose a mode: remember it, relabel everything that names it, and switch
+// the board the game-over screen and BEST DRIFTS read and write.
+function setMode(next) {
+    if (!MODES[next]) return;
+    mode = next;
+    try {
+        localStorage.setItem(MODE_KEY, mode);
+    } catch (e) {}
+    const modeBtn = document.getElementById('modeBtn');
+    if (modeBtn) modeBtn.textContent = MODES[mode].label;
+    const boardBtn = document.getElementById('scoreboardBtn');
+    if (boardBtn) boardBtn.textContent = MODES[mode].best;
+    // By id: #moonTonight is a .mode-note too, and the website's build
+    // (site/package.mjs) removes this one, so a class query would land there.
+    const note = document.getElementById('setNote');
+    if (note) note.textContent = `moonlight set: ${SET_SECONDS} seconds, as far as you can drift`;
+    const boardTitle = document.querySelector('#scoreboard h3');
+    if (boardTitle) boardTitle.textContent = MODES[mode].best;
+    document.querySelectorAll('#modeChoice [data-mode]').forEach((b) => {
+        b.classList.toggle('chosen', b.dataset.mode === mode);
+    });
+    return setScoreBoard(MODES[mode].board);
+}
 
 let gameRunning = false;
 let gameStarted = false;
@@ -99,6 +185,9 @@ function showReadyScreen() {
     if (readyOverlay) {
         readyOverlay.style.display = 'block';
     }
+    // Tonight's moon, the same one that rises during the run (js/moon.js).
+    const moonTonight = document.getElementById('moonTonight');
+    if (moonTonight) moonTonight.textContent = `tonight: ${moonPhaseName()}`;
 }
 
 async function actuallyStartGame() {
@@ -129,7 +218,9 @@ async function actuallyStartGame() {
     resetScore();
     frameCount = 0;
     clearNewScoreFlags();
+    runUnlocks = [];
 
+    announce('start', { mode });
     return true;
 }
 
@@ -150,12 +241,33 @@ async function startGame() {
     return await actuallyStartGame();
 }
 
-function handleGameOver() {
+// Pilots opened during the current run, named on the game-over screen.
+let runUnlocks = [];
+
+// cause is 'edge' or 'obstacle' for a crash, 'time' for a set flown to the end.
+function handleGameOver(cause) {
     gameRunning = false;
     window.gameRunning = false;
     document.body.classList.remove('game-active');
     const finalScore = getScore();
     setLastScore(finalScore);
+
+    const best = isHighScore(finalScore);
+    if (cause === 'time') {
+        announce('set-end', { score: finalScore, best });
+    } else {
+        announce('crash', { cause, score: finalScore, best, mode });
+    }
+
+    const title = document.getElementById('gameOverTitle');
+    if (title) title.textContent = cause === 'time' ? 'SET COMPLETE!' : 'DRIFT OVER!';
+
+    const unlockMessage = document.getElementById('unlockMessage');
+    if (unlockMessage) {
+        unlockMessage.textContent = runUnlocks.length
+            ? 'new pilot: ' + runUnlocks.map((id) => window.characters[id].name).join(', ')
+            : '';
+    }
 
     const finalScoreSpan = document.getElementById('finalScore');
     if (finalScoreSpan) {
@@ -190,7 +302,7 @@ function update() {
 
     const boundaryCollision = updatePlayer(thrustActive, canvas.height);
     if (boundaryCollision) {
-        handleGameOver();
+        handleGameOver('edge');
         return;
     }
 
@@ -198,16 +310,55 @@ function update() {
         createObstacle(canvas.width, canvas.height);
     }
 
+    // Which milestone obstacles are still ahead, so the ones passed this tick
+    // can be named afterwards. obstacles.js decides what a milestone is and
+    // marks it; this only reads the mark and the `passed` flag it sets.
+    const milestonesAhead = getObstacles().filter((obs) => obs.milestone && !obs.passed);
+
     const { collision, scoreIncrement } = updateObstacles(player);
 
     if (collision) {
-        handleGameOver();
+        handleGameOver('obstacle');
         return;
     }
 
     for (let i = 0; i < scoreIncrement; i++) {
         incrementScore();
     }
+
+    if (scoreIncrement > 0) {
+        announce('pass', { count: scoreIncrement, score: getScore() });
+        for (const obs of milestonesAhead) {
+            if (obs.passed) announce('milestone', { milestone: obs.milestone, score: getScore() });
+        }
+        for (const pilot of recordDrifted(scoreIncrement)) {
+            runUnlocks.push(pilot);
+            announce('unlock', { pilot, locked: pilotOrder().filter((id) => !isPilotUnlocked(id)).length });
+        }
+    }
+
+    // After this tick's scoring, so an obstacle cleared on the last tick counts.
+    if (mode === 'set' && frameCount >= setTicks()) {
+        handleGameOver('time');
+    }
+}
+
+// The set's clock: a bar under the score box that empties over the flight, the
+// way makemecookies draws its shift. A bar rather than digits, because how
+// long is left is a feel, not a number to read mid-flight.
+function drawSetClock() {
+    const ctx = getContext();
+    const left = Math.max(0, 1 - frameCount / setTicks());
+    const x = 10, y = 66, w = 180, h = 8;
+    ctx.save();
+    ctx.fillStyle = '#2a3a5a';
+    ctx.fillRect(x, y, w, h);
+    ctx.fillStyle = left > 0.15 ? '#ffd700' : '#ff4d4d';
+    ctx.fillRect(x, y, Math.round(w * left), h);
+    ctx.strokeStyle = '#6a7a9a';
+    ctx.lineWidth = 2;
+    ctx.strokeRect(x, y, w, h);
+    ctx.restore();
 }
 
 function draw(timestamp = 0) {
@@ -215,6 +366,14 @@ function draw(timestamp = 0) {
 
     const thrustActive = getThrustActive();
     renderGame(thrustActive, gameRunning, timestamp, characterSelected);
+    if (gameRunning && mode === 'set') drawSetClock();
+}
+
+// How far the moon (js/moon.js) has risen: 0 before the first run, then the
+// run's ticks against MOON_RISE_SECONDS, held where it was once a run ends.
+function moonProgress() {
+    if (!gameStarted) return 0;
+    return Math.min(1, frameCount / Math.round(MOON_RISE_SECONDS * 1000 / TICK_MS));
 }
 
 // The rules advance a fixed amount per call to update() -- OBSTACLE_SPEED,
@@ -240,6 +399,7 @@ let tickBacklog = 0;
 function gameLoop(timestamp) {
     if (lastFrameTime === null) lastFrameTime = timestamp;
     tickBacklog += timestamp - lastFrameTime;
+    advanceBeatClock(timestamp - lastFrameTime);
     lastFrameTime = timestamp;
 
     let ticks = 0;
@@ -272,7 +432,7 @@ async function initGame() {
     initializeStarLayers();
     createStars(canvas.width, canvas.height);
 
-    await loadScores();
+    await setMode(mode);
 
     const loadingScreen = document.getElementById('loadingScreen');
     if (loadingScreen) {
@@ -290,6 +450,21 @@ initGame();
 if (titleOverlay) {
     titleOverlay.addEventListener('click', async () => {
         await startGame();
+    });
+}
+
+// The flight plan's two mode buttons choose and start in one tap: the click
+// bubbles on to the overlay, whose own listener starts the run.
+document.querySelectorAll('#modeChoice [data-mode]').forEach((button) => {
+    button.addEventListener('click', () => setMode(button.dataset.mode));
+});
+
+// The menu bar's mode button, for every run after the first.
+const modeBtn = document.getElementById('modeBtn');
+if (modeBtn) {
+    modeBtn.addEventListener('click', () => {
+        if (window.playButtonSound2) window.playButtonSound2();
+        setMode(mode === 'endless' ? 'set' : 'endless');
     });
 }
 
@@ -356,14 +531,29 @@ if (characterModal) {
     });
 }
 
+// The panel under the grid: who a pilot is and where the name comes from
+// (js/pilot-bios.js). Shows the selected pilot, or a locked one that was
+// tapped, so a player can see who they are flying toward.
+function showPilotBio(id) {
+    const panel = document.getElementById('pilotBio');
+    if (!panel || !window.characters[id]) return;
+    const locked = !isPilotUnlocked(id);
+    panel.querySelector('.pilot-bio-name').textContent =
+        window.characters[id].name + (locked ? ' (locked)' : '');
+    panel.querySelector('.pilot-bio-line').textContent = pilotLine(id);
+    panel.querySelector('.pilot-bio-credit').textContent = pilotCredit(id);
+}
+
 function renderCharacterGrid() {
     characterGrid.innerHTML = '';
     const allChars = getAllCharacters();
     const current = getCurrentCharacter();
 
     allChars.forEach(char => {
+        const locked = !isPilotUnlocked(char.id);
         const option = document.createElement('div');
-        option.className = 'character-option' + (char.id === current ? ' selected' : '');
+        option.className = 'character-option' + (char.id === current ? ' selected' : '') + (locked ? ' locked' : '');
+        option.dataset.pilot = char.id;
 
         const preview = document.createElement('canvas');
         preview.className = 'character-preview';
@@ -384,6 +574,12 @@ function renderCharacterGrid() {
             console.error('Error drawing character preview:', e);
         }
 
+        // A locked pilot is shown, dimmed, so there is something to fly for.
+        if (locked) {
+            previewCtx.fillStyle = 'rgba(10, 10, 30, 0.72)';
+            previewCtx.fillRect(0, 0, 100, 100);
+        }
+
         const name = document.createElement('div');
         name.className = 'character-name';
         name.textContent = char.name;
@@ -391,7 +587,12 @@ function renderCharacterGrid() {
         option.appendChild(preview);
         option.appendChild(name);
 
-        if (window.getCharacterStats) {
+        if (locked) {
+            const hint = document.createElement('div');
+            hint.className = 'unlock-hint';
+            hint.textContent = `locked: drift ${pilotUnlockAt(char.id) - lifetimeDrifted()} more`;
+            option.appendChild(hint);
+        } else if (window.getCharacterStats) {
             const stats = window.getCharacterStats(char.id);
             if (stats) {
                 const statsDiv = document.createElement('div');
@@ -418,7 +619,13 @@ function renderCharacterGrid() {
             }
         }
 
+        // Refused here rather than only styled, because the keyboard picker
+        // selects by clicking the card. A locked card still shows its bio.
         option.addEventListener('click', () => {
+            if (locked) {
+                showPilotBio(char.id);
+                return;
+            }
             if (window.playButtonSound) {
                 window.playButtonSound();
             }
@@ -428,6 +635,7 @@ function renderCharacterGrid() {
 
         characterGrid.appendChild(option);
     });
+    showPilotBio(current);
 }
 
 // Mute button handlers

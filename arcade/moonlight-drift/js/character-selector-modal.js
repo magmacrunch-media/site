@@ -19,6 +19,11 @@
                 
                 // Also add the 'selected' class to show green background
                 card.classList.add('selected');
+
+                // And the bio under the grid follows the highlight.
+                if (typeof showPilotBio === 'function' && card.dataset.pilot) {
+                    showPilotBio(card.dataset.pilot);
+                }
             } else {
                 // Remove outline and selected class from others
                 card.style.outline = 'none';

@@ -13,6 +13,7 @@
 #scoreboardBtn,
 #creditsBtn,
 #muteBtn,
+#modeBtn,
 #fullscreenBtn {
     background: #5a6988;
     color: #ffffff;
@@ -44,6 +45,7 @@
 #scoreboardBtn:hover,
 #creditsBtn:hover,
 #muteBtn:hover,
+#modeBtn:hover,
 #fullscreenBtn:hover {
     background: #00d4ff;
     color: #000000;
@@ -62,6 +64,7 @@
 #scoreboardBtn:active,
 #creditsBtn:active,
 #muteBtn:active,
+#modeBtn:active,
 #fullscreenBtn:active {
     transform: translateY(4px);
     box-shadow: 
@@ -266,6 +269,7 @@
     #scoreboardBtn,
     #creditsBtn,
     #muteBtn,
+    #modeBtn,
     #fullscreenBtn {
         font-size: 8px;
         padding: 10px 16px;
@@ -290,6 +294,7 @@
     #scoreboardBtn,
     #creditsBtn,
     #muteBtn,
+    #modeBtn,
     #fullscreenBtn {
         font-size: 7px;
         padding: 8px 12px;
@@ -303,6 +308,7 @@
 #scoreboardBtn,
 #creditsBtn,
 #muteBtn,
+#modeBtn,
 #fullscreenBtn,
 #modalMuteBtn,
 #closeModal,
@@ -310,4 +316,47 @@
 #closeCreditsModal,
 #submitInitials {
     transition: none !important;
+}
+
+/* ================================================
+   MODE CHOICE on the flight plan: endless or a moonlight set.
+   One tap chooses and starts, so these are as big as the
+   menu buttons; the chosen one wears the confirm green.
+   ================================================ */
+#modeChoice {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    margin: 18px 0 8px;
+}
+
+#modeChoice button {
+    background: #5a6988;
+    color: #ffffff;
+    border: none;
+    padding: 12px 18px;
+    font-family: 'Press Start 2P', monospace;
+    font-size: 10px;
+    text-transform: lowercase;
+    cursor: pointer;
+    border-radius: 0;
+    box-shadow:
+        0 6px 0 #2a3344,
+        0 -4px 0 #7a89a8,
+        -4px 0 0 #4a5968,
+        4px 0 0 #4a5968;
+}
+
+#modeChoice button.chosen {
+    background: #2ecc71;
+    color: #000000;
+    box-shadow:
+        0 6px 0 #156a30,
+        0 -4px 0 #3ecd71,
+        -4px 0 0 #1f9545,
+        4px 0 0 #1f9545;
+}
+
+#modeChoice button:active {
+    transform: translateY(4px);
 }

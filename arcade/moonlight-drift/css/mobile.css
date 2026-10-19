@@ -151,14 +151,17 @@
         margin-bottom: 2.5vh;
     }
 
+    /* Sized so a whole card (about 118px) fits the grid's visible height once
+       the bio panel has taken its 40px, measured on an iPhone SE: grid 120px
+       of content against a 142px card before this. */
     body .character-option {
-        padding: 6px;
+        padding: 4px;
     }
 
     body .character-preview {
-        width: 48px;
-        height: 48px;
-        margin-bottom: 4px;
+        width: 36px;
+        height: 36px;
+        margin-bottom: 2px;
     }
 
     body .character-name {
@@ -166,13 +169,13 @@
     }
 
     body .character-stats {
-        margin-top: 4px;
-        padding: 3px 4px;
-        line-height: 1.2;
+        margin-top: 3px;
+        padding: 2px 4px;
+        line-height: 1.1;
     }
 
     body .character-stats .stat-row {
-        margin-bottom: 1px;
+        margin-bottom: 0;
     }
 
     body .character-stats .stat-label {
@@ -188,10 +191,71 @@
         margin-top: 0;
     }
 
+    /* The bio panel under the picker grid: a little room back for the cards. */
+    body #pilotBio {
+        margin-bottom: 2vh;
+        padding: 1vh 2vh;
+        line-height: 1.4;
+    }
+
+    /* Name and line share a row here, which is the line of height the first
+       row of cards needed back on an iPhone SE. */
+    body #pilotBio .pilot-bio-name,
+    body #pilotBio .pilot-bio-line {
+        display: inline;
+    }
+
+    body #pilotBio .pilot-bio-name {
+        font-size: clamp(7px, 2.4vh, 10px);
+    }
+
+    body #pilotBio .pilot-bio-name:not(:empty)::after {
+        content: ': ';
+        color: #ffffff;
+    }
+
+    body #pilotBio .pilot-bio-credit {
+        display: block;
+    }
+
+    body #pilotBio .pilot-bio-line,
+    body #pilotBio .pilot-bio-credit {
+        font-size: clamp(6px, 2.2vh, 8px);
+    }
+
+    /* The flight plan, which gained the two mode buttons and their note and
+       ran off a landscape iPhone SE at both ends. */
+    body #readyOverlay {
+        padding: 3vh 5vh;
+    }
+
+    body #readyContent h2 {
+        font-size: clamp(9px, 3.6vh, 16px);
+        padding: 1.5vh;
+        margin-bottom: 2vh;
+    }
+
+    body #readyContent p {
+        margin: 1vh 0;
+    }
+
+    body #modeChoice {
+        margin: 2.5vh 0 1.5vh;
+    }
+
+    body #modeChoice button {
+        font-size: clamp(7px, 2.6vh, 10px);
+        padding: 2vh 3vh;
+    }
+
+    body #readyMessage {
+        margin-top: 2vh;
+    }
+
     body #modalMuteBtn,
     body #closeModal,
     body #closeScoreboardModal {
         font-size: 9px;
-        padding: 2.5vh !important;
+        padding: 2vh !important;
     }
 }

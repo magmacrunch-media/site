@@ -203,3 +203,22 @@
     background: #00d4ff;
     color: #000000;
 }
+
+/* A pilot opened during the run, named under the result. Empty, it takes no room. */
+#unlockMessage {
+    color: #2ecc71;
+    font-size: 0.6em;
+    margin: 6px 0 0;
+}
+
+#unlockMessage:empty {
+    display: none;
+}
+
+/* The line under the mode buttons on the flight plan: the same clamp as the
+   lines above it, a step smaller, rather than an em of a parent that is not
+   the paragraph's size. */
+#readyContent .mode-note {
+    font-size: clamp(7px, 1.2vw, 10px);
+    opacity: 0.8;
+}

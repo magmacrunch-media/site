@@ -7,26 +7,17 @@ function drawBackground() {
     // Just clear the canvas - stars will be visible through transparent canvas
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     
-    // Draw boundary lines to show collision zones
-    ctx.strokeStyle = 'rgba(0, 212, 255, 0.3)'; // Subtle cyan
-    ctx.lineWidth = 2;
-    
-    // Top boundary line
-    ctx.beginPath();
-    ctx.moveTo(0, 0);
-    ctx.lineTo(canvas.width, 0);
-    ctx.stroke();
-    
-    // Bottom boundary line
-    ctx.beginPath();
-    ctx.moveTo(0, canvas.height);
-    ctx.lineTo(canvas.width, canvas.height);
-    ctx.stroke();
+    // No boundary lines. renderer.js used to stroke a faint cyan line along the
+    // top and bottom edges; on a phone only half of each 2px line landed on the
+    // canvas and the scaled sliver shimmered against the notch and the home
+    // indicator. The edge of the play area is the edge of the screen there.
 }
 
 function renderGame(thrustActive, isGameRunning, timestamp = 0, showCharacter = true) {
     drawBackground();
     drawStars(ctx);
+    // Behind the pillars, in front of the stars (js/moon.js).
+    drawMoon(ctx, moonProgress());
     drawObstacles(ctx, canvas.height);
     drawMilestoneMarkers(ctx, canvas.height);
     

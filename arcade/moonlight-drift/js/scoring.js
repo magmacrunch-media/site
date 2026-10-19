@@ -82,14 +82,30 @@ function setLastScore(value) {
     lastScore = value;
 }
 
+// The board the current mode reads and writes; main.js's setMode() chooses it.
+let scoreBoard = 'moonlight-drift';
+
+function setScoreBoard(board) {
+    scoreBoard = board;
+    return loadScores();
+}
+
 // Leaderboard management — MAGMA//OPS backend with localStorage fallback
 async function loadScores() {
     try {
-        sessionScores = await scoreClient.load('moonlight-drift');
+        sessionScores = await scoreClient.load(scoreBoard);
         updateScoreboard();
     } catch (error) {
         console.error('Error loading scores:', error);
     }
+}
+
+// Score entries come back from the shared score server, which stores what
+// players' browsers send it, so their text goes into the table as text.
+function escapeScoreText(value) {
+    const div = document.createElement('div');
+    div.textContent = String(value);
+    return div.innerHTML;
 }
 
 function updateScoreboard() {
@@ -108,8 +124,8 @@ function updateScoreboard() {
         div.className = 'scoreEntry' + (entry.isNew ? ' newScore' : '');
         div.innerHTML = `
             <span class="scoreRank">#${index + 1}</span>
-            <span class="scoreInitials">${entry.initials}</span>
-            <span class="scoreValue">${entry.score} pts</span>
+            <span class="scoreInitials">${escapeScoreText(entry.initials)}</span>
+            <span class="scoreValue">${escapeScoreText(entry.score)} pts</span>
         `;
         
         if (index < 5) {
@@ -303,11 +319,11 @@ function submitInitials(onComplete) {
     
     const initials = initialsInput.value.trim() || 'AAA';
     // sessionScores is the on-screen list only (isNew drives the highlight);
-    // scoreClient owns persistence to mc_scores_moonlight-drift and the backend.
+    // scoreClient owns persistence, per board, to localStorage and the backend.
     sessionScores.push({ initials: initials, score: lastScore, isNew: true });
     sessionScores.sort((a, b) => b.score - a.score);
     sessionScores = sessionScores.slice(0, 10);
-    scoreClient.save('moonlight-drift', initials, lastScore);
+    scoreClient.save(scoreBoard, initials, lastScore);
     updateScoreboard();
     initialsPromptDiv.style.display = 'none';
     initialsInput.value = '';

@@ -30,13 +30,13 @@
     <link rel="stylesheet" href="css/loading.css?v=b27ac097">
     <link rel="stylesheet" href="css/stars.css?v=2b9dbc9d">
     <link rel="stylesheet" href="css/game-container.css?v=2987a5c5">
-    <link rel="stylesheet" href="css/overlays.css?v=515e9a14">
+    <link rel="stylesheet" href="css/overlays.css?v=73d4df21">
     <link rel="stylesheet" href="css/animations.css?v=16db2c0c">
     <link rel="stylesheet" href="css/scoreboard.css?v=636feb35">
-    <link rel="stylesheet" href="css/mobile.css?v=c69e14e9">
-    <link rel="stylesheet" href="css/character-selector.css?v=19bf0ee1">
+    <link rel="stylesheet" href="css/mobile.css?v=17f857f3">
+    <link rel="stylesheet" href="css/character-selector.css?v=bfa9eab7">
     <link rel="stylesheet" href="css/credits.css?v=3c430b1e">
-    <link rel="stylesheet" href="css/buttons-retro.css?v=376d33b0">
+    <link rel="stylesheet" href="css/buttons-retro.css?v=5e16b606">
     <link rel="stylesheet" href="css/fonts-retro.css?v=859a176c">
     <link rel="stylesheet" href="css/modals-retro.css?v=90298948">
     <style>
@@ -272,8 +272,9 @@
         <div id="instructions"><span class="on-touch">hold</span><span class="on-pointer">hold [space] or click</span> to rise / let go to fall</div>
         
         <div id="gameOver">
-            <span style="font-size: 1.5em; font-weight: bold;">DRIFT OVER!</span>
+            <span id="gameOverTitle" style="font-size: 1.5em; font-weight: bold;">DRIFT OVER!</span>
             <div id="gameOverAchievement"></div>
+            <div id="unlockMessage"></div>
             <span style="display: block; font-size: 1.3em; margin: 10px 0; color: #00d4ff; text-shadow: 0 0 10px rgba(0, 212, 255, 0.8);">drifted: <span id="finalScore">0</span></span>
             <span style="display: block; font-style: italic; opacity: 0.8; margin-top: 10px;">too cheap for ya?!</span>
             <span class="on-touch">tap to drift again</span><span class="on-pointer">press [space] or click to drift again</span>
@@ -305,6 +306,7 @@
                 <p><strong><span class="on-touch">hold</span><span class="on-pointer">hold [space] or click</span></strong> to rise</p>
                 <p><strong>let go</strong> to fall</p>
                 <p>dodge the pillars and the edges!</p>
+                <p class="mode-note" id="moonTonight"></p>
                 <div id="readyMessage"><span class="on-touch">tap to drift</span><span class="on-pointer">press [space] or click to drift</span></div>
             </div>
         </div>
@@ -323,6 +325,11 @@
         <div class="modal-content">
             <h2>choose your pilot</h2>
             <div id="characterGrid"></div>
+            <div id="pilotBio">
+                <div class="pilot-bio-name"></div>
+                <div class="pilot-bio-line"></div>
+                <div class="pilot-bio-credit"></div>
+            </div>
             <div class="modal-buttons">
                 <button id="modalMuteBtn">SFX ON</button>
                 <button id="closeModal">launch</button>
@@ -401,13 +408,17 @@
     <!-- Other game modules -->
     <script src="js/player.js?v=c3be28d1"></script>
     <script src="js/obstacles.js?v=4cd5f432"></script>
-    <script src="js/stars.js?v=2701b7ee"></script>
-    <script src="js/scoring.js?v=a5d1ec99"></script>
-    <script src="js/renderer.js?v=898b1b81"></script>
+    <script src="js/stars.js?v=1c116135"></script>
+    <script src="js/scoring.js?v=5a17c19b"></script>
+    <script src="js/renderer.js?v=dbab5cf5"></script>
     <script src="js/input.js?v=fb7aa892"></script>
+    <script src="js/pilot-bios.js?v=49848c9d"></script>
+    <script src="js/unlocks.js?v=107579d3"></script>
     <script src="js/character-balance.js?v=62f83a68"></script>
-    <script src="js/character-selector-modal.js?v=64504bbe"></script>
-    <script src="js/main.js?v=72ed50b8"></script>
+    <script src="js/character-selector-modal.js?v=ffd04e48"></script>
+    <script src="js/moon.js?v=47bfbb2b"></script>
+    <script src="js/beat.js?v=4653b6de"></script>
+    <script src="js/main.js?v=0193d5a6"></script>
     <script src="js/scoreboard-modal.js?v=07f0039a"></script>
 </body>
 </html>

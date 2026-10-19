@@ -108,6 +108,8 @@ function createStars(canvasWidth, canvasHeight) {
 }
 
 function drawStars(ctx) {
+    const onBeat = typeof beatPulse === 'function' && beatPulse() > 0.35;
+
     // CRITICAL: Disable anti-aliasing for pixel-perfect rendering
     ctx.imageSmoothingEnabled = false;
     
@@ -138,9 +140,11 @@ function drawStars(ctx) {
         const x = Math.floor(star.x);
         const y = Math.floor(star.y);
         
-        // Adjust color brightness based on pulse state
+        // Adjust color brightness based on pulse state. On the beat (js/beat.js)
+        // every pulsing star is at full brightness, so the field flickers with
+        // the music; between beats, and with it muted, they keep their own time.
         let color = star.color;
-        if (star.isPulsing && star.pulseState === 0) {
+        if (star.isPulsing && star.pulseState === 0 && !onBeat) {
             // Dim version - add transparency
             color = star.color + '88'; // Add 50% alpha in hex
         }
