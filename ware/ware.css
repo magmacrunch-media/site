@@ -32,19 +32,13 @@
             color: var(--cyan);
         }
 
+        /* The trail's look is ware/crumbs.css, shared with the product
+           pages; only where it sits on a hub is decided here. */
         .breadcrumb {
-            font-family: 'Press Start 2P', monospace;
-            font-size: 7px;
-            color: var(--cyan-dim);
-            letter-spacing: 0.1em;
             margin-top: -8px;
             margin-bottom: 16px;
             align-self: flex-start;
         }
-        .breadcrumb a { color: var(--cyan-dim); text-decoration: none; transition: color 0.15s; }
-        .breadcrumb a:hover { color: var(--cyan); }
-        .breadcrumb .sep { margin: 0 8px; color: var(--cyan); opacity: 0.7; }
-        .breadcrumb .current { color: var(--cyan); }
 
         main {
             flex: 1;

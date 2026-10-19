@@ -117,8 +117,11 @@
         </div>
     </header>
 
-    <nav class="tool-nav">
-        <a href="../utilities/" class="back-link chip"><span class="chrome" data-text="← UTILITIES">← creative utilities</span></a>
+    <!-- The compact breadcrumb trail: the ware pages all carry one
+         (ware/crumbs.css), and this is the same trail without "home",
+         styled by the shell's .back-link so nothing is vendored for it. -->
+    <nav class="tool-nav" aria-label="breadcrumb" style="font-family: 'Press Start 2P', monospace; font-size: 7px; letter-spacing: 0.1em; color: var(--backlink-color);">
+        <a href="../" class="back-link">ware</a> › <a href="../utilities/" class="back-link">creative utilities</a> › <span aria-current="page" style="color: var(--backlink-hover);">sprite//forge</span>
     </nav>
 
     <div class="workspace">

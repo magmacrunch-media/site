@@ -19,21 +19,7 @@ body {
   border-bottom: 1px solid #33304a;
   background: #1c1b26;
 }
-.tool-nav .back-link {
-  font-family: 'Press Start 2P', monospace;
-  font-size: 7px;
-  color: #9d99b5;
-  background: #282a36;
-  padding: 6px 10px;
-  border: 1px solid #33304a;
-  text-decoration: none;
-  letter-spacing: 0.1em;
-  transition: color .15s, border-color .15s;
-}
-.tool-nav .back-link:hover {
-  color: #e8e6f0;
-  border-color: #7cc7ff;
-}
+.tool-nav .breadcrumb { --crumb-accent: #7cc7ff; }
 
 main {
   flex: 1;

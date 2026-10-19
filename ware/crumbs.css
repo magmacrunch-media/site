@@ -1,0 +1,50 @@
+/* ware/crumbs.css: the one breadcrumb trail every ware page carries.
+
+   Hub pages (ware/, games/, dev/, utilities/) and the product pages under
+   them all use this, so a visitor always sees where they are and every
+   level above it, rather than a trail on some pages and a single back
+   link on others. It is its own file rather than part of ware.css because
+   ware.css restyles <body> for the hubs' terminal look and the product
+   pages carry their own palettes.
+
+   Markup:
+
+     <div class="breadcrumb">
+       <a href="../../">home</a> <span class="sep">›</span>
+       <a href="../">ware</a> <span class="sep">›</span>
+       <a href="../games/">video games</a> <span class="sep">›</span>
+       <span class="current">caldera</span>
+     </div>
+
+   Typography and colour only. Where the trail sits is the page's business
+   (ware.css places it on the hubs, .tool-nav on the product pages).
+
+   The full-bleed tool apps in utilities/ do not load this. They carry a
+   compact trail styled by ware/shell/app-shell.css, because their markup
+   is synced from the app repos and also ships inside the desktop builds. */
+
+.breadcrumb {
+    --crumb-link: #007A7A;
+    --crumb-hover: #00FFFF;
+    --crumb-sep: #00FFFF;
+    --crumb-current: #00FFFF;
+    font-family: 'Press Start 2P', monospace;
+    font-size: 7px;
+    line-height: 1.8;
+    letter-spacing: 0.1em;
+    color: var(--crumb-link);
+}
+.breadcrumb a { color: var(--crumb-link); text-decoration: none; transition: color 0.15s; }
+.breadcrumb a:hover { color: var(--crumb-hover); }
+.breadcrumb .sep { margin: 0 8px; color: var(--crumb-sep); opacity: 0.7; }
+.breadcrumb .current { color: var(--crumb-current); }
+
+/* On a product page the trail sits in the .tool-nav strip under the site
+   nav, in the page's own greys; the current item takes the page's accent,
+   which each page sets as --crumb-accent. */
+.tool-nav .breadcrumb {
+    --crumb-link: #9d99b5;
+    --crumb-hover: #e8e6f0;
+    --crumb-sep: #9d99b5;
+    --crumb-current: var(--crumb-accent, #e8e6f0);
+}

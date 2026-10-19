@@ -18,6 +18,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Courier+Prime:wght@400;700&display=swap">
   <link rel="stylesheet" href="../../style.css?v=53e9e146">
+  <link rel="stylesheet" href="../crumbs.css?v=ff3801ee">
   <style>
     :root { color-scheme: dark; }
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -448,21 +449,7 @@
       background: #14141b;
       flex-shrink: 0;
     }
-    .tool-nav .back-link {
-      font-family: 'Press Start 2P', monospace;
-      font-size: 7px;
-      color: #9d99b5;
-      background: #1c1b26;
-      padding: 6px 10px;
-      border: 1px solid #33304a;
-      text-decoration: none;
-      letter-spacing: 0.1em;
-      transition: color 0.15s, border-color 0.15s;
-    }
-    .tool-nav .back-link:hover {
-      color: #e8e6f0;
-      border-color: #c45fff;
-    }
+    .tool-nav .breadcrumb { --crumb-accent: #c45fff; }
     body {
       background: #14141b;
       background-image: none;
@@ -518,7 +505,12 @@
 <nav id="auto-nav" data-depth="../../"></nav>
 
 <div class="tool-nav">
-    <a href="../dev/" class="back-link">&larr; developer tools</a>
+    <div class="breadcrumb">
+      <a href="../../">home</a> <span class="sep">›</span>
+      <a href="../">ware</a> <span class="sep">›</span>
+      <a href="../dev/">developer tools</a> <span class="sep">›</span>
+      <span class="current">hologram</span>
+    </div>
 </div>
 
   <div class="hero">
