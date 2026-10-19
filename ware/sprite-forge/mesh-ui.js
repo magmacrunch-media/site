@@ -33,7 +33,9 @@
     const PREF_KEY = 'meshPreview';
     const saved = MagmaKit.prefs.read(PREF_KEY) || {};
 
-    let kind = mesh.SHAPES[saved.kind] ? saved.kind : 'sphere';
+    // An own property, not a truthy lookup: a saved kind of `constructor` or
+    // `__proto__` finds Object.prototype, and building it threw at startup.
+    let kind = Object.prototype.hasOwnProperty.call(mesh.SHAPES, saved.kind) ? saved.kind : 'sphere';
     let yaw = typeof saved.yaw === 'number' ? saved.yaw : 0;
     let pitch = typeof saved.pitch === 'number' ? saved.pitch : -0.18;
     let uTexels = Math.max(0, Math.round(saved.uTexels) || 0);

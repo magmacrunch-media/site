@@ -12,34 +12,27 @@
 (function () {
     window.SpriteForge = window.SpriteForge || {};
 
-    // Tauri v2 exposes its IPC as __TAURI_INTERNALS__. Checking for that rather
-    // than a user agent means the browser build cannot accidentally believe it
-    // has a filesystem.
-    const tauri = window.__TAURI_INTERNALS__;
-    if (!tauri || typeof tauri.invoke !== 'function') return;
-
-    // Past this point we know we are the desktop build, so say so on <html>.
-    // CSS uses it to drop the parts of the vendored shell that only mean
-    // something on the website: the back link into magmacrunch.com's utilities
-    // index (a dead path inside the bundle) and the site footer. shell/ itself
-    // stays byte-identical — the overrides live in ui/style.css.
-    document.documentElement.classList.add('desktop');
+    // kit/bridge-core.js decided whether there is a backend: it looked for
+    // __TAURI_INTERNALS__ (never a user agent), marked <html class="desktop">
+    // so CSS can drop the website chrome, and exposed MagmaKit.tauri. When it
+    // found nothing, MagmaKit.tauri is undefined and so is everything below,
+    // which is how the browser build cannot accidentally believe it has a
+    // filesystem. This file used to repeat all three of those by hand.
+    const T = window.MagmaKit && window.MagmaKit.tauri;
+    if (!T) return;
 
     // WebView2 still offers its own right-click menu — Back, Reload, Save as,
     // Print. Every entry on it is either meaningless in a single-page tool or
     // actively destructive: Reload throws away unsaved frames with no prompt.
-    // Fields keep theirs, because Cut/Copy/Paste in a text box is the one case
-    // where the browser's menu is the right menu.
-    document.addEventListener('contextmenu', (e) => {
-        if (e.target.closest('input, textarea')) return;
-        e.preventDefault();
-    });
+    // The kit's suppression leaves fields theirs, because Cut/Copy/Paste in a
+    // text box is the one case where the browser's menu is the right menu.
+    T.suppressContextMenu();
 
-    const invoke = (cmd, args) => tauri.invoke(cmd, args || {});
+    const invoke = (cmd, args) => T.invoke(cmd, args);
 
-    // The dialog plugin's commands are namespaced by plugin, unlike ours.
-    const dialog = (cmd, args) =>
-        tauri.invoke(`plugin:dialog|${cmd}`, args || {});
+    // The dialog plugin's commands are namespaced by plugin, unlike ours; the
+    // kit's dialog() adds the `plugin:dialog|` prefix.
+    const dialog = (cmd, args) => T.dialog(cmd, args);
 
     const FORGE_FILTER = [{ name: 'SPRITE//FORGE project', extensions: ['forge'] }];
     const PNG_FILTER = [{ name: 'PNG image', extensions: ['png'] }];

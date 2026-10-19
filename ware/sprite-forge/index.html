@@ -30,7 +30,7 @@
     <script src="kit/modal.js?v=0549bda4"></script>
     <script src="kit/dom.js?v=1d063261"></script>
     <script src="kit/menu.js?v=21cff107"></script>
-    <script src="bridge.js?v=6a34f249"></script>
+    <script src="bridge.js?v=34c168d5"></script>
     <!-- Immediately after bridge.js and well before core/tier.js, which is the
          only ordering this file has: it stands aside if Tauri already installed
          a filesystem, and tier.js reads the result to decide the build. -->
@@ -638,7 +638,7 @@
     <script src="core/frames.js?v=29545ce3"></script>
     <script src="core/transform.js?v=a27d6b54"></script>
     <script src="core/sheet.js?v=bd55b20b"></script>
-    <script src="core/mesh.js?v=e1ba2a35"></script>
+    <script src="core/mesh.js?v=1de8d0dc"></script>
     <script src="core/templates.js?v=173d2d72"></script>
     <script src="core/project.js?v=119a3d3b"></script>
     <script src="core/targets/gamemaker.js?v=6f0a6c02"></script>
@@ -662,7 +662,7 @@
     <!-- after editor.js, and before project-ui.js which asks it for the list.
          It seeds itself from the blank sprite the editor has already made. -->
     <script src="sprites-ui.js?v=b83854e0"></script>
-    <script src="mesh-ui.js?v=18935db6"></script>
+    <script src="mesh-ui.js?v=fb54b0ad"></script>
     <!-- after editor.js: reads the state accessor it defines at the bottom -->
     <script src="project-ui.js?v=2bbaf636"></script>
     <!-- after project-ui.js: exporting a target reads the current project -->

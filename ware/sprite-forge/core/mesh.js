@@ -160,7 +160,10 @@ window.SpriteForge.mesh = (function () {
      *               preview can be as chunky as the mesh it stands for
      */
     function build(kind, detail) {
-        const s = SHAPES[kind];
+        // Own properties only: SHAPES is a plain object, so `constructor` or
+        // `__proto__` would otherwise find Object.prototype and fail later,
+        // and less clearly, than an unknown name does.
+        const s = Object.prototype.hasOwnProperty.call(SHAPES, kind) ? SHAPES[kind] : null;
         if (!s) throw new Error(`unknown mesh "${kind}"`);
         return s.build(Math.max(3, Math.min(64, detail || 16)));
     }
