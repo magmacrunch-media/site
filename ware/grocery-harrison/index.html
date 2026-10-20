@@ -20,162 +20,36 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Courier+Prime:wght@400;700&display=swap">
   <link rel="stylesheet" href="../../style.css?v=53e9e146">
   <link rel="stylesheet" href="../crumbs.css?v=ff3801ee">
+  <link rel="stylesheet" href="../magma-themes.css?v=ddf672ce">
+  <link rel="stylesheet" href="../game-page.css?v=645aa2c0">
   <style>
-    :root { color-scheme: dark; --accent: #ffd84a; --accent-dk: #b58e00; --line: #33304a; --panel: #1c1b26; --dim: #9d99b5; }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-
+    /* Grocery Harrison's look: the night-shift store's green dark, lit from
+       above the way its page is, faint shelf stripes of product colour, the
+       price-tag gold title with its rust drop shadow, gold-framed screens
+       that glow like the store lights, and its gold buttons. Colours come
+       from the grocery-harrison theme. */
     body {
-      font: 14px/1.6 'Courier Prime', ui-monospace, SFMono-Regular, Menlo, monospace;
-      background: #14141b; color: #e8e6f0;
-      min-height: 100vh;
-      display: flex; flex-direction: column;
+      --line: var(--mt-p-gh-edge);
+      --link: var(--mt-p-gh-freezer);
+      --radius: 2px;
+      --head-glow: 0 4px 0 var(--mt-p-gh-rust);
+      --btn-ink: var(--mt-p-gh-ink);
+      --btn-shadow: var(--mt-p-gh-rust);
+      --frame: var(--mt-p-gh-edge);
+      --frame-glow: 0 0 0 2px var(--mt-p-gh-edge), 0 0 60px color-mix(in srgb, var(--mt-p-gh-gold) 15%, transparent);
+      --panel-border: var(--mt-p-gh-shelf);
+      background:
+        repeating-linear-gradient(90deg, transparent 0 34px, color-mix(in srgb, var(--mt-p-gh-gold) 4%, transparent) 34px 40px, transparent 40px 70px, color-mix(in srgb, var(--mt-p-gh-freezer) 4%, transparent) 70px 76px, transparent 76px 120px),
+        radial-gradient(ellipse at 50% 30%, var(--mt-p-gh-shelf) 0%, var(--mt-bg) 70%) var(--mt-bg);
     }
-    body > * { width: 100%; }
-    a { color: #7cc7ff; }
-
-    /* The back bar every ware product page carries, as on hologram's: a
-       strip under the fixed 48px site nav with the breadcrumb trail
-       (ware/crumbs.css). The margin is what keeps it out from under the nav. */
-    .tool-nav {
-      margin-top: 48px;
-      padding: 8px 24px;
-      border-bottom: 1px solid var(--line);
-      background: #14141b;
-      flex-shrink: 0;
-    }
-    .tool-nav .breadcrumb { --crumb-accent: var(--accent); }
-    footer {
-      font-family: 'Courier Prime', monospace;
-      font-size: 12px;
-      border-top: 1px solid var(--line);
-    }
-    footer span { color: #7cc7ff; }
-
-    /* ── Hero ──────────────────────────────────────────── */
-
-    .hero { text-align: center; padding: 2.5rem 1.5rem 2rem; }
-    .hero img.banner {
-      width: min(100%, 480px); height: auto;
-      border: 1px solid var(--line); border-radius: 8px;
-      margin-bottom: 1.5rem;
-    }
-    .hero img.art {
-      width: 96px; height: 96px;
-      image-rendering: pixelated;
-      margin-bottom: 1.25rem;
-    }
-    .hero h1 {
-      font-family: 'Press Start 2P', monospace;
-      font-size: clamp(16px, 3.4vw, 30px);
-      font-weight: 400;
-      line-height: 1.5;
-      color: var(--accent);
-      text-shadow: 3px 3px 0 #33304a, 6px 6px 0 #1c1b26;
-      letter-spacing: 0.06em;
-      margin-bottom: .9rem;
-    }
-    .hero .tagline { font-size: 13px; color: var(--dim); }
-
-    .section { max-width: 640px; margin: 0 auto 2.75rem; padding: 0 1.5rem; }
-    .section h2 {
-      font-family: 'Press Start 2P', monospace;
-      font-size: 10px; font-weight: 400;
-      color: var(--accent);
-      margin-bottom: .9rem;
-      letter-spacing: 0.05em;
-    }
-    .lead p { color: #c9c6d9; margin-bottom: .7rem; }
-    .lead p:last-child { margin-bottom: 0; }
-
-    /* ── Where to play ─────────────────────────────────── */
-
-    /* One row per platform. The browser row is the call to action, so it is
-       the only one with a filled button; the rest are instructions. */
-    .platforms { display: grid; gap: .6rem; }
-    .platform {
-      display: grid;
-      grid-template-columns: 7.5rem 1fr;
-      gap: 1rem;
-      align-items: center;
-      background: var(--panel);
-      border: 1px solid var(--line);
-      border-radius: 10px;
-      padding: .9rem 1rem;
-    }
-    .platform .name {
-      font-family: 'Press Start 2P', monospace;
-      font-size: 9px; line-height: 1.6;
-      color: #e8e6f0;
-    }
-    .platform .how { font-size: 12px; color: var(--dim); }
-    .platform .how strong { color: #e8e6f0; font-weight: 700; }
-    .platform code {
-      display: inline-block;
-      font: 12px 'Courier Prime', monospace;
-      color: var(--accent);
-      background: #14141b;
-      border: 1px solid var(--line);
-      border-radius: 6px;
-      padding: .2rem .5rem;
-      margin: .15rem 0;
-      overflow-wrap: anywhere;
-    }
-    .platform.soon { opacity: .6; }
-    .badge {
-      font: 8px/1 'Press Start 2P', monospace;
-      color: var(--accent);
-      border: 1px solid currentColor;
-      border-radius: 4px;
-      padding: .25rem .4rem;
-      margin: .3rem 0 0 .35rem;
-      display: inline-block;
-      white-space: nowrap;
-      vertical-align: middle;
-    }
-
-    .play-btn {
-      display: inline-block;
-      font: 10px/1 'Press Start 2P', monospace;
-      color: #14141b;
-      background: var(--accent);
-      border-radius: 6px;
-      padding: .7rem 1rem;
-      text-decoration: none;
-      margin-right: .6rem;
-      box-shadow: 3px 3px 0 var(--accent-dk);
-      transition: transform .1s, box-shadow .1s;
-    }
-    .play-btn:hover { transform: translate(-1px, -1px); box-shadow: 4px 4px 0 var(--accent-dk); }
-
-    /* ── Built with / credits ──────────────────────────── */
-
-    .built { display: grid; grid-template-columns: 1fr 1fr; gap: .5rem; }
-    .built a, .built div {
-      display: block;
-      background: var(--panel);
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      padding: .6rem .75rem;
-      text-decoration: none;
-      color: inherit;
-    }
-    .built a:hover { border-color: #7cc7ff; }
-    .built strong { display: block; color: #7cc7ff; font-size: 11px; margin-bottom: .1rem; }
-    .built span { color: var(--dim); font-size: 11px; }
-
-    .credits p { font-size: 12px; color: var(--dim); margin-bottom: .55rem; }
-    .credits strong { color: #e8e6f0; }
-
-    @media (max-width: 560px) {
-      .hero { padding: 2rem 1rem 1.5rem; }
-      .section { padding: 0 1rem; }
-      .platform { grid-template-columns: 1fr; gap: .45rem; }
-      .built { grid-template-columns: 1fr; }
-      .play-btn { min-height: 44px; display: inline-flex; align-items: center; }
-    }
+    .hero h1 { font-size: clamp(22px, 5vw, 44px); }
+    .section h2 { text-shadow: 0 2px 0 var(--mt-p-gh-rust); }
+    .hero .tagline { color: var(--mt-p-gh-freezer); }
+    .platform, .built a, .built div { background: color-mix(in srgb, var(--mt-p-gh-night) 75%, transparent); }
+    .play-btn:hover, .play-btn:focus-visible { background: var(--mt-p-gh-butter); }
   </style>
 </head>
-<body>
+<body data-magma-theme="grocery-harrison">
 
 <nav id="auto-nav" data-depth="../../"></nav>
 
@@ -189,7 +63,7 @@
 </div>
 
 <div class="hero">
-  <img class="banner" src="../../og/arcade-grocery-harrison.png" alt="" width="600" height="315">
+  <img class="screen" src="img/aisle.webp" alt="Harrison, tiny, in the cereal aisle: Bran-O-Rama and Crunch Comets boxes towering over him, a fallen glazed donut beside him, prices along the shelf edge and the quest to talk to Granny Granola" width="1028" height="776">
   <h1>GROCERY<br>HARRISON</h1>
   <p class="tagline">the size of a cornflake &middot; put the store back in order, aisle by aisle</p>
 </div>
@@ -197,6 +71,20 @@
 <div class="section lead">
   <p>Grocery Harrison, a folk musician on the night shift, plays a strange chord in the walk-in cooler and shrinks to the size of a cornflake. Every aisle becomes a landscape to cross while you carry lost things home for the talking food.</p>
   <p>Strum your guitar to stun weevils, collect sugar crystals to spend at the checkout, and never see a game over.</p>
+</div>
+
+<div class="section">
+  <h2>// on the night shift //</h2>
+  <div class="shots">
+    <figure>
+      <img class="screen" src="img/title.webp" alt="The title screen: Grocery Harrison in gold over a towering aisle seen from the floor, an oat milk carton and a giant lemon, a $2.99 price tag and Press Enter" width="1028" height="768" loading="lazy">
+      <figcaption>the night shift</figcaption>
+    </figure>
+    <figure>
+      <img class="screen" src="img/break.webp" alt="The opening cutscene: Harrison playing guitar on a crate in the walk-in cooler at 4:12 AM, notes rising, best acoustics in the store" width="1028" height="776" loading="lazy">
+      <figcaption>break time in the walk-in cooler</figcaption>
+    </figure>
+  </div>
 </div>
 
 <div class="section">

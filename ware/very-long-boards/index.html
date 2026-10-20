@@ -20,162 +20,39 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Courier+Prime:wght@400;700&display=swap">
   <link rel="stylesheet" href="../../style.css?v=53e9e146">
   <link rel="stylesheet" href="../crumbs.css?v=ff3801ee">
+  <link rel="stylesheet" href="../magma-themes.css?v=ddf672ce">
+  <link rel="stylesheet" href="../game-page.css?v=645aa2c0">
   <style>
-    :root { color-scheme: dark; --accent: #b537f2; --accent-dk: #6b0a99; --line: #33304a; --panel: #1c1b26; --dim: #9d99b5; }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-
+    /* Very Long Boards' look: violet-black around a hot pink frame, which
+       is how the game sits on its page, a pink glow from the top, pink
+       headings with a purple shadow, gold for links and scores, and the
+       balance bar's green as the rule under the title. Colours come from
+       the very-long-boards theme. */
     body {
-      font: 14px/1.6 'Courier Prime', ui-monospace, SFMono-Regular, Menlo, monospace;
-      background: #14141b; color: #e8e6f0;
-      min-height: 100vh;
-      display: flex; flex-direction: column;
+      --line: color-mix(in srgb, var(--mt-p-vlb-purple) 25%, var(--mt-bg));
+      --link: var(--mt-p-vlb-gold);
+      --radius: 2px;
+      --head-glow: 2px 2px 0 var(--mt-p-vlb-purple), 0 0 12px color-mix(in srgb, var(--mt-p-vlb-pink) 50%, transparent);
+      --btn-ink: #fff;
+      --btn-shadow: var(--mt-p-vlb-purple);
+      --frame: var(--mt-p-vlb-pink);
+      --frame-glow: 0 0 22px color-mix(in srgb, var(--mt-p-vlb-pink) 45%, transparent);
+      --panel-border: color-mix(in srgb, var(--mt-p-vlb-pink) 30%, var(--mt-surface));
+      background: radial-gradient(ellipse 80% 45% at 50% 0%, color-mix(in srgb, var(--mt-p-vlb-pink) 13%, transparent), transparent), var(--mt-bg);
     }
-    body > * { width: 100%; }
-    a { color: #7cc7ff; }
-
-    /* The back bar every ware product page carries, as on hologram's: a
-       strip under the fixed 48px site nav with the breadcrumb trail
-       (ware/crumbs.css). The margin is what keeps it out from under the nav. */
-    .tool-nav {
-      margin-top: 48px;
-      padding: 8px 24px;
-      border-bottom: 1px solid var(--line);
-      background: #14141b;
-      flex-shrink: 0;
-    }
-    .tool-nav .breadcrumb { --crumb-accent: var(--accent); }
-    footer {
-      font-family: 'Courier Prime', monospace;
-      font-size: 12px;
-      border-top: 1px solid var(--line);
-    }
-    footer span { color: #7cc7ff; }
-
-    /* ── Hero ──────────────────────────────────────────── */
-
-    .hero { text-align: center; padding: 2.5rem 1.5rem 2rem; }
-    .hero img.banner {
-      width: min(100%, 480px); height: auto;
-      border: 1px solid var(--line); border-radius: 8px;
-      margin-bottom: 1.5rem;
-    }
-    .hero img.art {
-      width: 96px; height: 96px;
-      image-rendering: pixelated;
-      margin-bottom: 1.25rem;
-    }
-    .hero h1 {
-      font-family: 'Press Start 2P', monospace;
-      font-size: clamp(16px, 3.4vw, 30px);
-      font-weight: 400;
-      line-height: 1.5;
-      color: var(--accent);
-      text-shadow: 3px 3px 0 #33304a, 6px 6px 0 #1c1b26;
-      letter-spacing: 0.06em;
-      margin-bottom: .9rem;
-    }
-    .hero .tagline { font-size: 13px; color: var(--dim); }
-
-    .section { max-width: 640px; margin: 0 auto 2.75rem; padding: 0 1.5rem; }
-    .section h2 {
-      font-family: 'Press Start 2P', monospace;
-      font-size: 10px; font-weight: 400;
-      color: var(--accent);
-      margin-bottom: .9rem;
-      letter-spacing: 0.05em;
-    }
-    .lead p { color: #c9c6d9; margin-bottom: .7rem; }
-    .lead p:last-child { margin-bottom: 0; }
-
-    /* ── Where to play ─────────────────────────────────── */
-
-    /* One row per platform. The browser row is the call to action, so it is
-       the only one with a filled button; the rest are instructions. */
-    .platforms { display: grid; gap: .6rem; }
-    .platform {
-      display: grid;
-      grid-template-columns: 7.5rem 1fr;
-      gap: 1rem;
-      align-items: center;
-      background: var(--panel);
-      border: 1px solid var(--line);
-      border-radius: 10px;
-      padding: .9rem 1rem;
-    }
-    .platform .name {
-      font-family: 'Press Start 2P', monospace;
-      font-size: 9px; line-height: 1.6;
-      color: #e8e6f0;
-    }
-    .platform .how { font-size: 12px; color: var(--dim); }
-    .platform .how strong { color: #e8e6f0; font-weight: 700; }
-    .platform code {
-      display: inline-block;
-      font: 12px 'Courier Prime', monospace;
-      color: var(--accent);
-      background: #14141b;
-      border: 1px solid var(--line);
-      border-radius: 6px;
-      padding: .2rem .5rem;
-      margin: .15rem 0;
-      overflow-wrap: anywhere;
-    }
-    .platform.soon { opacity: .6; }
-    .badge {
-      font: 8px/1 'Press Start 2P', monospace;
-      color: var(--accent);
-      border: 1px solid currentColor;
-      border-radius: 4px;
-      padding: .25rem .4rem;
-      margin: .3rem 0 0 .35rem;
-      display: inline-block;
-      white-space: nowrap;
-      vertical-align: middle;
-    }
-
-    .play-btn {
-      display: inline-block;
-      font: 10px/1 'Press Start 2P', monospace;
-      color: #14141b;
-      background: var(--accent);
-      border-radius: 6px;
-      padding: .7rem 1rem;
-      text-decoration: none;
-      margin-right: .6rem;
-      box-shadow: 3px 3px 0 var(--accent-dk);
-      transition: transform .1s, box-shadow .1s;
-    }
-    .play-btn:hover { transform: translate(-1px, -1px); box-shadow: 4px 4px 0 var(--accent-dk); }
-
-    /* ── Built with / credits ──────────────────────────── */
-
-    .built { display: grid; grid-template-columns: 1fr 1fr; gap: .5rem; }
-    .built a, .built div {
+    .hero .tagline { color: var(--mt-p-vlb-purple); }
+    .hero .tagline::after {
+      content: '';
       display: block;
-      background: var(--panel);
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      padding: .6rem .75rem;
-      text-decoration: none;
-      color: inherit;
+      width: 200px; height: 6px;
+      margin: 1.25rem auto 0;
+      border: 1px solid color-mix(in srgb, var(--mt-p-vlb-green) 60%, transparent);
+      background: linear-gradient(90deg, var(--mt-p-vlb-green) 70%, transparent 70%);
     }
-    .built a:hover { border-color: #7cc7ff; }
-    .built strong { display: block; color: #7cc7ff; font-size: 11px; margin-bottom: .1rem; }
-    .built span { color: var(--dim); font-size: 11px; }
-
-    .credits p { font-size: 12px; color: var(--dim); margin-bottom: .55rem; }
-    .credits strong { color: #e8e6f0; }
-
-    @media (max-width: 560px) {
-      .hero { padding: 2rem 1rem 1.5rem; }
-      .section { padding: 0 1rem; }
-      .platform { grid-template-columns: 1fr; gap: .45rem; }
-      .built { grid-template-columns: 1fr; }
-      .play-btn { min-height: 44px; display: inline-flex; align-items: center; }
-    }
+    .platform, .built a, .built div { background: color-mix(in srgb, var(--mt-surface) 85%, transparent); }
   </style>
 </head>
-<body>
+<body data-magma-theme="very-long-boards">
 
 <nav id="auto-nav" data-depth="../../"></nav>
 
@@ -189,7 +66,7 @@
 </div>
 
 <div class="hero">
-  <img class="banner" src="../../og/arcade-very-long-boards.png" alt="" width="600" height="315">
+  <img class="screen" src="img/ride.webp" alt="Party Carl kicking off down a mountain road on a longboard, pines either side, warning signs ahead and the balance bar full" width="960" height="540">
   <h1>VERY LONG<br>BOARDS</h1>
   <p class="tagline">downhill longboarding &middot; choose your carl &middot; dodge everything</p>
 </div>
@@ -197,6 +74,20 @@
 <div class="section lead">
   <p>Downhill skateboarding as Carl Spatski, in one of three looks: the everyman, the maniac or the enigma, each riding differently.</p>
   <p>In the browser it is an endless run: steer around obstacles, pull tricks for points and keep your stability up. The desktop version is a different, calmer game: timed runs down measured New Hampshire and Block Island roads.</p>
+</div>
+
+<div class="section">
+  <h2>// down the hill //</h2>
+  <div class="shots">
+    <figure>
+      <img class="screen" src="img/title.webp" alt="The title screen: Very Long Boards in pink over a road through pines, a Carl Spatski game" width="960" height="540" loading="lazy">
+      <figcaption>downhill skateboarding</figcaption>
+    </figure>
+    <figure>
+      <img class="screen" src="img/carls.webp" alt="Select your Carl: Office Carl, Party Carl and Dark Carl, each with their own stats" width="960" height="540" loading="lazy">
+      <figcaption>choose your carl</figcaption>
+    </figure>
+  </div>
 </div>
 
 <div class="section">
