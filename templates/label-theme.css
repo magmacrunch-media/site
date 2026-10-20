@@ -218,3 +218,120 @@ body.lbl-page .card-sub {
 body.lbl-page .note {
     color: var(--lbl-muted);
 }
+
+/* ── Label pages: intro, siblings, and the dated catalogue (templates/label.js) ── */
+body.lbl-page .lbl-named {
+    text-transform: none;
+}
+body.lbl-page .lbl-named a {
+    color: var(--lbl-muted);
+}
+
+body.lbl-page .lbl-intro {
+    width: min(640px, 95vw);
+    margin: -16px 0 20px;
+    font-family: 'Courier Prime', monospace;
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--lbl-pale);
+    opacity: 0.85;
+    text-align: center;
+}
+body.lbl-page .lbl-intro-part {
+    color: var(--lbl-muted);
+}
+
+body.lbl-page .lbl-siblings {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+    width: min(800px, 95vw);
+    margin-bottom: 36px;
+}
+body.lbl-page .lbl-sib {
+    display: inline-flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 8px 12px;
+    border: 1px solid var(--lbl-dark);
+    background: var(--lbl-darkest);
+    font-family: 'Press Start 2P', monospace;
+    font-size: 7px;
+    letter-spacing: 0.08em;
+    color: var(--lbl-pale);
+    text-decoration: none;
+    transition: border-color 0.15s;
+}
+body.lbl-page .lbl-sib:hover {
+    border-color: var(--lbl-violet);
+}
+body.lbl-page .lbl-sib-kind {
+    font-family: 'Courier Prime', monospace;
+    font-size: 10px;
+    letter-spacing: 0;
+    color: var(--lbl-muted);
+}
+body.lbl-page .lbl-sib-all {
+    justify-content: center;
+    background: transparent;
+    border-color: var(--lbl-violet);
+    color: var(--lbl-violet);
+}
+body.lbl-page .lbl-sib-assoc {
+    border-style: dashed;
+}
+
+body.lbl-page .lbl-section-summary {
+    font-family: 'Courier Prime', monospace;
+    font-size: 12px;
+    color: var(--lbl-muted);
+    margin: -8px 0 12px;
+}
+
+body.lbl-page .lbl-structure {
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    gap: 8px 20px;
+    margin: 0;
+    font-family: 'Courier Prime', monospace;
+    font-size: 13px;
+}
+body.lbl-page .lbl-structure dt {
+    color: var(--lbl-muted);
+}
+body.lbl-page .lbl-structure dd {
+    margin: 0;
+    color: var(--lbl-pale);
+}
+body.lbl-page .lbl-structure a {
+    color: var(--lbl-pale);
+}
+
+body.lbl-page .lbl-year {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 8px;
+    color: var(--lbl-light);
+    margin: 20px 0 4px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid var(--lbl-mid-dark);
+}
+body.lbl-page .lbl-dated li {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 4px 10px;
+}
+body.lbl-page .lbl-when {
+    flex: 0 0 48px;
+    font-family: 'Courier Prime', monospace;
+    font-size: 11px;
+    color: var(--lbl-muted);
+}
+body.lbl-page .lbl-note {
+    font-family: 'Courier Prime', monospace;
+    font-size: 10px;
+    padding: 1px 6px;
+    border: 1px solid var(--lbl-dark);
+    color: var(--lbl-muted);
+}

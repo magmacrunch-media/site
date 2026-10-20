@@ -10,6 +10,13 @@
     var contentEl = document.getElementById('content');
     var idsEl = document.getElementById('contrib-ids');
 
+    /* This label's entry in archive/by-label/labels-data.js, and the rest of
+       the family, so the page can say what the label is and link its siblings. */
+    var FAMILY = (window.__LABEL_FAMILY && window.__LABEL_FAMILY.labels) || [];
+    var SELF = FAMILY.filter(function(l) { return l.mbid === MB_ID; })[0] || null;
+
+    var MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
     /* ── HELPERS ── */
 
     function archiveLink(id, name, type) {
@@ -39,13 +46,67 @@
         return b + ' \u2014 ' + e;
     }
 
-    function renderSection(title, html) {
+    function renderSection(title, html, summary) {
         if (!html) return '';
         return '<div class="section">' +
             '<div class="section-divider"></div>' +
             '<div class="section-title">// ' + title + ' //</div>' +
+            (summary ? '<div class="lbl-section-summary">' + summary + '</div>' : '') +
             html +
             '</div>';
+    }
+
+    /* "2023-07-12" -> "Jul 12"; a bare year or year-month says only what it knows. */
+    function monthDay(d) {
+        var p = (d || '').split('-');
+        if (p.length < 2) return '';
+        var m = MONTHS[parseInt(p[1], 10) - 1] || '';
+        return p.length > 2 ? m + ' ' + parseInt(p[2], 10) : m;
+    }
+
+    /* Rows already sorted by .sort, rendered under a heading per year. */
+    function byYear(rows, rowHtml) {
+        var html = '';
+        var current = null;
+        rows.forEach(function(row) {
+            var year = row.sort ? row.sort.slice(0, 4) : 'undated';
+            if (year !== current) {
+                if (current !== null) html += '</ul>';
+                html += '<div class="lbl-year">' + esc(year) + '</div><ul class="simple-list lbl-dated">';
+                current = year;
+            }
+            html += rowHtml(row);
+        });
+        return html ? html + '</ul>' : '';
+    }
+
+    function plural(n, one, many) {
+        return n + ' ' + (n === 1 ? one : many);
+    }
+
+    function yearSpan(rows) {
+        var years = rows.map(function(r) { return r.sort ? r.sort.slice(0, 4) : null; }).filter(Boolean);
+        if (!years.length) return '';
+        var lo = years[0], hi = years[years.length - 1];
+        return lo === hi ? lo : lo + '\u2013' + hi;
+    }
+
+    /* The label's intro and its siblings, between the header and the content. */
+    function renderIntro() {
+        if (!SELF) return;
+        var header = document.querySelector('.contrib-header');
+        if (!header || document.querySelector('.lbl-intro')) return;
+        var parent = SELF.parent ? FAMILY.filter(function(l) { return l.slug === SELF.parent; })[0] : null;
+        var siblings = FAMILY.filter(function(l) { return l !== SELF; }).map(function(l) {
+            return '<a href="../' + l.slug + '/" class="lbl-sib' + (l.associated ? ' lbl-sib-assoc' : '') + '">' +
+                esc(l.name) + '<span class="lbl-sib-kind">' + esc(l.kind) + '</span></a>';
+        }).join('');
+        header.insertAdjacentHTML('afterend',
+            '<p class="lbl-intro">' + esc(SELF.blurb) +
+            (parent ? ' <span class="lbl-intro-part">part of <a href="../' + parent.slug + '/">' + esc(parent.name) + '</a>.</span>' : '') +
+            '</p>' +
+            '<nav class="lbl-siblings" aria-label="other labels">' +
+            '<a href="../" class="lbl-sib lbl-sib-all">\u2190 all labels</a>' + siblings + '</nav>');
     }
 
 
@@ -84,7 +145,7 @@
     }
 
     function renderStaticSections() {
-        var staticSections = config.STATIC_SECTIONS;
+        var staticSections = config.STATIC_SECTIONS || (SELF && SELF.sections);
         if (!staticSections || staticSections.length === 0) return '';
         return staticSections.map(renderStaticSection).join('');
     }
@@ -207,57 +268,43 @@
             html += renderSection('signed artists', items);
         }
 
-        /* Label relationships — broken out by type */
-        var ownedLabels = labelRels.filter(function(r) {
-            return r['target-type'] === 'label' && r.label && r.type === 'label ownership' && r.direction === 'forward';
-        });
-        if (ownedLabels.length > 0) {
-            const items = ownedLabels.map(function(r) {
-                return '<li>' + archiveLink(r.label.id, r.label.name, 'label') + '</li>';
-            }).join('');
-            html += renderSection('owns', '<ul class="simple-list">' + items + '</ul>');
-        }
+        /* Structure: where the label sits: what it owns, who owns it, who
+           distributes it. One section of short rows rather than a section per
+           relationship, since each of these is usually one or two names. */
+        function isLabelRel(r) { return r['target-type'] === 'label' && r.label; }
+        var structure = [];
 
-        var ownedByLabels = labelRels.filter(function(r) {
-            return r['target-type'] === 'label' && r.label && r.type === 'label ownership' && r.direction === 'backward';
-        });
-        var ownedByArtists = artistRels.filter(function(r) {
-            return r['target-type'] === 'artist' && r.artist && r.type === 'owner' && r.direction === 'backward';
-        });
-        var ownedByAll = ownedByLabels.map(function(r) {
-            return { name: r.label.name, id: r.label.id, type: 'label' };
-        });
-        ownedByArtists.forEach(function(r) {
-            if (!ownedByAll.some(function(e) { return e.name === r.artist.name; })) {
-                ownedByAll.push({ name: r.artist.name, id: r.artist.id, type: 'artist' });
+        var owns = labelRels.filter(function(r) {
+            return isLabelRel(r) && r.type === 'label ownership' && r.direction === 'forward';
+        }).map(function(r) { return archiveLink(r.label.id, r.label.name, 'label'); });
+        if (owns.length) structure.push(['owns', owns]);
+
+        var ownedBy = labelRels.filter(function(r) {
+            return isLabelRel(r) && r.type === 'label ownership' && r.direction === 'backward';
+        }).map(function(r) { return { name: r.label.name, id: r.label.id, type: 'label' }; });
+        artistRels.forEach(function(r) {
+            if (r['target-type'] === 'artist' && r.artist && r.type === 'owner' && r.direction === 'backward' &&
+                !ownedBy.some(function(e) { return e.name === r.artist.name; })) {
+                ownedBy.push({ name: r.artist.name, id: r.artist.id, type: 'artist' });
             }
         });
-        if (ownedByAll.length > 0) {
-            const items = ownedByAll.map(function(e) {
-                return '<li>' + archiveLink(e.id, e.name, e.type) + '</li>';
-            }).join('');
-            html += renderSection('owned by', '<ul class="simple-list">' + items + '</ul>');
-        }
+        if (ownedBy.length) structure.push(['owned by', ownedBy.map(function(e) { return archiveLink(e.id, e.name, e.type); })]);
 
         var distributedBy = labelRels.filter(function(r) {
-            return r['target-type'] === 'label' && r.label && r.type === 'label distribution';
-        });
-        if (distributedBy.length > 0) {
-            const items = distributedBy.map(function(r) {
-                return '<li>' + archiveLink(r.label.id, r.label.name, 'label') + '</li>';
-            }).join('');
-            html += renderSection('distributed by', '<ul class="simple-list">' + items + '</ul>');
-        }
+            return isLabelRel(r) && r.type === 'label distribution';
+        }).map(function(r) { return archiveLink(r.label.id, r.label.name, 'label'); });
+        if (distributedBy.length) structure.push(['distributed by', distributedBy]);
 
-        var otherLabelRels = labelRels.filter(function(r) {
-            return r['target-type'] === 'label' && r.label &&
-                r.type !== 'label ownership' && r.type !== 'label distribution';
+        labelRels.filter(function(r) {
+            return isLabelRel(r) && r.type !== 'label ownership' && r.type !== 'label distribution';
+        }).forEach(function(r) {
+            structure.push([r.type, [archiveLink(r.label.id, r.label.name, 'label')]]);
         });
-        if (otherLabelRels.length > 0) {
-            const items = otherLabelRels.map(function(r) {
-                return '<li>' + archiveLink(r.label.id, r.label.name, 'label') + ' <span class="credit-sub">(' + esc(r.type) + ')</span></li>';
-            }).join('');
-            html += renderSection('related labels', '<ul class="simple-list">' + items + '</ul>');
+
+        if (structure.length) {
+            html += renderSection('structure', '<dl class="lbl-structure">' + structure.map(function(row) {
+                return '<dt>' + esc(row[0]) + '</dt><dd>' + row[1].join(', ') + '</dd>';
+            }).join('') + '</dl>');
         }
 
         /* Events presented */
@@ -319,87 +366,84 @@
             html += renderSection('associated places', items);
         }
 
-        /* Releases */
+        /* Releases: one row per MusicBrainz release, by its own release date.
+           Two editions sharing a title (a 2023 reissue and a 2024 remaster) are
+           two rows, and the year shown is the release's, not the copyright
+           relationship's: those were all "2023" for records made years before.
+           scripts/label-summary.mjs counts the same way for the index. */
         if (releaseData && releaseData.relations) {
-            var releaseRels = releaseData.relations.filter(function(r) {
-                return r['target-type'] === 'release' && r.release;
+            var releaseById = {};
+            releaseData.relations.forEach(function(r) {
+                if (r['target-type'] !== 'release' || !r.release) return;
+                var g = releaseById[r.release.id];
+                if (!g) g = releaseById[r.release.id] = { release: r.release, types: [] };
+                if (g.types.indexOf(r.type) === -1) g.types.push(r.type);
             });
-            var releaseGroups = {};
-            releaseRels.forEach(function(r) {
-                var key = r.release.title.toLowerCase();
-                if (!releaseGroups[key]) releaseGroups[key] = { release: r.release, rels: [] };
-                releaseGroups[key].rels.push(r);
+            var releaseRows = Object.keys(releaseById).map(function(id) {
+                var g = releaseById[id];
+                return { release: g.release, sort: g.release.date || '', types: g.types };
             });
-            var releaseEntries = Object.keys(releaseGroups).map(function(key) {
-                var g = releaseGroups[key];
-                var merged = mergeRels(g.rels);
-                return { release: g.release, begin: merged.begin, end: merged.end, ended: merged.ended };
+            releaseRows.sort(function(a, b) {
+                return (a.sort || '9999').localeCompare(b.sort || '9999') ||
+                    a.release.title.localeCompare(b.release.title);
             });
-            releaseEntries.sort(function(a, b) {
-                return (a.begin || 'zzzz').localeCompare(b.begin || 'zzzz');
-            });
-            if (releaseEntries.length > 0) {
-                const items = releaseEntries.map(function(e) {
-                    return '<li>' + creditLink(e.release, 'release') + (e.begin ? ' <span class="credit-sub">' + esc(formatDate(e.begin)) + '</span>' : '') + '</li>';
-                }).join('');
-                html += renderSection('releases', '<ul class="simple-list">' + items + '</ul>');
-            }
-
-            /* Manufactured releases */
-            var manufacturedRels = releaseRels.filter(function(r) {
-                return r.type === 'manufactured';
-            });
-            if (manufacturedRels.length > 0) {
-                var mfgGroups = {};
-                manufacturedRels.forEach(function(r) {
-                    var key = r.release.title.toLowerCase();
-                    if (!mfgGroups[key]) mfgGroups[key] = { release: r.release, rels: [] };
-                    mfgGroups[key].rels.push(r);
+            if (releaseRows.length > 0) {
+                var releaseHtml = byYear(releaseRows, function(row) {
+                    var notes = [];
+                    if (row.release.disambiguation) notes.push(row.release.disambiguation);
+                    if (row.types.length === 1 && row.types[0] === 'manufactured') notes.push('manufactured');
+                    return '<li><span class="lbl-when">' + esc(monthDay(row.sort)) + '</span>' +
+                        creditLink(row.release, 'release') +
+                        notes.map(function(n) { return '<span class="lbl-note">' + esc(n) + '</span>'; }).join('') +
+                        '</li>';
                 });
-                var mfgEntries = Object.keys(mfgGroups).map(function(key) {
-                    var g = mfgGroups[key];
-                    var merged = mergeRels(g.rels);
-                    return { release: g.release, begin: merged.begin, end: merged.end, ended: merged.ended };
-                });
-                mfgEntries.sort(function(a, b) {
-                    return (a.begin || 'zzzz').localeCompare(b.begin || 'zzzz');
-                });
-                const items = mfgEntries.map(function(e) {
-                    return '<li>' + creditLink(e.release, 'release') + (e.begin ? ' <span class="credit-sub">' + esc(formatDate(e.begin)) + '</span>' : '') + '</li>';
-                }).join('');
-                html += renderSection('manufactured', '<ul class="simple-list">' + items + '</ul>');
+                var span = yearSpan(releaseRows);
+                html += renderSection('releases', releaseHtml,
+                    plural(releaseRows.length, 'release', 'releases') + (span ? ', ' + span : ''));
             }
         }
 
-        /* Works */
+        /* Works: grouped by the year on the relationship, which for a publisher
+           is when the song came under it. "named after" is not a work this
+           label holds: it is where the label's name comes from, and the header
+           says so instead. */
         if (workData && workData.relations) {
-            var workRels = workData.relations.filter(function(r) {
-                return r['target-type'] === 'work' && r.work;
+            var workById = {};
+            workData.relations.forEach(function(r) {
+                if (r['target-type'] !== 'work' || !r.work || r.type === 'named after work') return;
+                var g = workById[r.work.id];
+                if (!g) g = workById[r.work.id] = { work: r.work, rels: [], types: [] };
+                g.rels.push(r);
+                if (g.types.indexOf(r.type) === -1) g.types.push(r.type);
             });
-            var workGroups = {};
-            workRels.forEach(function(r) {
-                var key = r.work.title.toLowerCase();
-                if (!workGroups[key]) workGroups[key] = { work: r.work, rels: [] };
-                workGroups[key].rels.push(r);
+            var workRows = Object.keys(workById).map(function(id) {
+                var g = workById[id];
+                return { work: g.work, sort: mergeRels(g.rels).begin || '', types: g.types };
             });
-            var workEntries = Object.keys(workGroups).map(function(key) {
-                var g = workGroups[key];
-                var merged = mergeRels(g.rels);
-                var types = [];
-                g.rels.forEach(function(r) {
-                    if (types.indexOf(r.type) === -1) types.push(r.type);
+            /* Undated works go last, under their own heading. */
+            workRows.sort(function(a, b) {
+                return (a.sort || '9999').localeCompare(b.sort || '9999') ||
+                    a.work.title.localeCompare(b.work.title);
+            });
+            if (workRows.length > 0) {
+                /* Name a relationship type only when the works differ in it; on a
+                   publisher every row says "publishing" and the word is noise. */
+                var allTypes = [];
+                workRows.forEach(function(row) {
+                    row.types.forEach(function(t) { if (allTypes.indexOf(t) === -1) allTypes.push(t); });
                 });
-                return { work: g.work, types: types, begin: merged.begin, end: merged.end, ended: merged.ended };
-            });
-            workEntries.sort(function(a, b) {
-                return (a.begin || 'zzzz').localeCompare(b.begin || 'zzzz');
-            });
-            if (workEntries.length > 0) {
-                const items = workEntries.map(function(e) {
-                    var typeStr = e.types.length > 0 ? ' <span class="credit-sub">' + e.types.map(esc).join(', ') + '</span>' : '';
-                    return '<li>' + creditLink(e.work, 'work') + typeStr + (e.begin ? ' <span class="credit-sub">' + esc(formatDate(e.begin)) + '</span>' : '') + '</li>';
-                }).join('');
-                html += renderSection('works', '<ul class="simple-list">' + items + '</ul>');
+                var workHtml = byYear(workRows, function(row) {
+                    var notes = allTypes.length > 1 ? row.types : [];
+                    if (row.work.disambiguation) notes = notes.concat([row.work.disambiguation]);
+                    return '<li>' + creditLink(row.work, 'work') +
+                        notes.map(function(n) { return '<span class="lbl-note">' + esc(n) + '</span>'; }).join('') +
+                        '</li>';
+                });
+                var dated = workRows.filter(function(r) { return r.sort; });
+                var wspan = yearSpan(dated);
+                html += renderSection('works', workHtml,
+                    plural(workRows.length, 'work', 'works') + (wspan ? ', ' + wspan : '') +
+                    (dated.length < workRows.length ? ' (' + (workRows.length - dated.length) + ' undated)' : ''));
             }
         }
 
@@ -408,6 +452,16 @@
         }
 
         contentEl.innerHTML = html + renderStaticSections();
+
+        /* Where the name comes from, in the header beside the type and year. */
+        var namedAfter = ((workData && workData.relations) || []).filter(function(r) {
+            return r.type === 'named after work' && r.work;
+        })[0];
+        var metaEl = document.querySelector('.contrib-meta');
+        if (namedAfter && metaEl && !metaEl.querySelector('.lbl-named')) {
+            metaEl.insertAdjacentHTML('beforeend', '<span class="lbl-named"> \u00b7 named after the song ' +
+                creditLink(namedAfter.work, 'work') + '</span>');
+        }
     }
 
     /* ── FETCH WITH RATE LIMITING ── */
@@ -440,6 +494,8 @@
         return fetchMB('https://musicbrainz.org/ws/2/label/' + MB_ID + '?fmt=json&inc=' + inc);
     }
 
+    renderIntro();
+
     loadCache().then(function() {
         return cachedFetch('artist-rels');
     }).then(function(artistData) {
@@ -451,6 +507,7 @@
             /* Label type and years active */
             var meta = [];
             if (artistData.type) meta.push(artistData.type.toLowerCase());
+            else if (SELF && SELF.kind) meta.push(SELF.kind);
             var ls = artistData['life-span'];
             if (ls && ls.begin) {
                 var beginYear = ls.begin.split('-')[0];

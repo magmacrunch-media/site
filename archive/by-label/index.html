@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>by label — magmacrunch archive</title>
     <meta property="og:title" content="by label — magmacrunch archive">
-    <meta property="og:description" content="from the magmacrunch archive">
+    <meta property="og:description" content="magmacrunch media, its publisher and games imprint, and the agency it works with">
     <meta property="og:image" content="https://magmacrunch.com/og/archive.png?v=2">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
@@ -66,34 +66,105 @@
             opacity: 0.8;
         }
 
-        .grid-wrap {
-            width: min(900px, 95vw);
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 16px;
+        /* The family: a root card, its children hung off a rail beneath it,
+           then the associated labels apart. Drawn by templates/label-index.js. */
+        .fam-wrap {
+            width: min(820px, 95vw);
         }
-        .card {
-            border: 2px solid #1e1e2e;
-            background: var(--deep);
-            padding: 16px;
+        .fam-card {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            border: 2px solid var(--lbl-dark);
+            background: var(--lbl-darkest);
+            padding: 18px 20px;
             text-decoration: none;
             transition: border-color 0.15s, box-shadow 0.15s;
         }
-        .card:hover {
+        .fam-card:hover {
             border-color: var(--lbl-violet);
             box-shadow: 0 0 16px rgba(157,78,221,0.3);
         }
-        .card-title {
+        .fam-root { border-color: var(--lbl-mid-dark); }
+        .fam-name {
+            font-family: 'Press Start 2P', monospace;
+            font-size: 11px;
+            color: var(--lbl-pale);
+            letter-spacing: 0.08em;
+            line-height: 1.5;
+        }
+        .fam-root .fam-name { font-size: 13px; color: var(--lbl-light); }
+        .fam-kind {
+            font-family: 'Press Start 2P', monospace;
+            font-size: 7px;
+            color: var(--lbl-violet);
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+        }
+        .fam-blurb {
+            font-family: 'Courier Prime', monospace;
+            font-size: 13px;
+            color: var(--white);
+            opacity: 0.8;
+            line-height: 1.6;
+        }
+        .fam-stats {
+            font-family: 'Courier Prime', monospace;
+            font-size: 12px;
+            color: var(--lbl-muted);
+        }
+        .fam-children {
+            margin-left: 24px;
+            border-left: 2px solid var(--lbl-mid-dark);
+            padding-top: 14px;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+        .fam-branch {
+            position: relative;
+            padding-left: 22px;
+        }
+        .fam-branch::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 28px;
+            width: 22px;
+            border-top: 2px solid var(--lbl-mid-dark);
+        }
+        /* The rail stops at the last child rather than running past it. */
+        .fam-branch:last-child::after {
+            content: '';
+            position: absolute;
+            left: -2px;
+            top: 30px;
+            bottom: 0;
+            border-left: 2px solid var(--lbl-void);
+        }
+        .fam-heading {
             font-family: 'Press Start 2P', monospace;
             font-size: 9px;
-            color: var(--white);
-            letter-spacing: 0.08em;
+            color: var(--lbl-violet);
+            letter-spacing: 0.12em;
+            margin: 48px 0 8px;
+            text-align: center;
         }
-        .card-sub {
+        .fam-sub {
             font-family: 'Courier Prime', monospace;
             font-size: 12px;
             color: var(--dim);
-            margin-top: 6px;
+            text-align: center;
+            margin: 0 0 16px;
+        }
+        .fam-other { border-style: dashed; }
+        .fam-fallback { display: flex; flex-direction: column; gap: 12px; }
+
+        @media (max-width: 520px) {
+            .fam-children { margin-left: 10px; }
+            .fam-branch { padding-left: 14px; }
+            .fam-branch::before { width: 14px; }
+            .fam-card { padding: 14px; }
         }
 
         .note {
@@ -122,33 +193,21 @@
     <h1 class="page-title">// by label //</h1>
 
     <p class="intro">
-        labels, publishers, and creative agencies associated with magmacrunch.
+        magmacrunch media is the record label. it owns a publisher for the songs
+        and an imprint for the games, and works alongside one agency it does not own.
     </p>
 
-    <div class="grid-wrap">
-        <a href="magmacrunch-media/" class="card">
-            <div class="card-title">MAGMACRUNCH MEDIA</div>
-            <div class="card-sub">record label</div>
-        </a>
-
-        <a href="magmacrunch-music/" class="card">
-            <div class="card-title">MAGMACRUNCH MUSIC</div>
-            <div class="card-sub">publisher</div>
-        </a>
-
-        <a href="the-slop-collective/" class="card">
-            <div class="card-title">THE SLOP COLLECTIVE</div>
-            <div class="card-sub">creative agency</div>
-        </a>
-
-        <a href="magmacrunch-arcade/" class="card">
-            <div class="card-title">MAGMACRUNCH ARCADE</div>
-            <div class="card-sub">game label</div>
-        </a>
+    <div class="fam-wrap" id="label-tree">
+        <div class="fam-fallback">
+            <a href="magmacrunch-media/" class="fam-card fam-root"><span class="fam-name">MAGMACRUNCH MEDIA</span><span class="fam-kind">record label</span></a>
+            <a href="magmacrunch-music/" class="fam-card"><span class="fam-name">MAGMACRUNCH MUSIC</span><span class="fam-kind">publisher</span></a>
+            <a href="magmacrunch-arcade/" class="fam-card"><span class="fam-name">MAGMACRUNCH ARCADE</span><span class="fam-kind">games imprint</span></a>
+            <a href="the-slop-collective/" class="fam-card fam-other"><span class="fam-name">THE SLOP COLLECTIVE</span><span class="fam-kind">creative agency</span></a>
+        </div>
     </div>
 
-    <p class="note">
-        data sourced from MusicBrainz. contributions may be incomplete.
+    <p class="note" id="label-note">
+        people, releases and works come from MusicBrainz. the arcade's games are listed here by hand.
     </p>
 
 </main>
@@ -158,6 +217,8 @@
 </footer>
 
 <script src="../../nav.js?v=baf19780"></script>
+<script src="labels-data.js"></script>
+<script src="../../templates/label-index.js"></script>
 
 </body>
 </html>

@@ -1,0 +1,40 @@
+{
+  "labels": {
+    "1d3190cc-b700-4409-bdb4-2ee8b93f3d8c": {
+      "name": "magmacrunch arcade",
+      "type": "Imprint",
+      "begin": "2025-12",
+      "fetchedAt": "2026-07-04T05:19:06.981Z",
+      "releases": 0,
+      "works": 0,
+      "events": 0
+    },
+    "39446d03-fe9c-47d0-81a9-2b42d34fb400": {
+      "name": "magmacrunch media",
+      "type": null,
+      "begin": "2023",
+      "fetchedAt": "2026-07-04T05:05:21.559Z",
+      "releases": 97,
+      "works": 0,
+      "events": 0
+    },
+    "ad82d124-e41e-49e8-9bf9-53e836b44336": {
+      "name": "The Slop Collective",
+      "type": "Creative Agency",
+      "begin": "2025",
+      "fetchedAt": "2026-06-27T22:29:47.079Z",
+      "releases": 2,
+      "works": 0,
+      "events": 3
+    },
+    "c78b5612-2300-4ee1-8663-299ddcf9ce25": {
+      "name": "magmacrunch music",
+      "type": "Publisher",
+      "begin": "2025-10-28",
+      "fetchedAt": "2026-07-04T05:05:50.636Z",
+      "releases": 0,
+      "works": 196,
+      "events": 0
+    }
+  }
+}
