@@ -20,162 +20,40 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Courier+Prime:wght@400;700&display=swap">
   <link rel="stylesheet" href="../../style.css?v=53e9e146">
   <link rel="stylesheet" href="../crumbs.css?v=ff3801ee">
+  <link rel="stylesheet" href="../magma-themes.css?v=c2ac1849">
+  <link rel="stylesheet" href="../game-page.css?v=4448c4a0">
   <style>
-    :root { color-scheme: dark; --accent: #ff2e9c; --accent-dk: #a60057; --line: #33304a; --panel: #1c1b26; --dim: #9d99b5; }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-
+    /* Moonlight Drift's look: the sky gradient from its base.css, its ASCII
+       starfield as a tile, slate panels with a hard bottom edge like its
+       buttons, the cyan glowing frame of its title card, and the green of
+       its launch button. Colours come from the moonlight-drift theme. */
     body {
-      font: 14px/1.6 'Courier Prime', ui-monospace, SFMono-Regular, Menlo, monospace;
-      background: #14141b; color: #e8e6f0;
-      min-height: 100vh;
-      display: flex; flex-direction: column;
+      --line: var(--mt-p-md-frame);
+      --link: var(--mt-p-md-gold);
+      --radius: 3px;
+      --head-glow: 0 0 8px color-mix(in srgb, var(--mt-p-md-cyan) 60%, transparent);
+      --btn-bg: var(--mt-p-md-green);
+      --btn-ink: var(--mt-text);
+      --btn-shadow: #1a7a3a;
+      --frame: var(--mt-p-md-cyan);
+      --frame-glow: 0 0 0 6px var(--mt-p-md-frame), 0 0 28px color-mix(in srgb, var(--mt-p-md-cyan) 45%, transparent);
+      --panel-border: var(--mt-p-md-frame);
+      --panel-shadow: 0 4px 0 var(--mt-p-md-panel-dark);
+      background:
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='260' height='260' font-family='monospace' font-size='12' fill='%236a7a9a'%3E%3Ctext x='14' y='22'%3E+%3C/text%3E%3Ctext x='92' y='40' opacity='.6'%3Eo%3C/text%3E%3Ctext x='178' y='18'%3E.%3C/text%3E%3Ctext x='226' y='70' opacity='.7'%3E+%3C/text%3E%3Ctext x='40' y='98' opacity='.5'%3E*%3C/text%3E%3Ctext x='132' y='112'%3E.%3C/text%3E%3Ctext x='196' y='150' opacity='.6'%3Eo%3C/text%3E%3Ctext x='62' y='170'%3E+%3C/text%3E%3Ctext x='10' y='232' opacity='.5'%3E.%3C/text%3E%3Ctext x='118' y='214' opacity='.7'%3E-o-%3C/text%3E%3Ctext x='240' y='240'%3E.%3C/text%3E%3Ccircle cx='160' cy='70' r='1.2' fill='%23ffffff'/%3E%3Ccircle cx='30' cy='140' r='1' fill='%2300d4ff'/%3E%3Ccircle cx='220' cy='200' r='1' fill='%23ffd700'/%3E%3C/svg%3E"),
+        linear-gradient(to bottom, var(--mt-p-md-night) 0%, var(--mt-p-md-dusk) 50%, var(--mt-p-md-deep) 100%);
     }
-    body > * { width: 100%; }
-    a { color: #7cc7ff; }
-
-    /* The back bar every ware product page carries, as on hologram's: a
-       strip under the fixed 48px site nav with the breadcrumb trail
-       (ware/crumbs.css). The margin is what keeps it out from under the nav. */
-    .tool-nav {
-      margin-top: 48px;
-      padding: 8px 24px;
-      border-bottom: 1px solid var(--line);
-      background: #14141b;
-      flex-shrink: 0;
-    }
-    .tool-nav .breadcrumb { --crumb-accent: var(--accent); }
-    footer {
-      font-family: 'Courier Prime', monospace;
-      font-size: 12px;
-      border-top: 1px solid var(--line);
-    }
-    footer span { color: #7cc7ff; }
-
-    /* ── Hero ──────────────────────────────────────────── */
-
-    .hero { text-align: center; padding: 2.5rem 1.5rem 2rem; }
-    .hero img.banner {
-      width: min(100%, 480px); height: auto;
-      border: 1px solid var(--line); border-radius: 8px;
-      margin-bottom: 1.5rem;
-    }
+    .hero h1 { margin-top: .4rem; }
     .hero img.art {
-      width: 96px; height: 96px;
+      width: 64px; height: 64px;
       image-rendering: pixelated;
-      margin-bottom: 1.25rem;
-    }
-    .hero h1 {
-      font-family: 'Press Start 2P', monospace;
-      font-size: clamp(16px, 3.4vw, 30px);
-      font-weight: 400;
-      line-height: 1.5;
-      color: var(--accent);
-      text-shadow: 3px 3px 0 #33304a, 6px 6px 0 #1c1b26;
-      letter-spacing: 0.06em;
-      margin-bottom: .9rem;
-    }
-    .hero .tagline { font-size: 13px; color: var(--dim); }
-
-    .section { max-width: 640px; margin: 0 auto 2.75rem; padding: 0 1.5rem; }
-    .section h2 {
-      font-family: 'Press Start 2P', monospace;
-      font-size: 10px; font-weight: 400;
-      color: var(--accent);
-      margin-bottom: .9rem;
-      letter-spacing: 0.05em;
-    }
-    .lead p { color: #c9c6d9; margin-bottom: .7rem; }
-    .lead p:last-child { margin-bottom: 0; }
-
-    /* ── Where to play ─────────────────────────────────── */
-
-    /* One row per platform. The browser row is the call to action, so it is
-       the only one with a filled button; the rest are instructions. */
-    .platforms { display: grid; gap: .6rem; }
-    .platform {
-      display: grid;
-      grid-template-columns: 7.5rem 1fr;
-      gap: 1rem;
-      align-items: center;
-      background: var(--panel);
-      border: 1px solid var(--line);
-      border-radius: 10px;
-      padding: .9rem 1rem;
-    }
-    .platform .name {
-      font-family: 'Press Start 2P', monospace;
-      font-size: 9px; line-height: 1.6;
-      color: #e8e6f0;
-    }
-    .platform .how { font-size: 12px; color: var(--dim); }
-    .platform .how strong { color: #e8e6f0; font-weight: 700; }
-    .platform code {
-      display: inline-block;
-      font: 12px 'Courier Prime', monospace;
-      color: var(--accent);
-      background: #14141b;
-      border: 1px solid var(--line);
-      border-radius: 6px;
-      padding: .2rem .5rem;
-      margin: .15rem 0;
-      overflow-wrap: anywhere;
-    }
-    .platform.soon { opacity: .6; }
-    .badge {
-      font: 8px/1 'Press Start 2P', monospace;
-      color: var(--accent);
-      border: 1px solid currentColor;
-      border-radius: 4px;
-      padding: .25rem .4rem;
-      margin: .3rem 0 0 .35rem;
-      display: inline-block;
-      white-space: nowrap;
       vertical-align: middle;
     }
-
-    .play-btn {
-      display: inline-block;
-      font: 10px/1 'Press Start 2P', monospace;
-      color: #14141b;
-      background: var(--accent);
-      border-radius: 6px;
-      padding: .7rem 1rem;
-      text-decoration: none;
-      margin-right: .6rem;
-      box-shadow: 3px 3px 0 var(--accent-dk);
-      transition: transform .1s, box-shadow .1s;
-    }
-    .play-btn:hover { transform: translate(-1px, -1px); box-shadow: 4px 4px 0 var(--accent-dk); }
-
-    /* ── Built with / credits ──────────────────────────── */
-
-    .built { display: grid; grid-template-columns: 1fr 1fr; gap: .5rem; }
-    .built a, .built div {
-      display: block;
-      background: var(--panel);
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      padding: .6rem .75rem;
-      text-decoration: none;
-      color: inherit;
-    }
-    .built a:hover { border-color: #7cc7ff; }
-    .built strong { display: block; color: #7cc7ff; font-size: 11px; margin-bottom: .1rem; }
-    .built span { color: var(--dim); font-size: 11px; }
-
-    .credits p { font-size: 12px; color: var(--dim); margin-bottom: .55rem; }
-    .credits strong { color: #e8e6f0; }
-
-    @media (max-width: 560px) {
-      .hero { padding: 2rem 1rem 1.5rem; }
-      .section { padding: 0 1rem; }
-      .platform { grid-template-columns: 1fr; gap: .45rem; }
-      .built { grid-template-columns: 1fr; }
-      .play-btn { min-height: 44px; display: inline-flex; align-items: center; }
-    }
+    .platform, .built a, .built div { background: color-mix(in srgb, var(--mt-surface) 92%, transparent); }
+    .play-btn { border: 2px solid #4edd91; }
   </style>
 </head>
-<body>
+<body data-magma-theme="moonlight-drift">
 
 <nav id="auto-nav" data-depth="../../"></nav>
 
@@ -189,14 +67,28 @@
 </div>
 
 <div class="hero">
-  <img class="art" src="img/carl-spatski-idle.png" alt="Carl Spatski, one of the twenty pilots, in pixels" width="96" height="96">
-  <h1>MOONLIGHT<br>DRIFT</h1>
-  <p class="tagline">coast through space &middot; dodge obstacles &middot; ride the moon</p>
+  <img class="screen" src="img/title.webp" alt="Moonlight Drift's title card: the name in cyan ASCII art beside a crescent moon, in a glowing frame on a starfield" width="1280" height="720">
+  <h1>MOONLIGHT DRIFT</h1>
+  <p class="tagline"><img class="art" src="img/carl-spatski-idle.png" alt="Carl Spatski, one of the twenty pilots, in pixels" width="64" height="64"> coast through space &middot; dodge obstacles &middot; ride the moon</p>
 </div>
 
 <div class="section lead">
   <p>Hold thrust to rise, let go to fall, and keep clear of the cave walls as they close in. Pick one of twenty pilots, each with their own handling, and see how far you can drift.</p>
   <p>It descends from the Flash-era helicopter games, and it plays the same on every machine it runs on.</p>
+</div>
+
+<div class="section">
+  <h2>// in flight //</h2>
+  <div class="shots">
+    <figure>
+      <img class="screen" src="img/drift.webp" alt="Synth Cat drifting between green and pink crystal pillars past the moon, a milestone marker reading 10 ahead" width="1280" height="720" loading="lazy">
+      <figcaption>thread the pillars, pass the milestones</figcaption>
+    </figure>
+    <figure>
+      <img class="screen" src="img/pilots.webp" alt="The choose your pilot screen: Synth Cat, Beava, Vinny Bobarino and Darius Hodgekins unlocked, six more locked" width="924" height="744" loading="lazy">
+      <figcaption>twenty pilots, unlocked by drifting</figcaption>
+    </figure>
+  </div>
 </div>
 
 <div class="section">

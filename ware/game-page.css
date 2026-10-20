@@ -1,0 +1,208 @@
+/* game-page.css: the page every game gets under ware/<game>/.
+ *
+ * The layout is shared and the colours are the game's own. A page sets
+ * data-magma-theme="<slug>" on <body> and loads ../magma-themes.css, which is
+ * a copy of libs/magma-themes' dist/themes.css (scripts/sync-magma-themes.mjs);
+ * everything below reads --mt-* through the short names in the first rule, so
+ * a game page needs only its theme to be right. What makes a page look like
+ * its game beyond colour, a starfield, a lava glow, a scanline, is the page's
+ * own <style>, which sets the --gp-* knobs and the body background.
+ */
+
+body {
+  --bg: var(--mt-bg, #14141b);
+  --panel: var(--mt-surface, #1c1b26);
+  --text: var(--mt-text, #e8e6f0);
+  --dim: var(--mt-muted, #9d99b5);
+  --accent: var(--mt-accent, #7cc7ff);
+  --accent2: var(--mt-accent2, var(--accent));
+
+  /* Knobs a page may set; these defaults are the plain look. */
+  --line: color-mix(in srgb, var(--text) 18%, var(--bg));
+  --link: var(--accent2);
+  --font-head: 'Press Start 2P', monospace;
+  --font-body: 'Courier Prime', ui-monospace, SFMono-Regular, Menlo, monospace;
+  --body-size: 14px;
+  --head-glow: none;
+  --btn-bg: var(--accent);
+  --btn-ink: var(--bg);
+  --btn-shadow: color-mix(in srgb, var(--btn-bg) 45%, #000);
+  --frame: var(--line);
+  --frame-glow: none;
+  --panel-border: var(--line);
+  --panel-shadow: none;
+  --radius: 10px;
+}
+
+/* A body background with none on <html> is painted on the canvas, sized to
+   <html>, which style.css holds to one screen, so a page's gradient stopped
+   at the fold. Giving <html> its own keeps the body's on the body. */
+:root { color-scheme: dark; background: #000; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  height: auto;               /* style.css pins it to 100%, cutting the backdrop */
+  font: var(--body-size)/1.6 var(--font-body);
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  display: flex; flex-direction: column;
+}
+body > * { width: 100%; }
+a { color: var(--link); }
+
+/* The strip under the fixed 48px site nav with the breadcrumb trail
+   (ware/crumbs.css). The margin is what keeps it out from under the nav. */
+.tool-nav {
+  margin-top: 48px;
+  padding: 8px 24px;
+  border-bottom: 1px solid var(--line);
+  background: color-mix(in srgb, var(--bg) 85%, transparent);
+  flex-shrink: 0;
+}
+.tool-nav .breadcrumb { --crumb-accent: var(--accent); }
+footer {
+  font-family: var(--font-body);
+  font-size: 12px;
+  border-top: 1px solid var(--line);
+  background: color-mix(in srgb, var(--bg) 85%, transparent);
+}
+footer span { color: var(--link); }
+
+/* ── Hero ──────────────────────────────────────────── */
+
+.hero { text-align: center; padding: 2.5rem 1.5rem 2rem; }
+.hero h1 {
+  font-family: var(--font-head);
+  font-size: clamp(16px, 3.4vw, 30px);
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--accent);
+  text-shadow: var(--head-glow);
+  letter-spacing: 0.06em;
+  margin-bottom: .9rem;
+}
+.hero .tagline { font-size: 13px; color: var(--dim); }
+
+/* A screenshot from the game, framed the way the game frames its own screens. */
+.screen {
+  display: block;
+  max-width: 100%; height: auto;
+  border: 3px solid var(--frame);
+  border-radius: calc(var(--radius) / 2);
+  box-shadow: var(--frame-glow);
+  background: #000;
+}
+.hero .screen { margin: 0 auto 1.75rem; width: min(100%, 720px); }
+
+.section { max-width: 640px; margin: 0 auto 2.75rem; padding: 0 1.5rem; }
+.section h2 {
+  font-family: var(--font-head);
+  font-size: 10px; font-weight: 400;
+  color: var(--accent);
+  text-shadow: var(--head-glow);
+  margin-bottom: .9rem;
+  letter-spacing: 0.05em;
+}
+.lead p { margin-bottom: .7rem; }
+.lead p:last-child { margin-bottom: 0; }
+
+/* ── Screenshots ───────────────────────────────────── */
+
+.shots { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; }
+.shots figure { margin: 0; }
+.shots { align-items: start; }
+.shots .screen { width: 100%; aspect-ratio: 16 / 11; object-fit: cover; object-position: top; }
+.shots figcaption { font-size: 12px; color: var(--dim); margin-top: .45rem; text-align: center; }
+
+/* ── Where to play ─────────────────────────────────── */
+
+/* One row per platform. The browser row is the call to action, so it is
+   the only one with a filled button; the rest are instructions. */
+.platforms { display: grid; gap: .6rem; }
+.platform {
+  display: grid;
+  grid-template-columns: 7.5rem 1fr;
+  gap: 1rem;
+  align-items: center;
+  background: var(--panel);
+  border: 1px solid var(--panel-border);
+  border-radius: var(--radius);
+  box-shadow: var(--panel-shadow);
+  padding: .9rem 1rem;
+}
+.platform .name {
+  font-family: var(--font-head);
+  font-size: 9px; line-height: 1.6;
+  color: var(--text);
+}
+.platform .how { font-size: 12px; color: var(--dim); }
+.platform .how strong { color: var(--text); font-weight: 700; }
+.platform code {
+  display: inline-block;
+  font: 12px var(--font-body);
+  color: var(--accent);
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: .2rem .5rem;
+  margin: .15rem 0;
+  overflow-wrap: anywhere;
+}
+.platform.soon { opacity: .6; }
+.badge {
+  font: 8px/1 var(--font-head);
+  color: var(--accent2);
+  border: 1px solid currentColor;
+  border-radius: 4px;
+  padding: .25rem .4rem;
+  margin: .3rem 0 0 .35rem;
+  display: inline-block;
+  white-space: nowrap;
+  vertical-align: middle;
+}
+
+.play-btn {
+  display: inline-block;
+  font: 10px/1 var(--font-head);
+  color: var(--btn-ink);
+  background: var(--btn-bg);
+  border-radius: calc(var(--radius) * .6);
+  padding: .7rem 1rem;
+  text-decoration: none;
+  margin-right: .6rem;
+  box-shadow: 3px 3px 0 var(--btn-shadow);
+  transition: transform .1s, box-shadow .1s;
+}
+.play-btn:hover, .play-btn:focus-visible { transform: translate(-1px, -1px); box-shadow: 4px 4px 0 var(--btn-shadow); }
+
+/* ── Built with / credits ──────────────────────────── */
+
+.built { display: grid; grid-template-columns: 1fr 1fr; gap: .5rem; }
+.built a, .built div {
+  display: block;
+  background: var(--panel);
+  border: 1px solid var(--panel-border);
+  border-radius: calc(var(--radius) * .8);
+  padding: .6rem .75rem;
+  text-decoration: none;
+  color: inherit;
+}
+.built a:hover { border-color: var(--accent); }
+.built strong { display: block; color: var(--link); font-size: 11px; margin-bottom: .1rem; }
+.built span { color: var(--dim); font-size: 11px; }
+
+.credits p { font-size: 12px; color: var(--dim); margin-bottom: .55rem; }
+.credits strong { color: var(--text); }
+
+@media (max-width: 560px) {
+  .hero { padding: 2rem 1rem 1.5rem; }
+  .section { padding: 0 1rem; }
+  .platform { grid-template-columns: 1fr; gap: .45rem; }
+  .built { grid-template-columns: 1fr; }
+  .play-btn { min-height: 44px; display: inline-flex; align-items: center; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .play-btn { transition: none; }
+}
