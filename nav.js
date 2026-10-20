@@ -45,6 +45,7 @@ window.NAV_CONFIG = {
             { href: 'press/experimental/', label: 'experimental' }
         ]},
         { label: 'ware', href: 'ware/', items: [
+            { href: 'ware/games/', label: 'video games' },
             { href: 'ware/utilities/', label: 'creative utilities' },
             { href: 'ware/dev/', label: 'developer tools' }
         ]}
