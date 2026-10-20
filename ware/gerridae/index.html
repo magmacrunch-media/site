@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>gerridae — magmacrunch media</title>
+  <meta property="og:title" content="gerridae — magmacrunch media">
+  <meta property="og:description" content="meshes rasterized beside hologram's ray tracer, composited by depth">
+  <meta property="og:image" content="https://magmacrunch.com/og/ware.png?v=1">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta property="og:site_name" content="magmacrunch media">
+  <meta property="og:locale" content="en_US">
+  <link rel="icon" type="image/x-icon" href="../../favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Courier+Prime:wght@400;700&display=swap">
+  <link rel="stylesheet" href="../../style.css?v=53e9e146">
+  <link rel="stylesheet" href="../crumbs.css?v=ff3801ee">
+  <style>
+    :root { color-scheme: dark; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font: 14px/1.6 'Courier Prime', ui-monospace, SFMono-Regular, Menlo, monospace;
+      background: #14141b; color: #e8e6f0;
+      min-height: 100vh;
+      display: flex; flex-direction: column;
+    }
+
+    /* ── Hero ──────────────────────────────────────────── */
+
+    .hero {
+      text-align: center;
+      padding: 3.5rem 1.5rem 2rem;
+    }
+
+    .hero h1 {
+      font-family: 'Press Start 2P', monospace;
+      font-size: clamp(24px, 4vw, 48px);
+      font-weight: 400;
+      letter-spacing: 0.08em;
+      margin-bottom: .75rem;
+      /* Solid fallback first: a browser without background-clip:text keeps
+         this and never paints transparent glyphs. */
+      color: #9ad66b;
+      background: linear-gradient(90deg,
+        #7a5cff 0%, #2f6bff 17%, #00f5ff 33%,
+        #39ff6e 50%, #ffe03a 67%, #ff7c1f 83%, #ff3d6e 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      /* text-shadow would draw behind transparent glyphs and show through the
+         gradient, so the pixel shadow is a drop-shadow filter instead. */
+      filter: drop-shadow(3px 3px 0 #1c1b26);
+    }
+
+    .hero .tagline {
+      font-size: 13px;
+      color: #9d99b5;
+      margin-bottom: 1.25rem;
+    }
+
+    .badges {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: .5rem;
+    }
+
+    .badge {
+      font: 8px/1 'Press Start 2P', monospace;
+      color: #9d99b5;
+      background: #1c1b26;
+      border: 1px solid #33304a;
+      border-radius: 4px;
+      padding: .45rem .55rem;
+      letter-spacing: 0.05em;
+    }
+
+    /* ── Spectral rule ─────────────────────────────────── */
+
+    .spectral-rule {
+      height: 2px;
+      border: 0;
+      max-width: 600px;
+      margin: 2.5rem auto;
+      background: linear-gradient(90deg,
+        #7a5cff 0%, #2f6bff 17%, #00f5ff 33%,
+        #39ff6e 50%, #ffe03a 67%, #ff7c1f 83%, #ff3d6e 100%);
+      opacity: .55;
+    }
+    .spectral-rule.wide { max-width: 940px; }
+
+    /* ── Tool cards ────────────────────────────────────── */
+
+    .tools {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1rem;
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    .tool-card {
+      display: block;
+      background: #1c1b26;
+      border: 1px solid #33304a;
+      border-radius: 12px;
+      padding: 1.25rem;
+      text-decoration: none;
+      color: inherit;
+      transition: border-color .15s, transform .15s;
+    }
+    .tool-card:hover {
+      border-color: #9ad66b;
+      transform: translateY(-2px);
+    }
+
+    .tool-card .icon {
+      font-size: 24px;
+      margin-bottom: .5rem;
+    }
+
+    .tool-card h2 {
+      font-family: 'Press Start 2P', monospace;
+      font-size: 10px; font-weight: 400;
+      color: #e8e6f0;
+      margin-bottom: .4rem;
+    }
+
+    .tool-card p {
+      font-size: 12px;
+      color: #9d99b5;
+      line-height: 1.5;
+    }
+
+    /* ── Section headings ──────────────────────────────── */
+
+    .gallery h2,
+    .oracle h2,
+    .features h2,
+    .examples h2,
+    .about h2 {
+      font-family: 'Press Start 2P', monospace;
+      font-size: 10px; font-weight: 400;
+      color: #9ad66b;
+      margin-bottom: .75rem;
+      letter-spacing: 0.05em;
+    }
+
+    /* ── Optics gallery ────────────────────────────────── */
+
+    .gallery {
+      max-width: 940px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    .gallery > p.lede {
+      font-size: 12px;
+      color: #9d99b5;
+      margin-bottom: 1.5rem;
+      max-width: 46em;
+    }
+
+    .shots {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+    }
+
+    .shot {
+      background: #1c1b26;
+      border: 1px solid #33304a;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .shot img {
+      display: block;
+      width: 100%;
+      height: auto;
+      /* Rendered 3D frames, not pixel art: leave the browser to filter them. */
+      image-rendering: auto;
+      border-bottom: 1px solid #33304a;
+    }
+
+    .shot .shot-body { padding: 1rem 1.1rem 1.15rem; }
+
+    .shot h3 {
+      font-family: 'Press Start 2P', monospace;
+      font-size: 9px; font-weight: 400;
+      color: #7cc7ff;
+      margin-bottom: .5rem;
+      letter-spacing: 0.05em;
+      line-height: 1.5;
+    }
+
+    .shot p {
+      font-size: 12px;
+      color: #9d99b5;
+      line-height: 1.55;
+    }
+
+    /* ── The oracle ────────────────────────────────────── */
+
+    .oracle {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      font-size: 12px;
+      color: #9d99b5;
+      line-height: 1.6;
+    }
+
+    .oracle p { margin-bottom: .6rem; }
+
+    .oracle figure {
+      margin: 1rem 0;
+      border: 1px solid #33304a;
+      border-radius: 10px;
+      overflow: hidden;
+      background: #1c1b26;
+    }
+
+    .oracle figure img {
+      display: block;
+      width: 100%;
+      height: auto;
+      image-rendering: auto;
+    }
+
+    .oracle figcaption {
+      font-size: 11px;
+      color: #666;
+      padding: .55rem .75rem;
+      border-top: 1px solid #33304a;
+    }
+
+    .oracle code, .examples code {
+      font-family: 'Courier Prime', monospace;
+      color: #7cc7ff;
+    }
+
+    /* ── Features ──────────────────────────────────────── */
+
+    .features {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    .feat-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: .5rem;
+    }
+
+    .feat-item {
+      background: #1c1b26;
+      border: 1px solid #33304a;
+      border-radius: 8px;
+      padding: .6rem .75rem;
+      font-size: 12px;
+    }
+
+    .feat-item strong {
+      color: #7cc7ff;
+      display: block;
+      margin-bottom: .15rem;
+      font-size: 11px;
+    }
+
+    .feat-item span {
+      color: #9d99b5;
+      font-size: 11px;
+    }
+
+    /* ── Examples ──────────────────────────────────────── */
+
+    .examples {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    .ex-table {
+      background: #1c1b26;
+      border: 1px solid #33304a;
+      border-radius: 8px;
+      overflow: hidden;
+      margin-bottom: 1rem;
+    }
+
+    .ex-row {
+      display: grid;
+      grid-template-columns: 150px 1fr;
+      gap: .75rem;
+      padding: .5rem .75rem;
+      font-size: 11px;
+      border-bottom: 1px solid #2a2940;
+    }
+    .ex-row:last-child { border-bottom: 0; }
+
+    .ex-row.ex-header {
+      font-family: 'Press Start 2P', monospace;
+      font-size: 8px;
+      color: #9ad66b;
+      letter-spacing: 0.05em;
+    }
+
+    .ex-row .ex-name { color: #7cc7ff; }
+    .ex-row span:last-child { color: #9d99b5; }
+    .ex-row.slice .ex-name { color: #ffe03a; }
+
+    .examples figure {
+      margin: 1rem 0 .75rem;
+      border: 1px solid #33304a;
+      border-radius: 10px;
+      overflow: hidden;
+      background: #1c1b26;
+    }
+    .examples figure img {
+      display: block; width: 100%; height: auto; image-rendering: auto;
+    }
+    .examples figcaption {
+      font-size: 11px; color: #666;
+      padding: .55rem .75rem;
+      border-top: 1px solid #33304a;
+    }
+
+    .examples p {
+      font-size: 12px;
+      color: #9d99b5;
+      line-height: 1.6;
+      margin-bottom: .5rem;
+    }
+
+    /* ── About ─────────────────────────────────────────── */
+
+    .about {
+      max-width: 600px;
+      margin: 0 auto 3rem;
+      padding: 0 1.5rem;
+      font-size: 12px;
+      color: #9d99b5;
+      line-height: 1.6;
+    }
+
+    .about h3 {
+      font-family: 'Press Start 2P', monospace;
+      font-size: 8px; font-weight: 400;
+      color: #e8e6f0;
+      margin: 1.5rem 0 .5rem;
+      letter-spacing: 0.05em;
+    }
+
+    .about p { margin-bottom: .5rem; }
+
+    .about pre {
+      background: #1c1b26;
+      border: 1px solid #33304a;
+      border-radius: 6px;
+      padding: .6rem .75rem;
+      overflow-x: auto;
+      margin-bottom: .5rem;
+    }
+
+    .about code {
+      font-family: 'Courier Prime', monospace;
+      font-size: 11px;
+      color: #7cc7ff;
+    }
+
+    .about-label {
+      color: #666;
+      font-size: 11px;
+      margin-bottom: .25rem;
+    }
+
+    .about-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin: 1.5rem 0 .75rem;
+    }
+
+    .about-links a {
+      color: #7cc7ff;
+      text-decoration: none;
+      font-family: 'Press Start 2P', monospace;
+      font-size: 8px;
+      padding: .4rem .6rem;
+      border: 1px solid #33304a;
+      border-radius: 6px;
+      transition: border-color .15s;
+    }
+    .about-links a:hover { border-color: #9ad66b; }
+
+    .about-license {
+      color: #555;
+      font-size: 11px;
+      margin-top: 1rem;
+    }
+
+    /* ── Footer ────────────────────────────────────────── */
+
+    footer {
+      margin-top: auto;
+      padding: 1.5rem;
+      text-align: center;
+      font-size: 12px;
+      color: #9d99b5;
+      border-top: 1px solid #33304a;
+    }
+
+    footer span {
+      color: #7cc7ff;
+    }
+
+    /* Every section is a flex item of body, and `margin: 0 auto` on a flex item
+       suppresses the stretch that would otherwise size it to the container.
+       Without a definite width the section falls back to fit-content, which on
+       a phone is driven by the widest code block and pushes the whole page
+       sideways. A definite width plus min-width:0 keeps the page at the
+       viewport and leaves the pre blocks to scroll in their own overflow box. */
+    .hero, .tools, .gallery, .oracle, .features, .examples, .about,
+    .spectral-rule { width: 100%; min-width: 0; }
+
+    @media (max-width: 760px) {
+      .shots { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 480px) {
+      .tools { grid-template-columns: 1fr; }
+      .feat-grid { grid-template-columns: 1fr; }
+      .ex-row { grid-template-columns: 1fr; gap: .15rem; }
+    }
+
+    /* ── Override style.css conflicts ─────────────────── */
+    .tool-nav {
+      margin-top: 48px;
+      padding: 8px 24px;
+      border-bottom: 1px solid #33304a;
+      background: #14141b;
+      flex-shrink: 0;
+    }
+    .tool-nav .breadcrumb { --crumb-accent: #9ad66b; }
+    body {
+      background: #14141b;
+      background-image: none;
+      color: #e8e6f0;
+    }
+    a { color: #7cc7ff; }
+    footer {
+      font-family: 'Courier Prime', monospace;
+      font-size: 12px;
+      border-top: 1px solid #33304a;
+    }
+    footer span { color: #7cc7ff; }
+
+    /* -- Source access --------------------------------- */
+
+    /* The repository is private, so the page carries the way to ask rather
+       than a link that 404s for everyone who is not signed in. */
+    .src-note {
+      max-width: 600px;
+      margin: 0 auto 3rem;
+      padding: 0 1.5rem;
+    }
+
+    .src-note-box {
+      border: 1px solid #33304a;
+      border-left: 3px solid #9ad66b;
+      border-radius: 6px;
+      background: rgba(255, 255, 255, .02);
+      padding: .9rem 1rem;
+    }
+
+    .src-note-label {
+      font-family: 'Press Start 2P', monospace;
+      font-size: 8px;
+      color: #9ad66b;
+      letter-spacing: 0.05em;
+      margin-bottom: .6rem;
+    }
+
+    .src-note p {
+      margin: 0;
+      font-size: 12px;
+      line-height: 1.7;
+      color: #9d99b5;
+    }
+
+    .src-note p + p { margin-top: .5rem; }
+    .src-note a { color: #9ad66b; }
+  </style>
+</head>
+<body>
+
+<nav id="auto-nav" data-depth="../../"></nav>
+
+<div class="tool-nav">
+    <div class="breadcrumb">
+      <a href="../../">home</a> <span class="sep">›</span>
+      <a href="../">ware</a> <span class="sep">›</span>
+      <a href="../dev/">developer tools</a> <span class="sep">›</span>
+      <span class="current">gerridae</span>
+    </div>
+</div>
+
+  <div class="hero">
+    <h1>gerridae</h1>
+    <p class="tagline">meshes rasterized beside hologram's ray tracer, composited by depth</p>
+    <div class="badges">
+      <span class="badge">v0.0.1</span>
+      <span class="badge">PolyForm Noncommercial</span>
+      <span class="badge">C99 + HLSL</span>
+      <span class="badge">early: m1</span>
+    </div>
+  </div>
+
+  <div class="tools">
+    <a href="../hologram/" class="tool-card">
+      <div class="icon">&#128301;</div>
+      <h2>hologram</h2>
+      <p>The ray tracer gerridae draws beside. It traces what light has to be right on: glass, mirrors, gratings, polarizers, lamps.</p>
+    </a>
+    <a href="mailto:info@magmacrunch.com?subject=gerridae" class="tool-card">
+      <div class="icon">&#9993;</div>
+      <h2>Get in touch</h2>
+      <p>The engine is not publicly distributed. Email for source access or licensing.</p>
+    </a>
+  </div>
+
+  <hr class="spectral-rule wide">
+
+  <div class="gallery">
+    <h2>the composite</h2>
+    <p class="lede">hologram traces what light has to be right on. gerridae draws everything else:
+      the room, the furniture and anything that moves. The two meet per pixel, by depth.</p>
+
+    <div class="shots">
+      <div class="shot">
+        <img src="img/m1-composite.png" width="640" height="480" loading="lazy"
+             alt="Two rasterized cubes in a traced room: a teal cube behind a grey polarizer, and an orange cube half inside a clear glass ball on a checker floor">
+        <div class="shot-body">
+          <h3>m1: two cubes in a traced room</h3>
+          <p>The cubes are rasterized; the floor, the ball, the pane and the polarizer are traced.
+            The teal cube shows through the polarizer at half, by Malus. The orange cube shows
+            through the thin pane at 96%, by Fresnel. Inside the ball it vanishes, because a ray
+            the glass has bent has left the eye's line, and the raster has no image along it.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="spectral-rule">
+
+  <div class="oracle">
+    <h2>how the two meet</h2>
+    <p>gerridae draws first, into a floating-point target the size of the framebuffer: linear
+      radiance in rgb, and in alpha the <strong>path length</strong> from the eye to the surface it
+      drew. hologram's tracer reads that per pixel as a cap and stops every ray still on the eye's
+      line at it. If something traced is nearer, the tracer shades it as always. If not, the pixel
+      takes the raster's colour, times whatever the ray picked up on the way.</p>
+
+    <p>"Still on the eye's line" is the primary ray and anything that carried on without turning:
+      through a polarizer, a waveplate or a thin glass pane. So a mesh behind a pane shows through
+      it by Fresnel, and behind a polarizer it obeys Malus, with no extra pass.</p>
+
+    <h3>the oracle still holds</h3>
+    <p>hologram's oracle reads the raster target back, hands it to the CPU tracer as per-pixel caps,
+      and compares the whole presented frame at hologram's usual bars. That checks every traced
+      pixel, every pixel the raster won, and the pane and polarizer arithmetic on the way. An oracle
+      that ignores the caps fails the same frame, which is what makes the pass mean something.</p>
+    <pre><code>m1_composite --diff              DIFF OK, mean 0.1042/255, 0.067% off
+m1_composite --diff --spectral   DIFF OK, mean 0.0351/255, 0.139% off</code></pre>
+  </div>
+
+  <hr class="spectral-rule">
+
+  <div class="examples">
+    <h2>milestones</h2>
+    <p>It is at the first. The rest are planned.</p>
+
+    <div class="ex-table">
+      <div class="ex-row ex-header"><span>Milestone</span><span>What it adds</span></div>
+      <div class="ex-row slice"><span class="ex-name">m1</span><span>The composite proof: one shape, a unit cube, on D3D11, held to the oracle.</span></div>
+      <div class="ex-row"><span class="ex-name">m2</span><span>Blender meshes, read from daffodil's prop format.</span></div>
+      <div class="ex-row"><span class="ex-name">m3, m4</span><span>Meshes in mirrors, starting with flat ones.</span></div>
+      <div class="ex-row"><span class="ex-name">m5, m6</span><span>Animation.</span></div>
+    </div>
+  </div>
+
+  <hr class="spectral-rule">
+
+  <div class="about">
+    <h2>about</h2>
+    <p>A mesh rasterizer for <a href="../hologram/">hologram</a> by
+      <a href="https://magmacrunch.com">magmacrunch media</a>. C99 on
+      <a href="https://github.com/floooh/sokol" target="_blank" rel="noopener">sokol</a>, compiled
+      from source into a game the way hologram is. It runs on D3D11 today; GLSL and Metal wait on
+      hologram's tracers in those dialects learning caps.</p>
+
+    <h3>the name</h3>
+    <p>Gerridae are the water striders, which stand on a surface without breaking it. Also the
+      working title of a Texas Hold'Em Lava Dome track, "Rendezvous at 44i boo", published by
+      magmacrunch music.</p>
+
+    <div class="about-links">
+      <a href="../hologram/">hologram</a>
+      <a href="mailto:info@magmacrunch.com?subject=gerridae">contact</a>
+    </div>
+
+    <p class="about-license">PolyForm Noncommercial 1.0.0 &#183; Copyright 2026 magmacrunch media.</p>
+  </div>
+
+  <div class="src-note">
+    <div class="src-note-box">
+      <div class="src-note-label">// source access //</div>
+      <p>gerridae is developed in-house and is not publicly distributed.</p>
+      <p>For source access, licensing, or anything else, email
+        <a href="mailto:info@magmacrunch.com?subject=gerridae">info@magmacrunch.com</a>.</p>
+    </div>
+  </div>
+
+  <footer>
+      &copy; 2026 <span>magmacrunch media</span>
+  </footer>
+
+  <script src="../../nav.js?v=fdcc8a88"></script>
+</body>
+</html>

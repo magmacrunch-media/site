@@ -19,6 +19,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Courier+Prime:wght@400;700&display=swap">
     <link rel="stylesheet" href="../style.css?v=53e9e146">
     <link rel="stylesheet" href="arcade.css?v=a44e3f77">
+    <link rel="stylesheet" href="catalogue.css?v=becd3212">
 </head>
 <body>
 
@@ -32,9 +33,9 @@
         <span class="current">arcade</span>
     </div>
 
-<!-- Header -->
-    <div class="arcade-header">
-        <div class="arcade-title-ascii-wrap"><pre class="arcade-title-ascii">
+    <!-- Header -->
+    <header class="cat-header">
+        <div class="arcade-title-ascii-wrap"><pre class="arcade-title-ascii" role="img" aria-label="welcome to the magmacrunch arcade">
            |                            |             |    |         
  . . .,---.|    ,---.,---.,-.-.,---.    |--- ,---.    |--- |---.,---.
  | | ||---'|    |    |   || | ||---'    |    |   |    |    |   ||---'
@@ -59,130 +60,317 @@
 |  $$$$$$$| $$      |  $$$$$$$|  $$$$$$$|  $$$$$$$|  $$$$$$$                                                          
  \_______/|__/       \_______/ \_______/ \_______/ \_______/                                                      
 </pre></div>
-        <div class="arcade-subtitle">// established december 2025 // in development //</div>
-    </div>
-
-    <!-- Coin + Insert Coin -->
-    <div class="coin-row">
-        <canvas id="coinCanvas" width="16" height="16" title="insert coin"></canvas>
-        <div class="insert-coin">— INSERT COIN —</div>
-        <canvas id="coinCanvas2" width="16" height="16" title="insert coin"></canvas>
-    </div>
-
-    <!-- Server Status -->
-    <div class="arcade-community">
-        <div class="mp-status">
-            <div class="mp-status-dot" id="mpServerStatus"></div>
-            <span class="mp-status-text" id="mpServerStatusText">CHECKING...</span>
+        <div class="cat-meta">
+            <span>24 GAMES</span>
+            <span>EST. DEC 2025</span>
+            <span class="mp-status">
+                <span class="mp-status-dot" id="mpServerStatus"></span>
+                <span class="mp-status-text" id="mpServerStatusText">CHECKING...</span>
+            </span>
         </div>
+    </header>
+
+    <!-- One catalogue. The game is the unit; where it runs is a badge on it.
+         The old genre pages (board-games/ etc.) are redirects to this page
+         with #genre= set, and the nav's arcade submenu links the same way. -->
+    <div class="filters" role="toolbar" aria-label="filter games">
+        <div class="chip-group" id="genreChips">
+            <span class="chip-label">GENRE</span>
+            <button class="chip" data-genre="ALL" aria-pressed="true">ALL<span class="n"></span></button>
+            <button class="chip" data-genre="BOARD" style="--chip-color:#00f5ff" aria-pressed="false">BOARD<span class="n"></span></button>
+            <button class="chip" data-genre="CARD" style="--chip-color:#39ff6e" aria-pressed="false">CARD<span class="n"></span></button>
+            <button class="chip" data-genre="PUZZLE" style="--chip-color:#ffe03a" aria-pressed="false">PUZZLE<span class="n"></span></button>
+            <button class="chip" data-genre="ACTION" style="--chip-color:#ff2e9c" aria-pressed="false">ACTION<span class="n"></span></button>
+        </div>
+        <div class="chip-group" id="platChips">
+            <span class="chip-label">PLAYS ON</span>
+            <button class="chip" data-plat="any" aria-pressed="true">ANY</button>
+            <button class="chip" data-plat="terminal" style="--chip-color:#39ff6e" aria-pressed="false">TERMINAL</button>
+            <button class="chip" data-plat="wii" style="--chip-color:#c8d4ff" aria-pressed="false">WII</button>
+        </div>
+        <input class="search" id="search" type="search" placeholder="/ search" aria-label="search games">
     </div>
 
-    <!-- Chat widget loads via JS -->
+    <!-- Terminal: an install line, not a second collection. Its cabinets are
+         the cards above with a TERMINAL badge, and SHOW THEM filters to them. -->
+    <div class="tui-band">
+        <span class="tui-label">// TERMINAL //</span>
+        <code id="installCmd">uvx magmacrunch</code>
+        <button class="band-btn" id="copyBtn" type="button">COPY</button>
+        <span>4 of these also run in your terminal. One install, pure Python.</span>
+        <span class="spacer"></span>
+        <button class="band-btn" id="showTerm" type="button">SHOW THEM</button>
+        <a class="band-btn" href="terminal.html">CONTROLS ▶</a>
+    </div>
 
-    <!-- Collections -->
-    <div class="game-section">
-        <div class="section-header" style="border-color: #fff733; color: #fff733; text-shadow: 0 0 12px rgba(255,224,58,0.6);">// WEB COLLECTIONS //</div>
+    <div class="catalogue" id="catalogue">
+    <section class="genre-block" data-genre="BOARD">
+        <h2 class="genre-head" style="--genre-color: #00f5ff"><span>// BOARD //</span><span class="genre-count">5</span></h2>
         <div class="game-grid">
-
-            <a href="board-games/" class="game-card" style="--card-color: #00f5ff">
-                <div class="card-inner">
-                    <div class="card-title">BOARD GAMES</div>
-                    <div class="card-canvas-wrap">
-                        <canvas id="cBoardGames" width="72" height="72"></canvas>
-                    </div>
-                    <div class="card-play">▶ ENTER<span class="card-arrow">_</span></div>
-                </div>
-            </a>
-
-            <a href="card-games/" class="game-card" style="--card-color: #39ff6e">
-                <div class="card-inner">
-                    <div class="card-title">CARD GAMES</div>
-                    <div class="card-canvas-wrap">
-                        <canvas id="cCardGames" width="72" height="72"></canvas>
-                    </div>
-                    <div class="card-play">▶ ENTER<span class="card-arrow">_</span></div>
-                </div>
-            </a>
-
-            <a href="puzzles/" class="game-card" style="--card-color: #ffe03a">
-                <div class="card-inner">
-                    <div class="card-title">PUZZLES</div>
-                    <div class="card-canvas-wrap">
-                        <canvas id="cPuzzles" width="72" height="72"></canvas>
-                    </div>
-                    <div class="card-play">▶ ENTER<span class="card-arrow">_</span></div>
-                </div>
-            </a>
-
-            <a href="action/" class="game-card" style="--card-color: #ff2e9c">
-                <div class="card-inner">
-                    <div class="card-title">ACTION</div>
-                    <div class="card-canvas-wrap">
-                        <canvas id="cAction" width="72" height="72"></canvas>
-                    </div>
-                    <div class="card-play">▶ ENTER<span class="card-arrow">_</span></div>
-                </div>
-            </a>
-
-            <a href="https://private.magmacrunch.duckdns.org/" class="game-card" style="--card-color: #ff3d6e">
-                <div class="card-inner">
-                    <div class="card-title">PRIVATE</div>
-                    <div class="card-canvas-wrap">
-                        <canvas id="cPrivate" width="72" height="72"></canvas>
-                    </div>
-                    <!-- <div class="card-desc">password-protected. ask jake for access.</div> -->
-                    <div class="card-play">▶ ENTER<span class="card-arrow">_</span></div>
-                </div>
-            </a>
-
+        <article class="game-card" style="--card-color: #00f5ff" data-genre="BOARD" data-plat="web">
+            <a class="card-link" href="chess/" aria-label="play CHESS"></a>
+            <div class="card-inner">
+                <div class="card-tags"><span class="card-tag genre-tag">BOARD</span></div>
+                <div class="card-title">CHESS</div>
+                <div class="card-canvas-wrap"><canvas id="cChess" width="72" height="72"></canvas></div>
+                <div class="card-desc">neon edition. classic chess. vs ai opponent. algebraic notation. configurable difficulty.</div>
+                <div class="plats"><a class="plat plat-web" href="chess/">▶ WEB</a></div>
+            </div>
+        </article>
+        <article class="game-card" style="--card-color: #00f5ff" data-genre="BOARD" data-plat="web">
+            <a class="card-link" href="checkers/" aria-label="play CHECKERS"></a>
+            <div class="card-inner">
+                <div class="card-tags"><span class="card-tag genre-tag">BOARD</span></div>
+                <div class="card-title">CHECKERS</div>
+                <div class="card-canvas-wrap"><canvas id="cCheckers" width="72" height="72"></canvas></div>
+                <div class="card-desc">neon edition. classic checkers. vs ai opponent. mandatory jumps. king promotion.</div>
+                <div class="plats"><a class="plat plat-web" href="checkers/">▶ WEB</a></div>
+            </div>
+        </article>
+        <article class="game-card" style="--card-color: #00f5ff" data-genre="BOARD" data-plat="web">
+            <a class="card-link" href="backgammon/" aria-label="play BACKGAMMON"></a>
+            <div class="card-inner">
+                <div class="card-tags"><span class="card-tag genre-tag">BOARD</span></div>
+                <div class="card-title">BACKGAMMON</div>
+                <div class="card-canvas-wrap"><canvas id="cBackgammon" width="72" height="72"></canvas></div>
+                <div class="card-desc">neon edition. classic board game. vs ai opponent. doubling cube.</div>
+                <div class="plats"><a class="plat plat-web" href="backgammon/">▶ WEB</a></div>
+            </div>
+        </article>
+        <article class="game-card" style="--card-color: #F1BF00" data-genre="BOARD" data-plat="web">
+            <a class="card-link" href="parchisi/" aria-label="play PARCHÍS"></a>
+            <div class="card-inner">
+                <div class="card-tags"><span class="card-tag genre-tag">BOARD</span><span class="card-tag" style="color: #ff1744">MULTIPLAYER</span></div>
+                <div class="card-title">PARCHÍS</div>
+                <div class="card-canvas-wrap"><canvas id="cParchisi" width="72" height="72"></canvas></div>
+                <div class="card-desc">el clásico juego español. multijugador en línea. 2-4 jugadores. dados. captura rivales.</div>
+                <div class="plats"><a class="plat plat-web" href="parchisi/">▶ WEB</a></div>
+            </div>
+        </article>
+        <article class="game-card" style="--card-color: #c45fff" data-genre="BOARD" data-plat="web">
+            <a class="card-link" href="chinese-checkers/" aria-label="play CHINESE CHECKERS"></a>
+            <div class="card-inner">
+                <div class="card-tags"><span class="card-tag genre-tag">BOARD</span></div>
+                <div class="card-title">CHINESE<br>CHECKERS</div>
+                <div class="card-canvas-wrap"><canvas id="cChineseCheckers" width="72" height="72"></canvas></div>
+                <div class="card-desc">neon edition. hexagonal board. hop to win. vs ai opponent.</div>
+                <div class="plats"><a class="plat plat-web" href="chinese-checkers/">▶ WEB</a></div>
+            </div>
+        </article>
         </div>
+    </section>
+    <section class="genre-block" data-genre="CARD">
+        <h2 class="genre-head" style="--genre-color: #39ff6e"><span>// CARD //</span><span class="genre-count">5</span></h2>
+        <div class="game-grid">
+        <article class="game-card" style="--card-color: #00f0ff" data-genre="CARD" data-plat="web">
+            <a class="card-link" href="solitaire/" aria-label="play KLONDIKE SOLITAIRE"></a>
+            <div class="card-inner">
+                <div class="card-tags"><span class="card-tag genre-tag">CARD</span></div>
+                <div class="card-title">KLONDIKE<br>SOLITAIRE</div>
+                <div class="card-canvas-wrap"><canvas id="cSolitaire" width="72" height="72"></canvas></div>
+                <div class="card-desc">classic card game. draw 3. timed scoring. top 10 leaderboard.</div>
+                <div class="plats"><a class="plat plat-web" href="solitaire/">▶ WEB</a></div>
+            </div>
+        </article>
+        <article class="game-card" style="--card-color: #ffd700" data-genre="CARD" data-plat="web">
+            <a class="card-link" href="cribbage/" aria-label="play CRIBBAGE"></a>
+            <div class="card-inner">
+                <div class="card-tags"><span class="card-tag genre-tag">CARD</span></div>
+                <div class="card-title">CRIBBAGE</div>
+                <div class="card-canvas-wrap"><div style="font-size: 48px; line-height: 1;">&#127185;</div>
+                <div class="card-desc">the classic card game. first to 121 points wins. pegging, hands, and the crib.</div>
+                <div class="plats"><a class="plat plat-web" href="cribbage/">▶ WEB</a></div>
+            </div>
+        </article>
+        <article class="game-card" style="--card-color: #39ff84" data-genre="CARD" data-plat="web">
+            <a class="card-link" href="scandinavian-stud/" aria-label="play SÖKÖ"></a>
+            <div class="card-inner">
+                <div class="card-tags"><span class="card-tag genre-tag">CARD</span></div>
+                <div class="card-title">SÖKÖ</div>
+                <div class="card-canvas-wrap"><canvas id="cSoko" width="72" height="72"></canvas></div>
+                <div class="card-desc">scandinavian stud. five card poker with a finnish twist. four-card straights &amp; flushes.</div>
+                <div class="plats"><a class="plat plat-web" href="scandinavian-stud/">▶ WEB</a></div>
+            </div>
+        </article>
+        <article class="game-card" style="--card-color: #ff6f1a" data-genre="CARD" data-plat="web terminal wii">
+            <a class="card-link" href="solitaire_THLD/" aria-label="play TEXAS HOLD'EM LAVA DOME"></a>
+            <div class="card-inner">
+                <div class="card-tags"><span class="card-tag genre-tag">CARD</span></div>
+                <div class="card-title">TEXAS HOLD'EM<br>LAVA DOME</div>
+                <div class="card-canvas-wrap"><canvas id="cTHLD" width="72" height="72"></canvas></div>
+                <div class="card-desc">poker solitaire. build hands. score big. don't get burned.</div>
+                <div class="plats"><a class="plat plat-web" href="solitaire_THLD/">▶ WEB</a><a class="plat plat-tui" href="terminal.html" title="uvx magmacrunch, then pick lava-dome">$ TERMINAL</a><span class="plat plat-wii" title="Homebrew Channel build">WII</span></div>
+            </div>
+        </article>
+        <article class="game-card" style="--card-color: #ffd700" data-genre="CARD" data-plat="web">
+            <a class="card-link" href="tarot/" aria-label="play FRENCH TAROT"></a>
+            <div class="card-inner">
+                <div class="card-tags"><span class="card-tag genre-tag">CARD</span></div>
+                <div class="card-title">FRENCH<br>TAROT</div>
+                <div class="card-canvas-wrap"><div style="font-size: 48px; line-height: 1;">🃏</div>
+                <div class="card-desc">78-card tarot deck. trick-taking. bidding. the classic french card game.</div>
+                <div class="plats"><a class="plat plat-web" href="tarot/">▶ WEB</a></div>
+            </div>
+        </article>
+        </div>
+    </section>
+    <section class="genre-block" data-genre="PUZZLE">
+        <h2 class="genre-head" style="--genre-color: #ffe03a"><span>// PUZZLE //</span><span class="genre-count">6</span></h2>
+        <div class="game-grid">
+        <article class="game-card" style="--card-color: #00f0ff" data-genre="PUZZLE" data-plat="web">
+            <a class="card-link" href="2^N/" aria-label="play 2048 (actually, 2^N)"></a>
+            <div class="card-inner">
+                <div class="card-tags"><span class="card-tag genre-tag">PUZZLE</span><span class="card-tag" style="color: #39ff6e">MOBILE</span></div>
+                <div class="card-title">2048 (actually, 2^N)</div>
+                <div class="card-canvas-wrap"><canvas id="c2048" width="72" height="72"></canvas></div>
+                <div class="card-desc">slide &amp; merge tiles. reach 2^N. how far can you go?</div>
+                <div class="plats"><a class="plat plat-web" href="2^N/">▶ WEB</a></div>
+            </div>
+        </article>
+        <article class="game-card" style="--card-color: #39ff84" data-genre="PUZZLE" data-plat="web terminal wii">
+            <a class="card-link" href="george-boole/" aria-label="play GEORGE BOOLE HAS ENTERED THE CHAT"></a>
+            <div class="card-inner">
+                <div class="card-tags"><span class="card-tag genre-tag">PUZZLE</span><span class="card-tag" style="color: #39ff6e">MOBILE</span></div>
+                <div class="card-title">GEORGE BOOLE<br>HAS ENTERED<br>THE CHAT</div>
+                <div class="card-canvas-wrap"><canvas id="cBoole" width="72" height="72"></canvas></div>
+                <div class="card-desc">boolean logic puzzles. true or false? and, or, not.</div>
+                <div class="plats"><a class="plat plat-web" href="george-boole/">▶ WEB</a><a class="plat plat-tui" href="terminal.html" title="uvx magmacrunch, then pick george-boole">$ TERMINAL</a><span class="plat plat-wii" title="Homebrew Channel build">WII</span></div>
+            </div>
+        </article>
+        <article class="game-card" style="--card-color: #00f5ff" data-genre="PUZZLE" data-plat="web">
+            <a class="card-link" href="fifteen-puzzle/" aria-label="play 15 PUZZLE"></a>
+            <div class="card-inner">
+                <div class="card-tags"><span class="card-tag genre-tag">PUZZLE</span><span class="card-tag" style="color: #39ff6e">MOBILE</span></div>
+                <div class="card-title">15 PUZZLE</div>
+                <div class="card-canvas-wrap"><canvas id="cFifteen" width="72" height="72"></canvas></div>
+                <div class="card-desc">the classic sliding tile puzzle. 3×3 to 6×6. fewer moves is better.</div>
+                <div class="plats"><a class="plat plat-web" href="fifteen-puzzle/">▶ WEB</a></div>
+            </div>
+        </article>
+        <article class="game-card" style="--card-color: #00f5ff" data-genre="PUZZLE" data-plat="web">
+            <a class="card-link" href="threes/" aria-label="play THREES"></a>
+            <div class="card-inner">
+                <div class="card-tags"><span class="card-tag genre-tag">PUZZLE</span><span class="card-tag" style="color: #39ff6e">MOBILE</span></div>
+                <div class="card-title">THREES</div>
+                <div class="card-canvas-wrap"><canvas id="cThrees" width="72" height="72"></canvas></div>
+                <div class="card-desc">slide. merge. survive. 1+2=3, then same+same. how far can you go?</div>
+                <div class="plats"><a class="plat plat-web" href="threes/">▶ WEB</a></div>
+            </div>
+        </article>
+        <article class="game-card" style="--card-color: #ff2d4a" data-genre="PUZZLE" data-plat="web">
+            <a class="card-link" href="klotski/" aria-label="play KLOTSKI  横刀立马 "></a>
+            <div class="card-inner">
+                <div class="card-tags"><span class="card-tag genre-tag">PUZZLE</span><span class="card-tag" style="color: #39ff6e">MOBILE</span></div>
+                <div class="card-title">KLOTSKI<br><span style="font-size: 8px; color: #ffd700;">横刀立马</span></div>
+                <div class="card-canvas-wrap"><canvas id="cKlotski" width="72" height="72"></canvas></div>
+                <div class="card-desc">classic Chinese sliding block puzzle. slide the general to the exit.</div>
+                <div class="plats"><a class="plat plat-web" href="klotski/">▶ WEB</a></div>
+            </div>
+        </article>
+        <article class="game-card" style="--card-color: #f0f8ff" data-genre="PUZZLE" data-plat="web">
+            <a class="card-link" href="nelikko/" aria-label="play NELIKKO"></a>
+            <div class="card-inner">
+                <div class="card-tags"><span class="card-tag genre-tag">PUZZLE</span></div>
+                <div class="card-title">NELIKKO</div>
+                <div class="card-canvas-wrap"><canvas id="cTetris" width="72" height="72"></canvas></div>
+                <div class="card-desc">the falling-block puzzle, as finland invented it. helsinki 1989. clear lines. don't let them reach the top.</div>
+                <div class="plats"><a class="plat plat-web" href="nelikko/">▶ WEB</a></div>
+            </div>
+        </article>
+        </div>
+    </section>
+    <section class="genre-block" data-genre="ACTION">
+        <h2 class="genre-head" style="--genre-color: #ff2e9c"><span>// ACTION //</span><span class="genre-count">8</span></h2>
+        <div class="game-grid">
+        <article class="game-card" style="--card-color: #ff2e9c" data-genre="ACTION" data-plat="web terminal wii">
+            <a class="card-link" href="moonlight-drift/" aria-label="play MOONLIGHT DRIFT"></a>
+            <div class="card-inner">
+                <div class="card-tags"><span class="card-tag genre-tag">ACTION</span><span class="card-tag" style="color: #39ff6e">MOBILE</span></div>
+                <div class="card-title">MOONLIGHT<br>DRIFT</div>
+                <div class="card-canvas-wrap"><canvas id="cDrift" width="72" height="72"></canvas></div>
+                <div class="card-desc">coast through space. dodge obstacles. ride the moon.</div>
+                <div class="plats"><a class="plat plat-web" href="moonlight-drift/">▶ WEB</a><a class="plat plat-tui" href="terminal.html" title="uvx magmacrunch, then pick moonlight-drift">$ TERMINAL</a><span class="plat plat-wii" title="Homebrew Channel build">WII</span></div>
+            </div>
+        </article>
+        <article class="game-card" style="--card-color: #b537f2" data-genre="ACTION" data-plat="web">
+            <a class="card-link" href="very-long-boards/" aria-label="play VERY LONG BOARDS"></a>
+            <div class="card-inner">
+                <div class="card-tags"><span class="card-tag genre-tag">ACTION</span><span class="card-tag" style="color: #ffb000">PROTOTYPE</span><span class="card-tag" style="color: #39ff6e">MOBILE</span><span class="card-tag" style="color: #ff2e9c">CARL SPATSKI</span></div>
+                <div class="card-title">VERY LONG<br>BOARDS</div>
+                <div class="card-canvas-wrap"><canvas id="cVLB" width="72" height="72"></canvas></div>
+                <div class="card-desc">downhill longboarding. choose your carl. dodge everything.</div>
+                <div class="plats"><a class="plat plat-web" href="very-long-boards/">▶ WEB</a></div>
+            </div>
+        </article>
+        <article class="game-card" style="--card-color: #00f0ff" data-genre="ACTION" data-plat="web">
+            <a class="card-link" href="roderick-tron/" aria-label="play RODERICK TRON"></a>
+            <div class="card-inner">
+                <div class="card-tags"><span class="card-tag genre-tag">ACTION</span><span class="card-tag" style="color: #ffb000">PROTOTYPE</span></div>
+                <div class="card-title">RODERICK<br>TRON</div>
+                <div class="card-canvas-wrap"><canvas id="cTron" width="72" height="72"></canvas></div>
+                <div class="card-desc">robot composer on 1810s rooftops. run, roll, stomp. find T-R-O-N.</div>
+                <div class="plats"><a class="plat plat-web" href="roderick-tron/">▶ WEB</a></div>
+            </div>
+        </article>
+        <article class="game-card" style="--card-color: #ff5fa2" data-genre="ACTION" data-plat="web">
+            <a class="card-link" href="makemecookies/" aria-label="play MAKEME COOKIES!X4"></a>
+            <div class="card-inner">
+                <div class="card-tags"><span class="card-tag genre-tag">ACTION</span></div>
+                <div class="card-title">MAKEME<br>COOKIES!X4</div>
+                <div class="card-canvas-wrap"><canvas id="cCookies" width="72" height="72"></canvas></div>
+                <div class="card-desc">one song, one shift. five stations. ship cookies.</div>
+                <div class="plats"><a class="plat plat-web" href="makemecookies/">▶ WEB</a></div>
+            </div>
+        </article>
+        <article class="game-card" style="--card-color: #ffc247" data-genre="ACTION" data-plat="web terminal">
+            <a class="card-link" href="jovian-humanitarian-conflict/" aria-label="play JOVIAN HUMANITARIAN CONFLICT"></a>
+            <div class="card-inner">
+                <div class="card-tags"><span class="card-tag genre-tag">ACTION</span><span class="card-tag" style="color: #ffb000">PROTOTYPE</span></div>
+                <div class="card-title">JOVIAN<br>HUMANITARIAN<br>CONFLICT</div>
+                <div class="card-canvas-wrap"><canvas id="cJovian" width="72" height="72"></canvas></div>
+                <div class="card-desc">on-rails over jupiter. read the transponder before you fire.</div>
+                <div class="plats"><a class="plat plat-web" href="jovian-humanitarian-conflict/">▶ WEB</a><a class="plat plat-tui" href="terminal.html" title="uvx magmacrunch, then pick jovian">$ TERMINAL</a></div>
+            </div>
+        </article>
+        <article class="game-card" style="--card-color: #3fe0d0" data-genre="ACTION" data-plat="web">
+            <a class="card-link" href="cave-diving/" aria-label="play CAVE DIVING (NOT EVEN ONCE)"></a>
+            <div class="card-inner">
+                <div class="card-tags"><span class="card-tag genre-tag">ACTION</span><span class="card-tag" style="color: #ffb000">PROTOTYPE</span><span class="card-tag" style="color: #39ff6e">MOBILE</span></div>
+                <div class="card-title">CAVE DIVING<br>(NOT EVEN ONCE)</div>
+                <div class="card-canvas-wrap"><canvas id="cCave" width="72" height="72"></canvas></div>
+                <div class="card-desc">one song, one tank. your lamp is the only light down there.</div>
+                <div class="plats"><a class="plat plat-web" href="cave-diving/">▶ WEB</a></div>
+            </div>
+        </article>
+        <article class="game-card" style="--card-color: #ff5a1f" data-genre="ACTION" data-plat="web">
+            <a class="card-link" href="caldera/" aria-label="play CALDERA"></a>
+            <div class="card-inner">
+                <div class="card-tags"><span class="card-tag genre-tag">ACTION</span><span class="card-tag" style="color: #ffb000">PROTOTYPE</span><span class="card-tag" style="color: #39ff6e">MOBILE</span></div>
+                <div class="card-title">CALDERA</div>
+                <div class="card-canvas-wrap"><canvas id="cCaldera" width="72" height="72"></canvas></div>
+                <div class="card-desc">climb the vent. outrun the magma. speed is height.</div>
+                <div class="plats"><a class="plat plat-web" href="caldera/">▶ WEB</a></div>
+            </div>
+        </article>
+        <article class="game-card" style="--card-color: #ffd84a" data-genre="ACTION" data-plat="web">
+            <a class="card-link" href="grocery-harrison/" aria-label="play GROCERY HARRISON"></a>
+            <div class="card-inner">
+                <div class="card-tags"><span class="card-tag genre-tag">ACTION</span><span class="card-tag" style="color: #39ff6e">MOBILE</span><span class="card-tag" style="color: #ffb000">PROTOTYPE</span></div>
+                <div class="card-title">GROCERY HARRISON</div>
+                <div class="card-canvas-wrap"><canvas id="cGroceryHarrison" width="72" height="72"></canvas></div>
+                <div class="card-desc">the size of a cornflake. put the store back in order, aisle by aisle.</div>
+                <div class="plats"><a class="plat plat-web" href="grocery-harrison/">▶ WEB</a></div>
+            </div>
+        </article>
+        </div>
+    </section>
     </div>
 
-    <!-- Terminal Arcade -->
-    <div class="tui-section">
-        <div class="section-header" style="border-color: #39ff6e; color: #39ff6e; text-shadow: 0 0 12px rgba(57,255,110,0.6);">// TERMINAL ARCADE //</div>
+    <div class="empty" id="empty" hidden>NO GAMES MATCH. <button class="band-btn" id="resetBtn" type="button">RESET</button></div>
 
-        <pre class="tui-preview">
-                                                                      __
-    .--------.---.-.-----.--------.---.-.----.----.--.--.-----.----.|  |--.
-    |        |  _  |  _  |        |  _  |  __|   _|  |  |     |  __||     |
-    |__|__|__|___._|___  |__|__|__|___._|____|__| |_____|__|__|____||__|__|
-                   |_____|
-                         EVERY CABINET ON THIS MACHINE
-                                  INSERT COIN
-
-
-      ┌──────────────────────────────┐  ┌──────────────────────────────┐
-      │ George Boole Has Entered The │  │ Moonlight Drift              │
-      │ Chat                         │  │                              │
-      │ 2048 played with logic gates │  │ Thread the columns. Hold to  │
-      │ — merge, invert, overflow.   │  │ climb, release to fall.      │
-      │                              │  │                              │
-      │ ▶ ENTER_        BEST 131,072 │  │ ▶ ENTER           BEST 8,420 │
-      └──────────────────────────────┘  └──────────────────────────────┘
-                                   PAGE 1/2
-
-
-                      ↑↓←→ CHOOSE    ENTER PLAY    Q QUIT
-                 © 2026 magmacrunch media  ·  magmacrunch.com</pre>
-
-        <div class="tui-body">
-            <div class="tui-label">// INSTALL //</div>
-            <div class="tui-prompt-row"><span class="tui-prompt">$</span> uvx magmacrunch</div>
-            <div class="tui-comment"># four cabinets, one install — pure Python, nothing to compile</div>
-
-            <a href="terminal.html" class="tui-more">▶ INSTALL, CONTROLS &amp; CABINETS<span class="tui-more-cursor">_</span></a>
-        </div>
-
-        <div class="tui-note">Python 3.10+ · Terminal 36×17 minimum · Pure Python, no compilation</div>
+    <div class="private-row">
+        invite only: <a href="https://private.magmacrunch.duckdns.org/">PRIVATE COLLECTION ↗</a>
     </div>
-
-    <!-- pay2play to return as downloadable collection -->
-
-    <!-- itch.io link (commented out)
-    <div class="credits-row">
-        also on &nbsp;<a href="https://magmacrunch.itch.io/" target="_blank">itch.io ↗</a>
-    </div> -->
 
     <a href="server.html" class="server-status-link">
         <div class="server-status">
@@ -190,17 +378,6 @@
             <div class="server-text">supported by the magmacrunch server since March 2026</div>
         </div>
     </a>
-
-    <!-- Fake high score board for flavor -->
-    <!-- <div class="scoreboard"> -->
-    <!--     <div class="scoreboard-header">✦ HIGH SCORES ✦</div> -->
-    <!--     <div class="scoreboard-body"> -->
-    <!--         <div class="score-row"><span class="score-rank">1ST</span><span class="score-name">JAM</span><span class="score-pts">999999</span></div> -->
-    <!--         <div class="score-row"><span class="score-rank">2ND</span><span class="score-name">CPR</span><span class="score-pts">888420</span></div> -->
-    <!--         <div class="score-row"><span class="score-rank">3RD</span><span class="score-name">JHM</span><span class="score-pts">777001</span></div> -->
-    <!--         <div class="score-row"><span class="score-rank">4TH</span><span class="score-name">YOU</span><span class="score-pts">??????</span></div> -->
-    <!--     </div> -->
-    <!-- </div> -->
 
     <!-- Support -->
     <div class="support-section">
@@ -219,37 +396,10 @@
     &copy; 2026 <span>magmacrunch media</span>
 </footer>
 
-<script src="../nav.js?v=a1127215"></script>
-<script src="../animations/coin.js?v=9ec2c0b9"></script>
-<script src="gamecard-previews.js?v=11abd888"></script>
-<script>
-// ─────────────────────────────────────────────────────────
-// keyboard navigation — arrow keys to highlight, enter to go
-// ─────────────────────────────────────────────────────────
-(function() {
-    const cards = Array.from(document.querySelectorAll('.game-card'));
-    let selected = -1;
-
-    document.addEventListener('keydown', e => {
-        if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
-            selected = (selected + 1) % cards.length;
-        } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
-            selected = (selected - 1 + cards.length) % cards.length;
-        } else if (e.key === 'Enter' && selected >= 0) {
-            window.location.href = cards[selected].href;
-            return;
-        } else { return; }
-        cards.forEach((c, i) => {
-            c.style.transform = i === selected ? 'translateY(-3px)' : '';
-            c.style.boxShadow = i === selected
-                ? `0 0 28px var(--card-color, #ff2e9c)`
-                : '';
-        });
-    });
-})();
-</script>
+<script src="../nav.js?v=fdcc8a88"></script>
 <script src="../animations/server.js?v=7557c1d2"></script>
-
+<script src="catalogue-previews.js?v=c71466c7"></script>
+<script src="catalogue.js?v=2de6c711"></script>
 <!-- mp-server.js, for the status probe below and nothing else. No widget:
      a hub listing solo games is not a shared present moment, and chat now
      lives inside each multiplayer game, relayed by that game's own server.
@@ -309,6 +459,5 @@
     setInterval(checkStatus, 30000);
 })();
 </script>
-
 </body>
 </html>

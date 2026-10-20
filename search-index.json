@@ -168,34 +168,6 @@
     "b": "terminal arcade — arcade — magmacrunch media home › arcade › terminal arcade ████ ████ ███▄ █▄▄█ ▀██▀ ██ █ ▄██▄ █ ▄██▄ ███▄ ▄███ ▄██▄ ███▄ ████ ██ ██▀ ███▀ █▀▀█ ██ █▀██ █▀▀█ █ █▀▀█ ███▀ █ █▀▀█ █ █ ██▀ ██ ████ █ █ █ █ ▄██▄ █ █ █ █ ████ █ █ █ █ ▀███ █ █ ███▀ ████ // the arcade in a shell // // THE FLOOR // __ .--------.---.-.-----.--------.---.-.----.----.--.--.-----.----.| |--. | | _ | _ | | _ | __| _| | | | __|| | |__|__|__|___._|___ |__|__|__|___._|____|__| |_____|__|__|____||__|__| |_____| EVERY CABINET ON THIS MACHINE INSERT COIN ┌──────────────────────────────┐ ┌───────────────────────────..."
   },
   {
-    "t": "board games",
-    "c": "page",
-    "u": "/arcade/board-games/index.html",
-    "d": "classic board games with neon themes",
-    "b": "board games — arcade — magmacrunch media home › arcade › board games ***** ** ** * *** ****** *** ** * **** * ** * * ** ** * * **** * * * ** ** * ** ** * * * **** *** **** ** * *** **** ** ** * * *** * **** **** **** * *** ** ** ** **** *** **** **** *** * **** * ** ** * * **** * *** * ** **** ********* ** ** *** * *** * *** **** *** * * *** ** **** ** *** ** ** * **** ** ** **** ** ** **** * * **** ** **** **** * *** **** ** ** *** ** ** ** ** ** ** ** ** ** * **** ** ** ** ** ** ** *** *** ** ** *** ** ** ** ** ** ** ** ** *** ** ** ** ** ** ** ******** *** * ** ** ** ** ** ** ** ** ** ** **..."
-  },
-  {
-    "t": "card games",
-    "c": "page",
-    "u": "/arcade/card-games/index.html",
-    "d": "card games in the magmacrunch arcade",
-    "b": "card games — arcade — magmacrunch media home › arcade › card games ##### ##### # # ## ##### ##### # # ## # # ###### #### # # # # # # # # # # ## ## # # # # # # # # # # #### # # # ## # ##### #### # ###### ##### # # # # ###### # # # # # # # # # # # # # # # # # # # # # ##### # # # # ##### ##### # # # # ###### #### // deal 'em up // KLONDIKE SOLITAIRE classic card game. draw 3. timed scoring. top 10 leaderboard. ▶ PLAY _ CRIBBAGE 🃑 the classic card game. first to 121 points wins. pegging, hands, and the crib. ▶ PLAY _ SÖKÖ scandinavian stud. five card poker with a finnish twist. four-card straight..."
-  },
-  {
-    "t": "puzzles",
-    "c": "page",
-    "u": "/arcade/puzzles/index.html",
-    "d": "puzzle games in the magmacrunch arcade",
-    "b": "puzzles — arcade — magmacrunch media home › arcade › puzzles ██████╗ ██╗ ██╗███████╗███████╗██╗ ███████╗ ██████╗ █████╗ ███╗ ███╗███████╗███████╗ ██╔══██╗██║ ██║╚══███╔╝╚══███╔╝██║ ██╔════╝ ██╔════╝ ██╔══██╗████╗ ████║██╔════╝██╔════╝ ██████╔╝██║ ██║ ███╔╝ ███╔╝ ██║ █████╗ ██║ ███╗███████║██╔████╔██║█████╗ ███████╗ ██╔═══╝ ██║ ██║ ███╔╝ ███╔╝ ██║ ██╔══╝ ██║ ██║██╔══██║██║╚██╔╝██║██╔══╝ ╚════██║ ██║ ╚██████╔╝███████╗███████╗███████╗███████╗ ╚██████╔╝██║ ██║██║ ╚═╝ ██║███████╗███████║ ╚═╝ ╚═════╝ ╚══════╝╚══════╝╚══════╝╚══════╝ ╚═════╝ ╚═╝ ╚═╝╚═╝ ╚═╝╚══════╝╚══════╝ // brain busters // MOBILE 2..."
-  },
-  {
-    "t": "action",
-    "c": "page",
-    "u": "/arcade/action/index.html",
-    "d": "pixel art action games",
-    "b": "action — arcade — magmacrunch media home › arcade › action // run, dodge, survive // MOBILE MOONLIGHT DRIFT coast through space. dodge obstacles. ride the moon. ▶ PLAY _ PROTOTYPE MOBILE CARL SPATSKI VERY LONG BOARDS downhill longboarding. choose your carl. dodge everything. ▶ PLAY _ PROTOTYPE NEW RODERICK TRON robot composer on 1810s rooftops. run, roll, stomp. find T-R-O-N. ▶ PLAY _ NEW MAKEME COOKIES!X4 one song, one shift. five stations. ship cookies. ▶ PLAY _ PROTOTYPE NEW JOVIAN HUMANITARIAN CONFLICT on-rails over jupiter. read the transponder before you fire. ▶ PLAY _ PROTOTYPE NEW MOBI..."
-  },
-  {
     "t": "press",
     "c": "page",
     "u": "/press/index.html",
@@ -235,7 +207,7 @@
     "c": "page",
     "u": "/ware/dev/index.html",
     "d": "game engines, scripting language, & memory course",
-    "b": "developer tools — ware — magmacrunch media home › ware › developer tools // developer tools // game engines, scripting language, & educational tools ADENOSINE game engine collection for the magmacrunch web arcade ▶ CRUNCH-C learn C memory management without segfaults · 18 lessons in your browser ▶ DAFFODIL heightfield terrain engine · real-world landscape at 1:1 · C ▶ HOLOGRAM optics-first 3D engine · spectral ray tracer · C ▶ HYPNOPOMPIA iOS shell for the arcade games · Game Center plugin · store tooling ▶ MAGMASCRIPT python-inspired mini language ▶ MAGNOLIA wii homebrew game engine · C ▶ TEX..."
+    "b": "developer tools — ware — magmacrunch media home › ware › developer tools // developer tools // game engines, scripting language, & educational tools // game engines // the engines under the arcade, the wii games & the 3D work ADENOSINE game engine collection for the magmacrunch web arcade ▶ DAFFODIL heightfield terrain engine · real-world landscape at 1:1 · C ▶ HOLOGRAM optics-first 3D engine · spectral ray tracer · C ▶ GERRIDAE meshes rasterized beside hologram's ray tracer · C · new ▶ MAGNOLIA wii homebrew game engine · C ▶ TEXASTOAST RPG engine · I2C hardware bridge · Python ▶ // languages ..."
   },
   {
     "t": "Reverse Osmosis Reversed",
@@ -837,7 +809,7 @@
     "c": "artist",
     "u": "/archive/by-artist/juanito-thompson/games.html",
     "d": "Juanito Thompson — Games",
-    "b": "juanito thompson — games — magmacrunch media GAMES ← back about links network photography recordings releases videos works Music-inspired games from the magmacrunch arcade. GEORGE BOOLE HAS ENTERED THE CHAT MORE boolean logic puzzles. true or false? and, or, not. music-inspired named after a Juanito Thompson song CAVE DIVING (NOT EVEN ONCE) PLAY one song, one tank. your lamp is the only light down there. music-inspired the dive lasts exactly as long as Juanito Thompson's cave diving (not even once)"
+    "b": "juanito thompson — games — magmacrunch media GAMES ← back about links network photography recordings releases videos works Music-inspired games from the magmacrunch arcade. GEORGE BOOLE HAS ENTERED THE CHAT MORE boolean logic puzzles. true or false? and, or, not. music-inspired named after a Juanito Thompson song CAVE DIVING (NOT EVEN ONCE) MORE one song, one tank. your lamp is the only light down there. music-inspired the dive lasts exactly as long as Juanito Thompson's cave diving (not even once)"
   },
   {
     "t": "Juanito Thompson",
@@ -1988,6 +1960,13 @@
     "b": "caldera · magmacrunch media home › ware › video games › caldera CALDERA climb the vent · outrun the magma · speed is height Run, jump and bounce off the walls to climb a volcanic vent while the magma rises under you. Speed turns into height, and jumps that clear several floors chain into a CRUNCH combo. Crumbling crust and gas vents change the climb. Pick from nine climbers, most of them pilots from Moonlight Drift . // where to play // BROWSER ▶ PLAY free, in the arcade . Keyboard or phone. TERMINAL pipx install magmacrunch-caldera then run caldera . Also in the magmacrunch terminal arcade. /..."
   },
   {
+    "t": "cave diving (not even once) · magmacrunch media",
+    "c": "tool",
+    "u": "/ware/cave-diving/",
+    "d": "a one-song dive into a flooded cave, in the browser",
+    "b": "cave diving (not even once) · magmacrunch media home › ware › video games › cave diving CAVE DIVING (NOT EVEN ONCE) one song, one tank · your lamp is the only light down there Swim into a flooded cave with one tank of air and only your headlamp for light. Surface at a daylight opening to bank your pearls, worth up to eight times as much at the far side, or dive on. Drown and you lose them all. The dive lasts exactly as long as its song, which is cut into a score that follows the danger you are in. // where to play // BROWSER ▶ PLAY free, in the arcade . Keyboard or touch. // built with // aden..."
+  },
+  {
     "t": "checkers · magmacrunch media",
     "c": "tool",
     "u": "/ware/checkers/",
@@ -2020,7 +1999,7 @@
     "c": "tool",
     "u": "/ware/crunch-c/",
     "d": "learn C memory management without segfaults",
-    "b": "crunch-c — magmacrunch media crunch-c learn C memory management without segfaults Every memory error is caught and explained. No segfaults. No undefined behavior. Just C's behavior, narrated. ▶ Start the course What you'll learn Loading modules… How it works In C, memory mistakes cause segfaults, crashes and security vulnerabilities. Here the same mistakes are caught and named: quicksand at line 5, column 9 | 5 | val = p.peek(i32) | ^ this ground was scorched at line 4 (garrisoned at line 1) You learn what C does, and why it's dangerous, without the danger. The lessons run in your browser — th..."
+    "b": "crunch-c — magmacrunch media home › ware › developer tools › crunch-c crunch-c learn C memory management without segfaults Every memory error is caught and explained. No segfaults. No undefined behavior. Just C's behavior, narrated. ▶ Start the course What you'll learn Loading modules… How it works In C, memory mistakes cause segfaults, crashes and security vulnerabilities. Here the same mistakes are caught and named: quicksand at line 5, column 9 | 5 | val = p.peek(i32) | ^ this ground was scorched at line 4 (garrisoned at line 1) You learn what C does, and why it's dangerous, without the dan..."
   },
   {
     "t": "daffodil",
@@ -2028,6 +2007,13 @@
     "u": "/ware/daffodil/",
     "d": "A C99 heightfield terrain engine: real-world landscape at 1:1, measured, not invented.",
     "b": "daffodil — magmacrunch media home › ware › developer tools › daffodil daffodil heightfield terrain engine · real-world landscape at 1:1 v0.1.0-dev PolyForm Noncommercial C99 + sokol A C99 heightfield terrain engine by magmacrunch media . daffodil draws real ground: it reads a heightfield built offline from LiDAR elevation data, reprojected, tiled and written as raw float32 meters, then renders it faithfully and lets you walk on it. The landscape is surveyed, not sculpted . There's no procedural generation and no terrain sculpting: the shape of the ground comes from the survey, and the engine's..."
+  },
+  {
+    "t": "15 puzzle · magmacrunch media",
+    "c": "tool",
+    "u": "/ware/fifteen-puzzle/",
+    "d": "the classic sliding tile puzzle, 3x3 to 6x6, in the browser",
+    "b": "15 puzzle · magmacrunch media home › ware › video games › 15 puzzle 15 PUZZLE the classic sliding tile puzzle · fewer moves is better The classic sliding tile puzzle: slide the numbered tiles back into order. Boards run from the 8 puzzle on three by three up to six by six, with four by four as the default. Your score is your move count, so fewer is better. // where to play // BROWSER ▶ PLAY free, in the arcade . Arrow keys or swipe. // built with // adenosine browser · JavaScript // credits // game by magmacrunch media original concept the 15 Puzzle, attributed to Noyes Chapman (1870s)"
   },
   {
     "t": "video games · ware · magmacrunch media",
@@ -2042,6 +2028,20 @@
     "u": "/ware/george-boole/",
     "d": "a logic-gate puzzle game for the browser and the terminal, with Wii, iPhone and iPad versions on the way",
     "b": "george boole has entered the chat · magmacrunch media home › ware › video games › george boole GEORGE BOOLE HAS ENTERED THE CHAT a logic-gate puzzle game · true or false? and, or, not. Slide the board, merge the bits, and let the logic gates do the rest. It started from Gabriele Cirulli's 2048 and swaps the addition for Boolean logic: AND, OR, XOR and NOT drop onto the board, and every tile that scores shows you the math. It is being made for four kinds of machine. Each version suits the one it runs on, and all of them play by exactly the same rules. // where to play // BROWSER ▶ PLAY free, in..."
+  },
+  {
+    "t": "gerridae",
+    "c": "tool",
+    "u": "/ware/gerridae/",
+    "d": "meshes rasterized beside hologram's ray tracer, composited by depth",
+    "b": "gerridae — magmacrunch media home › ware › developer tools › gerridae gerridae meshes rasterized beside hologram's ray tracer, composited by depth v0.0.1 PolyForm Noncommercial C99 + HLSL early: m1 🔭 hologram The ray tracer gerridae draws beside. It traces what light has to be right on: glass, mirrors, gratings, polarizers, lamps. ✉ Get in touch The engine is not publicly distributed. Email for source access or licensing. the composite hologram traces what light has to be right on. gerridae draws everything else: the room, the furniture and anything that moves. The two meet per pixel, by dept..."
+  },
+  {
+    "t": "grocery harrison · magmacrunch media",
+    "c": "tool",
+    "u": "/ware/grocery-harrison/",
+    "d": "a side-scroller about a night-shift folk musician shrunk to the size of a cornflake, in the browser",
+    "b": "grocery harrison · magmacrunch media home › ware › video games › grocery harrison GROCERY HARRISON the size of a cornflake · put the store back in order, aisle by aisle Grocery Harrison, a folk musician on the night shift, plays a strange chord in the walk-in cooler and shrinks to the size of a cornflake. Every aisle becomes a landscape to cross while you carry lost things home for the talking food. Strum your guitar to stun weevils, collect sugar crystals to spend at the checkout, and never see a game over. // where to play // BROWSER ▶ PLAY a free demo in the arcade : the opening and the fir..."
   },
   {
     "t": "hologram",
@@ -2063,6 +2063,13 @@
     "u": "/ware/jovian-humanitarian-conflict/",
     "d": "an on-rails shooter over Jupiter for the browser and the terminal, with a Wii version on the way",
     "b": "the jovian humanitarian conflict · magmacrunch media home › ware › video games › the jovian humanitarian conflict THE JOVIAN HUMANITARIAN CONFLICT on-rails over jupiter · read the transponder before you fire An on-rails shooter over the cloud decks of Jupiter. Aid convoys fly among the hostiles, blinking a double-flash transponder. Shoot the hostiles hunting them and never the convoys: three convoy kills and the run is over. Know what you are shooting at. // where to play // BROWSER ▶ PLAY free, in the arcade . Nothing to install. TERMINAL pipx install magmacrunch-jhc then run jovian . Also in..."
+  },
+  {
+    "t": "klotski · magmacrunch media",
+    "c": "tool",
+    "u": "/ware/klotski/",
+    "d": "Klotski, the Chinese sliding block puzzle, in the browser",
+    "b": "klotski · magmacrunch media home › ware › video games › klotski KLOTSKI 横刀立马 · slide the general to the exit 横刀立马: slide Cao Cao, the gold two-by-two block, past his generals and soldiers and out of the four-by-five board. Pieces only slide, never jump. The text is in Chinese, English or both, in a neo-arcade take on new-age China. // where to play // BROWSER ▶ PLAY free, in the arcade . Arrow keys or swipe. // built with // adenosine browser · JavaScript // credits // game by magmacrunch media original game Klotski (横刀立马), a traditional Chinese sliding block puzzle from the early twentieth ce..."
   },
   {
     "t": "magmascript",
@@ -2107,6 +2114,13 @@
     "b": "nelikko · magmacrunch media home › ware › video games › nelikko NELIKKO the falling-block puzzle, as finland invented it · helsinki 1989 The falling-block puzzle as Finland invented it, in a parallel Helsinki in 1989. Nelikko is Finnish for a group of four. The screens are in Finnish, under snowfall, aurora and the silhouette of Uspenski Cathedral. Hold a piece, see the next one, soft or hard drop, climb the levels, and put your initials on the top ten. The terminal version shares the browser's scoreboard. // where to play // BROWSER ▶ PLAY free, in the arcade . Nothing to install. TERMINAL pi..."
   },
   {
+    "t": "parchís · magmacrunch media",
+    "c": "tool",
+    "u": "/ware/parchisi/",
+    "d": "Parchís, the Spanish board game, online for two to four players in the browser",
+    "b": "parchís · magmacrunch media home › ware › video games › parchís PARCHÍS el clásico juego español · 2 to 4 players online Parchís, the Spanish descendant of pachisi, for two to four players online, with room codes, spectating and chat. Roll two dice, capture your rivals and bring your pieces up the home run, on a board drawn as Spanish azulejo tiles in red and gold. The game is in Spanish, with a switch to English. // where to play // BROWSER ▶ PLAY free, in the arcade . Online play, two to four players. // built with // adenosine browser · JavaScript // credits // game by magmacrunch media ori..."
+  },
+  {
     "t": "crunchscope",
     "c": "tool",
     "u": "/ware/pixel-process/",
@@ -2119,6 +2133,20 @@
     "u": "/ware/roderick-tron/",
     "d": "a platformer about a robot composer, for the browser and the terminal",
     "b": "roderick tron · magmacrunch media home › ware › video games › roderick tron RODERICK TRON robot composer on 1810s rooftops · run, roll, stomp · find T-R-O-N A side-scrolling platformer about a robot composer on the rooftops of an 1810s Dutch city. Run, roll, stomp and fire musical notes, find the letters T-R-O-N, and reach the lit door. The levels are built by hand, with chimney draughts, bell cannons and coal trolleys in the way. // where to play // BROWSER ▶ PLAY free, in the arcade . Nothing to install. TERMINAL pipx install magmacrunch-roderick-tron then run roderick-tron . Three hand-buil..."
+  },
+  {
+    "t": "sökö · magmacrunch media",
+    "c": "tool",
+    "u": "/ware/scandinavian-stud/",
+    "d": "Sökö, the Finnish five-card stud poker, against the computer or online, in the browser",
+    "b": "sökö · magmacrunch media home › ware › video games › sökö SÖKÖ scandinavian stud · five-card poker with a finnish twist Sökö, Finland's national poker: five-card stud with one hole card, four face-up cards and four rounds of betting. Two hands set it apart, the four-card flush and the four-card straight, and both beat a pair. Play three computer opponents or friends online, at a table written in Finnish with English glosses. // where to play // BROWSER ▶ PLAY free, in the arcade , with online play against friends. // built with // adenosine browser · JavaScript // credits // game by magmacrunc..."
+  },
+  {
+    "t": "klondike solitaire · magmacrunch media",
+    "c": "tool",
+    "u": "/ware/solitaire/",
+    "d": "Klondike solitaire, draw three, with timed scoring, in the browser",
+    "b": "klondike solitaire · magmacrunch media home › ware › video games › klondike solitaire KLONDIKE SOLITAIRE draw 3 · timed scoring · top 10 leaderboard Klondike, draw three, with timed scoring and a bonus that grows the faster you win. It looks like vaporwave Miami meets Windows 3.1 shareware: a silver chrome window on a teal desktop, neon pink and cyan on green felt, and a Miami sunset when you win. Pick your deck design and chase the top ten. // where to play // BROWSER ▶ PLAY free, in the arcade . Nothing to install. // built with // adenosine browser · JavaScript // credits // game by magmacr..."
   },
   {
     "t": "sprite forge",
@@ -2149,11 +2177,25 @@
     "b": "texastoast — magmacrunch media home › ware › developer tools › texastoast texastoast Python RPG engine with I2C hardware abstraction for magmacrunch game systems v0.5.0 PolyForm Noncommercial 1.0.0 Python 3.10+ A tkinter-based 2D game engine by magmacrunch media , inspired by adenosine and built for the same kind of small RPGs, but in Python, and able to read real controllers over I2C when it runs on a Raspberry Pi. Game logic never depends on tkinter, and hardware degrades gracefully to the keyboard when it's absent. It also ships a hardware dev kit: a bus-level simulator that runs the real I..."
   },
   {
+    "t": "threes · magmacrunch media",
+    "c": "tool",
+    "u": "/ware/threes/",
+    "d": "slide, merge, survive: a take on Threes!, in the browser, with a terminal version on the way",
+    "b": "threes · magmacrunch media home › ware › video games › threes THREES slide · merge · survive Slide every tile at once. 1 and 2 make 3, and from there only matching tiles merge. New tiles come in from the edge you slid away from, and your score is the sum of every merge. Its rules are tuned for short games: most new tiles are 1s, so a run lasts a few dozen moves. // where to play // BROWSER ▶ PLAY free, in the arcade . Arrow keys or swipe. TERMINAL a terminal version that shares the browser's scoreboard, built on the magmacrunch engine. COMING SOON // built with // adenosine browser · JavaScrip..."
+  },
+  {
     "t": "tone grating",
     "c": "tool",
     "u": "/ware/tone-grating/",
     "d": "FM synthesis and a diffraction grating are the same calculation · one Bessel column, two domains",
     "b": "tone grating — magmacrunch media This instrument wants two panels side by side. Please visit on a wider screen. TONE//GRATING β 2.405 CARRIER NULL SHARED one number, both panels MODULATION INDEX β 2.405 0 2.405 5.520 8.654 TIME DOMAIN CARRIER f c 440 Hz RATIO f m /f c 0.25 modulator f m 110 Hz PLAY TONE at β = 2.405 the pitch you started on is the one frequency missing SPACE DOMAIN GROOVE SPACING d 2.00 µm WAVELENGTH λ 500 nm groove depth (p–v) 191.4 nm highest order ±4 TIME sidebands at f c + m·f m a carrier phase-modulated by β·sin(2πf m t) SPACE orders at sin&thinsp;&theta; = mλ/d a wavefro..."
+  },
+  {
+    "t": "2^n · magmacrunch media",
+    "c": "tool",
+    "u": "/ware/two-to-the-n/",
+    "d": "2048, generalised: pick your target from 4 to 65,536, in the browser",
+    "b": "2^n · magmacrunch media home › ware › video games › 2^n 2^N 2048 (actually, 2^N) · slide & merge · how far can you go? 2048, generalised. Pick your target, from 2-bit mode at 4 up to 16-bit mode at 65,536, or play endless, with 2048 as the default. Slide and merge powers of two on a four-by-four board while the tiles heat from icy blue to white hot. // where to play // BROWSER ▶ PLAY free, in the arcade . Arrow keys or swipe. // built with // adenosine browser · JavaScript // credits // game by magmacrunch media original concept 2048 by Gabriele Cirulli (2014). An unofficial take, not affiliat..."
   },
   {
     "t": "very long boards · magmacrunch media",

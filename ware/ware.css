@@ -189,6 +189,7 @@
         .t-magmascript { --accent:#ff3d3d; --a2:#e02020; --a3:#c01010; --ink:#ffd0d0; } /* red */
         .t-magnolia   { --accent:#00f5ff; --a2:#00c0d0; --a3:#0090a0; --ink:#d0f8ff; } /* cyan */
         .t-hologram   { --accent:#c45fff; --a2:#9040d0; --a3:#6030a0; --ink:#e8d0ff; } /* purple */
+        .t-gerridae   { --accent:#9ad66b; --a2:#70b048; --a3:#4f8a30; --ink:#e4f6d6; } /* lily-pad green */
         .t-hypnopompia { --accent:#b98cf5; --a2:#9060d0; --a3:#7040b0; --ink:#e0d0f8; } /* lavender */
         .t-crunch-c   { --accent:#7cc7ff; --a2:#4090d0; --a3:#2060a0; --ink:#d0e8ff; } /* blue */
         /* Daffodil gold: the trumpet rather than the petal, so it stays clear

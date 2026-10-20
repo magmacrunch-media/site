@@ -35,10 +35,10 @@ window.NAV_CONFIG = {
             { href: 'archive/by-contributor/', label: 'by contributor' }
         ]},
         { label: 'arcade', href: 'arcade/', items: [
-            { href: 'arcade/board-games/', label: 'board games' },
-            { href: 'arcade/card-games/', label: 'card games' },
-            { href: 'arcade/puzzles/', label: 'puzzles' },
-            { href: 'arcade/action/', label: 'action' }
+            { href: 'arcade/#genre=board', label: 'board games' },
+            { href: 'arcade/#genre=card', label: 'card games' },
+            { href: 'arcade/#genre=puzzle', label: 'puzzles' },
+            { href: 'arcade/#genre=action', label: 'action' }
         ]},
         { label: 'press', href: 'press/', items: [
             { href: 'press/scientific/', label: 'scientific' },
