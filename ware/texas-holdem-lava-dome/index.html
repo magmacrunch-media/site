@@ -17,165 +17,46 @@
   <link rel="icon" type="image/x-icon" href="../../favicon.ico">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Courier+Prime:wght@400;700&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&family=Courier+Prime:wght@400;700&display=swap">
   <link rel="stylesheet" href="../../style.css?v=53e9e146">
   <link rel="stylesheet" href="../crumbs.css?v=ff3801ee">
+  <link rel="stylesheet" href="../magma-themes.css?v=58dc28cd">
+  <link rel="stylesheet" href="../game-page.css?v=4448c4a0">
   <style>
-    :root { color-scheme: dark; --accent: #ff6a2b; --accent-dk: #a43100; --line: #33304a; --panel: #1c1b26; --dim: #9d99b5; }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-
+    /* The Lava Dome's look: lava glowing up from the floor of the page, as
+       it does under the game's frame, VT323 for text, the title's stepped
+       ember shadow, screens in its double hot-orange frame, square panels
+       and its red DEAL button. Colours come from the thld theme. */
     body {
-      font: 14px/1.6 'Courier Prime', ui-monospace, SFMono-Regular, Menlo, monospace;
-      background: #14141b; color: #e8e6f0;
-      min-height: 100vh;
-      display: flex; flex-direction: column;
+      --line: var(--mt-p-mid);
+      --link: var(--mt-p-highlight);
+      --font-body: 'VT323', monospace;
+      --body-size: 19px;
+      line-height: 1.3;
+      --radius: 0px;
+      --head-glow: 2px 2px 0 var(--mt-p-ember), 4px 4px 0 var(--mt-p-deep), 0 0 14px color-mix(in srgb, var(--mt-p-amber) 45%, transparent);
+      --btn-bg: var(--mt-p-cta);
+      --btn-ink: var(--mt-p-highlight);
+      --btn-shadow: var(--mt-p-brick);
+      --frame: var(--mt-p-amber);
+      --frame-glow: 0 0 0 4px var(--mt-bg), 0 0 0 7px var(--mt-p-cta), 0 0 36px color-mix(in srgb, var(--mt-p-cta) 45%, transparent);
+      --panel-border: var(--mt-p-mahogany);
+      background:
+        radial-gradient(ellipse 120% 45% at 50% 100%, color-mix(in srgb, var(--mt-p-ember) 55%, transparent) 0%, transparent 100%),
+        var(--mt-bg);
     }
-    body > * { width: 100%; }
-    a { color: #7cc7ff; }
-
-    /* The back bar every ware product page carries, as on hologram's: a
-       strip under the fixed 48px site nav with the breadcrumb trail
-       (ware/crumbs.css). The margin is what keeps it out from under the nav. */
-    .tool-nav {
-      margin-top: 48px;
-      padding: 8px 24px;
-      border-bottom: 1px solid var(--line);
-      background: #14141b;
-      flex-shrink: 0;
-    }
-    .tool-nav .breadcrumb { --crumb-accent: var(--accent); }
-    footer {
-      font-family: 'Courier Prime', monospace;
-      font-size: 12px;
-      border-top: 1px solid var(--line);
-    }
-    footer span { color: #7cc7ff; }
-
-    /* ── Hero ──────────────────────────────────────────── */
-
-    .hero { text-align: center; padding: 2.5rem 1.5rem 2rem; }
-    .hero img.banner {
-      width: min(100%, 480px); height: auto;
-      border: 1px solid var(--line); border-radius: 8px;
-      margin-bottom: 1.5rem;
-    }
-    .hero img.art {
-      width: 96px; height: 96px;
-      image-rendering: pixelated;
-      margin-bottom: 1.25rem;
-    }
-    .hero h1 {
-      font-family: 'Press Start 2P', monospace;
-      font-size: clamp(16px, 3.4vw, 30px);
-      font-weight: 400;
-      line-height: 1.5;
-      color: var(--accent);
-      text-shadow: 3px 3px 0 #33304a, 6px 6px 0 #1c1b26;
-      letter-spacing: 0.06em;
-      margin-bottom: .9rem;
-    }
-    .hero .tagline { font-size: 13px; color: var(--dim); }
-
-    .section { max-width: 640px; margin: 0 auto 2.75rem; padding: 0 1.5rem; }
-    .section h2 {
-      font-family: 'Press Start 2P', monospace;
-      font-size: 10px; font-weight: 400;
-      color: var(--accent);
-      margin-bottom: .9rem;
-      letter-spacing: 0.05em;
-    }
-    .lead p { color: #c9c6d9; margin-bottom: .7rem; }
-    .lead p:last-child { margin-bottom: 0; }
-
-    /* ── Where to play ─────────────────────────────────── */
-
-    /* One row per platform. The browser row is the call to action, so it is
-       the only one with a filled button; the rest are instructions. */
-    .platforms { display: grid; gap: .6rem; }
-    .platform {
-      display: grid;
-      grid-template-columns: 7.5rem 1fr;
-      gap: 1rem;
-      align-items: center;
-      background: var(--panel);
-      border: 1px solid var(--line);
-      border-radius: 10px;
-      padding: .9rem 1rem;
-    }
-    .platform .name {
-      font-family: 'Press Start 2P', monospace;
-      font-size: 9px; line-height: 1.6;
-      color: #e8e6f0;
-    }
-    .platform .how { font-size: 12px; color: var(--dim); }
-    .platform .how strong { color: #e8e6f0; font-weight: 700; }
-    .platform code {
-      display: inline-block;
-      font: 12px 'Courier Prime', monospace;
-      color: var(--accent);
-      background: #14141b;
-      border: 1px solid var(--line);
-      border-radius: 6px;
-      padding: .2rem .5rem;
-      margin: .15rem 0;
-      overflow-wrap: anywhere;
-    }
-    .platform.soon { opacity: .6; }
-    .badge {
-      font: 8px/1 'Press Start 2P', monospace;
-      color: var(--accent);
-      border: 1px solid currentColor;
-      border-radius: 4px;
-      padding: .25rem .4rem;
-      margin: .3rem 0 0 .35rem;
-      display: inline-block;
-      white-space: nowrap;
-      vertical-align: middle;
-    }
-
-    .play-btn {
-      display: inline-block;
-      font: 10px/1 'Press Start 2P', monospace;
-      color: #14141b;
-      background: var(--accent);
-      border-radius: 6px;
-      padding: .7rem 1rem;
-      text-decoration: none;
-      margin-right: .6rem;
-      box-shadow: 3px 3px 0 var(--accent-dk);
-      transition: transform .1s, box-shadow .1s;
-    }
-    .play-btn:hover { transform: translate(-1px, -1px); box-shadow: 4px 4px 0 var(--accent-dk); }
-
-    /* ── Built with / credits ──────────────────────────── */
-
-    .built { display: grid; grid-template-columns: 1fr 1fr; gap: .5rem; }
-    .built a, .built div {
-      display: block;
-      background: var(--panel);
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      padding: .6rem .75rem;
-      text-decoration: none;
-      color: inherit;
-    }
-    .built a:hover { border-color: #7cc7ff; }
-    .built strong { display: block; color: #7cc7ff; font-size: 11px; margin-bottom: .1rem; }
-    .built span { color: var(--dim); font-size: 11px; }
-
-    .credits p { font-size: 12px; color: var(--dim); margin-bottom: .55rem; }
-    .credits strong { color: #e8e6f0; }
-
-    @media (max-width: 560px) {
-      .hero { padding: 2rem 1rem 1.5rem; }
-      .section { padding: 0 1rem; }
-      .platform { grid-template-columns: 1fr; gap: .45rem; }
-      .built { grid-template-columns: 1fr; }
-      .play-btn { min-height: 44px; display: inline-flex; align-items: center; }
-    }
+    .hero h1 { color: var(--mt-p-cream); font-size: clamp(18px, 4.2vw, 36px); }
+    .hero .screen { margin-bottom: 2.25rem; }
+    .hero .tagline { font-size: 22px; color: var(--mt-p-amber); }
+    .platform .how, .built span, .credits p, .shots figcaption { font-size: 17px; }
+    footer { font-size: 16px; }
+    .built strong { font-size: 18px; }
+    .platform code { font-size: 17px; }
+    .shots { gap: 1.5rem; }
+    .platform, .built a, .built div { background: color-mix(in srgb, var(--mt-p-dark) 85%, transparent); }
   </style>
 </head>
-<body>
+<body data-magma-theme="thld">
 
 <nav id="auto-nav" data-depth="../../"></nav>
 
@@ -189,7 +70,7 @@
 </div>
 
 <div class="hero">
-  <img class="banner" src="../../og/arcade-solitaire-thld.png" alt="" width="600" height="315">
+  <img class="screen" src="img/flop.webp" alt="The flop in the Lava Dome: nine of diamonds, five of clubs and two of spades on the table, the seven and eight of diamonds in your hand, a high card still short of the dome's threshold" width="1088" height="680">
   <h1>TEXAS HOLD'EM<br>LAVA DOME</h1>
   <p class="tagline">solo hold'em against the dome &middot; bank it or let it ride</p>
 </div>
@@ -197,6 +78,20 @@
 <div class="section lead">
   <p>Texas Hold'Em with no opponent but the dome. Each round raises the ante and scores your hand against a climbing threshold: beat it to win chips, miss it and lose the bet.</p>
   <p>Between hands, bank your chips to keep them or leave them riding, until you go bust or escape the dome.</p>
+</div>
+
+<div class="section">
+  <h2>// in the dome //</h2>
+  <div class="shots">
+    <figure>
+      <img class="screen" src="img/title.webp" alt="The title screen: Texas Hold'em Lava Dome in cream pixel letters over Solo Poker, above Start Game, How to Play, High Scores and Credits" width="1088" height="642" loading="lazy">
+      <figcaption>solo poker under the dome</figcaption>
+    </figure>
+    <figure>
+      <img class="screen" src="img/round.webp" alt="Round 1 before the deal: an ante of 10 against a dome threshold of 10 points, with Deal Cards and Escape Dome" width="1088" height="680" loading="lazy">
+      <figcaption>beat the threshold, or escape the dome</figcaption>
+    </figure>
+  </div>
 </div>
 
 <div class="section">
