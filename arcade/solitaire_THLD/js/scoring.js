@@ -1,6 +1,14 @@
 // scoring.js - Texas Hold'Em Lava Dome | MagmaCrunch Media © 2024
 // High score persistence via MAGMA//OPS backend (ScoreClient)
 
+// Score entries come back from the shared score server, which stores what
+// players' browsers send it, so their text goes into the table as text.
+function escapeScoreText(value) {
+    const div = document.createElement('div');
+    div.textContent = String(value);
+    return div.innerHTML;
+}
+
 class Scoring {
     constructor(state) {
         this.state     = state;
@@ -15,7 +23,15 @@ class Scoring {
         this.isLoading = true;
 
         try {
-            this.state.highScores = await scoreClient.load('solitaire-thld');
+            // ScoreClient hands entries back as { initials, score, ...extra }.
+            // Everything below reads totalScore, the name this game files under,
+            // so a loaded board showed every score as 0 and its tenth place
+            // could never be beaten (anything > undefined is false).
+            const scores = await scoreClient.load('solitaire-thld');
+            this.state.highScores = (scores || []).map(s => ({
+                ...s,
+                totalScore: s.totalScore ?? s.score ?? 0
+            }));
         } catch (err) {
             console.warn('Could not load high scores:', err);
             this.state.highScores = [];
@@ -26,18 +42,20 @@ class Scoring {
 
     // ── Save ─────────────────────────────────────────────────
 
-    async saveHighScores() {
+    // Files ONE entry. ScoreClient.save() appends, on the server and in local
+    // storage alike, so this used to re-file the whole table on every
+    // submission: each run in a session added another copy of every earlier
+    // one, and the loaded entries went out with no score at all.
+    async saveHighScore(entry) {
         if (this.isSaving) return;
         this.isSaving = true;
 
         try {
-            for (const entry of this.state.highScores) {
-                await scoreClient.save('solitaire-thld', entry.initials, entry.totalScore, {
-                    rounds:   entry.rounds,
-                    escaped:  entry.escaped,
-                    date:     entry.date
-                });
-            }
+            await scoreClient.save('solitaire-thld', entry.initials, entry.totalScore, {
+                rounds:   entry.rounds,
+                escaped:  entry.escaped,
+                date:     entry.date
+            });
         } catch (err) {
             console.warn('Could not save high scores:', err);
         } finally {
@@ -58,20 +76,21 @@ class Scoring {
         this.state.highScores.forEach(s => s.isNew = false);
 
         // Add new entry
-        this.state.highScores.push({
+        const entry = {
             initials:   initials.toUpperCase().slice(0, 3) || 'AAA',
             totalScore: finalScore,
             rounds,
             escaped,
             isNew:      true,
             date:       new Date().toISOString().slice(0, 10)
-        });
+        };
+        this.state.highScores.push(entry);
 
         // Sort descending, keep top 10
         this.state.highScores.sort((a, b) => b.totalScore - a.totalScore);
         this.state.highScores = this.state.highScores.slice(0, 10);
 
-        await this.saveHighScores();
+        await this.saveHighScore(entry);
     }
 
     // ── Render ───────────────────────────────────────────────
@@ -100,8 +119,8 @@ class Scoring {
             row.className = 'score-entry' + (entry.isNew ? ' new-score' : '');
             row.innerHTML = `
                 <span class="rank">#${i + 1}</span>
-                <span class="initials">${entry.initials}</span>
-                <span class="score-value">${(entry.totalScore || 0).toLocaleString()}</span>
+                <span class="initials">${escapeScoreText(entry.initials)}</span>
+                <span class="score-value">${escapeScoreText(Number(entry.totalScore || 0).toLocaleString())}</span>
             `;
             fragment.appendChild(row);
         });

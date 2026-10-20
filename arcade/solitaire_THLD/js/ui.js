@@ -166,7 +166,10 @@ class UI {
         const preview   = this.dome.antePreview(2);
         const chips     = this.state.chips;
         const bank      = this.state.bank;
-        const cantAffordAnte = chips < ante && bank > 0;
+        // <=, not <: a stack that exactly covers the ante pays it and is left
+        // with nothing, and chargeAnte() ends the session on an empty stack --
+        // as a bust, holding the whole bank. Fetch chips first.
+        const cantAffordAnte = chips <= ante && bank > 0;
 
         return `
             <div class="phase-panel idle-panel">
@@ -210,7 +213,7 @@ class UI {
                 <div class="phase-actions">
                     <button id="btn-start-round" class="action-btn primary" ${cantAffordAnte ? 'style="display:none"' : ''}>DEAL CARDS</button>
                     ${cantAffordAnte ? `
-                    <button id="btn-withdraw-partial" class="action-btn">WITHDRAW & DEAL</button>
+                    <button id="btn-withdraw-deal" class="action-btn">WITHDRAW & DEAL</button>
                     ` : ''}
                     <button id="btn-escape-pre" class="action-btn escape-btn" ${this.state.chips <= 0 && bank <= 0 ? 'disabled' : ''}>ESCAPE DOME</button>
                 </div>
@@ -223,7 +226,9 @@ class UI {
         const status = this.betting.bettingStatus;
         const bets   = this.betting.suggestedBets;
         const bank   = this.state.bank;
-        const canWithdraw = bank > 0 && status.chips < status.minBet;
+        // MIN_BET, not status.minBet: minBet is clamped to the stack, so a
+        // stack was never smaller than it and this offer never appeared.
+        const canWithdraw = bank > 0 && status.chips < MIN_BET;
 
         return `
             <div class="phase-panel betting-panel">
@@ -338,10 +343,12 @@ class UI {
         `;
     }
 
-    // Resolve — show outcome after river
+    // Resolve — show outcome after river. Reads the resolution, never makes it:
+    // _advanceStreet() settles the hand before this render, so the header
+    // above it already shows the chips the hand paid. Resolving here, inside
+    // the render, drew the header first and left it a hand behind.
     _phaseResolve() {
-        const resolution = this.dome.resolveHand();
-        this._lastResolution = resolution; // Store for cashout phase reference
+        const resolution = this._lastResolution;
 
         const won    = resolution.beatDome;
         const cls    = won ? 'result-win' : 'result-loss';
@@ -481,11 +488,24 @@ class UI {
             if (input) input.value = e.currentTarget.dataset.amount;
         });
 
-        this._on('btn-withdraw-partial', 'click', () => {
+        // Its own id. It shared 'btn-withdraw-partial' with the cash-out
+        // panel's WITHDRAW AMOUNT, and every handler for an id is attached
+        // whenever that id is on screen, so each click ran both: the amount
+        // was withdrawn twice, and from the cash-out panel a new hand was
+        // dealt -- ante charged again -- without the round moving on.
+        this._on('btn-withdraw-deal', 'click', () => {
             const input  = document.getElementById('withdraw-input');
             const amount = parseInt(input?.value) || 0;
             const result = this.betting.withdrawFromBank(amount);
             if (!result.ok) { this._showError(result.error); return; }
+            // Still not enough to pay the ante and keep a chip: dealing now
+            // would have the ante take the stack and end the session with the
+            // rest of the bank unspent. Stay here and say so.
+            if (this.state.chips <= this.state.currentAnte && this.state.bank > 0) {
+                this.render();
+                this._showError(`Still short of the ${this.state.currentAnte} ante. Withdraw more.`);
+                return;
+            }
             this._startRound();
         });
 
@@ -496,7 +516,10 @@ class UI {
             this._updateRiskIndicator();
         });
 
-        this._onAll('.bet-quick-btn', 'click', (e) => {
+        // Bet quick picks only. The withdraw and cash-out picks share the
+        // bet-quick-btn class for its look, and this handler used to take
+        // them too: picking 125 to withdraw set the bet to 125 as well.
+        this._onAll('.bet-quick-btn:not(.withdraw-quick-btn):not(.cashout-quick-btn)', 'click', (e) => {
             this._pendingBet = parseInt(e.currentTarget.dataset.amount);
             const input = document.getElementById('bet-input') ||
                           document.getElementById('raise-input');
@@ -531,8 +554,7 @@ class UI {
         this._on('btn-place-bet', 'click', () => {
             const result = this.betting.placeBet(this._pendingBet);
             if (!result.ok) { this._showError(result.error); return; }
-            this.dealer.advanceStreet(); // Deal flop
-            this.render();
+            this._advanceStreet(); // Deal flop
         });
 
         this._on('btn-withdraw-bet', 'click', () => {
@@ -547,8 +569,7 @@ class UI {
 
         this._on('btn-check-preflop', 'click', () => {
             this.betting.check();
-            this.dealer.advanceStreet(); // Deal flop for free
-            this.render();
+            this._advanceStreet(); // Deal flop for free
         });
 
         // ── Street (flop/turn/river) ──────────────────────────
@@ -557,26 +578,24 @@ class UI {
             this._updateRiskIndicator();
         });
 
-        this._on('btn-advance-street', 'click', () => {
-            this.dealer.advanceStreet();
-            this.render();
-        });
+        this._on('btn-advance-street', 'click', () => this._advanceStreet());
 
         this._on('btn-raise', 'click', () => {
             const result = this.betting.raise(this._pendingBet);
             if (!result.ok) { this._showError(result.error); return; }
-            this.dealer.advanceStreet();
-            this.render();
+            this._advanceStreet();
         });
 
         this._on('btn-fold', 'click', () => {
             this.betting.fold();
             this.dealer.fold();
+            if (this._outOfEverything()) return;
             this.render();
         });
 
         // ── Resolve ──────────────────────────────────────────
         this._on('btn-to-cashout', 'click', () => {
+            if (this._outOfEverything()) return;
             this.state.phase = 'cashout';
             this.render();
         });
@@ -626,6 +645,34 @@ class UI {
         });
 
         this._on('btn-escape', 'click', () => this._handleEscape());
+    }
+
+    // ── Street flow ──────────────────────────────────────────
+
+    // Deals the next street, or settles the hand once the river is done. The
+    // hand is resolved here, on the way into the 'resolve' phase, so that
+    // render() only ever reads it.
+    _advanceStreet() {
+        this.dealer.advanceStreet();
+        if (this.state.phase === 'resolve') {
+            this._lastResolution = this.dome.resolveHand();
+            // resolveHand() moves straight on to 'cashout'; the result panel is
+            // shown first, and its CONTINUE is what moves on.
+            this.state.phase = 'resolve';
+        }
+        this.render();
+    }
+
+    // A lost or folded hand that took the last chip, with nothing banked, is
+    // the end of the session. It used to fall through to the cash-out panel,
+    // where NEXT ROUND is disabled and the only way out was ESCAPE DOME --
+    // which announced YOU ESCAPED THE DOME for a player who had just gone
+    // bust. startNextRound() already treats this as a bust; this gets there
+    // without the detour.
+    _outOfEverything() {
+        if (this.state.chips > 0 || this.state.bank > 0) return false;
+        this._handleSessionOver(this.dome._bust('No chips and no bank remaining.'));
+        return true;
     }
 
     // ── Session over ─────────────────────────────────────────
@@ -679,7 +726,13 @@ class UI {
 
         // High score submission
         if (isHigh) {
+            // Once per session. The save is awaited before the entry box is
+            // swapped out, so an Enter and a click -- or two Enters -- in that
+            // gap each filed the score.
+            let submitted = false;
             const submitScore = async () => {
+                if (submitted) return;
+                submitted = true;
                 const input    = document.getElementById('initials-input');
                 const initials = (input?.value || 'AAA').toUpperCase();
                 await this.scoring.submitScore(initials, finalScore, this.state.round, escaped);
@@ -763,7 +816,10 @@ class UI {
 
     _chipBreakdown(amount) {
         if (!amount) return '';
-        const stacks = breakIntoStacks(amount);
+        // Through AdCards: the bundle exports it there and nowhere else, so the
+        // bare name threw -- and as this runs inside every bet panel's render,
+        // a bet of anything above 0 stopped the page dead on its panel.
+        const stacks = AdCards.breakIntoStacks(amount);
         return stacks.map(s => {
             const label = s.denom.label;
             return s.count > 1 ? `${label}×${s.count}` : `${label}`;
