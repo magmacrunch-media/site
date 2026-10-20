@@ -131,8 +131,11 @@ GH.main = {
   markRestored(id) {
     try {
       const r = this.restored();
+      const fresh = !r[id];
       r[id] = true;
       localStorage.setItem(this.PROGRESS_KEY, JSON.stringify(r));
+      // A string came back: the strum gets it from now on.
+      if (fresh) GH.sound.refreshStrum();
     } catch (err) { /* not remembered */ }
   },
 

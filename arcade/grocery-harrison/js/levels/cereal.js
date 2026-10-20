@@ -9,6 +9,8 @@ GH.levels.cereal = {
 
   id: 'cereal',
   aisle: 4,
+  // The string of the chord this aisle gives back (GH.level.STRINGS).
+  string: 0,
   name: 'CEREAL',
   title: 'CEREAL AISLE',
   theme: { wall: '#141a2e', wallLow: '#1f2a44' },

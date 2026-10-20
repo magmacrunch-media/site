@@ -631,6 +631,27 @@ GH.render = {
       c.textAlign = 'center';
     });
 
+    // The chord: six slots, one string each, lit once its aisle is restored.
+    const found = GH.level.strings(restored);
+    const cy = sy + sh - 28;
+    c.textAlign = 'left';
+    c.font = '7px "Press Start 2P", monospace';
+    c.fillStyle = 'rgba(255, 233, 168, 0.7)';
+    c.fillText(GH.DIALOGUE.chord.title, sx + 30, cy + 3);
+    c.textAlign = 'center';
+    GH.level.STRINGS.forEach((s, i) => {
+      const x = sx + 150 + i * 30;
+      c.strokeStyle = 'rgba(255, 233, 168, 0.5)';
+      c.beginPath(); c.arc(x, cy, 10, 0, Math.PI * 2); c.stroke();
+      if (found[i]) {
+        c.fillStyle = '#ffe9a8';
+        c.beginPath(); c.arc(x, cy, 10, 0, Math.PI * 2); c.fill();
+        c.fillStyle = '#1d4a3a';
+        c.font = '8px "Press Start 2P", monospace';
+        c.fillText(s.name, x, cy + 4);
+      }
+    });
+
     // Harrison, small, under the sign.
     const hx = GH.W / 2, floor = 448;
     c.fillStyle = '#c9ccd1';
@@ -674,6 +695,9 @@ GH.render = {
     // New crystals banked for the checkout, once each, for good.
     lines.push([GH.DIALOGUE.checkout.banked, '+' + (GH.main.lastBanked || 0)]);
     if (g.prize) lines.push(['PRIZE INSIDE', 'FOUND']);
+    // The string this aisle gave back.
+    const s = GH.level.STRINGS[g.level.string];
+    if (g.quest === 'done' && s) lines.push([GH.DIALOGUE.chord.found, s.name]);
     lines.forEach(([k, v], i) => {
       c.textAlign = 'left';
       c.fillText(k, 190, 210 + i * 26);

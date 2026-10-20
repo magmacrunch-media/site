@@ -58,6 +58,7 @@ GH.DIALOGUE = {
       ],
       done: [
         `Back in its box! The whole aisle feels tidier.`,
+        `Listen. The oats have been humming one note since four. A low G. That's yours, dear.`,
         `Dairy is next door. Bring a sweater. My grandson Ollie is in there somewhere.`,
       ],
     },
@@ -90,6 +91,7 @@ GH.DIALOGUE = {
       ],
       done: [
         `Ally's capped again! She says thanks. Well. She said "brrr".`,
+        `The cartons have been humming a B all night. Take it, it's not ours.`,
         `Produce is next door. I hear it rains in there.`,
       ],
     },
@@ -122,6 +124,7 @@ GH.DIALOGUE = {
       ],
       done: [
         `Back with the bunch! I could cry. Peppers don't cry. Onions make us.`,
+        `Hear that? The whole display's been humming a D. Sounds like it belongs to you.`,
         `Bakery's past the frozen bit, they say. Nobody's been. It's not built yet.`,
       ],
     },
@@ -154,6 +157,12 @@ GH.DIALOGUE = {
       bag: { name: `A STURDIER BAG`, desc: `carrying something hurts your jump less` },
       dance: { name: `THE DANCING SONG`, desc: `stunned pests keep dancing a good while longer` },
     },
+  },
+
+  // ---- The chord he is putting back together, one string per aisle ------------
+  chord: {
+    title: `THE CHORD`,       // over the six slots on the directory sign
+    found: `A NOTE CAME BACK`, // on the restored card, beside the note's name
   },
 
   // ---- Little words that pop up over Harrison ----------------------------------

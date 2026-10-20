@@ -322,9 +322,10 @@ GH.sound = {
       jump: sweep(240, 520, 0.12, 'pulse', 0.5),
       jumpHeavy: sweep(180, 380, 0.14, 'pulse', 0.5),
       land: make(0.09, (o) => { let lp = 0; for (let i = 0; i < o.length; i++) { const t = i / R; lp += (rnd() - lp) * 0.25; o[i] = (Math.sin(t * 2 * Math.PI * 70) * 0.6 + lp * 0.6) * Math.pow(1 - t / 0.09, 2); } }),
-      // The strum: a G major chord, string by string, low to high.
-      strum: make(1.3, (o) => [43, 47, 50, 55, 59, 67].forEach((m, i) =>
-        this.pluckNote(o, Math.floor(i * 0.018 * R), 1.3 - i * 0.018, m, { vol: 0.5, bright: 0.7, damp: 0.994 }, 300 + i))),
+      // The strum is built from the strings found so far (strumFor); this is
+      // the start, with none. The whole chord, as played in the walk-in:
+      strum: this.strumFor(this.found()),
+      chord: this.strumFor(GH.level.STRINGS.map(() => true)),
       stomp: make(0.12, (o) => { chip(o, 0, 0.05, 72, blip); chip(o, 0.04, 0.06, 60, blip); }),
       boing: sweep(180, 720, 0.28, 'tri', 0.6),
       hurt: make(0.3, (o) => { let ph = 0; for (let i = 0; i < o.length; i++) { const t = i / R; ph += (220 - 400 * t) / R; o[i] = ((ph % 1) < 0.5 ? 0.5 : -0.5) * Math.pow(1 - t / 0.3, 1.5) + rnd() * 0.15 * (1 - t / 0.3); } }),
@@ -347,6 +348,35 @@ GH.sound = {
       tick: make(0.04, (o) => chip(o, 0, 0.02, 84, { ...blip, vol: 0.25 })),
       choose: make(0.2, (o) => { chip(o, 0, 0.05, 76, blip); chip(o, 0.06, 0.1, 83, blip); }),
     };
+  },
+
+  // The strum, string by string, low to high: a found string rings, one not
+  // yet found is a short damped thunk under the fingers. So with no aisles
+  // restored it is a muted scratch, and it grows into the full chord.
+  strumFor(found) {
+    const R = this.RATE, len = 1.3;
+    const o = new Float32Array(Math.floor(len * R));
+    GH.level.STRINGS.forEach((s, i) => {
+      const at = Math.floor(i * 0.018 * R);
+      if (found[i]) this.pluckNote(o, at, len - i * 0.018, s.midi, { vol: 0.5, bright: 0.7, damp: 0.994 }, 300 + i);
+      else this.pluckNote(o, at, 0.09, s.midi, { vol: 0.28, bright: 0.9, damp: 0.6 }, 300 + i);
+    });
+    return this.master(o, 0.7);
+  },
+
+  // The strings found, from the restored aisles main.js remembers.
+  found() {
+    return GH.level.strings(GH.main && GH.main.restored ? GH.main.restored() : {});
+  },
+
+  // Rebuild the strum after a string comes back.
+  async refreshStrum() {
+    if (!this.available) return;
+    try {
+      const url = URL.createObjectURL(this.wav(this.strumFor(this.found())));
+      await AdAudio.loadSfx('strum', url, { pool: 2, volume: 0.9 });
+      URL.revokeObjectURL(url);
+    } catch (err) { /* the old strum keeps playing */ }
   },
 
   // 16-bit mono PCM in a RIFF/WAVE container, as CALDERA builds it.
@@ -381,7 +411,7 @@ GH.sound = {
       try {
         const url = URL.createObjectURL(this.wav(fx[name]));
         const pool = /^(jump|land|sugar|tick|talk)/.test(name) ? 3 : 2;
-        await AdAudio.loadSfx(name, url, { pool, volume: name === 'strum' ? 0.9 : 0.7 });
+        await AdAudio.loadSfx(name, url, { pool, volume: name === 'strum' || name === 'chord' ? 0.9 : 0.7 });
         URL.revokeObjectURL(url);
         this.loaded.push(name);
       } catch (err) {

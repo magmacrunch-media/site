@@ -14,6 +14,8 @@ GH.levels.dairy = {
 
   id: 'dairy',
   aisle: 5,
+  // The string of the chord this aisle gives back (GH.level.STRINGS).
+  string: 1,
   name: 'DAIRY',
   title: 'DAIRY CASE',
   theme: { wall: '#0d1c28', wallLow: '#17323f' },

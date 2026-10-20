@@ -34,6 +34,31 @@ GH.level = {
 
   // The store directory, in the order it is printed by the door. Aisles
   // with an `id` are built; the rest say "coming soon".
+  // The chord Harrison played in the walk-in: an open G major, one string per
+  // aisle, low to high. Each restored aisle gives its string back (its level
+  // file's `string`); the strum rings only the strings found and thunks the
+  // rest. Three aisles find G, B and D, a whole triad, which is where the demo
+  // ends; the other three are for the full game. Six strings, six aisles.
+  STRINGS: [
+    { midi: 43, name: 'G' },
+    { midi: 47, name: 'B' },
+    { midi: 50, name: 'D' },
+    { midi: 55, name: 'G' },
+    { midi: 59, name: 'B' },
+    { midi: 67, name: 'G' },
+  ],
+
+  // Which strings are back, as a list of six booleans, from the restored map
+  // main.js keeps.
+  strings(restored) {
+    const found = this.STRINGS.map(() => false);
+    for (const id of Object.keys(GH.levels)) {
+      const s = GH.levels[id].string;
+      if (restored && restored[id] && s >= 0 && s < found.length) found[s] = true;
+    }
+    return found;
+  },
+
   DIRECTORY: [
     { aisle: 4, id: 'cereal' },
     { aisle: 5, id: 'dairy' },

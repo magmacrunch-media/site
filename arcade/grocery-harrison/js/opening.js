@@ -37,7 +37,8 @@ GH.opening = {
     this.beat++;
     this.t0 = t;
     // The sound of each beat, played as it arrives.
-    const cue = ['', 'strum', 'strum', 'magma', 'fall', 'checkpoint'][this.beat];
+    // The chord is the whole chord: he played every string, that once.
+    const cue = ['', 'chord', 'chord', 'magma', 'fall', 'checkpoint'][this.beat];
     if (cue) GH.sound.play(cue);
     return true;
   },

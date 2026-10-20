@@ -11,6 +11,8 @@ GH.levels.produce = {
 
   id: 'produce',
   aisle: 6,
+  // The string of the chord this aisle gives back (GH.level.STRINGS).
+  string: 2,
   name: 'PRODUCE',
   title: 'PRODUCE AISLE',
   theme: { wall: '#0e1f16', wallLow: '#1b3626' },
