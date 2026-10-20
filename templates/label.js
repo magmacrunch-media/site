@@ -106,7 +106,7 @@
             (parent ? ' <span class="lbl-intro-part">part of <a href="../' + parent.slug + '/">' + esc(parent.name) + '</a>.</span>' : '') +
             '</p>' +
             '<div class="lbl-siblings" role="navigation" aria-label="other labels">' +
-            '<a href="../" class="lbl-sib lbl-sib-all">\u2190 all labels</a>' + siblings + '</div>');
+            '<a href="../" class="lbl-sib lbl-sib-all">\&lt; all labels</a>' + siblings + '</div>');
     }
 
 
