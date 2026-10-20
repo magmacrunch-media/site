@@ -20,162 +20,39 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Courier+Prime:wght@400;700&display=swap">
   <link rel="stylesheet" href="../../style.css?v=53e9e146">
   <link rel="stylesheet" href="../crumbs.css?v=ff3801ee">
+  <link rel="stylesheet" href="../magma-themes.css?v=fd2bddc5">
+  <link rel="stylesheet" href="../game-page.css?v=4448c4a0">
   <style>
-    :root { color-scheme: dark; --accent: #00f5ff; --accent-dk: #00878c; --line: #33304a; --panel: #1c1b26; --dim: #9d99b5; }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-
+    /* 15 Puzzle's look, the arcade's puzzle chrome: cyan for the
+       title's bloom and the board's glowing frame, a small spaced dim
+       subtitle, outlined panels and square buttons on violet-black, and
+       its tile spectrum as a faint wall behind the page. Colours come from the 15 puzzle theme. */
     body {
-      font: 14px/1.6 'Courier Prime', ui-monospace, SFMono-Regular, Menlo, monospace;
-      background: #14141b; color: #e8e6f0;
-      min-height: 100vh;
-      display: flex; flex-direction: column;
+      --line: color-mix(in srgb, var(--mt-p-fp-dim) 30%, var(--mt-bg));
+      --link: var(--mt-accent2);
+      --radius: 4px;
+      --head-glow: 0 0 15px color-mix(in srgb, var(--mt-p-fp-cyan) 60%, transparent);
+      --btn-bg: transparent;
+      --btn-ink: var(--mt-p-fp-cyan);
+      --btn-shadow: transparent;
+      --frame: var(--mt-p-fp-cyan);
+      --frame-glow: 0 0 24px color-mix(in srgb, var(--mt-p-fp-cyan) 35%, transparent);
+      --panel-border: color-mix(in srgb, var(--mt-p-fp-cyan) 25%, var(--mt-p-fp-panel));
+      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='256' height='320'%3E%3Crect x='6' y='6' width='52' height='52' rx='6' fill='%230a3a6a' opacity='.16'/%3E%3Crect x='70' y='6' width='52' height='52' rx='6' fill='%230a3a6a' opacity='.16'/%3E%3Crect x='134' y='6' width='52' height='52' rx='6' fill='%230a3a6a' opacity='.16'/%3E%3Crect x='198' y='6' width='52' height='52' rx='6' fill='%230a3a6a' opacity='.16'/%3E%3Crect x='6' y='70' width='52' height='52' rx='6' fill='%23007a6a' opacity='.16'/%3E%3Crect x='70' y='70' width='52' height='52' rx='6' fill='%23007a6a' opacity='.16'/%3E%3Crect x='134' y='70' width='52' height='52' rx='6' fill='%23007a6a' opacity='.16'/%3E%3Crect x='198' y='70' width='52' height='52' rx='6' fill='%23007a6a' opacity='.16'/%3E%3Crect x='6' y='134' width='52' height='52' rx='6' fill='%236a6a00' opacity='.16'/%3E%3Crect x='70' y='134' width='52' height='52' rx='6' fill='%236a6a00' opacity='.16'/%3E%3Crect x='134' y='134' width='52' height='52' rx='6' fill='%236a6a00' opacity='.16'/%3E%3Crect x='198' y='134' width='52' height='52' rx='6' fill='%236a6a00' opacity='.16'/%3E%3Crect x='6' y='198' width='52' height='52' rx='6' fill='%23c43a00' opacity='.16'/%3E%3Crect x='70' y='198' width='52' height='52' rx='6' fill='%23c43a00' opacity='.16'/%3E%3Crect x='134' y='198' width='52' height='52' rx='6' fill='%23c43a00' opacity='.16'/%3E%3Crect x='198' y='198' width='52' height='52' rx='6' fill='%23c43a00' opacity='.16'/%3E%3Crect x='6' y='262' width='52' height='52' rx='6' fill='%236a0080' opacity='.16'/%3E%3Crect x='70' y='262' width='52' height='52' rx='6' fill='%236a0080' opacity='.16'/%3E%3Crect x='134' y='262' width='52' height='52' rx='6' fill='%236a0080' opacity='.16'/%3E%3Crect x='198' y='262' width='52' height='52' rx='6' fill='%236a0080' opacity='.16'/%3E%3C/svg%3E") 0 0 / 256px 320px fixed, var(--mt-bg);
     }
-    body > * { width: 100%; }
-    a { color: #7cc7ff; }
-
-    /* The back bar every ware product page carries, as on hologram's: a
-       strip under the fixed 48px site nav with the breadcrumb trail
-       (ware/crumbs.css). The margin is what keeps it out from under the nav. */
-    .tool-nav {
-      margin-top: 48px;
-      padding: 8px 24px;
-      border-bottom: 1px solid var(--line);
-      background: #14141b;
-      flex-shrink: 0;
-    }
-    .tool-nav .breadcrumb { --crumb-accent: var(--accent); }
-    footer {
-      font-family: 'Courier Prime', monospace;
-      font-size: 12px;
-      border-top: 1px solid var(--line);
-    }
-    footer span { color: #7cc7ff; }
-
-    /* ── Hero ──────────────────────────────────────────── */
-
-    .hero { text-align: center; padding: 2.5rem 1.5rem 2rem; }
-    .hero img.banner {
-      width: min(100%, 480px); height: auto;
-      border: 1px solid var(--line); border-radius: 8px;
-      margin-bottom: 1.5rem;
-    }
-    .hero img.art {
-      width: 96px; height: 96px;
-      image-rendering: pixelated;
-      margin-bottom: 1.25rem;
-    }
-    .hero h1 {
-      font-family: 'Press Start 2P', monospace;
-      font-size: clamp(16px, 3.4vw, 30px);
-      font-weight: 400;
-      line-height: 1.5;
-      color: var(--accent);
-      text-shadow: 3px 3px 0 #33304a, 6px 6px 0 #1c1b26;
-      letter-spacing: 0.06em;
-      margin-bottom: .9rem;
-    }
-    .hero .tagline { font-size: 13px; color: var(--dim); }
-
-    .section { max-width: 640px; margin: 0 auto 2.75rem; padding: 0 1.5rem; }
-    .section h2 {
-      font-family: 'Press Start 2P', monospace;
-      font-size: 10px; font-weight: 400;
-      color: var(--accent);
-      margin-bottom: .9rem;
-      letter-spacing: 0.05em;
-    }
-    .lead p { color: #c9c6d9; margin-bottom: .7rem; }
-    .lead p:last-child { margin-bottom: 0; }
-
-    /* ── Where to play ─────────────────────────────────── */
-
-    /* One row per platform. The browser row is the call to action, so it is
-       the only one with a filled button; the rest are instructions. */
-    .platforms { display: grid; gap: .6rem; }
-    .platform {
-      display: grid;
-      grid-template-columns: 7.5rem 1fr;
-      gap: 1rem;
-      align-items: center;
-      background: var(--panel);
-      border: 1px solid var(--line);
-      border-radius: 10px;
-      padding: .9rem 1rem;
-    }
-    .platform .name {
-      font-family: 'Press Start 2P', monospace;
-      font-size: 9px; line-height: 1.6;
-      color: #e8e6f0;
-    }
-    .platform .how { font-size: 12px; color: var(--dim); }
-    .platform .how strong { color: #e8e6f0; font-weight: 700; }
-    .platform code {
-      display: inline-block;
-      font: 12px 'Courier Prime', monospace;
-      color: var(--accent);
-      background: #14141b;
-      border: 1px solid var(--line);
-      border-radius: 6px;
-      padding: .2rem .5rem;
-      margin: .15rem 0;
-      overflow-wrap: anywhere;
-    }
-    .platform.soon { opacity: .6; }
-    .badge {
-      font: 8px/1 'Press Start 2P', monospace;
-      color: var(--accent);
-      border: 1px solid currentColor;
-      border-radius: 4px;
-      padding: .25rem .4rem;
-      margin: .3rem 0 0 .35rem;
-      display: inline-block;
-      white-space: nowrap;
-      vertical-align: middle;
-    }
-
-    .play-btn {
-      display: inline-block;
-      font: 10px/1 'Press Start 2P', monospace;
-      color: #14141b;
-      background: var(--accent);
-      border-radius: 6px;
-      padding: .7rem 1rem;
-      text-decoration: none;
-      margin-right: .6rem;
-      box-shadow: 3px 3px 0 var(--accent-dk);
-      transition: transform .1s, box-shadow .1s;
-    }
-    .play-btn:hover { transform: translate(-1px, -1px); box-shadow: 4px 4px 0 var(--accent-dk); }
-
-    /* ── Built with / credits ──────────────────────────── */
-
-    .built { display: grid; grid-template-columns: 1fr 1fr; gap: .5rem; }
-    .built a, .built div {
-      display: block;
-      background: var(--panel);
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      padding: .6rem .75rem;
-      text-decoration: none;
-      color: inherit;
-    }
-    .built a:hover { border-color: #7cc7ff; }
-    .built strong { display: block; color: #7cc7ff; font-size: 11px; margin-bottom: .1rem; }
-    .built span { color: var(--dim); font-size: 11px; }
-
-    .credits p { font-size: 12px; color: var(--dim); margin-bottom: .55rem; }
-    .credits strong { color: #e8e6f0; }
-
-    @media (max-width: 560px) {
-      .hero { padding: 2rem 1rem 1.5rem; }
-      .section { padding: 0 1rem; }
-      .platform { grid-template-columns: 1fr; gap: .45rem; }
-      .built { grid-template-columns: 1fr; }
-      .play-btn { min-height: 44px; display: inline-flex; align-items: center; }
+    .hero h1 { font-size: clamp(22px, 5vw, 44px); }
+    .hero .tagline { font-size: 11px; letter-spacing: .25em; text-transform: uppercase; }
+    .hero .screen { width: min(100%, 480px); }
+    .platform, .built a, .built div { background: color-mix(in srgb, var(--mt-surface) 80%, transparent); }
+    .play-btn { border: 1px solid currentColor; }
+    .play-btn:hover, .play-btn:focus-visible {
+      transform: none;
+      background: color-mix(in srgb, var(--mt-p-fp-cyan) 15%, transparent);
+      box-shadow: 0 0 14px color-mix(in srgb, var(--mt-p-fp-cyan) 45%, transparent);
     }
   </style>
 </head>
-<body>
+<body data-magma-theme="fifteen-puzzle">
 
 <nav id="auto-nav" data-depth="../../"></nav>
 
@@ -189,7 +66,7 @@
 </div>
 
 <div class="hero">
-  <img class="banner" src="../../og/arcade-fifteen-puzzle.png" alt="" width="600" height="315">
+  <img class="screen" src="img/board.webp" alt="The 15 Puzzle at nine moves: fifteen numbered tiles in a rainbow of colours, blue through green and orange to magenta, with the gap in the bottom-right corner" width="720" height="930">
   <h1>15 PUZZLE</h1>
   <p class="tagline">the classic sliding tile puzzle &middot; fewer moves is better</p>
 </div>
@@ -197,6 +74,20 @@
 <div class="section lead">
   <p>The classic sliding tile puzzle: slide the numbered tiles back into order.</p>
   <p>Boards run from the 8 puzzle on three by three up to six by six, with four by four as the default. Your score is your move count, so fewer is better.</p>
+</div>
+
+<div class="section">
+  <h2>// at the board //</h2>
+  <div class="shots">
+    <figure>
+      <img class="screen" src="img/title.webp" alt="The title screen: a big glowing cyan 15 over Sliding Tile Puzzle" width="640" height="400" loading="lazy">
+      <figcaption>the classic sliding tile puzzle</figcaption>
+    </figure>
+    <figure>
+      <img class="screen" src="img/grid-size.webp" alt="Select grid size, set to 4×4 mode, 15 puzzle, with a Start Game button" width="640" height="373" loading="lazy">
+      <figcaption>grids from 3×3 to 6×6</figcaption>
+    </figure>
+  </div>
 </div>
 
 <div class="section">
