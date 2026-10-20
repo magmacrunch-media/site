@@ -33,11 +33,22 @@
         }
 
         /* The trail's look is ware/crumbs.css, shared with the product
-           pages; only where it sits on a hub is decided here. */
-        .breadcrumb {
-            margin-top: -8px;
-            margin-bottom: 16px;
-            align-self: flex-start;
+           pages. Where it sits matches them too: a strip directly under the
+           fixed 48px site nav, 8px 24px of padding, a rule beneath it. So
+           the trail is in the same place on every ware page, hub or not.
+           The hubs keep their cyan; crumbs.css greys a .tool-nav trail for
+           the product pages' palettes, hence the extra specificity. */
+        .tool-nav {
+            margin-top: 48px;
+            padding: 8px 24px;
+            border-bottom: 1px solid rgba(0,122,122,0.5);
+            flex-shrink: 0;
+        }
+        body .tool-nav .breadcrumb {
+            --crumb-link: var(--cyan-dim);
+            --crumb-hover: var(--cyan);
+            --crumb-sep: var(--cyan);
+            --crumb-current: var(--cyan);
         }
 
         main {
@@ -45,7 +56,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            padding: 80px 20px 60px;
+            padding: 24px 20px 60px;
         }
 
         /* ── TERMINAL PROMPT ── */

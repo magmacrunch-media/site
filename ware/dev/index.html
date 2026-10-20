@@ -15,15 +15,37 @@
     <meta property="og:locale" content="en_US">
     <link rel="icon" type="image/x-icon" href="../../favicon.ico">
     <link rel="stylesheet" href="../../style.css?v=53e9e146">
-    <link rel="stylesheet" href="../ware.css?v=22e7fc5c">
+    <link rel="stylesheet" href="../ware.css?v=c8c3b08d">
     <link rel="stylesheet" href="../crumbs.css?v=ff3801ee">
+    <!-- The group headings are this page's alone, so they live here rather
+         than in ware.css, whose stamp every ware hub shares. Same look as the
+         groups on games/. -->
+    <style>
+        .tool-group {
+            font-family: 'Press Start 2P', monospace;
+            font-size: 10px; font-weight: 400;
+            color: var(--cyan);
+            letter-spacing: 0.1em;
+            width: min(520px, 90vw);
+            margin: 0 0 6px;
+            animation: fadeUp 0.5s 0.12s ease both;
+        }
+        .tool-group-blurb {
+            font-family: 'Courier Prime', monospace;
+            font-size: 12px;
+            color: var(--cyan-dim);
+            width: min(520px, 90vw);
+            margin: 0 0 14px;
+            animation: fadeUp 0.5s 0.12s ease both;
+        }
+        .tool-cards + .tool-group { margin-top: 44px; }
+    </style>
 </head>
 <body>
 
 <nav id="auto-nav" data-depth="../../"></nav>
 
-<main>
-
+<div class="tool-nav">
     <div class="breadcrumb">
         <a href="../../">home</a>
         <span class="sep">›</span>
@@ -31,11 +53,15 @@
         <span class="sep">›</span>
         <span class="current">developer tools</span>
     </div>
+</div>
+
+<main>
 
     <h1 class="page-title">// developer tools //</h1>
     <p class="page-subtitle">game engines, scripting language, &amp; educational tools</p>
 
-    <!-- TOOL CARDS -->
+    <h2 class="tool-group">// game engines //</h2>
+    <p class="tool-group-blurb">the engines under the arcade, the wii games &amp; the 3D work</p>
     <div class="tool-cards">
 
         <a href="../adenosine/" class="tool-card t-adenosine">
@@ -43,16 +69,6 @@
                 <div class="tc-text">
                     <span class="tc-label">ADENOSINE</span>
                     <span class="tc-desc">game engine collection for the magmacrunch web arcade</span>
-                </div>
-                <span class="tc-arrow">▶</span>
-            </div>
-        </a>
-
-        <a href="../crunch-c/" class="tool-card t-crunch-c">
-            <div class="tc-inner">
-                <div class="tc-text">
-                    <span class="tc-label">CRUNCH-C</span>
-                    <span class="tc-desc">learn C memory management without segfaults &middot; 18 lessons in your browser</span>
                 </div>
                 <span class="tc-arrow">▶</span>
             </div>
@@ -78,27 +94,6 @@
             </div>
         </a>
 
-        <a href="../hypnopompia/" class="tool-card t-hypnopompia">
-            <div class="tc-inner">
-                <div class="tc-text">
-                    <span class="tc-label">HYPNOPOMPIA</span>
-                    <span class="tc-desc">iOS shell for the arcade games &middot; Game Center plugin &middot; store tooling</span>
-                </div>
-                <span class="tc-arrow">▶</span>
-            </div>
-        </a>
-
-        <a href="../magmascript/" class="tool-card t-magmascript">
-            <div class="tc-inner">
-                <div class="tc-text">
-                    <span class="tc-label">MAGMASCRIPT</span>
-                    <span class="tc-desc">python-inspired mini language</span>
-                </div>
-                <span class="tc-arrow">▶</span>
-            </div>
-        </a>
-
-
         <a href="../magnolia/" class="tool-card t-magnolia">
             <div class="tc-inner">
                 <div class="tc-text">
@@ -114,6 +109,48 @@
                 <div class="tc-text">
                     <span class="tc-label">TEXASTOAST</span>
                     <span class="tc-desc">RPG engine · I2C hardware bridge · Python</span>
+                </div>
+                <span class="tc-arrow">▶</span>
+            </div>
+        </a>
+
+    </div>
+
+    <h2 class="tool-group">// languages &amp; platform //</h2>
+    <p class="tool-group-blurb">a scripting language, and the iOS shell the arcade games ship in</p>
+    <div class="tool-cards">
+
+        <a href="../magmascript/" class="tool-card t-magmascript">
+            <div class="tc-inner">
+                <div class="tc-text">
+                    <span class="tc-label">MAGMASCRIPT</span>
+                    <span class="tc-desc">python-inspired mini language</span>
+                </div>
+                <span class="tc-arrow">▶</span>
+            </div>
+        </a>
+
+        <a href="../hypnopompia/" class="tool-card t-hypnopompia">
+            <div class="tc-inner">
+                <div class="tc-text">
+                    <span class="tc-label">HYPNOPOMPIA</span>
+                    <span class="tc-desc">iOS shell for the arcade games &middot; Game Center plugin &middot; store tooling</span>
+                </div>
+                <span class="tc-arrow">▶</span>
+            </div>
+        </a>
+
+    </div>
+
+    <h2 class="tool-group">// learning //</h2>
+    <p class="tool-group-blurb">courses you can run in the browser</p>
+    <div class="tool-cards">
+
+        <a href="../crunch-c/" class="tool-card t-crunch-c">
+            <div class="tc-inner">
+                <div class="tc-text">
+                    <span class="tc-label">CRUNCH-C</span>
+                    <span class="tc-desc">learn C memory management without segfaults &middot; 18 lessons in your browser</span>
                 </div>
                 <span class="tc-arrow">▶</span>
             </div>

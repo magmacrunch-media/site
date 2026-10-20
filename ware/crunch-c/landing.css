@@ -14,10 +14,13 @@ body {
 
 /* ── Tool nav ───────────────────────────────────────────── */
 
+/* The strip every ware product page has, under the fixed 48px site nav. */
 .tool-nav {
-  padding: .4rem 1.25rem;
+  margin-top: 48px;
+  padding: 8px 24px;
   border-bottom: 1px solid #33304a;
-  background: #1c1b26;
+  background: #14141b;
+  flex-shrink: 0;
 }
 .tool-nav .breadcrumb { --crumb-accent: #7cc7ff; }
 
