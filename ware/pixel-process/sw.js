@@ -61,6 +61,11 @@
 
 var CACHE = "crunchscope-v2";
 
+// The site is one origin, so every page's worker shares one Cache Storage.
+// Activation clears only this tool's own older caches: it used to delete
+// every cache but CACHE, wiping the arcade games' offline copies too.
+var PREFIX = "crunchscope-";
+
 self.addEventListener("install", function () {
   // Nothing to precache. Take over without waiting for every tab to close, so
   // a corrected worker reaches people promptly.
@@ -71,7 +76,7 @@ self.addEventListener("activate", function (e) {
   e.waitUntil(
     caches.keys().then(function (names) {
       return Promise.all(
-        names.filter(function (n) { return n !== CACHE; })
+        names.filter(function (n) { return n.indexOf(PREFIX) === 0 && n !== CACHE; })
              .map(function (n) { return caches.delete(n); })
       );
     }).then(function () {
