@@ -21,8 +21,8 @@
 
         .breadcrumb {
             font-family: 'Press Start 2P', monospace;
-            font-size: 7px;
-            color: #666;
+            font-size: 8px;
+            color: #888;
             letter-spacing: 0.1em;
             margin-top: 0;
             margin-bottom: 24px;
@@ -30,7 +30,7 @@
         }
         .breadcrumb a { color: #888; text-decoration: none; transition: color 0.15s; }
         .breadcrumb a:hover { color: #c02828; }
-        .breadcrumb .sep { margin: 0 8px; color: #333; }
+        .breadcrumb .sep { margin: 0 8px; color: #555; }
         .breadcrumb .current { color: #c02828; }
 
         /* ── PAGE HEADER ── */
@@ -65,7 +65,7 @@
             font-family: 'Courier Prime', monospace;
             font-size: 14px;
             line-height: 1.8;
-            color: #333;
+            color: #a89f88;
         }
 
         .press-intro a {
@@ -79,7 +79,7 @@
         .section-divider {
             width: min(640px, 90vw);
             height: 2px;
-            background: #c8c0a8;
+            background: #333;
             margin-bottom: 48px;
             position: relative;
             animation: fadeUp 0.5s 0.15s ease both;
@@ -90,7 +90,7 @@
             left: 50%;
             top: 50%;
             transform: translate(-50%, -50%);
-            background: #f0e4c8;
+            background: #1a1a1a;
             padding: 0 12px;
             color: #c02828;
             font-size: 10px;
@@ -102,13 +102,14 @@
             display: flex;
             flex-direction: column;
             gap: 0;
+            margin-bottom: 48px;
             animation: fadeUp 0.5s 0.18s ease both;
         }
 
         .pieces-label {
             font-family: 'Press Start 2P', monospace;
-            font-size: 7px;
-            color: #999;
+            font-size: 8px;
+            color: #b0a890;
             letter-spacing: 0.15em;
             margin-bottom: 20px;
         }
@@ -164,8 +165,16 @@
         .piece-card-meta {
             font-family: 'Courier Prime', monospace;
             font-size: 12px;
-            color: #666;
+            color: #8a8270;
             line-height: 1.5;
+        }
+
+        .piece-card-desc {
+            font-family: 'Courier Prime', monospace;
+            font-size: 13px;
+            color: #b0a890;
+            line-height: 1.6;
+            margin-top: 8px;
         }
 
         .piece-card-meta .type {
@@ -184,8 +193,8 @@
             font-family: 'Press Start 2P', monospace;
             font-size: 10px;
             color: #c02828;
-            opacity: 0;
-            transform: translateX(-6px);
+            opacity: 0.35;
+            transform: translateX(-4px);
             transition: opacity 0.15s, transform 0.15s;
             flex-shrink: 0;
         }
@@ -217,11 +226,11 @@
         }
         /* ── CONTACT BOX ── */
         .contact-box {
-            width: min(600px, 90vw);
+            width: min(640px, 90vw);
             border: 2px solid #333;
+            border-left: 6px solid #c02828;
             background: #222;
             padding: 28px;
-            margin-top: 48px;
             text-align: center;
             animation: fadeUp 0.5s 0.2s ease both;
         }
@@ -233,11 +242,10 @@
             margin-bottom: 20px;
         }
         .contact-box p {
-            font-family: 'Press Start 2P', monospace;
-            font-size: 8px;
-            color: #666;
-            letter-spacing: 0.08em;
-            line-height: 2.2;
+            font-family: 'Courier Prime', monospace;
+            font-size: 14px;
+            color: #a89f88;
+            line-height: 1.8;
             margin-bottom: 12px;
         }
         .contact-box a {
