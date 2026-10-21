@@ -37,7 +37,15 @@
         onChange: () => App.canvas.schedule(),
         onGuides: (lines) => App.session.setGuides(lines),
         onCursor: (cursor) => { canvas.style.cursor = cursor || ''; },
-        onToolChange: () => App.props.updateVisibility(),
+        /* Every way of changing tool lands here: the buttons, the popup, the
+           R/C/L/T/V keys and the menu. So the buttons are marked here and not
+           in the click handlers, which is how the keys used to change the
+           tool while SELECT stayed lit. */
+        onToolChange: (next) => {
+            App.shapesPopup.markTool(next);
+            App.props.updateVisibility();
+            App.hint.update();
+        },
         onStrokeStart: () => App.session.beginStroke(),
         /* A corner drag changes a text element's font size and a rotate drag
            its rotation, so the sliders have to be told once it lands. */

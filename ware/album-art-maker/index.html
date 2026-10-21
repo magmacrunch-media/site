@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="../shell/app-shell.css?v=2eb63ac6">
     <link rel="stylesheet" href="../shell/toast.css?v=2c51118f">
     <link rel="stylesheet" href="../shell/dropdown.css?v=b021aff2">
-    <link rel="stylesheet" href="style.css?v=ca5107a6">
+    <link rel="stylesheet" href="style.css?v=34bdc4c3">
 
     <!-- The kit loads in <head>, not at the end of <body>. bridge-core.js sets
          html.desktop, and the menu bar, the doc name and the hidden back link
@@ -306,6 +306,13 @@
                  a box; it clipped the canvas by 17.5px top and bottom. -->
             <div class="canvas-wrap" id="canvasWrap">
                 <canvas id="mainCanvas" width="1024" height="1024"></canvas>
+            </div>
+            <!-- Shown only while the document is empty (ui/hint.js). HTML on
+                 purpose: nothing painted on the canvas can reach an export. -->
+            <div class="canvas-hint" id="canvasHint" aria-live="polite">
+                <span class="canvas-hint-title">EMPTY COVER</span>
+                <span class="canvas-hint-text" id="canvasHintText">PICK A SHAPE OR TEXT, THEN DRAG ON THE CANVAS</span>
+                <span class="canvas-hint-keys">R RECT &middot; T TEXT &middot; CTRL+I IMAGE &middot; OR DROP ONE HERE</span>
             </div>
         </div>
 
@@ -687,12 +694,13 @@
     <script src="import.js?v=7433e741"></script>
     <script src="layers.js?v=976c7e25"></script>
     <script src="confirm.js?v=c7234a68"></script>
-    <script src="shapes-popup.js?v=be6193f5"></script>
+    <script src="shapes-popup.js?v=91114ebf"></script>
+    <script src="hint.js?v=d0bfa1ca"></script>
     <script src="project-ui.js?v=444f7e8a"></script>
     <script src="help-ui.js?v=7268519d"></script>
     <script src="menu.js?v=5b86f2f2"></script>
-    <script src="session.js?v=3d547af5"></script>
+    <script src="session.js?v=2dc8f3e9"></script>
     <script src="sizes.js?v=9e97307c"></script>
-    <script src="main.js?v=abf16f43"></script>
+    <script src="main.js?v=2dd3cd2d"></script>
 </body>
 </html>

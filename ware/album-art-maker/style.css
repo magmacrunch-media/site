@@ -156,6 +156,14 @@ textarea,
     border-color: var(--accent);
     color: var(--text);
 }
+/* The same lit state as .tool-btn.active, for when the tool on is one of the
+   shapes behind this button. Set by ui/shapes-popup.js's markTool. */
+.shapes-btn.active {
+    border-color: var(--accent);
+    color: var(--text);
+    background: rgba(160,160,176,0.08);
+    box-shadow: 0 0 12px rgba(160,160,176,0.1), inset 0 0 12px rgba(160,160,176,0.03);
+}
 .shapes-btn-arrow {
     font-size: 10px;
     opacity: 0.6;
@@ -342,6 +350,54 @@ textarea,
     image-rendering: auto;
     display: block;
     box-shadow: 0 0 40px rgba(0,0,0,0.6);
+}
+
+/* ── EMPTY-CANVAS HINT ──
+   What a blank cover says on arrival (ui/hint.js). It sits over the canvas
+   but is not on it, so it can never reach an export, and it takes no pointer
+   events, so a drag that starts on the words still draws. A dark chip rather
+   than bare text, because the cover's background can be any colour. */
+.canvas-hint {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: min(420px, calc(100% - 48px));
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    padding: 16px 20px;
+    background: rgba(8, 8, 8, 0.82);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    text-align: center;
+    line-height: 1.8;
+    pointer-events: none;
+}
+
+.canvas-hint[hidden] { display: none; }
+
+.canvas-hint-title {
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    color: var(--accent);
+}
+
+.canvas-hint-text {
+    font-size: 8px;
+    color: var(--text);
+}
+
+.canvas-hint-keys {
+    font-size: 6px;
+    letter-spacing: 0.1em;
+    color: var(--dim);
+}
+
+/* No keyboard to press the letters on, and nothing to drop. */
+@media (hover: none) {
+    .canvas-hint-keys { display: none; }
 }
 
 /* ── DIALOGS ──

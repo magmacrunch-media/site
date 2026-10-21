@@ -225,6 +225,7 @@
         updateStats();
         if (App.layers) App.layers.render();
         if (App.props) App.props.updateVisibility();
+        if (App.hint) App.hint.update();
     }
 
     function updateStats() {

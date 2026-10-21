@@ -64,17 +64,34 @@
         });
     }
 
-    /** Set the tool, mark the button, and name it on the shapes button. */
+    /** Set the tool. Marking the buttons follows from it, via markTool. */
     function setActiveTool(tool) {
+        App.tools.setTool(tool);
+    }
+
+    /**
+     * Show which tool is on: its button, and the shapes button too when the
+     * tool lives behind it. Called from ui/tools.js's onToolChange, so a
+     * keyboard shortcut marks the buttons exactly as a click does.
+     *
+     * The shapes button lights up with the rest. Before, picking RECT lit a
+     * button inside a closed popup and left SELECT looking active, so the
+     * panel said Select while the canvas drew rectangles.
+     */
+    function markTool(tool) {
         for (const b of document.querySelectorAll('.tool-btn, .shape-btn')) {
             b.classList.remove('active');
         }
-        const btn = document.querySelector(`[data-tool="${tool}"]`);
+        const btn = tool === 'clipart'
+            ? document.querySelector(`[data-tool="clipart"][data-clipart-id="${App.tools.getClipartId()}"]`)
+            : document.querySelector(`[data-tool="${tool}"]`);
         if (btn) btn.classList.add('active');
 
-        App.tools.setTool(tool);
+        const shapes = $('shapesBtn');
+        const isShape = SHAPE_TOOLS.indexOf(tool) !== -1;
+        if (shapes) shapes.classList.toggle('active', isShape);
 
-        if (SHAPE_TOOLS.indexOf(tool) !== -1) {
+        if (isShape) {
             const label = $('shapesBtnLabel');
             if (label) {
                 label.textContent = tool === 'clipart'
@@ -139,5 +156,6 @@
         init: init,
         close: close,
         setActiveTool: setActiveTool,
+        markTool: markTool,
     };
 }());
