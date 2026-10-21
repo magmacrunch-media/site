@@ -1,5 +1,8 @@
-/* ── contributor.js — shared template for by-contributor pages ── */
-/* Requires: window.__CONTRIBUTOR_CONFIG = { MB_ID, NAME, ARCHIVE_LINKS, accent?, STATIC_SECTIONS?, TMDB_ID? } */
+/* ── contributor.js — one person's credits, from MusicBrainz and TMDB ── */
+/* Requires: window.__CONTRIBUTOR_CONFIG = { MB_ID, NAME, ARCHIVE_LINKS, accent?, STATIC_SECTIONS?, TMDB_ID?, depth?, ARCHIVE_ROOT? } */
+/* Written for pages at /archive/<section>/<name>/, which is what every link in entity-map.js
+   assumes. A page elsewhere sets depth (path to the site root) and ARCHIVE_ROOT (path to
+   /archive/), and every ../../ link is rebased onto ARCHIVE_ROOT. home/credits.html does. */
 
 (function() {
     var config = window.__CONTRIBUTOR_CONFIG;
@@ -9,6 +12,11 @@
     var TMDB_ID = config.TMDB_ID;
     var ARCHIVE_LINKS = config.ARCHIVE_LINKS || {};
     var ENTITY_MAP = window.__ENTITY_MAP || {};
+    var DEPTH = config.depth || '../../../';
+    var ARCHIVE_ROOT = config.ARCHIVE_ROOT || '../../';
+    function local(href) {
+        return href.indexOf('../../') === 0 ? ARCHIVE_ROOT + href.slice(6) : href;
+    }
     var contentEl = document.getElementById('content');
     var idsEl = document.getElementById('contrib-ids');
 
@@ -16,7 +24,7 @@
 
     function archiveLink(artist) {
         var link = ENTITY_MAP[artist.id] || ARCHIVE_LINKS[artist.id];
-        if (link) return '<a href="' + link + '">' + esc(artist.name) + '</a>';
+        if (link) return '<a href="' + local(link) + '">' + esc(artist.name) + '</a>';
         return '<a href="https://musicbrainz.org/artist/' + esc(artist.id) + '" target="_blank" rel="noopener">' + esc(artist.name) + '</a>';
     }
 
@@ -175,7 +183,7 @@
         var dates = dateRange(begin, end, ended);
         var internalPath = ENTITY_MAP[place.id];
         var link = internalPath
-            ? '<a href="' + internalPath + '">' + esc(place.name) + '</a>'
+            ? '<a href="' + local(internalPath) + '">' + esc(place.name) + '</a>'
             : '<a href="https://musicbrainz.org/place/' + place.id + '" target="_blank" rel="noopener">' + esc(place.name) + '</a>';
         var location = place.area ? esc(place.area.name) : '';
         var type = place.type ? ' <span class="credit-sub">' + esc(place.type) + '</span>' : '';
@@ -336,7 +344,7 @@
     var _tmdb = null;
     function loadTMDBCache() {
         if (!TMDB_ID) return Promise.resolve();
-        return fetch('../../../archive/_cache/tmdb/person/' + TMDB_ID + '.json')
+        return fetch(DEPTH + 'archive/_cache/tmdb/person/' + TMDB_ID + '.json')
             .then(function(r) { return r.ok ? r.json() : null; })
             .then(function(j) { if (j && j.fetchedAt) _tmdb = j; })
             .catch(function() {});
@@ -357,7 +365,7 @@
     function tmdbFilmLink(credit) {
         var localPath = LOCAL_FILM_MAP[credit.id];
         if (localPath) {
-            return '<a href="' + localPath + '">' + esc(credit.title) + '</a>';
+            return '<a href="' + local(localPath) + '">' + esc(credit.title) + '</a>';
         }
         var mediaType = credit.media_type || 'movie';
         var path = mediaType === 'tv' ? 'tv' : 'movie';
@@ -523,10 +531,17 @@
 
         /* Solo projects */
         if (aliases.length > 0) {
+            /* A card like the bands above, but with nothing to expand, so no arrow. */
             const items = aliases.map(function(r) {
-                return renderSimpleEntry(r.artist);
+                var dates = dateRange(r.begin, r.end, r.ended);
+                return '<div class="entry">' +
+                    '<div class="entry-header entry-static">' +
+                        '<span class="entry-name">' + archiveLink(r.artist) + '</span>' +
+                        (dates ? '<span class="entry-dates">' + dates + '</span>' : '') +
+                    '</div>' +
+                '</div>';
             }).join('');
-            html += renderSection('solo projects', '<ul class="simple-list">' + items + '</ul>');
+            html += renderSection('solo projects', items);
         }
 
         /* Places */
@@ -679,7 +694,7 @@
             if (footer) {
                 footer.insertAdjacentHTML('beforeend',
                     '<div class="tmdb-attribution">' +
-                        '<img src="' + (config.depth || '../../../') + 'assets/logos/TMDB_blue_square.svg" alt="TMDB">' +
+                        '<img src="' + DEPTH + 'assets/logos/TMDB_blue_square.svg" alt="TMDB">' +
                         '<p>This website uses TMDB and the TMDB APIs but is not endorsed, certified, or otherwise approved by TMDB.</p>' +
                     '</div>'
                 );
@@ -692,7 +707,7 @@
           if (footer) {
             footer.insertAdjacentHTML('beforeend',
                 '<div class="mb-data-attribution">' +
-                    '<img src="' + (config.depth || '../../../') + 'assets/logos/MB_logo.svg" alt="MusicBrainz">' +
+                    '<img src="' + DEPTH + 'assets/logos/MB_logo.svg" alt="MusicBrainz">' +
                     '<p>Music data provided by <a href="https://musicbrainz.org" target="_blank" rel="noopener">MusicBrainz</a>. ' +
                     'Licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" target="_blank" rel="noopener">CC BY-NC-SA 3.0</a>.</p>' +
                 '</div>'
@@ -737,7 +752,7 @@
     var _cache = null;
     function loadCache() {
         if (window.__MB_CACHE) { _cache = window.__MB_CACHE; return Promise.resolve(); }
-        return fetch('../../../archive/_cache/contributors/' + MB_ID + '.json')
+        return fetch(DEPTH + 'archive/_cache/contributors/' + MB_ID + '.json')
             .then(function(r) { return r.ok ? r.json() : null; })
             .then(function(j) { if (j && j.fetchedAt) _cache = j; })
             .catch(function() {});

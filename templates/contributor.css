@@ -171,17 +171,31 @@ details[open] > .entry-header .entry-arrow { transform: rotate(90deg); }
 /* ── CREDIT SECTIONS ── */
 .credit-section {
     width: min(800px, 95vw);
-    margin-bottom: 32px;
+    margin-bottom: 8px;
 }
+/* A collapsed credit section is a card, the same shape as the band and place rows
+   above it, so the page reads as one list rather than cards and then loose text. */
 .credit-header {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 12px;
     cursor: pointer;
     user-select: none;
-    padding: 8px 0;
+    padding: 12px 16px;
+    border: 1px solid #1e1e2e;
+    background: var(--deep);
+    list-style: none;
+    transition: border-color 0.15s;
 }
+.credit-header::-webkit-details-marker { display: none; }
+.credit-header:hover { border-color: #2a2a4a; }
 .credit-header:hover .section-title { color: var(--white); }
+/* .section-title carries a bottom margin for its use as a heading; inside a flex row
+   centred vertically that margin pulled the arrow and count below the text. */
+.credit-header .section-title { margin: 0; flex: 1; }
+.credit-section > .credit-list { padding-top: 8px; }
+.entry-static { cursor: default; }
+.entry-static:hover { background: none; }
 .credit-arrow {
     font-family: 'Press Start 2P', monospace;
     font-size: 8px;

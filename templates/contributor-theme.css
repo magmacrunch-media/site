@@ -138,6 +138,24 @@ body.ctb-page .simple-list a:hover {
 }
 
 /* ── Credit sections ── */
+body.ctb-page .credit-header {
+    border-color: var(--ctb-dark);
+    background: var(--ctb-darkest);
+}
+
+body.ctb-page .credit-header:hover {
+    border-color: var(--ctb-mid-dark);
+    background: rgba(127,216,232,0.04);
+}
+
+body.ctb-page .credit-arrow {
+    color: var(--ctb-muted);
+}
+
+body.ctb-page .entry-static:hover {
+    background: none;
+}
+
 body.ctb-page .credit-header:hover .section-title {
     color: var(--ctb-light);
 }

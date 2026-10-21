@@ -1,6 +1,6 @@
 /* ── entity-map.js — central MusicBrainz ID → internal path mapping ── */
 /* Used by contributor.js to generate internal links for artists and places. */
-/* All paths use ../../ prefix (relative to /archive/by-contributor/[name]/) */
+/* All paths use ../../ prefix (relative to a page at /archive/<section>/<name>/) */
 
 window.__ENTITY_MAP = {
 
@@ -59,23 +59,10 @@ window.__ENTITY_MAP = {
     'ce22522c-1193-4298-badf-0df5cdfa0415': '../../by-artist/fruity-loops-debauchery-collective/',
     '3c3bc6e8-9d72-457f-a192-b6ef263fe4ae': '../../by-artist/fruity-loops-debauchery-collective/',
 
-    /* jake mccoy — no by-artist page, maps to by-contributor */
-    '32bc1ac7-efd0-44f2-8645-8fecf6a40edb': '../../by-contributor/jake-mccoy/',
-
-    /* rho k. — no by-artist page, maps to by-contributor */
-    'b0d4d4fd-d500-4439-b401-5c15f231e41f': '../../by-contributor/rho-k/',
-
-    /* alex s. — no by-artist page, maps to by-contributor */
-    '0bfa85f1-5138-4790-8439-e709399944df': '../../by-contributor/alex-s/',
-
-    /* chuck j'ob — no by-artist page, maps to by-contributor */
-    'c8ba82bf-cfa1-49a0-98bf-0cf8f931099f': '../../by-contributor/chuck-job/',
-
-    /* jake thomas — no by-artist page, maps to by-contributor */
-    'a492cd5d-b090-48e3-8bbb-0f8f5cefc34a': '../../by-contributor/jake-thomas/',
-
-    /* ellis grey — no by-artist page, maps to by-contributor */
-    'aa5ccc77-a82e-465e-a9d5-79cf4098a926': '../../by-contributor/ellis-grey/',
+    /* jake mccoy: no by-artist page, maps to home/credits.html.
+       The contributor pages were retired 2026-10-20 (tag archive-contributors-retired);
+       anyone else unmapped falls back to MusicBrainz. */
+    '32bc1ac7-efd0-44f2-8645-8fecf6a40edb': '../../../home/credits.html',
 
     /* ── Places → /archive/by-place/ ── */
     'c6c69d44-8408-4a0a-9dbf-8b3ee903bc5f': '../../by-place/college-green-apt/',

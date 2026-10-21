@@ -115,8 +115,8 @@
     "t": "archive",
     "c": "page",
     "u": "/archive/index.html",
-    "d": "artists / places / labels / contributors",
-    "b": "archive — magmacrunch media home › archive // archive // database of artists, places, contributors, & labels EMERAC // DB_ACCESS :.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.: \\/\\/ [- |_ ( () |\\/| [- ~|~ () ~|~ |-| [- /\\ /? ( |-| | \\/ [- _\\~ :.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:. by artist musicians and projects from the scene by place rehearsal spaces and recording locations by contributor credits and contributions by label labels, publishers, and creative agencies some artists listed may have no releases — or released elsewhere."
+    "d": "artists / places / labels",
+    "b": "archive — magmacrunch media home › archive // archive // database of artists, places, & labels EMERAC // DB_ACCESS :.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.: \\/\\/ [- |_ ( () |\\/| [- ~|~ () ~|~ |-| [- /\\ /? ( |-| | \\/ [- _\\~ :.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:. by artist musicians and projects from the scene by place rehearsal spaces and recording locations by label labels, publishers, and creative agencies some artists listed may have no releases — or released elsewhere."
   },
   {
     "t": "by artist",
@@ -136,15 +136,15 @@
     "t": "by label",
     "c": "page",
     "u": "/archive/by-label/index.html",
-    "d": "from the magmacrunch archive",
-    "b": "by label — magmacrunch archive home › archive › by label // by label // labels, publishers, and creative agencies associated with magmacrunch. MAGMACRUNCH MEDIA record label MAGMACRUNCH MUSIC publisher THE SLOP COLLECTIVE creative agency MAGMACRUNCH ARCADE game label data sourced from MusicBrainz. contributions may be incomplete."
+    "d": "magmacrunch media, its publisher and games imprint, and the agency it works with",
+    "b": "by label — magmacrunch archive home › archive › by label // by label // magmacrunch media is the record label. it owns a publisher for the songs and an imprint for the games, and works alongside one agency it does not own. MAGMACRUNCH MEDIA record label MAGMACRUNCH MUSIC publisher MAGMACRUNCH ARCADE games imprint THE SLOP COLLECTIVE creative agency people, releases and works come from MusicBrainz. the arcade's games are listed here by hand."
   },
   {
-    "t": "by contributor",
+    "t": "credits",
     "c": "page",
-    "u": "/archive/by-contributor/index.html",
-    "d": "from the magmacrunch archive",
-    "b": "by contributor — magmacrunch archive home › archive › by contributor // by contributor // musicians and their credits credits and contributions pulled from MusicBrainz — who played what, where, and when. > ELLIS GREY > DAVID HAYES > CHUCK J'OB > RHO K. > JAKE A. MCCOY > JAMES R. MCCOY > JON MCCOY > STEPHEN MCMILLAN > BEN NIKITAS > D-ROB ROBINSON > C.P. RUTLEDGE > ALEX S. > JAKE THOMAS > ROB TOMER > JUDAH UNMUTH-YOCKEY no matches data sourced from MusicBrainz. contributions may be incomplete."
+    "u": "/home/credits.html",
+    "d": "Jake A. McCoy: songwriting, production, recording, video and design credits",
+    "b": "credits — magmacrunch media home › about › credits JAKE A. MCCOY loading from MusicBrainz VIEW ON MUSICBRAINZ ↗"
   },
   {
     "t": "arcade",
@@ -1589,111 +1589,6 @@
     "b": "The Slop Collective — magmacrunch archive home › archive › by label › the slop collective THE SLOP COLLECTIVE loading from MusicBrainz VIEW ON MUSICBRAINZ ↗"
   },
   {
-    "t": "Alex S.",
-    "c": "contributor",
-    "u": "/archive/by-contributor/alex-s/index.html",
-    "d": "contributor archive — recordings, works, events, releases",
-    "b": "Alex S. — magmacrunch archive home › archive › by contributor › ALEX S. ALEX S. loading from MusicBrainz VIEW ON MUSICBRAINZ ↗"
-  },
-  {
-    "t": "Ben Nikitas",
-    "c": "contributor",
-    "u": "/archive/by-contributor/ben-nikitas/index.html",
-    "d": "contributor archive — recordings, works, events, releases",
-    "b": "Ben Nikitas — magmacrunch archive home › archive › by contributor › BEN BEN NIKITAS loading from MusicBrainz VIEW ON MUSICBRAINZ ↗"
-  },
-  {
-    "t": "Chuck J'OB",
-    "c": "contributor",
-    "u": "/archive/by-contributor/chuck-job/index.html",
-    "d": "contributor archive — recordings, works, events, releases",
-    "b": "Chuck J'OB — magmacrunch archive home › archive › by contributor › CHUCK J'OB CHUCK J'OB loading from MusicBrainz VIEW ON MUSICBRAINZ ↗"
-  },
-  {
-    "t": "C.P. Rutledge",
-    "c": "contributor",
-    "u": "/archive/by-contributor/cp-rutledge/index.html",
-    "d": "contributor archive — recordings, works, events, releases",
-    "b": "C.P. Rutledge — magmacrunch archive home › archive › by contributor › CPR C.P. RUTLEDGE loading from MusicBrainz VIEW ON MUSICBRAINZ ↗"
-  },
-  {
-    "t": "D-Rob Robinson",
-    "c": "contributor",
-    "u": "/archive/by-contributor/d-rob-robinson/index.html",
-    "d": "contributor archive — recordings, works, events, releases",
-    "b": "D-Rob Robinson — magmacrunch archive home › archive › by contributor › DMR D-ROB ROBINSON loading from MusicBrainz VIEW ON MUSICBRAINZ ↗"
-  },
-  {
-    "t": "David Hayes",
-    "c": "contributor",
-    "u": "/archive/by-contributor/david-hayes/index.html",
-    "d": "contributor archive — recordings, works, events, releases",
-    "b": "David Hayes — magmacrunch archive home › archive › by contributor › DPH DAVID HAYES loading from MusicBrainz VIEW ON MUSICBRAINZ ↗"
-  },
-  {
-    "t": "Ellis Grey",
-    "c": "contributor",
-    "u": "/archive/by-contributor/ellis-grey/index.html",
-    "d": "contributor archive — recordings, works, events, releases",
-    "b": "Ellis Grey — magmacrunch archive home › archive › by contributor › ellis grey ELLIS GREY loading from MusicBrainz VIEW ON MUSICBRAINZ ↗"
-  },
-  {
-    "t": "Jake A. McCoy",
-    "c": "contributor",
-    "u": "/archive/by-contributor/jake-mccoy/index.html",
-    "d": "contributor archive — recordings, works, events, releases",
-    "b": "Jake A. McCoy — magmacrunch archive home › archive › by contributor › JAM JAKE A. MCCOY loading from MusicBrainz VIEW ON MUSICBRAINZ ↗"
-  },
-  {
-    "t": "Jake Thomas",
-    "c": "contributor",
-    "u": "/archive/by-contributor/jake-thomas/index.html",
-    "d": "contributor archive — recordings, works, events, releases",
-    "b": "Jake Thomas — magmacrunch archive home › archive › by contributor › JAKE THOMAS JAKE THOMAS loading from MusicBrainz VIEW ON MUSICBRAINZ ↗"
-  },
-  {
-    "t": "James R. McCoy",
-    "c": "contributor",
-    "u": "/archive/by-contributor/james-mccoy/index.html",
-    "d": "contributor archive — recordings, works, events, releases",
-    "b": "James R. McCoy — magmacrunch archive home › archive › by contributor › JRM JAMES R. MCCOY loading from MusicBrainz VIEW ON MUSICBRAINZ ↗"
-  },
-  {
-    "t": "Jon McCoy",
-    "c": "contributor",
-    "u": "/archive/by-contributor/jon-mccoy/index.html",
-    "d": "contributor archive — recordings, works, events, releases",
-    "b": "Jon McCoy — magmacrunch archive home › archive › by contributor › JHM JON MCCOY loading from MusicBrainz VIEW ON MUSICBRAINZ ↗"
-  },
-  {
-    "t": "Judah Unmuth-Yockey",
-    "c": "contributor",
-    "u": "/archive/by-contributor/judah-unmuth-yockey/index.html",
-    "d": "contributor archive — recordings, works, events, releases",
-    "b": "Judah Unmuth-Yockey — magmacrunch archive home › archive › by contributor › JFUY JUDAH UNMUTH-YOCKEY loading from MusicBrainz VIEW ON MUSICBRAINZ ↗"
-  },
-  {
-    "t": "Rho K.",
-    "c": "contributor",
-    "u": "/archive/by-contributor/rho-k/index.html",
-    "d": "contributor archive — recordings, works, events, releases",
-    "b": "Rho K. — magmacrunch archive home › archive › by contributor › RHO K. RHO K. loading from MusicBrainz VIEW ON MUSICBRAINZ ↗"
-  },
-  {
-    "t": "Rob Tomer",
-    "c": "contributor",
-    "u": "/archive/by-contributor/rob-tomer/index.html",
-    "d": "contributor archive — recordings, works, events, releases",
-    "b": "Rob Tomer — magmacrunch archive home › archive › by contributor › RMT ROB TOMER loading from MusicBrainz VIEW ON MUSICBRAINZ ↗"
-  },
-  {
-    "t": "Stephen McMillan",
-    "c": "contributor",
-    "u": "/archive/by-contributor/stephen-mcmillan/index.html",
-    "d": "contributor archive — recordings, works, events, releases",
-    "b": "Stephen McMillan — magmacrunch archive home › archive › by contributor › SRM STEPHEN MCMILLAN loading from MusicBrainz VIEW ON MUSICBRAINZ ↗"
-  },
-  {
     "t": "Chess",
     "c": "arcade",
     "u": "/arcade/chess/",
@@ -1950,7 +1845,7 @@
     "c": "tool",
     "u": "/ware/backgammon/",
     "d": "neon backgammon for the browser and the terminal",
-    "b": "backgammon · magmacrunch media home › ware › video games › backgammon BACKGAMMON neon edition · vs the computer or a friend · doubling cube Backgammon in the arcade's neon edition: a purple-black board, cyan against magenta, pixel-art pieces and CRT scanlines. Play the computer or a friend online with chat, with hitting, the bar, bearing off and a doubling cube. The terminal version plays the same computer opponent. // where to play // BROWSER ▶ PLAY free, in the arcade , with online play against friends. TERMINAL pipx install magmacrunch-backgammon then run backgammon . Also in the magmacrunc..."
+    "b": "backgammon · magmacrunch media home › ware › video games › backgammon BACKGAMMON neon edition · vs the computer or a friend · doubling cube Backgammon in the arcade's neon edition: a purple-black board, cyan against magenta, pixel-art pieces and CRT scanlines. Play the computer or a friend online with chat, with hitting, the bar, bearing off and a doubling cube. The terminal version plays the same computer opponent. // at the board // neon edition fifteen each, and a doubling cube // where to play // BROWSER ▶ PLAY free, in the arcade , with online play against friends. TERMINAL pipx install m..."
   },
   {
     "t": "caldera · magmacrunch media",
@@ -1964,35 +1859,35 @@
     "c": "tool",
     "u": "/ware/cave-diving/",
     "d": "a one-song dive into a flooded cave, in the browser",
-    "b": "cave diving (not even once) · magmacrunch media home › ware › video games › cave diving CAVE DIVING (NOT EVEN ONCE) one song, one tank · your lamp is the only light down there Swim into a flooded cave with one tank of air and only your headlamp for light. Surface at a daylight opening to bank your pearls, worth up to eight times as much at the far side, or dive on. Drown and you lose them all. The dive lasts exactly as long as its song, which is cut into a score that follows the danger you are in. // where to play // BROWSER ▶ PLAY free, in the arcade . Keyboard or touch. // built with // aden..."
+    "b": "cave diving (not even once) · magmacrunch media home › ware › video games › cave diving CAVE DIVING (NOT EVEN ONCE) one song, one tank · your lamp is the only light down there Swim into a flooded cave with one tank of air and only your headlamp for light. Surface at a daylight opening to bank your pearls, worth up to eight times as much at the far side, or dive on. Drown and you lose them all. The dive lasts exactly as long as its song, which is cut into a score that follows the danger you are in. // down there // your lamp is the only light // where to play // BROWSER ▶ PLAY free, in the arca..."
   },
   {
     "t": "checkers · magmacrunch media",
     "c": "tool",
     "u": "/ware/checkers/",
     "d": "neon checkers for the browser and the terminal",
-    "b": "checkers · magmacrunch media home › ware › video games › checkers CHECKERS neon edition · mandatory jumps · king promotion Checkers in the arcade's neon edition, cyan pieces against magenta under CRT scanlines. Play the computer or a friend online with chat, with mandatory jumps, multi-jump chains and king promotion. The terminal version plays the same computer opponent. // where to play // BROWSER ▶ PLAY free, in the arcade , with online play against friends. TERMINAL pipx install magmacrunch-checkers then run checkers . Also in the magmacrunch terminal arcade. // built with // adenosine brow..."
+    "b": "checkers · magmacrunch media home › ware › video games › checkers CHECKERS neon edition · mandatory jumps · king promotion Checkers in the arcade's neon edition, cyan pieces against magenta under CRT scanlines. Play the computer or a friend online with chat, with mandatory jumps, multi-jump chains and king promotion. The terminal version plays the same computer opponent. // at the board // neon edition twelve each to start // where to play // BROWSER ▶ PLAY free, in the arcade , with online play against friends. TERMINAL pipx install magmacrunch-checkers then run checkers . Also in the magmacr..."
   },
   {
     "t": "chess · magmacrunch media",
     "c": "tool",
     "u": "/ware/chess/",
     "d": "neon chess for the browser and the terminal",
-    "b": "chess · magmacrunch media home › ware › video games › chess CHESS neon edition · three difficulty levels · blitz to classical Chess in the arcade's neon edition, cyan against magenta in pixel art under CRT scanlines. Play the computer at easy, medium or hard, with no clock or a blitz, rapid or classical one, or play a friend online with chat. Moves are kept in algebraic notation. // where to play // BROWSER ▶ PLAY free, in the arcade , with online play against friends. TERMINAL pipx install magmacrunch-chess then run chess . Also in the magmacrunch terminal arcade. // built with // adenosine b..."
+    "b": "chess · magmacrunch media home › ware › video games › chess CHESS neon edition · three difficulty levels · blitz to classical Chess in the arcade's neon edition, cyan against magenta in pixel art under CRT scanlines. Play the computer at easy, medium or hard, with no clock or a blitz, rapid or classical one, or play a friend online with chat. Moves are kept in algebraic notation. // at the board // neon edition three depths, four clocks // where to play // BROWSER ▶ PLAY free, in the arcade , with online play against friends. TERMINAL pipx install magmacrunch-chess then run chess . Also in the..."
   },
   {
     "t": "chinese checkers · magmacrunch media",
     "c": "tool",
     "u": "/ware/chinese-checkers/",
     "d": "neon chinese checkers for two to six players, in the browser and the terminal",
-    "b": "chinese checkers · magmacrunch media home › ware › video games › chinese checkers CHINESE CHECKERS neon edition · hexagonal star · hop to win Chinese checkers in the arcade's neon edition, on a hexagonal star with ten marbles each. Play two, three, four or six players against the computer, or friends online with room codes and chat. Steps light up green, hops yellow, and hops chain. // where to play // BROWSER ▶ PLAY free, in the arcade , with online rooms for up to six. TERMINAL pipx install magmacrunch-chinese-checkers then run chinese-checkers . Also in the magmacrunch terminal arcade. // b..."
+    "b": "chinese checkers · magmacrunch media home › ware › video games › chinese checkers CHINESE CHECKERS neon edition · hexagonal star · hop to win Chinese checkers in the arcade's neon edition, on a hexagonal star with ten marbles each. Play two, three, four or six players against the computer, or friends online with room codes and chat. Steps light up green, hops yellow, and hops chain. // at the board // two to six players hop across to the far point // where to play // BROWSER ▶ PLAY free, in the arcade , with online rooms for up to six. TERMINAL pipx install magmacrunch-chinese-checkers then ru..."
   },
   {
     "t": "cribbage · magmacrunch media",
     "c": "tool",
     "u": "/ware/cribbage/",
     "d": "two-player cribbage for the browser and the terminal",
-    "b": "cribbage · magmacrunch media home › ware › video games › cribbage CRIBBAGE first to 121 · pegging, hands and the crib Two-player cribbage, first to 121, against the computer or a friend online with room codes and lobby chat. A walnut peg board on green felt, a rules screen that walks through the deal, the crib, the starter, pegging and scoring, a choice of deck designs, and solo wins on the arcade's high-score board. // where to play // BROWSER ▶ PLAY free, in the arcade , with online play against friends. TERMINAL pipx install magmacrunch-cribbage then run cribbage . Also in the magmacrunch t..."
+    "b": "cribbage · magmacrunch media home › ware › video games › cribbage CRIBBAGE first to 121 · pegging, hands and the crib Two-player cribbage, first to 121, against the computer or a friend online with room codes and lobby chat. A walnut peg board on green felt, a rules screen that walks through the deal, the crib, the starter, pegging and scoring, a choice of deck designs, and solo wins on the arcade's high-score board. // at the board // solo or multiplayer, first to 121 two cards to the crib // where to play // BROWSER ▶ PLAY free, in the arcade , with online play against friends. TERMINAL pipx..."
   },
   {
     "t": "crunch-c",
@@ -2013,7 +1908,7 @@
     "c": "tool",
     "u": "/ware/fifteen-puzzle/",
     "d": "the classic sliding tile puzzle, 3x3 to 6x6, in the browser",
-    "b": "15 puzzle · magmacrunch media home › ware › video games › 15 puzzle 15 PUZZLE the classic sliding tile puzzle · fewer moves is better The classic sliding tile puzzle: slide the numbered tiles back into order. Boards run from the 8 puzzle on three by three up to six by six, with four by four as the default. Your score is your move count, so fewer is better. // where to play // BROWSER ▶ PLAY free, in the arcade . Arrow keys or swipe. // built with // adenosine browser · JavaScript // credits // game by magmacrunch media original concept the 15 Puzzle, attributed to Noyes Chapman (1870s)"
+    "b": "15 puzzle · magmacrunch media home › ware › video games › 15 puzzle 15 PUZZLE the classic sliding tile puzzle · fewer moves is better The classic sliding tile puzzle: slide the numbered tiles back into order. Boards run from the 8 puzzle on three by three up to six by six, with four by four as the default. Your score is your move count, so fewer is better. // at the board // the classic sliding tile puzzle grids from 3×3 to 6×6 // where to play // BROWSER ▶ PLAY free, in the arcade . Arrow keys or swipe. // built with // adenosine browser · JavaScript // credits // game by magmacrunch media or..."
   },
   {
     "t": "video games · ware · magmacrunch media",
@@ -2027,7 +1922,7 @@
     "c": "tool",
     "u": "/ware/george-boole/",
     "d": "a logic-gate puzzle game for the browser and the terminal, with Wii, iPhone and iPad versions on the way",
-    "b": "george boole has entered the chat · magmacrunch media home › ware › video games › george boole GEORGE BOOLE HAS ENTERED THE CHAT a logic-gate puzzle game · true or false? and, or, not. Slide the board, merge the bits, and let the logic gates do the rest. It started from Gabriele Cirulli's 2048 and swaps the addition for Boolean logic: AND, OR, XOR and NOT drop onto the board, and every tile that scores shows you the math. It is being made for four kinds of machine. Each version suits the one it runs on, and all of them play by exactly the same rules. // where to play // BROWSER ▶ PLAY free, in..."
+    "b": "george boole has entered the chat · magmacrunch media home › ware › video games › george boole GEORGE BOOLE HAS ENTERED THE CHAT a logic-gate puzzle game · true or false? and, or, not. Slide the board, merge the bits, and let the logic gates do the rest. It started from Gabriele Cirulli's 2048 and swaps the addition for Boolean logic: AND, OR, XOR and NOT drop onto the board, and every tile that scores shows you the math. It is being made for four kinds of machine. Each version suits the one it runs on, and all of them play by exactly the same rules. // at the board // has entered the chat two..."
   },
   {
     "t": "gerridae",
@@ -2041,7 +1936,7 @@
     "c": "tool",
     "u": "/ware/grocery-harrison/",
     "d": "a side-scroller about a night-shift folk musician shrunk to the size of a cornflake, in the browser",
-    "b": "grocery harrison · magmacrunch media home › ware › video games › grocery harrison GROCERY HARRISON the size of a cornflake · put the store back in order, aisle by aisle Grocery Harrison, a folk musician on the night shift, plays a strange chord in the walk-in cooler and shrinks to the size of a cornflake. Every aisle becomes a landscape to cross while you carry lost things home for the talking food. Strum your guitar to stun weevils, collect sugar crystals to spend at the checkout, and never see a game over. // where to play // BROWSER ▶ PLAY a free demo in the arcade : the opening and the fir..."
+    "b": "grocery harrison · magmacrunch media home › ware › video games › grocery harrison GROCERY HARRISON the size of a cornflake · put the store back in order, aisle by aisle Grocery Harrison, a folk musician on the night shift, plays a strange chord in the walk-in cooler and shrinks to the size of a cornflake. Every aisle becomes a landscape to cross while you carry lost things home for the talking food. Strum your guitar to stun weevils, collect sugar crystals to spend at the checkout, and never see a game over. // on the night shift // the night shift break time in the walk-in cooler // where to ..."
   },
   {
     "t": "hologram",
@@ -2062,14 +1957,14 @@
     "c": "tool",
     "u": "/ware/jovian-humanitarian-conflict/",
     "d": "an on-rails shooter over Jupiter for the browser and the terminal, with a Wii version on the way",
-    "b": "the jovian humanitarian conflict · magmacrunch media home › ware › video games › the jovian humanitarian conflict THE JOVIAN HUMANITARIAN CONFLICT on-rails over jupiter · read the transponder before you fire An on-rails shooter over the cloud decks of Jupiter. Aid convoys fly among the hostiles, blinking a double-flash transponder. Shoot the hostiles hunting them and never the convoys: three convoy kills and the run is over. Know what you are shooting at. // where to play // BROWSER ▶ PLAY free, in the arcade . Nothing to install. TERMINAL pipx install magmacrunch-jhc then run jovian . Also in..."
+    "b": "the jovian humanitarian conflict · magmacrunch media home › ware › video games › the jovian humanitarian conflict THE JOVIAN HUMANITARIAN CONFLICT on-rails over jupiter · read the transponder before you fire An on-rails shooter over the cloud decks of Jupiter. Aid convoys fly among the hostiles, blinking a double-flash transponder. Shoot the hostiles hunting them and never the convoys: three convoy kills and the run is over. Know what you are shooting at. // over jupiter // know what you are shooting at // where to play // BROWSER ▶ PLAY free, in the arcade . Nothing to install. TERMINAL pipx ..."
   },
   {
     "t": "klotski · magmacrunch media",
     "c": "tool",
     "u": "/ware/klotski/",
     "d": "Klotski, the Chinese sliding block puzzle, in the browser",
-    "b": "klotski · magmacrunch media home › ware › video games › klotski KLOTSKI 横刀立马 · slide the general to the exit 横刀立马: slide Cao Cao, the gold two-by-two block, past his generals and soldiers and out of the four-by-five board. Pieces only slide, never jump. The text is in Chinese, English or both, in a neo-arcade take on new-age China. // where to play // BROWSER ▶ PLAY free, in the arcade . Arrow keys or swipe. // built with // adenosine browser · JavaScript // credits // game by magmacrunch media original game Klotski (横刀立马), a traditional Chinese sliding block puzzle from the early twentieth ce..."
+    "b": "klotski · magmacrunch media home › ware › video games › klotski KLOTSKI 横刀立马 · slide the general to the exit 横刀立马: slide Cao Cao, the gold two-by-two block, past his generals and soldiers and out of the four-by-five board. Pieces only slide, never jump. The text is in Chinese, English or both, in a neo-arcade take on new-age China. // at the board // 横刀立马, the classic layout Cao Cao starts at the top // where to play // BROWSER ▶ PLAY free, in the arcade . Arrow keys or swipe. // built with // adenosine browser · JavaScript // credits // game by magmacrunch media original game Klotski (横刀立马), ..."
   },
   {
     "t": "magmascript",
@@ -2090,7 +1985,7 @@
     "c": "tool",
     "u": "/ware/makemecookies/",
     "d": "a cookie factory game for the browser, with Wii and iPhone versions on the way",
-    "b": "makemecookies!x4 · magmacrunch media home › ware › video games › makemecookies!x4 MAKEME COOKIES!X4 one song, one shift · five stations · ship cookies Run a kitsch cookie factory, five stations at once: flour into the hopper, dough out of the mixer, along the belt, golden out of the oven, boxed and shipped. A shift lasts exactly one play of the song. There is no losing, only how much you shipped and how much mess you left, and make too much mess and the health inspector stops the line. // where to play // BROWSER ▶ PLAY free, in the arcade . Keys 1 to 5, or tap on a phone. WII a Homebrew Chann..."
+    "b": "makemecookies!x4 · magmacrunch media home › ware › video games › makemecookies!x4 MAKEME COOKIES!X4 one song, one shift · five stations · ship cookies Run a kitsch cookie factory, five stations at once: flour into the hopper, dough out of the mixer, along the belt, golden out of the oven, boxed and shipped. A shift lasts exactly one play of the song. There is no losing, only how much you shipped and how much mess you left, and make too much mess and the health inspector stops the line. // on shift // one song, one shift // where to play // BROWSER ▶ PLAY free, in the arcade . Keys 1 to 5, or t..."
   },
   {
     "t": "media//search",
@@ -2111,14 +2006,14 @@
     "c": "tool",
     "u": "/ware/nelikko/",
     "d": "the falling-block puzzle as Finland invented it, Helsinki 1989, for the browser and the terminal",
-    "b": "nelikko · magmacrunch media home › ware › video games › nelikko NELIKKO the falling-block puzzle, as finland invented it · helsinki 1989 The falling-block puzzle as Finland invented it, in a parallel Helsinki in 1989. Nelikko is Finnish for a group of four. The screens are in Finnish, under snowfall, aurora and the silhouette of Uspenski Cathedral. Hold a piece, see the next one, soft or hard drop, climb the levels, and put your initials on the top ten. The terminal version shares the browser's scoreboard. // where to play // BROWSER ▶ PLAY free, in the arcade . Nothing to install. TERMINAL pi..."
+    "b": "nelikko · magmacrunch media home › ware › video games › nelikko NELIKKO the falling-block puzzle, as finland invented it · helsinki 1989 The falling-block puzzle as Finland invented it, in a parallel Helsinki in 1989. Nelikko is Finnish for a group of four. The screens are in Finnish, under snowfall, aurora and the silhouette of Uspenski Cathedral. Hold a piece, see the next one, soft or hard drop, climb the levels, and put your initials on the top ten. The terminal version shares the browser's scoreboard. // in the well // Helsinki, 1989 // where to play // BROWSER ▶ PLAY free, in the arcade ..."
   },
   {
     "t": "parchís · magmacrunch media",
     "c": "tool",
     "u": "/ware/parchisi/",
     "d": "Parchís, the Spanish board game, online for two to four players in the browser",
-    "b": "parchís · magmacrunch media home › ware › video games › parchís PARCHÍS el clásico juego español · 2 to 4 players online Parchís, the Spanish descendant of pachisi, for two to four players online, with room codes, spectating and chat. Roll two dice, capture your rivals and bring your pieces up the home run, on a board drawn as Spanish azulejo tiles in red and gold. The game is in Spanish, with a switch to English. // where to play // BROWSER ▶ PLAY free, in the arcade . Online play, two to four players. // built with // adenosine browser · JavaScript // credits // game by magmacrunch media ori..."
+    "b": "parchís · magmacrunch media home › ware › video games › parchís PARCHÍS el clásico juego español · 2 to 4 players online Parchís, the Spanish descendant of pachisi, for two to four players online, with room codes, spectating and chat. Roll two dice, capture your rivals and bring your pieces up the home run, on a board drawn as Spanish azulejo tiles in red and gold. The game is in Spanish, with a switch to English. // at the board // a room code, and up to four players two dice and the room chat // where to play // BROWSER ▶ PLAY free, in the arcade . Online play, two to four players. // built ..."
   },
   {
     "t": "crunchscope",
@@ -2132,21 +2027,21 @@
     "c": "tool",
     "u": "/ware/roderick-tron/",
     "d": "a platformer about a robot composer, for the browser and the terminal",
-    "b": "roderick tron · magmacrunch media home › ware › video games › roderick tron RODERICK TRON robot composer on 1810s rooftops · run, roll, stomp · find T-R-O-N A side-scrolling platformer about a robot composer on the rooftops of an 1810s Dutch city. Run, roll, stomp and fire musical notes, find the letters T-R-O-N, and reach the lit door. The levels are built by hand, with chimney draughts, bell cannons and coal trolleys in the way. // where to play // BROWSER ▶ PLAY free, in the arcade . Nothing to install. TERMINAL pipx install magmacrunch-roderick-tron then run roderick-tron . Three hand-buil..."
+    "b": "roderick tron · magmacrunch media home › ware › video games › roderick tron RODERICK TRON robot composer on 1810s rooftops · run, roll, stomp · find T-R-O-N A side-scrolling platformer about a robot composer on the rooftops of an 1810s Dutch city. Run, roll, stomp and fire musical notes, find the letters T-R-O-N, and reach the lit door. The levels are built by hand, with chimney draughts, bell cannons and coal trolleys in the way. // on the rooftops // rooftop requiem // where to play // BROWSER ▶ PLAY free, in the arcade . Nothing to install. TERMINAL pipx install magmacrunch-roderick-tron th..."
   },
   {
     "t": "sökö · magmacrunch media",
     "c": "tool",
     "u": "/ware/scandinavian-stud/",
     "d": "Sökö, the Finnish five-card stud poker, against the computer or online, in the browser",
-    "b": "sökö · magmacrunch media home › ware › video games › sökö SÖKÖ scandinavian stud · five-card poker with a finnish twist Sökö, Finland's national poker: five-card stud with one hole card, four face-up cards and four rounds of betting. Two hands set it apart, the four-card flush and the four-card straight, and both beat a pair. Play three computer opponents or friends online, at a table written in Finnish with English glosses. // where to play // BROWSER ▶ PLAY free, in the arcade , with online play against friends. // built with // adenosine browser · JavaScript // credits // game by magmacrunc..."
+    "b": "sökö · magmacrunch media home › ware › video games › sökö SÖKÖ scandinavian stud · five-card poker with a finnish twist Sökö, Finland's national poker: five-card stud with one hole card, four face-up cards and four rounds of betting. Two hands set it apart, the four-card flush and the four-card straight, and both beat a pair. Play three computer opponents or friends online, at a table written in Finnish with English glosses. // at the table // Finland’s national poker, in two languages first up: check, raise or fold // where to play // BROWSER ▶ PLAY free, in the arcade , with online play agai..."
   },
   {
     "t": "klondike solitaire · magmacrunch media",
     "c": "tool",
     "u": "/ware/solitaire/",
     "d": "Klondike solitaire, draw three, with timed scoring, in the browser",
-    "b": "klondike solitaire · magmacrunch media home › ware › video games › klondike solitaire KLONDIKE SOLITAIRE draw 3 · timed scoring · top 10 leaderboard Klondike, draw three, with timed scoring and a bonus that grows the faster you win. It looks like vaporwave Miami meets Windows 3.1 shareware: a silver chrome window on a teal desktop, neon pink and cyan on green felt, and a Miami sunset when you win. Pick your deck design and chase the top ten. // where to play // BROWSER ▶ PLAY free, in the arcade . Nothing to install. // built with // adenosine browser · JavaScript // credits // game by magmacr..."
+    "b": "klondike solitaire · magmacrunch media home › ware › video games › klondike solitaire KLONDIKE SOLITAIRE draw 3 · timed scoring · top 10 leaderboard Klondike, draw three, with timed scoring and a bonus that grows the faster you win. It looks like vaporwave Miami meets Windows 3.1 shareware: a silver chrome window on a teal desktop, neon pink and cyan on green felt, and a Miami sunset when you win. Pick your deck design and chase the top ten. // at the table // draw three, timed scoring // where to play // BROWSER ▶ PLAY free, in the arcade . Nothing to install. // built with // adenosine brows..."
   },
   {
     "t": "sprite forge",
@@ -2167,7 +2062,7 @@
     "c": "tool",
     "u": "/ware/texas-holdem-lava-dome/",
     "d": "a solo poker card game for the browser and the terminal, with a Wii version on the way",
-    "b": "texas hold'em lava dome · magmacrunch media home › ware › video games › texas hold'em lava dome TEXAS HOLD'EM LAVA DOME solo hold'em against the dome · bank it or let it ride Texas Hold'Em with no opponent but the dome. Each round raises the ante and scores your hand against a climbing threshold: beat it to win chips, miss it and lose the bet. Between hands, bank your chips to keep them or leave them riding, until you go bust or escape the dome. // where to play // BROWSER ▶ PLAY free, in the arcade . Nothing to install. TERMINAL pipx install magmacrunch-thld then run lava-dome . Also in the m..."
+    "b": "texas hold'em lava dome · magmacrunch media home › ware › video games › texas hold'em lava dome TEXAS HOLD'EM LAVA DOME solo hold'em against the dome · bank it or let it ride Texas Hold'Em with no opponent but the dome. Each round raises the ante and scores your hand against a climbing threshold: beat it to win chips, miss it and lose the bet. Between hands, bank your chips to keep them or leave them riding, until you go bust or escape the dome. // in the dome // solo poker under the dome beat the threshold, or escape the dome // where to play // BROWSER ▶ PLAY free, in the arcade . Nothing to..."
   },
   {
     "t": "texastoast",
@@ -2181,7 +2076,7 @@
     "c": "tool",
     "u": "/ware/threes/",
     "d": "slide, merge, survive: a take on Threes!, in the browser, with a terminal version on the way",
-    "b": "threes · magmacrunch media home › ware › video games › threes THREES slide · merge · survive Slide every tile at once. 1 and 2 make 3, and from there only matching tiles merge. New tiles come in from the edge you slid away from, and your score is the sum of every merge. Its rules are tuned for short games: most new tiles are 1s, so a run lasts a few dozen moves. // where to play // BROWSER ▶ PLAY free, in the arcade . Arrow keys or swipe. TERMINAL a terminal version that shares the browser's scoreboard, built on the magmacrunch engine. COMING SOON // built with // adenosine browser · JavaScrip..."
+    "b": "threes · magmacrunch media home › ware › video games › threes THREES slide · merge · survive Slide every tile at once. 1 and 2 make 3, and from there only matching tiles merge. New tiles come in from the edge you slid away from, and your score is the sum of every merge. Its rules are tuned for short games: most new tiles are 1s, so a run lasts a few dozen moves. // at the board // slide, merge, survive ones and twos make three // where to play // BROWSER ▶ PLAY free, in the arcade . Arrow keys or swipe. TERMINAL a terminal version that shares the browser's scoreboard, built on the magmacrunch ..."
   },
   {
     "t": "tone grating",
@@ -2195,13 +2090,13 @@
     "c": "tool",
     "u": "/ware/two-to-the-n/",
     "d": "2048, generalised: pick your target from 4 to 65,536, in the browser",
-    "b": "2^n · magmacrunch media home › ware › video games › 2^n 2^N 2048 (actually, 2^N) · slide & merge · how far can you go? 2048, generalised. Pick your target, from 2-bit mode at 4 up to 16-bit mode at 65,536, or play endless, with 2048 as the default. Slide and merge powers of two on a four-by-four board while the tiles heat from icy blue to white hot. // where to play // BROWSER ▶ PLAY free, in the arcade . Arrow keys or swipe. // built with // adenosine browser · JavaScript // credits // game by magmacrunch media original concept 2048 by Gabriele Cirulli (2014). An unofficial take, not affiliat..."
+    "b": "2^n · magmacrunch media home › ware › video games › 2^n 2^N 2048 (actually, 2^N) · slide & merge · how far can you go? 2048, generalised. Pick your target, from 2-bit mode at 4 up to 16-bit mode at 65,536, or play endless, with 2048 as the default. Slide and merge powers of two on a four-by-four board while the tiles heat from icy blue to white hot. // at the board // powers of two pick the power to reach // where to play // BROWSER ▶ PLAY free, in the arcade . Arrow keys or swipe. // built with // adenosine browser · JavaScript // credits // game by magmacrunch media original concept 2048 by ..."
   },
   {
     "t": "very long boards · magmacrunch media",
     "c": "tool",
     "u": "/ware/very-long-boards/",
     "d": "downhill longboarding: an endless run in the browser, and a desktop version in development",
-    "b": "very long boards · magmacrunch media home › ware › video games › very long boards VERY LONG BOARDS downhill longboarding · choose your carl · dodge everything Downhill skateboarding as Carl Spatski, in one of three looks: the everyman, the maniac or the enigma, each riding differently. In the browser it is an endless run: steer around obstacles, pull tricks for points and keep your stability up. The desktop version is a different, calmer game: timed runs down measured New Hampshire and Block Island roads. // where to play // BROWSER ▶ PLAY free, in the arcade . Nothing to install. DESKTOP a se..."
+    "b": "very long boards · magmacrunch media home › ware › video games › very long boards VERY LONG BOARDS downhill longboarding · choose your carl · dodge everything Downhill skateboarding as Carl Spatski, in one of three looks: the everyman, the maniac or the enigma, each riding differently. In the browser it is an endless run: steer around obstacles, pull tricks for points and keep your stability up. The desktop version is a different, calmer game: timed runs down measured New Hampshire and Block Island roads. // down the hill // downhill skateboarding choose your carl // where to play // BROWSER ▶..."
   }
 ]

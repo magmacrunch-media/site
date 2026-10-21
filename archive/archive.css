@@ -105,13 +105,6 @@ main {
     box-shadow: 0 0 20px rgba(221,78,192,0.3);
 }
 
-.browse-card.by-contributor:hover {
-    border-color: #7fd8e8;
-    box-shadow: 0 0 20px rgba(127,216,232,0.3);
-}
-
-.by-contributor .browse-card-title { color: #7fd8e8; }
-
 .browse-card.by-label:hover {
     border-color: #9D4EDD;
     box-shadow: 0 0 20px rgba(157,78,221,0.3);

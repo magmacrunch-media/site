@@ -13,6 +13,7 @@ window.NAV_CONFIG = {
         { label: 'home', href: './' },
         { label: 'about', href: 'home/about.html', items: [
             { href: 'home/about.html', label: 'about' },
+            { href: 'home/credits.html', label: 'credits' },
             { href: 'home/donate.html', label: 'donate' },
             { href: 'home/guestbook.html', label: 'guestbook' },
             { href: 'home/email-list.html', label: 'email list' }
@@ -31,8 +32,7 @@ window.NAV_CONFIG = {
         { label: 'archive', href: 'archive/', items: [
             { href: 'archive/by-artist/', label: 'by artist' },
             { href: 'archive/by-place/', label: 'by place' },
-            { href: 'archive/by-label/', label: 'by label' },
-            { href: 'archive/by-contributor/', label: 'by contributor' }
+            { href: 'archive/by-label/', label: 'by label' }
         ]},
         { label: 'arcade', href: 'arcade/', items: [
             { href: 'arcade/#genre=board', label: 'board games' },
@@ -528,7 +528,7 @@ document.querySelectorAll('nav a[href]').forEach(a => {
     ];
 
     /* ── EXCLUDED PATHS: full page load ── */
-    const EXCLUDE_PATHS = ['/arcade/', '/by-contributor/', '/by-label/', '/ware/'];
+    const EXCLUDE_PATHS = ['/arcade/', '/home/credits', '/by-label/', '/ware/'];
 
     /* ── HELPERS ── */
     function abs(href, base) {
