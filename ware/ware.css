@@ -56,7 +56,11 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            padding: 24px 20px 60px;
+            padding: 16px 20px 60px;
+            /* The lamp glow reaches 38% past the lamp on each side, which on a
+               phone is past the screen edge and scrolled the page sideways.
+               clip trims it at the edge without making main a scroll box. */
+            overflow-x: clip;
         }
 
         /* ── TERMINAL PROMPT ── */

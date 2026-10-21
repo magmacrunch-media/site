@@ -21,7 +21,8 @@
             font-size: 7px;
             color: var(--mc-smoke);
             letter-spacing: 0.1em;
-            margin-bottom: 20px;
+            margin-top: -8px;
+            margin-bottom: 16px;
             align-self: flex-start;
         }
         .breadcrumb a { color: var(--mc-smoke); text-decoration: none; }

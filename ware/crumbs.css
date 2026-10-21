@@ -16,8 +16,11 @@
        <span class="current">caldera</span>
      </div>
 
-   Typography and colour only. Where the trail sits is the page's business
-   (ware.css places it on the hubs, .tool-nav on the product pages).
+   Typography, colour, and where the trail sits. Every page wraps it in
+   .tool-nav, and the rule at the bottom of this file puts that at the
+   same spot the rest of the site uses (inside the page, 20px in, 72px
+   down, no strip), overriding the bordered strip that ware.css,
+   game-page.css and the engine pages' inline styles each still define.
 
    The full-bleed tool apps in utilities/ do not load this. They carry a
    compact trail styled by ware/shell/app-shell.css, because their markup
@@ -47,4 +50,25 @@
     --crumb-hover: #e8e6f0;
     --crumb-sep: #9d99b5;
     --crumb-current: var(--crumb-accent, #e8e6f0);
+}
+
+/* No strip. The rest of the site puts its trail inside the page, 20px from
+   the left edge and 72px from the top (the nav is 48px), with nothing
+   drawn around it. ware.css, game-page.css and several engine pages each
+   still define a bordered .tool-nav strip; html body outranks all of them
+   without touching any. Margin-top stays 48px to clear the fixed nav. */
+html body .tool-nav {
+    margin-top: 48px;
+    padding: 24px 20px 0;
+    border-bottom: 0;
+    background: transparent;
+}
+
+/* The engine pages open with a .hero whose 56px top padding was spacing
+   below the old strip. With the trail inside the page that left 56px
+   between it and the title, against 32px on music and press. Same gap
+   here. crunch-c wraps its hero in main, hence the second selector. */
+html body .tool-nav + .hero,
+html body .tool-nav + main > .hero:first-child {
+    padding-top: 32px;
 }

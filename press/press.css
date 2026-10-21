@@ -25,12 +25,12 @@
             color: #888;
             letter-spacing: 0.1em;
             margin-top: 0;
-            margin-bottom: 24px;
+            margin-bottom: 16px;
             align-self: flex-start;
         }
         .breadcrumb a { color: #888; text-decoration: none; transition: color 0.15s; }
         .breadcrumb a:hover { color: #c02828; }
-        .breadcrumb .sep { margin: 0 8px; color: #555; }
+        .breadcrumb .sep { margin: 0 8px; color: #c02828; opacity: 0.7; }
         .breadcrumb .current { color: #c02828; }
 
         /* ── PAGE HEADER ── */
