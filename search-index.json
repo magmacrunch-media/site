@@ -1054,7 +1054,7 @@
     "c": "artist",
     "u": "/archive/by-artist/thld/ware.html",
     "d": "Thld — Ware",
-    "b": "THLD · ware · magmacrunch media WARE ← back about events links lyrics photography recordings releases videos works Games and engines from magmacrunch, named after THLD songs, and one after the Tuna Can , where the band practised. TEXAS HOLD'EM LAVA DOME MORE poker solitaire. build hands. score big. don't get burned. game named after a THLD song ADENOSINE MORE lightweight web game engines. every package playable live. engine named after the THLD song “Adenosine” HYPNOPOMPIA MORE the iOS shell for the arcade games. Game Center, bundling, store tooling. engine named after the THLD song “Hypnopomp..."
+    "b": "THLD · ware · magmacrunch media WARE ← back about events links lyrics photography recordings releases videos works Games and engines from magmacrunch, named after THLD songs, and one after the Tuna Can , where the band practised. TEXAS HOLD'EM LAVA DOME MORE poker solitaire. build hands. score big. don't get burned. game named after a THLD song RENDEZVOUS AT 44i BOO MORE a ramjet race to a real star 40.8 light-years away, against a ship that left first. in development. game named after the THLD song, on Pompous Fanfare for All Occasions ADENOSINE MORE lightweight web game engines. every packag..."
   },
   {
     "t": "THLD · works · magmacrunch media",
@@ -2056,6 +2056,13 @@
     "u": "/ware/punch-roll/",
     "d": "chiptune piano roll · pulse, triangle, noise, WAV export",
     "b": "PUNCH//ROLL PUNCH//ROLL Tuning Step entry MIDI keyboard Tempo × BPM Delete Cancel OK Keyboard shortcuts × How to use PUNCH//ROLL × Write notes Each row of the roll is a pitch and each column a step of the grid. Click an empty square to add a note, drag it to move it, and drag its right edge to make it longer. Right-click a note to delete it. Shift-drag across empty grid to select several notes at once. Pick a track The panel on the left holds the tracks: two pulse channels, a triangle and noise. Click one, or press 1 to 4, and new notes go onto it. M mutes the current track and S solos it. Cli..."
+  },
+  {
+    "t": "rendezvous at 44i boo · magmacrunch media",
+    "c": "tool",
+    "u": "/ware/rendezvous-44i-boo/",
+    "d": "a ramjet race to a real star 40.8 light-years away, against a ship that left first. in development",
+    "b": "rendezvous at 44i boo · magmacrunch media home › ware › video games › rendezvous at 44i boo RENDEZVOUS AT 44i BOO a ramjet race to a real star · in development Two ships leave Sol for 44 Bootis, a real triple star 40.8 light-years away whose two inner stars orbit so close that they touch. The other one left first. Nothing overtakes near the speed of light, so the race is decided at the end: who gets there and slows to a stop first. Your drive is a Bussard ramjet, which scoops the gas between the stars for fuel. Dense gas is fuel while you are slow and dust and drag once you are fast, so the cl..."
   },
   {
     "t": "roderick tron · magmacrunch media",
