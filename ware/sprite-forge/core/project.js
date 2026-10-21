@@ -117,6 +117,8 @@ window.SpriteForge.project = (function () {
         const n = String(name == null ? '' : name).trim();
         if (!n) throw new Error('name the slot first');
         if (n.length > SLOT_NAME_MAX) throw new Error(`a slot name is at most ${SLOT_NAME_MAX} characters`);
+        // Assigning it would set the object's prototype, not add a slot.
+        if (n === '__proto__') throw new Error('a slot cannot be called __proto__');
         if (!/^#[0-9a-f]{6}$/i.test(hex || '')) throw new Error('select a color to put in the slot');
         const h = hex.toLowerCase();
 
@@ -126,7 +128,9 @@ window.SpriteForge.project = (function () {
             if (ramp.some(([, x]) => x.toLowerCase() === h))
                 throw new Error(`${h} is already in slot "${other}"`);
 
-        if (!(n in s)) {
+        // Own keys only: `in` also finds constructor, toString and the rest of
+        // Object.prototype, and would treat a slot of that name as existing.
+        if (!Object.hasOwn(s, n)) {
             s[n] = h;
             r[n] = [[0, h]];
             return { slots: s, ramps: r };
@@ -388,7 +392,7 @@ window.SpriteForge.project = (function () {
             if (typeof o.ramps !== 'object' || Array.isArray(o.ramps)) errs.push('ramps is not an object');
             else for (const [name, ramp] of Object.entries(o.ramps)) {
                 const at = `ramp "${name}"`;
-                if (!o.slots || typeof o.slots !== 'object' || !(name in o.slots)) {
+                if (!o.slots || typeof o.slots !== 'object' || !Object.hasOwn(o.slots, name)) {
                     errs.push(`${at}: there is no slot of that name`);
                     continue;
                 }
