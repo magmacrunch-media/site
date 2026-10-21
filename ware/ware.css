@@ -198,6 +198,7 @@
         .t-crunchscope { --accent:#ff8c42; --a2:#e06020; --a3:#c04010; --ink:#ffe0c0; } /* orange */
         .t-tone-grating { --accent:#35e0d0; --a2:#20b0a0; --a3:#108080; --ink:#d0f8f0; } /* teal */
         .t-sprite-forge { --accent:#ff3d6e; --a2:#e02050; --a3:#c01040; --ink:#ffd0e0; } /* rose */
+        .t-punch-roll { --accent:#ffe14d; --a2:#e0b820; --a3:#b08c10; --ink:#fff6c8; } /* NES-cartridge yellow */
         .t-album-art  { --accent:#f0a030; --a2:#d08020; --a3:#b06010; --ink:#f8e0c0; } /* amber */
         .t-media-search { --accent:#2ee8a5; --a2:#20b080; --a3:#108060; --ink:#d0f8e8; } /* green */
 

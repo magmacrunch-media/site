@@ -1,0 +1,714 @@
+"use strict";
+var AdSynth = (() => {
+  var __defProp = Object.defineProperty;
+  var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+  var __getOwnPropNames = Object.getOwnPropertyNames;
+  var __hasOwnProp = Object.prototype.hasOwnProperty;
+  var __export = (target, all) => {
+    for (var name in all)
+      __defProp(target, name, { get: all[name], enumerable: true });
+  };
+  var __copyProps = (to, from, except, desc) => {
+    if (from && typeof from === "object" || typeof from === "function") {
+      for (let key of __getOwnPropNames(from))
+        if (!__hasOwnProp.call(to, key) && key !== except)
+          __defProp(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
+    }
+    return to;
+  };
+  var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
+
+  // src/index.ts
+  var index_exports = {};
+  __export(index_exports, {
+    NES_TRIANGLE: () => NES_TRIANGLE,
+    NOISE_BASE_PITCH: () => NOISE_BASE_PITCH,
+    Sequencer: () => Sequencer,
+    WAVES: () => WAVES,
+    WaveBank: () => WaveBank,
+    audioBufferToWav: () => audioBufferToWav,
+    createSong: () => createSong,
+    edoOf: () => edoOf,
+    encodeWav: () => encodeWav,
+    envelopePlan: () => envelopePlan,
+    heldLevel: () => heldLevel,
+    instrument: () => instrument,
+    isAudible: () => isAudible,
+    lfsrNoise: () => lfsrNoise,
+    midiToHz: () => midiToHz,
+    noiseRate: () => noiseRate,
+    normalizeSong: () => normalizeSong,
+    noteName: () => noteName,
+    notesBetween: () => notesBetween,
+    playNote: () => playNote,
+    pulseCoefficients: () => pulseCoefficients,
+    renderDuration: () => renderDuration,
+    renderSong: () => renderSong,
+    secondsAt: () => secondsAt,
+    songSeconds: () => songSeconds,
+    soundingPitch: () => soundingPitch,
+    steppedCoefficients: () => steppedCoefficients,
+    tempoAt: () => tempoAt,
+    tickAt: () => tickAt,
+    tickSeconds: () => tickSeconds,
+    ticksPerBar: () => ticksPerBar
+  });
+
+  // src/song.ts
+  var WAVES = [
+    "pulse12",
+    "pulse25",
+    "pulse50",
+    "triangle",
+    "saw",
+    "noise",
+    "sine",
+    "triangle4",
+    "noise93"
+  ];
+  var METER_UNITS = [2, 4, 8, 16];
+  function ticksPerBar(song) {
+    const m = song.meter ?? { beats: 4, unit: 4 };
+    return song.ticksPerBeat * m.beats * 4 / m.unit;
+  }
+  function edoOf(song) {
+    return song?.tuning?.edo ?? 12;
+  }
+  function soundingPitch(note, song) {
+    return note.pitch * 12 / edoOf(song) + (note.cents ?? 0) / 100;
+  }
+  function midiToHz(pitch) {
+    return 440 * Math.pow(2, (pitch - 69) / 12);
+  }
+  var NAMES = ["C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"];
+  function noteName(pitch) {
+    const p = Math.round(pitch);
+    return NAMES[(p % 12 + 12) % 12] + (Math.floor(p / 12) - 1);
+  }
+  function tickSeconds(song) {
+    return 60 / (song.bpm * song.ticksPerBeat);
+  }
+  function spans(song) {
+    const out = [{ tick: 0, spt: tickSeconds(song), at: 0 }];
+    for (const c of song.tempos ?? []) {
+      if (!(c.tick > 0 && c.tick < song.length)) continue;
+      const prev = out[out.length - 1];
+      if (c.tick <= prev.tick) continue;
+      out.push({ tick: c.tick, spt: 60 / (c.bpm * song.ticksPerBeat), at: prev.at + (c.tick - prev.tick) * prev.spt });
+    }
+    return out;
+  }
+  function tempoAt(song, tick) {
+    const t = (tick % song.length + song.length) % song.length;
+    let bpm = song.bpm;
+    for (const c of song.tempos ?? []) {
+      if (c.tick > 0 && c.tick < song.length && c.tick <= t) bpm = c.bpm;
+    }
+    return bpm;
+  }
+  function songSeconds(song) {
+    if (!song.tempos?.length) return song.length * tickSeconds(song);
+    const s = spans(song);
+    const last = s[s.length - 1];
+    return last.at + (song.length - last.tick) * last.spt;
+  }
+  function secondsAt(song, tick) {
+    const s = spans(song);
+    if (s.length === 1) return tick * s[0].spt;
+    const pass = Math.floor(tick / song.length);
+    const t = tick - pass * song.length;
+    let span = s[0];
+    for (const x of s) if (x.tick <= t) span = x;
+    return pass * songSeconds(song) + span.at + (t - span.tick) * span.spt;
+  }
+  function secondsBetween(song, from, to) {
+    if (!song.tempos?.length) return (to - from) * tickSeconds(song);
+    return secondsAt(song, to) - secondsAt(song, from);
+  }
+  function tickAfter(song, from, seconds) {
+    if (!song.tempos?.length) return from + seconds / tickSeconds(song);
+    return tickAt(song, secondsAt(song, from) + seconds);
+  }
+  function tickAt(song, seconds) {
+    const s = spans(song);
+    if (s.length === 1) return seconds / s[0].spt;
+    const len = songSeconds(song);
+    const pass = Math.floor(seconds / len);
+    const into = seconds - pass * len;
+    let span = s[0];
+    for (const x of s) if (x.at <= into) span = x;
+    return pass * song.length + span.tick + (into - span.at) / span.spt;
+  }
+  function instrument(wave, env = {}) {
+    return { wave, attack: 5e-3, decay: 0.08, sustain: 0.7, release: 0.06, ...env };
+  }
+  function createSong(over = {}) {
+    return {
+      bpm: 140,
+      ticksPerBeat: 4,
+      length: 64,
+      ...over,
+      tracks: [
+        { name: "Pulse 1", instrument: instrument("pulse50"), volume: 0.7, notes: [] },
+        { name: "Pulse 2", instrument: instrument("pulse25"), volume: 0.6, notes: [] },
+        { name: "Triangle", instrument: instrument("triangle", { sustain: 1, decay: 0 }), volume: 0.9, notes: [] },
+        { name: "Noise", instrument: instrument("noise", { decay: 0.12, sustain: 0, release: 0.03 }), volume: 0.5, notes: [] }
+      ]
+    };
+  }
+  function isAudible(song, index) {
+    const t = song.tracks[index];
+    if (!t || t.muted) return false;
+    const anySolo = song.tracks.some((x) => x.solo);
+    return !anySolo || !!t.solo;
+  }
+  function notesBetween(song, from, to, loop) {
+    const out = [];
+    const len = song.length;
+    if (!(len > 0) || to <= from) return out;
+    const firstCycle = loop ? Math.floor(from / len) : 0;
+    const lastCycle = loop ? Math.floor((to - 1e-9) / len) : 0;
+    for (let c = Math.max(0, firstCycle); c <= lastCycle; c++) {
+      const base = c * len;
+      song.tracks.forEach((t, i) => {
+        if (!isAudible(song, i)) return;
+        for (const n of t.notes) {
+          if (n.tick < 0 || n.tick >= len) continue;
+          const at = base + n.tick;
+          if (at >= from && at < to) out.push({ track: i, note: n, at });
+        }
+      });
+    }
+    return out.sort((a, b) => a.at - b.at || a.track - b.track);
+  }
+  function num(v, fallback, lo, hi) {
+    const n = typeof v === "number" && Number.isFinite(v) ? v : fallback;
+    return Math.min(hi, Math.max(lo, n));
+  }
+  function normalizeSong(input) {
+    if (!input || typeof input !== "object" || !Array.isArray(input.tracks)) {
+      throw new TypeError("not a song: expected an object with a tracks array");
+    }
+    const s = input;
+    const length = Math.round(num(s.length, 64, 1, 1 << 16));
+    const tuning = normalizeTuning(s.tuning);
+    const pitchHi = Math.round(127 * (tuning?.edo ?? 12) / 12);
+    const tempos = normalizeTempos(s.tempos, length);
+    const song = {
+      bpm: num(s.bpm, 120, 20, 400),
+      ticksPerBeat: Math.round(num(s.ticksPerBeat, 4, 1, 96)),
+      length,
+      tracks: s.tracks.map((raw, i) => {
+        const t = raw && typeof raw === "object" ? raw : {};
+        const inst = t.instrument && typeof t.instrument === "object" ? t.instrument : {};
+        const wave = WAVES.includes(inst.wave) ? inst.wave : "pulse50";
+        const notes = (Array.isArray(t.notes) ? t.notes : []).filter((n) => !!n && typeof n === "object").map((n) => {
+          const note = {
+            tick: Math.round(num(n.tick, -1, -1, length)),
+            length: Math.round(num(n.length, 1, 1, length)),
+            pitch: Math.round(num(n.pitch, 60, 0, pitchHi))
+          };
+          if (n.velocity !== void 0) note.velocity = num(n.velocity, 1, 0, 1);
+          const cents = Math.round(num(n.cents, 0, -100, 100) * 10) / 10;
+          if (cents !== 0) note.cents = cents;
+          return note;
+        }).filter((n) => n.tick >= 0 && n.tick < length);
+        const track = {
+          name: typeof t.name === "string" ? t.name : `Track ${i + 1}`,
+          instrument: {
+            wave,
+            attack: num(inst.attack, 5e-3, 0, 10),
+            decay: num(inst.decay, 0.08, 0, 10),
+            sustain: num(inst.sustain, 0.7, 0, 1),
+            release: num(inst.release, 0.06, 0, 10)
+          },
+          volume: num(t.volume, 0.7, 0, 1),
+          notes
+        };
+        if (t.muted) track.muted = true;
+        if (t.solo) track.solo = true;
+        return track;
+      })
+    };
+    if (tempos.length) song.tempos = tempos;
+    const meter = normalizeMeter(s.meter);
+    if (meter) song.meter = meter;
+    if (tuning) song.tuning = tuning;
+    return song;
+  }
+  function normalizeTuning(input) {
+    if (!input || typeof input !== "object") return null;
+    const { edo } = input;
+    if (!Number.isInteger(edo) || edo < 5 || edo > 72 || edo === 12) return null;
+    return { edo };
+  }
+  function normalizeMeter(input) {
+    if (!input || typeof input !== "object") return null;
+    const { beats, unit } = input;
+    if (!Number.isInteger(beats) || beats < 1 || beats > 32) return null;
+    if (!METER_UNITS.includes(unit)) return null;
+    if (beats === 4 && unit === 4) return null;
+    return { beats, unit };
+  }
+  function normalizeTempos(input, length) {
+    if (!Array.isArray(input)) return [];
+    const at = /* @__PURE__ */ new Map();
+    for (const c of input) {
+      if (!c || typeof c !== "object") continue;
+      const tick = Math.round(num(c.tick, -1, -1, length));
+      if (tick <= 0 || tick >= length) continue;
+      at.set(tick, num(c.bpm, 120, 20, 400));
+    }
+    return [...at].sort((a, b) => a[0] - b[0]).map(([tick, bpm]) => ({ tick, bpm }));
+  }
+
+  // src/waves.ts
+  function pulseCoefficients(duty, harmonics = 64) {
+    const real = new Float32Array(harmonics + 1);
+    const imag = new Float32Array(harmonics + 1);
+    for (let n = 1; n <= harmonics; n++) {
+      real[n] = Math.sin(n * Math.PI * duty) / n;
+    }
+    return { real, imag };
+  }
+  function steppedCoefficients(levels, harmonics = 64) {
+    const real = new Float32Array(harmonics + 1);
+    const imag = new Float32Array(harmonics + 1);
+    const k = levels.length;
+    for (let n = 1; n <= harmonics; n++) {
+      let a = 0;
+      let b = 0;
+      for (let i = 0; i < k; i++) {
+        const t0 = 2 * Math.PI * n * i / k;
+        const t1 = 2 * Math.PI * n * (i + 1) / k;
+        a += levels[i] * (Math.sin(t1) - Math.sin(t0));
+        b += levels[i] * (Math.cos(t0) - Math.cos(t1));
+      }
+      real[n] = a / (Math.PI * n);
+      imag[n] = b / (Math.PI * n);
+    }
+    return { real, imag };
+  }
+  var NES_TRIANGLE = [
+    15,
+    14,
+    13,
+    12,
+    11,
+    10,
+    9,
+    8,
+    7,
+    6,
+    5,
+    4,
+    3,
+    2,
+    1,
+    0,
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15
+  ];
+  function lfsrNoise(length, short = false) {
+    const out = new Float32Array(length);
+    const tap = short ? 6 : 1;
+    let reg = 1;
+    for (let i = 0; i < length; i++) {
+      const fb = reg & 1 ^ reg >> tap & 1;
+      reg = reg >> 1 | fb << 14;
+      out[i] = reg & 1 ? -1 : 1;
+    }
+    return out;
+  }
+  var NOISE_BASE_PITCH = 96;
+  function noiseRate(pitch) {
+    return Math.min(1, Math.max(1 / 1024, Math.pow(2, (pitch - NOISE_BASE_PITCH) / 12)));
+  }
+
+  // src/voice.ts
+  function heldLevel(inst, t) {
+    if (t < inst.attack) return inst.attack > 0 ? t / inst.attack : 1;
+    const d = t - inst.attack;
+    if (d < inst.decay) return 1 - (1 - inst.sustain) * (d / inst.decay);
+    return inst.sustain;
+  }
+  function envelopePlan(inst, when, duration, peak) {
+    const off = when + Math.max(0, duration);
+    const steps = [{ kind: "set", value: 0, time: when }];
+    const a = inst.attack;
+    const d = inst.decay;
+    if (duration <= a) {
+      steps.push({ kind: "ramp", value: peak * heldLevel(inst, duration), time: off });
+    } else {
+      steps.push({ kind: "ramp", value: peak, time: when + a });
+      if (duration < a + d) {
+        steps.push({ kind: "ramp", value: peak * heldLevel(inst, duration), time: off });
+      } else {
+        steps.push({ kind: "ramp", value: peak * inst.sustain, time: when + a + d });
+        steps.push({ kind: "set", value: peak * inst.sustain, time: off });
+      }
+    }
+    const end = off + Math.max(2e-3, inst.release);
+    steps.push({ kind: "ramp", value: 0, time: end });
+    return { steps, end };
+  }
+  var COEFFICIENTS = {
+    pulse12: () => pulseCoefficients(0.125),
+    pulse25: () => pulseCoefficients(0.25),
+    pulse50: () => pulseCoefficients(0.5),
+    triangle4: () => steppedCoefficients(NES_TRIANGLE)
+  };
+  var OSCILLATOR = {
+    triangle: "triangle",
+    saw: "sawtooth",
+    sine: "sine"
+  };
+  var WaveBank = class {
+    constructor(ctx) {
+      this.ctx = ctx;
+    }
+    ctx;
+    waves = /* @__PURE__ */ new Map();
+    noise = null;
+    shortNoise = null;
+    periodic(wave) {
+      const make = COEFFICIENTS[wave];
+      if (!make) return null;
+      let w = this.waves.get(wave);
+      if (!w) {
+        const { real, imag } = make();
+        w = this.ctx.createPeriodicWave(real, imag);
+        this.waves.set(wave, w);
+      }
+      return w;
+    }
+    /**
+     * A second of LFSR noise, looped by the voice. `short` is the 93-step mode;
+     * a second holds whole periods of the long one only approximately, which
+     * white noise does not betray, but the short one is pitched, so its buffer
+     * is cut to a whole number of periods and loops without a seam.
+     */
+    noiseBuffer(short = false) {
+      const have = short ? this.shortNoise : this.noise;
+      if (have) return have;
+      const rate = this.ctx.sampleRate;
+      const len = short ? Math.max(93, Math.round(rate / 93) * 93) : Math.max(1, Math.round(rate));
+      const buf = this.ctx.createBuffer(1, len, rate);
+      buf.getChannelData(0).set(lfsrNoise(len, short));
+      if (short) this.shortNoise = buf;
+      else this.noise = buf;
+      return buf;
+    }
+  };
+  function playNote(bank, destination, inst, pitch, when, duration, peak = 1) {
+    const ctx = bank.ctx;
+    const gain = ctx.createGain();
+    const { steps, end } = envelopePlan(inst, when, duration, peak);
+    const g = gain.gain;
+    for (const s of steps) {
+      if (s.kind === "set") g.setValueAtTime(s.value, s.time);
+      else g.linearRampToValueAtTime(s.value, s.time);
+    }
+    gain.connect(destination);
+    let src;
+    if (inst.wave === "noise" || inst.wave === "noise93") {
+      const b = ctx.createBufferSource();
+      b.buffer = bank.noiseBuffer(inst.wave === "noise93");
+      b.loop = true;
+      b.playbackRate.value = noiseRate(pitch);
+      src = b;
+    } else {
+      const o = ctx.createOscillator();
+      const pw = bank.periodic(inst.wave);
+      if (pw) o.setPeriodicWave(pw);
+      else o.type = OSCILLATOR[inst.wave] ?? "triangle";
+      o.frequency.value = midiToHz(pitch);
+      src = o;
+    }
+    src.connect(gain);
+    src.start(when);
+    src.stop(end + 0.01);
+    let stopped = false;
+    const handle = {
+      end,
+      onended: null,
+      stop(at) {
+        if (stopped) return;
+        stopped = true;
+        const t = Math.max(at ?? ctx.currentTime, ctx.currentTime);
+        if (t >= end) return;
+        g.cancelScheduledValues(t);
+        g.setValueAtTime(g.value, t);
+        g.linearRampToValueAtTime(0, t + 0.01);
+        try {
+          src.stop(t + 0.02);
+        } catch {
+        }
+      }
+    };
+    src.onended = () => {
+      try {
+        gain.disconnect();
+      } catch {
+      }
+      handle.onended?.();
+    };
+    return handle;
+  }
+
+  // src/sequencer.ts
+  function timing(s) {
+    return JSON.stringify([s.bpm, s.ticksPerBeat, s.length, s.tempos ?? []]);
+  }
+  var Sequencer = class {
+    context;
+    loop;
+    /** Called once when a non-looping song plays out. */
+    onend = null;
+    song;
+    bank;
+    master;
+    trackGains = [];
+    voices = /* @__PURE__ */ new Set();
+    timers;
+    timer = null;
+    lookahead;
+    interval;
+    // Tempo anchor: absolute tick `anchorTick` sounds at context time `anchorTime`.
+    anchorTick = 0;
+    anchorTime = 0;
+    // Every note starting before this absolute tick has been scheduled.
+    scheduledTo = 0;
+    constructor(song, opts) {
+      this.context = opts.context;
+      this.song = song;
+      this.loop = opts.loop ?? true;
+      this.lookahead = opts.lookahead ?? 0.12;
+      this.interval = opts.interval ?? 25;
+      this.timers = opts.timers ?? {
+        setInterval: (fn, ms) => globalThis.setInterval(fn, ms),
+        clearInterval: (id) => globalThis.clearInterval(id)
+      };
+      this.bank = new WaveBank(this.context);
+      this.master = this.context.createGain();
+      this.master.gain.value = opts.volume ?? 0.3;
+      this.master.connect(opts.destination ?? this.context.destination);
+      this.syncTracks();
+    }
+    get playing() {
+      return this.timer !== null;
+    }
+    get volume() {
+      return this.master.gain.value;
+    }
+    set volume(v) {
+      this.master.gain.value = Math.min(1, Math.max(0, v));
+    }
+    /**
+     * The playhead in song ticks (fractional, wrapped to the loop). While
+     * stopped it is wherever playback last started.
+     */
+    get position() {
+      const abs = this.absolutePosition();
+      if (!this.loop) return Math.min(abs, this.song.length);
+      return (abs % this.song.length + this.song.length) % this.song.length;
+    }
+    /**
+     * Replace the song, for live editing. Notes already handed to the audio
+     * clock (the next `lookahead` seconds) play as they were; everything after
+     * uses the new song. A tempo change takes effect from the playhead.
+     */
+    setSong(song) {
+      if (this.playing && timing(song) !== timing(this.song)) {
+        const now = this.context.currentTime;
+        const pos = this.absolutePosition();
+        this.anchorTick = pos;
+        this.anchorTime = now;
+        this.scheduledTo = Math.max(this.scheduledTo, Math.ceil(pos));
+      }
+      this.song = song;
+      this.syncTracks();
+    }
+    /** Start from song tick `from` (default 0). Restarts if already playing. */
+    play(from = 0) {
+      this.stop();
+      const now = this.context.currentTime;
+      this.anchorTick = from;
+      this.anchorTime = now + 0.05;
+      this.scheduledTo = Math.ceil(from);
+      this.timer = this.timers.setInterval(() => this.pump(), this.interval);
+      this.pump();
+    }
+    /** Stop at once, fading out every sounding note in 10 ms. */
+    stop() {
+      if (this.timer !== null) {
+        this.anchorTick = this.absolutePosition();
+        this.anchorTime = this.context.currentTime;
+        this.timers.clearInterval(this.timer);
+        this.timer = null;
+      }
+      for (const v of this.voices) v.stop();
+      this.voices.clear();
+    }
+    /**
+     * Sound one note now on a track's instrument, through that track's level,
+     * for auditioning while editing. Plays whether or not the song is running.
+     * `pitch` is a MIDI number, fractional for microtones, whatever the song's
+     * tuning: `soundingPitch(note, song)` gives a note's.
+     */
+    preview(track, pitch, seconds = 0.25, velocity = 1) {
+      const t = this.song.tracks[track];
+      const gain = this.trackGains[track];
+      if (!t || !gain) return null;
+      return this.track(playNote(this.bank, gain, t.instrument, pitch, this.context.currentTime + 5e-3, seconds, velocity));
+    }
+    /** Disconnect everything. The sequencer cannot be used afterwards. */
+    destroy() {
+      this.stop();
+      for (const g of this.trackGains) g.disconnect();
+      this.master.disconnect();
+    }
+    // Ticks and the clock meet through secondsBetween/tickAfter, measured from
+    // the anchor, so tempo changes inside the song bend both the same way.
+    absolutePosition() {
+      if (this.timer === null) return this.anchorTick;
+      const dt = this.context.currentTime - this.anchorTime;
+      return tickAfter(this.song, this.anchorTick, Math.max(0, dt));
+    }
+    timeOf(absTick) {
+      return this.anchorTime + secondsBetween(this.song, this.anchorTick, absTick);
+    }
+    pump() {
+      const song = this.song;
+      const horizon = this.context.currentTime + this.lookahead;
+      const until = Math.max(this.scheduledTo, Math.ceil(tickAfter(song, this.anchorTick, horizon - this.anchorTime)));
+      for (const ev of notesBetween(song, this.scheduledTo, until, this.loop)) {
+        const gain = this.trackGains[ev.track];
+        const track = song.tracks[ev.track];
+        if (!gain || !track) continue;
+        this.track(playNote(
+          this.bank,
+          gain,
+          track.instrument,
+          soundingPitch(ev.note, song),
+          this.timeOf(ev.at),
+          secondsBetween(song, ev.at, ev.at + ev.note.length),
+          ev.note.velocity ?? 1
+        ));
+      }
+      this.scheduledTo = until;
+      if (!this.loop && this.context.currentTime >= this.timeOf(song.length) + this.tail()) {
+        this.stop();
+        this.anchorTick = 0;
+        this.onend?.();
+      }
+    }
+    tail() {
+      return Math.max(0, ...this.song.tracks.map((t) => t.instrument.release));
+    }
+    track(v) {
+      this.voices.add(v);
+      v.onended = () => this.voices.delete(v);
+      return v;
+    }
+    syncTracks() {
+      const n = this.song.tracks.length;
+      while (this.trackGains.length < n) {
+        const g = this.context.createGain();
+        g.connect(this.master);
+        this.trackGains.push(g);
+      }
+      while (this.trackGains.length > n) this.trackGains.pop().disconnect();
+      this.song.tracks.forEach((t, i) => {
+        this.trackGains[i].gain.value = isAudible(this.song, i) ? t.volume : 0;
+      });
+    }
+  };
+
+  // src/render.ts
+  function renderDuration(song, loops = 1) {
+    const tail = Math.max(0, ...song.tracks.map((t) => t.instrument.release));
+    return secondsBetween(song, 0, song.length * loops) + tail + 0.02;
+  }
+  async function renderSong(song, opts = {}) {
+    const sampleRate = opts.sampleRate ?? 44100;
+    const loops = Math.max(1, Math.floor(opts.loops ?? 1));
+    const frames = Math.ceil(renderDuration(song, loops) * sampleRate);
+    const ctx = opts.createContext ? opts.createContext(1, frames, sampleRate) : new OfflineAudioContext(1, frames, sampleRate);
+    const bank = new WaveBank(ctx);
+    const master = ctx.createGain();
+    master.gain.value = opts.volume ?? 0.3;
+    master.connect(ctx.destination);
+    const gains = song.tracks.map((t, i) => {
+      const g = ctx.createGain();
+      g.gain.value = isAudible(song, i) ? t.volume : 0;
+      g.connect(master);
+      return g;
+    });
+    for (const ev of notesBetween(song, 0, song.length * loops, true)) {
+      const track = song.tracks[ev.track];
+      playNote(
+        bank,
+        gains[ev.track],
+        track.instrument,
+        soundingPitch(ev.note, song),
+        secondsBetween(song, 0, ev.at),
+        secondsBetween(song, ev.at, ev.at + ev.note.length),
+        ev.note.velocity ?? 1
+      );
+    }
+    return ctx.startRendering();
+  }
+  function encodeWav(channels, sampleRate) {
+    const nch = Math.max(1, channels.length);
+    const frames = channels[0]?.length ?? 0;
+    const dataBytes = frames * nch * 2;
+    const buf = new ArrayBuffer(44 + dataBytes);
+    const v = new DataView(buf);
+    const str = (o2, s) => {
+      for (let i = 0; i < s.length; i++) v.setUint8(o2 + i, s.charCodeAt(i));
+    };
+    str(0, "RIFF");
+    v.setUint32(4, 36 + dataBytes, true);
+    str(8, "WAVE");
+    str(12, "fmt ");
+    v.setUint32(16, 16, true);
+    v.setUint16(20, 1, true);
+    v.setUint16(22, nch, true);
+    v.setUint32(24, sampleRate, true);
+    v.setUint32(28, sampleRate * nch * 2, true);
+    v.setUint16(32, nch * 2, true);
+    v.setUint16(34, 16, true);
+    str(36, "data");
+    v.setUint32(40, dataBytes, true);
+    let o = 44;
+    for (let i = 0; i < frames; i++) {
+      for (let c = 0; c < nch; c++) {
+        const s = Math.max(-1, Math.min(1, channels[c]?.[i] ?? 0));
+        v.setInt16(o, s < 0 ? Math.round(s * 32768) : Math.round(s * 32767), true);
+        o += 2;
+      }
+    }
+    return buf;
+  }
+  function audioBufferToWav(buffer) {
+    const ch = [];
+    for (let c = 0; c < buffer.numberOfChannels; c++) ch.push(buffer.getChannelData(c));
+    return encodeWav(ch, buffer.sampleRate);
+  }
+  return __toCommonJS(index_exports);
+})();

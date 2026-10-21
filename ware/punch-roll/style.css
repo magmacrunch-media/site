@@ -1,0 +1,719 @@
+/* PUNCH//ROLL: the app's palette and layout.
+ *
+ * The shell contract: the shell defines chrome and reads these six tokens; the
+ * app defines them. All six are required; the shell provides no fallbacks.
+ *
+ * They come from magma-themes, the website's themes (vendor/magma-themes.css):
+ * <html data-magma-theme> names the theme and these map its roles onto the
+ * shell's tokens. Every one keeps a fallback, so the page still renders
+ * without the themes stylesheet. Themes have no border role, so it is mixed
+ * from text and background. The canvas reads all of these through
+ * ui/theme.js, so a token changed here changes the roll too.
+ */
+
+:root {
+    --bg: var(--mt-bg, #080808);
+    --surface: var(--mt-surface, #101010);
+    --text: var(--mt-text, #e8e8e8);
+    --dim: var(--mt-muted, #8a8a8a);
+    --accent: var(--mt-accent, #ff5a1f);
+    --border: color-mix(in srgb, var(--text) 14%, var(--bg));
+
+    /* Tempo flags, and the six track colours in panel order. */
+    --tempo-hue: var(--mt-p-yellow, #ffc21f);
+    --track-1-hue: var(--mt-p-orange, #ff5a1f);
+    --track-2-hue: var(--mt-p-yellow, #ffc21f);
+    --track-3-hue: var(--mt-p-cyan, #3fd0ff);
+    --track-4-hue: var(--mt-p-purple, #c77dff);
+    --track-5-hue: var(--mt-p-green, #5dff8a);
+    --track-6-hue: var(--mt-p-rose, #ff5fa2);
+    --tempo: var(--tempo-hue);
+    --track-1: var(--track-1-hue);
+    --track-2: var(--track-2-hue);
+    --track-3: var(--track-3-hue);
+    --track-4: var(--track-4-hue);
+    --track-5: var(--track-5-hue);
+    --track-6: var(--track-6-hue);
+}
+
+/* Those are the palette's brights, made for a dark page; on a light one a
+ * yellow name is unreadable. data-theme-mode is set by ui/main.js from the
+ * theme index, so take them halfway to the text colour there. */
+:root[data-theme-mode="light"] {
+    --tempo: color-mix(in srgb, var(--tempo-hue) 50%, var(--text));
+    --track-1: color-mix(in srgb, var(--track-1-hue) 50%, var(--text));
+    --track-2: color-mix(in srgb, var(--track-2-hue) 50%, var(--text));
+    --track-3: color-mix(in srgb, var(--track-3-hue) 50%, var(--text));
+    --track-4: color-mix(in srgb, var(--track-4-hue) 50%, var(--text));
+    --track-5: color-mix(in srgb, var(--track-5-hue) 50%, var(--text));
+    --track-6: color-mix(in srgb, var(--track-6-hue) 50%, var(--text));
+}
+
+/* The desktop build (html.desktop, set by kit/bridge-core.js) hides the
+ * shell's website-only pieces. */
+html.desktop .shell-backlink,
+html.desktop .shell-footer,
+html.desktop .tool-nav {
+    display: none;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    background: var(--bg);
+    color: var(--text);
+}
+
+.app-header {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.toolbar {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex: 1;
+    flex-wrap: wrap;
+    font-size: 0.85rem;
+}
+
+.toolbar label {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    color: var(--dim);
+}
+
+.toolbar input[type="number"] {
+    width: 6.5em;
+}
+
+.toolbar input, .toolbar select, .toolbar button,
+#tracks select, #tracks button {
+    background: var(--surface);
+    color: var(--text);
+    border: 1px solid var(--border);
+    font: inherit;
+    padding: 0.25rem 0.45rem;
+}
+
+.toolbar button, #tracks button {
+    cursor: pointer;
+}
+
+.toolbar button:hover, #tracks button:hover {
+    border-color: var(--dim);
+}
+
+.toolbar button.primary {
+    border-color: var(--accent);
+    color: var(--accent);
+    min-width: 4.5em;
+}
+
+.toolbar button.primary.on {
+    background: var(--accent);
+    color: var(--bg);
+}
+
+/* Step entry's switch, under the tuning; down while it is on. */
+#step-row {
+    display: grid;
+    padding: 0 0.7rem 0.6rem calc(0.7rem + 3px);
+}
+
+/* A MIDI keyboard, under step entry, where the browser has Web MIDI. */
+#midi-row {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    padding: 0 0.7rem 0.6rem calc(0.7rem + 3px);
+}
+
+#midi-row[hidden], #midi-row [hidden] {
+    display: none;
+}
+
+#tracks #btn-step[aria-pressed="true"] {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: var(--bg);
+}
+
+.toolbar .spacer {
+    flex: 1;
+}
+
+#stage {
+    flex: 1;
+    min-height: 0;
+    display: flex;
+}
+
+/* ── tracks ───────────────────────────────────────── */
+
+#tracks {
+    width: 13rem;
+    flex: none;
+    border-right: 1px solid var(--border);
+    overflow-y: auto;
+    font-size: 0.8rem;
+}
+
+.track {
+    padding: 0.6rem 0.7rem;
+    border-bottom: 1px solid var(--border);
+    border-left: 3px solid transparent;
+    cursor: pointer;
+    display: grid;
+    /* minmax(0, …): otherwise the wave select's widest option sets the
+     * column, and the panel scrolls sideways. */
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0.4rem;
+}
+
+.track.current {
+    background: var(--surface);
+    border-left-color: var(--track);
+}
+
+.track .name {
+    flex: 1;
+    min-width: 0;
+    color: var(--track);
+    font-weight: bold;
+    letter-spacing: 0.04em;
+}
+
+/* The track a note drag would drop onto. */
+.track.drop {
+    outline: 2px dashed var(--track);
+    outline-offset: -4px;
+}
+
+/* Muted, or left out by another track's solo. */
+.track.silent .name {
+    opacity: 0.45;
+    text-decoration: line-through;
+}
+
+.track .row {
+    display: flex;
+    gap: 0.35rem;
+    align-items: center;
+}
+
+.track select {
+    flex: 1;
+    min-width: 0;
+}
+
+.track input[type="range"] {
+    flex: 1;
+    accent-color: var(--track);
+}
+
+/* The song's tuning, at the foot of the panel under the cards. */
+#tuning-row {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0.4rem;
+    padding: 0.6rem 0.7rem 0.6rem calc(0.7rem + 3px);
+    color: var(--dim);
+}
+
+#tuning-row select {
+    min-width: 0;
+}
+
+#tracks .track button.toggle {
+    width: 1.9rem;
+    padding: 0.15rem 0;
+}
+
+#tracks .track button.toggle.wide {
+    width: auto;
+    padding: 0.05rem 0.35rem;
+    font-size: 0.7rem;
+}
+
+/* A track's envelope, under its mix row when ENV is on. */
+.track .env {
+    display: grid;
+    gap: 0.2rem;
+}
+
+.track .env label {
+    display: grid;
+    grid-template-columns: 1em minmax(0, 1fr) 3.6em;
+    gap: 0.35rem;
+    align-items: center;
+    color: var(--dim);
+}
+
+.track .env output {
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+}
+
+#tracks .track button.toggle.on {
+    background: var(--track);
+    color: var(--bg);
+    border-color: var(--track);
+}
+
+/* ── roll ─────────────────────────────────────────── */
+
+/* The canvas is viewport-sized and sticky; #roll-extent gives the scroller
+ * the full size of the song, so native scrollbars and wheel work. */
+#roll-frame {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    position: relative;
+}
+
+/* The corner the canvas leaves above the keys: KEY_W by RULER_H in
+ * ui/roll-view.js, less their border lines. */
+#in-meter {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 63px;
+    height: 21px;
+    background: var(--surface);
+    color: var(--dim);
+    border: 0;
+    font: 11px monospace;
+    padding: 0 0 0 4px;
+    cursor: pointer;
+}
+
+#in-meter:hover, #in-meter:focus-visible {
+    color: var(--text);
+}
+
+#roll {
+    flex: 1;
+    min-width: 0;
+    position: relative;
+    overflow: auto;
+    background: var(--bg);
+}
+
+#roll-extent {
+    position: absolute;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+}
+
+#roll-canvas {
+    position: sticky;
+    top: 0;
+    left: 0;
+    display: block;
+    touch-action: none;
+}
+
+.app-footer {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    font-size: 0.75rem;
+    color: var(--dim);
+}
+
+/* One line whatever it says: a status that wrapped would grow the footer
+ * and shorten the roll above it, so the next click in the roll or its lane
+ * would land a few pixels from where it was aimed. A long one is cut with an
+ * ellipsis, and its full text is the title (see status() in main.js). */
+#status {
+    flex: 1 1 auto;
+    min-width: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.footer-end {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex: none;
+}
+
+.footer-end .theme {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+/* The theme picker: a button showing the chosen theme, and above it, while
+ * open, the list. Fixed width: sized to its longest name ("Bottle Boys
+ * Collective") in this font, it would push the status line onto two. The
+ * open list shows names in full. */
+.theme-picker {
+    position: relative;
+}
+
+#in-theme {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    width: 9.5rem;
+    /* The height the <select> it replaced had, so the footer did not move. */
+    height: 1rem;
+    background: var(--surface);
+    color: var(--text);
+    border: 1px solid var(--border);
+    font: inherit;
+    padding: 0 0.25rem;
+    cursor: pointer;
+    text-align: left;
+}
+
+#in-theme .name {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+#theme-list {
+    position: absolute;
+    right: 0;
+    bottom: calc(100% + 4px);
+    z-index: 10;
+    min-width: 15rem;
+    max-height: min(60vh, 26rem);
+    overflow-y: auto;
+    margin: 0;
+    padding: 2px;
+    list-style: none;
+    background: var(--surface);
+    color: var(--text);
+    border: 1px solid var(--border);
+}
+
+#theme-list[hidden] {
+    display: none;
+}
+
+#theme-list li {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.15rem 0.4rem;
+    white-space: nowrap;
+    cursor: pointer;
+}
+
+#theme-list li.active {
+    background: color-mix(in srgb, var(--accent) 25%, var(--surface));
+}
+
+#theme-list li[aria-selected="true"] {
+    color: var(--accent);
+}
+
+/* A theme's colours, from the index: its background, and on it chips of
+ * its text and accents. A role the theme lacks takes the same fallback
+ * :root gives it; one without accent2 shows its background in that chip. */
+.swatch {
+    display: inline-flex;
+    flex: none;
+    gap: 2px;
+    padding: 2px;
+    background: var(--sw-bg, #080808);
+    border: 1px solid var(--border);
+}
+
+.swatch i {
+    width: 0.45rem;
+    height: 0.65rem;
+}
+
+/* No taller than the footer's text, or the footer grows. */
+#in-theme .swatch {
+    padding: 1px;
+}
+
+#in-theme .swatch i {
+    height: 0.5rem;
+}
+
+.swatch .text { background: var(--sw, #e8e8e8); }
+.swatch .accent { background: var(--sw, #ff5a1f); }
+.swatch .accent2 { background: var(--sw); }
+
+#btn-theme-mode {
+    background: var(--surface);
+    color: var(--text);
+    border: 1px solid var(--border);
+    font: inherit;
+    padding: 0 0.4rem;
+    cursor: pointer;
+}
+
+#btn-help {
+    background: none;
+    border: none;
+    padding: 0;
+    color: var(--dim);
+    font: inherit;
+    cursor: pointer;
+}
+
+#btn-help:hover,
+#btn-help[aria-expanded="true"] {
+    color: var(--text);
+}
+
+/* The Help menu opens upward from its button, as the theme list does. */
+.help-picker {
+    position: relative;
+}
+
+#help-menu {
+    position: absolute;
+    right: 0;
+    bottom: calc(100% + 4px);
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    min-width: 13rem;
+    padding: 2px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+}
+
+#help-menu[hidden] {
+    display: none;
+}
+
+#help-menu button {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    background: none;
+    border: none;
+    color: var(--text);
+    font: inherit;
+    text-align: left;
+    padding: 0.15rem 0.4rem;
+    white-space: nowrap;
+    cursor: pointer;
+}
+
+#help-menu button i {
+    font-style: normal;
+    color: var(--dim);
+}
+
+#help-menu button:hover,
+#help-menu button:focus-visible {
+    outline: none;
+    background: color-mix(in srgb, var(--accent) 25%, var(--surface));
+}
+
+/* ── shortcuts dialog ─────────────────────────────── */
+
+dialog.keys {
+    /* The base styles zero margins, which also undoes the browser's
+     * centring of a modal dialog. */
+    margin: auto;
+    background: var(--surface);
+    color: var(--text);
+    border: 1px solid var(--border);
+    padding: 0;
+    width: min(58rem, calc(100vw - 2rem));
+    max-height: calc(100vh - 4rem);
+    font-size: 0.75rem;
+    line-height: 1.6;
+}
+
+dialog.keys::backdrop {
+    background: rgba(0, 0, 0, 0.6);
+}
+
+dialog.keys header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.6rem 0.9rem;
+    border-bottom: 1px solid var(--border);
+}
+
+dialog.keys h2 {
+    margin: 0;
+    font-size: 0.9rem;
+    color: var(--accent);
+}
+
+dialog.keys .modal-close {
+    background: none;
+    border: 1px solid var(--border);
+    color: var(--text);
+    font: inherit;
+    padding: 0 0.5rem;
+    cursor: pointer;
+}
+
+dialog.keys .modal-close:hover {
+    border-color: var(--dim);
+}
+
+/* The tempo dialog shares the shortcuts dialog's frame, at a small size. */
+dialog.tempo {
+    width: min(22rem, calc(100vw - 2rem));
+}
+
+.tempo-body {
+    display: grid;
+    gap: 0.9rem;
+    padding: 0.9rem;
+}
+
+.tempo-body label {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    color: var(--dim);
+}
+
+.tempo-body input,
+.tempo-actions button {
+    background: var(--bg);
+    color: var(--text);
+    border: 1px solid var(--border);
+    font: inherit;
+    padding: 0.25rem 0.5rem;
+}
+
+.tempo-body input {
+    width: 6em;
+}
+
+.tempo-actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.tempo-actions .spacer {
+    flex: 1;
+}
+
+.tempo-actions button {
+    cursor: pointer;
+}
+
+.tempo-actions button.primary {
+    border-color: var(--accent);
+    color: var(--accent);
+}
+
+.tempo-actions button[hidden] {
+    display: none;
+}
+
+/* How to use and Credits share the shortcuts dialog's frame, narrower, as
+ * plain reading text. */
+dialog.guide,
+dialog.credits {
+    width: min(36rem, calc(100vw - 2rem));
+}
+
+.doc-body {
+    padding: 0.4rem 0.9rem 0.9rem;
+}
+
+.doc-body h3 {
+    margin: 0.8rem 0 0.2rem;
+    font-size: 0.75rem;
+    color: var(--dim);
+    letter-spacing: 0.04em;
+}
+
+.doc-body p {
+    margin: 0 0 0.4rem;
+}
+
+.doc-body code {
+    color: var(--accent);
+    font: inherit;
+}
+
+.doc-body .doc-more {
+    margin-top: 0.9rem;
+    color: var(--dim);
+}
+
+.credits-title {
+    font-size: 0.9rem;
+    color: var(--accent);
+}
+
+.credits-title span {
+    color: var(--dim);
+    font-size: 0.75rem;
+}
+
+.doc-body dl {
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    gap: 0.25rem 1rem;
+    margin: 0.8rem 0 0;
+}
+
+.doc-body dt {
+    color: var(--accent);
+}
+
+.doc-body dd {
+    margin: 0;
+}
+
+/* Sections flow into as many columns as fit; one on a phone. */
+#keys-body {
+    columns: 24rem;
+    column-gap: 1.5rem;
+    padding: 0.4rem 0.9rem 0.9rem;
+}
+
+#keys-body section {
+    break-inside: avoid;
+}
+
+#keys-body h3 {
+    margin: 0.8rem 0 0.3rem;
+    font-size: 0.75rem;
+    color: var(--dim);
+    letter-spacing: 0.04em;
+}
+
+#keys-body table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+/* Key labels hold no spaces ("Ctrl+Shift+Z"), so a narrow screen wraps a
+ * row only between alternatives, at " / ". */
+#keys-body th {
+    text-align: left;
+    font-weight: normal;
+    color: var(--accent);
+    padding: 0.15rem 1rem 0.15rem 0;
+    vertical-align: top;
+}
+
+#keys-body td {
+    padding: 0.15rem 0;
+    color: var(--text);
+}

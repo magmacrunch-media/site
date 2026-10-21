@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en" data-app="PunchRoll" data-magma-theme="global-palette">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>PUNCH//ROLL</title>
+    <link rel="stylesheet" href="../shell/fonts.css">
+    <link rel="stylesheet" href="../shell/app-shell.css">
+    <link rel="stylesheet" href="../shell/toast.css">
+    <link rel="stylesheet" href="kit/magma-themes.css?v=9e723c54">
+    <link rel="stylesheet" href="style.css?v=d494540d">
+</head>
+<body>
+    <header class="app-header">
+        <h1>PUNCH//ROLL</h1>
+        <nav class="toolbar" aria-label="Song">
+            <button id="btn-play" class="primary" title="Play / stop (Space)">Play</button>
+            <label>BPM <input id="in-bpm" type="number" min="20" max="400" step="1"></label>
+            <label>Bars <input id="in-bars" type="number" min="1" max="256" step="1"></label>
+            <label>Grid <select id="in-grid" title="What notes snap to"></select></label>
+            <label class="check"><input id="in-loop" type="checkbox" checked> Loop</label>
+            <span class="spacer"></span>
+            <button id="btn-new" title="New song">New</button>
+            <button id="btn-open" title="Open a song (Ctrl+O)">Open</button>
+            <button id="btn-save" title="Save the song (Ctrl+S)">Save</button>
+            <button id="btn-wav" title="Render and export a WAV">Export WAV</button>
+        </nav>
+    </header>
+
+    <!-- The compact breadcrumb trail every ware page carries (ware/crumbs.css),
+         without "home", styled by the shell's .back-link so nothing is vendored
+         for it. It only resolves on the website; the desktop build hides it. -->
+    <nav class="tool-nav" aria-label="breadcrumb" style="font-family: 'Press Start 2P', monospace; font-size: 7px; letter-spacing: 0.1em; color: var(--backlink-color);">
+        <a href="../" class="back-link">ware</a> › <a href="../utilities/" class="back-link">creative utilities</a> › <span aria-current="page" style="color: var(--backlink-hover);">punch//roll</span>
+    </nav>
+
+    <main id="stage">
+        <aside id="tracks" aria-label="Tracks">
+            <label id="tuning-row" title="Tuning: equal steps to the octave">Tuning <select id="in-tuning"></select></label>
+            <div id="step-row"><button id="btn-step" type="button" aria-pressed="false" title="Step entry: type notes from the computer keyboard at the start marker (R)">Step entry</button></div>
+            <div id="midi-row" hidden>
+                <button id="btn-midi" type="button" title="Play the current track from a MIDI keyboard, and enter notes with Step entry">MIDI keyboard</button>
+                <select id="in-midi" aria-label="MIDI input" hidden></select>
+            </div>
+        </aside>
+        <div id="roll-frame">
+            <section id="roll" aria-label="Piano roll">
+                <div id="roll-extent"></div>
+                <canvas id="roll-canvas"></canvas>
+            </section>
+            <!-- Over the roll's empty top-left corner, beside the bar numbers. -->
+            <select id="in-meter" aria-label="Meter" title="Meter: the time signature, where the bars fall"></select>
+        </div>
+    </main>
+
+    <footer class="app-footer">
+        <span id="status">Click: add · drag: move · right-click: delete · Shift-drag: select</span>
+        <span class="footer-end">
+            <span class="theme"><span id="theme-label">Theme</span>
+                <span class="theme-picker">
+                    <button id="in-theme" type="button" aria-haspopup="listbox" aria-expanded="false" aria-controls="theme-list" aria-labelledby="theme-label in-theme" title="Colour theme, from magma-themes: hover or arrow through the list to preview"></button>
+                    <ul id="theme-list" role="listbox" aria-labelledby="theme-label" hidden></ul>
+                </span>
+            </span>
+            <button id="btn-theme-mode" title="Light or dark themes">Dark</button>
+            <!-- Help: a menu above the button, like the theme picker's list. -->
+            <span class="help-picker">
+                <button id="btn-help" type="button" aria-haspopup="menu" aria-expanded="false" aria-controls="help-menu" title="How to use, shortcuts and credits">Help</button>
+                <span id="help-menu" role="menu" aria-label="Help" hidden>
+                    <button id="btn-guide" role="menuitem" type="button">How to use</button>
+                    <button id="btn-keys" role="menuitem" type="button" title="Keyboard shortcuts (? or F1)">Keyboard shortcuts<i>F1</i></button>
+                    <button id="btn-credits" role="menuitem" type="button">Credits</button>
+                </span>
+            </span>
+            <span id="app-version"></span>
+        </span>
+    </footer>
+
+    <dialog id="dlg-tempo" class="keys tempo" aria-labelledby="tempo-title">
+        <header>
+            <h2 id="tempo-title">Tempo</h2>
+            <button class="modal-close" title="Close (Esc)" aria-label="Close">×</button>
+        </header>
+        <form id="tempo-form" class="tempo-body">
+            <label>BPM <input id="in-tempo" type="number" min="20" max="400" step="1" required></label>
+            <div class="tempo-actions">
+                <button type="button" id="btn-tempo-delete">Delete</button>
+                <span class="spacer"></span>
+                <button type="button" id="btn-tempo-cancel">Cancel</button>
+                <button type="submit" class="primary">OK</button>
+            </div>
+        </form>
+    </dialog>
+
+    <dialog id="dlg-keys" class="keys" aria-labelledby="keys-title">
+        <header>
+            <h2 id="keys-title">Keyboard shortcuts</h2>
+            <button class="modal-close" title="Close (Esc)" aria-label="Close">×</button>
+        </header>
+        <div id="keys-body"></div>
+    </dialog>
+
+    <dialog id="dlg-guide" class="keys guide" aria-labelledby="guide-title">
+        <header>
+            <h2 id="guide-title">How to use PUNCH//ROLL</h2>
+            <button class="modal-close" title="Close (Esc)" aria-label="Close">×</button>
+        </header>
+        <div class="doc-body">
+            <section>
+                <h3>Write notes</h3>
+                <p>Each row of the roll is a pitch and each column a step of the grid.
+                    Click an empty square to add a note, drag it to move it, and drag its
+                    right edge to make it longer. Right-click a note to delete it.
+                    Shift-drag across empty grid to select several notes at once.</p>
+            </section>
+            <section>
+                <h3>Pick a track</h3>
+                <p>The panel on the left holds the tracks: two pulse channels, a
+                    triangle and noise. Click one, or press 1 to 4, and new notes go
+                    onto it. M mutes the current track and S solos it. Click the
+                    keyboard beside the roll to hear a pitch on that track.</p>
+            </section>
+            <section>
+                <h3>Play it</h3>
+                <p>Press Space or Play. Click the ruler along the top to choose where
+                    playback starts, and untick Loop to play through once.
+                    BPM, Bars and Grid in the toolbar set the speed, the length and how
+                    finely notes snap. Double-click the ruler to add a tempo change.</p>
+            </section>
+            <section>
+                <h3>Shape the sound</h3>
+                <p>Click or drag in the VEL lane under the roll to make notes louder or
+                    softer. The meter menu at the top left sets the time signature, and
+                    the Tuning menu swaps the usual twelve semitones for 19, 24 (quarter
+                    tones) or 31 equal steps to the octave. Each note can also be detuned by a few cents.</p>
+            </section>
+            <section>
+                <h3>Keep it</h3>
+                <p>Save writes a <code>.punch</code> song file, and Open loads one back;
+                    on the desktop, double-clicking a <code>.punch</code> file opens it too.
+                    Export WAV renders the song to an audio file. Ctrl+Z undoes almost
+                    anything.</p>
+            </section>
+            <p class="doc-more">Every key is listed under Help, Keyboard shortcuts (or press F1).</p>
+        </div>
+    </dialog>
+
+    <dialog id="dlg-credits" class="keys credits" aria-labelledby="credits-title">
+        <header>
+            <h2 id="credits-title">Credits</h2>
+            <button class="modal-close" title="Close (Esc)" aria-label="Close">×</button>
+        </header>
+        <div class="doc-body">
+            <p class="credits-title">PUNCH//ROLL <span id="credits-version"></span></p>
+            <p>A piano roll for chiptune music, by MAGMACRUNCH MEDIA.</p>
+            <dl>
+                <dt>Sound</dt>
+                <dd>adenosine-synth, the MAGMACRUNCH chip synth: pulse, triangle, saw and noise voices</dd>
+                <dt>Look</dt>
+                <dd>magma-themes colour palettes</dd>
+                <dt>Shell</dt>
+                <dd>magma-kit, on Tauri</dd>
+                <dt>Type</dt>
+                <dd>Press Start 2P and Courier Prime, by their project authors, under the SIL Open Font License 1.1</dd>
+            </dl>
+            <p class="doc-more">&copy; MAGMACRUNCH MEDIA</p>
+        </div>
+    </dialog>
+
+    <input id="file-open" type="file" accept=".punch,.json,application/json" hidden>
+
+    <!-- Load order is the dependency order, asserted by tests/run.mjs.
+         kit/boot.js is FIRST: it exists to report failures in everything
+         after it. Then the rest of the kit, then vendor/ and core/ (pure),
+         then ui/. -->
+    <script src="kit/boot.js?v=3867389f"></script>
+    <script src="kit/bridge-core.js?v=1a0ffb5c"></script>
+    <script src="kit/keys.js?v=a0ef34b7"></script>
+    <script src="kit/history.js?v=0a47fcb3"></script>
+    <script src="kit/prefs.js?v=27328242"></script>
+    <script src="kit/modal.js?v=0549bda4"></script>
+    <script src="kit/dom.js?v=1d063261"></script>
+    <script src="kit/themes.js?v=b16895dc"></script>
+    <script src="kit/magma-themes-index.js?v=7a3b40b5"></script>
+    <script src="../shell/toast.js"></script>
+    <script src="vendor/adenosine-synth.js?v=9f3a2f8d"></script>
+    <script src="core/roll.js?v=5e8d8272"></script>
+    <script src="core/keymap.js?v=53173c02"></script>
+    <script src="core/midi.js?v=b4db0caf"></script>
+    <script src="bridge.js?v=d24f7de7"></script>
+    <script src="theme.js?v=8057a6fe"></script>
+    <script src="roll-view.js?v=54ad52a5"></script>
+    <script src="midi.js?v=b33fdd11"></script>
+    <script src="main.js?v=fc8f7967"></script>
+</body>
+</html>

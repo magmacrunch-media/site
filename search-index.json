@@ -31,8 +31,8 @@
     "t": "music",
     "c": "page",
     "u": "/music/index.html",
-    "d": "distributed music / jukebox / physical media",
-    "b": "music — magmacrunch media home › music // music // jukebox local streaming · choose a song ▶ on streaming services distributed via LANDR · all major platforms ▶ music videos no-budget video productions · YouTube ▶ physical media floppy disk · CD · tapes in the works ▶"
+    "d": "recordings from magmacrunch media, songs published by magmacrunch music. latest release, roster, jukebox, streaming, videos, physical media",
+    "b": "music — magmacrunch media home › music magmacrunch music recordings from magmacrunch media · songs published by magmacrunch music latest release ▶ play the jukebox stream it ↗ roster every artist in the archive › listen jukebox local streaming · choose a song ▶ on streaming services distributed via LANDR · all major platforms ▶ music videos no-budget video productions · YouTube ▶ physical media floppy disk · CD · tapes in the works ▶"
   },
   {
     "t": "distributed music",
@@ -53,14 +53,14 @@
     "c": "page",
     "u": "/music/physical-media/index.html",
     "d": "CDs, tapes, and floppy disks",
-    "b": "physical media — magmacrunch media home › music › physical media // physical media // physical & obscure media series // formats // 3.5\" FLOPPY DISK active est. july 2025 ▶ CD soon coming soon TAPE soon coming soon"
+    "b": "physical media — magmacrunch media home › music › physical media // physical media // physical & obscure media series // releases // iou a pack of american spirits sex van floor plan · 3.5&Prime; floppy · jun 2026 ▶ sex van floor plan sex van floor plan · CD · jun 2026 ▶ pay2play sex van floor plan · 3.5&Prime; floppy · jul 2025 ▶ // formats // 3.5\" FLOPPY DISK active a series since july 2025 ▶ CD active since june 2026 ▶ tape: in the works"
   },
   {
     "t": "cd",
     "c": "page",
     "u": "/music/physical-media/cd/index.html",
     "d": "CD releases catalog",
-    "b": "cd — magmacrunch media home › music › physical media › cd // cd // coming soon cd releases are in development. check back later. ← back to physical media"
+    "b": "cd — magmacrunch media home › music › physical media › cd // cd // on compact disc since june 2026 the first CD, released the same day as the iou floppy. sex van floor plan sex van floor plan · CD · june 26, 2026 recorded at Irvin House CD made & designed by the slop collective released digitally by magmacrunch media , via LANDR, july 17, 2026 ← back to physical media"
   },
   {
     "t": "tape",
@@ -200,7 +200,7 @@
     "c": "page",
     "u": "/ware/utilities/index.html",
     "d": "browser-based tools for art, media & image processing",
-    "b": "creative utilities — ware — magmacrunch media home › ware › creative utilities // creative utilities // browser-based tools for art, media & image processing ALBUM//ART pixel art editor for album covers · text, shapes, images ▶ MEDIA//SEARCH free media aggregator · CC-licensed images, video & audio ▶ CRUNCH//SCOPE an image signal chain you play like an instrument · pixel sort, FFT filter, feedback ▶ TONE//GRATING FM synthesis and a diffraction grating are the same calculation · one Bessel column, two domains ▶ SPRITE//FORGE game sprite editor · animation, onion skin, PNG sheet export ▶"
+    "b": "creative utilities — ware — magmacrunch media home › ware › creative utilities // creative utilities // browser-based tools for art, media & image processing GATE//FOLD pixel art editor for album covers · text, shapes, images ▶ MEDIA//SEARCH free media aggregator · CC-licensed images, video & audio ▶ CRUNCH//SCOPE an image signal chain you play like an instrument · pixel sort, FFT filter, feedback ▶ TONE//GRATING FM synthesis and a diffraction grating are the same calculation · one Bessel column, two domains ▶ SPRITE//FORGE game sprite editor · animation, onion skin, PNG sheet export ▶ PUNCH//..."
   },
   {
     "t": "developer tools",
@@ -1838,7 +1838,7 @@
     "c": "tool",
     "u": "/ware/album-art-maker/",
     "d": "pixel art editor for album covers · text, shapes, images",
-    "b": "GATE//FOLD This tool is best experienced on a desktop or laptop. Please visit on a wider screen for the full workspace. GATE//FOLD 1024×1024 0 ELEMENTS UNDO REDO DELETE CLEAR ALL CANVAS 1024 ▾ BG ► SELECT T TEXT ▢ IMAGE RECT ▾ FREQUENCY 5 WAVE MODE FILLED OPEN REFERENCE ▾ UPLOAD IMAGE × click to sample color BASIC ▭ RECT ○ CIRCLE ╱ LINE ▵ TRI ⬣ PENTA ⬤ HEXA ◇ DIAMOND ★ STAR ➤ ARROW ◯ R. RECT WAVES ∿ SINE ⊝ SQUARE ⊾ SAWTOOTH ⊿ TRI WAVE ∖ STEP ⊟ PULSE CLIP ART LAYERS ▾ PROPERTIES FILL ‒ STROKE ‒ STROKE WIDTH 4 ROTATION − + 0° STEPS 5 DUTY CYCLE 20% OPACITY 100% FIT TO CANVAS ■ COVER □ FIT SCALE ..."
+    "b": "GATE//FOLD This tool is best experienced on a desktop or laptop. Please visit on a wider screen for the full workspace. GATE//FOLD 1024×1024 0 ELEMENTS UNDO REDO DELETE CLEAR ALL CANVAS 1024 ▾ BG ► SELECT T TEXT ▢ IMAGE RECT ▾ FREQUENCY 5 WAVE MODE FILLED OPEN REFERENCE ▾ UPLOAD IMAGE × click to sample color BASIC ▭ RECT ○ CIRCLE ╱ LINE ▵ TRI ⬣ PENTA ⬤ HEXA ◇ DIAMOND ★ STAR ➤ ARROW ◯ R. RECT WAVES ∿ SINE ⊝ SQUARE ⊾ SAWTOOTH ⊿ TRI WAVE ∖ STEP ⊟ PULSE CLIP ART EMPTY COVER PICK A SHAPE OR TEXT, THEN DRAG ON THE CANVAS R RECT · T TEXT · CTRL+I IMAGE · OR DROP ONE HERE LAYERS ▾ PROPERTIES FILL ‒ ST..."
   },
   {
     "t": "backgammon · magmacrunch media",
@@ -2021,6 +2021,13 @@
     "u": "/ware/pixel-process/",
     "d": "an image signal chain you play like an instrument · pixel sort, FFT filter, feedback",
     "b": "crunchscope — magmacrunch media a signal chain for images ENTER or press any key magmacrunch media CRUNCH//SCOPE 256×256 0 EFFECTS INPUT UPLOAD IMAGE SOURCES generators replace the input image SELECT ▾ WHITE NOISE PERLIN NOISE H GRADIENT V GRADIENT RADIAL GRADIENT COLOR BARS CHECKERBOARD SOLID COLOR COLOR SEED REROLL COLOR A COLOR B WORK SIZE W H PRESETS ▾ 128 × 128 256 × 256 512 × 512 640 × 480 800 × 600 1024 × 768 FILE NAME EXPORT PNG GRID DROP IMAGE MON LEVELS SPECTRUM drag & drop · ctrl+v paste · upload image · add effects → SIGNAL CHAIN effects process the source image CHAIN SEED one numb..."
+  },
+  {
+    "t": "PUNCH//ROLL",
+    "c": "tool",
+    "u": "/ware/punch-roll/",
+    "d": "chiptune piano roll · pulse, triangle & noise channels, WAV export",
+    "b": "PUNCH//ROLL PUNCH//ROLL Tuning Step entry MIDI keyboard Tempo × BPM Delete Cancel OK Keyboard shortcuts × How to use PUNCH//ROLL × Write notes Each row of the roll is a pitch and each column a step of the grid. Click an empty square to add a note, drag it to move it, and drag its right edge to make it longer. Right-click a note to delete it. Shift-drag across empty grid to select several notes at once. Pick a track The panel on the left holds the tracks: two pulse channels, a triangle and noise. Click one, or press 1 to 4, and new notes go onto it. M mutes the current track and S solos it. Cli..."
   },
   {
     "t": "roderick tron · magmacrunch media",

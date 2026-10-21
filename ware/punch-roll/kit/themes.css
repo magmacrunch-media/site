@@ -1,0 +1,127 @@
+/* MAGMA//KIT: themes.css, the theme picker's look.
+ *
+ * Lifted from PUNCH//ROLL when FONT//LITHO became the second app to want it.
+ * It reads the app's own tokens (--bg, --surface, --text, --border,
+ * --accent), so it takes on whatever the app and its theme look like. Plain
+ * class selectors: they beat an app's bare `button` rule, and lose to any
+ * rule the app writes for these classes, so an app adjusts by adding, never
+ * by editing this file.
+ *
+ * Markup, which js/themes.js fills:
+ *
+ *   <span class="theme-picker">
+ *       <button class="theme-pick" type="button" aria-haspopup="listbox"
+ *               aria-expanded="false" aria-controls="theme-list"></button>
+ *       <ul class="theme-list" id="theme-list" role="listbox" hidden></ul>
+ *   </span>
+ *   <button class="theme-mode" type="button">Dark</button>
+ *
+ * The list opens UPWARD from the button, for a footer. An app with its
+ * picker in a header sets `.theme-list { top: calc(100% + 4px); bottom: auto; }`.
+ */
+
+.theme-picker {
+    position: relative;
+    display: inline-flex;
+}
+
+/* Fixed width, so a long theme name does not push its neighbours about; the
+ * open list shows names in full. */
+.theme-pick {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    width: 9.5rem;
+    background: var(--surface);
+    color: var(--text);
+    border: 1px solid var(--border);
+    font: inherit;
+    padding: 0.1rem 0.3rem;
+    cursor: pointer;
+    text-align: left;
+}
+
+.theme-pick .name {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.theme-list {
+    position: absolute;
+    right: 0;
+    bottom: calc(100% + 4px);
+    z-index: 10;
+    min-width: 15rem;
+    max-height: min(60vh, 26rem);
+    overflow-y: auto;
+    margin: 0;
+    padding: 2px;
+    list-style: none;
+    background: var(--surface);
+    color: var(--text);
+    border: 1px solid var(--border);
+}
+
+.theme-list[hidden] {
+    display: none;
+}
+
+.theme-list li {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.15rem 0.4rem;
+    white-space: nowrap;
+    cursor: pointer;
+}
+
+.theme-list li.active {
+    background: color-mix(in srgb, var(--accent) 25%, var(--surface));
+}
+
+.theme-list li[aria-selected="true"] {
+    color: var(--accent);
+}
+
+/* A theme's colours, from the index: its background, and on it chips of its
+ * text and accents. A chip for a role the theme lacks shows the family's
+ * default for that role; one without accent2 shows the background. */
+.swatch {
+    display: inline-flex;
+    flex: none;
+    gap: 2px;
+    padding: 2px;
+    background: var(--sw-bg, #080808);
+    border: 1px solid var(--border);
+}
+
+.swatch i {
+    width: 0.45rem;
+    height: 0.65rem;
+}
+
+.theme-pick .swatch {
+    padding: 1px;
+}
+
+.theme-pick .swatch i {
+    height: 0.5rem;
+}
+
+.swatch .text { background: var(--sw, #e8e8e8); }
+.swatch .accent { background: var(--sw, #ff5a1f); }
+.swatch .accent2 { background: var(--sw); }
+
+.theme-mode {
+    background: var(--surface);
+    color: var(--text);
+    border: 1px solid var(--border);
+    font: inherit;
+    padding: 0.1rem 0.4rem;
+    cursor: pointer;
+}
+
+.theme-mode[hidden] {
+    display: none;
+}
