@@ -111,6 +111,8 @@ main {
     color: #343848;
     letter-spacing: 0.1em;
     margin-bottom: 36px;
+    line-height: 2;
+    text-align: center;
     animation: fadeUp 0.5s 0.05s ease both;
 }
 .page-subtitle a {
