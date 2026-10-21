@@ -1,0 +1,865 @@
+% ****** Start of file apssamp.tex ******
+%
+%   This file is part of the APS files in the REVTeX 4.1 distribution.
+%   Version 4.1r of REVTeX, August 2010
+%
+%   Copyright (c) 2009, 2010 The American Physical Society.
+%
+%   See the REVTeX 4 README file for restrictions and more information.
+%
+% TeX'ing this file requires that you have AMS-LaTeX 2.0 installed
+% as well as the rest of the prerequisites for REVTeX 4.1
+%
+% See the REVTeX 4 README file
+% It also requires running BibTeX. The commands are as follows:
+%
+%  1)  latex apssamp.tex
+%  2)  bibtex apssamp
+%  3)  latex apssamp.tex
+%  4)  latex apssamp.tex
+%
+\documentclass[%
+ reprint,
+%superscriptaddress,
+%groupedaddress,
+%unsortedaddress,
+superscriptaddress,
+%frontmatterverbose, 
+%preprint,
+%showpacs,preprintnumbers,
+%nofootinbib,
+%nobibnotes,
+%bibnotes,
+ amsmath,amssymb,
+ aps,
+prl,
+%pra,
+%prb,
+%rmp,
+%prstab,
+%prstper,
+%floatfix,
+%longbibliography
+]{revtex4-1}
+
+
+\usepackage[normalem]{ulem}%Allows to strike out text using \sout{...} (for editing)
+\usepackage{graphicx}% Include figure files
+\usepackage{dcolumn}% Align table columns on decimal point
+\usepackage{bm}% bold math
+\usepackage[dvipsnames]{xcolor}
+%\usepackage{hyperref}% add hypertext capabilities
+%\usepackage[mathlines]{lineno}% Enable numbering of text and display math
+%\linenumbers\relax % Commence numbering lines
+
+%\usepackage[showframe,%Uncomment any one of the following lines to test 
+%%scale=0.7, marginratio={1:1, 2:3}, ignoreall,% default settings
+%%text={7in,10in},centering,
+%%margin=1.5in,
+%%total={6.5in,8.75in}, top=1.2in, left=0.9in, includefoot,
+%%height=10in,a5paper,hmargin={3cm,0.8in},
+%]{geometry}
+
+\begin{document}
+
+
+\title{Image of dynamic local exchange interactions in the dc magnetoresistance of spin-polarized current through a dopant}
+
+
+\author{Stephen R. McMillan}
+\affiliation{Optical Science and Technology Center, and Department of Physics and Astronomy, University of Iowa, Iowa City, Iowa 52242, USA}
+\affiliation{Pritzker School of Molecular Engineering, University of Chicago, Chicago, Illinois 60637, USA}
+\author{Nicholas J. Harmon}
+\altaffiliation{Current address: Department of Physics, University of Evansville, Evansville, Indiana 47722, USA}
+\affiliation{Optical Science and Technology Center, and Department of Physics and Astronomy, University of Iowa, Iowa City, Iowa 52242, USA}
+\author{Michael E. Flatt\'{e}}
+\affiliation{Optical Science and Technology Center, and Department of Physics and Astronomy, University of Iowa, Iowa City, Iowa 52242, USA}
+\affiliation{Pritzker School of Molecular Engineering, University of Chicago, Chicago, Illinois 60637, USA}
+\affiliation{Department of Applied Physics, Eindhoven University of Technology, P.O. Box 513, 5600 MB, Eindhoven, The Netherlands}
+
+\date{\today}
+
+\begin{abstract}
+We predict strong, dynamical effects in the dc magnetoresistance of current flowing from a spin-polarized electrical contact through a magnetic dopant in a nonmagnetic host.  Using the stochastic Liouville formalism we calculate clearly-defined resonances in the dc magnetoresistance when the applied magnetic field matches the exchange interaction with a nearby spin. At these resonances spin precession in the applied magnetic field is  canceled by spin evolution in the exchange field, preserving a dynamic bottleneck for spin transport through the dopant. Similar features emerge when the dopant spin is coupled to nearby nuclei through the hyperfine interaction.  These features provide a precise means of  measuring exchange or hyperfine couplings between localized spins near a surface using spin-polarized scanning tunneling microscopy, without any ac electric or magnetic fields, even when the exchange or hyperfine energy is orders of magnitude smaller than the thermal energy.
+\end{abstract}
+
+
+\maketitle
+%%%%%%%%%%%% INTRODUCTION %%%%%%%%%%%%
+%Background paragraph
+
+%myers2008, awschalom2013
+%They have shown long spin-lifetimes \cite{awschalom2013, hanson2007,christle2015,} and are 
+%electrically controllable \cite{tettamanzi2016, klimov2014} (in ensembles \cite{george2013}). 
+
+%Isolated dopants or clusters of dopants  are identifiable \cite{baumann2015, christle2015} and addressable through the use of a scanning tunneling microscope (STM) \cite{tang2004}. \textbf{General STM:}\cite{bardeen1961,tersoff1985}. Dopants can be placed with atomic precision \cite{kitchen2006,ito2017,crane2018} and the spatial structures can be mapped \cite{yakunin2004} with exchange coupling between the spins allowing for enhanced coherence \cite{bae2018}. \textbf{We are setting this ref. aside:} 
+%The eigenstates of surface dopants can be tailored \cite{yang2017}.  
+
+
+
+Localized spin states with long spin coherence times are a fundamental element of the quantum coherent spin systems\cite{Awschalom2002,Hanson2007} that underlie quantum sensing\cite{Degen2017} and quantum information processing\cite{Nielsen2010}. Dopants, and some other controlled defects, in semiconductor or insulator hosts provide a robust realization of these localized coherent spins\cite{Koenraad2011,pla2012}. Optical probes have revealed the spin dynamics of such spin centers, along with their coherent interactions with neighboring spins\cite{Balasubramanian2009,Ohno2012,Dobrovitski2013,Myers2014,Christle2017,Nagy2019}. Similar evidence of all-electrical probing of coherent interactions has been achieved at low temperatures in dopants in large magnetic fields\cite{Broome2018,Pakkiam2018}, and with electron spin resonance combined with spin-polarized scanning tunneling microscopy (STM-ESR)\cite{baumann2015,Bae2018,Willke2018,yang2018}. Low-field magnetoresistance without rf fields in much higher temperature dc electrical measurements, however, has been found in transport from a magnetic contact\cite{Txoperena2014,Inoue2015} through  traps to a nonmagnetic region, as well as in transport through  traps in semiconductor devices\cite{Ashton2019}. These effects can be understood  as originating from coherent spin dynamics in resonant\cite{Song2014}  or non-resonant (incoherent hopping) transport\cite{Inoue2015}, and are largely limited to zero-field peaks or dips in the electrical resistance unless the spin polarization of a contact is time dependent\cite{Harmon2018}.
+
+Here we predict that the {\it dc}  magnetoresistance of  electrical current through the spin state of a single dopant, which can be measured e.g. using spin-polarized STM (SP-STM\cite{wortmann2001,wiesendanger2007,loth2010}), should directly image the coherent effects of the environment on the dopant's spin dynamics, {\it e.g.}  exchange or hyperfine interactions, even at temperatures far larger than the energy scales of those interactions. These sharp environmental features in the dc magnetoresistance will occur in the absence of spin-orbit interaction in the system, and will persist even when the transport process is  charge incoherent (spin orientation is preserved when hopping to and from the dopant's spin state). 
+We consider the single dopant to reside in the surface region of a weakly conducting nonmagnetic  host, and under the influence of a second nuclear or electron spin, which affects the first spin through isotropic exchange or isotropic hyperfine interactions. The charge and spin magnitude of the second spin is fixed, as would be appropriate for the electron spin of a deep trap or for a nuclear spin. Strong dc magnetoresistance features are seen when the dopant's spin precession due to the applied magnetic field cancels  the precession due to the exchange or hyperfine interaction with the second spin. These features can be resolved at very small magnetic fields and thus should permit the measurement of milliTesla hyperfine interactions and $\mu$eV exchange interaction strengths, such as are predicted for spin centers in wide-gap semiconductors such as diamond\cite{Kortan2016}. 
+Double quantum dot measurements of spin bottlenecks\cite{Petta2005} would not see these features, as the spin polarization {\it transverse} to the applied magnetic field must be measured. 
+These coherent features in the magnetoresistance will remain detectable, due to the persistent coherence of the spin, even when the thermal energy exceeds the energy scales of spin interactions with the environment by orders of magnitude, so long as the dopant's spin coherence time exceeds the nanosecond transport times of the junction. This differs from SP-STM measurements of spin excitations during inelastic tunneling spectroscopy\cite{Hirjibehedin2006,Wiesendanger2009}, which cannot be resolved when the temperature exceeds the energy of the spin excitation.
+ Similar features appear to occur in the photoluminescence from organic molecules when the applied field brings a triplet exciton state into resonance with the singlet exciton state\cite{Bayliss2018}, although these occur at far larger magnetic fields ($\gg$~Tesla).  More generally, these coherent features may emerge in any flow of current through localized states in nanoscale devices containing contacts with spin polarization oblique to an external field.
+
+The detailed configuration is shown in Fig.~\ref{fig:setup}. Here we focus on the concrete situation in which the dopant through which transport occurs (transport site, in green) possesses two states, one of which is spin-0 and ``empty'', and the other is spin-1/2 and ``full'', corresponding to an additional electron (spectator site, in red); similar features are expected for a wide variety of transport and spectator spin states. The charge state of the spectator spin is unaffected during transport. The details of the magnetoresistive curves, and the visibility of coherent features within them, depend on the relative strength of the exchange interaction $J$ and the hopping rates, here $\gamma_{on}$ from the nonmagnetic host to the transport site, and $\gamma_{off}$ from the transport site to the SP-STM tip. The use of the STM provides atomic-scale resolution and permits direct selection of the dopant spin to be probed, and it also provides direct means to independently tune $\gamma_{on}$ and $\gamma_{off}$. By moving the tip towards or away from the surface the $\gamma_{off}$ can be adjusted\cite{zhang2012,tung2001,lee2010}, and through tip-induced band bending both $\gamma_{off}$ and $\gamma_{on}$ can be modified\cite{deRaad2002,Feenstra1987}.  We find the most sensitive configurations correspond to $\gamma_{off}\ll\gamma_{on}$, which is the expected experimental situation under ordinary conditions.
+We consider the SP-STM to be polarized along the positive $z$-axis, which can point in any direction relative to the surface normal in Fig.~\ref{fig:setup}.
+ 
+ 
+\begin{figure}[t]
+\begin{centering}
+       \includegraphics[width=\columnwidth]{exg_defect_setup_v4.pdf}
+       \caption[]
+{Schematic current path for an electron through a single dopant  (transport site, in green) that is exchange-coupled to another spin-1/2  (spectator site, in red). The transport site has two charge states, empty (spin-0) and full (spin-1/2), and the spectator site's charge state is stable. These spins reside near the surface of the nonmagnetic host and the Coulomb repulsion at the transport site is assumed to be sufficiently large to prevent double occupation (see inset). Hopping from the transport site to a spin polarized scanning tunneling microscope (SP-STM) tip occurs with rate $\gamma_\text{off}$, which is controllable by moving the STM tip relative to the surface. Replenishment of the occupation of the transport site from the nonmagnetic host occurs with a rate $\gamma_\text{on}$. If the host is a semiconductor the charge distribution can be adjusted by the STM voltage $V$ through tip induced band bending, which adjusts $\gamma_\text{on}$ and $\gamma_\text{off}$.}\label{fig:setup}
+       \end{centering}
+\end{figure}
+
+Our main results are   the predicted finite-field dips (resonances) in the dc magnetoresistance in Fig.~\ref{fig:MR} that occur due to degeneracies in the transport states and the formation of bottlenecks.
+Coupling dopants to spin-polarized contacts has been shown to lead to zero-field current bottlenecks resulting from dopant polarization anti-parallel to the magnetization of the contact\cite{Inoue2015}. The application of an external magnetic field, \textbf{B}, transverse to the contact spin polarization, releases the bottleneck by precessing the spin and produces a characteristic dip feature in the zero-field dc magnetoresistance\cite{Inoue2015, Txoperena2014}. Figure~\ref{fig:MR}, however, shows two additional features at finite field when the Zeeman energy of the transport spin equals its exchange energy with the spectator spin. New bottlenecks  emerge under these conditions, because the triplet state polarized parallel or antiparallel to the external field (depending on the sign of $J$) becomes degenerate with the  singlet state ($S$) of these two spins at this external field. We find the dip in current when the Zeeman energy equals $J$ has a maximal value of $1/3$ of the $B=0$ dip. Although our description here is  for the  case of a SP-STM tip that is 100\% spin polarized, these same features will occur for any finite spin polarization, with a reduced amplitude dependent on the tip's spin polarization (as seen for zero-field dips in previous work\cite{Inoue2015}). 
+
+
+
+
+
+\begin{figure}[t]
+\begin{centering}
+       \includegraphics[width=\columnwidth]{exg_defect_MR_v5.pdf}
+       \caption[]
+{Magnetoresistance of current through spin-1/2 transport dopant for exchange splitting of 0.05 $\hbar \gamma_\text{on}$ (red) and 0.15 $\hbar \gamma_\text{on}$ (black). Features broaden for moderate extraction rates (dashed) compared to slow extraction (solid).}\label{fig:MR}
+       \end{centering}
+\end{figure}
+
+
+The density matrix requires time evolution terms describing coherent evolution of the spins, originating from the magnetic field and exchange, and incoherent processes that inject or extract carriers from the transport site (thus producing current).  We use the stochastic Liouville formalism\cite{kubo1963, vankampen1992}, which has  successfully predicted the manipulation of electroluminescence from organic LEDs\cite{harmon2016b}, exciplex light emission\cite{Wang2016}, spin-pumping\cite{yue2015}, and nuclear spin influences on electron transport\cite{gorman2015}.  The  Hamiltonian  describing coherent evolution of the spins at both the spectator and transport sites in an external magnetic field $\mathbf{B}$ and an exchange interaction $J$ between them is
+\begin{equation}
+    \hat{H}_{st} = g \mu_\text{B}\mathbf{B}\cdot(\mathbf{S}_s + \mathbf{S}_t) + J \mathbf{S}_s\cdot\mathbf{S}_t, 
+\end{equation}
+where $\mathbf{S}_{s(t)}$ represents the spin operator at the spectator (transport) site, $g$ is the Land\'e $g$-factor (assumed 2), and $\mu_\text{B}$ is the Bohr magneton. When the transport site is unoccupied the Hamiltonian becomes
+\begin{equation}
+    \hat{H}_{s} = g \mu_\text{B}\mathbf{B}\cdot\mathbf{S}_s. 
+\end{equation}
+The coherent evolution of the density operator is
+\begin{equation}
+    \bigg(\frac{\partial \rho_i(t)}{\partial t}\bigg)_\text{coh} = -\frac{i}{\hbar}[\hat{H}_i,\rho_i(t)],
+\end{equation}
+where the subscript $i$ is used to denote either the operator for the isolated spectator ($i=s$) or the combined spectator and transport spin ($i = st$) and $[,]$ represents the commutator.
+
+Transport occurs when the dopant at the transport site couples to the unpolarized bulk states and the SP-STM resulting in the generation and extraction of carriers. Processes of this type will not preserve the trace of the individual sub-spaces of the system, but will preserve the total trace, $\text{Tr} \rho_s(t) + \text{Tr} \rho_{st}(t) = 1$, and they will decohere off-diagonal elements of $\rho_{st}$.
+The polarization of the SP-STM tip can be written as an operator $\hat{M}_\text{off}(\mathbf{n})$, where $\mathbf{n}$ is the orientation of the SP-STM polarization. In general, for a single spin-1/2 manifold \cite{Farago1971} the interaction operator can be written as a linear superposition of oppositely polarized projection operators $\hat{\pi}(\mathbf{n})$ and $\hat{\pi}(-\mathbf{n})$,
+\begin{equation}\label{2x2manifold_int_op_general}
+\begin{aligned}
+    \hat{m}(\mathbf{n}) &= a \hat{\pi}(\mathbf{n}) + b \hat{\pi}(-\mathbf{n})\\
+    &= \frac{1}{2}\{(a+b)\hat{\sigma}_0 + (a-b)\mathbf{n}\cdot\hat{\sigma}\}
+\end{aligned}    
+\end{equation}
+where $a$ and $b$ are interaction amplitudes, and $\mathbf{n}$ is the orientation of the polarization.
+In the case of a manifold describing two spin-1/2 dopants the operator results from the direct product of two single spin operators, 
+\begin{equation}\label{4x4manifold_int_op}
+\begin{aligned}
+    \hat{M}(\mathbf{n}) &= \hat{m}_t(\mathbf{n})\otimes\hat{m}_s(\mathbf{n})\\
+\end{aligned}    
+\end{equation}
+where $\hat{m}_t(\mathbf{n}) = a_t  \hat{\pi}(\mathbf{n}) + b_t \hat{\pi}(\mathbf{-n})$ and $\hat{m}_s(\mathbf{n}) = a_s  \hat{\pi}(\mathbf{n}) + b_s \hat{\pi}(\mathbf{-n})$. The coefficients for  $\hat{M}_\text{off}$  are $a^\text{off}_t = 1,\; b^\text{off}_t = 0,\; a^\text{off}_s = b^\text{off}_s = 1/2$. $\hat{M}_\text{on}$  couples the  bulk to the dopant, and for unpolarized bulk states has the coefficients $a^\text{on}_t = a^\text{on}_s = b^\text{on}_t = b^\text{on}_s = 1/2$.
+We assume a large on-site Coulomb repulsion that excludes double occupation of the dopant sites. The spin state of the carrier entering the transport site from the bulk is determined by the spin polarization of the bulk ($\hat{M}_\text{on}$) and the spin state of the spectator is determined by the density matrix for the $2\times 2$ manifold, $\rho_s(t)$. These considerations allow one to write down a current operator for the reoccupation of the transport site,
+\begin{equation}
+    \hat{i}_\text{on} = \frac{e\gamma_\text{on}}{2}\hat{m}^\text{on}_t(\mathbf{n})\otimes \rho_s(t),
+\end{equation}
+where $e$ is the electronic charge. 
+
+The current from the dopant to the SP-STM depends on the availability of spin states in the tip ($\hat{M}_\text{off}$) and the two-dopant density matrix $\rho_{st}$. The current operator for dopant-to-tip transport is 
+\begin{equation}
+    \hat{i}_\text{off} =\frac{e\gamma_\text{off}}{2}\{\hat{M}_\text{off},\rho_{st}(t)\},
+\end{equation}
+where the anticommutator $\{,\}$ guarantees the operator is Hermitian and properly decoheres off-diagonal elements of $\rho_{st}$\cite{Haberkorn1976}. The current onto and off of the transport site is found from the trace of the current operators. The total current onto and off of the transport site must be equal: $\text{Tr}\hat{i}_\text{on} = \text{Tr}\hat{i}_\text{off}=i,$ however  the spin current $i^\text{spin}_\text{on(off)}= \text{Tr}[\hat{i}_\text{on(off)}\mathbf{\sigma}]$ is not conserved due to decoherence.
+
+The appropriate term can now be added to the stochastic Liouville equation for carrier generation 
+\begin{equation}
+    \bigg(\frac{\partial \rho_{st}(t)}{\partial t}\bigg)_\text{gen} = \gamma_\text{on}\hat{m}^\text{on}_t(\mathbf{n})\otimes \rho_s(t)
+\end{equation}
+and extraction
+\begin{equation}
+    \bigg(\frac{\partial \rho_{st}(t)}{\partial t}\bigg)_\text{ext} = -\gamma_\text{off}\{\hat{M}_\text{off},\rho_{st}(t)\}.
+\end{equation}
+The total equation for the $4\times 4$ density operator $\rho_{st}$ is then 
+\begin{equation}\label{SLE4x4}
+    \frac{\partial \rho_{st}(t)}{\partial t} = -\frac{i}{\hbar}[\hat{H}_{st},\rho_{st}(t)]+\gamma_\text{on}\mathbf{I}_t\otimes \rho_s(t)-2\gamma_\text{off}\{\hat{M}_\text{off},\rho_{st}(t)\},
+\end{equation}
+where $\mathbf{I}_t$ is the identity matrix in the transport subspace and the relation $2 \hat{m}^\text{on}_t(\mathbf{n}) = \mathbf{I}_t$ has been used. Eq.~(\ref{SLE4x4}) is coupled to the single spin density operator $\rho_s$ through the generation term. The trace of the total system is preserved and  thus \hbox{$\text{Tr}\rho_s + \text{Tr}\rho_{st} = 1$}; generation(decay) of the $4\times 4$ density matrix must be balanced by the decay(generation) of the $2\times 2$ density matrix allowing one to derive for the isolated spectator,
+\begin{equation}
+    \frac{\partial \rho_s(t)}{\partial t} = -\frac{i}{\hbar}[\hat{H}_s,\rho_s(t)]+2\gamma_\text{off}\text{Tr}_t\{ \hat{M}_\text{off},\rho_{st}(t)\} -2 \gamma_\text{on}\rho_s(t),
+\end{equation}
+where $\text{Tr}_t$ is a partial trace over the transport subspace.
+%%%%%%%%%%%% RESULTS %%%%%%%%%%%%
+
+These expressions can be solved analytically, but are very cumbersome. A full analytic solution is presented in the Supplemental Material, along with a more intuitive derivation under some approximations. The expressions for the near zero field feature agree with calculations of current through mediating dopants in insulating spacers, during either resonant\cite{Song2014} or incoherent\cite{Inoue2015} transport. However we are interested in the expressions for conditions where the Zeeman energy  ($\tilde{B} = g\mu_B|{\bf B}|$) approaches the exchange energy $J$. An approximate expression valid for $\gamma_\text{on}\gg \tilde{B}, J\gg \gamma_\text{off}$ near the  $\tilde{B}= J$ resonance is 
+\begin{equation}
+i = \left(\frac{\gamma_\text{off}}{2}\right)\frac{6 J^2 \gamma_{\text{off}}^2+4\left(\tilde{B}^2-J^2\right)^2}{
+9J^2 \gamma_{\text{off}}^2+ 4\left(\tilde{B}^2- J^2\right)^2} \label{analyt}
+\end{equation}
+where the prefactor is the limiting value away from the resonant features. Thus the {\it relative} current has a limiting value for $\tilde{B}=J$ of $2/3$, corresponding to a visibility of $1/3$ as seen below in numerical calculations.
+Figure~\ref{fig:MR} shows numerical values for the magnetoresistance, for a 100\%~spin-polarized STM tip. 
+
+\begin{figure}[t]
+\begin{centering}
+       \includegraphics[width=\columnwidth]{exg_defect_vis_v2.pdf}
+       \caption[]
+{Visibility of the finite-field feature (resonance) as a function of the exchange parameter plotted for different values of the hopping ratio. Smaller hopping ratios yield higher visibility due to extended spin evolution in the exchange field. }\label{fig:visVSexg}
+       \end{centering}
+\end{figure}
+
+The visibility for different hopping ratios is plotted as a function of the exchange coupling parameter in Fig.~\ref{fig:visVSexg}. At a finite-field dip in current one of the triplet states ($T_+$ or $T_-$ along the direction of \textbf{B}, depending on the sign of $J$) becomes degenerate with the singlet state $S$. The other two triplet states are singly degenerate in the combined Zeeman-exchange Hamiltonian and thus do not participate in a bottleneck configuration. The bottleneck in current manifests as a reduced rate, for one of the two degenerate states, for the transport site's electron to hop to the SP-STM tip. The linear combination of those two states that has the lowest transport-site tunneling probability to the SP-STM tip  is $\big|\phi_b\big>$, and the orthogonal state is $\big|\overline{\phi_b}\big>$, where
+\begin{eqnarray}
+\big|\phi_b\big> &=& 6^{-1/2}\big|\uparrow \Uparrow\big> + 6^{-1/2}\big|\downarrow \Downarrow\big> + (2/3)^{1/2}\big|\downarrow \Uparrow\big>,\\
+\big|\overline{\phi_b}\big> &=& (12)^{-1/2}(\big|\uparrow \Uparrow\big> +\big|\downarrow \Downarrow\big> -\big|\downarrow \Uparrow\big>) + (3/4)^{1/2}\big|\uparrow \Downarrow\big>.\nonumber
+\end{eqnarray} 
+The first spin (single arrow) represents the transport site and the second (double arrow) represents the spectator site, and the axes are along the SP-STM spin polarization.
+$\phi_b$ has a transport spin polarization of $2/3$, which produces a maximum dip in the current of $1/3$ as derived in the Supplemental Material, as plotted in Figs.~\ref{fig:MR} and~\ref{fig:visVSexg}, and as apparent in Eq.~(\ref{analyt}) for $\tilde{B}= J$.
+
+Figure~\ref{fig:visVSexg} also illustrates the increase in resolution and precision  gained by minimizing the hopping ratio. For a dopant-to-tip hopping rate of $\gamma_\text{off} = 1\text{ ns}^{-1}$ we predict exchange energy resolution $\sim \mu$eV. If the energy splittings to double occupancy of the transport site greatly exceed the thermal energy, and the spin coherence times of the spins exceed the timescales set by the smallest energies in the problem (Zeeman energy, exchange energy, or hopping) then the magnetoresistance features survive; observations of zero-field dips are seen at room temperature\cite{Ashton2019}. The energy sensitivity surpasses the practical limits of STM spectroscopic probes of exchange interactions in semiconductor dopant pairs\cite{Flatte2000,Kitchen2006}, and could be measured at temperatures far above where inelastic spin excitations can be imaged for adatoms\cite{Hirjibehedin2006, Wiesendanger2009}.
+
+%%%%%%%%%%%%%%%%%%%%%%%% Fig.~ 4 %%%%%%%%%%%%
+\begin{figure}[t]
+\begin{centering}
+       \includegraphics[width=\columnwidth]{exg_defect_spinexp_occprob_v6.pdf}
+       \caption[]
+{(a) Spin polarization as a function of hopping ratio plotted for different values of the exchange coupling. The dashed lines represent the spectator spin and solid lines represent the transport spin. (b-d) Occupation probability for the different states in the product basis as a function of the transverse magnetic field. Shown are (b) $\gamma_\text{off}=\gamma_\text{on}$,  $\gamma_\text{off}\gg J$, (c) $\gamma_\text{off}=\gamma_\text{on}$, $\gamma_\text{off}\ll J$, and (d) $\gamma_\text{on}\gg J\gg\gamma_\text{off}$. Good visibility is realized when  $\gamma_\text{off}\ll J$, and especially for (d). }\label{fig:spinpolVratio}
+       \end{centering}
+\end{figure}
+
+
+Figure~\ref{fig:spinpolVratio}(a) shows calculations for the degree of spin polarization as a function of the hopping ratio for different values of the junction parameters. The dashed lines represent the spectator spin and the solid lines represent the transport spin. In Fig~\ref{fig:spinpolVratio}(b-d) shows the occupation probability for each state in the product basis as a function of $B$. An analytic treatment for $\tilde{B}=J$ and the limit $\gamma_{off}\ll J \ll \gamma_{on}$ [similar to panel (d)], described in the Supplemental Material,  predicts  a  polarization for $\big|\downarrow\Uparrow\big>$ of $11/24$, for $\big|\uparrow\Downarrow\big>$ of $1/8$, and for $\big|\uparrow\Uparrow\big>$ and $\big|\downarrow\Downarrow\big>$ of $5/24$, which are all different from the random average of $1/4$.   These results are very similar to those shown in Fig.~\ref{fig:spinpolVratio}(d). The spectator spin is also dynamically polarized during this process, even when the transport spin state is empty; we find for the limiting conditions above, similar to  Fig.~\ref{fig:spinpolVratio},(d) a polarization of $1/2$ antiparallel to the magnetic field direction and $1/4$ parallel to the SP-STM polarization direction for a total polarization of $\sqrt{5}/4$.
+
+
+\begin{acknowledgments}
+This material is based on work supported by the U. S. Department of Energy, Office of Science, Office of Basic Energy Sciences, under Award Number DE-SC0016447. 
+\end{acknowledgments}
+
+%merlin.mbs apsrev4-1.bst 2010-07-25 4.21a (PWD, AO, DPC) hacked
+%Control: key (0)
+%Control: author (8) initials jnrlst
+%Control: editor formatted (1) identically to author
+%Control: production of article title (-1) disabled
+%Control: page (0) single
+%Control: year (1) truncated
+%Control: production of eprint (0) enabled
+\begin{thebibliography}{46}%
+\makeatletter
+\providecommand \@ifxundefined [1]{%
+ \@ifx{#1\undefined}
+}%
+\providecommand \@ifnum [1]{%
+ \ifnum #1\expandafter \@firstoftwo
+ \else \expandafter \@secondoftwo
+ \fi
+}%
+\providecommand \@ifx [1]{%
+ \ifx #1\expandafter \@firstoftwo
+ \else \expandafter \@secondoftwo
+ \fi
+}%
+\providecommand \natexlab [1]{#1}%
+\providecommand \enquote  [1]{``#1''}%
+\providecommand \bibnamefont  [1]{#1}%
+\providecommand \bibfnamefont [1]{#1}%
+\providecommand \citenamefont [1]{#1}%
+\providecommand \href@noop [0]{\@secondoftwo}%
+\providecommand \href [0]{\begingroup \@sanitize@url \@href}%
+\providecommand \@href[1]{\@@startlink{#1}\@@href}%
+\providecommand \@@href[1]{\endgroup#1\@@endlink}%
+\providecommand \@sanitize@url [0]{\catcode `\\12\catcode `\$12\catcode
+  `\&12\catcode `\#12\catcode `\^12\catcode `\_12\catcode `\%12\relax}%
+\providecommand \@@startlink[1]{}%
+\providecommand \@@endlink[0]{}%
+\providecommand \url  [0]{\begingroup\@sanitize@url \@url }%
+\providecommand \@url [1]{\endgroup\@href {#1}{\urlprefix }}%
+\providecommand \urlprefix  [0]{URL }%
+\providecommand \Eprint [0]{\href }%
+\providecommand \doibase [0]{http://dx.doi.org/}%
+\providecommand \selectlanguage [0]{\@gobble}%
+\providecommand \bibinfo  [0]{\@secondoftwo}%
+\providecommand \bibfield  [0]{\@secondoftwo}%
+\providecommand \translation [1]{[#1]}%
+\providecommand \BibitemOpen [0]{}%
+\providecommand \bibitemStop [0]{}%
+\providecommand \bibitemNoStop [0]{.\EOS\space}%
+\providecommand \EOS [0]{\spacefactor3000\relax}%
+\providecommand \BibitemShut  [1]{\csname bibitem#1\endcsname}%
+\let\auto@bib@innerbib\@empty
+%</preamble>
+\bibitem [{\citenamefont {Awschalom}\ \emph {et~al.}(2002)\citenamefont
+  {Awschalom}, \citenamefont {Samarth},\ and\ \citenamefont
+  {Loss}}]{Awschalom2002}%
+  \BibitemOpen
+  \bibinfo {editor} {\bibfnamefont {D.~D.}\ \bibnamefont {Awschalom}}, \bibinfo
+  {editor} {\bibfnamefont {N.}~\bibnamefont {Samarth}}, \ and\ \bibinfo
+  {editor} {\bibfnamefont {D.}~\bibnamefont {Loss}},\ eds.,\ \href@noop {}
+  {\emph {\bibinfo {title} {Semiconductor Spintronics and Quantum
+  Computation}}}\ (\bibinfo  {publisher} {Springer Verlag},\ \bibinfo {address}
+  {Heidelberg},\ \bibinfo {year} {2002})\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Hanson}\ \emph {et~al.}(2007)\citenamefont {Hanson},
+  \citenamefont {Kouwenhoven}, \citenamefont {Petta}, \citenamefont {Tarucha},\
+  and\ \citenamefont {Vandersypen}}]{Hanson2007}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {R.}~\bibnamefont
+  {Hanson}}, \bibinfo {author} {\bibfnamefont {L.~P.}\ \bibnamefont
+  {Kouwenhoven}}, \bibinfo {author} {\bibfnamefont {J.~R.}\ \bibnamefont
+  {Petta}}, \bibinfo {author} {\bibfnamefont {S.}~\bibnamefont {Tarucha}}, \
+  and\ \bibinfo {author} {\bibfnamefont {L.~M.~K.}\ \bibnamefont
+  {Vandersypen}},\ }\href@noop {} {\bibfield  {journal} {\bibinfo  {journal}
+  {Reviews of Modern Physics}\ }\textbf {\bibinfo {volume} {79}},\ \bibinfo
+  {pages} {1217} (\bibinfo {year} {2007})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Degen}\ \emph {et~al.}(2017)\citenamefont {Degen},
+  \citenamefont {Reinhard},\ and\ \citenamefont {Cappellaro}}]{Degen2017}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {C.~L.}\ \bibnamefont
+  {Degen}}, \bibinfo {author} {\bibfnamefont {F.}~\bibnamefont {Reinhard}}, \
+  and\ \bibinfo {author} {\bibfnamefont {P.}~\bibnamefont {Cappellaro}},\
+  }\href {\doibase 10.1103/RevModPhys.89.035002} {\bibfield  {journal}
+  {\bibinfo  {journal} {Rev. Mod. Phys.}\ }\textbf {\bibinfo {volume} {89}},\
+  \bibinfo {pages} {035002} (\bibinfo {year} {2017})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Nielsen}\ and\ \citenamefont
+  {Chuang}(2010)}]{Nielsen2010}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {M.}~\bibnamefont
+  {Nielsen}}\ and\ \bibinfo {author} {\bibfnamefont {I.}~\bibnamefont
+  {Chuang}},\ }\href@noop {} {\emph {\bibinfo {title} {Quantum Computation and
+  Quantum Information}}}\ (\bibinfo  {publisher} {Cambridge University Press},\
+  \bibinfo {address} {New York},\ \bibinfo {year} {2010})\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Koenraad}\ and\ \citenamefont
+  {Flatt{\'e}}(2011)}]{Koenraad2011}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {P.~M.}\ \bibnamefont
+  {Koenraad}}\ and\ \bibinfo {author} {\bibfnamefont {M.~E.}\ \bibnamefont
+  {Flatt{\'e}}},\ }\href@noop {} {\bibfield  {journal} {\bibinfo  {journal}
+  {Nature Materials}\ }\textbf {\bibinfo {volume} {10}},\ \bibinfo {pages} {91}
+  (\bibinfo {year} {2011})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Pla}\ \emph {et~al.}(2012)\citenamefont {Pla},
+  \citenamefont {Tan}, \citenamefont {Dehollain}, \citenamefont {Lim},
+  \citenamefont {Morton}, \citenamefont {Jamieson}, \citenamefont {Dzurak},\
+  and\ \citenamefont {Morello}}]{pla2012}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {J.~J.}\ \bibnamefont
+  {Pla}}, \bibinfo {author} {\bibfnamefont {K.~Y.}\ \bibnamefont {Tan}},
+  \bibinfo {author} {\bibfnamefont {J.~P.}\ \bibnamefont {Dehollain}}, \bibinfo
+  {author} {\bibfnamefont {W.~H.}\ \bibnamefont {Lim}}, \bibinfo {author}
+  {\bibfnamefont {J.~J.~L.}\ \bibnamefont {Morton}}, \bibinfo {author}
+  {\bibfnamefont {D.~N.}\ \bibnamefont {Jamieson}}, \bibinfo {author}
+  {\bibfnamefont {A.~S.}\ \bibnamefont {Dzurak}}, \ and\ \bibinfo {author}
+  {\bibfnamefont {A.}~\bibnamefont {Morello}},\ }\href@noop {} {\bibfield
+  {journal} {\bibinfo  {journal} {Nature}\ }\textbf {\bibinfo {volume} {489}},\
+  \bibinfo {pages} {541} (\bibinfo {year} {2012})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Balasubramanian}\ \emph {et~al.}(2009)\citenamefont
+  {Balasubramanian}, \citenamefont {Neumann}, \citenamefont {Twitchen},
+  \citenamefont {Markham}, \citenamefont {Kolesov}, \citenamefont {Mizuochi},
+  \citenamefont {Isoya}, \citenamefont {Achard}, \citenamefont {Beck},
+  \citenamefont {Tissler}, \citenamefont {Jacques}, \citenamefont {Hemmer},
+  \citenamefont {Jelezko},\ and\ \citenamefont
+  {Wrachtrup}}]{Balasubramanian2009}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {G.}~\bibnamefont
+  {Balasubramanian}}, \bibinfo {author} {\bibfnamefont {P.}~\bibnamefont
+  {Neumann}}, \bibinfo {author} {\bibfnamefont {D.}~\bibnamefont {Twitchen}},
+  \bibinfo {author} {\bibfnamefont {M.}~\bibnamefont {Markham}}, \bibinfo
+  {author} {\bibfnamefont {R.}~\bibnamefont {Kolesov}}, \bibinfo {author}
+  {\bibfnamefont {N.}~\bibnamefont {Mizuochi}}, \bibinfo {author}
+  {\bibfnamefont {J.}~\bibnamefont {Isoya}}, \bibinfo {author} {\bibfnamefont
+  {J.}~\bibnamefont {Achard}}, \bibinfo {author} {\bibfnamefont
+  {J.}~\bibnamefont {Beck}}, \bibinfo {author} {\bibfnamefont {J.}~\bibnamefont
+  {Tissler}}, \bibinfo {author} {\bibfnamefont {V.}~\bibnamefont {Jacques}},
+  \bibinfo {author} {\bibfnamefont {P.~R.}\ \bibnamefont {Hemmer}}, \bibinfo
+  {author} {\bibfnamefont {F.}~\bibnamefont {Jelezko}}, \ and\ \bibinfo
+  {author} {\bibfnamefont {J.}~\bibnamefont {Wrachtrup}},\ }\href {\doibase
+  10.1038/NMAT2420} {\bibfield  {journal} {\bibinfo  {journal} {Nature
+  Materials}\ }\textbf {\bibinfo {volume} {8}},\ \bibinfo {pages} {383}
+  (\bibinfo {year} {2009})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Ohno}\ \emph {et~al.}(2012)\citenamefont {Ohno},
+  \citenamefont {{Joseph Heremans}}, \citenamefont {Bassett}, \citenamefont
+  {Myers}, \citenamefont {Toyli}, \citenamefont {{Bleszynski Jayich}},
+  \citenamefont {Palmstr{\o}m},\ and\ \citenamefont {Awschalom}}]{Ohno2012}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {K.}~\bibnamefont
+  {Ohno}}, \bibinfo {author} {\bibfnamefont {F.}~\bibnamefont {{Joseph
+  Heremans}}}, \bibinfo {author} {\bibfnamefont {L.~C.}\ \bibnamefont
+  {Bassett}}, \bibinfo {author} {\bibfnamefont {B.~a.}\ \bibnamefont {Myers}},
+  \bibinfo {author} {\bibfnamefont {D.~M.}\ \bibnamefont {Toyli}}, \bibinfo
+  {author} {\bibfnamefont {A.~C.}\ \bibnamefont {{Bleszynski Jayich}}},
+  \bibinfo {author} {\bibfnamefont {C.~J.}\ \bibnamefont {Palmstr{\o}m}}, \
+  and\ \bibinfo {author} {\bibfnamefont {D.~D.}\ \bibnamefont {Awschalom}},\
+  }\href@noop {} {\bibfield  {journal} {\bibinfo  {journal} {Applied Physics
+  Letters}\ }\textbf {\bibinfo {volume} {101}},\ \bibinfo {pages} {082413}
+  (\bibinfo {year} {2012})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Dobrovitski}\ \emph {et~al.}(2013)\citenamefont
+  {Dobrovitski}, \citenamefont {Fuchs}, \citenamefont {Falk}, \citenamefont
+  {Santori},\ and\ \citenamefont {Awschalom}}]{Dobrovitski2013}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {V.~V.}\ \bibnamefont
+  {Dobrovitski}}, \bibinfo {author} {\bibfnamefont {G.~D.}\ \bibnamefont
+  {Fuchs}}, \bibinfo {author} {\bibfnamefont {A.~L.}\ \bibnamefont {Falk}},
+  \bibinfo {author} {\bibfnamefont {C.}~\bibnamefont {Santori}}, \ and\
+  \bibinfo {author} {\bibfnamefont {D.~D.}\ \bibnamefont {Awschalom}},\
+  }\href@noop {} {\bibfield  {journal} {\bibinfo  {journal} {Annual Review of
+  Condensed Matter Physics}\ }\textbf {\bibinfo {volume} {4}},\ \bibinfo
+  {pages} {23} (\bibinfo {year} {2013})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Myers}\ \emph {et~al.}(2014)\citenamefont {Myers},
+  \citenamefont {Das}, \citenamefont {Dartiailh}, \citenamefont {Ohno},
+  \citenamefont {Awschalom},\ and\ \citenamefont
+  {Bleszynski~Jayich}}]{Myers2014}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {B.~A.}\ \bibnamefont
+  {Myers}}, \bibinfo {author} {\bibfnamefont {A.}~\bibnamefont {Das}}, \bibinfo
+  {author} {\bibfnamefont {M.~C.}\ \bibnamefont {Dartiailh}}, \bibinfo {author}
+  {\bibfnamefont {K.}~\bibnamefont {Ohno}}, \bibinfo {author} {\bibfnamefont
+  {D.~D.}\ \bibnamefont {Awschalom}}, \ and\ \bibinfo {author} {\bibfnamefont
+  {A.~C.}\ \bibnamefont {Bleszynski~Jayich}},\ }\href@noop {} {\bibfield
+  {journal} {\bibinfo  {journal} {Phys. Rev. Lett.}\ }\textbf {\bibinfo
+  {volume} {113}},\ \bibinfo {pages} {027602} (\bibinfo {year}
+  {2014})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Christle}\ \emph {et~al.}(2017)\citenamefont
+  {Christle}, \citenamefont {Klimov}, \citenamefont {\hbox{de las Casas}},
+  \citenamefont {Sz\'asz}, \citenamefont {Iv\'ady}, \citenamefont
+  {Jokubavicius}, \citenamefont {Ul~Hassan}, \citenamefont {Syv\"aj\"arvi},
+  \citenamefont {Koehl}, \citenamefont {Ohshima}, \citenamefont {Son},
+  \citenamefont {Janz\'en}, \citenamefont {Gali},\ and\ \citenamefont
+  {Awschalom}}]{Christle2017}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {D.~J.}\ \bibnamefont
+  {Christle}}, \bibinfo {author} {\bibfnamefont {P.~V.}\ \bibnamefont
+  {Klimov}}, \bibinfo {author} {\bibfnamefont {C.~F.}\ \bibnamefont {\hbox{de
+  las Casas}}}, \bibinfo {author} {\bibfnamefont {K.}~\bibnamefont {Sz\'asz}},
+  \bibinfo {author} {\bibfnamefont {V.}~\bibnamefont {Iv\'ady}}, \bibinfo
+  {author} {\bibfnamefont {V.}~\bibnamefont {Jokubavicius}}, \bibinfo {author}
+  {\bibfnamefont {J.}~\bibnamefont {Ul~Hassan}}, \bibinfo {author}
+  {\bibfnamefont {M.}~\bibnamefont {Syv\"aj\"arvi}}, \bibinfo {author}
+  {\bibfnamefont {W.~F.}\ \bibnamefont {Koehl}}, \bibinfo {author}
+  {\bibfnamefont {T.}~\bibnamefont {Ohshima}}, \bibinfo {author} {\bibfnamefont
+  {N.~T.}\ \bibnamefont {Son}}, \bibinfo {author} {\bibfnamefont
+  {E.}~\bibnamefont {Janz\'en}}, \bibinfo {author} {\bibfnamefont
+  {A.}~\bibnamefont {Gali}}, \ and\ \bibinfo {author} {\bibfnamefont {D.~D.}\
+  \bibnamefont {Awschalom}},\ }\href {\doibase 10.1103/PhysRevX.7.021046}
+  {\bibfield  {journal} {\bibinfo  {journal} {Phys. Rev. X}\ }\textbf {\bibinfo
+  {volume} {7}},\ \bibinfo {pages} {021046} (\bibinfo {year}
+  {2017})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Nagy}\ \emph {et~al.}(2019)\citenamefont {Nagy},
+  \citenamefont {Niethammer}, \citenamefont {Widmann}, \citenamefont {Chen},
+  \citenamefont {Udvarhelyi}, \citenamefont {Bonato}, \citenamefont {Hassan},
+  \citenamefont {Karhu}, \citenamefont {Ivanov}, \citenamefont {Son},
+  \citenamefont {Maze}, \citenamefont {Ohshima}, \citenamefont {Soykal},
+  \citenamefont {Gali}, \citenamefont {Lee}, \citenamefont {Kaiser},\ and\
+  \citenamefont {Wrachtrup}}]{Nagy2019}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {R.}~\bibnamefont
+  {Nagy}}, \bibinfo {author} {\bibfnamefont {M.}~\bibnamefont {Niethammer}},
+  \bibinfo {author} {\bibfnamefont {M.}~\bibnamefont {Widmann}}, \bibinfo
+  {author} {\bibfnamefont {Y.-C.}\ \bibnamefont {Chen}}, \bibinfo {author}
+  {\bibfnamefont {P.}~\bibnamefont {Udvarhelyi}}, \bibinfo {author}
+  {\bibfnamefont {C.}~\bibnamefont {Bonato}}, \bibinfo {author} {\bibfnamefont
+  {J.~U.}\ \bibnamefont {Hassan}}, \bibinfo {author} {\bibfnamefont
+  {R.}~\bibnamefont {Karhu}}, \bibinfo {author} {\bibfnamefont {I.~G.}\
+  \bibnamefont {Ivanov}}, \bibinfo {author} {\bibfnamefont {N.~T.}\
+  \bibnamefont {Son}}, \bibinfo {author} {\bibfnamefont {J.~R.}\ \bibnamefont
+  {Maze}}, \bibinfo {author} {\bibfnamefont {T.}~\bibnamefont {Ohshima}},
+  \bibinfo {author} {\bibfnamefont {O.~O.}\ \bibnamefont {Soykal}}, \bibinfo
+  {author} {\bibfnamefont {A.}~\bibnamefont {Gali}}, \bibinfo {author}
+  {\bibfnamefont {S.-Y.}\ \bibnamefont {Lee}}, \bibinfo {author} {\bibfnamefont
+  {F.}~\bibnamefont {Kaiser}}, \ and\ \bibinfo {author} {\bibfnamefont
+  {J.}~\bibnamefont {Wrachtrup}},\ }\href {\doibase 10.1038/s41467-019-09873-9}
+  {\bibfield  {journal} {\bibinfo  {journal} {Nat. Comm.}\ }\textbf {\bibinfo
+  {volume} {10}},\ \bibinfo {pages} {1954} (\bibinfo {year}
+  {2019})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Broome}\ \emph {et~al.}(2018)\citenamefont {Broome},
+  \citenamefont {Gorman}, \citenamefont {House}, \citenamefont {Hile},
+  \citenamefont {Keizer}, \citenamefont {Keith}, \citenamefont {Hill},
+  \citenamefont {Watson}, \citenamefont {Baker}, \citenamefont {Hollenberg},\
+  and\ \citenamefont {Simmons}}]{Broome2018}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {M.~A.}\ \bibnamefont
+  {Broome}}, \bibinfo {author} {\bibfnamefont {S.~K.}\ \bibnamefont {Gorman}},
+  \bibinfo {author} {\bibfnamefont {M.~G.}\ \bibnamefont {House}}, \bibinfo
+  {author} {\bibfnamefont {S.~J.}\ \bibnamefont {Hile}}, \bibinfo {author}
+  {\bibfnamefont {J.~G.}\ \bibnamefont {Keizer}}, \bibinfo {author}
+  {\bibfnamefont {D.}~\bibnamefont {Keith}}, \bibinfo {author} {\bibfnamefont
+  {C.~D.}\ \bibnamefont {Hill}}, \bibinfo {author} {\bibfnamefont {T.~F.}\
+  \bibnamefont {Watson}}, \bibinfo {author} {\bibfnamefont {W.~J.}\
+  \bibnamefont {Baker}}, \bibinfo {author} {\bibfnamefont {L.~C.~L.}\
+  \bibnamefont {Hollenberg}}, \ and\ \bibinfo {author} {\bibfnamefont {M.~Y.}\
+  \bibnamefont {Simmons}},\ }\href {\doibase 10.1038/s41467-018-02982-x}
+  {\bibfield  {journal} {\bibinfo  {journal} {Nature Communications}\ }\textbf
+  {\bibinfo {volume} {9}},\ \bibinfo {pages} {980} (\bibinfo {year}
+  {2018})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Pakkiam}\ \emph {et~al.}(2018)\citenamefont
+  {Pakkiam}, \citenamefont {Timofeev}, \citenamefont {House}, \citenamefont
+  {Hogg}, \citenamefont {Kobayashi}, \citenamefont {Koch}, \citenamefont
+  {Rogge},\ and\ \citenamefont {Simmons}}]{Pakkiam2018}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {P.}~\bibnamefont
+  {Pakkiam}}, \bibinfo {author} {\bibfnamefont {A.~V.}\ \bibnamefont
+  {Timofeev}}, \bibinfo {author} {\bibfnamefont {M.~G.}\ \bibnamefont {House}},
+  \bibinfo {author} {\bibfnamefont {M.~R.}\ \bibnamefont {Hogg}}, \bibinfo
+  {author} {\bibfnamefont {T.}~\bibnamefont {Kobayashi}}, \bibinfo {author}
+  {\bibfnamefont {M.}~\bibnamefont {Koch}}, \bibinfo {author} {\bibfnamefont
+  {S.}~\bibnamefont {Rogge}}, \ and\ \bibinfo {author} {\bibfnamefont {M.~Y.}\
+  \bibnamefont {Simmons}},\ }\href {\doibase 10.1103/PhysRevX.8.041032}
+  {\bibfield  {journal} {\bibinfo  {journal} {Phys. Rev. X}\ }\textbf {\bibinfo
+  {volume} {8}},\ \bibinfo {pages} {041032} (\bibinfo {year}
+  {2018})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Baumann}\ \emph {et~al.}(2015)\citenamefont
+  {Baumann}, \citenamefont {Paul}, \citenamefont {Choi}, \citenamefont {Lutz},
+  \citenamefont {Ardavan},\ and\ \citenamefont {Heinrich}}]{baumann2015}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {S.}~\bibnamefont
+  {Baumann}}, \bibinfo {author} {\bibfnamefont {W.}~\bibnamefont {Paul}},
+  \bibinfo {author} {\bibfnamefont {T.}~\bibnamefont {Choi}}, \bibinfo {author}
+  {\bibfnamefont {C.~P.}\ \bibnamefont {Lutz}}, \bibinfo {author}
+  {\bibfnamefont {A.}~\bibnamefont {Ardavan}}, \ and\ \bibinfo {author}
+  {\bibfnamefont {A.~J.}\ \bibnamefont {Heinrich}},\ }\href@noop {} {\bibfield
+  {journal} {\bibinfo  {journal} {Science}\ }\textbf {\bibinfo {volume}
+  {350}},\ \bibinfo {pages} {417} (\bibinfo {year} {2015})}\BibitemShut
+  {NoStop}%
+\bibitem [{\citenamefont {Bae}\ \emph {et~al.}(2018)\citenamefont {Bae},
+  \citenamefont {Yang}, \citenamefont {Willke}, \citenamefont {Choi},
+  \citenamefont {Heinrich},\ and\ \citenamefont {Lutz}}]{Bae2018}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {Y.}~\bibnamefont
+  {Bae}}, \bibinfo {author} {\bibfnamefont {K.}~\bibnamefont {Yang}}, \bibinfo
+  {author} {\bibfnamefont {P.}~\bibnamefont {Willke}}, \bibinfo {author}
+  {\bibfnamefont {T.}~\bibnamefont {Choi}}, \bibinfo {author} {\bibfnamefont
+  {A.~J.}\ \bibnamefont {Heinrich}}, \ and\ \bibinfo {author} {\bibfnamefont
+  {C.~P.}\ \bibnamefont {Lutz}},\ }\href@noop {} {\bibfield  {journal}
+  {\bibinfo  {journal} {Science Advances}\ }\textbf {\bibinfo {volume} {4}},\
+  \bibinfo {pages} {eaau4159} (\bibinfo {year} {2018})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Willke}\ \emph {et~al.}(2018)\citenamefont {Willke},
+  \citenamefont {Bae}, \citenamefont {Yang}, \citenamefont {Lado},
+  \citenamefont {Ferr{\'o}n}, \citenamefont {Choi}, \citenamefont {Ardavan},
+  \citenamefont {Fern{\'a}ndez-Rossier}, \citenamefont {Heinrich},\ and\
+  \citenamefont {Lutz}}]{Willke2018}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {P.}~\bibnamefont
+  {Willke}}, \bibinfo {author} {\bibfnamefont {Y.}~\bibnamefont {Bae}},
+  \bibinfo {author} {\bibfnamefont {K.}~\bibnamefont {Yang}}, \bibinfo {author}
+  {\bibfnamefont {J.~L.}\ \bibnamefont {Lado}}, \bibinfo {author}
+  {\bibfnamefont {A.}~\bibnamefont {Ferr{\'o}n}}, \bibinfo {author}
+  {\bibfnamefont {T.}~\bibnamefont {Choi}}, \bibinfo {author} {\bibfnamefont
+  {A.}~\bibnamefont {Ardavan}}, \bibinfo {author} {\bibfnamefont
+  {J.}~\bibnamefont {Fern{\'a}ndez-Rossier}}, \bibinfo {author} {\bibfnamefont
+  {A.~J.}\ \bibnamefont {Heinrich}}, \ and\ \bibinfo {author} {\bibfnamefont
+  {C.~P.}\ \bibnamefont {Lutz}},\ }\href@noop {} {\bibfield  {journal}
+  {\bibinfo  {journal} {Science}\ }\textbf {\bibinfo {volume} {362}},\ \bibinfo
+  {pages} {336} (\bibinfo {year} {2018})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Yang}\ \emph {et~al.}(2018)\citenamefont {Yang},
+  \citenamefont {Willke}, \citenamefont {Bae}, \citenamefont {Ferr{\'o}n},
+  \citenamefont {Lado}, \citenamefont {Ardavan}, \citenamefont
+  {Fern{\'a}ndez-Rossier}, \citenamefont {Heinrich},\ and\ \citenamefont
+  {Lutz}}]{yang2018}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {K.}~\bibnamefont
+  {Yang}}, \bibinfo {author} {\bibfnamefont {P.}~\bibnamefont {Willke}},
+  \bibinfo {author} {\bibfnamefont {Y.}~\bibnamefont {Bae}}, \bibinfo {author}
+  {\bibfnamefont {A.}~\bibnamefont {Ferr{\'o}n}}, \bibinfo {author}
+  {\bibfnamefont {J.~L.}\ \bibnamefont {Lado}}, \bibinfo {author}
+  {\bibfnamefont {A.}~\bibnamefont {Ardavan}}, \bibinfo {author} {\bibfnamefont
+  {J.}~\bibnamefont {Fern{\'a}ndez-Rossier}}, \bibinfo {author} {\bibfnamefont
+  {A.~J.}\ \bibnamefont {Heinrich}}, \ and\ \bibinfo {author} {\bibfnamefont
+  {C.~P.}\ \bibnamefont {Lutz}},\ }\href@noop {} {\bibfield  {journal}
+  {\bibinfo  {journal} {Nature Nanotechnology}\ }\textbf {\bibinfo {volume}
+  {13}},\ \bibinfo {pages} {1120} (\bibinfo {year} {2018})}\BibitemShut
+  {NoStop}%
+\bibitem [{\citenamefont {Txoperena}\ \emph {et~al.}(2014)\citenamefont
+  {Txoperena}, \citenamefont {Song}, \citenamefont {Qing}, \citenamefont
+  {Gobbi}, \citenamefont {Hueso}, \citenamefont {Dery},\ and\ \citenamefont
+  {Casanova}}]{Txoperena2014}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {O.}~\bibnamefont
+  {Txoperena}}, \bibinfo {author} {\bibfnamefont {Y.}~\bibnamefont {Song}},
+  \bibinfo {author} {\bibfnamefont {L.}~\bibnamefont {Qing}}, \bibinfo {author}
+  {\bibfnamefont {M.}~\bibnamefont {Gobbi}}, \bibinfo {author} {\bibfnamefont
+  {L.~E.}\ \bibnamefont {Hueso}}, \bibinfo {author} {\bibfnamefont
+  {H.}~\bibnamefont {Dery}}, \ and\ \bibinfo {author} {\bibfnamefont
+  {F.}~\bibnamefont {Casanova}},\ }\href@noop {} {\bibfield  {journal}
+  {\bibinfo  {journal} {Phys. Rev. Lett.}\ }\textbf {\bibinfo {volume} {113}},\
+  \bibinfo {pages} {146601} (\bibinfo {year} {2014})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Inoue}\ \emph {et~al.}(2015)\citenamefont {Inoue},
+  \citenamefont {Swartz}, \citenamefont {Harmon}, \citenamefont {Tachikawa},
+  \citenamefont {Hikita}, \citenamefont {Flatt\'e},\ and\ \citenamefont
+  {Hwang}}]{Inoue2015}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {H.}~\bibnamefont
+  {Inoue}}, \bibinfo {author} {\bibfnamefont {A.~G.}\ \bibnamefont {Swartz}},
+  \bibinfo {author} {\bibfnamefont {N.~J.}\ \bibnamefont {Harmon}}, \bibinfo
+  {author} {\bibfnamefont {T.}~\bibnamefont {Tachikawa}}, \bibinfo {author}
+  {\bibfnamefont {Y.}~\bibnamefont {Hikita}}, \bibinfo {author} {\bibfnamefont
+  {M.~E.}\ \bibnamefont {Flatt\'e}}, \ and\ \bibinfo {author} {\bibfnamefont
+  {H.~Y.}\ \bibnamefont {Hwang}},\ }\href@noop {} {\bibfield  {journal}
+  {\bibinfo  {journal} {Phys. Rev. X}\ }\textbf {\bibinfo {volume} {5}},\
+  \bibinfo {pages} {041023} (\bibinfo {year} {2015})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {{Ashton}}\ \emph {et~al.}(2019)\citenamefont
+  {{Ashton}}, \citenamefont {{Moxim}}, \citenamefont {{Lenahan}}, \citenamefont
+  {{Mckay}}, \citenamefont {{Waskiewicz}}, \citenamefont {{Myers}},
+  \citenamefont {{Flatté}}, \citenamefont {{Harmon}},\ and\ \citenamefont
+  {{Young}}}]{Ashton2019}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {J.~P.}\ \bibnamefont
+  {{Ashton}}}, \bibinfo {author} {\bibfnamefont {S.~J.}\ \bibnamefont
+  {{Moxim}}}, \bibinfo {author} {\bibfnamefont {P.~M.}\ \bibnamefont
+  {{Lenahan}}}, \bibinfo {author} {\bibfnamefont {C.~G.}\ \bibnamefont
+  {{Mckay}}}, \bibinfo {author} {\bibfnamefont {R.~J.}\ \bibnamefont
+  {{Waskiewicz}}}, \bibinfo {author} {\bibfnamefont {K.~J.}\ \bibnamefont
+  {{Myers}}}, \bibinfo {author} {\bibfnamefont {M.~E.}\ \bibnamefont
+  {{Flatté}}}, \bibinfo {author} {\bibfnamefont {N.~J.}\ \bibnamefont
+  {{Harmon}}}, \ and\ \bibinfo {author} {\bibfnamefont {C.~D.}\ \bibnamefont
+  {{Young}}},\ }\href {\doibase 10.1109/TNS.2018.2885300} {\bibfield  {journal}
+  {\bibinfo  {journal} {IEEE Transactions on Nuclear Science}\ }\textbf
+  {\bibinfo {volume} {66}},\ \bibinfo {pages} {428} (\bibinfo {year}
+  {2019})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Song}\ and\ \citenamefont {Dery}(2014)}]{Song2014}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {Y.}~\bibnamefont
+  {Song}}\ and\ \bibinfo {author} {\bibfnamefont {H.}~\bibnamefont {Dery}},\
+  }\href@noop {} {\bibfield  {journal} {\bibinfo  {journal} {Phys. Rev. Lett.}\
+  }\textbf {\bibinfo {volume} {113}},\ \bibinfo {pages} {047205} (\bibinfo
+  {year} {2014})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Harmon}\ and\ \citenamefont
+  {Flatt{\'e}}(2018)}]{Harmon2018}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {N.~J.}\ \bibnamefont
+  {Harmon}}\ and\ \bibinfo {author} {\bibfnamefont {M.~E.}\ \bibnamefont
+  {Flatt{\'e}}},\ }\href@noop {} {\bibfield  {journal} {\bibinfo  {journal}
+  {Physical Review B}\ }\textbf {\bibinfo {volume} {98}},\ \bibinfo {pages}
+  {035412} (\bibinfo {year} {2018})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Wortmann}\ \emph {et~al.}(2001)\citenamefont
+  {Wortmann}, \citenamefont {Heinze}, \citenamefont {Kurz}, \citenamefont
+  {Bihlmayer},\ and\ \citenamefont {Bl{\"u}gel}}]{wortmann2001}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {D.}~\bibnamefont
+  {Wortmann}}, \bibinfo {author} {\bibfnamefont {S.}~\bibnamefont {Heinze}},
+  \bibinfo {author} {\bibfnamefont {P.}~\bibnamefont {Kurz}}, \bibinfo {author}
+  {\bibfnamefont {G.}~\bibnamefont {Bihlmayer}}, \ and\ \bibinfo {author}
+  {\bibfnamefont {S.}~\bibnamefont {Bl{\"u}gel}},\ }\href@noop {} {\bibfield
+  {journal} {\bibinfo  {journal} {Physical Review Letters}\ }\textbf {\bibinfo
+  {volume} {86}},\ \bibinfo {pages} {4132} (\bibinfo {year}
+  {2001})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Wiesendanger}(2007)}]{wiesendanger2007}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {R.}~\bibnamefont
+  {Wiesendanger}},\ }\href@noop {} {\bibfield  {journal} {\bibinfo  {journal}
+  {Europhysics News}\ }\textbf {\bibinfo {volume} {38}},\ \bibinfo {pages} {16}
+  (\bibinfo {year} {2007})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Loth}\ \emph {et~al.}(2010)\citenamefont {Loth},
+  \citenamefont {Lutz},\ and\ \citenamefont {Heinrich}}]{loth2010}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {S.}~\bibnamefont
+  {Loth}}, \bibinfo {author} {\bibfnamefont {C.~P.}\ \bibnamefont {Lutz}}, \
+  and\ \bibinfo {author} {\bibfnamefont {A.~J.}\ \bibnamefont {Heinrich}},\
+  }\href@noop {} {\bibfield  {journal} {\bibinfo  {journal} {New Journal of
+  Physics}\ }\textbf {\bibinfo {volume} {12}},\ \bibinfo {pages} {125021}
+  (\bibinfo {year} {2010})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Kortan}\ \emph {et~al.}(2016)\citenamefont {Kortan},
+  \citenamefont {\c{S}ahin},\ and\ \citenamefont {Flatt\'e}}]{Kortan2016}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {V.~R.}\ \bibnamefont
+  {Kortan}}, \bibinfo {author} {\bibfnamefont {C.}~\bibnamefont {\c{S}ahin}}, \
+  and\ \bibinfo {author} {\bibfnamefont {M.~E.}\ \bibnamefont {Flatt\'e}},\
+  }\href@noop {} {\bibfield  {journal} {\bibinfo  {journal} {Phys. Rev. B}\
+  }\textbf {\bibinfo {volume} {93}},\ \bibinfo {pages} {220402(R)} (\bibinfo
+  {year} {2016})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Petta}\ \emph {et~al.}(2005)\citenamefont {Petta},
+  \citenamefont {Johnson}, \citenamefont {Taylor}, \citenamefont {Laird},
+  \citenamefont {Yacoby}, \citenamefont {Lukin}, \citenamefont {Marcus},
+  \citenamefont {Hanson},\ and\ \citenamefont {Gossard}}]{Petta2005}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {J.~R.}\ \bibnamefont
+  {Petta}}, \bibinfo {author} {\bibfnamefont {A.~C.}\ \bibnamefont {Johnson}},
+  \bibinfo {author} {\bibfnamefont {J.~M.}\ \bibnamefont {Taylor}}, \bibinfo
+  {author} {\bibfnamefont {E.~A.}\ \bibnamefont {Laird}}, \bibinfo {author}
+  {\bibfnamefont {A.}~\bibnamefont {Yacoby}}, \bibinfo {author} {\bibfnamefont
+  {M.~D.}\ \bibnamefont {Lukin}}, \bibinfo {author} {\bibfnamefont {C.~M.}\
+  \bibnamefont {Marcus}}, \bibinfo {author} {\bibfnamefont {M.~P.}\
+  \bibnamefont {Hanson}}, \ and\ \bibinfo {author} {\bibfnamefont {A.~C.}\
+  \bibnamefont {Gossard}},\ }\href@noop {} {\bibfield  {journal} {\bibinfo
+  {journal} {Science}\ }\textbf {\bibinfo {volume} {309}},\ \bibinfo {pages}
+  {2180} (\bibinfo {year} {2005})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Hirjibehedin}\ \emph {et~al.}(2006)\citenamefont
+  {Hirjibehedin}, \citenamefont {Lutz},\ and\ \citenamefont
+  {Heinrich}}]{Hirjibehedin2006}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {C.~F.}\ \bibnamefont
+  {Hirjibehedin}}, \bibinfo {author} {\bibfnamefont {C.~P.}\ \bibnamefont
+  {Lutz}}, \ and\ \bibinfo {author} {\bibfnamefont {A.~J.}\ \bibnamefont
+  {Heinrich}},\ }\href {\doibase 10.1126/science.1125398} {\bibfield  {journal}
+  {\bibinfo  {journal} {Science}\ }\textbf {\bibinfo {volume} {312}},\ \bibinfo
+  {pages} {1021} (\bibinfo {year} {2006})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Wiesendanger}(2009)}]{Wiesendanger2009}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {R.}~\bibnamefont
+  {Wiesendanger}},\ }\href@noop {} {\bibfield  {journal} {\bibinfo  {journal}
+  {Rev. Mod. Phys.}\ }\textbf {\bibinfo {volume} {81}},\ \bibinfo {pages}
+  {1495} (\bibinfo {year} {2009})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Bayliss}\ \emph {et~al.}(2018)\citenamefont
+  {Bayliss}, \citenamefont {Weiss}, \citenamefont {Mitioglu}, \citenamefont
+  {Galkowski}, \citenamefont {Yang}, \citenamefont {Yunusova}, \citenamefont
+  {Surrente}, \citenamefont {Thorley}, \citenamefont {Behrends}, \citenamefont
+  {Bittl}, \citenamefont {Anthony}, \citenamefont {Rao}, \citenamefont
+  {Friend}, \citenamefont {Plochocka}, \citenamefont {Christianen},
+  \citenamefont {Greenham},\ and\ \citenamefont {Chepelianskii}}]{Bayliss2018}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {S.~L.}\ \bibnamefont
+  {Bayliss}}, \bibinfo {author} {\bibfnamefont {L.~R.}\ \bibnamefont {Weiss}},
+  \bibinfo {author} {\bibfnamefont {A.}~\bibnamefont {Mitioglu}}, \bibinfo
+  {author} {\bibfnamefont {K.}~\bibnamefont {Galkowski}}, \bibinfo {author}
+  {\bibfnamefont {Z.}~\bibnamefont {Yang}}, \bibinfo {author} {\bibfnamefont
+  {K.}~\bibnamefont {Yunusova}}, \bibinfo {author} {\bibfnamefont
+  {A.}~\bibnamefont {Surrente}}, \bibinfo {author} {\bibfnamefont {K.~J.}\
+  \bibnamefont {Thorley}}, \bibinfo {author} {\bibfnamefont {J.}~\bibnamefont
+  {Behrends}}, \bibinfo {author} {\bibfnamefont {R.}~\bibnamefont {Bittl}},
+  \bibinfo {author} {\bibfnamefont {J.~E.}\ \bibnamefont {Anthony}}, \bibinfo
+  {author} {\bibfnamefont {A.}~\bibnamefont {Rao}}, \bibinfo {author}
+  {\bibfnamefont {R.~H.}\ \bibnamefont {Friend}}, \bibinfo {author}
+  {\bibfnamefont {P.}~\bibnamefont {Plochocka}}, \bibinfo {author}
+  {\bibfnamefont {P.~C.~M.}\ \bibnamefont {Christianen}}, \bibinfo {author}
+  {\bibfnamefont {N.~C.}\ \bibnamefont {Greenham}}, \ and\ \bibinfo {author}
+  {\bibfnamefont {A.~D.}\ \bibnamefont {Chepelianskii}},\ }\href@noop {}
+  {\bibfield  {journal} {\bibinfo  {journal} {Proceedings of the National
+  Academy of Sciences}\ }\textbf {\bibinfo {volume} {115}},\ \bibinfo {pages}
+  {5077} (\bibinfo {year} {2018})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Zhang}\ and\ \citenamefont
+  {Yates~Jr}(2012)}]{zhang2012}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {Z.}~\bibnamefont
+  {Zhang}}\ and\ \bibinfo {author} {\bibfnamefont {J.~T.}\ \bibnamefont
+  {Yates~Jr}},\ }\href@noop {} {\bibfield  {journal} {\bibinfo  {journal}
+  {Chemical Reviews}\ }\textbf {\bibinfo {volume} {112}},\ \bibinfo {pages}
+  {5520} (\bibinfo {year} {2012})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Tung}(2001)}]{tung2001}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {R.~T.}\ \bibnamefont
+  {Tung}},\ }\href@noop {} {\bibfield  {journal} {\bibinfo  {journal}
+  {Materials Science and Engineering: Reports}\ }\textbf {\bibinfo {volume}
+  {35}},\ \bibinfo {pages} {1} (\bibinfo {year} {2001})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Lee}\ and\ \citenamefont {Gupta}(2010)}]{lee2010}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {D.}~\bibnamefont
+  {Lee}}\ and\ \bibinfo {author} {\bibfnamefont {J.}~\bibnamefont {Gupta}},\
+  }\href@noop {} {\bibfield  {journal} {\bibinfo  {journal} {Science}\ }\textbf
+  {\bibinfo {volume} {330}},\ \bibinfo {pages} {1807} (\bibinfo {year}
+  {2010})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {de~Raad}\ \emph {et~al.}(2002)\citenamefont
+  {de~Raad}, \citenamefont {Bruls}, \citenamefont {Koenraad},\ and\
+  \citenamefont {Wolter}}]{deRaad2002}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {G.~J.}\ \bibnamefont
+  {de~Raad}}, \bibinfo {author} {\bibfnamefont {D.~M.}\ \bibnamefont {Bruls}},
+  \bibinfo {author} {\bibfnamefont {P.~M.}\ \bibnamefont {Koenraad}}, \ and\
+  \bibinfo {author} {\bibfnamefont {J.~H.}\ \bibnamefont {Wolter}},\
+  }\href@noop {} {\bibfield  {journal} {\bibinfo  {journal} {Phys. Rev. B}\
+  }\textbf {\bibinfo {volume} {66}},\ \bibinfo {pages} {195306} (\bibinfo
+  {year} {2002})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Feenstra}\ \emph {et~al.}(1987)\citenamefont
+  {Feenstra}, \citenamefont {Stroscio}, \citenamefont {Tersoff},\ and\
+  \citenamefont {Fein}}]{Feenstra1987}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {R.~M.}\ \bibnamefont
+  {Feenstra}}, \bibinfo {author} {\bibfnamefont {J.~A.}\ \bibnamefont
+  {Stroscio}}, \bibinfo {author} {\bibfnamefont {J.}~\bibnamefont {Tersoff}}, \
+  and\ \bibinfo {author} {\bibfnamefont {A.~P.}\ \bibnamefont {Fein}},\
+  }\href@noop {} {\bibfield  {journal} {\bibinfo  {journal} {Phys. Rev. Lett.}\
+  }\textbf {\bibinfo {volume} {58}},\ \bibinfo {pages} {1192} (\bibinfo {year}
+  {1987})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Kubo}(1963)}]{kubo1963}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {R.}~\bibnamefont
+  {Kubo}},\ }\href@noop {} {\bibfield  {journal} {\bibinfo  {journal} {Journal
+  of Mathematical Physics}\ }\textbf {\bibinfo {volume} {4}},\ \bibinfo {pages}
+  {174} (\bibinfo {year} {1963})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Van~Kampen}(1992)}]{vankampen1992}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {N.~G.}\ \bibnamefont
+  {Van~Kampen}},\ }\href@noop {} {\emph {\bibinfo {title} {Stochastic processes
+  in physics and chemistry}}},\ Vol.~\bibinfo {volume} {1}\ (\bibinfo
+  {publisher} {Elsevier},\ \bibinfo {year} {1992})\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Harmon}\ \emph {et~al.}(2016)\citenamefont {Harmon},
+  \citenamefont {Wohlgenannt},\ and\ \citenamefont {Flatt{\'e}}}]{harmon2016b}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {N.~J.}\ \bibnamefont
+  {Harmon}}, \bibinfo {author} {\bibfnamefont {M.}~\bibnamefont {Wohlgenannt}},
+  \ and\ \bibinfo {author} {\bibfnamefont {M.}~\bibnamefont {Flatt{\'e}}},\
+  }\href@noop {} {\bibfield  {journal} {\bibinfo  {journal} {Applied Physics
+  Letters}\ }\textbf {\bibinfo {volume} {109}},\ \bibinfo {pages} {243303}
+  (\bibinfo {year} {2016})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Wang}\ \emph {et~al.}(2016)\citenamefont {Wang},
+  \citenamefont {Sahin-Tiras}, \citenamefont {Harmon}, \citenamefont
+  {Wohlgenannt},\ and\ \citenamefont {Flatt{\'{e}}}}]{Wang2016}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {Y.}~\bibnamefont
+  {Wang}}, \bibinfo {author} {\bibfnamefont {K.}~\bibnamefont {Sahin-Tiras}},
+  \bibinfo {author} {\bibfnamefont {N.~J.}\ \bibnamefont {Harmon}}, \bibinfo
+  {author} {\bibfnamefont {M.}~\bibnamefont {Wohlgenannt}}, \ and\ \bibinfo
+  {author} {\bibfnamefont {M.~E.}\ \bibnamefont {Flatt{\'{e}}}},\ }\href@noop
+  {} {\bibfield  {journal} {\bibinfo  {journal} {Phys. Rev. X}\ }\textbf
+  {\bibinfo {volume} {6}},\ \bibinfo {pages} {011011} (\bibinfo {year}
+  {2016})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Yue}\ \emph {et~al.}(2015)\citenamefont {Yue},
+  \citenamefont {Prestgard}, \citenamefont {Tiwari},\ and\ \citenamefont
+  {Raikh}}]{yue2015}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {Z.}~\bibnamefont
+  {Yue}}, \bibinfo {author} {\bibfnamefont {M.~C.}\ \bibnamefont {Prestgard}},
+  \bibinfo {author} {\bibfnamefont {A.}~\bibnamefont {Tiwari}}, \ and\ \bibinfo
+  {author} {\bibfnamefont {M.~E.}\ \bibnamefont {Raikh}},\ }\href@noop {}
+  {\bibfield  {journal} {\bibinfo  {journal} {Physical Review B}\ }\textbf
+  {\bibinfo {volume} {91}},\ \bibinfo {pages} {195316} (\bibinfo {year}
+  {2015})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Gorman}\ \emph {et~al.}(2015)\citenamefont {Gorman},
+  \citenamefont {Broome}, \citenamefont {Baker},\ and\ \citenamefont
+  {Simmons}}]{gorman2015}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {S.~K.}\ \bibnamefont
+  {Gorman}}, \bibinfo {author} {\bibfnamefont {M.~A.}\ \bibnamefont {Broome}},
+  \bibinfo {author} {\bibfnamefont {W.~J.}\ \bibnamefont {Baker}}, \ and\
+  \bibinfo {author} {\bibfnamefont {M.~Y.}\ \bibnamefont {Simmons}},\
+  }\href@noop {} {\bibfield  {journal} {\bibinfo  {journal} {Physical Review
+  B}\ }\textbf {\bibinfo {volume} {92}},\ \bibinfo {pages} {125413} (\bibinfo
+  {year} {2015})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Farago}(1971)}]{Farago1971}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {P.~S.}\ \bibnamefont
+  {Farago}},\ }\href {http://iopscience.iop.org/0034-4885/34/3/305} {\bibfield
+  {journal} {\bibinfo  {journal} {Reports Prog. Phys.}\ }\textbf {\bibinfo
+  {volume} {34}},\ \bibinfo {pages} {1055} (\bibinfo {year}
+  {1971})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Haberkorn}(1976)}]{Haberkorn1976}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {R.}~\bibnamefont
+  {Haberkorn}},\ }\href@noop {} {\bibfield  {journal} {\bibinfo  {journal}
+  {Mol. Phys.}\ }\textbf {\bibinfo {volume} {32}},\ \bibinfo {pages} {1491}
+  (\bibinfo {year} {1976})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Flatt\'e}\ and\ \citenamefont
+  {Reynolds}(2000)}]{Flatte2000}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {M.~E.}\ \bibnamefont
+  {Flatt\'e}}\ and\ \bibinfo {author} {\bibfnamefont {D.~E.}\ \bibnamefont
+  {Reynolds}},\ }\href@noop {} {\bibfield  {journal} {\bibinfo  {journal}
+  {\prb}\ }\textbf {\bibinfo {volume} {61}},\ \bibinfo {pages} {14810}
+  (\bibinfo {year} {2000})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Kitchen}\ \emph {et~al.}(2006)\citenamefont
+  {Kitchen}, \citenamefont {Richardella}, \citenamefont {Tang}, \citenamefont
+  {Flatt{\'e}},\ and\ \citenamefont {Yazdani}}]{Kitchen2006}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {D.}~\bibnamefont
+  {Kitchen}}, \bibinfo {author} {\bibfnamefont {A.}~\bibnamefont
+  {Richardella}}, \bibinfo {author} {\bibfnamefont {J.-M.}\ \bibnamefont
+  {Tang}}, \bibinfo {author} {\bibfnamefont {M.~E.}\ \bibnamefont
+  {Flatt{\'e}}}, \ and\ \bibinfo {author} {\bibfnamefont {A.}~\bibnamefont
+  {Yazdani}},\ }\href@noop {} {\bibfield  {journal} {\bibinfo  {journal}
+  {Nature}\ }\textbf {\bibinfo {volume} {442}},\ \bibinfo {pages} {436}
+  (\bibinfo {year} {2006})}\BibitemShut {NoStop}%
+\end{thebibliography}%
+
+
+
+
+
+\end{document}
+%
+% ****** End of file apssamp.tex ******
