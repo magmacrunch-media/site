@@ -197,6 +197,20 @@
             background: #555;
         }
 
+        .vc-thumb {
+            display: block;
+            width: 128px;
+            flex-shrink: 0;
+            align-self: stretch;
+            min-height: 80px;
+            object-fit: cover;
+            border-right: 2px solid #AAFF00;
+            background: #111;
+        }
+        .visual-card:hover:not(.coming-soon) .vc-thumb {
+            border-right-color: var(--card-accent, #7B2FBE);
+        }
+
         .vc-inner {
             padding: 20px 22px;
             flex: 1;
@@ -245,6 +259,8 @@
 
         @media (max-width: 640px) {
             .vc-label { font-size: 8px; }
+            .vc-thumb { width: 88px; }
+            .vc-inner { padding: 16px; }
         }
 
         .ascii-lightbulb {
@@ -297,6 +313,7 @@
     <div class="visual-cards">
 
         <a href="tv/" class="visual-card" style="--card-accent: #FFB800;">
+            <img class="vc-thumb" src="thumbs/tv.jpg" width="320" height="200" alt="A frame from the video Eternity spent in an arcade">
             <div class="vc-inner">
                 <div>
                     <span class="vc-label" style="color:#FFB800;">TV</span>
@@ -307,6 +324,7 @@
         </a>
 
         <a href="collage.html" class="visual-card" style="--card-accent: #00BFFF;">
+            <img class="vc-thumb" src="thumbs/collage.jpg" width="320" height="200" alt="A collage headed THE FALL">
             <div class="vc-inner">
                 <div>
                     <span class="vc-label" style="color:#00BFFF;">collage</span>
@@ -317,6 +335,7 @@
         </a>
 
         <a href="photography/" class="visual-card" style="--card-accent: #00CCA3;">
+            <img class="vc-thumb" src="thumbs/photography.jpg" width="320" height="200" alt="SVFP under blue light, May 2025">
             <div class="vc-inner">
                 <div>
                     <span class="vc-label" style="color:#00CCA3;">photography</span>
