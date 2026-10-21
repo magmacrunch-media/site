@@ -1852,7 +1852,7 @@
     "c": "tool",
     "u": "/ware/adenosine/",
     "d": "lightweight web game engines · try every package live",
-    "b": "adenosine — magmacrunch media home › ware › developer tools › adenosine adenosine lightweight game engines by magmacrunch media A collection of lightweight web game engines by magmacrunch media . TypeScript and JavaScript, zero runtime dependencies, built for browsers. Powering the magmacrunch web arcade since 2026. npm contact magmacrunch.com ▶ Playground Try every package live. Code editor with syntax highlighting, pre-loaded examples, and console output. ▢ Tile Map Editor Draw tile maps for the RPG engine. Paint, fill, export JSON, preview with AdRPG. ✎ Theme Customizer Customize CSS colors..."
+    "b": "adenosine — magmacrunch media home › ware › developer tools › adenosine adenosine lightweight game engines by magmacrunch media A collection of lightweight web game engines by magmacrunch media . TypeScript and JavaScript, zero runtime dependencies, built for browsers. Powering the magmacrunch web arcade since 2026. npm contact ▶ Playground Try every package live. Code editor with syntax highlighting, pre-loaded examples, and console output. ▢ Tile Map Editor Draw tile maps for the RPG engine. Paint, fill, export JSON, preview with AdRPG. ✎ Theme Customizer Customize CSS colors for cards, puzz..."
   },
   {
     "t": "GATE//FOLD",
@@ -1992,7 +1992,7 @@
     "c": "tool",
     "u": "/ware/magmascript/",
     "d": "a Python-inspired mini language for magmacrunch infrastructure",
-    "b": "magmascript — magmacrunch media home › ware › developer tools › magmascript magmascript a Python-inspired mini language for magmacrunch infrastructure A Python-inspired mini scripting language by magmacrunch media . Write .mgs scripts that combine general-purpose programming with infrastructure automation via the domain bridge. Tree-walk interpreter, no compilation step, runs in your terminal or browser. Docs PyPI magmacrunch.com ▶ Playground Write and run .mgs scripts in-browser with Pyodide. 14 examples, syntax highlighting, console output. 📖 Language Reference Syntax cheat sheet: variables..."
+    "b": "magmascript — magmacrunch media home › ware › developer tools › magmascript magmascript a Python-inspired mini language for magmacrunch infrastructure A Python-inspired mini scripting language by magmacrunch media . Write .mgs scripts that combine general-purpose programming with infrastructure automation via the domain bridge. Tree-walk interpreter, no compilation step, runs in your terminal or browser. Docs PyPI ▶ Playground Write and run .mgs scripts in-browser with Pyodide. 14 examples, syntax highlighting, console output. 📖 Language Reference Syntax cheat sheet: variables, functions, cla..."
   },
   {
     "t": "magnolia",
