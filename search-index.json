@@ -200,14 +200,14 @@
     "c": "page",
     "u": "/ware/utilities/index.html",
     "d": "browser-based tools for art, media & image processing",
-    "b": "creative utilities — ware — magmacrunch media home › ware › creative utilities // creative utilities // browser-based tools for art, media & image processing GATE//FOLD pixel art editor for album covers · text, shapes, images ▶ MEDIA//SEARCH free media aggregator · CC-licensed images, video & audio ▶ CRUNCH//SCOPE an image signal chain you play like an instrument · pixel sort, FFT filter, feedback ▶ TONE//GRATING an FM synth you play through a diffraction grating · keys, MIDI, and a grating to press ▶ SPRITE//FORGE game sprite editor · animation, onion skin, PNG sheet export ▶ PUNCH//ROLL chip..."
+    "b": "creative utilities — ware — magmacrunch media home › ware › creative utilities // creative utilities // browser-based tools for art, media & image processing // music // instruments and sequencers that run in a browser tab PUNCH//ROLL chiptune piano roll pulse triangle noise WAV export ▶ TONE//GRATING an FM synth you play through a diffraction grating keys MIDI ▶ // art & image // pixel editors and an image signal chain GATE//FOLD pixel art editor for album covers text shapes images ▶ SPRITE//FORGE game sprite editor animation onion skin PNG sheets ▶ CRUNCH//SCOPE an image signal chain you pla..."
   },
   {
     "t": "developer tools",
     "c": "page",
     "u": "/ware/dev/index.html",
     "d": "game engines, scripting language, & memory course",
-    "b": "developer tools — ware — magmacrunch media home › ware › developer tools // developer tools // game engines, scripting language, & educational tools // game engines // the engines under the arcade, the wii games & the 3D work ADENOSINE game engine collection for the magmacrunch web arcade ▶ DAFFODIL heightfield terrain engine · real-world landscape at 1:1 · C ▶ HOLOGRAM optics-first 3D engine · spectral ray tracer · C ▶ GERRIDAE meshes rasterized beside hologram's ray tracer · C · new ▶ MAGNOLIA wii homebrew game engine · C ▶ TEXASTOAST RPG engine · I2C hardware bridge · Python ▶ // languages ..."
+    "b": "developer tools — ware — magmacrunch media home › ware › developer tools // developer tools // game engines, scripting language, & educational tools // game engines // the engines under the arcade, the wii games & the 3D work ADENOSINE game engine collection for the magmacrunch web arcade JavaScript npm ▶ DAFFODIL heightfield terrain engine: real-world landscape at 1:1 C ▶ HOLOGRAM optics-first 3D engine with a spectral ray tracer C ▶ GERRIDAE meshes rasterized beside hologram's ray tracer C new ▶ TUNACAN pixel-art game engine with its level editor built in C browser new ▶ MAGNOLIA wii homebre..."
   },
   {
     "t": "Coruscating Dissonance",
@@ -1991,7 +1991,7 @@
     "t": "media//search",
     "c": "tool",
     "u": "/ware/media-search/",
-    "d": "free media aggregator · CC-licensed images, video & audio",
+    "d": "free media aggregator for CC-licensed work · images, video, audio",
     "b": "media//search — magmacrunch media MEDIA//SEARCH 0 RESULTS SOURCES TYPE ALL ▾ ALL PHOTOS ILLUSTRATIONS VIDEO AUDIO LICENSE ALL ▾ ALL PUBLIC DOMAIN CC0 NO ATTRIBUTION ORIENTATION ALL ▾ ALL HORIZONTAL VERTICAL SQUARE CLEAR GO ◆ SEARCH ACROSS FREE MEDIA SOURCES Pexels, Pixabay, Openverse, Met Museum, Smithsonian, Internet Archive SEARCHING... LOAD MORE ← → × OPEN IN TAB DOWNLOAD COPY URL"
   },
   {
@@ -2026,7 +2026,7 @@
     "t": "PUNCH//ROLL",
     "c": "tool",
     "u": "/ware/punch-roll/",
-    "d": "chiptune piano roll · pulse, triangle & noise channels, WAV export",
+    "d": "chiptune piano roll · pulse, triangle, noise, WAV export",
     "b": "PUNCH//ROLL PUNCH//ROLL Tuning Step entry MIDI keyboard Tempo × BPM Delete Cancel OK Keyboard shortcuts × How to use PUNCH//ROLL × Write notes Each row of the roll is a pitch and each column a step of the grid. Click an empty square to add a note, drag it to move it, and drag its right edge to make it longer. Right-click a note to delete it. Shift-drag across empty grid to select several notes at once. Pick a track The panel on the left holds the tracks: two pulse channels, a triangle and noise. Click one, or press 1 to 4, and new notes go onto it. M mutes the current track and S solos it. Cli..."
   },
   {
@@ -2054,7 +2054,7 @@
     "t": "sprite forge",
     "c": "tool",
     "u": "/ware/sprite-forge/",
-    "d": "game sprite editor · animation, onion skin, PNG sheet export",
+    "d": "game sprite editor · animation, onion skin, PNG sheets",
     "b": "sprite forge — magmacrunch media This tool is best experienced on a desktop or laptop. Please visit on a wider screen for the full workspace. SPRITE//FORGE 32×32 1 FRAME − 16× + ⇲ FIT ▦ GRID ⇋ MIRROR ◎ ONION 1 ◫ PREVIEW 32 × 32 animation sheet; click a frame to edit it, drag to reorder surface ◀ ▶ EXPORT OUTPUT COPY COLOR #000000 + ADD RAMP SPRITES ADD DUP DEL every sprite here shares one palette, so a character's facings cannot drift onto different browns. each exports as its own sheet, named by the name above. TARGETS engine ADD FOLDER… the sheet lands in the engine's own directory under the..."
   },
   {
@@ -2089,8 +2089,15 @@
     "t": "tone grating, magmacrunch media",
     "c": "tool",
     "u": "/ware/tone-grating/",
-    "d": "an FM synth you play through a diffraction grating · keys, MIDI, and a grating to press",
+    "d": "an FM synth you play through a diffraction grating · keys, MIDI",
     "b": "tone grating, magmacrunch media This instrument wants two panels and a keyboard side by side. Please visit on a wider screen. TONE//GRATING A4 440 Hz β 2.405 CARRIER NULL PATCH NULL ORGAN BRASS REED BELL CHIME GRIT SHARED one number, both panels: where every note comes to rest RESTING DEPTH β 2.405 0 2.405 5.520 8.654 TIME DOMAIN STRIKE δβ +0.0 STRIKE DECAY 0.30 s RATIO f m /f c 0.50 ATTACK 30 ms FADE WHILE HELD hold RELEASE 0.25 s OCT - C4 OCT + HOLD MIDI SPACE DOMAIN GROOVE SPACING d 2.00 µm WAVELENGTH λ 500 nm groove depth (p–v) 191.4 nm highest order ±4 TIME sidebands at f c + m·f m drag t..."
+  },
+  {
+    "t": "tunacan · magmacrunch media",
+    "c": "tool",
+    "u": "/ware/tunacan/",
+    "d": "a pixel-art game engine in C, with its level editor built in",
+    "b": "tunacan · magmacrunch media home › ware › developer tools › tunacan tunacan a pixel-art game engine in C, with its level editor built in v0.0.1 PolyForm Noncommercial C99 + sokol early: m7 🥣 Grocery Harrison The first game on it. The cereal aisle is being rebuilt in tunacan from the web version. 🎨 SPRITE//FORGE Where the sprites are drawn. tunacan reads its .forge files as they are, with no export step. ✉ Get in touch The engine is not publicly distributed. Email for source access or licensing. in the engine Both frames are the engine's own 320x180, captured from its web build. The editor is..."
   },
   {
     "t": "2^n · magmacrunch media",
