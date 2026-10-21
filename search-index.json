@@ -46,7 +46,7 @@
     "c": "page",
     "u": "/music/jukebox/index.html",
     "d": "Audio jukebox player",
-    "b": "jukebox — magmacrunch media home › music › jukebox // jukebox // INSERT COIN NOW PLAYING — select a song — 0:00 / 0:00 SONG SELECTIONS ◄ 1/1 ► PLAY STOP UP NEXT queue empty select • play • enjoy"
+    "b": "jukebox — magmacrunch media home › music › jukebox // jukebox // INSERT COIN NOW PLAYING — select a song — 0:00 / 0:00 SONG SELECTIONS PLAY STOP UP NEXT queue empty select • play • enjoy"
   },
   {
     "t": "physical media",
@@ -172,7 +172,7 @@
     "c": "page",
     "u": "/press/index.html",
     "d": "journals / lyrics / press",
-    "b": "press — magmacrunch media home › press // press // a diy publishing house for essays, poetry, fiction, and experimental writing // journals // scientific journal science & technology · 6 pieces ▶ experimental journal experimental writing · 1 piece ▶ // submissions // send submissions to info@magmacrunch.com"
+    "b": "press — magmacrunch media home › press // press // a diy publishing house for essays, poetry, fiction, and experimental writing // journals // scientific journal science & technology · 6 pieces essays on photons and conical diffraction, plus four papers published elsewhere ▶ experimental journal experimental writing · 1 piece latest: basement creature ▶ // submissions // send submissions to info@magmacrunch.com"
   },
   {
     "t": "scientific",
@@ -210,10 +210,10 @@
     "b": "developer tools — ware — magmacrunch media home › ware › developer tools // developer tools // game engines, scripting language, & educational tools // game engines // the engines under the arcade, the wii games & the 3D work ADENOSINE game engine collection for the magmacrunch web arcade ▶ DAFFODIL heightfield terrain engine · real-world landscape at 1:1 · C ▶ HOLOGRAM optics-first 3D engine · spectral ray tracer · C ▶ GERRIDAE meshes rasterized beside hologram's ray tracer · C · new ▶ MAGNOLIA wii homebrew game engine · C ▶ TEXASTOAST RPG engine · I2C hardware bridge · Python ▶ // languages ..."
   },
   {
-    "t": "Reverse Osmosis Reversed",
+    "t": "Coruscating Dissonance",
     "c": "song",
     "u": "/music/jukebox/",
-    "d": "Juanito Thompson — 4:51",
+    "d": "The Four B's — 3:28",
     "b": ""
   },
   {
