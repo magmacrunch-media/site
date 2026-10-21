@@ -1,0 +1,721 @@
+%merlin.mbs apsrev4-1.bst 2010-07-25 4.21a (PWD, AO, DPC) hacked
+%Control: key (0)
+%Control: author (0) dotless jnrlst
+%Control: editor formatted (1) identically to author
+%Control: production of article title (0) allowed
+%Control: page (1) range
+%Control: year (0) verbatim
+%Control: production of eprint (0) enabled
+\begin{thebibliography}{45}%
+\makeatletter
+\providecommand \@ifxundefined [1]{%
+ \@ifx{#1\undefined}
+}%
+\providecommand \@ifnum [1]{%
+ \ifnum #1\expandafter \@firstoftwo
+ \else \expandafter \@secondoftwo
+ \fi
+}%
+\providecommand \@ifx [1]{%
+ \ifx #1\expandafter \@firstoftwo
+ \else \expandafter \@secondoftwo
+ \fi
+}%
+\providecommand \natexlab [1]{#1}%
+\providecommand \enquote  [1]{``#1''}%
+\providecommand \bibnamefont  [1]{#1}%
+\providecommand \bibfnamefont [1]{#1}%
+\providecommand \citenamefont [1]{#1}%
+\providecommand \href@noop [0]{\@secondoftwo}%
+\providecommand \href [0]{\begingroup \@sanitize@url \@href}%
+\providecommand \@href[1]{\@@startlink{#1}\@@href}%
+\providecommand \@@href[1]{\endgroup#1\@@endlink}%
+\providecommand \@sanitize@url [0]{\catcode `\\12\catcode `\$12\catcode
+  `\&12\catcode `\#12\catcode `\^12\catcode `\_12\catcode `\%12\relax}%
+\providecommand \@@startlink[1]{}%
+\providecommand \@@endlink[0]{}%
+\providecommand \url  [0]{\begingroup\@sanitize@url \@url }%
+\providecommand \@url [1]{\endgroup\@href {#1}{\urlprefix }}%
+\providecommand \urlprefix  [0]{URL }%
+\providecommand \Eprint [0]{\href }%
+\providecommand \doibase [0]{http://dx.doi.org/}%
+\providecommand \selectlanguage [0]{\@gobble}%
+\providecommand \bibinfo  [0]{\@secondoftwo}%
+\providecommand \bibfield  [0]{\@secondoftwo}%
+\providecommand \translation [1]{[#1]}%
+\providecommand \BibitemOpen [0]{}%
+\providecommand \bibitemStop [0]{}%
+\providecommand \bibitemNoStop [0]{.\EOS\space}%
+\providecommand \EOS [0]{\spacefactor3000\relax}%
+\providecommand \BibitemShut  [1]{\csname bibitem#1\endcsname}%
+\let\auto@bib@innerbib\@empty
+%</preamble>
+\bibitem [{\citenamefont {Loss}\ and\ \citenamefont
+  {DiVincenzo}(1998)}]{Loss1998}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {D.}~\bibnamefont
+  {Loss}}\ and\ \bibinfo {author} {\bibfnamefont {D.~P.}\ \bibnamefont
+  {DiVincenzo}},\ }\bibfield  {title} {\enquote {\bibinfo {title} {Quantum
+  computation with quantum dots},}\ }\href {\doibase 10.1103/PhysRevA.57.120}
+  {\bibfield  {journal} {\bibinfo  {journal} {Phys. Rev. A}\ }\textbf {\bibinfo
+  {volume} {57}},\ \bibinfo {pages} {120} (\bibinfo {year} {1998})}\BibitemShut
+  {NoStop}%
+\bibitem [{\citenamefont {Hanson}\ \emph {et~al.}(2007)\citenamefont {Hanson},
+  \citenamefont {Kouwenhoven}, \citenamefont {Petta}, \citenamefont {Tarucha},\
+  and\ \citenamefont {Vandersypen}}]{Hanson2007}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {R.}~\bibnamefont
+  {Hanson}}, \bibinfo {author} {\bibfnamefont {L.~P.}\ \bibnamefont
+  {Kouwenhoven}}, \bibinfo {author} {\bibfnamefont {J.~R.}\ \bibnamefont
+  {Petta}}, \bibinfo {author} {\bibfnamefont {S.}~\bibnamefont {Tarucha}}, \
+  and\ \bibinfo {author} {\bibfnamefont {L.~M.~K.}\ \bibnamefont
+  {Vandersypen}},\ }\bibfield  {title} {\enquote {\bibinfo {title} {Spins in
+  few-electron quantum dots},}\ }\href {\doibase 10.1103/RevModPhys.79.1217}
+  {\bibfield  {journal} {\bibinfo  {journal} {Rev. Mod. Phys.}\ }\textbf
+  {\bibinfo {volume} {79}},\ \bibinfo {pages} {1217} (\bibinfo {year}
+  {2007})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Ono}\ \emph {et~al.}(2002)\citenamefont {Ono},
+  \citenamefont {Austing}, \citenamefont {Tokura},\ and\ \citenamefont
+  {Tarucha}}]{Ono2002}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {K.}~\bibnamefont
+  {Ono}}, \bibinfo {author} {\bibfnamefont {D.~G.}\ \bibnamefont {Austing}},
+  \bibinfo {author} {\bibfnamefont {Y.}~\bibnamefont {Tokura}}, \ and\ \bibinfo
+  {author} {\bibfnamefont {S.}~\bibnamefont {Tarucha}},\ }\bibfield  {title}
+  {\enquote {\bibinfo {title} {{Current rectification by Pauli exclusion in a
+  weakly coupled double quantum dot system}},}\ }\href {\doibase
+  10.1126/science.1070958} {\bibfield  {journal} {\bibinfo  {journal}
+  {Science}\ }\textbf {\bibinfo {volume} {297}},\ \bibinfo {pages} {1313--1317}
+  (\bibinfo {year} {2002})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Elzerman}\ \emph {et~al.}(2004)\citenamefont
+  {Elzerman}, \citenamefont {Hanson}, \citenamefont {Van~Beveren},
+  \citenamefont {Witkamp}, \citenamefont {Vandersypen},\ and\ \citenamefont
+  {Kouwenhoven}}]{Elzerman2004}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {JM}~\bibnamefont
+  {Elzerman}}, \bibinfo {author} {\bibfnamefont {R}~\bibnamefont {Hanson}},
+  \bibinfo {author} {\bibfnamefont {LH~Willems}\ \bibnamefont {Van~Beveren}},
+  \bibinfo {author} {\bibfnamefont {B}~\bibnamefont {Witkamp}}, \bibinfo
+  {author} {\bibfnamefont {LMK}\ \bibnamefont {Vandersypen}}, \ and\ \bibinfo
+  {author} {\bibfnamefont {Leo~P}\ \bibnamefont {Kouwenhoven}},\ }\bibfield
+  {title} {\enquote {\bibinfo {title} {Single-shot read-out of an individual
+  electron spin in a quantum dot},}\ }\href {\doibase 10.1038/nature02693}
+  {\bibfield  {journal} {\bibinfo  {journal} {Nature}\ }\textbf {\bibinfo
+  {volume} {430}},\ \bibinfo {pages} {431--435} (\bibinfo {year}
+  {2004})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Veldhorst}\ \emph {et~al.}(2014)\citenamefont
+  {Veldhorst}, \citenamefont {Hwang}, \citenamefont {Yang}, \citenamefont
+  {Leenstra}, \citenamefont {de~Ronde}, \citenamefont {Dehollain},
+  \citenamefont {Muhonen}, \citenamefont {Hudson}, \citenamefont {Itoh},
+  \citenamefont {Morello},\ and\ \citenamefont {Dzurak}}]{Veldhorst2014}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {M.}~\bibnamefont
+  {Veldhorst}}, \bibinfo {author} {\bibfnamefont {J.~C.~C.}\ \bibnamefont
+  {Hwang}}, \bibinfo {author} {\bibfnamefont {C.~H.}\ \bibnamefont {Yang}},
+  \bibinfo {author} {\bibfnamefont {A.~W.}\ \bibnamefont {Leenstra}}, \bibinfo
+  {author} {\bibfnamefont {B.}~\bibnamefont {de~Ronde}}, \bibinfo {author}
+  {\bibfnamefont {J.~P.}\ \bibnamefont {Dehollain}}, \bibinfo {author}
+  {\bibfnamefont {J.~T.}\ \bibnamefont {Muhonen}}, \bibinfo {author}
+  {\bibfnamefont {F.~E.}\ \bibnamefont {Hudson}}, \bibinfo {author}
+  {\bibfnamefont {K.~M.}\ \bibnamefont {Itoh}}, \bibinfo {author}
+  {\bibfnamefont {A.}~\bibnamefont {Morello}}, \ and\ \bibinfo {author}
+  {\bibfnamefont {A.~S.}\ \bibnamefont {Dzurak}},\ }\bibfield  {title}
+  {\enquote {\bibinfo {title} {An addressable quantum dot qubit with
+  fault-tolerant control-fidelity},}\ }\href {\doibase 10.1038/nnano.2014.216}
+  {\bibfield  {journal} {\bibinfo  {journal} {Nat. Nanotechnol.}\ }\textbf
+  {\bibinfo {volume} {9}},\ \bibinfo {pages} {981--985} (\bibinfo {year}
+  {2014})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Tokura}\ \emph {et~al.}(2006)\citenamefont {Tokura},
+  \citenamefont {van~der Wiel}, \citenamefont {Obata},\ and\ \citenamefont
+  {Tarucha}}]{Tokura2006}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {Y.}~\bibnamefont
+  {Tokura}}, \bibinfo {author} {\bibfnamefont {W.~G.}\ \bibnamefont {van~der
+  Wiel}}, \bibinfo {author} {\bibfnamefont {T.}~\bibnamefont {Obata}}, \ and\
+  \bibinfo {author} {\bibfnamefont {S.}~\bibnamefont {Tarucha}},\ }\bibfield
+  {title} {\enquote {\bibinfo {title} {{Coherent single electron spin control
+  in a slanting Zeeman field}},}\ }\href {\doibase
+  10.1103/PhysRevLett.96.047202} {\bibfield  {journal} {\bibinfo  {journal}
+  {Phys. Rev. Lett.}\ }\textbf {\bibinfo {volume} {96}},\ \bibinfo {pages}
+  {047202} (\bibinfo {year} {2006})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Pioro-Ladriere}\ \emph {et~al.}(2008)\citenamefont
+  {Pioro-Ladriere}, \citenamefont {Obata}, \citenamefont {Tokura},
+  \citenamefont {Shin}, \citenamefont {Kubo}, \citenamefont {Yoshida},
+  \citenamefont {Taniyama},\ and\ \citenamefont
+  {Tarucha}}]{Pioro-Ladriere2008}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {M.}~\bibnamefont
+  {Pioro-Ladriere}}, \bibinfo {author} {\bibfnamefont {T.}~\bibnamefont
+  {Obata}}, \bibinfo {author} {\bibfnamefont {Y.}~\bibnamefont {Tokura}},
+  \bibinfo {author} {\bibfnamefont {Y.-S.}\ \bibnamefont {Shin}}, \bibinfo
+  {author} {\bibfnamefont {T.}~\bibnamefont {Kubo}}, \bibinfo {author}
+  {\bibfnamefont {K.}~\bibnamefont {Yoshida}}, \bibinfo {author} {\bibfnamefont
+  {T.}~\bibnamefont {Taniyama}}, \ and\ \bibinfo {author} {\bibfnamefont
+  {S.}~\bibnamefont {Tarucha}},\ }\bibfield  {title} {\enquote {\bibinfo
+  {title} {{Electrically driven single-electron spin resonance in a slanting
+  Zeeman field}},}\ }\href {\doibase 10.1038/nphys1053} {\bibfield  {journal}
+  {\bibinfo  {journal} {Nat. Phys.}\ }\textbf {\bibinfo {volume} {4}},\
+  \bibinfo {pages} {776--779} (\bibinfo {year} {2008})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Takeda}\ \emph {et~al.}(2016)\citenamefont {Takeda},
+  \citenamefont {Kamioka}, \citenamefont {Otsuka}, \citenamefont {Yoneda},
+  \citenamefont {Nakajima}, \citenamefont {Delbecq}, \citenamefont {Amaha},
+  \citenamefont {Allison}, \citenamefont {Kodera}, \citenamefont {Oda},\ and\
+  \citenamefont {Tarucha}}]{Takeda2016}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {K.}~\bibnamefont
+  {Takeda}}, \bibinfo {author} {\bibfnamefont {J.}~\bibnamefont {Kamioka}},
+  \bibinfo {author} {\bibfnamefont {T.}~\bibnamefont {Otsuka}}, \bibinfo
+  {author} {\bibfnamefont {J.}~\bibnamefont {Yoneda}}, \bibinfo {author}
+  {\bibfnamefont {T.}~\bibnamefont {Nakajima}}, \bibinfo {author}
+  {\bibfnamefont {M.~R.}\ \bibnamefont {Delbecq}}, \bibinfo {author}
+  {\bibfnamefont {S.}~\bibnamefont {Amaha}}, \bibinfo {author} {\bibfnamefont
+  {G.}~\bibnamefont {Allison}}, \bibinfo {author} {\bibfnamefont
+  {T.}~\bibnamefont {Kodera}}, \bibinfo {author} {\bibfnamefont
+  {S.}~\bibnamefont {Oda}}, \ and\ \bibinfo {author} {\bibfnamefont
+  {S.}~\bibnamefont {Tarucha}},\ }\bibfield  {title} {\enquote {\bibinfo
+  {title} {A fault-tolerant addressable spin qubit in a natural silicon quantum
+  dot},}\ }\href {\doibase 10.1126/sciadv.160069} {\bibfield  {journal}
+  {\bibinfo  {journal} {Sci. Adv.}\ }\textbf {\bibinfo {volume} {2}},\ \bibinfo
+  {pages} {e1600694} (\bibinfo {year} {2016})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Yoneda}\ \emph {et~al.}(2018)\citenamefont {Yoneda},
+  \citenamefont {Takeda}, \citenamefont {Otsuka}, \citenamefont {Nakajima},
+  \citenamefont {Delbecq}, \citenamefont {Allison}, \citenamefont {Honda},
+  \citenamefont {Kodera}, \citenamefont {Oda}, \citenamefont {Hoshi},
+  \citenamefont {Usami}, \citenamefont {Itoh},\ and\ \citenamefont
+  {Tarucha}}]{Yoneda2018}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {J.}~\bibnamefont
+  {Yoneda}}, \bibinfo {author} {\bibfnamefont {K.}~\bibnamefont {Takeda}},
+  \bibinfo {author} {\bibfnamefont {T.}~\bibnamefont {Otsuka}}, \bibinfo
+  {author} {\bibfnamefont {T.}~\bibnamefont {Nakajima}}, \bibinfo {author}
+  {\bibfnamefont {M.~R.}\ \bibnamefont {Delbecq}}, \bibinfo {author}
+  {\bibfnamefont {G.}~\bibnamefont {Allison}}, \bibinfo {author} {\bibfnamefont
+  {T.}~\bibnamefont {Honda}}, \bibinfo {author} {\bibfnamefont
+  {T.}~\bibnamefont {Kodera}}, \bibinfo {author} {\bibfnamefont
+  {S.}~\bibnamefont {Oda}}, \bibinfo {author} {\bibfnamefont {Y.}~\bibnamefont
+  {Hoshi}}, \bibinfo {author} {\bibfnamefont {N.}~\bibnamefont {Usami}},
+  \bibinfo {author} {\bibfnamefont {K.~M.}\ \bibnamefont {Itoh}}, \ and\
+  \bibinfo {author} {\bibfnamefont {S.}~\bibnamefont {Tarucha}},\ }\bibfield
+  {title} {\enquote {\bibinfo {title} {A quantum-dot spin qubit with coherence
+  limited by charge noise and fidelity higher than 99.9\%},}\ }\href {\doibase
+  10.1038/s41565-017-0014-x} {\bibfield  {journal} {\bibinfo  {journal} {Nat.
+  Nanotechnol.}\ }\textbf {\bibinfo {volume} {13}},\ \bibinfo {pages}
+  {102--106} (\bibinfo {year} {2018})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Mills}\ \emph
+  {et~al.}(2022{\natexlab{a}})\citenamefont {Mills}, \citenamefont {Guinn},
+  \citenamefont {Feldman}, \citenamefont {Sigillito}, \citenamefont {Gullans},
+  \citenamefont {Rakher}, \citenamefont {Kerckhoff}, \citenamefont {Jackson},\
+  and\ \citenamefont {Petta}}]{Mills2022}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {A.~R.}\ \bibnamefont
+  {Mills}}, \bibinfo {author} {\bibfnamefont {C.~R.}\ \bibnamefont {Guinn}},
+  \bibinfo {author} {\bibfnamefont {M.~M.}\ \bibnamefont {Feldman}}, \bibinfo
+  {author} {\bibfnamefont {A.~J.}\ \bibnamefont {Sigillito}}, \bibinfo {author}
+  {\bibfnamefont {M.~J.}\ \bibnamefont {Gullans}}, \bibinfo {author}
+  {\bibfnamefont {M.}~\bibnamefont {Rakher}}, \bibinfo {author} {\bibfnamefont
+  {J.}~\bibnamefont {Kerckhoff}}, \bibinfo {author} {\bibfnamefont {C.~A.~C.}\
+  \bibnamefont {Jackson}}, \ and\ \bibinfo {author} {\bibfnamefont {J.~R.}\
+  \bibnamefont {Petta}},\ }\bibfield  {title} {\enquote {\bibinfo {title} {High
+  fidelity state preparation, quantum control, and readout of an isotopically
+  enriched silicon spin qubit},}\ }\href {\doibase 10.48550/arXiv.2204.09551}
+  {\bibfield  {journal} {\bibinfo  {journal} {arXiv}\ } (\bibinfo {year}
+  {2022}{\natexlab{a}}),\ 10.48550/arXiv.2204.09551}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Xue}\ \emph {et~al.}(2022)\citenamefont {Xue},
+  \citenamefont {Russ}, \citenamefont {Samkharadze}, \citenamefont {Undseth},
+  \citenamefont {Sammak}, \citenamefont {Scappucci},\ and\ \citenamefont
+  {Vandersypen}}]{Xue2022}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {X.}~\bibnamefont
+  {Xue}}, \bibinfo {author} {\bibfnamefont {M.}~\bibnamefont {Russ}}, \bibinfo
+  {author} {\bibfnamefont {N.}~\bibnamefont {Samkharadze}}, \bibinfo {author}
+  {\bibfnamefont {B.}~\bibnamefont {Undseth}}, \bibinfo {author} {\bibfnamefont
+  {A.}~\bibnamefont {Sammak}}, \bibinfo {author} {\bibfnamefont
+  {G.}~\bibnamefont {Scappucci}}, \ and\ \bibinfo {author} {\bibfnamefont
+  {L.~M.~K.}\ \bibnamefont {Vandersypen}},\ }\bibfield  {title} {\enquote
+  {\bibinfo {title} {Quantum logic with spin qubits crossing the surface code
+  threshold},}\ }\href {\doibase 10.1038/s41586-021-04273-w} {\bibfield
+  {journal} {\bibinfo  {journal} {Nature}\ }\textbf {\bibinfo {volume} {601}},\
+  \bibinfo {pages} {343--347} (\bibinfo {year} {2022})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Noiri}\ \emph {et~al.}(2022)\citenamefont {Noiri},
+  \citenamefont {Takeda}, \citenamefont {Nakajima}, \citenamefont {Kobayashi},
+  \citenamefont {Sammak}, \citenamefont {Scappucci},\ and\ \citenamefont
+  {Tarucha}}]{Noiri2022}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {A.}~\bibnamefont
+  {Noiri}}, \bibinfo {author} {\bibfnamefont {K.}~\bibnamefont {Takeda}},
+  \bibinfo {author} {\bibfnamefont {T.}~\bibnamefont {Nakajima}}, \bibinfo
+  {author} {\bibfnamefont {T.}~\bibnamefont {Kobayashi}}, \bibinfo {author}
+  {\bibfnamefont {A.}~\bibnamefont {Sammak}}, \bibinfo {author} {\bibfnamefont
+  {G.}~\bibnamefont {Scappucci}}, \ and\ \bibinfo {author} {\bibfnamefont
+  {S.}~\bibnamefont {Tarucha}},\ }\bibfield  {title} {\enquote {\bibinfo
+  {title} {Fast universal quantum gate above the fault-tolerance threshold in
+  silicon},}\ }\href {\doibase 10.1038/s41586-021-04182-y} {\bibfield
+  {journal} {\bibinfo  {journal} {Nature}\ }\textbf {\bibinfo {volume} {601}},\
+  \bibinfo {pages} {338--342} (\bibinfo {year} {2022})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Mills}\ \emph
+  {et~al.}(2022{\natexlab{b}})\citenamefont {Mills}, \citenamefont {Guinn},
+  \citenamefont {Gullans}, \citenamefont {Sigillito}, \citenamefont {Feldman},
+  \citenamefont {Nielsen},\ and\ \citenamefont {Petta}}]{Mills2022a}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {A.~R.}\ \bibnamefont
+  {Mills}}, \bibinfo {author} {\bibfnamefont {C.~R.}\ \bibnamefont {Guinn}},
+  \bibinfo {author} {\bibfnamefont {M.~J.}\ \bibnamefont {Gullans}}, \bibinfo
+  {author} {\bibfnamefont {A.~J.}\ \bibnamefont {Sigillito}}, \bibinfo {author}
+  {\bibfnamefont {M.~M.}\ \bibnamefont {Feldman}}, \bibinfo {author}
+  {\bibfnamefont {E.}~\bibnamefont {Nielsen}}, \ and\ \bibinfo {author}
+  {\bibfnamefont {J.~R.}\ \bibnamefont {Petta}},\ }\bibfield  {title} {\enquote
+  {\bibinfo {title} {Two-qubit silicon quantum processor with operation
+  fidelity exceeding 99\%},}\ }\href {\doibase 10.1126/sciadv.abn5130}
+  {\bibfield  {journal} {\bibinfo  {journal} {Sci. Adv.}\ }\textbf {\bibinfo
+  {volume} {8}},\ \bibinfo {pages} {eabn5130} (\bibinfo {year}
+  {2022}{\natexlab{b}})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Fowler}\ \emph {et~al.}(2012)\citenamefont {Fowler},
+  \citenamefont {Mariantoni}, \citenamefont {Martinis},\ and\ \citenamefont
+  {Cleland}}]{Fowler2012}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {A.~G.}\ \bibnamefont
+  {Fowler}}, \bibinfo {author} {\bibfnamefont {M.}~\bibnamefont {Mariantoni}},
+  \bibinfo {author} {\bibfnamefont {J.~M.}\ \bibnamefont {Martinis}}, \ and\
+  \bibinfo {author} {\bibfnamefont {A.~N.}\ \bibnamefont {Cleland}},\
+  }\bibfield  {title} {\enquote {\bibinfo {title} {Surface codes: Towards
+  practical large-scale quantum computation},}\ }\href {\doibase
+  10.1103/PhysRevA.86.032324} {\bibfield  {journal} {\bibinfo  {journal} {Phys.
+  Rev. A}\ }\textbf {\bibinfo {volume} {86}},\ \bibinfo {pages} {032324}
+  (\bibinfo {year} {2012})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Byrnes}\ \emph {et~al.}(2008)\citenamefont {Byrnes},
+  \citenamefont {Kim}, \citenamefont {Kusudo},\ and\ \citenamefont
+  {Yamamoto}}]{Byrnes2008}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {T.}~\bibnamefont
+  {Byrnes}}, \bibinfo {author} {\bibfnamefont {N.~Y.}\ \bibnamefont {Kim}},
+  \bibinfo {author} {\bibfnamefont {K.}~\bibnamefont {Kusudo}}, \ and\ \bibinfo
+  {author} {\bibfnamefont {Y.}~\bibnamefont {Yamamoto}},\ }\bibfield  {title}
+  {\enquote {\bibinfo {title} {{Quantum simulation of Fermi-Hubbard models in
+  semiconductor quantum-dot arrays}},}\ }\href {\doibase
+  10.1103/PhysRevB.78.075320} {\bibfield  {journal} {\bibinfo  {journal} {Phys.
+  Rev. B}\ }\textbf {\bibinfo {volume} {78}},\ \bibinfo {pages} {075320}
+  (\bibinfo {year} {2008})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Fujita}\ \emph {et~al.}(2017)\citenamefont {Fujita},
+  \citenamefont {Baart}, \citenamefont {Reichl}, \citenamefont {Wegscheider},\
+  and\ \citenamefont {Vandersypen}}]{Fujita2017}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {T.}~\bibnamefont
+  {Fujita}}, \bibinfo {author} {\bibfnamefont {T.~A.}\ \bibnamefont {Baart}},
+  \bibinfo {author} {\bibfnamefont {C.}~\bibnamefont {Reichl}}, \bibinfo
+  {author} {\bibfnamefont {W.}~\bibnamefont {Wegscheider}}, \ and\ \bibinfo
+  {author} {\bibfnamefont {L.~M.~K.}\ \bibnamefont {Vandersypen}},\ }\bibfield
+  {title} {\enquote {\bibinfo {title} {Coherent shuttle of electron-spin
+  states},}\ }\href {\doibase 10.1038/s41534-017-0024-4} {\bibfield  {journal}
+  {\bibinfo  {journal} {NPJ Quantum Inf.}\ }\textbf {\bibinfo {volume} {3}},\
+  \bibinfo {pages} {22} (\bibinfo {year} {2017})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Flentje}\ \emph {et~al.}(2017)\citenamefont
+  {Flentje}, \citenamefont {Mortemousque}, \citenamefont {Thalineau},
+  \citenamefont {Ludwig}, \citenamefont {Wieck}, \citenamefont {B{\"a}uerle},\
+  and\ \citenamefont {Meunier}}]{Flentje2017}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {H.}~\bibnamefont
+  {Flentje}}, \bibinfo {author} {\bibfnamefont {P.-A.}\ \bibnamefont
+  {Mortemousque}}, \bibinfo {author} {\bibfnamefont {R.}~\bibnamefont
+  {Thalineau}}, \bibinfo {author} {\bibfnamefont {A.}~\bibnamefont {Ludwig}},
+  \bibinfo {author} {\bibfnamefont {A.~D.}\ \bibnamefont {Wieck}}, \bibinfo
+  {author} {\bibfnamefont {C.}~\bibnamefont {B{\"a}uerle}}, \ and\ \bibinfo
+  {author} {\bibfnamefont {T.}~\bibnamefont {Meunier}},\ }\bibfield  {title}
+  {\enquote {\bibinfo {title} {Coherent long-distance displacement of
+  individual electron spins},}\ }\href {\doibase 10.1038/s41467-017-00534-3}
+  {\bibfield  {journal} {\bibinfo  {journal} {Nat. Commun.}\ }\textbf {\bibinfo
+  {volume} {8}},\ \bibinfo {pages} {501} (\bibinfo {year} {2017})}\BibitemShut
+  {NoStop}%
+\bibitem [{\citenamefont {Mukhopadhyay}\ \emph {et~al.}(2018)\citenamefont
+  {Mukhopadhyay}, \citenamefont {Dehollain}, \citenamefont {Reichl},
+  \citenamefont {Wegscheider},\ and\ \citenamefont
+  {Vandersypen}}]{Mukhopadhyay2018}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {U.}~\bibnamefont
+  {Mukhopadhyay}}, \bibinfo {author} {\bibfnamefont {J.~P.}\ \bibnamefont
+  {Dehollain}}, \bibinfo {author} {\bibfnamefont {C.}~\bibnamefont {Reichl}},
+  \bibinfo {author} {\bibfnamefont {W.}~\bibnamefont {Wegscheider}}, \ and\
+  \bibinfo {author} {\bibfnamefont {L.~M.~K.}\ \bibnamefont {Vandersypen}},\
+  }\bibfield  {title} {\enquote {\bibinfo {title} {A 2$\times$ 2 quantum dot
+  array with controllable inter-dot tunnel couplings},}\ }\href {\doibase
+  10.1063/1.5025928} {\bibfield  {journal} {\bibinfo  {journal} {Appl. Phys.
+  Lett.}\ }\textbf {\bibinfo {volume} {112}},\ \bibinfo {pages} {183505}
+  (\bibinfo {year} {2018})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Mortemousque}\ \emph {et~al.}(2020)\citenamefont
+  {Mortemousque}, \citenamefont {Chanrion}, \citenamefont {Jadot},
+  \citenamefont {Flentje}, \citenamefont {Ludwig}, \citenamefont {Wieck},
+  \citenamefont {Urdampilleta}, \citenamefont {B{\"a}uerle},\ and\
+  \citenamefont {Meunier}}]{Mortemousque2020}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {P.-A.}\ \bibnamefont
+  {Mortemousque}}, \bibinfo {author} {\bibfnamefont {E.}~\bibnamefont
+  {Chanrion}}, \bibinfo {author} {\bibfnamefont {B.}~\bibnamefont {Jadot}},
+  \bibinfo {author} {\bibfnamefont {H.}~\bibnamefont {Flentje}}, \bibinfo
+  {author} {\bibfnamefont {A.}~\bibnamefont {Ludwig}}, \bibinfo {author}
+  {\bibfnamefont {A.~D.}\ \bibnamefont {Wieck}}, \bibinfo {author}
+  {\bibfnamefont {M.}~\bibnamefont {Urdampilleta}}, \bibinfo {author}
+  {\bibfnamefont {C.}~\bibnamefont {B{\"a}uerle}}, \ and\ \bibinfo {author}
+  {\bibfnamefont {T.}~\bibnamefont {Meunier}},\ }\bibfield  {title} {\enquote
+  {\bibinfo {title} {Coherent control of individual electron spins in a
+  two-dimensional quantum dot array},}\ }\href {\doibase
+  10.1038/s41565-020-00816-w} {\bibfield  {journal} {\bibinfo  {journal} {Nat.
+  Nanotechnol.}\ }\textbf {\bibinfo {volume} {16}},\ \bibinfo {pages}
+  {296--301} (\bibinfo {year} {2020})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Vandersypen}\ \emph {et~al.}(2017)\citenamefont
+  {Vandersypen}, \citenamefont {Bluhm}, \citenamefont {Clarke}, \citenamefont
+  {Dzurak}, \citenamefont {Ishihara}, \citenamefont {Morello}, \citenamefont
+  {Reilly}, \citenamefont {Schreiber},\ and\ \citenamefont
+  {Veldhorst}}]{Vandersypen2017}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {L.~M.~K.}\
+  \bibnamefont {Vandersypen}}, \bibinfo {author} {\bibfnamefont
+  {H.}~\bibnamefont {Bluhm}}, \bibinfo {author} {\bibfnamefont {J.~S.}\
+  \bibnamefont {Clarke}}, \bibinfo {author} {\bibfnamefont {A.~S.}\
+  \bibnamefont {Dzurak}}, \bibinfo {author} {\bibfnamefont {R.}~\bibnamefont
+  {Ishihara}}, \bibinfo {author} {\bibfnamefont {A.}~\bibnamefont {Morello}},
+  \bibinfo {author} {\bibfnamefont {D.~J.}\ \bibnamefont {Reilly}}, \bibinfo
+  {author} {\bibfnamefont {L.~R.}\ \bibnamefont {Schreiber}}, \ and\ \bibinfo
+  {author} {\bibfnamefont {M.}~\bibnamefont {Veldhorst}},\ }\bibfield  {title}
+  {\enquote {\bibinfo {title} {Interfacing spin qubits in quantum dots and
+  donors—hot, dense, and coherent},}\ }\href {\doibase
+  10.1038/s41534-017-0038-y} {\bibfield  {journal} {\bibinfo  {journal} {NPJ
+  Quantum Inf.}\ }\textbf {\bibinfo {volume} {3}},\ \bibinfo {pages} {34}
+  (\bibinfo {year} {2017})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Hassler}\ \emph {et~al.}(2015)\citenamefont
+  {Hassler}, \citenamefont {Catelani},\ and\ \citenamefont
+  {Bluhm}}]{Hassler2015}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {F.}~\bibnamefont
+  {Hassler}}, \bibinfo {author} {\bibfnamefont {G.}~\bibnamefont {Catelani}}, \
+  and\ \bibinfo {author} {\bibfnamefont {H.}~\bibnamefont {Bluhm}},\ }\bibfield
+   {title} {\enquote {\bibinfo {title} {Exchange interaction of two spin qubits
+  mediated by a superconductor},}\ }\href {\doibase 10.1103/PhysRevB.92.235401}
+  {\bibfield  {journal} {\bibinfo  {journal} {Phys. Rev. B}\ }\textbf {\bibinfo
+  {volume} {92}},\ \bibinfo {pages} {235401} (\bibinfo {year}
+  {2015})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Tosi}\ \emph {et~al.}(2017)\citenamefont {Tosi},
+  \citenamefont {Mohiyaddin}, \citenamefont {Schmitt}, \citenamefont {Tenberg},
+  \citenamefont {Rahman}, \citenamefont {Klimeck},\ and\ \citenamefont
+  {Morello}}]{Tosi2017}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {G.}~\bibnamefont
+  {Tosi}}, \bibinfo {author} {\bibfnamefont {F.~A.}\ \bibnamefont
+  {Mohiyaddin}}, \bibinfo {author} {\bibfnamefont {V.}~\bibnamefont {Schmitt}},
+  \bibinfo {author} {\bibfnamefont {S.}~\bibnamefont {Tenberg}}, \bibinfo
+  {author} {\bibfnamefont {R.}~\bibnamefont {Rahman}}, \bibinfo {author}
+  {\bibfnamefont {G.}~\bibnamefont {Klimeck}}, \ and\ \bibinfo {author}
+  {\bibfnamefont {A.}~\bibnamefont {Morello}},\ }\bibfield  {title} {\enquote
+  {\bibinfo {title} {Silicon quantum processor with robust long-distance qubit
+  couplings},}\ }\href {\doibase 10.1038/s41467-017-00378-x} {\bibfield
+  {journal} {\bibinfo  {journal} {Nat. Commun.}\ }\textbf {\bibinfo {volume}
+  {8}},\ \bibinfo {pages} {450} (\bibinfo {year} {2017})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Kimble}(2008)}]{Kimble2008}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {H.~J.}\ \bibnamefont
+  {Kimble}},\ }\bibfield  {title} {\enquote {\bibinfo {title} {The quantum
+  internet},}\ }\href {\doibase 10.1038/nature07127} {\bibfield  {journal}
+  {\bibinfo  {journal} {Nature}\ }\textbf {\bibinfo {volume} {453}},\ \bibinfo
+  {pages} {1023--1030} (\bibinfo {year} {2008})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Schuetz}\ \emph {et~al.}(2015)\citenamefont
+  {Schuetz}, \citenamefont {Kessler}, \citenamefont {Giedke}, \citenamefont
+  {Vandersypen}, \citenamefont {Lukin},\ and\ \citenamefont
+  {Cirac}}]{Schuetz2015}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {M.~J.~A.}\
+  \bibnamefont {Schuetz}}, \bibinfo {author} {\bibfnamefont {E.~M.}\
+  \bibnamefont {Kessler}}, \bibinfo {author} {\bibfnamefont {G.}~\bibnamefont
+  {Giedke}}, \bibinfo {author} {\bibfnamefont {L.~M.~K.}\ \bibnamefont
+  {Vandersypen}}, \bibinfo {author} {\bibfnamefont {M.~D.}\ \bibnamefont
+  {Lukin}}, \ and\ \bibinfo {author} {\bibfnamefont {J.~I.}\ \bibnamefont
+  {Cirac}},\ }\bibfield  {title} {\enquote {\bibinfo {title} {Universal quantum
+  transducers based on surface acoustic waves},}\ }\href {\doibase
+  10.1103/PhysRevX.5.031031} {\bibfield  {journal} {\bibinfo  {journal} {Phys.
+  Rev. X}\ }\textbf {\bibinfo {volume} {5}},\ \bibinfo {pages} {031031}
+  (\bibinfo {year} {2015})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Majer}\ \emph {et~al.}(2007)\citenamefont {Majer},
+  \citenamefont {Chow}, \citenamefont {Gambetta}, \citenamefont {Koch},
+  \citenamefont {Johnson}, \citenamefont {Schreier}, \citenamefont {Frunzio},
+  \citenamefont {Schuster}, \citenamefont {Houck}, \citenamefont {Wallraff},
+  \citenamefont {Blais}, \citenamefont {Devoret}, \citenamefont {Girvin},\ and\
+  \citenamefont {Schoelkopf}}]{Majer2007}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {J.}~\bibnamefont
+  {Majer}}, \bibinfo {author} {\bibfnamefont {J.~M.}\ \bibnamefont {Chow}},
+  \bibinfo {author} {\bibfnamefont {J.~M.}\ \bibnamefont {Gambetta}}, \bibinfo
+  {author} {\bibfnamefont {J.}~\bibnamefont {Koch}}, \bibinfo {author}
+  {\bibfnamefont {B.~R.}\ \bibnamefont {Johnson}}, \bibinfo {author}
+  {\bibfnamefont {J.~A.}\ \bibnamefont {Schreier}}, \bibinfo {author}
+  {\bibfnamefont {L.}~\bibnamefont {Frunzio}}, \bibinfo {author} {\bibfnamefont
+  {D.~I.}\ \bibnamefont {Schuster}}, \bibinfo {author} {\bibfnamefont {A.~A.}\
+  \bibnamefont {Houck}}, \bibinfo {author} {\bibfnamefont {A.}~\bibnamefont
+  {Wallraff}}, \bibinfo {author} {\bibfnamefont {A.}~\bibnamefont {Blais}},
+  \bibinfo {author} {\bibfnamefont {M.~H.}\ \bibnamefont {Devoret}}, \bibinfo
+  {author} {\bibfnamefont {S.~M.}\ \bibnamefont {Girvin}}, \ and\ \bibinfo
+  {author} {\bibfnamefont {R.~J.}\ \bibnamefont {Schoelkopf}},\ }\bibfield
+  {title} {\enquote {\bibinfo {title} {Coupling superconducting qubits via a
+  cavity bus},}\ }\href {\doibase 10.1038/nature06184} {\bibfield  {journal}
+  {\bibinfo  {journal} {Nature}\ }\textbf {\bibinfo {volume} {449}},\ \bibinfo
+  {pages} {443--447} (\bibinfo {year} {2007})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Childress}\ \emph {et~al.}(2004)\citenamefont
+  {Childress}, \citenamefont {S{\o}rensen},\ and\ \citenamefont
+  {Lukin}}]{Childress2004}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {L.}~\bibnamefont
+  {Childress}}, \bibinfo {author} {\bibfnamefont {A.~S.}\ \bibnamefont
+  {S{\o}rensen}}, \ and\ \bibinfo {author} {\bibfnamefont {M.~D.}\ \bibnamefont
+  {Lukin}},\ }\bibfield  {title} {\enquote {\bibinfo {title} {Mesoscopic cavity
+  quantum electrodynamics with quantum dots},}\ }\href {\doibase
+  10.1103/PhysRevA.69.042302} {\bibfield  {journal} {\bibinfo  {journal} {Phys.
+  Rev. A}\ }\textbf {\bibinfo {volume} {69}},\ \bibinfo {pages} {042302}
+  (\bibinfo {year} {2004})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Burkard}\ and\ \citenamefont
+  {Imamoglu}(2006)}]{Burkard2006}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {G.}~\bibnamefont
+  {Burkard}}\ and\ \bibinfo {author} {\bibfnamefont {A.}~\bibnamefont
+  {Imamoglu}},\ }\bibfield  {title} {\enquote {\bibinfo {title}
+  {Ultra-long-distance interaction between spin qubits},}\ }\href {\doibase
+  10.1103/PhysRevB.74.041307} {\bibfield  {journal} {\bibinfo  {journal} {Phys.
+  Rev. B}\ }\textbf {\bibinfo {volume} {74}},\ \bibinfo {pages} {041307}
+  (\bibinfo {year} {2006})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Srinivasa}\ \emph {et~al.}(2016)\citenamefont
+  {Srinivasa}, \citenamefont {Taylor},\ and\ \citenamefont
+  {Tahan}}]{Srinivasa2016}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {V.}~\bibnamefont
+  {Srinivasa}}, \bibinfo {author} {\bibfnamefont {J.~M.}\ \bibnamefont
+  {Taylor}}, \ and\ \bibinfo {author} {\bibfnamefont {C.}~\bibnamefont
+  {Tahan}},\ }\bibfield  {title} {\enquote {\bibinfo {title} {Entangling
+  distant resonant exchange qubits via circuit quantum electrodynamics},}\
+  }\href {\doibase 10.1103/PhysRevB.94.205421} {\bibfield  {journal} {\bibinfo
+  {journal} {Phys. Rev. B}\ }\textbf {\bibinfo {volume} {94}},\ \bibinfo
+  {pages} {205421} (\bibinfo {year} {2016})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Burkard}\ \emph {et~al.}(2020)\citenamefont
+  {Burkard}, \citenamefont {Gullans}, \citenamefont {Mi},\ and\ \citenamefont
+  {Petta}}]{Burkard2020}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {G.}~\bibnamefont
+  {Burkard}}, \bibinfo {author} {\bibfnamefont {M.~J.}\ \bibnamefont
+  {Gullans}}, \bibinfo {author} {\bibfnamefont {X.}~\bibnamefont {Mi}}, \ and\
+  \bibinfo {author} {\bibfnamefont {J.~R.}\ \bibnamefont {Petta}},\ }\bibfield
+  {title} {\enquote {\bibinfo {title} {Superconductor--semiconductor
+  hybrid-circuit quantum electrodynamics},}\ }\href {\doibase
+  10.1038/s42254-019-0135-2} {\bibfield  {journal} {\bibinfo  {journal} {Nat.
+  Rev. Phys.}\ }\textbf {\bibinfo {volume} {2}},\ \bibinfo {pages} {129--140}
+  (\bibinfo {year} {2020})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Cottet}\ and\ \citenamefont
+  {Kontos}(2010)}]{Cottet2010}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {A.}~\bibnamefont
+  {Cottet}}\ and\ \bibinfo {author} {\bibfnamefont {T.}~\bibnamefont
+  {Kontos}},\ }\bibfield  {title} {\enquote {\bibinfo {title} {{Spin quantum
+  bit with ferromagnetic contacts for circuit QED}},}\ }\href {\doibase
+  10.1103/PhysRevLett.105.160502} {\bibfield  {journal} {\bibinfo  {journal}
+  {Phys. Rev. Lett.}\ }\textbf {\bibinfo {volume} {105}},\ \bibinfo {pages}
+  {160502} (\bibinfo {year} {2010})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Samkharadze}\ \emph {et~al.}(2018)\citenamefont
+  {Samkharadze}, \citenamefont {Zheng}, \citenamefont {Kalhor}, \citenamefont
+  {Brousse}, \citenamefont {Sammak}, \citenamefont {Mendes}, \citenamefont
+  {Blais}, \citenamefont {Scappucci},\ and\ \citenamefont
+  {Vandersypen}}]{Samkharadze2018}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {N.}~\bibnamefont
+  {Samkharadze}}, \bibinfo {author} {\bibfnamefont {G.}~\bibnamefont {Zheng}},
+  \bibinfo {author} {\bibfnamefont {N.}~\bibnamefont {Kalhor}}, \bibinfo
+  {author} {\bibfnamefont {D.}~\bibnamefont {Brousse}}, \bibinfo {author}
+  {\bibfnamefont {A.}~\bibnamefont {Sammak}}, \bibinfo {author} {\bibfnamefont
+  {U.~C.}\ \bibnamefont {Mendes}}, \bibinfo {author} {\bibfnamefont
+  {A.}~\bibnamefont {Blais}}, \bibinfo {author} {\bibfnamefont
+  {G.}~\bibnamefont {Scappucci}}, \ and\ \bibinfo {author} {\bibfnamefont
+  {L.~M.~K.}\ \bibnamefont {Vandersypen}},\ }\bibfield  {title} {\enquote
+  {\bibinfo {title} {Strong spin-photon coupling in silicon},}\ }\href
+  {\doibase 10.1126/science.aar4054} {\bibfield  {journal} {\bibinfo  {journal}
+  {Science}\ }\textbf {\bibinfo {volume} {359}},\ \bibinfo {pages} {1123--1127}
+  (\bibinfo {year} {2018})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Mi}\ \emph {et~al.}(2018)\citenamefont {Mi},
+  \citenamefont {Benito}, \citenamefont {Putz}, \citenamefont {Zajac},
+  \citenamefont {Taylor}, \citenamefont {Burkard},\ and\ \citenamefont
+  {Petta}}]{Mi2018}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {X.}~\bibnamefont
+  {Mi}}, \bibinfo {author} {\bibfnamefont {M.}~\bibnamefont {Benito}}, \bibinfo
+  {author} {\bibfnamefont {S.}~\bibnamefont {Putz}}, \bibinfo {author}
+  {\bibfnamefont {D.~M.}\ \bibnamefont {Zajac}}, \bibinfo {author}
+  {\bibfnamefont {J.~M.}\ \bibnamefont {Taylor}}, \bibinfo {author}
+  {\bibfnamefont {G.}~\bibnamefont {Burkard}}, \ and\ \bibinfo {author}
+  {\bibfnamefont {J.~R.}\ \bibnamefont {Petta}},\ }\bibfield  {title} {\enquote
+  {\bibinfo {title} {A coherent spin--photon interface in silicon},}\ }\href
+  {\doibase 10.1038/nature25769} {\bibfield  {journal} {\bibinfo  {journal}
+  {Nature}\ }\textbf {\bibinfo {volume} {555}},\ \bibinfo {pages} {599--603}
+  (\bibinfo {year} {2018})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Borjans}\ \emph {et~al.}(2020)\citenamefont
+  {Borjans}, \citenamefont {Croot}, \citenamefont {Mi}, \citenamefont
+  {Gullans},\ and\ \citenamefont {Petta}}]{Borjans2020}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {F.}~\bibnamefont
+  {Borjans}}, \bibinfo {author} {\bibfnamefont {X.~G.}\ \bibnamefont {Croot}},
+  \bibinfo {author} {\bibfnamefont {X.}~\bibnamefont {Mi}}, \bibinfo {author}
+  {\bibfnamefont {M.~J.}\ \bibnamefont {Gullans}}, \ and\ \bibinfo {author}
+  {\bibfnamefont {J.~R.}\ \bibnamefont {Petta}},\ }\bibfield  {title} {\enquote
+  {\bibinfo {title} {Resonant microwave-mediated interactions between distant
+  electron spins},}\ }\href {\doibase 10.1038/s41586-019-1867-y} {\bibfield
+  {journal} {\bibinfo  {journal} {Nature}\ }\textbf {\bibinfo {volume} {577}},\
+  \bibinfo {pages} {195--198} (\bibinfo {year} {2020})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Harvey-Collard}\ \emph {et~al.}(2022)\citenamefont
+  {Harvey-Collard}, \citenamefont {Dijkema}, \citenamefont {Zheng},
+  \citenamefont {Sammak}, \citenamefont {Scappucci},\ and\ \citenamefont
+  {Vandersypen}}]{Harvey-Collard2022}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {P.}~\bibnamefont
+  {Harvey-Collard}}, \bibinfo {author} {\bibfnamefont {J.}~\bibnamefont
+  {Dijkema}}, \bibinfo {author} {\bibfnamefont {G.}~\bibnamefont {Zheng}},
+  \bibinfo {author} {\bibfnamefont {A.}~\bibnamefont {Sammak}}, \bibinfo
+  {author} {\bibfnamefont {G.}~\bibnamefont {Scappucci}}, \ and\ \bibinfo
+  {author} {\bibfnamefont {L.~M.~K.}\ \bibnamefont {Vandersypen}},\ }\bibfield
+  {title} {\enquote {\bibinfo {title} {Coherent spin-spin coupling mediated by
+  virtual microwave photons},}\ }\href {\doibase 10.1103/PhysRevX.12.021026}
+  {\bibfield  {journal} {\bibinfo  {journal} {Phys. Rev. X}\ }\textbf {\bibinfo
+  {volume} {12}},\ \bibinfo {pages} {021026} (\bibinfo {year}
+  {2022})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Benito}\ \emph {et~al.}(2019)\citenamefont {Benito},
+  \citenamefont {Petta},\ and\ \citenamefont {Burkard}}]{Benito2019a}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {M.}~\bibnamefont
+  {Benito}}, \bibinfo {author} {\bibfnamefont {J.~R.}\ \bibnamefont {Petta}}, \
+  and\ \bibinfo {author} {\bibfnamefont {G.}~\bibnamefont {Burkard}},\
+  }\bibfield  {title} {\enquote {\bibinfo {title} {Optimized cavity-mediated
+  dispersive two-qubit gates between spin qubits},}\ }\href {\doibase
+  10.1103/PhysRevB.100.081412} {\bibfield  {journal} {\bibinfo  {journal}
+  {Phys. Rev. B}\ }\textbf {\bibinfo {volume} {100}},\ \bibinfo {pages}
+  {081412} (\bibinfo {year} {2019})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Warren}\ \emph {et~al.}(2019)\citenamefont {Warren},
+  \citenamefont {Barnes},\ and\ \citenamefont {Economou}}]{Warren2019}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {A.}~\bibnamefont
+  {Warren}}, \bibinfo {author} {\bibfnamefont {E.}~\bibnamefont {Barnes}}, \
+  and\ \bibinfo {author} {\bibfnamefont {S.~E.}\ \bibnamefont {Economou}},\
+  }\bibfield  {title} {\enquote {\bibinfo {title} {Long-distance entangling
+  gates between quantum dot spins mediated by a superconducting resonator},}\
+  }\href {\doibase 10.1103/PhysRevB.100.161303} {\bibfield  {journal} {\bibinfo
+   {journal} {Phys. Rev. B}\ }\textbf {\bibinfo {volume} {100}},\ \bibinfo
+  {pages} {161303} (\bibinfo {year} {2019})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Rigetti}\ and\ \citenamefont
+  {Devoret}(2010)}]{Rigetti2010}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {C.}~\bibnamefont
+  {Rigetti}}\ and\ \bibinfo {author} {\bibfnamefont {M.}~\bibnamefont
+  {Devoret}},\ }\bibfield  {title} {\enquote {\bibinfo {title} {Fully
+  microwave-tunable universal gates in superconducting qubits with linear
+  couplings and fixed transition frequencies},}\ }\href {\doibase
+  10.1103/PhysRevB.81.134507} {\bibfield  {journal} {\bibinfo  {journal} {Phys.
+  Rev. B}\ }\textbf {\bibinfo {volume} {81}},\ \bibinfo {pages} {134507}
+  (\bibinfo {year} {2010})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Russ}\ \emph {et~al.}(2018)\citenamefont {Russ},
+  \citenamefont {Zajac}, \citenamefont {Sigillito}, \citenamefont {Borjans},
+  \citenamefont {Taylor}, \citenamefont {Petta},\ and\ \citenamefont
+  {Burkard}}]{Russ2018}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {M.}~\bibnamefont
+  {Russ}}, \bibinfo {author} {\bibfnamefont {D.~M.}\ \bibnamefont {Zajac}},
+  \bibinfo {author} {\bibfnamefont {A.~J.}\ \bibnamefont {Sigillito}}, \bibinfo
+  {author} {\bibfnamefont {F.}~\bibnamefont {Borjans}}, \bibinfo {author}
+  {\bibfnamefont {J.~M.}\ \bibnamefont {Taylor}}, \bibinfo {author}
+  {\bibfnamefont {J.~R.}\ \bibnamefont {Petta}}, \ and\ \bibinfo {author}
+  {\bibfnamefont {G.}~\bibnamefont {Burkard}},\ }\bibfield  {title} {\enquote
+  {\bibinfo {title} {{High-fidelity quantum gates in Si/SiGe double quantum
+  dots}},}\ }\href {\doibase 10.1103/PhysRevB.97.085421} {\bibfield  {journal}
+  {\bibinfo  {journal} {Phys. Rev. B}\ }\textbf {\bibinfo {volume} {97}},\
+  \bibinfo {pages} {085421} (\bibinfo {year} {2018})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Kawakami}\ \emph {et~al.}(2014)\citenamefont
+  {Kawakami}, \citenamefont {Scarlino}, \citenamefont {Ward}, \citenamefont
+  {Braakman}, \citenamefont {Savage}, \citenamefont {Lagally}, \citenamefont
+  {Friesen}, \citenamefont {Coppersmith}, \citenamefont {Eriksson},\ and\
+  \citenamefont {Vandersypen}}]{Kawakami2014}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {E.}~\bibnamefont
+  {Kawakami}}, \bibinfo {author} {\bibfnamefont {P.}~\bibnamefont {Scarlino}},
+  \bibinfo {author} {\bibfnamefont {D.~R.}\ \bibnamefont {Ward}}, \bibinfo
+  {author} {\bibfnamefont {F.~R.}\ \bibnamefont {Braakman}}, \bibinfo {author}
+  {\bibfnamefont {D.~E.}\ \bibnamefont {Savage}}, \bibinfo {author}
+  {\bibfnamefont {M.~G.}\ \bibnamefont {Lagally}}, \bibinfo {author}
+  {\bibfnamefont {M.}~\bibnamefont {Friesen}}, \bibinfo {author} {\bibfnamefont
+  {S.~N.}\ \bibnamefont {Coppersmith}}, \bibinfo {author} {\bibfnamefont
+  {M.~A.}\ \bibnamefont {Eriksson}}, \ and\ \bibinfo {author} {\bibfnamefont
+  {L.~M.~K.}\ \bibnamefont {Vandersypen}},\ }\bibfield  {title} {\enquote
+  {\bibinfo {title} {{Electrical control of a long-lived spin qubit in a
+  Si/SiGe quantum dot}},}\ }\href {\doibase 10.1038/nnano.2014.153} {\bibfield
+  {journal} {\bibinfo  {journal} {Nat. Nanotechnol.}\ }\textbf {\bibinfo
+  {volume} {9}},\ \bibinfo {pages} {666--670} (\bibinfo {year}
+  {2014})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Zajac}\ \emph {et~al.}(2018)\citenamefont {Zajac},
+  \citenamefont {Sigillito}, \citenamefont {Russ}, \citenamefont {Borjans},
+  \citenamefont {Taylor}, \citenamefont {Burkard},\ and\ \citenamefont
+  {Petta}}]{Zajac2018}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {D.~M.}\ \bibnamefont
+  {Zajac}}, \bibinfo {author} {\bibfnamefont {A.~J.}\ \bibnamefont
+  {Sigillito}}, \bibinfo {author} {\bibfnamefont {M.}~\bibnamefont {Russ}},
+  \bibinfo {author} {\bibfnamefont {F.}~\bibnamefont {Borjans}}, \bibinfo
+  {author} {\bibfnamefont {J.~M.}\ \bibnamefont {Taylor}}, \bibinfo {author}
+  {\bibfnamefont {G.}~\bibnamefont {Burkard}}, \ and\ \bibinfo {author}
+  {\bibfnamefont {J.~R.}\ \bibnamefont {Petta}},\ }\bibfield  {title} {\enquote
+  {\bibinfo {title} {{Resonantly driven CNOT gate for electron spins}},}\
+  }\href {\doibase 10.1126/science.aao5965} {\bibfield  {journal} {\bibinfo
+  {journal} {Science}\ }\textbf {\bibinfo {volume} {359}},\ \bibinfo {pages}
+  {439--442} (\bibinfo {year} {2018})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Bonsen}\ \emph {et~al.}(2022)\citenamefont {Bonsen},
+  \citenamefont {Harvey-Collard}, \citenamefont {Russ}, \citenamefont
+  {Dijkema}, \citenamefont {Sammak}, \citenamefont {Scappucci},\ and\
+  \citenamefont {Vandersypen}}]{Bonsen2022}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {T.}~\bibnamefont
+  {Bonsen}}, \bibinfo {author} {\bibfnamefont {P.}~\bibnamefont
+  {Harvey-Collard}}, \bibinfo {author} {\bibfnamefont {M.}~\bibnamefont
+  {Russ}}, \bibinfo {author} {\bibfnamefont {J.}~\bibnamefont {Dijkema}},
+  \bibinfo {author} {\bibfnamefont {A.}~\bibnamefont {Sammak}}, \bibinfo
+  {author} {\bibfnamefont {G.}~\bibnamefont {Scappucci}}, \ and\ \bibinfo
+  {author} {\bibfnamefont {L.~M.~K.}\ \bibnamefont {Vandersypen}},\ }\bibfield
+  {title} {\enquote {\bibinfo {title} {{Probing the Jaynes-Cummings ladder with
+  spin circuit quantum electrodynamics}},}\ }\href {\doibase
+  10.48550/arXiv.2203.05668} {\bibfield  {journal} {\bibinfo  {journal}
+  {arXiv}\ } (\bibinfo {year} {2022}),\ 10.48550/arXiv.2203.05668}\BibitemShut
+  {NoStop}%
+\bibitem [{\citenamefont {Nielsen}(2002)}]{Nielsen2002}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {M.~A.}\ \bibnamefont
+  {Nielsen}},\ }\bibfield  {title} {\enquote {\bibinfo {title} {A simple
+  formula for the average gate fidelity of a quantum dynamical operation},}\
+  }\href {\doibase 10.1016/S0375-9601(02)01272-0} {\bibfield  {journal}
+  {\bibinfo  {journal} {Phys. Lett., A}\ }\textbf {\bibinfo {volume} {303}},\
+  \bibinfo {pages} {249--252} (\bibinfo {year} {2002})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Schumacher}(1996)}]{Schumacher1996}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {B.}~\bibnamefont
+  {Schumacher}},\ }\bibfield  {title} {\enquote {\bibinfo {title} {Sending
+  entanglement through noisy quantum channels},}\ }\href {\doibase
+  10.1103/PhysRevA.54.2614} {\bibfield  {journal} {\bibinfo  {journal} {Phys.
+  Rev. A}\ }\textbf {\bibinfo {volume} {54}},\ \bibinfo {pages} {2614}
+  (\bibinfo {year} {1996})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Sigillito}\ \emph {et~al.}(2019)\citenamefont
+  {Sigillito}, \citenamefont {Gullans}, \citenamefont {Edge}, \citenamefont
+  {Borselli},\ and\ \citenamefont {Petta}}]{Sigillito2019}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {A.~J.}\ \bibnamefont
+  {Sigillito}}, \bibinfo {author} {\bibfnamefont {M.~J.}\ \bibnamefont
+  {Gullans}}, \bibinfo {author} {\bibfnamefont {L.~F.}\ \bibnamefont {Edge}},
+  \bibinfo {author} {\bibfnamefont {M.}~\bibnamefont {Borselli}}, \ and\
+  \bibinfo {author} {\bibfnamefont {J.~R.}\ \bibnamefont {Petta}},\ }\bibfield
+  {title} {\enquote {\bibinfo {title} {Coherent transfer of quantum information
+  in a silicon double quantum dot using resonant swap gates},}\ }\href
+  {\doibase 10.1038/s41534-019-0225-0} {\bibfield  {journal} {\bibinfo
+  {journal} {NPJ Quantum Inf.}\ }\textbf {\bibinfo {volume} {5}},\ \bibinfo
+  {pages} {110} (\bibinfo {year} {2019})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Stano}\ and\ \citenamefont {Loss}(2021)}]{Stano2021}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {P.}~\bibnamefont
+  {Stano}}\ and\ \bibinfo {author} {\bibfnamefont {D.}~\bibnamefont {Loss}},\
+  }\bibfield  {title} {\enquote {\bibinfo {title} {Review of performance
+  metrics of spin qubits in gated semiconducting nanostructures},}\ }\href
+  {\doibase 10.48550/arXiv.2107.06485} {\bibfield  {journal} {\bibinfo
+  {journal} {arXiv}\ } (\bibinfo {year} {2021}),\
+  10.48550/arXiv.2107.06485}\BibitemShut {NoStop}%
+\end{thebibliography}%

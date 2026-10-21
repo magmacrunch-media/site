@@ -1813,11 +1813,25 @@
     "b": "Exchange resonances in dc magnetoresistance · press · magmacrunch media home › press › scientific › papers › Exchange resonances in dc magnetoresistance paper Image of dynamic local exchange interactions in the dc magnetoresistance of spin-polarized current through a dopant stephen mcmillan , nicholas harmon, michael flatté 2020 // this version // Published by the American Physical Society. This paper appeared in Physical Review Letters , and that published article is the version of record and the one to cite: McMillan, S. R., Harmon, N. J. & Flatté, M. E. (2020) Image of dynamic local exchang..."
   },
   {
+    "t": "Hyperfine constants from near-zero-field magnetoresistance · press · magmacrunch media",
+    "c": "press",
+    "u": "/press/scientific/papers/hyperfine-magnetoresistance-fitting/index.html",
+    "d": "Scientific journal",
+    "b": "Hyperfine constants from near-zero-field magnetoresistance · press · magmacrunch media home › press › scientific › papers › Hyperfine constants from near-zero-field magnetoresistance paper Extraction of isotropic electron-nuclear hyperfine coupling constants of paramagnetic point defects from near-zero field magnetoresistance spectra via least squares fitting to models developed from the stochastic quantum Liouville equation elias frantz, nicholas harmon, stephen mcmillan , stephen moxim, michael flatté, patrick lenahan 2020 // this version // Published by AIP Publishing. This paper appeared i..."
+  },
+  {
     "t": "papers · scientific · press · magmacrunch media",
     "c": "press",
     "u": "/press/scientific/papers/index.html",
     "d": "Scientific journal",
-    "b": "papers · scientific · press · magmacrunch media home › press › scientific › papers // papers // published elsewhere peer-reviewed papers first published in journals, rebuilt here from the manuscripts posted to arXiv. each page links the published version of record, which is the one to cite. // papers // Image of dynamic local exchange interactions in the dc magnetoresistance of spin-polarized current through a dopant paper mcmillan et al. · physical review letters · 2020 ▶ X-ray verification of sol-gel resist shrinkage in substrate-conformal imprint lithography for a replicated blazed reflecti..."
+    "b": "papers · scientific · press · magmacrunch media home › press › scientific › papers // papers // published elsewhere peer-reviewed papers first published in journals, rebuilt here from the manuscripts posted to arXiv. each page links the published version of record, which is the one to cite. papers that never had a manuscript on arXiv link straight to the journal instead. // papers // Resonant direct CNOT in remote double quantum dot spin qubits paper mcmillan & burkard · physical review b · 2023 ▶ Tunable tunnel barriers in a semiconductor via ionization of individual atoms paper mueller et al..."
+  },
+  {
+    "t": "Resonant direct CNOT in remote double dots · press · magmacrunch media",
+    "c": "press",
+    "u": "/press/scientific/papers/resonant-cnot/index.html",
+    "d": "Scientific journal",
+    "b": "Resonant direct CNOT in remote double dots · press · magmacrunch media home › press › scientific › papers › Resonant direct CNOT in remote double dots paper Resonant direct CNOT in remote double quantum dot spin qubits stephen mcmillan , guido burkard 2023 // this version // Published by the American Physical Society. This paper appeared in Physical Review B , and that published article is the version of record and the one to cite: McMillan, S. R. & Burkard, G. (2023) Resonant direct CNOT in remote double quantum dot spin qubits. Physical Review B 108 , 125414. doi:10.1103/PhysRevB.108.125414 ..."
   },
   {
     "t": "Sol-gel resist shrinkage in SCIL gratings · press · magmacrunch media",
@@ -1846,6 +1860,20 @@
     "u": "/press/scientific/papers/telemetry-fpga/index.html",
     "d": "Scientific journal",
     "b": "Telemetry interfacing with low cost FPGAs · press · magmacrunch media home › press › scientific › papers › Telemetry interfacing with low cost FPGAs paper A primer for telemetry interfacing in accordance with NASA standards using low cost FPGAs jake mccoy , ted schultz, james tutt, thomas rogers, drew miles, randall mcentaffer 2016 // this version // Published by World Scientific. This paper appeared in the Journal of Astronomical Instrumentation , published by World Scientific Publishing Company . That published article is the version of record, and it is the one to cite: McCoy, J. A., Schult..."
+  },
+  {
+    "t": "Thermoelectric transport in a T-shaped double dot · press · magmacrunch media",
+    "c": "press",
+    "u": "/press/scientific/papers/thermoelectric-double-quantum-dot/index.html",
+    "d": "Scientific journal",
+    "b": "Thermoelectric transport in a T-shaped double dot · press · magmacrunch media home › press › scientific › papers › Thermoelectric transport in a T-shaped double dot paper Thermoelectric transport properties of a T-shaped double quantum dot system in the Coulomb blockade regime alessandro monteros, gurdip uppal, stephen mcmillan , mircea crisan, ionel ţifrea 2014 // this version // Published by Springer, for EDP Sciences and the Società Italiana di Fisica. This paper appeared in The European Physical Journal B , and that published article is the version of record and the one to cite: Monteros, ..."
+  },
+  {
+    "t": "Tunable tunnel barriers from ionized atoms · press · magmacrunch media",
+    "c": "press",
+    "u": "/press/scientific/papers/tunable-tunnel-barriers/index.html",
+    "d": "Scientific journal",
+    "b": "Tunable tunnel barriers from ionized atoms · press · magmacrunch media home › press › scientific › papers › Tunable tunnel barriers from ionized atoms paper Tunable tunnel barriers in a semiconductor via ionization of individual atoms sara mueller, dongjoon kim, stephen mcmillan , steven tjung, jacob repicky, stephen gant, evan lang, fedor bergmann, kevin werner, enam chowdhury, aravind asthagiri, michael flatté, jay gupta 2021 // this version // Published by IOP Publishing. This paper appeared in the Journal of Physics: Condensed Matter , published online on 28 May 2021 in volume 33, issue 27..."
   },
   {
     "t": "On the Quantum Nature of Photons · press · magmacrunch media",

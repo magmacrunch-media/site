@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resonant direct CNOT in remote double dots · press · magmacrunch media</title>
+    <meta name="description" content="Author's preprint of McMillan &amp; Burkard (2023), Phys. Rev. B 108, 125414: a resonant, ac-driven CNOT gate between two distant double quantum dot spin qubits dispersively coupled to a common superconducting resonator mode, with gate times near 150 ns and fidelities above 90%.">
+    <meta property="og:title" content="Resonant direct CNOT in remote double dots · magmacrunch press">
+    <meta property="og:description" content="Author's preprint of McMillan &amp; Burkard (2023), Phys. Rev. B 108, 125414.">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="magmacrunch media">
+    <meta property="og:locale" content="en_US">
+    <link rel="icon" type="image/x-icon" href="../../../../favicon.ico">
+    <link rel="stylesheet" href="../../../../style.css?v=981601e0">
+    <script>
+MathJax={tex:{inlineMath:[["$","$"],["\\(","\\)"]],displayMath:[["$$","$$"],["\\[","\\]"]],tags:"all",processEscapes:true,macros:{vb:["{\\mathbf{#1}}",1],vu:["{\\hat{#1}}",1],dv:["\\frac{\\mathrm{d} #1}{\\mathrm{d} #2}",2],pdv:["\\frac{\\partial #1}{\\partial #2}",2],dd:["\\mathrm{d}#1",1],expval:["\\langle #1 \\rangle",1],comm:["[#1, #2]",2],ket:["|#1\\rangle",1],bra:["\\langle #1|",1],braket:["\\langle #1 | #2 \\rangle",2],dyad:["|#1\\rangle\\langle #1|",1],norm:["\\|#1\\|",1],abs:["|#1|",1],matrixel:["\\langle #1 | #2 | #3 \\rangle",3]}},loader:{load:["[tex]/physics"]}};
+</script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+    <style>
+:root{--nav-accent: #c02828;--nav-glow: rgba(192,40,40,0.4);--nav-brand: #c02828;--nav-brand-glow: rgba(192,40,40,0.6)}body{background-color:#1a1a1a;color:#f0e4c8}main{flex:1;display:flex;flex-direction:column;align-items:center;padding:72px 20px 60px}.breadcrumb{font-family:"Press Start 2P",monospace;font-size:7px;color:#666;letter-spacing:0.1em;margin-top:0;margin-bottom:16px;align-self:flex-start}.breadcrumb a{color:#888;text-decoration:none;transition:color 0.15s}.breadcrumb a:hover{color:#c02828}.breadcrumb .sep{margin:0 8px;color:#c02828;opacity:0.7}.breadcrumb .current{color:#c02828}.article-header{width:min(700px,90vw);text-align:center;margin-bottom:40px;animation:fadeUp 0.5s ease both}.article-type{font-family:"Press Start 2P",monospace;font-size:7px;color:#f0e4c8;background:#c02828;display:inline-block;padding:3px 10px;letter-spacing:0.1em;margin-bottom:20px}.article-title{font-family:"Press Start 2P",monospace;font-size:clamp(10px,2vw,15px);color:#f0e4c8;letter-spacing:0.06em;line-height:1.8;margin-bottom:16px}.article-meta{font-family:"Courier Prime",monospace;font-size:12px;color:#666;line-height:1.6}.article-meta .author{color:#c02828;font-weight:700}.article-body{width:min(700px,90vw);animation:fadeUp 0.5s 0.1s ease both}.article-body h2{font-family:"Press Start 2P",monospace;font-size:10px;color:#c02828;letter-spacing:0.08em;margin-top:40px;margin-bottom:16px;line-height:1.8}.article-body p{font-family:"Courier Prime",monospace;font-size:14px;line-height:1.85;color:#c8c0a8;margin-bottom:16px;text-align:justify}.article-body p:first-of-type::first-letter{font-family:"Press Start 2P",monospace;font-size:2.2em;float:left;line-height:0.85;margin-right:8px;margin-top:4px;color:#c02828}.article-body a{color:#c02828;text-decoration:underline;text-decoration-color:rgba(192,40,40,0.3)}.article-body a:hover{color:#e88080}.article-body strong{color:#f0e4c8}.article-body em{color:#888}.equation{margin:20px 0;text-align:center;width:100%}.article-body .mjx-container{overflow-x:auto;overflow-y:hidden;max-width:100%}figure{margin:28px 0;text-align:center}figure img{display:block;margin:0 auto;max-width:100%;height:auto;border:1px solid #333;image-rendering:auto}figcaption{font-family:"Courier Prime",monospace;font-size:12px;color:#666;margin-top:8px;line-height:1.5;font-style:italic}.article-end{width:min(700px,90vw);text-align:center;margin-top:40px;margin-bottom:40px}.article-end span{color:#c02828;font-size:12px}.article-back{display:inline-block;margin-top:24px;font-family:"Press Start 2P",monospace;font-size:8px;color:#c02828;text-decoration:none;border:2px solid #c02828;padding:8px 16px;transition:all 0.15s}.article-back:hover{background:#c02828;color:#1a1a1a}footer{background:#111!important;border-top-color:#333!important;color:#666!important}footer span{color:#c02828!important}@media(max-width:640px){.article-title{font-size:10px}.article-body p{font-size:13px}.article-body h2{font-size:9px}.equation{overflow-x:auto}}figure{margin:34px 0;animation:fadeUp 0.5s ease both}figure img{display:block;width:100%;height:auto;margin:0 auto 10px;background:#fff;padding:10px;border:1px solid #333}figcaption{font-family:"Courier Prime",monospace;font-size:12px;line-height:1.75;color:#9a8f7d;text-align:left}.provenance{border:1px solid #333;border-left:3px solid #c02828;background:#1f1f1f;padding:18px 20px;margin-bottom:40px;font-family:"Courier Prime",monospace;font-size:12px;line-height:1.85;color:#9a8f7d;animation:fadeUp 0.5s ease both}.provenance .prov-label{font-family:"Press Start 2P",monospace;font-size:7px;color:#c02828;letter-spacing:0.1em;display:block;margin-bottom:12px}.provenance a{color:#f0e4c8}.provenance a:hover{color:#c02828}.provenance p{margin:0 0 9px}.provenance p:last-child{margin-bottom:0}.abstract{border-top:1px solid #333;border-bottom:1px solid #333;padding:20px 0;margin-bottom:36px;font-style:italic;color:#c9bda8}.abstract .prov-label{font-family:"Press Start 2P",monospace;font-size:7px;color:#c02828;letter-spacing:0.1em;display:block;margin-bottom:12px;font-style:normal}h3.endmatter{font-family:"Press Start 2P",monospace;font-size:9px;color:#c02828;letter-spacing:0.1em;margin:44px 0 16px}ol.refs,ol.notes{font-family:"Courier Prime",monospace;font-size:12px;line-height:1.8;color:#9a8f7d;padding-left:22px}ol.refs li,ol.notes li{margin-bottom:9px}ol.refs{list-style:none;padding-left:0}ol.refs li{padding-left:20px;text-indent:-20px}sup.fn a{color:#c02828;text-decoration:none;padding:0 1px}.fnback{font-size:10px;color:#666}:target{scroll-margin-top:80px}.equation{overflow-x:auto;overflow-y:hidden}.article-body .provenance p::first-letter,.article-body .abstract p::first-letter,.article-body figcaption::first-letter{font-family:inherit;font-size:inherit;float:none;line-height:inherit;margin:0;color:inherit}.article-body p.lede::first-letter{font-family:"Press Start 2P",monospace;font-size:2.2em;float:left;line-height:0.85;margin-right:8px;margin-top:4px;color:#c02828}figure{margin:34px 0;animation:fadeUp 0.5s ease both}figure img{display:block;width:100%;height:auto;margin:0 auto 10px;background:#fff;padding:10px;border:1px solid #333}figcaption{font-family:"Courier Prime",monospace;font-size:12px;line-height:1.75;color:#9a8f7d;text-align:left}.provenance{border:1px solid #333;border-left:3px solid #c02828;background:#1f1f1f;padding:18px 20px;margin-bottom:40px;font-family:"Courier Prime",monospace;font-size:12px;line-height:1.85;color:#9a8f7d;animation:fadeUp 0.5s ease both}.provenance .prov-label{font-family:"Press Start 2P",monospace;font-size:7px;color:#c02828;letter-spacing:0.1em;display:block;margin-bottom:12px}.provenance a{color:#f0e4c8}.provenance a:hover{color:#c02828}.provenance p{margin:0 0 9px}.provenance p:last-child{margin-bottom:0}.abstract{border-top:1px solid #333;border-bottom:1px solid #333;padding:20px 0;margin-bottom:36px;font-style:italic;color:#c9bda8}.abstract .prov-label{font-family:"Press Start 2P",monospace;font-size:7px;color:#c02828;letter-spacing:0.1em;display:block;margin-bottom:12px;font-style:normal}h3.endmatter{font-family:"Press Start 2P",monospace;font-size:9px;color:#c02828;letter-spacing:0.1em;margin:44px 0 16px}ol.refs{font-family:"Courier Prime",monospace;font-size:12px;line-height:1.8;color:#9a8f7d;list-style:none;padding-left:0}ol.refs li{margin-bottom:9px;padding-left:28px;position:relative}ol.refs li .rn{position:absolute;left:0;color:#c02828}sup.cite a{color:#c02828;text-decoration:none;padding:0 1px}.eqno{float:right;color:#9a8f7d;font-family:"Courier Prime",monospace}:target{scroll-margin-top:80px}.equation{overflow-x:auto;overflow-y:hidden}.article-body .provenance p::first-letter,.article-body .abstract p::first-letter,.article-body figcaption::first-letter{font-family:inherit;font-size:inherit;float:none;line-height:inherit;margin:0;color:inherit}.article-body p.lede::first-letter{font-family:"Press Start 2P",monospace;font-size:2.2em;float:left;line-height:0.85;margin-right:8px;margin-top:4px;color:#c02828}.erratum{border:1px solid #6a5a2a;border-left:3px solid #c9a227;background:#241f14;padding:18px 20px;margin:0 0 40px;font-family:"Courier Prime",monospace;font-size:12px;line-height:1.85;color:#b8ad92}.erratum .prov-label{color:#c9a227}.erratum a{color:#f0e4c8}.erratum a:hover{color:#c9a227}.erratum p{margin:0 0 9px}.erratum ul{margin:0 0 9px;padding-left:20px}.erratum li{margin-bottom:7px}.erratum .applies{color:#e0d4b0}.erratum .noapply{color:#8a8068}sup.err a{color:#c9a227;text-decoration:none;font-size:9px;letter-spacing:0.04em}p.erratum-inline{font-family:"Courier Prime",monospace!important;font-size:11px!important;color:#9a8f7d!important;border-left:2px solid #c9a227;padding-left:12px;margin:-8px 0 20px!important;text-align:left!important}p.erratum-inline::first-letter{font-family:inherit!important;font-size:inherit!important;float:none!important;margin:0!important;color:inherit!important}figure.tablewrap table{width:100%;border-collapse:collapse;font-family:"Courier Prime",monospace;font-size:12px;color:#c8c0a8}figure.tablewrap th{text-align:left;color:#c02828;font-weight:400;border-bottom:1px solid #555;padding:7px 8px}figure.tablewrap td{border-bottom:1px solid #2a2a2a;padding:6px 8px;vertical-align:top}figure.tablewrap{overflow-x:auto}.article-body .erratum p::first-letter{font-family:inherit;font-size:inherit;float:none;line-height:inherit;margin:0;color:inherit}span.cite a{color:#c02828;text-decoration:none}span.cite{white-space:nowrap}
+</style>
+</head>
+<body>
+
+<nav id="auto-nav" data-depth="../../../../"></nav>
+
+<main>
+
+    <div class="breadcrumb">
+        <a href="../../../../">home</a>
+        <span class="sep">›</span>
+        <a href="../../../../press/">press</a>
+        <span class="sep">›</span>
+        <a href="../../">scientific</a>
+        <span class="sep">›</span>
+        <a href="../">papers</a>
+        <span class="sep">›</span>
+        <span class="current">Resonant direct CNOT in remote double dots</span>
+    </div>
+
+    <div class="article-header">
+        <div class="article-type">paper</div>
+        <h1 class="article-title">Resonant direct CNOT in remote double quantum dot spin qubits</h1>
+        <div class="article-meta">
+            <span class="author">stephen mcmillan</span>, guido burkard<br>
+            2023
+        </div>
+    </div>
+
+    <div class="article-body">
+
+    <div class="provenance">
+        <span class="prov-label">// this version //</span>
+        <p><strong>Published by the American Physical Society.</strong> This
+        paper appeared in <em>Physical Review B</em>, and that published
+        article is the version of record and the one to cite:</p>
+        <p style="padding-left:16px;border-left:1px solid #333;">McMillan, S. R.
+        &amp; Burkard, G. (2023) Resonant direct CNOT in remote double quantum
+        dot spin qubits. <em>Physical Review B</em> <strong>108</strong>,
+        125414.
+        <a href="https://doi.org/10.1103/PhysRevB.108.125414" rel="noopener">doi:10.1103/PhysRevB.108.125414</a></p>
+        <p><strong>The published article is &copy; 2023 American Physical
+        Society</strong> and nothing of it is reproduced here. This page is the
+        authors' manuscript as submitted to arXiv on 27 July 2022 (v1, the only
+        version), rendered from its LaTeX. It went through peer review
+        afterwards and the title changed: the preprint was called
+        <em>Resonant single-shot CNOT in remote double quantum dot spin
+        qubits</em>. So the wording, and possibly the content, can differ from
+        the published article. The preprint refers to no Supplemental
+        Material.</p>
+        <p>Preprint:
+        <a href="https://arxiv.org/abs/2207.13588v1" rel="noopener">arXiv:2207.13588</a>
+        (<a href="https://arxiv.org/pdf/2207.13588v1" rel="noopener">PDF</a>),
+        <a href="https://doi.org/10.48550/arXiv.2207.13588" rel="noopener">doi:10.48550/arXiv.2207.13588</a>.
+        Source beside this page:
+        <a href="main.tex">main.tex</a> and its bibliography
+        <a href="main.bbl">main.bbl</a>.</p>
+    </div>
+
+    <div class="abstract">
+        <span class="prov-label">// abstract //</span>
+        A critical element towards the realization of scalable quantum processors is non-local coupling between nodes. Scaling connectivity beyond nearest-neighbor interactions requires the implementation of a mediating interaction often termed a “quantum bus”. Cavity photons have long been used as a bus by the superconducting qubit community, but it has only recently been demonstrated that spin-based qubits in double quantum dot architectures can reach the strong coupling regime and exhibit spin-spin interactions via the exchange of real or virtual photons. Two-qubit gate operations are predicted in the dispersive regime where cavity loss plays a less prominent role. In this work we propose a framework for ac-driven quantum gates, in the context of a CNOT operation, between two non-local single-spin qubits dispersively coupled to a common mode of a superconducting resonator. We expect gate times near 150 ns and fidelities above 90% with existing technology.
+    </div>
+
+<p class="lede"><em>Introduction.</em> Electron spins in quantum dots (QD) have long been an attractive candidate for spin-based computation and information processing <span class="cite">[<a href="#ref-Loss1998">1</a>,<a href="#ref-Hanson2007">2</a>]</span>. Spin initialization and readout has been demonstrated through spin-to-charge conversion <span class="cite">[<a href="#ref-Ono2002">3</a>,<a href="#ref-Elzerman2004">4</a>]</span>, and remarkably long spin coherence times have been reached in Si based QDs as a result of isotopic purification <span class="cite">[<a href="#ref-Veldhorst2014">5</a>]</span>. Additionally, the use of local magnetic field gradients allows for all-electric spin manipulation <span class="cite">[<a href="#ref-Tokura2006">6</a>,<a href="#ref-Pioro-Ladriere2008">7</a>]</span>. These milestones have lead to the recent realization of fault tolerant single and two-qubit gates <span class="cite">[<a href="#ref-Takeda2016">8</a>,<a href="#ref-Yoneda2018">9</a>,<a href="#ref-Mills2022">10</a>,<a href="#ref-Xue2022">11</a>,<a href="#ref-Noiri2022">12</a>,<a href="#ref-Mills2022a">13</a>]</span>. With an eye on building quantum networks <span class="cite">[<a href="#ref-Fowler2012">14</a>]</span> and simulations <span class="cite">[<a href="#ref-Byrnes2008">15</a>]</span>, these single qubit systems can be scaled by an order of magnitude through tunnel-coupled linear and two-dimensional arrays which demonstrate spin coherent charge displacement <span class="cite">[<a href="#ref-Fujita2017">16</a>,<a href="#ref-Flentje2017">17</a>,<a href="#ref-Mukhopadhyay2018">18</a>,<a href="#ref-Mortemousque2020">19</a>]</span>. These dense qubit arrays provide registers for implementaion of surface code protocols, but interconnection of these registers will require some form of long-range coupling <span class="cite">[<a href="#ref-Vandersypen2017">20</a>]</span>.</p>
+
+<p>Achieving reliable long-range coupling in quantum systems is perhaps the most pressing obstacle to realizing the next generation of quantum technology. Extending beyond micron-scale intermediate coupling schemes <span class="cite">[<a href="#ref-Hassler2015">21</a>,<a href="#ref-Tosi2017">22</a>]</span> to macroscopic separations on the order of 1 mm requires coupling to an ancillary system <span class="cite">[<a href="#ref-Kimble2008">23</a>,<a href="#ref-Schuetz2015">24</a>]</span>, a so-called “quantum bus”. Photonic coupling of superconducting qubits by way of superconducting resonators was realized well over a decade ago <span class="cite">[<a href="#ref-Majer2007">25</a>]</span> alongside proposals for coupling QD qubits with superconducting circuits <span class="cite">[<a href="#ref-Childress2004">26</a>,<a href="#ref-Burkard2006">27</a>,<a href="#ref-Srinivasa2016">28</a>]</span>. The relatively weak magnetic dipole coupling rate between a single photon and electron is inherently too slow (10-500 Hz) to overcome dephasing or cavity loss, presenting a clear challenge to reaching the strong spin-photon coupling regime <span class="cite">[<a href="#ref-Burkard2020">29</a>]</span>. Theoretical proposals were aimed a alleviating this issue by coupling the spin to the photon indirectly through the electric dipole moment <span class="cite">[<a href="#ref-Cottet2010">30</a>]</span>. Spin-charge hybridization along with the use of micromagnetics to establish local field gradients lead to the realization of strong spin-photon coupling for single spins in Si-based double QDs (DQD) <span class="cite">[<a href="#ref-Samkharadze2018">31</a>,<a href="#ref-Mi2018">32</a>]</span>.</p>
+
+<p>Cavity mediated spin-spin interactions have been realized in both the resonant <span class="cite">[<a href="#ref-Borjans2020">33</a>]</span> and dispersive <span class="cite">[<a href="#ref-Harvey-Collard2022">34</a>]</span> regimes. Universal two-qubit photon mediated gates are predicted to exist for DQD spin qubits <span class="cite">[<a href="#ref-Benito2019a">35</a>,<a href="#ref-Warren2019">36</a>]</span>, and driven two-qubit gates have been proposed for superconducting qubits, such as the so-called “cross-resonance gate” <span class="cite">[<a href="#ref-Rigetti2010">37</a>]</span>. Despite these major advances, the possibilities for driving photon mediated entanglement of two spin qubits have been left unexplored.</p>
+
+<p>In this letter, we propose a framework for realizing a single-shot resonant CNOT gate between two single-electron DQD qubits dispersively coupled to a common cavity mode. By tuning the spin-charge hybridization these spin qubits are predicted to outperform their charge qubit counterpart <span class="cite">[<a href="#ref-Benito2019a">35</a>]</span>. Here we show that driving both spins at a common frequency and asymmetric amplitudes allows for controlled two-qubit rotations. We expect synchronization of the drive strength to produce a high-fidelity CNOT gate in roughly half the time required for the cross-resonance scheme. These gate times rival those predicted for local operations on driven exchange-coupled spin qubits <span class="cite">[<a href="#ref-Russ2018">38</a>]</span>. Given the sensitivity of QD spin qubits to local nuclei, gate fidelity should benefit from isotopically purified $^{28}$Si, where even in the presence of cavity loss and phonon emission fidelities larger than 90% should be possible.</p>
+
+<figure id="fig:Setup">
+        <img src="CavityCoupledDQDs_v9.png" alt="Figure 1" loading="lazy">
+        <figcaption>Figure 1. Diagram of the system. Two DQDs are coupled to the same cavity mode of a microwave resonator. Local gradients $b^x_j$ provide an artificial spin-orbit coupling, allowing the spin to couple to the photon through the electric dipole of the DQD. A gradient in the external field, $\delta B^z=B^z_2-B^z_1$, lifts the degeneracy between anti-parallel spin configurations allowing the individual spins to be addressed. An additional local gradient, $b^y$, provides an electrically driven ac magnetic field which is used to drive spin transitions.</figcaption>
+</figure>
+
+<p><em>Model.</em> We consider two singly-charged DQDs capacitively coupled to a common mode of a superconducting microwave resonator (cavity), with frequency $\omega_c$. The energy detuning between the right (R) and left (L) dots, $\epsilon$, as well as the tunnel coupling, $t_c$, are electrically controlled, and the spin-photon interaction is facilitated by a local inhomogenous magnetic field $b^x$. We begin in the double-dot basis and consider a model Hamiltonian $\tilde{H} = \tilde{H}_0+\tilde{H}_d(t)+\tilde{H}_I$, with $\tilde{H}_0 = \sum_j ( t_c \tilde{\tau}^x_j +\epsilon_j\tilde{\tau}_z/2 + B^z_j \tilde{\sigma}^z_j/2 + b^x \tilde{\sigma}^x_j/2) + \omega_c a^\dagger a$. In this expression, $B^z_j$ is the external field, $a^\dagger$ $(a)$ is the photonic creation (annihilation) operator, $\tilde{\sigma}^k_j$ for $k=\{x, y, z\}$, are the spin Pauli matrices, and $\tilde{\tau}^k_j$ for $k=\{x, y, z\}$, are the spatial Pauli matrices satisfying the relation $\tau^z_j|L_j(R_j)\rangle=~(-1)|L_j(R_j)\rangle$. The driving Hamiltonian is written as $\tilde{H}_\text{d}(t) = \sum_j b^y_{j} \cos (\omega^d_j t + \phi) \tilde{\sigma}^y_{j}/2$, where $b^y_j$ is the driving strength, and the driving frequency, $\omega^d_j$, can be controlled electrically by shaking the spin in an inhomogeneous magnetic field - electrically driven spin resonance (EDSR) <span class="cite">[<a href="#ref-Tokura2006">6</a>,<a href="#ref-Pioro-Ladriere2008">7</a>,<a href="#ref-Kawakami2014">39</a>,<a href="#ref-Zajac2018">40</a>,<a href="#ref-Mi2018">32</a>,<a href="#ref-Samkharadze2018">31</a>]</span>. The charge couples to the cavity mode through a dipolar interaction with the Hamiltonian $\tilde{H}_\text{int} = \sum_j g^c (a^\dagger + a)\tilde{\tau}^z_j$. The electric dipole coupling strength $g_c$ is proportional to the dipole moment of the DQD, and is therefore electrically controllable through $\epsilon$. In what follows we maximize the dipole moment of the DQD by choosing the symmetric configuration where the charge is equally likely to be in the R or L dot ($\epsilon=0$).</p>
+
+<p>The tunnel coupling $t_c$ hybridizes the double-dot states to form the symmetric and antisymmetric states $|\pm_j\rangle=(|L_j\rangle\pm|R_j\rangle)/\sqrt{2}$. These states hybridize with the spin due to the local gradient $b^x$. Recasting the Hamiltonian in the basis of $\tilde{H}_0$ leads to the transformed components,</p>
+
+<div class="equation" id="eq:eq1">
+$$
+\begin{aligned}
+    H_0 &amp;=\frac{1}{2}\sum_j (E^\tau_j\tau^z_j + E^\sigma_j\sigma^z_j) + \omega_c a^\dagger a,\\
+    H_\text{d}(t) &amp;= \frac{1}{2}\sum_j (D^\tau_j \tau^y_j\sigma^z_j+D^\sigma_j\sigma_j^y) \cos(\omega^d_j t+\phi),\\
+    H_I &amp;= \sum_j (g^\tau_j \tau^x_j- g^\sigma_j\sigma^x_j\tau^z_j)(a^\dagger + a),
+\end{aligned}
+$$
+</div>
+
+<p>where the driving strengths are $D^{\sigma}_j= b^y_j \cos\bar{\theta}_j$ and $D^{\tau}_j=b^{y}_j \sin\bar{\theta}_j$, and the cavity coupling strengths are $g^\sigma_j=g_c\sin\bar{\theta}_j$ and $g^\tau_j=g_c\cos\bar{\theta}_j$ for spin and charge respectively. These terms depend on the average hybridization angle $\bar{\theta}_j=(\theta^+_j+\theta^-_j)/2$, where $\theta^\pm_j=\arctan [b^x/(2t_c \pm B^z_j)] \in [0,\pi]$. In what follows we assume $2t_c \gt B^z_j \gg b^x$, such that in analogy to Ref. <span class="cite">[<a href="#ref-Benito2019a">35</a>]</span>, the charge (spin) transition energies are given by $E^{\tau(\sigma)}_j = E_{2(1),j}-E_{0,j}$ where $E_{2(1),j} = \pm\sqrt{(2t_c-B^z_j)^2+(b^x)^ 2)}/2$ and $E_{0,j} =~{ -\sqrt{(2t_c+B^z_j)^2+(b^x)^2)}/2}$.</p>
+
+<p>Dispersive coupling between the DQDs and the cavity mitigates losses due to interactions with real photons, limiting the spin-photon exchange to short-lived virtual transitions <span class="cite">[<a href="#ref-Harvey-Collard2022">34</a>,<a href="#ref-Bonsen2022">41</a>]</span>. The dispersive regime requires the cavity frequency to be detuned from the spin transition energy by an amount $\Delta_j=E^\sigma_j-\omega_c$ such that $\Delta_j\gg\hbar g^\sigma_j$. In this regime the photonic states are weakly coupled, and we perform a Schrieffer-Wolff transformation to decouple the vacuum state from the populated photon states. Tuning the cavity frequency such that $g_j^\tau\Delta_j/|E_j^\tau-\omega_c|\ll g_j^\sigma\ll\Delta_j$ is most interesting for spin-qubit operation <span class="cite">[<a href="#ref-Benito2019a">35</a>]</span>. In the rotating wave approximation the dispersive Hamiltonian can be written as</p>
+
+<div class="equation" id="eq:TD_effH">
+$$
+\begin{aligned}
+    \mathcal{H} = &amp;\sum_j\bigg[\tilde{E}^\sigma_\text{avg} \sigma^z_j
+    + i D^\sigma_j\bigg(e^{i(\omega_j^d t +\phi_j)}\sigma^-_j-e^{-i(\omega_j^d t +\phi_j)}\sigma^+_j\bigg)/4\bigg]\\
+    &amp;+\frac{1}{2}\delta\tilde{E}^\sigma (\sigma^z_1 - \sigma^z_2)
+    + \frac{\mathcal{J}}{2} (\sigma^+_1\sigma^-_2+\sigma^-_1\sigma^+_2),
+\end{aligned}
+$$
+</div>
+
+<p>where the Pauli matrices $\sigma^k_j$ and $\tau^k_j$ now correspond to the qubits dressed by the photonic excitations, and the cavity mediated spin-spin interaction coefficient is $\mathcal{J}=~g^\sigma_1 g^\sigma_2(\frac{1}{\Delta_1}+\frac{1}{\Delta_2})$. Due to the difference in external field between the two qubits, the dressed energy levels, $\tilde{E}^\sigma_j = \frac{1}{2}[E^\sigma_j + 2 (g^\sigma_j)^2\frac{E^\sigma_j}{(E^\sigma_j)^2-\omega_c^2}]$, have been written in terms of an average spin-flip energy $\tilde{E}^\sigma_\text{avg} = (\tilde{E}^\sigma_1 + \tilde{E}^\sigma_2)/2$ and a difference term $\delta \tilde{E}^\sigma ~=~ \tilde{E}^\sigma_1 - \tilde{E}^\sigma_2 $. Since the cavity is tuned closer to the spin transition energy, any non-local charge-charge and spin-charge transitions are highly off-resonant and therefore provide a negligible contribution to the dynamics. Additionally, by tuning the local driving to spin transitions the local charge transitions are negligible for the same reason, and the resulting Hamiltonian has no relevant dynamics in the charge channel.</p>
+
+<p>We now assume that both spins are driven at the same frequency ($\omega^d_1=\omega^d_2=\omega^d$), but not necessarily the same strength. Next we assume the spin-spin interaction to be small relative to the spin-flip gradient, $\mathcal{J}\ll\delta\tilde{E}^\sigma$, and use the adiabatic basis, $\{ |\uparrow\uparrow\rangle,|\widetilde{\downarrow\uparrow}\rangle,|\widetilde{\uparrow\downarrow}\rangle,|\downarrow\downarrow\rangle\}$, where $\mathcal{H}$ is diagonalized with respect to the spin-spin interaction. In this basis the only off-diagonal contribution comes from the driving term, which can be written as</p>
+
+<div class="equation" id="eq:Hdriving">
+$$
+\begin{aligned}
+   \hat{\mathcal{H}}_\text{d}(t)= &amp;\frac{1}{2}D^\sigma_1\cos(\omega^d t+\phi)\bigg[\hat{\sigma}^y_1+\frac{\mathcal{J}}{2\delta\tilde{E}^\sigma}\hat{\sigma}^z_1\hat{\sigma}^y_2\bigg]\\
+    &amp;+\frac{1}{2}D^\sigma_2\cos(\omega^d t+\phi)\bigg[\hat{\sigma}^y_2 - \frac{\mathcal{J}}{2\delta\tilde{E}^\sigma}\hat{\sigma}^y_1\hat{\sigma}^z_2\bigg].
+\end{aligned}
+$$
+</div>
+
+<p>Figure <a href="#fig:EnergyLevels">2</a> shows a sketch of the energy levels for states in the lowest charge sector. The effective gradient in the external field, $\delta \tilde{E}^\sigma$, lifts the degeneracy between the $m_s=0$ states. The presence of the non-local spin-spin coupling adds an additional symmetric frequency shift to the $m_s=0$ states in the adiabatic basis in contrast to asymmetric shift seen for homogeneous exchange coupling <span class="cite">[<a href="#ref-Russ2018">38</a>]</span>. The symmetry of the system dictates that frequency $f_1$($f_2$) drives the spin at DQD1(2) unconditionally.</p>
+
+<figure id="fig:EnergyLevels">
+        <img src="CCSQ_Eigenenergies_v2.png" alt="Figure 2" loading="lazy">
+        <figcaption>Figure 2. Sketch of the energy levels for the spin manifold in the lowest charge sector. A gradient in the external field lifts the degeneracy between the $m_s=0$ states. Once the cavity mediated spin-spin interaction is present the $m_s=0$ levels experience an additional symmetric shift in frequency. Frequency $f_1$($f_2$) drives the spin at DQD1(2) unconditionally due to the symmetry of the system.</figcaption>
+</figure>
+
+<p>To eliminate the time dependence in Eq. (<a href="#eq:Hdriving">3</a>), we work in a frame rotating at the drive frequency about the spin quantization axis. The rotating frame Hamiltonian has the form $\mathring{\mathcal{H}}=~i \dot{\hat{R}}(t)\hat{R}^\dagger(t) + \hat{R}(t)\hat{\mathcal{H}}(t)\hat{R}^\dagger(t)$, where $\hat{R}=~\exp[i \omega^d(\hat{\sigma}^z_1+\hat{\sigma}^z_2)t/2]$. The time-independent Hamiltonian can be expressed as</p>
+
+<div class="equation" id="eqn:CNOT_Ham">
+$$
+\mathring{\mathcal{H}}=
+\begin{pmatrix}
+\lambda_\parallel &amp; -i \alpha_-^* &amp; -i \beta_+^* &amp; 0\\
+i \alpha_- &amp; -\lambda_\perp &amp; 0 &amp; -i\beta_-^*\\
+i\beta_+ &amp; 0 &amp; \lambda_\perp &amp; -i\alpha_+^*\\
+0 &amp; i\beta_- &amp; i\alpha_+ &amp;  -\lambda_\parallel\\
+\end{pmatrix},
+$$
+</div>
+
+<p>with $\lambda_\parallel=2 \tilde{E}^\sigma_\text{avg}-\omega^d$, $\lambda_\perp = \delta \tilde{E}^{\sigma}+\frac{\mathcal{J}^2}{2\delta \tilde{E}^{\sigma}}$, and the effective driving amplitudes</p>
+
+<div class="equation" id="eq:eq5">
+$$
+\alpha_\pm \approx \frac{1}{4}\bigg[\pm D^{\sigma}_{2}\frac{\mathcal{J}}{2\delta\tilde{E}^\sigma}+ D^{\sigma}_{1}\bigg]e^{i\phi}
+$$
+</div>
+
+<p>and</p>
+
+<div class="equation" id="eq:eq6">
+$$
+\beta_\pm \approx \frac{1}{4}\bigg[\pm D^{\sigma}_{1}\frac{\mathcal{J}}{2\delta\tilde{E}^\sigma}+ D^{\sigma}_{2} \bigg]e^{i\phi}.
+$$
+</div>
+
+<p>In what follows we rely on the hybridized driving amplitudes to generate single-shot remote entanglement.</p>
+
+<p><em>Resonant non-local CNOT gate.</em> One route to entangling two spins is to perform a gate with conditional rotations. For a CNOT gate we define the spin in DQD1 to be the <em>target</em> and the spin in DQD2 to be the <em>control</em>. Using the basis above, this operation is represented by the matrix</p>
+
+<div class="equation" id="eq:CNOTmat">
+$$
+U_\text{CNOT} =
+     \begin{pmatrix}
+      0 &amp; 1 &amp; 0 &amp; 0\\
+      1 &amp; 0 &amp; 0 &amp; 0\\
+      0 &amp; 0 &amp; 1 &amp; 0\\
+      0 &amp; 0 &amp; 0 &amp; 1
+     \end{pmatrix}.
+$$
+</div>
+
+<p>To model this operation we require the target spin to flip if the control is spin-up and an identity operation if the control is spin-down. To resonantly drive the spin at DQD1 we choose a driving frequency that is determined by the energy separation between $|\uparrow\uparrow\rangle$ and $|\widetilde{\downarrow\uparrow}\rangle$: $\omega^d-\delta\omega^d=\lambda_\parallel + \lambda_\perp$. On resonance, $\delta\omega^d=0$, the $\beta$ transitions couple states split in energy by the relatively large quantity $2 \delta \tilde{E}^{\sigma}$. As long as the off-resonant transitions are weakly coupled ($\beta_\pm \ll \delta\tilde{E}^\sigma$) the Hamiltonian expressed in Eq. (<a href="#eqn:CNOT_Ham">4</a>) is effectively block diagonal, with both $\{|\uparrow\uparrow\rangle,|\widetilde{\downarrow\uparrow}\rangle\}$ and $\{|\widetilde{\uparrow\downarrow}\rangle,|\downarrow\downarrow\rangle\}$ blocks producing full Rabi oscillations at frequencies $\Omega_-=2|\alpha_-|$ and $\Omega_+=2|\alpha_+|$ respectively. The time required for maximum population transfer between the states $|\uparrow\uparrow\rangle\leftrightarrow|\downarrow\uparrow\rangle$ is $t_\text{CNOT}=(2m+1)\pi/\Omega_-$, for integer $m$.</p>
+
+<p>Treating the resonant blocks individually we calculate the unitary operator for each. With the aim of obtaining the unitary in Eq. (<a href="#eq:CNOTmat">7</a>), the drive phase should be set such that the rotation is about the $\pm$x-axis: $\phi=(2\ell+1)\pi/2$, for integer $\ell$. Under this condition, the control spin-up block evolves as</p>
+
+<div class="equation" id="eqn:CNOT_unitary2up">
+$$
+U_{2=\uparrow}=e^{-i f_1 t}
+    \bigg[ \cos\bigg(\frac{\Omega_-t}{2}\bigg)\mathbb{1} + i^{2\ell+1} \sin\bigg(\frac{\Omega_-t}{2}\bigg) \sigma^x\bigg],
+$$
+</div>
+
+<p>and the block for control spin down evolves as</p>
+
+<div class="equation" id="eqn:CNOT_unitary2down">
+$$
+U_{2=\downarrow}=e^{-i f_2 t}
+    \bigg[ \cos\bigg(\frac{\Omega_+t}{2}\bigg)\mathbb{1} + i^{2\ell+1} \sin\bigg(\frac{\Omega_+t}{2}\bigg) \sigma^x\bigg].
+$$
+</div>
+
+<p>The dynamic phase is dependent on the energy of the corresponding block, $f_1 = \delta \tilde{E}^\sigma + \mathcal{J}^2/2\delta \tilde{E}^\sigma$ and $f_2 =- \delta \tilde{E}^\sigma - \mathcal{J}^2/2\delta \tilde{E}^\sigma$. The choice of phase allows one to write the total unitary ($U=U_{2=\downarrow}\oplus U_{2=\uparrow}$) in the form of the CNOT unitary shown in Eq. (<a href="#eq:CNOTmat">7</a>), up to local rotations about the z-axis. However, one could generate a conditional rotation about any arbitrary axis in the x-y plane by making the substitution $\sigma^x\to\sin\phi\;\sigma^x+\cos\phi\;\sigma^y$.</p>
+
+<p>Under a symmetric drive ($b^y_1=b^y_2$) the difference in Rabi frequency between the upper and lower block differs only by the small quantity $\mathcal{J}/\delta\tilde{E}^\sigma$, leading to indiscriminate rotation of the target spin. In order to generate a single-shot conditional rotation of the target spin, the Rabi frequencies $\Omega_+$ and $\Omega_-$ should be out of phase. The necessary condition is then</p>
+
+<div class="equation" id="eqn:CNOT_RabiSync">
+$$
+\Omega_-=\frac{2m+1}{2n}\Omega_+,
+$$
+</div>
+
+<p>with integer $n$. This can be done by adjusting the ratio of the ac driving strengths such that</p>
+
+<div class="equation" id="eqn:SyncCond">
+$$
+\frac{D^\sigma_{1}}{D^\sigma_{2}}=-\frac{1+2(m+n)}{1+2(m-n)}\frac{\mathcal{J}}{2 \delta \tilde{E}^\sigma_z},
+$$
+</div>
+
+<p>where $m$ and $n$ obey Eq. (<a href="#eqn:CNOT_RabiSync">10</a>). The unitary operator up to a global phase at time $t_\text{CNOT}$ is</p>
+
+<div class="equation" id="eq:eq12">
+$$
+U(t_\text{CNOT})=e^{i(\Phi_\text{dyn} + \Phi_\text{hol}) \sigma^z_2}U_\text{CNOT}.
+$$
+</div>
+
+<p>The time dependent dynamic phase is $\Phi_\text{dyn}=\frac{f_2-f_1}{2}t_\text{CNOT}$ and the time-independent holonomic phase is $\Phi_\text{hol}=\frac{\pi}{2}[(2\ell+1)/2+m-n]$.</p>
+
+<figure id="fig:CNOT">
+        <img src="CCSQ_transitionProb_v1.png" alt="Figure 3" loading="lazy">
+        <figcaption>Figure 3. Calculated transition probabilities for the synchronized $|2=\uparrow\rangle$ (blue) and $|2=\downarrow\rangle$ (red) blocks. The relevant parameters are chosen to be experimentally realizable with a driving strength $D^\sigma_{2}/h=100$ MHz. The integers $m=0$ and $n=1$ are chosen to minimize the gate time, shown here to be $t_\text{CNOT}=162$ ns. Parameters: $t_c/2\pi$=3.9 GHz, $B^z_\text{avg}/2\pi$=6.3 GHz, $\delta B^z/2\pi$=300 MHz, $b^x/2\pi$=780 MHz, $\omega_c/2\pi$=5.6 GHz, $g_c/2\pi$=190 MHz.</figcaption>
+</figure>
+
+<p>Figure <a href="#fig:CNOT">3</a> shows the synchronized Rabi oscillations for the driven CNOT gate. System parameters were chosen to represent realistic experimental conditions and are quoted in the figure caption. The analytic expressions derived above for the unitary evolution ignore the off-resonant transitions with coupling $\beta_\pm$ in Eq. (<a href="#eqn:CNOT_Ham">4</a>). In general, strong driving will increase population transfer through the off-resonant channels impacting the coherent average gate fidelity $\bar{F}_c$. Numerical calculations of this fidelity show that for a modest synchronized drive strength of $D^\sigma_2=100$ MHz we predict gate times of $t_\text{CNOT}=162$ ns with coherent average fidelity $\bar{F}_c=0.99$. In principle, driving with this strength requires a field gradient with magnitude near 3.5 mT, a requirement well within the typical strength of contemporary micromagnetics ($\sim$1 mT/nm).</p>
+
+<p><em>Discussion and summary.</em> In addition to the parasitic effects of off-resonant channels, coupling to the environment also reduces the fidelity of the gate. Since the spin qubit couples to the cavity through a virtual charge qubit, the gate is vulnerable to both electron-phonon interaction as well as photonic loss through the cavity. However, since the charge qubit and photons are both virtual the influence on gate fidelity is less pronounced than for resonant coupling. To estimate these effects we calculate the average fidelity <span class="cite">[<a href="#ref-Nielsen2002">42</a>]</span> in the presence of cavity loss, electron-phonon coupling, and general spin decoherence. The master equation in the dispersive basis then has the form</p>
+
+<div class="equation" id="eqn:MastEqn">
+$$
+\begin{aligned}
+    \frac{d}{dt}\hat{\rho}^\sigma(t) = &amp;-i [\hat{\mathcal{H}}(t),\hat{\rho}^\sigma (t)] +\frac{\kappa}{2}\sum_j\frac{g^\sigma_j}{\Delta_j}\mathcal{D}[\hat{\sigma}^-_j]\hat{\rho}^\sigma (t)\\
+    &amp;+\frac{\gamma_p}{2}\sum_j\sin(\bar{\theta}_j)\mathcal{D}[\hat{\sigma}^-_j]\hat{\rho}^\sigma (t)\\
+    &amp;+ \frac{\nu_{T^*_2}}{2}\sum_j\mathcal{D}[\hat{\sigma}_j^z]\hat{\rho}^\sigma (t),
+\end{aligned}
+$$
+</div>
+
+<p>where $\mathcal{D}[\hat{o}]$ represents the Lindblad superoperator $\mathcal{D}[\hat{o}]\rho=2\hat{o}\rho \hat{o}^\dagger+\{\hat{o}^\dagger \hat{o},\rho\}$, and $\{...\}$ represents the anti-commutator. The density matrix $\hat{\rho}^\sigma$ corresponds to the two-spin subspace in the dispersive adiabatic basis, and we assume the environment to be at zero temperature. The fist term describes coherent evolution of the system, the second term describes loss through the cavity at rate $\kappa$, the third term accounts for the relaxation due to electron-phonon coupling at rate $\gamma_p$, and the last term expresses general dephasing of the spin at rate $\nu_{T^*_2}$.</p>
+
+<p>An average measure of how well a trace-preserving quantum operation, $\mathcal{E}$, approximates a quantum gate, $U$, is defined as $\bar{F}(\mathcal{E},U)\equiv \int d\psi \langle\psi|U^\dagger\mathcal{E}(\psi)U|\psi\rangle$. Making use of the entanglement fidelity <span class="cite">[<a href="#ref-Schumacher1996">43</a>]</span>, $F_e$, the average fidelity in a four-dimensional Hilbert space can be written in a compact form <span class="cite">[<a href="#ref-Nielsen2002">42</a>]</span>: $\bar{F}(\mathcal{E},U) = (\sum_j \text{Tr}[UU^\dagger_jU^\dagger\mathcal{E}(U_j)]+16)/80$. Here we introduce a basis of unitary operators, $U_j = X^k Z^l$, on the four-dimensional two-qubit subspace, where $X|j\rangle = |j\oplus 1\rangle$ and $Z|j\rangle = e^{2\pi i j /4}|j\rangle$ are defined on computational basis states $|0\rangle,...,|3\rangle$. Here the operation $\oplus$ represents addition modulo 4.</p>
+
+<p>The average fidelity and gate time are plotted in Fig. <a href="#fig:FvsTvsD">4</a> as a function of the synchronized drive strength $D^\sigma_{2,\text{sync}}$ for three sets of realistic parameters. Strong driving leads to faster gate times (shown by the blue line), but the fidelity is limited by increased transitions through off-resonant channels. However, weaker driving requires the system to be highly coherent, and if the gate time is too long incoherent processes become significant and the fidelity again suffers. Competition between off-resonant evolution and dissipation results in an optimal drive strength that maximizes gate fidelity. The optimal synchronized drive strength for the set of parameters shown in Fig. (<a href="#fig:FvsTvsD">4</a>) are within the range $D^\sigma_{2,\text{sync}}\approx 95-120$ MHz. The top-end parameters yield an average fidelity of $\bar{F}=0.94$, as shown by the green dot-dashed line. However, using rather conservative values <span class="cite">[<a href="#ref-Sigillito2019">44</a>,<a href="#ref-Stano2021">45</a>]</span> still yields an average fidelity above 90% ($\bar{F}=0.905$) as shown by the dotted green line.</p>
+
+<figure id="fig:FvsTvsD">
+        <img src="CCSQ_FvsTvsD_v2.png" alt="Figure 4" loading="lazy">
+        <figcaption>Figure 4. The gate time and average fidelity as a function of synchronized drive strength for $\nu_{T^*_2}=100$ kHz with $\gamma_p=4$ MHz (green dotted) and $\gamma_p=1$ MHz (green solid), and $\nu_{T^*_2}=50$ kHz for $\gamma_p=1$ (green dot-dashed). Additional parameters: $t_c/2\pi$=3.9 GHz, $B^z_\text{avg}/2\pi$=6.3 GHz, $\delta B^z/2\pi$=300 MHz, $b^x/2\pi$=780 MHz, $\omega_c/2\pi$=5.6 GHz, $g_c/2\pi$=190 MHz, and $\kappa=1.5$ MHz.</figcaption>
+</figure>
+
+<p>With recently achieved electric dipole coupling strengths $g_c/2\pi\approx 190$ MHz using high impedance resonators <span class="cite">[<a href="#ref-Harvey-Collard2022">34</a>]</span>, we predict gate fidelities well above 90% in the presence of cavity loss, phonon emission, and spin dephasing. Gate times around 150 ns are relatively fast compared to other non-local entanglement operations, such as the cross-resonance gate <span class="cite">[<a href="#ref-Rigetti2010">37</a>]</span> which is typically 300-400 ns. Along with single-spin operations this work elucidates the potential for all electrical remote entanglement in solid-state DQD spin qubits, and enhances the prospects of these systems for quantum information processing.</p>
+
+<h3 class="endmatter" id="acknowledgments">// acknowledgments //</h3>
+
+<p>We would like to acknowledge J. Mielke for useful and valuable discussions.</p>
+
+    <h3 class="endmatter">// references //</h3>
+    <ol class="refs">
+<li id="ref-Loss1998"><span class="rn">1</span>D. Loss and D. P. DiVincenzo, “Quantum computation with quantum dots,” <a href="https://doi.org/10.1103/PhysRevA.57.120" rel="noopener">Phys. Rev. A <strong>57</strong>, 120 (1998)</a>.</li>
+<li id="ref-Hanson2007"><span class="rn">2</span>R. Hanson, L. P. Kouwenhoven, J. R. Petta, S. Tarucha, and L. M. K. Vandersypen, “Spins in few-electron quantum dots,” <a href="https://doi.org/10.1103/RevModPhys.79.1217" rel="noopener">Rev. Mod. Phys. <strong>79</strong>, 1217 (2007)</a>.</li>
+<li id="ref-Ono2002"><span class="rn">3</span>K. Ono, D. G. Austing, Y. Tokura, and S. Tarucha, “Current rectification by Pauli exclusion in a weakly coupled double quantum dot system,” <a href="https://doi.org/10.1126/science.1070958" rel="noopener">Science <strong>297</strong>, 1313–1317 (2002)</a>.</li>
+<li id="ref-Elzerman2004"><span class="rn">4</span>JM Elzerman, R Hanson, LH Willems Van Beveren, B Witkamp, LMK Vandersypen, and Leo P Kouwenhoven, “Single-shot read-out of an individual electron spin in a quantum dot,” <a href="https://doi.org/10.1038/nature02693" rel="noopener">Nature <strong>430</strong>, 431–435 (2004)</a>.</li>
+<li id="ref-Veldhorst2014"><span class="rn">5</span>M. Veldhorst, J. C. C. Hwang, C. H. Yang, A. W. Leenstra, B. de Ronde, J. P. Dehollain, J. T. Muhonen, F. E. Hudson, K. M. Itoh, A. Morello, and A. S. Dzurak, “An addressable quantum dot qubit with fault-tolerant control-fidelity,” <a href="https://doi.org/10.1038/nnano.2014.216" rel="noopener">Nat. Nanotechnol. <strong>9</strong>, 981–985 (2014)</a>.</li>
+<li id="ref-Tokura2006"><span class="rn">6</span>Y. Tokura, W. G. van der Wiel, T. Obata, and S. Tarucha, “Coherent single electron spin control in a slanting Zeeman field,” <a href="https://doi.org/10.1103/PhysRevLett.96.047202" rel="noopener">Phys. Rev. Lett. <strong>96</strong>, 047202 (2006)</a>.</li>
+<li id="ref-Pioro-Ladriere2008"><span class="rn">7</span>M. Pioro-Ladriere, T. Obata, Y. Tokura, Y.-S. Shin, T. Kubo, K. Yoshida, T. Taniyama, and S. Tarucha, “Electrically driven single-electron spin resonance in a slanting Zeeman field,” <a href="https://doi.org/10.1038/nphys1053" rel="noopener">Nat. Phys. <strong>4</strong>, 776–779 (2008)</a>.</li>
+<li id="ref-Takeda2016"><span class="rn">8</span>K. Takeda, J. Kamioka, T. Otsuka, J. Yoneda, T. Nakajima, M. R. Delbecq, S. Amaha, G. Allison, T. Kodera, S. Oda, and S. Tarucha, “A fault-tolerant addressable spin qubit in a natural silicon quantum dot,” <a href="https://doi.org/10.1126/sciadv.1600694" rel="noopener">Sci. Adv. <strong>2</strong>, e1600694 (2016)</a>.</li>
+<li id="ref-Yoneda2018"><span class="rn">9</span>J. Yoneda, K. Takeda, T. Otsuka, T. Nakajima, M. R. Delbecq, G. Allison, T. Honda, T. Kodera, S. Oda, Y. Hoshi, N. Usami, K. M. Itoh, and S. Tarucha, “A quantum-dot spin qubit with coherence limited by charge noise and fidelity higher than 99.9%,” <a href="https://doi.org/10.1038/s41565-017-0014-x" rel="noopener">Nat. Nanotechnol. <strong>13</strong>, 102–106 (2018)</a>.</li>
+<li id="ref-Mills2022"><span class="rn">10</span>A. R. Mills, C. R. Guinn, M. M. Feldman, A. J. Sigillito, M. J. Gullans, M. Rakher, J. Kerckhoff, C. A. C. Jackson, and J. R. Petta, “High fidelity state preparation, quantum control, and readout of an isotopically enriched silicon spin qubit,” <a href="https://doi.org/10.48550/arXiv.2204.09551" rel="noopener">arXiv (2022a), 10.48550/arXiv.2204.09551</a>.</li>
+<li id="ref-Xue2022"><span class="rn">11</span>X. Xue, M. Russ, N. Samkharadze, B. Undseth, A. Sammak, G. Scappucci, and L. M. K. Vandersypen, “Quantum logic with spin qubits crossing the surface code threshold,” <a href="https://doi.org/10.1038/s41586-021-04273-w" rel="noopener">Nature <strong>601</strong>, 343–347 (2022)</a>.</li>
+<li id="ref-Noiri2022"><span class="rn">12</span>A. Noiri, K. Takeda, T. Nakajima, T. Kobayashi, A. Sammak, G. Scappucci, and S. Tarucha, “Fast universal quantum gate above the fault-tolerance threshold in silicon,” <a href="https://doi.org/10.1038/s41586-021-04182-y" rel="noopener">Nature <strong>601</strong>, 338–342 (2022)</a>.</li>
+<li id="ref-Mills2022a"><span class="rn">13</span>A. R. Mills, C. R. Guinn, M. J. Gullans, A. J. Sigillito, M. M. Feldman, E. Nielsen, and J. R. Petta, “Two-qubit silicon quantum processor with operation fidelity exceeding 99%,” <a href="https://doi.org/10.1126/sciadv.abn5130" rel="noopener">Sci. Adv. <strong>8</strong>, eabn5130 (2022b)</a>.</li>
+<li id="ref-Fowler2012"><span class="rn">14</span>A. G. Fowler, M. Mariantoni, J. M. Martinis, and A. N. Cleland, “Surface codes: Towards practical large-scale quantum computation,” <a href="https://doi.org/10.1103/PhysRevA.86.032324" rel="noopener">Phys. Rev. A <strong>86</strong>, 032324 (2012)</a>.</li>
+<li id="ref-Byrnes2008"><span class="rn">15</span>T. Byrnes, N. Y. Kim, K. Kusudo, and Y. Yamamoto, “Quantum simulation of Fermi-Hubbard models in semiconductor quantum-dot arrays,” <a href="https://doi.org/10.1103/PhysRevB.78.075320" rel="noopener">Phys. Rev. B <strong>78</strong>, 075320 (2008)</a>.</li>
+<li id="ref-Fujita2017"><span class="rn">16</span>T. Fujita, T. A. Baart, C. Reichl, W. Wegscheider, and L. M. K. Vandersypen, “Coherent shuttle of electron-spin states,” <a href="https://doi.org/10.1038/s41534-017-0024-4" rel="noopener">NPJ Quantum Inf. <strong>3</strong>, 22 (2017)</a>.</li>
+<li id="ref-Flentje2017"><span class="rn">17</span>H. Flentje, P.-A. Mortemousque, R. Thalineau, A. Ludwig, A. D. Wieck, C. Bäuerle, and T. Meunier, “Coherent long-distance displacement of individual electron spins,” <a href="https://doi.org/10.1038/s41467-017-00534-3" rel="noopener">Nat. Commun. <strong>8</strong>, 501 (2017)</a>.</li>
+<li id="ref-Mukhopadhyay2018"><span class="rn">18</span>U. Mukhopadhyay, J. P. Dehollain, C. Reichl, W. Wegscheider, and L. M. K. Vandersypen, “A 2$\times$ 2 quantum dot array with controllable inter-dot tunnel couplings,” <a href="https://doi.org/10.1063/1.5025928" rel="noopener">Appl. Phys. Lett. <strong>112</strong>, 183505 (2018)</a>.</li>
+<li id="ref-Mortemousque2020"><span class="rn">19</span>P.-A. Mortemousque, E. Chanrion, B. Jadot, H. Flentje, A. Ludwig, A. D. Wieck, M. Urdampilleta, C. Bäuerle, and T. Meunier, “Coherent control of individual electron spins in a two-dimensional quantum dot array,” <a href="https://doi.org/10.1038/s41565-020-00816-w" rel="noopener">Nat. Nanotechnol. <strong>16</strong>, 296–301 (2020)</a>.</li>
+<li id="ref-Vandersypen2017"><span class="rn">20</span>L. M. K. Vandersypen, H. Bluhm, J. S. Clarke, A. S. Dzurak, R. Ishihara, A. Morello, D. J. Reilly, L. R. Schreiber, and M. Veldhorst, “Interfacing spin qubits in quantum dots and donors—hot, dense, and coherent,” <a href="https://doi.org/10.1038/s41534-017-0038-y" rel="noopener">NPJ Quantum Inf. <strong>3</strong>, 34 (2017)</a>.</li>
+<li id="ref-Hassler2015"><span class="rn">21</span>F. Hassler, G. Catelani, and H. Bluhm, “Exchange interaction of two spin qubits mediated by a superconductor,” <a href="https://doi.org/10.1103/PhysRevB.92.235401" rel="noopener">Phys. Rev. B <strong>92</strong>, 235401 (2015)</a>.</li>
+<li id="ref-Tosi2017"><span class="rn">22</span>G. Tosi, F. A. Mohiyaddin, V. Schmitt, S. Tenberg, R. Rahman, G. Klimeck, and A. Morello, “Silicon quantum processor with robust long-distance qubit couplings,” <a href="https://doi.org/10.1038/s41467-017-00378-x" rel="noopener">Nat. Commun. <strong>8</strong>, 450 (2017)</a>.</li>
+<li id="ref-Kimble2008"><span class="rn">23</span>H. J. Kimble, “The quantum internet,” <a href="https://doi.org/10.1038/nature07127" rel="noopener">Nature <strong>453</strong>, 1023–1030 (2008)</a>.</li>
+<li id="ref-Schuetz2015"><span class="rn">24</span>M. J. A. Schuetz, E. M. Kessler, G. Giedke, L. M. K. Vandersypen, M. D. Lukin, and J. I. Cirac, “Universal quantum transducers based on surface acoustic waves,” <a href="https://doi.org/10.1103/PhysRevX.5.031031" rel="noopener">Phys. Rev. X <strong>5</strong>, 031031 (2015)</a>.</li>
+<li id="ref-Majer2007"><span class="rn">25</span>J. Majer, J. M. Chow, J. M. Gambetta, J. Koch, B. R. Johnson, J. A. Schreier, L. Frunzio, D. I. Schuster, A. A. Houck, A. Wallraff, A. Blais, M. H. Devoret, S. M. Girvin, and R. J. Schoelkopf, “Coupling superconducting qubits via a cavity bus,” <a href="https://doi.org/10.1038/nature06184" rel="noopener">Nature <strong>449</strong>, 443–447 (2007)</a>.</li>
+<li id="ref-Childress2004"><span class="rn">26</span>L. Childress, A. S. Sørensen, and M. D. Lukin, “Mesoscopic cavity quantum electrodynamics with quantum dots,” <a href="https://doi.org/10.1103/PhysRevA.69.042302" rel="noopener">Phys. Rev. A <strong>69</strong>, 042302 (2004)</a>.</li>
+<li id="ref-Burkard2006"><span class="rn">27</span>G. Burkard and A. Imamoglu, “Ultra-long-distance interaction between spin qubits,” <a href="https://doi.org/10.1103/PhysRevB.74.041307" rel="noopener">Phys. Rev. B <strong>74</strong>, 041307 (2006)</a>.</li>
+<li id="ref-Srinivasa2016"><span class="rn">28</span>V. Srinivasa, J. M. Taylor, and C. Tahan, “Entangling distant resonant exchange qubits via circuit quantum electrodynamics,” <a href="https://doi.org/10.1103/PhysRevB.94.205421" rel="noopener">Phys. Rev. B <strong>94</strong>, 205421 (2016)</a>.</li>
+<li id="ref-Burkard2020"><span class="rn">29</span>G. Burkard, M. J. Gullans, X. Mi, and J. R. Petta, “Superconductor–semiconductor hybrid-circuit quantum electrodynamics,” <a href="https://doi.org/10.1038/s42254-019-0135-2" rel="noopener">Nat. Rev. Phys. <strong>2</strong>, 129–140 (2020)</a>.</li>
+<li id="ref-Cottet2010"><span class="rn">30</span>A. Cottet and T. Kontos, “Spin quantum bit with ferromagnetic contacts for circuit QED,” <a href="https://doi.org/10.1103/PhysRevLett.105.160502" rel="noopener">Phys. Rev. Lett. <strong>105</strong>, 160502 (2010)</a>.</li>
+<li id="ref-Samkharadze2018"><span class="rn">31</span>N. Samkharadze, G. Zheng, N. Kalhor, D. Brousse, A. Sammak, U. C. Mendes, A. Blais, G. Scappucci, and L. M. K. Vandersypen, “Strong spin-photon coupling in silicon,” <a href="https://doi.org/10.1126/science.aar4054" rel="noopener">Science <strong>359</strong>, 1123–1127 (2018)</a>.</li>
+<li id="ref-Mi2018"><span class="rn">32</span>X. Mi, M. Benito, S. Putz, D. M. Zajac, J. M. Taylor, G. Burkard, and J. R. Petta, “A coherent spin–photon interface in silicon,” <a href="https://doi.org/10.1038/nature25769" rel="noopener">Nature <strong>555</strong>, 599–603 (2018)</a>.</li>
+<li id="ref-Borjans2020"><span class="rn">33</span>F. Borjans, X. G. Croot, X. Mi, M. J. Gullans, and J. R. Petta, “Resonant microwave-mediated interactions between distant electron spins,” <a href="https://doi.org/10.1038/s41586-019-1867-y" rel="noopener">Nature <strong>577</strong>, 195–198 (2020)</a>.</li>
+<li id="ref-Harvey-Collard2022"><span class="rn">34</span>P. Harvey-Collard, J. Dijkema, G. Zheng, A. Sammak, G. Scappucci, and L. M. K. Vandersypen, “Coherent spin-spin coupling mediated by virtual microwave photons,” <a href="https://doi.org/10.1103/PhysRevX.12.021026" rel="noopener">Phys. Rev. X <strong>12</strong>, 021026 (2022)</a>.</li>
+<li id="ref-Benito2019a"><span class="rn">35</span>M. Benito, J. R. Petta, and G. Burkard, “Optimized cavity-mediated dispersive two-qubit gates between spin qubits,” <a href="https://doi.org/10.1103/PhysRevB.100.081412" rel="noopener">Phys. Rev. B <strong>100</strong>, 081412 (2019)</a>.</li>
+<li id="ref-Warren2019"><span class="rn">36</span>A. Warren, E. Barnes, and S. E. Economou, “Long-distance entangling gates between quantum dot spins mediated by a superconducting resonator,” <a href="https://doi.org/10.1103/PhysRevB.100.161303" rel="noopener">Phys. Rev. B <strong>100</strong>, 161303 (2019)</a>.</li>
+<li id="ref-Rigetti2010"><span class="rn">37</span>C. Rigetti and M. Devoret, “Fully microwave-tunable universal gates in superconducting qubits with linear couplings and fixed transition frequencies,” <a href="https://doi.org/10.1103/PhysRevB.81.134507" rel="noopener">Phys. Rev. B <strong>81</strong>, 134507 (2010)</a>.</li>
+<li id="ref-Russ2018"><span class="rn">38</span>M. Russ, D. M. Zajac, A. J. Sigillito, F. Borjans, J. M. Taylor, J. R. Petta, and G. Burkard, “High-fidelity quantum gates in Si/SiGe double quantum dots,” <a href="https://doi.org/10.1103/PhysRevB.97.085421" rel="noopener">Phys. Rev. B <strong>97</strong>, 085421 (2018)</a>.</li>
+<li id="ref-Kawakami2014"><span class="rn">39</span>E. Kawakami, P. Scarlino, D. R. Ward, F. R. Braakman, D. E. Savage, M. G. Lagally, M. Friesen, S. N. Coppersmith, M. A. Eriksson, and L. M. K. Vandersypen, “Electrical control of a long-lived spin qubit in a Si/SiGe quantum dot,” <a href="https://doi.org/10.1038/nnano.2014.153" rel="noopener">Nat. Nanotechnol. <strong>9</strong>, 666–670 (2014)</a>.</li>
+<li id="ref-Zajac2018"><span class="rn">40</span>D. M. Zajac, A. J. Sigillito, M. Russ, F. Borjans, J. M. Taylor, G. Burkard, and J. R. Petta, “Resonantly driven CNOT gate for electron spins,” <a href="https://doi.org/10.1126/science.aao5965" rel="noopener">Science <strong>359</strong>, 439–442 (2018)</a>.</li>
+<li id="ref-Bonsen2022"><span class="rn">41</span>T. Bonsen, P. Harvey-Collard, M. Russ, J. Dijkema, A. Sammak, G. Scappucci, and L. M. K. Vandersypen, “Probing the Jaynes-Cummings ladder with spin circuit quantum electrodynamics,” <a href="https://doi.org/10.48550/arXiv.2203.05668" rel="noopener">arXiv (2022), 10.48550/arXiv.2203.05668</a>.</li>
+<li id="ref-Nielsen2002"><span class="rn">42</span>M. A. Nielsen, “A simple formula for the average gate fidelity of a quantum dynamical operation,” <a href="https://doi.org/10.1016/S0375-9601(02)01272-0" rel="noopener">Phys. Lett., A <strong>303</strong>, 249–252 (2002)</a>.</li>
+<li id="ref-Schumacher1996"><span class="rn">43</span>B. Schumacher, “Sending entanglement through noisy quantum channels,” <a href="https://doi.org/10.1103/PhysRevA.54.2614" rel="noopener">Phys. Rev. A <strong>54</strong>, 2614 (1996)</a>.</li>
+<li id="ref-Sigillito2019"><span class="rn">44</span>A. J. Sigillito, M. J. Gullans, L. F. Edge, M. Borselli, and J. R. Petta, “Coherent transfer of quantum information in a silicon double quantum dot using resonant swap gates,” <a href="https://doi.org/10.1038/s41534-019-0225-0" rel="noopener">NPJ Quantum Inf. <strong>5</strong>, 110 (2019)</a>.</li>
+<li id="ref-Stano2021"><span class="rn">45</span>P. Stano and D. Loss, “Review of performance metrics of spin qubits in gated semiconducting nanostructures,” <a href="https://doi.org/10.48550/arXiv.2107.06485" rel="noopener">arXiv (2021), 10.48550/arXiv.2107.06485</a>.</li>
+    </ol>
+
+    </div>
+
+    <div class="article-end">
+        <span>✦</span><br>
+        <a href="../" class="article-back">← back to papers</a>
+    </div>
+
+</main>
+<footer>
+    &copy; 2026 <span>magmacrunch media</span>
+</footer>
+
+<script src="../../../../nav.js?v=17bba9c8"></script>
+<script>
+window.addEventListener("pageshow",function(e){if(e.persisted)location.reload()});
+</script>
+</body>
+</html>
