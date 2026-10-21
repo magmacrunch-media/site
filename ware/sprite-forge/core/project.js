@@ -9,12 +9,18 @@
 // The key is shared across every sprite in the project rather than per-sprite,
 // so a character's eight facings cannot drift onto different palettes.
 //
+// `slots` names a part of a character by its base color, and `ramps` says
+// which colors belong to it: per slot, the shade steps it uses, each with the
+// hex the pixels actually hold. Membership is per color, not per pixel,
+// because that is what a slot has always meant here: a recolor rewrites every
+// pixel of those shades. engines/tunacan reads `ramps` to recolor by name.
+//
 // Pure: no DOM, no filesystem, no canvas. The shell reads and writes the bytes.
 
 window.SpriteForge = window.SpriteForge || {};
 window.SpriteForge.project = (function () {
 
-    const { nearestHex } = window.SpriteForge.color;
+    const { nearestHex, shadeHex } = window.SpriteForge.color;
     const FR = window.SpriteForge.frames;
 
     const FORMAT = 'sprite-forge/1';
@@ -26,11 +32,15 @@ window.SpriteForge.project = (function () {
         'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789+-*/#$%&@!?<>[]{}()~^=_,;:|';
     const TRANSPARENT = '.';
 
+    // The steps a template shades by, deep shadow to highlight.
+    const MIN_STEP = -2, MAX_STEP = 2;
+
     /** A project with one empty sprite, for File > New. */
     function blank(w, h, palette) {
         return {
             palette: [...palette],
             slots: null,
+            ramps: null,
             template: null,
             sprites: [newSprite('sprite', w, h, palette)],
         };
@@ -45,6 +55,43 @@ window.SpriteForge.project = (function () {
             holds: [1],
             frames: [Array.from({ length: h }, () => Array(w).fill(null))],
         };
+    }
+
+    /**
+     * A full ramp for every slot, copied, or null when there are no slots.
+     *
+     * A slot with no ramp gets its base alone, `[[0, base]]`, which is what a
+     * file from before ramps existed means: it recorded the base and nothing
+     * else, so the base is all a recolor can honestly claim. A ramp for a slot
+     * that is not in `slots` is dropped, because nothing can recolor it.
+     */
+    function rampsFor(slots, ramps) {
+        if (!slots) return null;
+        const out = {};
+        for (const [name, base] of Object.entries(slots))
+            out[name] = ramps && Array.isArray(ramps[name]) && ramps[name].length
+                ? ramps[name].map(([step, hex]) => [step, hex])
+                : [[0, base]];
+        return out;
+    }
+
+    /**
+     * Recoloring a slot to `newBase`: the color map to apply to the art, and
+     * the slot's new ramp.
+     *
+     * The map is keyed by the ramp's own hexes rather than by recomputing
+     * shades of the old base, because after a retheme or a reduce the pixels
+     * no longer hold `shadeHex(oldBase, step)`; they hold whatever the ramp
+     * says, since remap() moves the two together.
+     */
+    function recolorRamp(ramp, newBase) {
+        const map = {};
+        const next = ramp.map(([step, hex]) => {
+            const to = shadeHex(newBase, step).toLowerCase();
+            map[hex] = to;
+            return [step, to];
+        });
+        return { map, ramp: next };
     }
 
     /**
@@ -116,6 +163,10 @@ window.SpriteForge.project = (function () {
             palette: palette ? [...palette] : p.palette.map(at),
             slots: p.slots
                 ? Object.fromEntries(Object.entries(p.slots).map(([k, v]) => [k, at(v)]))
+                : null,
+            ramps: p.ramps
+                ? Object.fromEntries(Object.entries(p.ramps)
+                    .map(([k, r]) => [k, r.map(([step, hex]) => [step, at(hex)])]))
                 : null,
             template: p.template || null,
             sprites: p.sprites.map(s => ({
@@ -215,6 +266,10 @@ window.SpriteForge.project = (function () {
             format: FORMAT,
             palette: [...p.palette],
             slots: p.slots ? { ...p.slots } : null,
+            // Only beside slots, so a freehand project's file is unchanged by
+            // this field existing. Written in full even when it says no more
+            // than the base, so a reader never has to know the default.
+            ...(p.slots ? { ramps: rampsFor(p.slots, p.ramps) } : {}),
             template: p.template || null,
             key,
             sprites: p.sprites.map(s => {
@@ -249,6 +304,45 @@ window.SpriteForge.project = (function () {
         if (o.format !== FORMAT) errs.push(`format is ${JSON.stringify(o.format)}, expected "${FORMAT}"`);
         if (!Array.isArray(o.sprites) || !o.sprites.length) errs.push('no sprites');
         if (o.key && typeof o.key !== 'object') errs.push('key is not an object');
+
+        // Slots and ramps are what engines/tunacan recolors by, so a wrong one
+        // is refused here rather than recoloring the wrong pixels there. A
+        // ramp hex missing from the key is allowed (a shade the art stopped
+        // using), and so is one hex in two slots: a theme can snap two shades
+        // together, and refusing that would make a retheme unsaveable.
+        const isHex = (h) => typeof h === 'string' && /^#[0-9a-fA-F]{6}$/.test(h);
+        if (o.slots != null) {
+            if (typeof o.slots !== 'object' || Array.isArray(o.slots)) errs.push('slots is not an object');
+            else for (const [name, base] of Object.entries(o.slots))
+                if (!isHex(base)) errs.push(`slot "${name}" is ${JSON.stringify(base)}, not a #rrggbb color`);
+        }
+        if (o.ramps != null) {
+            if (typeof o.ramps !== 'object' || Array.isArray(o.ramps)) errs.push('ramps is not an object');
+            else for (const [name, ramp] of Object.entries(o.ramps)) {
+                const at = `ramp "${name}"`;
+                if (!o.slots || typeof o.slots !== 'object' || !(name in o.slots)) {
+                    errs.push(`${at}: there is no slot of that name`);
+                    continue;
+                }
+                if (!Array.isArray(ramp) || !ramp.length) {
+                    errs.push(`${at}: expected a list of [step, "#rrggbb"]`);
+                    continue;
+                }
+                const seen = new Set();
+                ramp.forEach((e, i) => {
+                    if (!Array.isArray(e) || e.length !== 2) {
+                        errs.push(`${at} entry ${i}: expected [step, "#rrggbb"]`);
+                        return;
+                    }
+                    const [step, hex] = e;
+                    if (!Number.isInteger(step) || step < MIN_STEP || step > MAX_STEP)
+                        errs.push(`${at} entry ${i}: step is ${JSON.stringify(step)}, expected ${MIN_STEP} to ${MAX_STEP}`);
+                    else if (seen.has(step)) errs.push(`${at}: step ${step} appears twice`);
+                    seen.add(step);
+                    if (!isHex(hex)) errs.push(`${at} entry ${i}: ${JSON.stringify(hex)} is not a #rrggbb color`);
+                });
+            }
+        }
 
         const key = o.key || {};
         for (const [ch, hex] of Object.entries(key)) {
@@ -329,6 +423,7 @@ window.SpriteForge.project = (function () {
         return {
             palette: [...(o.palette || [])],
             slots: o.slots ? { ...o.slots } : null,
+            ramps: rampsFor(o.slots, o.ramps),
             template: o.template || null,
             sprites: o.sprites.map(s => ({
                 name: s.name,
@@ -373,5 +468,5 @@ window.SpriteForge.project = (function () {
         return deserialize(o);
     }
 
-    return { FORMAT, ALPHABET, TRANSPARENT, blank, newSprite, uniqueName, colorsOf, paletteFor, remap, retheme, reduce, serialize, deserialize, stringify, parse, validate };
+    return { FORMAT, ALPHABET, TRANSPARENT, MIN_STEP, MAX_STEP, blank, rampsFor, recolorRamp, newSprite, uniqueName, colorsOf, paletteFor, remap, retheme, reduce, serialize, deserialize, stringify, parse, validate };
 })();

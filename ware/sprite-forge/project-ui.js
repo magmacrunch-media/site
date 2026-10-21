@@ -80,6 +80,7 @@
         return {
             palette: editor.getPalette(),
             slots: editor.getSlots(),
+            ramps: editor.getRamps ? editor.getRamps() : null,
             template: editor.getTemplate(),
             sprites,
         };
@@ -147,7 +148,7 @@
         // whichever the file listed first. Only the swatches: every pixel keeps
         // its color, and the key holds far more than the palette shows.
         const palette = P.paletteFor(project, editor.MAX_SWATCHES);
-        editor.setSprite(project.sprites[0], palette, project.slots, project.template);
+        editor.setSprite(project.sprites[0], palette, project.slots, project.template, project.ramps);
         if (spritesUI()) spritesUI().load(project.sprites);
     }
 

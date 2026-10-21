@@ -62,6 +62,22 @@ body {
    oversized canvas out of reach of its own scrollbars. */
 #canvas-stage > #frame-canvas { margin: auto; }
 
+/* The reference BESIDE the drawing. The pair is centered as one: the drawing
+   gives up its right-hand auto margin and the picture takes it, so the free
+   space splits either side of both rather than three ways. Dashed, so it
+   never reads as a second canvas you can draw on. */
+#canvas-stage.with-ref > #frame-canvas { margin-right: 12px; }
+#canvas-stage > #ref-beside {
+    margin: auto auto auto 0;
+    border: 1px dashed var(--border);
+    image-rendering: pixelated;
+    flex-shrink: 0;
+    pointer-events: none;
+}
+#ref-cast .action-row { margin-top: 4px; }
+.ref-opacity { display: flex; align-items: center; gap: 6px; margin-top: 6px; }
+.ref-opacity input[type="range"] { flex: 1; min-width: 0; }
+
 /* ── CANVAS TOOLBAR ── */
 
 #canvas-toolbar {
@@ -992,6 +1008,7 @@ input[type="file"]::file-selector-button:hover { border-color: var(--dim); }
    box in the middle of this sidebar is the same mismatch a native menu bar
    would have been across the top. */
 #target-kind,
+#ref-cast-select,
 #palette-theme {
     width: 100%;
     font-family: 'Courier Prime', monospace;
@@ -1003,10 +1020,12 @@ input[type="file"]::file-selector-button:hover { border-color: var(--dim); }
 }
 
 #target-kind:focus,
+#ref-cast-select:focus,
 #palette-theme:focus { outline: 1px solid var(--accent); }
 
 /* ── Color themes ────────────────────────────────────────
    In the COLOR panel: a theme swaps the swatches you draw from. */
+#ref-cast-select optgroup,
 #palette-theme optgroup {
     font-family: 'Press Start 2P', monospace;
     font-size: 6px;

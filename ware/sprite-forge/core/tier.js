@@ -38,6 +38,11 @@
         projects: 'disk',
         targets: 'full',    // the TARGETS panel — export straight into a game repo
         menubar: 'full',    // the drawn-in-page menu bar
+        // The CAST list in REFERENCE: it finds libs/cast beside a checkout and
+        // lists its directories, which takes a path-keyed filesystem. Opening
+        // one of its PNGs as a reference is a file input and is in every tier;
+        // only the listing is tiered.
+        cast: 'full',
     };
 
     /* THREE TIERS, AND THE MIDDLE ONE IS A BROWSER WITH HANDLES.

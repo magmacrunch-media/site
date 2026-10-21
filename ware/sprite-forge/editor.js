@@ -32,6 +32,7 @@ const { framesToSheet, sheetToFrames } = window.SpriteForge.sheet;
 const SEL = window.SpriteForge.select;
 const FR = window.SpriteForge.frames;
 const TR = window.SpriteForge.transform;
+const PROJ = window.SpriteForge.project;
 
 // The two ui/ modules that load after this one, read at call time and never
 // captured: they do not exist yet while this file is being evaluated. Both are
@@ -121,8 +122,10 @@ let anim = { playing: false, fps: 8, scale: 4, tick: 0, timer: null };
 let holds = [1];
 let frameCache = [];            // 1:1 offscreen canvas per frame, for previews
 // Set when a character template is loaded: { id, slots: {name: baseHex},
-// steps: {name: [shadeSteps]} }. Slot identity is not stored per pixel, so this
-// is how a recolor knows which hexes belong to which part of the character.
+// ramps: {name: [[step, hex]]} }. Slot identity is not stored per pixel, so the
+// ramp is how a recolor knows which hexes belong to which part of the
+// character. It is saved in the .forge, so a reopened project recolors every
+// shade and not only the base (which is all it did before ramps were saved).
 let activeTemplate = null;
 
 const canvas = document.getElementById('frame-canvas');
@@ -313,6 +316,12 @@ function render() {
       ctx.fillRect(px + half, py, half, half); ctx.fillRect(px, py + half, half, half);
     }
   }
+  // The reference picture, under everything that is yours, onion skin
+  // included. Looked up at call time: reference-ui.js loads after this file.
+  // It draws straight onto the view and never into a frame, which is the whole
+  // of how it stays out of the sheet and the .forge.
+  const refUI = window.SpriteForge.referenceUI;
+  if (refUI) refUI.paint(ctx, canvas.width, canvas.height);
   if (onionSkin && frames.length > 1) {
     ctx.imageSmoothingEnabled = false;
     const gs = FR.ghosts(frames.length, frameIndex, onionDepth);
@@ -1008,6 +1017,16 @@ function applyColorMap(map) {
   snapshotProject();
   frames = frames.map(f => f.map(row => row.map(px => (px && lookup[px]) || px)));
   palette = palette.map(c => lookup[c] || c);
+  // A slot's colors move with its pixels, as remap() does for a theme, or a
+  // REPLACE would leave the slot naming a color the art no longer holds.
+  if (activeTemplate) {
+    const at = (hex) => lookup[hex] || hex;
+    activeTemplate.slots = Object.fromEntries(
+      Object.entries(activeTemplate.slots).map(([k, v]) => [k, at(v)]));
+    if (activeTemplate.ramps)
+      activeTemplate.ramps = Object.fromEntries(Object.entries(activeTemplate.ramps)
+        .map(([k, r]) => [k, r.map(([step, hex]) => [step, at(hex)])]));
+  }
   selectedColor = lookup[selectedColor] || selectedColor;
   frameCache = [];
   const others = su ? su.remapAll(lookup) : 0;
@@ -1307,7 +1326,10 @@ function loadTemplate(tpl) {
   selectedSwatch = 0; selectedColor = palette[0];
   frameIndex = 0; frameCache = [];
   origin = { x: Math.min(dec.origin.x, frameW), y: Math.min(dec.origin.y, frameH) };
-  activeTemplate = { id: tpl.id, label: tpl.label, slots: dec.slots, steps: dec.steps };
+  const ramps = {};
+  for (const [name, base] of Object.entries(dec.slots))
+    ramps[name] = (dec.steps[name] || [0]).map(step => [step, shadeHex(base, step).toLowerCase()]);
+  activeTemplate = { id: tpl.id, label: tpl.label, slots: dec.slots, ramps };
   exportOutput.value = `// ${tpl.label} — ${frames.length} frame${frames.length === 1 ? '' : 's'} of ${frameW}×${frameH}, origin (${origin.x}, ${origin.y})`;
   syncOriginInputs(); sizeCanvas(); render(); renderSheet(); updateFrameLabel();
   renderPalette(); updatePaletteActive(); renderSlots();
@@ -1409,13 +1431,17 @@ function recolorSlot(name, newBase) {
   if (!activeTemplate) return;
   const oldBase = activeTemplate.slots[name];
   if (!oldBase || oldBase === newBase) return;
-  const map = {};
-  for (const step of activeTemplate.steps[name] || [0])
-    map[shadeHex(oldBase, step).toLowerCase()] = shadeHex(newBase, step).toLowerCase();
+  const ramp = (activeTemplate.ramps && activeTemplate.ramps[name]) || [[0, oldBase]];
+  const next = PROJ.recolorRamp(ramp, newBase);
   // applyColorMap snapshots before it writes, so the slot must still hold the
   // old base at that moment — record the new one only once the pixels are
-  // actually changed, or undo restores old pixels beside a new swatch.
-  if (applyColorMap(map)) activeTemplate.slots[name] = newBase;
+  // actually changed, or undo restores old pixels beside a new swatch. It moves
+  // the ramp's hexes itself; the explicit write covers a step whose shade
+  // happens to map onto itself.
+  if (applyColorMap(next.map)) {
+    activeTemplate.slots[name] = newBase;
+    activeTemplate.ramps = { ...activeTemplate.ramps, [name]: next.ramp };
+  }
   renderSlots();
 }
 
@@ -1892,13 +1918,14 @@ window.SpriteForge.editor = {
   getPalette() { return [...palette]; },
   getTemplate() { return activeTemplate ? activeTemplate.id : null; },
   getSlots() { return activeTemplate ? { ...activeTemplate.slots } : null; },
+  getRamps() { return activeTemplate ? PROJ.rampsFor(activeTemplate.slots, activeTemplate.ramps) : null; },
 
   /**
    * Replaces everything the editor is showing. Follows the same order as
    * loadTemplate and the PNG import so it lands as one undo step, and so the
    * three wholesale-replacement paths cannot drift apart.
    */
-  setSprite(sprite, newPalette, slots, templateId) {
+  setSprite(sprite, newPalette, slots, templateId, ramps) {
     snapshot();
     putSprite(sprite);
     if (newPalette && newPalette.length) {
@@ -1907,7 +1934,9 @@ window.SpriteForge.editor = {
     }
     // Slot identity only survives when the file carried it. Inventing one would
     // let a recolor rewrite colors that never belonged to that slot.
-    activeTemplate = slots ? { id: templateId, label: templateId || 'project', slots, steps: {} } : null;
+    activeTemplate = slots
+      ? { id: templateId, label: templateId || 'project', slots, ramps: PROJ.rampsFor(slots, ramps) }
+      : null;
     redrawEverything();
   },
 
@@ -1958,6 +1987,8 @@ window.SpriteForge.editor = {
   deleteSelection,
   selectAll,
   deselect() { deselect(); render(); },
+  /** Repaint the canvas. For views laid over it, like the reference. */
+  redraw() { render(); },
   hasSelection() { return !window.SpriteForge.select.isEmpty(selection); },
   hasClipboard() { return !!clipboard; },
 };
