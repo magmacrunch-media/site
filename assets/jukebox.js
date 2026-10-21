@@ -8,70 +8,349 @@ var AUDIO_EXT = document.createElement('audio')
 var audioSrc = function (path) { return path.replace(/\.ogg$/, AUDIO_EXT); };
 
 /* ═══════════════════════════════════════════════
-   magmacrunch media — retro jukebox mini-player
+   magmacrunch media: the jukebox engine, and the nav's mini-player
    assets/jukebox.js
-   ═══════════════════════════════════════════════ */
+   ═══════════════════════════════════════════════
+
+   ONE ENGINE, ONE <audio>, TWO VIEWS. Until 2026-10-21 the nav pill and the
+   jukebox page were separate players, each with its own <audio> element,
+   handing a snapshot to each other through localStorage. Opening the page
+   while the pill played started a second copy of the same song, and leaving
+   the page stopped the music, because the pill restored only once a session.
+
+   Now this file owns the element and runs media-player's playback core
+   (assets/player-core.js, synced by scripts/sync-player-core.mjs): a pure
+   queue and a pure reducer, tested there with no DOM. Everything here is the
+   SHELL: it performs the reducer's intents (LOAD, PLAY, PAUSE, SEEK, ...) on
+   the element and reports the element's events back. The page
+   (music/jukebox/app.js) is a second view over window.MCJukebox, and the nav
+   survives SPA navigation, so the music does too. ── */
 
 (function () {
     'use strict';
 
+    // One engine per document, however many times nav.js or the SPA router
+    // re-enters this file. Only the widget is rebuilt; see boot().
+    if (window.MCJukebox) {
+        if (window.__initJukeboxPlayer) window.__initJukeboxPlayer();
+        return;
+    }
+
+    /* ── THE CORE ──
+       Loaded on demand rather than by every page: nav.js injects this file on
+       idle, and this file brings its own dependency. Origin-absolute like every
+       path here, because nav.js injects it at every depth. */
+    const root = new URL('/', location.origin).pathname;
+    let coreReady = null;
+    function loadCore() {
+        if (window.MediaPlayer && window.MediaPlayer.playback) return Promise.resolve();
+        if (coreReady) return coreReady;
+        coreReady = new Promise((resolve, reject) => {
+            const s = document.createElement('script');
+            s.src = root + 'assets/player-core.js?v=ed2b91bd';
+            s.onload = resolve;
+            s.onerror = reject;
+            document.head.appendChild(s);
+        });
+        return coreReady;
+    }
+
     /* ── TRACK LIST ──
-       Fetched from music/jukebox/songs.json, which music/jukebox/app.js also
-       reads: one manifest, not two. It was two until 2026-09-30 - a hardcoded
-       array here, kept in step by hand from the admin tool's "COPY TRACKS JS"
-       button - and it had drifted two tracks behind. "The Jovian Humanitarian
-       Conflict" and "cave diving (not even once)" played on the jukebox page
-       and did not exist here.
-
-       The missing tracks were the visible half. The worse half is that the
-       handoff in localStorage keys the current track by INDEX, so two lists
-       disagreeing meant crossing between the widget and the page resumed a
-       different song at the previous one's timestamp: index 6 here was
-       "makemecookies! x4." and index 6 there was "The Jovian Humanitarian
-       Conflict". Sharing the manifest makes the indices agree, and saving an
-       id beside the index (see saveState) is what stops a reorder from
-       reintroducing it - the admin tool reorders by drag, so that is a normal
-       edit rather than a hypothetical one. ── */
+       music/jukebox/songs.json, the one manifest. The bare filename is a
+       track's id, and ids are all the queue and the saved state ever hold, so
+       a reordered or extended manifest cannot make a saved state name a
+       different song. ── */
     let TRACKS = [];
-    let tracksReady = null;
-
-    // Origin-absolute, like every other path in this file. nav.js injects the
-    // widget into pages at every depth, so a relative fetch would resolve
-    // against the page and 404 everywhere but the site root: the same trap
-    // app.js carries a comment about, in the other direction.
+    const byId = new Map();
     function loadTracks() {
-        if (tracksReady) return tracksReady;
-        tracksReady = fetch(new URL('music/jukebox/songs.json', location.origin).pathname)
+        return fetch(new URL('music/jukebox/songs.json', location.origin).pathname)
             .then((r) => (r.ok ? r.json() : []))
             .then((data) => {
                 TRACKS = data.filter((s) => !s.hidden).map((s) => ({
-                    // The bare filename is the identity, and it is what both
-                    // sides of the handoff write. `duration` is deliberately
-                    // not carried over: the manifest's is a hand-typed string
-                    // and this widget reads the real one off the audio element.
                     id: s.file,
                     title: s.title,
                     artist: s.artist,
-                    file: 'music/jukebox/songs/' + s.file
+                    duration: s.duration || '',
+                    path: 'music/jukebox/songs/' + s.file,
                 }));
             })
-            .catch(() => { TRACKS = []; });
-        return tracksReady;
+            .catch(() => { TRACKS = []; })
+            .then(() => { byId.clear(); TRACKS.forEach((t) => byId.set(t.id, t)); });
     }
 
-    const STORAGE_KEY = 'mc-jukebox';
+    const STORAGE_KEY = 'mc-jukebox-v2';
+    const LEGACY_KEY = 'mc-jukebox';
     const EXPANDED_KEY = 'mcj_expanded';
 
-    /* ── STATE ── */
+    /* ── ENGINE STATE ── */
+    let P = null;
+    let Q = null;
+    let state = null;
     let audio = null;
-    let currentTrack = -1;
-    let isPlaying = false;
-    let volume = 0.7;
-    let muted = false;
-    let saveInterval = null;
-    let pendingSeek = -1;
+    let resumeTo = 0;
+    const listeners = new Set();
 
-    /* ── DOM REFS ── */
+    function notify() {
+        listeners.forEach((fn) => { try { fn(state); } catch (e) { /* a view's bug is the view's */ } });
+    }
+
+    function dispatch(event) {
+        const out = P.reduce(state, event);
+        state = out.state;
+        out.intents.forEach(perform);
+        notify();
+    }
+
+    /* ── PERFORMING INTENTS ── */
+    function srcFor(id) {
+        const t = byId.get(id);
+        return t ? audioSrc(new URL(t.path, location.origin).pathname) : '';
+    }
+
+    function perform(intent) {
+        switch (intent.type) {
+        case 'LOAD':
+            audio.src = srcFor(intent.id);
+            audio.load();
+            break;
+        case 'PLAY':
+            /* A rejected play() is normal: an autoplay refusal, or a play
+               interrupted by a new src. If the reducer now believes it is
+               playing while the element sits paused, put the belief back.
+               A refusal while still 'loading' needs nothing: the views treat
+               loading as not playing, and the next press plays. */
+            audio.play().catch(() => {
+                if (audio.paused && state.status === 'playing') dispatch({ type: 'TOGGLE' });
+            });
+            break;
+        case 'PAUSE':
+            audio.pause();
+            break;
+        case 'SEEK':
+            if (isFinite(intent.positionSec)) audio.currentTime = intent.positionSec;
+            break;
+        case 'VOLUME':
+            audio.volume = intent.muted ? 0 : intent.volume;
+            break;
+        case 'METADATA':
+            publishMetadata(intent.id);
+            break;
+        case 'SAVE_STATE':
+            save();
+            break;
+        default:
+            break; // COUNT_PLAY: the site keeps no play counts
+        }
+    }
+
+    /* ── WHAT THE ELEMENT REPORTS ──
+       The element is the authority on whether sound is coming out; the
+       reducer decides what should happen. 'pause' and 'play' fire only when
+       the two have come apart (a headset, a media key, a refused autoplay),
+       so a transition this file performed does not bounce back. 'pause' also
+       fires just before 'ended', which is why it checks audio.ended. */
+    function wire() {
+        audio = new Audio();
+        audio.preload = 'auto';
+        audio.addEventListener('loadedmetadata', () => {
+            const r = resumeTo;
+            resumeTo = 0;
+            dispatch({ type: 'LOADED', durationSec: audio.duration, resumeTo: r });
+        });
+        audio.addEventListener('playing', () => dispatch({ type: 'PLAYING' }));
+        audio.addEventListener('timeupdate', () => dispatch({ type: 'TICK', positionSec: audio.currentTime }));
+        audio.addEventListener('ended', () => dispatch({ type: 'ENDED' }));
+        audio.addEventListener('pause', () => {
+            if (state.status === 'playing' && !audio.ended) dispatch({ type: 'TOGGLE' });
+        });
+        audio.addEventListener('play', () => {
+            if (state.status === 'paused') dispatch({ type: 'TOGGLE' });
+        });
+        audio.addEventListener('error', () => {
+            const code = audio.error ? audio.error.code : 0;
+            if (code === 1 || !audio.getAttribute('src')) return; // we changed or cleared src
+            dispatch({ type: 'ERROR', message: 'media error ' + code });
+        });
+    }
+
+    /* ── SAVING AND RESTORING ──
+       What survives a full page load or a new tab: the reducer's own snapshot,
+       keyed by id. Saved on every SAVE_STATE intent, every few seconds while
+       playing (the reducer deliberately does not ask on TICK), and on the way
+       out. Within a session the SPA router keeps this document, and so the
+       element, alive; this is for everything else. */
+    function save() {
+        if (!state) return;
+        try { localStorage.setItem(STORAGE_KEY, JSON.stringify(P.snapshot(state))); } catch (e) { /* storage off */ }
+    }
+
+    function readSaved() {
+        try {
+            const raw = localStorage.getItem(STORAGE_KEY);
+            if (raw) return JSON.parse(raw);
+            /* The two-player format, from before this file owned the engine:
+               { id, track, time, playing, volume, muted }. Read once so a
+               returning visitor resumes rather than starting over. */
+            const old = JSON.parse(localStorage.getItem(LEGACY_KEY) || 'null');
+            if (!old) return null;
+            const id = old.id || (TRACKS[old.track] && TRACKS[old.track].id) || null;
+            return {
+                id,
+                positionSec: old.time || 0,
+                playing: !!old.playing,
+                volume: typeof old.volume === 'number' ? old.volume : 0.7,
+                muted: !!old.muted,
+                order: TRACKS.map((t) => t.id),
+                base: TRACKS.map((t) => t.id),
+                cursor: id ? TRACKS.findIndex((t) => t.id === id) : -1,
+            };
+        } catch (e) { return null; }
+    }
+
+    /* A saved queue against TODAY's manifest: ids that no longer exist are
+       dropped, songs added since are appended, so a new release is reachable
+       without anybody clearing their storage. */
+    function reconcile(snap) {
+        const ids = TRACKS.map((t) => t.id);
+        const known = new Set(ids);
+        const keep = (list) => (Array.isArray(list) ? list.filter((x) => known.has(x)) : []);
+        const order = keep(snap.order);
+        const base = keep(snap.base);
+        ids.forEach((x) => { if (!order.includes(x)) order.push(x); if (!base.includes(x)) base.push(x); });
+        const id = known.has(snap.id) ? snap.id : null;
+        let cursor = id ? order.indexOf(id) : (order.length ? 0 : -1);
+        if (cursor < 0 && order.length) cursor = 0;
+        return Object.assign({}, snap, {
+            id, order, base, cursor,
+            positionSec: id ? snap.positionSec : 0,
+            upNext: id && snap.cursor === order.indexOf(id) ? snap.upNext : 0,
+        });
+    }
+
+    function restore() {
+        const saved = readSaved();
+        if (!saved) {
+            state = P.initial({ queue: Q.create(TRACKS.map((t) => t.id)) });
+            audio.volume = state.volume;
+            return false;
+        }
+        const snap = reconcile(saved);
+        state = P.restore(snap);
+        audio.volume = state.muted ? 0 : state.volume;
+        if (state.id) {
+            resumeTo = state.positionSec || 0;
+            audio.src = srcFor(state.id);
+            audio.load();
+            publishMetadata(state.id);
+        }
+        return !!(saved.playing && state.id);
+    }
+
+    let saveTimer = null;
+    function startSaving() {
+        if (saveTimer) return;
+        saveTimer = setInterval(() => { if (state && state.status === 'playing') save(); }, 3000);
+    }
+    window.addEventListener('pagehide', save);
+    window.addEventListener('beforeunload', save);
+
+    /* ── MEDIA SESSION ── */
+    function publishMetadata(id) {
+        if (!('mediaSession' in navigator)) return;
+        const t = byId.get(id);
+        if (!t) return;
+        try {
+            navigator.mediaSession.metadata = new MediaMetadata({
+                title: t.title,
+                artist: t.artist,
+                album: 'magmacrunch media',
+                artwork: [
+                    // 512: MediaSession artwork lands on a phone lock screen,
+                    // where anything smaller is visibly soft.
+                    { src: root + 'assets/logo.jpg', sizes: '512x512', type: 'image/jpeg' },
+                ],
+            });
+        } catch (e) { /* an older browser without MediaMetadata */ }
+    }
+
+    /* ── THE PUBLIC FACE ──
+       What the page and the widget call. Both views are thin: they read state,
+       call these, and re-render on notify. ── */
+    const api = {
+        ready: null,
+        tracks: () => TRACKS.slice(),
+        track: (id) => byId.get(id) || null,
+        state: () => state,
+        position: () => (audio ? audio.currentTime : 0),
+        duration: () => (audio && isFinite(audio.duration) ? audio.duration : null),
+        subscribe(fn) { listeners.add(fn); return () => listeners.delete(fn); },
+        upNext: () => (state ? Q.upNextIds(state.queue) : []),
+        playing: () => !!state && state.status === 'playing',
+
+        // Play this song now. The queue is the whole manifest in its order,
+        // so "next" after it is whatever follows it there.
+        play(id) {
+            if (!state.queue.order.includes(id)) {
+                dispatch({ type: 'SET_QUEUE', queue: Q.create(TRACKS.map((t) => t.id)) });
+            }
+            dispatch({ type: 'PLAY_ID', id });
+        },
+        toggle() {
+            if (!state.id && !Q.isEmpty(state.queue)) {
+                dispatch({ type: 'PLAY_ID', id: Q.currentId(state.queue) });
+                return;
+            }
+            dispatch({ type: 'TOGGLE' });
+        },
+        next() { dispatch({ type: 'NEXT' }); },
+        prev() { dispatch({ type: 'PREV' }); },
+        // Stop: pause, back to the start of the song, and let go of whatever
+        // was queued. The page's STOP has always meant all three.
+        stop() {
+            if (state.status === 'playing') dispatch({ type: 'TOGGLE' });
+            if (state.id) dispatch({ type: 'SEEK', positionSec: 0 });
+            const q = state.queue;
+            if (q.upNext) dispatch({ type: 'SET_QUEUE', queue: Object.assign({}, q, { upNext: 0 }) });
+        },
+        queueNext(id) { dispatch({ type: 'SET_QUEUE', queue: Q.queueNext(state.queue, id) }); },
+        removeUpNext(i) {
+            const q = state.queue;
+            if (i < 0 || i >= (q.upNext || 0)) return;
+            dispatch({ type: 'SET_QUEUE', queue: Q.removeAt(q, q.cursor + 1 + i) });
+        },
+        seek(sec) { dispatch({ type: 'SEEK', positionSec: sec }); },
+        setVolume(v) { dispatch({ type: 'SET_VOLUME', volume: v }); },
+        toggleMute() { dispatch({ type: 'SET_MUTED', muted: !state.muted }); },
+    };
+
+    api.ready = loadCore()
+        .then(loadTracks)
+        .then(() => {
+            P = window.MediaPlayer.playback;
+            Q = window.MediaPlayer.queue;
+            wire();
+            const wasPlaying = restore();
+            startSaving();
+            if ('mediaSession' in navigator) {
+                navigator.mediaSession.setActionHandler('play', () => { if (!api.playing()) api.toggle(); });
+                navigator.mediaSession.setActionHandler('pause', () => { if (api.playing()) api.toggle(); });
+                navigator.mediaSession.setActionHandler('previoustrack', api.prev);
+                navigator.mediaSession.setActionHandler('nexttrack', api.next);
+            }
+            notify();
+            /* It was playing when the last page went away. Try to carry on;
+               a browser that wants a gesture first refuses, perform('PLAY')
+               puts the state back to paused, and the next press plays. */
+            if (wasPlaying) dispatch({ type: 'TOGGLE' });
+            return api;
+        });
+    api.ready.catch(() => { /* no core or no manifest: an inert pill, not a broken page */ });
+    window.MCJukebox = api;
+
+    /* ═══════════════════════════════════════════════
+       THE NAV WIDGET: a view, like the page
+       ═══════════════════════════════════════════════ */
+
     let widgetEl = null;
     let expandedPlayBtn = null;
     let expandedMuteBtn = null;
@@ -84,7 +363,6 @@ var audioSrc = function (path) { return path.replace(/\.ogg$/, AUDIO_EXT); };
     let volLabel = null;
     let barLabel = null;
 
-    /* ── HELPERS ── */
     function fmtTime(s) {
         if (!s || isNaN(s)) return '0:00';
         const m = Math.floor(s / 60);
@@ -92,178 +370,6 @@ var audioSrc = function (path) { return path.replace(/\.ogg$/, AUDIO_EXT); };
         return m + ':' + String(sec).padStart(2, '0');
     }
 
-    function saveState() {
-        try {
-            const track = currentTrack >= 0 ? TRACKS[currentTrack] : null;
-            localStorage.setItem(STORAGE_KEY, JSON.stringify({
-                track: currentTrack,
-                id: track ? track.id : null,
-                time: audio ? audio.currentTime : 0,
-                playing: isPlaying,
-                volume: volume,
-                muted: muted
-            }));
-        } catch (e) { /* localStorage unavailable */ }
-    }
-
-    function loadState() {
-        try {
-            const raw = localStorage.getItem(STORAGE_KEY);
-            return raw ? JSON.parse(raw) : null;
-        } catch (e) { return null; }
-    }
-
-    /* ── RESOLVING THE SAVED TRACK ──
-       `id` is the bare filename and is authoritative. `track` is the old
-       index-only form and stays as the fallback, so a visitor whose stored
-       state was written before 2026-09-30 still resumes rather than starting
-       over. Both sides write both. ── */
-    function resolveSavedTrack(state) {
-        if (state.id) {
-            const i = TRACKS.findIndex((t) => t.id === state.id);
-            if (i >= 0) return i;
-        }
-        if (state.track >= 0 && state.track < TRACKS.length) return state.track;
-        return -1;
-    }
-
-    // Runs once, and only once the manifest has arrived: resolving the saved
-    // track needs the list. createWidget calls it too early on purpose (the
-    // widget must not wait on a fetch), where the TRACKS guard turns it into a
-    // no-op and boot's continuation does the real work.
-    let restored = false;
-
-    function restorePlayback() {
-        if (restored || !TRACKS.length) return;
-        restored = true;
-        const state = loadState();
-        if (!state) return;
-        volume = state.volume != null ? state.volume : 0.7;
-        muted = state.muted || false;
-        const idx = resolveSavedTrack(state);
-        if (idx < 0) return;
-        currentTrack = idx;
-        if (state.playing) {
-            playTrack(currentTrack, state.time || 0);
-        }
-    }
-
-    /* ── PLAYBACK ── */
-    function playTrack(index, seekTo) {
-        if (index < 0 || index >= TRACKS.length) return;
-        currentTrack = index;
-        const track = TRACKS[index];
-
-        if (!audio) {
-            audio = new Audio();
-            audio.preload = 'auto';
-            audio.addEventListener('ended', onTrackEnd);
-            audio.addEventListener('play', () => { isPlaying = true; updateUI(); saveState(); startSaveInterval(); });
-            audio.addEventListener('pause', () => { isPlaying = false; updateUI(); saveState(); stopSaveInterval(); });
-            audio.addEventListener('error', () => {
-                if (audio.error && audio.error.code !== MediaError.MEDIA_ERR_ABORTED) {
-                    isPlaying = false;
-                    updateUI();
-                    stopSaveInterval();
-                }
-            });
-            audio.addEventListener('timeupdate', updateProgress);
-        }
-
-        pendingSeek = (typeof seekTo === 'number' && seekTo > 0) ? seekTo : -1;
-
-        audio.src = audioSrc(new URL(track.file, location.origin).pathname);
-        audio.volume = muted ? 0 : volume;
-
-        if (pendingSeek >= 0) {
-            audio.addEventListener('loadedmetadata', function onMeta() {
-                audio.removeEventListener('loadedmetadata', onMeta);
-                if (pendingSeek >= 0 && pendingSeek < audio.duration) {
-                    audio.currentTime = pendingSeek;
-                }
-                pendingSeek = -1;
-                audio.play().catch(() => {});
-            }, { once: true });
-        } else {
-            audio.play().catch(() => {});
-        }
-
-        updateMediaSession();
-        updateUI();
-    }
-
-    function togglePlay() {
-        if (!audio || currentTrack < 0) {
-            playTrack(0);
-            return;
-        }
-        if (isPlaying) {
-            audio.pause();
-        } else {
-            audio.play().catch(() => {});
-        }
-    }
-
-    function nextTrack() {
-        if (currentTrack < 0) {
-            playTrack(0);
-        } else {
-            playTrack((currentTrack + 1) % TRACKS.length);
-        }
-    }
-
-    function prevTrack() {
-        if (currentTrack < 0) {
-            playTrack(TRACKS.length - 1);
-        } else {
-            playTrack((currentTrack - 1 + TRACKS.length) % TRACKS.length);
-        }
-    }
-
-    /* ── PROGRESS BAR ── */
-    function updateProgress() {
-        if (!progressFill || !audio || !audio.duration) return;
-        const pct = (audio.currentTime / audio.duration) * 100;
-        progressFill.style.setProperty('--progress', pct + '%');
-        if (expandedTime) {
-            expandedTime.textContent = fmtTime(audio.currentTime) + ' / ' + fmtTime(audio.duration);
-        }
-    }
-
-    function seekTo(e) {
-        if (!audio || !audio.duration || !progressWrap) return;
-        const rect = progressWrap.getBoundingClientRect();
-        const pct = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
-        audio.currentTime = pct * audio.duration;
-        updateProgress();
-    }
-
-    /* ── PERIODIC STATE SAVE ── */
-    function startSaveInterval() {
-        stopSaveInterval();
-        saveInterval = setInterval(saveState, 1000);
-    }
-
-    function stopSaveInterval() {
-        if (saveInterval) { clearInterval(saveInterval); saveInterval = null; }
-    }
-
-    function setVolume(v) {
-        volume = Math.max(0, Math.min(1, v));
-        muted = false;
-        if (audio) audio.volume = volume;
-        updateUI();
-        saveState();
-    }
-
-    function toggleMute() {
-        muted = !muted;
-        if (audio) audio.volume = muted ? 0 : volume;
-        updateUI();
-        saveState();
-    }
-
-    /* ── EXPAND / COLLAPSE ── */
     function toggleExpand() {
         if (!widgetEl) return;
         const expanding = widgetEl.classList.contains('minimized');
@@ -274,149 +380,84 @@ var audioSrc = function (path) { return path.replace(/\.ogg$/, AUDIO_EXT); };
         try { localStorage.setItem(EXPANDED_KEY, expanding ? 'true' : 'false'); } catch (e) {}
     }
 
-    /* ── UI UPDATE ── */
-    function onTrackEnd() {
-        nextTrack();
-    }
-
-    function updateMediaSession() {
-        if (!('mediaSession' in navigator)) return;
-        const track = currentTrack >= 0 ? TRACKS[currentTrack] : null;
-        if (track) {
-            navigator.mediaSession.metadata = new MediaMetadata({
-                title: track.title,
-                artist: track.artist,
-                album: 'magmacrunch media',
-                artwork: [
-                    // 512, not the 180 this declared before the file existed at
-                    // all: MediaSession artwork lands on a phone lock screen,
-                    // where 180 is visibly soft. The mark has an alpha channel
-                    // and JPEG has none, so it is flattened onto the site
-                    // background (--black) rather than onto whatever the
-                    // encoder defaults to.
-                    { src: new URL('assets/logo.jpg', location.origin).pathname, sizes: '512x512', type: 'image/jpeg' }
-                ]
-            });
-        }
-    }
-
     /* ── NOW-PLAYING READOUT ──
        The center of the nav is dead space: at 1440px the brand ends at x=159
-       and the links begin at x=932. A line of text there says what the site is
-       doing in the site's own masthead, which a pill in the bottom corner
-       cannot - that corner is where support bubbles and cookie banners live,
-       and people have learned to skip it.
-
-       The readout is the pill's own label now rather than a second element:
-       idle it names the button, playing it names the track. It truncates with
-       an ellipsis rather than colliding with the links, and the SPA router
-       swaps only main.innerHTML, so the nav (and the widget inside it)
-       survives a navigation with no re-injection. Creation is still
-       idempotent, because createWidget is re-entered by __initJukeboxPlayer. ── */
-    function updateBarLabel(track) {
+       and the links begin at x=932. The pill's label says what the site is
+       doing there: idle it names the button, playing it names the track, and
+       it truncates with an ellipsis rather than colliding with the links. ── */
+    function updateBarLabel(track, playing) {
         if (!barLabel) return;
-        const line = (track && isPlaying)
-            // '//' rather than a dash: it is the separator the rest of the site
-            // sets its headings in, and it survives a monospace pixel font.
-            ? '\u266A ' + track.title + ' // ' + track.artist
-            : 'JUKEBOX';
-        if (barLabel.textContent !== line) {
-            barLabel.textContent = line;
-            const bar = barLabel.closest('.mcj-bar');
-            if (bar) {
-                bar.setAttribute('aria-label', (track && isPlaying)
-                    ? 'now playing: ' + track.title + ' by ' + track.artist +
-                      '. Open the jukebox mini-player.'
-                    : 'open the jukebox mini-player');
-            }
+        // '//' rather than a dash: the separator the rest of the site sets its
+        // headings in, and it survives a monospace pixel font.
+        const line = (track && playing) ? '♪ ' + track.title + ' // ' + track.artist : 'JUKEBOX';
+        if (barLabel.textContent === line) return;
+        barLabel.textContent = line;
+        const bar = barLabel.closest('.mcj-bar');
+        if (bar) {
+            bar.setAttribute('aria-label', (track && playing)
+                ? 'now playing: ' + track.title + ' by ' + track.artist + '. Open the jukebox mini-player.'
+                : 'open the jukebox mini-player');
         }
     }
 
-    function updateUI() {
-        if (!widgetEl) return;
-        const track = currentTrack >= 0 ? TRACKS[currentTrack] : null;
+    function render() {
+        if (!widgetEl || !state) return;
+        const track = state.id ? byId.get(state.id) : null;
+        const playing = state.status === 'playing';
+        updateBarLabel(track, playing);
+        widgetEl.classList.toggle('playing', playing); // drives the vinyl spin
 
-        updateBarLabel(track);
-
-        // Playing state on root element (drives vinyl spin)
-        widgetEl.classList.toggle('playing', isPlaying);
-
-        // Expanded play button
         if (expandedPlayBtn) {
-            expandedPlayBtn.textContent = isPlaying ? '\u275A\u275A' : '\u25B6';
-            expandedPlayBtn.setAttribute('aria-label', isPlaying ? 'pause' : 'play');
+            expandedPlayBtn.textContent = playing ? '❚❚' : '▶';
+            expandedPlayBtn.setAttribute('aria-label', playing ? 'pause' : 'play');
         }
-
-        // Expanded title / artist
-        if (expandedTitle) {
-            expandedTitle.textContent = track ? track.title : '—';
-        }
-        if (expandedArtist) {
-            expandedArtist.textContent = track ? track.artist : '—';
-        }
-
-        // Mute button
+        if (expandedTitle) expandedTitle.textContent = track ? track.title : '\u2014';
+        if (expandedArtist) expandedArtist.textContent = track ? track.artist : '\u2014';
         if (expandedMuteBtn) {
-            expandedMuteBtn.textContent = muted ? '\u2716' : '\u266A';
-            expandedMuteBtn.setAttribute('aria-label', muted ? 'unmute' : 'mute');
-            expandedMuteBtn.classList.toggle('muted', muted);
+            expandedMuteBtn.textContent = state.muted ? '✖' : '♪';
+            expandedMuteBtn.setAttribute('aria-label', state.muted ? 'unmute' : 'mute');
+            expandedMuteBtn.classList.toggle('muted', state.muted);
         }
-
-        // Volume slider
         if (volSlider) {
-            volSlider.value = volume * 100;
-            volSlider.style.setProperty('--vol-pct', (volume * 100) + '%');
-            volSlider.classList.toggle('muted', muted);
+            volSlider.value = state.volume * 100;
+            volSlider.style.setProperty('--vol-pct', (state.volume * 100) + '%');
+            volSlider.classList.toggle('muted', state.muted);
         }
         if (volLabel) {
-            volLabel.textContent = Math.round(volume * 100);
-            volLabel.classList.toggle('muted', muted);
+            volLabel.textContent = Math.round(state.volume * 100);
+            volLabel.classList.toggle('muted', state.muted);
         }
-
-        // Progress reset if no track
-        if (!track && progressFill) {
-            progressFill.style.setProperty('--progress', '0%');
-        }
-        if (!track && expandedTime) {
-            expandedTime.textContent = '0:00 / 0:00';
-        }
+        const pos = api.position();
+        const dur = api.duration() || state.durationSec;
+        if (progressFill) progressFill.style.setProperty('--progress', (track && dur ? (pos / dur) * 100 : 0) + '%');
+        if (expandedTime) expandedTime.textContent = track ? fmtTime(pos) + ' / ' + fmtTime(dur) : '0:00 / 0:00';
     }
 
-    /* ── BUILD WIDGET ── */
+    function seekFromClick(e) {
+        const dur = api.duration();
+        if (!dur || !progressWrap) return;
+        const rect = progressWrap.getBoundingClientRect();
+        api.seek(Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width)) * dur);
+    }
+
     function createWidget() {
         if (widgetEl && widgetEl.isConnected) return;
         if (widgetEl && !widgetEl.isConnected) widgetEl = null;
         if (document.body.classList.contains('no-jukebox')) return;
-
-        // In the nav or not at all: the widget is nav furniture now, and there
-        // is nowhere else it belongs. nav.js's loader only runs this on pages
-        // that have a nav, but __initJukeboxPlayer can be re-entered by the SPA
-        // router, so the guard stays.
+        // In the nav or not at all. __initJukeboxPlayer can be re-entered by
+        // the SPA router, so the guard stays.
         const nav = document.querySelector('nav');
         if (!nav) return;
 
-        const jukeboxHref = new URL('music/jukebox/', location.origin).pathname;
-
+        const jukeboxHref = root + 'music/jukebox/';
         widgetEl = document.createElement('div');
         widgetEl.className = 'mcj minimized';
         widgetEl.innerHTML =
-            /* ── COLLAPSED PILL ──
-               The disc alone says nothing. It carried a label until 79ddd5c4
-               stripped the collapsed bar to a bare 48px square, and at that
-               size the vinyl reads as a gray circle to anyone who has not been
-               told. Restored 2026-09-26. Moved into the nav 2026-09-27, and
-               the label now doubles as the now-playing readout - see
-               updateBarLabel. ── */
             '<div class="mcj-bar" role="button" tabindex="0" ' +
                     'aria-label="open the jukebox mini-player" aria-expanded="false">' +
                 '<div class="mcj-mini-vinyl"></div>' +
                 '<span class="mcj-bar-label">JUKEBOX</span>' +
             '</div>' +
-            /* ── EXPANDED PANEL ──
-               Drops from the nav bar below the pill, the same pattern as a nav
-               dropdown. One wrapper carries both halves so they can keep their
-               separate max-height transitions while sitting at one absolute
-               anchor. ── */
             '<div class="mcj-drop">' +
                 '<div class="mcj-header">' +
                     '<span>// JUKEBOX //</span>' +
@@ -435,27 +476,22 @@ var audioSrc = function (path) { return path.replace(/\.ogg$/, AUDIO_EXT); };
                         '<div class="mcj-progress"><div class="mcj-progress-fill"></div></div>' +
                     '</div>' +
                     '<div class="mcj-controls">' +
-                        '<button class="mcj-btn mcj-btn-skip" aria-label="previous track">\u25C0\u25C0</button>' +
-                        '<button class="mcj-btn mcj-btn-play" aria-label="play">\u25B6</button>' +
-                        '<button class="mcj-btn mcj-btn-skip" aria-label="next track">\u25B6\u25B6</button>' +
+                        '<button class="mcj-btn mcj-btn-skip" aria-label="previous track">◀◀</button>' +
+                        '<button class="mcj-btn mcj-btn-play" aria-label="play">▶</button>' +
+                        '<button class="mcj-btn mcj-btn-skip" aria-label="next track">▶▶</button>' +
                         '<div class="mcj-vol-wrap">' +
-                            '<button class="mcj-btn mcj-mute" aria-label="mute">\u266A</button>' +
+                            '<button class="mcj-btn mcj-mute" aria-label="mute">♪</button>' +
                             '<input type="range" class="mcj-vol" min="0" max="100" value="70" aria-label="volume">' +
                             '<span class="mcj-vol-label">70</span>' +
                         '</div>' +
                     '</div>' +
-                    '<div class="mcj-link"><a href="' + jukeboxHref + '">OPEN JUKEBOX \u2192</a></div>' +
+                    '<div class="mcj-link"><a href="' + jukeboxHref + '">OPEN JUKEBOX →</a></div>' +
                 '</div>' +
             '</div>';
 
-        // Before the links, so it lands in the dead center of the bar: the gap
-        // between the brand and the section links. insertBefore with a null
-        // reference appends, which is the right fallback for a nav built
-        // without a .nav-links list. The nav survives SPA swaps, so the widget
-        // does too - the router's re-inject stays as belt-and-braces.
+        // Before the links: the dead center of the bar.
         nav.insertBefore(widgetEl, nav.querySelector('.nav-links'));
 
-        /* ── CACHE REFS ── */
         barLabel = widgetEl.querySelector('.mcj-bar-label');
         expandedPlayBtn = widgetEl.querySelector('.mcj-btn-play');
         expandedMuteBtn = widgetEl.querySelector('.mcj-mute');
@@ -467,145 +503,69 @@ var audioSrc = function (path) { return path.replace(/\.ogg$/, AUDIO_EXT); };
         volSlider = widgetEl.querySelector('.mcj-vol');
         volLabel = widgetEl.querySelector('.mcj-vol-label');
 
-        /* ── EVENT LISTENERS ── */
-
-        // Bar click → expand/collapse. It is a role="button", so it owes the
-        // keyboard the activation a real <button> would have given for free.
+        // A role="button" owes the keyboard what a <button> gives for free.
         const barEl = widgetEl.querySelector('.mcj-bar');
         barEl.addEventListener('click', toggleExpand);
         barEl.addEventListener('keydown', (e) => {
-            if (e.key === 'Enter' || e.key === ' ' || e.code === 'Space') {
-                e.preventDefault();
-                toggleExpand();
-            }
+            if (e.key === 'Enter' || e.key === ' ' || e.code === 'Space') { e.preventDefault(); toggleExpand(); }
         });
+        widgetEl.querySelector('.mcj-minimize').addEventListener('click', (e) => { e.stopPropagation(); toggleExpand(); });
 
-        // Minimize button → collapse
-        widgetEl.querySelector('.mcj-minimize').addEventListener('click', (e) => {
-            e.stopPropagation();
-            toggleExpand();
-        });
+        // The engine may still be loading; a press before it is ready waits.
+        const whenReady = (fn) => () => api.ready.then(fn);
+        expandedPlayBtn.addEventListener('click', whenReady(() => api.toggle()));
+        widgetEl.querySelector('.mcj-btn-skip[aria-label="previous track"]').addEventListener('click', whenReady(() => api.prev()));
+        widgetEl.querySelector('.mcj-btn-skip[aria-label="next track"]').addEventListener('click', whenReady(() => api.next()));
+        expandedMuteBtn.addEventListener('click', whenReady(() => api.toggleMute()));
+        volSlider.addEventListener('input', (e) => { const v = parseInt(e.target.value, 10) / 100; api.ready.then(() => api.setVolume(v)); });
+        progressWrap.addEventListener('click', seekFromClick);
 
-        // Expanded transport
-        expandedPlayBtn.addEventListener('click', togglePlay);
-        widgetEl.querySelector('.mcj-btn-skip[aria-label="previous track"]').addEventListener('click', prevTrack);
-        widgetEl.querySelector('.mcj-btn-skip[aria-label="next track"]').addEventListener('click', nextTrack);
-        expandedMuteBtn.addEventListener('click', toggleMute);
+        /* No __pageCleanup here, deliberately: that hook is the SPA router's
+           "this page is going away", and the jukebox is the one thing on the
+           site scoped to the SESSION. Claiming it paused the music on every
+           navigation, and clobbered the page's own cleanup besides. */
 
-        // Volume
-        volSlider.addEventListener('input', (e) => {
-            setVolume(parseInt(e.target.value) / 100);
-        });
-
-        // Progress seek
-        progressWrap.addEventListener('click', seekTo);
-
-        // Media Session API
-        if ('mediaSession' in navigator) {
-            navigator.mediaSession.setActionHandler('play', () => { if (!isPlaying) togglePlay(); });
-            navigator.mediaSession.setActionHandler('pause', () => { if (isPlaying) togglePlay(); });
-            navigator.mediaSession.setActionHandler('previoustrack', prevTrack);
-            navigator.mediaSession.setActionHandler('nexttrack', nextTrack);
-        }
-
-        /* No __pageCleanup here, deliberately. This used to register one that
-           paused the audio, and it was wrong twice over.
-
-           It paused the thing the widget exists to keep playing. __pageCleanup
-           is the SPA router's "this page is going away" hook, for resources
-           scoped to a page: rAF loops, poll intervals, observers. The jukebox
-           is the one thing on the site that is scoped to the SESSION, so it
-           has no business in that hook. Every SPA navigation stopped the
-           music, which is the entire feature.
-
-           And it is a single global slot, not a list, so claiming it
-           unconditionally clobbered whatever the page had put there. jukebox.js
-           is injected by nav.js on requestIdleCallback, so it always ran last
-           and always won. index.html says so in its own comment and carries a
-           gone() guard to survive it, which is a workaround for this line.
-
-           Real unloads are already covered by the beforeunload handler below,
-           and the save interval keeps running because playback does. */
-
-        /* ── RESTORE STATE ── */
-        // Expand/collapse preference
         try {
             if (localStorage.getItem(EXPANDED_KEY) === 'true') {
                 widgetEl.classList.remove('minimized');
                 widgetEl.classList.add('expanded');
-                const bar = widgetEl.querySelector('.mcj-bar');
-                if (bar) bar.setAttribute('aria-expanded', 'true');
+                barEl.setAttribute('aria-expanded', 'true');
             }
         } catch (e) {}
 
-        // Playback state
-        restorePlayback();
-
-        updateUI();
+        render();
     }
 
-    /* ── KEYBOARD SHORTCUTS (one-time) ──
-       Only while the panel is open. These keys belong to the page before they
-       belong to the jukebox: Space pages down and the arrows scroll. This
-       handler is installed at script load rather than from createWidget, so
-       until 2026-09-26 it swallowed all five on every page that loads nav.js,
-       whether or not the widget had ever been opened - keyboard scrolling was
-       dead site-wide to serve a player most visitors never touch. Expanded is
-       the one unambiguous "I am using the player" signal, and it is also when
-       the controls are on screen to explain what the keys did. Collapsed, the
-       OS media keys and MediaSession still work.
+    api.subscribe(render);
 
-       Modifier chords are the page's too: Ctrl/Alt/Cmd + arrow is a browser or
-       OS shortcut, never a volume change. ── */
-    if (!window.__mcJukeboxKeys) {
-        window.__mcJukeboxKeys = true;
-        window.addEventListener('keydown', (e) => {
-            if (!widgetEl || !widgetEl.classList.contains('expanded')) return;
-            if (e.ctrlKey || e.metaKey || e.altKey) return;
-            const el = document.activeElement;
-            const tag = el && el.tagName;
-            if (tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT') return;
-            if (el && el.isContentEditable) return;
-            if (e.key === ' ' || e.code === 'Space') { e.preventDefault(); togglePlay(); }
-            else if (e.key === 'ArrowLeft') { e.preventDefault(); prevTrack(); }
-            else if (e.key === 'ArrowRight') { e.preventDefault(); nextTrack(); }
-            else if (e.key === 'ArrowUp') { e.preventDefault(); setVolume(volume + 0.05); }
-            else if (e.key === 'ArrowDown') { e.preventDefault(); setVolume(volume - 0.05); }
-            else if (e.key === 'm' || e.key === 'M') { toggleMute(); }
-        });
-    }
-
-    /* ── SAVE STATE BEFORE UNLOAD (one-time) ── */
-    if (!window.__mcJukeboxUnload) {
-        window.__mcJukeboxUnload = true;
-        window.addEventListener('beforeunload', () => {
-            stopSaveInterval();
-            if (audio && isPlaying) {
-                saveState();
-            }
-        });
-    }
+    /* ── KEYBOARD (only while the panel is open) ──
+       These keys belong to the page first: Space pages down and the arrows
+       scroll. Expanded is the unambiguous "I am using the player" signal.
+       Modifier chords are the browser's. A key handled here is marked with
+       preventDefault, which the jukebox page's own handler respects, so one
+       press is never acted on twice. */
+    window.addEventListener('keydown', (e) => {
+        if (!state || !widgetEl || !widgetEl.classList.contains('expanded')) return;
+        if (e.ctrlKey || e.metaKey || e.altKey || e.defaultPrevented) return;
+        const el = document.activeElement;
+        const tag = el && el.tagName;
+        if (tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT') return;
+        if (el && el.isContentEditable) return;
+        if (e.key === ' ' || e.code === 'Space') { e.preventDefault(); api.toggle(); }
+        else if (e.key === 'ArrowLeft') { e.preventDefault(); api.prev(); }
+        else if (e.key === 'ArrowRight') { e.preventDefault(); api.next(); }
+        else if (e.key === 'ArrowUp') { e.preventDefault(); api.setVolume(state.volume + 0.05); }
+        else if (e.key === 'ArrowDown') { e.preventDefault(); api.setVolume(state.volume - 0.05); }
+        else if (e.key === 'm' || e.key === 'M') { e.preventDefault(); api.toggleMute(); }
+    });
 
     /* ── INIT ──
-       The widget is built as soon as the DOM is ready and the manifest is
-       awaited separately, so a slow or failed songs.json leaves an inert pill
-       rather than no pill at all. Idempotent throughout: createWidget guards
-       on its own element, loadTracks memoises, restorePlayback runs once. ── */
-    function boot() {
-        createWidget();
-        loadTracks().then(() => {
-            if (!widgetEl) return;
-            restorePlayback();
-            updateUI();
-        });
-    }
+       The widget is built at once and the engine awaited separately, so a slow
+       songs.json leaves an inert pill rather than no pill. */
+    function boot() { createWidget(); }
 
-    if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', boot);
-    } else {
-        boot();
-    }
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot);
+    else boot();
 
-    /* ── EXPOSE FOR SPA ROUTER ── */
     window.__initJukeboxPlayer = boot;
 })();
