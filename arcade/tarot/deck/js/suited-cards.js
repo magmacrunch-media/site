@@ -1,114 +1,24 @@
-// ═══════════════════════════════════════════════════════════════════════════
-// suited-cards.js — MagmaCrunch Tarot Deck
-// Number cards (1-10) + Court cards (J, C, D, R) for all 4 suits
-// ═══════════════════════════════════════════════════════════════════════════
-
-const TarotSuited = {
-
-    SUITS: ['hearts', 'diamonds', 'clubs', 'spades'],
-    RANKS: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'V', 'C', 'D', 'R'],
-
-    SUIT_SYMBOLS: { hearts: '♥', diamonds: '♦', clubs: '♣', spades: '♠' },
-
-    isRed(suit) { return suit === 'hearts' || suit === 'diamonds'; },
-
-    getColor(suit) { return this.isRed(suit) ? 'var(--t-card-red)' : 'var(--t-card-black)'; },
-
-    // ── CORNER LABEL ──────────────────────────────────────────────────────
-    cornerHTML(rank, suit, position) {
-        const color = this.getColor(suit);
-        const symbol = this.SUIT_SYMBOLS[suit];
-        return `
+const TarotSuited={SUITS:["hearts","diamonds","clubs","spades"],RANKS:["1","2","3","4","5","6","7","8","9","10","V","C","D","R"],SUIT_SYMBOLS:{hearts:"♥",diamonds:"♦",clubs:"♣",spades:"♠"},isRed(suit){return suit==="hearts"||suit==="diamonds"},getColor(suit){return this.isRed(suit)?"var(--t-card-red)":"var(--t-card-black)"},cornerHTML(rank,suit,position){const color=this.getColor(suit);const symbol=this.SUIT_SYMBOLS[suit];return`
             <div class="t-card-corner ${position}">
                 <div class="corner-rank" style="color:${color}">${rank}</div>
                 <div class="corner-suit" style="color:${color}">${symbol}</div>
-            </div>`;
-    },
-
-    // ── NUMBER CARD (1-10) ────────────────────────────────────────────────
-    getNumberCardHTML(rank, suit) {
-        const color = this.getColor(suit);
-        const symbol = this.SUIT_SYMBOLS[suit];
-        const corners = this.cornerHTML(rank, suit, 'top-left') +
-                        this.cornerHTML(rank, suit, 'bottom-right');
-        const pips = this.getPipsHTML(rank, symbol, color);
-        return `
-            <div class="t-card t-card-${suit} ${this.isRed(suit) ? 'red' : 'black'}">
+            </div>`},getNumberCardHTML(rank,suit){const color=this.getColor(suit);const symbol=this.SUIT_SYMBOLS[suit];const corners=this.cornerHTML(rank,suit,"top-left")+this.cornerHTML(rank,suit,"bottom-right");const pips=this.getPipsHTML(rank,symbol,color);return`
+            <div class="t-card t-card-${suit} ${this.isRed(suit)?"red":"black"}">
                 ${corners}
                 <div class="t-card-pips">${pips}</div>
-            </div>`;
-    },
-
-    getPipsHTML(rank, symbol, color) {
-        const p = (c) => `<span class="t-pip" style="color:${c}">${symbol}</span>`;
-        const pr = (c) => `<span class="t-pip rotated" style="color:${c}">${symbol}</span>`;
-        const row = (...children) => `<div class="t-pip-row">${children.join('')}</div>`;
-        const single = (...children) => `<div class="t-pip-row single">${children.join('')}</div>`;
-
-        const layouts = {
-            '1':  `<div class="t-pip-container">${single(p(color))}</div>`,
-            '2':  `<div class="t-pip-container">${row(p(color))}${row(pr(color))}</div>`,
-            '3':  `<div class="t-pip-container">${row(p(color))}${row(p(color))}${row(pr(color))}</div>`,
-            '4':  `<div class="t-pip-container">${row(p(color),p(color))}${row(pr(color),pr(color))}</div>`,
-            '5':  `<div class="t-pip-container">${row(p(color),p(color))}${row(p(color))}${row(pr(color),pr(color))}</div>`,
-            '6':  `<div class="t-pip-container">${row(p(color),p(color))}${row(p(color),p(color))}${row(pr(color),pr(color))}</div>`,
-            '7':  `<div class="t-pip-container">${row(p(color),p(color))}${row(p(color))}${row(p(color),p(color))}${row(pr(color),pr(color))}</div>`,
-            '8':  `<div class="t-pip-container">${row(p(color),p(color))}${row(p(color))}${row(p(color),p(color))}${row(pr(color))}${row(pr(color),pr(color))}</div>`,
-            '9':  `<div class="t-pip-container">${row(p(color),p(color))}${row(p(color),p(color))}${row(p(color))}${row(pr(color),pr(color))}${row(pr(color),pr(color))}</div>`,
-            '10': `<div class="t-pip-container">${row(p(color),p(color))}${row(p(color),p(color))}${row(p(color),p(color))}${row(pr(color),pr(color))}${row(pr(color),pr(color))}</div>`
-        };
-        return layouts[rank] || '';
-    },
-
-    // ── FACE CARD (J, Q, R) — pixel art SVG ───────────────────────────────
-    getFaceCardHTML(rank, suit) {
-        const color = this.getColor(suit);
-        const corners = this.cornerHTML(rank, suit, 'top-left') +
-                        this.cornerHTML(rank, suit, 'bottom-right');
-        const key = `${rank.toLowerCase()}-${suit}`;
-        const svg = TAROT_FACE_SVGS[key] ? TAROT_FACE_SVGS[key]() : this.getFallbackFaceSVG(rank, suit);
-        return `
-            <div class="t-card t-card-${suit} ${this.isRed(suit) ? 'red' : 'black'}">
+            </div>`},getPipsHTML(rank,symbol,color){const p=c=>`<span class="t-pip" style="color:${c}">${symbol}</span>`;const pr=c=>`<span class="t-pip rotated" style="color:${c}">${symbol}</span>`;const row=(...children)=>`<div class="t-pip-row">${children.join("")}</div>`;const single=(...children)=>`<div class="t-pip-row single">${children.join("")}</div>`;const layouts={"1":`<div class="t-pip-container">${single(p(color))}</div>`,"2":`<div class="t-pip-container">${row(p(color))}${row(pr(color))}</div>`,"3":`<div class="t-pip-container">${row(p(color))}${row(p(color))}${row(pr(color))}</div>`,"4":`<div class="t-pip-container">${row(p(color),p(color))}${row(pr(color),pr(color))}</div>`,"5":`<div class="t-pip-container">${row(p(color),p(color))}${row(p(color))}${row(pr(color),pr(color))}</div>`,"6":`<div class="t-pip-container">${row(p(color),p(color))}${row(p(color),p(color))}${row(pr(color),pr(color))}</div>`,"7":`<div class="t-pip-container">${row(p(color),p(color))}${row(p(color))}${row(p(color),p(color))}${row(pr(color),pr(color))}</div>`,"8":`<div class="t-pip-container">${row(p(color),p(color))}${row(p(color))}${row(p(color),p(color))}${row(pr(color))}${row(pr(color),pr(color))}</div>`,"9":`<div class="t-pip-container">${row(p(color),p(color))}${row(p(color),p(color))}${row(p(color))}${row(pr(color),pr(color))}${row(pr(color),pr(color))}</div>`,"10":`<div class="t-pip-container">${row(p(color),p(color))}${row(p(color),p(color))}${row(p(color),p(color))}${row(pr(color),pr(color))}${row(pr(color),pr(color))}</div>`};return layouts[rank]||""},getFaceCardHTML(rank,suit){const color=this.getColor(suit);const corners=this.cornerHTML(rank,suit,"top-left")+this.cornerHTML(rank,suit,"bottom-right");const key=`${rank.toLowerCase()}-${suit}`;const svg=TAROT_FACE_SVGS[key]?TAROT_FACE_SVGS[key]():this.getFallbackFaceSVG(rank,suit);return`
+            <div class="t-card t-card-${suit} ${this.isRed(suit)?"red":"black"}">
                 ${corners}
                 <div class="t-card-face">${svg}</div>
-            </div>`;
-    },
-
-    // ── CAVALIER (C) — new pixel art ──────────────────────────────────────
-    getCavalierHTML(suit) {
-        const color = this.getColor(suit);
-        const corners = this.cornerHTML('C', suit, 'top-left') +
-                        this.cornerHTML('C', suit, 'bottom-right');
-        const key = `c-${suit}`;
-        const svg = TAROT_FACE_SVGS[key] ? TAROT_FACE_SVGS[key]() : this.getFallbackFaceSVG('C', suit);
-        return `
-            <div class="t-card t-card-${suit} ${this.isRed(suit) ? 'red' : 'black'}">
+            </div>`},getCavalierHTML(suit){const color=this.getColor(suit);const corners=this.cornerHTML("C",suit,"top-left")+this.cornerHTML("C",suit,"bottom-right");const key=`c-${suit}`;const svg=TAROT_FACE_SVGS[key]?TAROT_FACE_SVGS[key]():this.getFallbackFaceSVG("C",suit);return`
+            <div class="t-card t-card-${suit} ${this.isRed(suit)?"red":"black"}">
                 ${corners}
                 <div class="t-card-face">${svg}</div>
-            </div>`;
-    },
-
-    getFallbackFaceSVG(rank, suit) {
-        const color = this.getColor(suit);
-        const symbol = this.SUIT_SYMBOLS[suit];
-        return `<svg width="100%" height="100%" viewBox="0 0 100 159" xmlns="http://www.w3.org/2000/svg">
+            </div>`},getFallbackFaceSVG(rank,suit){const color=this.getColor(suit);const symbol=this.SUIT_SYMBOLS[suit];return`<svg width="100%" height="100%" viewBox="0 0 100 159" xmlns="http://www.w3.org/2000/svg">
             <rect width="100" height="159" fill="var(--t-fc-art-bg)"/>
             <text x="50" y="80" text-anchor="middle" fill="${color}" font-size="48">${rank}</text>
             <text x="50" y="120" text-anchor="middle" fill="${color}" font-size="24">${symbol}</text>
-        </svg>`;
-    }
-};
-
-// ═══════════════════════════════════════════════════════════════════════════
-// FACE CARD SVGs — Pixel art for J, C (Cavalier), D, R × 4 suits
-// Adapted from MagmaCrunch Cards First Edition for Tarot (100×159 viewBox)
-// ═══════════════════════════════════════════════════════════════════════════
-
-const TAROT_FACE_SVGS = {
-
-    // ── VALET (JACK) ──────────────────────────────────────────────────────
-
-    'v-clubs': () => `
+        </svg>`}};const TAROT_FACE_SVGS={"v-clubs":()=>`
         <svg width="100%" height="100%" viewBox="0 0 100 159" xmlns="http://www.w3.org/2000/svg" style="display:block;shape-rendering:crispEdges;">
             <rect width="100" height="159" fill="var(--t-fc-art-bg)"/>
             <g>
@@ -135,9 +45,7 @@ const TAROT_FACE_SVGS = {
                 <rect x="64" y="62" width="10" height="34" fill="var(--t-fc-gold)"/>
                 <rect x="36" y="96" width="28" height="22" fill="var(--t-fc-blue)"/>
             </g>
-        </svg>`,
-
-    'v-diamonds': () => `
+        </svg>`,"v-diamonds":()=>`
         <svg width="100%" height="100%" viewBox="0 0 100 159" xmlns="http://www.w3.org/2000/svg" style="display:block;shape-rendering:crispEdges;">
             <rect width="100" height="159" fill="var(--t-fc-art-bg)"/>
             <g>
@@ -164,9 +72,7 @@ const TAROT_FACE_SVGS = {
                 <rect x="64" y="62" width="10" height="34" fill="var(--t-fc-gold)"/>
                 <rect x="36" y="96" width="28" height="22" fill="var(--t-fc-red)"/>
             </g>
-        </svg>`,
-
-    'v-hearts': () => `
+        </svg>`,"v-hearts":()=>`
         <svg width="100%" height="100%" viewBox="0 0 100 159" xmlns="http://www.w3.org/2000/svg" style="display:block;shape-rendering:crispEdges;">
             <rect width="100" height="159" fill="var(--t-fc-art-bg)"/>
             <g>
@@ -193,9 +99,7 @@ const TAROT_FACE_SVGS = {
                 <rect x="64" y="62" width="10" height="34" fill="var(--t-fc-gold)"/>
                 <rect x="36" y="96" width="28" height="22" fill="var(--t-fc-red)"/>
             </g>
-        </svg>`,
-
-    'v-spades': () => `
+        </svg>`,"v-spades":()=>`
         <svg width="100%" height="100%" viewBox="0 0 100 159" xmlns="http://www.w3.org/2000/svg" style="display:block;shape-rendering:crispEdges;">
             <rect width="100" height="159" fill="var(--t-fc-art-bg)"/>
             <g>
@@ -222,12 +126,7 @@ const TAROT_FACE_SVGS = {
                 <rect x="64" y="62" width="10" height="34" fill="var(--t-fc-gold)"/>
                 <rect x="36" y="96" width="28" height="22" fill="var(--t-fc-black)"/>
             </g>
-        </svg>`,
-
-    // ── CAVALIER (KNIGHT) — new card type ─────────────────────────────────
-    // Mounted knight on horseback with lance, double-headed
-
-    'c-clubs': () => `
+        </svg>`,"c-clubs":()=>`
         <svg width="100%" height="100%" viewBox="0 0 100 159" xmlns="http://www.w3.org/2000/svg" style="display:block;shape-rendering:crispEdges;">
             <rect width="100" height="159" fill="var(--t-fc-art-bg)"/>
             <g>
@@ -267,9 +166,7 @@ const TAROT_FACE_SVGS = {
                 <rect x="20" y="52" width="4" height="10" fill="var(--t-fc-gold)"/>
                 <rect x="36" y="52" width="4" height="10" fill="var(--t-fc-gold)"/>
             </g>
-        </svg>`,
-
-    'c-diamonds': () => `
+        </svg>`,"c-diamonds":()=>`
         <svg width="100%" height="100%" viewBox="0 0 100 159" xmlns="http://www.w3.org/2000/svg" style="display:block;shape-rendering:crispEdges;">
             <rect width="100" height="159" fill="var(--t-fc-art-bg)"/>
             <g>
@@ -304,9 +201,7 @@ const TAROT_FACE_SVGS = {
                 <rect x="20" y="52" width="4" height="10" fill="var(--t-fc-gold)"/>
                 <rect x="36" y="52" width="4" height="10" fill="var(--t-fc-gold)"/>
             </g>
-        </svg>`,
-
-    'c-hearts': () => `
+        </svg>`,"c-hearts":()=>`
         <svg width="100%" height="100%" viewBox="0 0 100 159" xmlns="http://www.w3.org/2000/svg" style="display:block;shape-rendering:crispEdges;">
             <rect width="100" height="159" fill="var(--t-fc-art-bg)"/>
             <g>
@@ -341,9 +236,7 @@ const TAROT_FACE_SVGS = {
                 <rect x="20" y="52" width="4" height="10" fill="var(--t-fc-gold)"/>
                 <rect x="36" y="52" width="4" height="10" fill="var(--t-fc-gold)"/>
             </g>
-        </svg>`,
-
-    'c-spades': () => `
+        </svg>`,"c-spades":()=>`
         <svg width="100%" height="100%" viewBox="0 0 100 159" xmlns="http://www.w3.org/2000/svg" style="display:block;shape-rendering:crispEdges;">
             <rect width="100" height="159" fill="var(--t-fc-art-bg)"/>
             <g>
@@ -378,11 +271,7 @@ const TAROT_FACE_SVGS = {
                 <rect x="20" y="52" width="4" height="10" fill="var(--t-fc-gold)"/>
                 <rect x="36" y="52" width="4" height="10" fill="var(--t-fc-gold)"/>
             </g>
-        </svg>`,
-
-    // ── DAME (QUEEN) ──────────────────────────────────────────────────────
-
-    'd-clubs': () => `
+        </svg>`,"d-clubs":()=>`
         <svg width="100%" height="100%" viewBox="0 0 100 159" xmlns="http://www.w3.org/2000/svg" style="display:block;shape-rendering:crispEdges;">
             <rect width="100" height="159" fill="var(--t-fc-art-bg)"/>
             <g>
@@ -413,9 +302,7 @@ const TAROT_FACE_SVGS = {
                 <rect x="30" y="62" width="40" height="4" fill="var(--t-fc-gold)"/>
                 <rect x="36" y="70" width="28" height="28" fill="var(--t-fc-red)"/>
             </g>
-        </svg>`,
-
-    'd-diamonds': () => `
+        </svg>`,"d-diamonds":()=>`
         <svg width="100%" height="100%" viewBox="0 0 100 159" xmlns="http://www.w3.org/2000/svg" style="display:block;shape-rendering:crispEdges;">
             <rect width="100" height="159" fill="var(--t-fc-art-bg)"/>
             <g>
@@ -446,9 +333,7 @@ const TAROT_FACE_SVGS = {
                 <rect x="30" y="62" width="40" height="4" fill="var(--t-fc-gold)"/>
                 <rect x="36" y="70" width="28" height="28" fill="var(--t-fc-purple)"/>
             </g>
-        </svg>`,
-
-    'd-hearts': () => `
+        </svg>`,"d-hearts":()=>`
         <svg width="100%" height="100%" viewBox="0 0 100 159" xmlns="http://www.w3.org/2000/svg" style="display:block;shape-rendering:crispEdges;">
             <rect width="100" height="159" fill="var(--t-fc-art-bg)"/>
             <g>
@@ -479,9 +364,7 @@ const TAROT_FACE_SVGS = {
                 <rect x="30" y="62" width="40" height="4" fill="var(--t-fc-gold)"/>
                 <rect x="36" y="70" width="28" height="28" fill="var(--t-fc-black)"/>
             </g>
-        </svg>`,
-
-    'd-spades': () => `
+        </svg>`,"d-spades":()=>`
         <svg width="100%" height="100%" viewBox="0 0 100 159" xmlns="http://www.w3.org/2000/svg" style="display:block;shape-rendering:crispEdges;">
             <rect width="100" height="159" fill="var(--t-fc-art-bg)"/>
             <g>
@@ -512,11 +395,7 @@ const TAROT_FACE_SVGS = {
                 <rect x="30" y="62" width="40" height="4" fill="var(--t-fc-gold)"/>
                 <rect x="36" y="70" width="28" height="28" fill="var(--t-fc-purple)"/>
             </g>
-        </svg>`,
-
-    // ── ROI (KING) ────────────────────────────────────────────────────────
-
-    'r-clubs': () => `
+        </svg>`,"r-clubs":()=>`
         <svg width="100%" height="100%" viewBox="0 0 100 159" xmlns="http://www.w3.org/2000/svg" style="display:block;shape-rendering:crispEdges;">
             <rect width="100" height="159" fill="var(--t-fc-art-bg)"/>
             <g>
@@ -545,9 +424,7 @@ const TAROT_FACE_SVGS = {
                 <rect x="30" y="62" width="40" height="4" fill="var(--t-fc-gold)"/>
                 <rect x="36" y="70" width="28" height="38" fill="var(--t-fc-black)"/>
             </g>
-        </svg>`,
-
-    'r-diamonds': () => `
+        </svg>`,"r-diamonds":()=>`
         <svg width="100%" height="100%" viewBox="0 0 100 159" xmlns="http://www.w3.org/2000/svg" style="display:block;shape-rendering:crispEdges;">
             <rect width="100" height="159" fill="var(--t-fc-art-bg)"/>
             <g>
@@ -576,9 +453,7 @@ const TAROT_FACE_SVGS = {
                 <rect x="30" y="62" width="40" height="4" fill="var(--t-fc-black)"/>
                 <rect x="36" y="70" width="28" height="38" fill="var(--t-fc-red)"/>
             </g>
-        </svg>`,
-
-    'r-hearts': () => `
+        </svg>`,"r-hearts":()=>`
         <svg width="100%" height="100%" viewBox="0 0 100 159" xmlns="http://www.w3.org/2000/svg" style="display:block;shape-rendering:crispEdges;">
             <rect width="100" height="159" fill="var(--t-fc-art-bg)"/>
             <g>
@@ -607,9 +482,7 @@ const TAROT_FACE_SVGS = {
                 <rect x="30" y="62" width="40" height="4" fill="var(--t-fc-gold)"/>
                 <rect x="36" y="70" width="28" height="38" fill="var(--t-fc-black)"/>
             </g>
-        </svg>`,
-
-    'r-spades': () => `
+        </svg>`,"r-spades":()=>`
         <svg width="100%" height="100%" viewBox="0 0 100 159" xmlns="http://www.w3.org/2000/svg" style="display:block;shape-rendering:crispEdges;">
             <rect width="100" height="159" fill="var(--t-fc-art-bg)"/>
             <g>
@@ -638,5 +511,4 @@ const TAROT_FACE_SVGS = {
                 <rect x="30" y="62" width="40" height="4" fill="var(--t-fc-gold)"/>
                 <rect x="36" y="70" width="28" height="38" fill="var(--t-fc-red)"/>
             </g>
-        </svg>`
-};
+        </svg>`};

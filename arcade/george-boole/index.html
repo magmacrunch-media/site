@@ -8,19 +8,6 @@
     <meta name="theme-color" content="#8a2be2">
     <link rel="manifest" href="manifest.json">
 
-    <!-- The sharing card. This lives HERE, in the game repo, and not in the
-         website's arcade/george-boole/ copy, because scripts/sync-game.mjs
-         replaces that folder wholesale (rmSync then cpSync) every time anybody
-         runs `make sync-george-boole`. A card added to the copy is deleted by
-         the next sync, silently, and the page goes back to unfurling as a bare
-         URL. The image itself is the website's, committed at og/, and is
-         referenced absolutely because a relative og:image does not resolve for
-         most scrapers.
-
-         Safe for the App Store bundle: hypnopompia's sweepSelfContained() only
-         refuses an https: URL on a script, link, img, source, video or audio
-         tag's src/href, and this is a meta tag's content. Verified by running
-         package.mjs, which still reports "self-contained yes". -->
     <meta property="og:title" content="GEORGE BOOLE · magmacrunch media">
     <meta property="og:description" content="Slide tiles, learn logic. A puzzle game where the tiles combine through AND, OR, XOR and NOT, with a primer for anyone new to binary.">
     <meta property="og:image" content="https://magmacrunch.com/og/arcade-george-boole.png?v=1">
@@ -31,32 +18,17 @@
     <meta property="og:locale" content="en_US">
     <meta name="twitter:card" content="summary_large_image">
 
-    <!-- Favicons -->
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
     <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
     
-    <!-- Font Loading Fix -->
     <style>
-        .font-loading body {
-            visibility: hidden;
-        }
-        :root {
-            --mc-back-color: rgba(138, 43, 226, 0.6);
-            --mc-back-glow: 0 0 8px rgba(0, 255, 255, 0.95);
-        }
-        body.game-active .mc-back {
-            opacity: 0.5;
-            font-size: 8px;
-        }
-    </style>
+.font-loading body{visibility:hidden}:root{--mc-back-color: rgba(138, 43, 226, 0.6);--mc-back-glow: 0 0 8px rgba(0, 255, 255, 0.95)}body.game-active .mc-back{opacity:0.5;font-size:8px}
+</style>
     <script>
-        document.documentElement.classList.add('font-loading');
-        document.fonts.ready.then(() => {
-            document.documentElement.classList.remove('font-loading');
-        });
-    </script>
+document.documentElement.classList.add("font-loading");document.fonts.ready.then(()=>{document.documentElement.classList.remove("font-loading")});
+</script>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -80,21 +52,14 @@
 <body>
     <a href="../puzzles/" class="mc-back">puzzles</a>
 
-    <!-- Loading Screen -->
     <div class="loading-screen" id="loadingScreen">
         <div class="loading-content">
-            <!-- Dropped from the website build by site/package.mjs, like the
-                 title portrait. Without this the drawn Boole flashed up on
-                 the loading screen of the version whose whole point is not
-                 to have him, for the half-second before the plain title
-                 screen replaced it. -->
             <h1>george boole</h1>
             <div class="loading-spinner"></div>
             <p>loading...</p>
         </div>
     </div>
     <div class="game-layout">
-        <!-- LEFT PANEL: Quick Rules -->
         <div class="side-panel left-panel" id="leftPanel">
             <div class="side-panel-inner">
                 <div class="side-panel-title">quick rules</div>
@@ -148,7 +113,6 @@
             </div>
         </div>
 
-        <!-- CENTER: Game Container -->
         <div class="container">
             <div class="header">
                 <div class="title-container">
@@ -161,21 +125,9 @@
                 </div>
             </div>
             
-            <!-- Mode display: positioned between header and controls -->
             <div id="modeDisplay" style="text-align: center; font-size: 10px; color: rgba(255,255,255,0.8); font-weight: bold; letter-spacing: 2px; margin: -8px 0 6px 0; text-transform: uppercase;">
-                <!-- Bit mode displayed here -->
             </div>
             
-            <!-- "menu" is the way back to the how-to-play screen, which is
-                 this game's menu and which a game in progress used to put out
-                 of reach entirely: nothing on this board reached it, and
-                 "back to title" lives on it, so starting a game took both
-                 away until you lost. See showLore() in js/main.js.
-
-                 "high scores" became "scores" to make room. Four buttons share
-                 this row at flex: 1, which at 375px is about 73px of text
-                 apiece after the padding, and at the 7px these drop to on a
-                 phone the longer label wrapped to two lines. -->
             <div class="controls">
                 <button id="toggleMenu">menu</button>
                 <button id="toggleScoreboard">scores</button>
@@ -197,14 +149,6 @@
                     <span class="gate-tag" data-gate="and"><b>&and;</b> AND</span>
                     <span class="gate-tag" data-gate="not"><b>&not;</b> NOT</span>
                 </div>
-                <!-- Three, not two. The reason given here was that the lore
-                     card was out of reach once a game started, so credits had
-                     no other door. That is no longer true: "menu" above the
-                     board reaches the card, and its continue button offers the
-                     game back rather than offering to throw it away. These
-                     three stay anyway, because one tap from the board beats
-                     two through the menu for the things a player reaches for
-                     while playing. -->
                 <div class="rules-row">
                     <span class="rule-link" id="howToPlayLink">full rules <span class="ui-arrow">&rarr;</span></span>
                     <span class="rule-link" id="stripCreditsLink">credits <span class="ui-arrow">&rarr;</span></span>
@@ -212,7 +156,6 @@
             </div>
         </div>
 
-        <!-- RIGHT PANEL: Logic Gate Reference -->
         <div class="side-panel right-panel" id="rightPanel">
             <div class="side-panel-inner">
                 <div class="side-panel-title">logic gates</div>
@@ -259,45 +202,18 @@
         </div>
     </div>
     
-    <!-- Title Screen -->
     <div class="title-screen active" id="titleScreen">
-        <!-- Both of these must stay INSIDE .title-screen: their CSS is scoped
-             with descendant selectors, and .title-screen is the positioned,
-             overflow-hidden box they size themselves against. Moving them out
-             to keep them clear of the flex layout is what silently disabled
-             every rule for both of them in e9d43fc. They do not disturb the
-             layout from here, because both are position:absolute. -->
         <div class="title-screen-content">
-            <!-- The id is for site/package.mjs, which drops this wrapper from the
-                 website build: the browser version has a plainer title screen,
-                 with no drawn portrait and no binary rain. The class is what the
-                 stylesheets use and is untouched. -->
             <div class="title-main">
                 <h1 class="title-large">GEORGE BOOLE</h1>
                 <h2 class="title-subtitle">HAS ENTERED THE CHAT</h2>
             </div>
             
             <button class="start-button" id="startButton">
-                <!-- Two wordings, picked by base.css from the primary input
-                     device. A phone has no space bar and nobody clicks it, and in
-                     the App Store build this is the first sentence a reviewer
-                     reads. -->
                 <span class="start-text"><span class="only-pointer">press space to start</span><span class="only-touch">tap to start</span></span>
             </button>
             
-            <!-- 
-            <div class="boolean-quote">
-                "No general method for the solution of<br>questions in the theory of probabilities<br>can be established which does not<br>explicitly recognize [&hellip;] those universal<br>laws of thought which are the basis<br>of all reasoning."
-                <div class="quote-author">George Boole, 1854</div>
-            </div>
-            -->
         </div>
-        <!-- The publisher mark. Outside .title-screen-content so it pins to
-             the bottom edge rather than following the centered block, and
-             quiet enough that the start button stays the only thing asking
-             to be pressed. Plain text in both builds: an outbound link on
-             the first screen would send a player to Safari before they have
-             played anything. -->
         <div class="title-publisher">
             <a class="title-publisher-link" href="https://magmacrunch.com">
                 <img class="title-publisher-mark" src="img/mc-logo.png" alt="" width="26" height="32">
@@ -306,27 +222,8 @@
         </div>
     </div>
     
-    <!-- Lore / Rules Intro Screen -->
     <div class="lore-screen" id="loreScreen">
         <div class="lore-content">
-            <!-- The rules as the board draws them, not as sentences. Every
-                 tile below uses the exact markup render() gives a real tile --
-                 class, data-value, data-intensity, data-gate -- so it takes the
-                 real tile styles and cannot drift from what play looks like.
-                 Examples are 4-bit: max 15, overflow pays 3 x 15. The Boole
-                 quote that used to open this screen is still in the full rules,
-                 one tap away through the link below. -->
-            <!-- This screen IS the main menu and was named after one of the
-                 things on it. It carries the scores, the settings, the rules
-                 and the way into the game, and it opened with the word "how"
-                 and three worked examples, so a new player read a page of
-                 explanation to reach a mode list and only there found out
-                 there was a mode that would have explained it by being played.
-
-                 So the two things anybody comes here to do are first and are
-                 the same size: LEARN and PLAY. Everything that was already
-                 here is still here, underneath, in the order somebody reaches
-                 for it. -->
             <div class="menu-primary is-solo">
                 <button class="menu-btn menu-play" id="loreContinue" type="button">
                     <span class="menu-btn-label">PLAY</span>
@@ -346,8 +243,6 @@
                         <div class="tile" data-value="1"><div class="example-binary">0001</div></div>
                         <span class="lore-arrow">&rarr;</span>
                         <div class="tile" data-value="1"><div class="example-binary">0001</div></div>
-                        <!-- game.js: a same-value merge scores `current`, the tile
-                             that is left. Two 1s make a 1, so the payout is 1. -->
                         <span class="lore-points" data-kind="same">+1</span>
                     </div>
                     <p class="lore-caption">same + same = same</p>
@@ -360,10 +255,6 @@
                         <div class="tile" data-value="3" data-intensity="2"><div class="example-binary">0011</div></div>
                         <span class="lore-arrow">&rarr;</span>
                         <div class="tile" data-value="6" data-intensity="3"><div class="example-binary">0110</div></div>
-                        <!-- game.js scores a gate by its RESULT, so this is the one
-                             line where the number made and the number paid can be
-                             seen to be the same thing. 5 XOR 3 is 6, so +6. Cyan,
-                             because that is XOR everywhere else in the game. -->
                         <span class="lore-points" data-gate="xor">+6</span>
                     </div>
                     <p class="lore-caption">different numbers need a <em>gate</em></p>
@@ -380,18 +271,8 @@
                 </div>
             </div>
 
-            <!-- The rule the three payouts above are instances of. Without it
-                 +1 teaches nothing, because on that line the tile and the
-                 points are both 1 and there is no way to tell which one is
-                 being paid. -->
             <p class="lore-scoring">score = result in decimal</p>
 
-            <!-- The utility row: the audio pair the app injects ahead of
-                 it, then bests and settings. It sat between PLAY and the
-                 divider, which put four housekeeping controls between the
-                 two buttons somebody came here to press and the screen
-                 this one is named after. Below the worked examples it is
-                 still on the first screen and no longer in the way. -->
             <div class="lore-quick-actions">
                 <button class="lore-action-btn" id="quickHighScores">
                     <span>HIGH SCORES</span>
@@ -402,68 +283,19 @@
             </div>
 
             <div class="lore-links">
-                <!-- Its own door, opening the same panel at the primer.
-                     "full rules" is where somebody already playing goes to
-                     check a detail; this is where somebody who has never met
-                     binary starts, and neither would look under the other's
-                     name. One body of content, two ways in: js/main.js asks
-                     BooleRules.showSection for the page each one wants, by
-                     heading rather than by number, since a number moves the
-                     next time a section is added. -->
                 <button class="lore-rules-link" id="loreFullRules" type="button">full rules <span class="ui-arrow">&rarr;</span></button>
-                <!-- THE GATE CODEX IS NOT HERE, and that is a removal
-                     rather than an oversight. It has three other doors,
-                     and two of them are on the board: the rules strip on
-                     a phone, the side panel on a desktop, and every gate
-                     tile you can tap mid-game. Those are where it is
-                     actually wanted -- a codex is for the moment you
-                     wonder what just happened to your numbers, not for
-                     the moment you are deciding whether to play. -->
 
-                <!-- NOR IS THE BENCH, and for the opposite reason: LEARN
-                     opens it again, so a link here would be the same door
-                     twice on one screen. It had this link only while LEARN
-                     went somewhere else. -->
                 <button class="lore-rules-link" id="loreCredits" type="button">credits <span class="ui-arrow">&rarr;</span></button>
             </div>
 
-            <!-- Every panel in the game has a way back except this one, which
-                 is the screen they all return to.
-
-                 It sits UNDER the continue button rather than at the top left,
-                 where it used to be the first thing on the screen and competed
-                 with "how to play" for the eye. Last is the right place for it:
-                 this panel is the way in to the game, so the one control that
-                 leaves without playing should be reachable and should not be
-                 the first thing offered. -->
             <button class="lore-back" id="loreTitle" type="button"><span class="ui-arrow">&larr;</span> title</button>
         </div>
     </div>
 
-    <!-- Difficulty Selector Modal -->
     <div class="difficulty-modal" id="difficultyModal">
         <div class="difficulty-content">
             <h3>SELECT YOUR MODE</h3>
-            <!-- The "how many bits?" that used to sit here has moved onto
-                 the reel's own rail, because it is no longer true of this
-                 whole screen: GAUNTLET is not a width. Scoped to the thing
-                 it describes, it also stops the question being asked twice. -->
             
-            <!-- CLASSIC IS A DIAL, NOT A LIST.
-                 Seven of the nine entries here differed only by a number,
-                 which is one ordered axis, and a column of near-identical
-                 buttons says the opposite: that the options are unlike each
-                 other. They are a reel now, and the two that genuinely ARE
-                 unlike sit outside it.
-
-                 Every slot keeps data-difficulty, data-target and data-theme
-                 exactly as the buttons had them, because js/main.js reads
-                 those and nothing about starting a game changed.
-
-                 LEARN IS GONE FROM THIS SCREEN. It is not a width, so on the
-                 reel you would scroll past a tutorial to reach 5-BIT, and it
-                 is already a primary button on the menu beside PLAY: listing
-                 it here as well was the same door twice. -->
             <p class="mode-rail">CLASSIC<em>how many bits?</em></p>
             <div class="mode-reel-wrap">
                 <div class="mode-reel" id="modeReel" role="listbox"
@@ -495,31 +327,12 @@
 
             <button class="mode-start" id="modeStart" type="button">START 4-BIT</button>
 
-            <!-- NEITHER OF THESE IS A WIDTH, so neither is on the reel.
-                 LEARN is four taught moves on the real board and GAUNTLET
-                 is every width in turn: both are modes, and the reel is
-                 for choosing a number.
-
-                 LEARN CARRIES NO data-difficulty, deliberately, because it
-                 is not one. js/main.js binds the game-starting handler to
-                 .difficulty-btn[data-difficulty], so declaring none is what
-                 keeps it out of that path rather than a name checked
-                 against a list somewhere. -->
 
             <button class="difficulty-btn endless" data-difficulty="endless" data-target="999999" data-theme="matrix">
                 <span class="diff-label">GAUNTLET</span>
                 <span class="diff-subtitle">progressive</span>
             </button>
 
-            <!-- THE WAY OUT, which this screen did without for a while.
-                 Every other panel in the app has one, its handler is in
-                 main.js, Escape already routes to it and the style is in
-                 modal-difficulty.css: all of that outlived the button
-                 itself, which went when `.difficulty-buttons` became the
-                 reel. So opening the picker and changing your mind left
-                 starting SOME game as the only move available, including
-                 mid-game, where the board you were playing was still
-                 behind it. The handler knows where you came from. -->
             <button class="difficulty-back-btn" id="difficultyBack" type="button"><span class="ui-arrow">&larr;</span> BACK</button>
         </div>
     </div>
@@ -532,17 +345,12 @@
         <button id="submitInitials">submit</button>
     </div>
     
-    <!-- Overflow / new-high / level-up banner. game.js writes all three here. -->
     <div class="game-notification" id="overflowNotification"></div>
     
     <div class="game-over" id="gameOver">
         <div class="game-over-content">
             <h2>GAME OVER!</h2>
             <p>Final Score: <span id="finalScore">0</span></p>
-            <!-- "play again" goes to the mode picker, which is one way out of
-                 a finished game and was the only one: from here there was no
-                 route to the scores, the rules or the settings, all of which
-                 live on the menu behind it. -->
             <div class="modal-btn-row" style="display: flex; gap: 10px;">
                 <button id="restartGame">play again</button>
                 <button id="gameOverMenu">menu</button>
@@ -580,50 +388,11 @@
 
     <div class="instructions-modal" id="instructionsModal">
         <div class="instructions-content" style="max-width: 650px; max-height: 85vh; overflow-y: auto; padding: 35px; padding-right: 20px;">
-            <!-- Pinned to the top of the panel, and it names where it goes
-                 rather than saying "back". The pager at the foot of the panel
-                 has a back button too, styled from the same rule so the two
-                 read as one set, and for a while both said the same word while
-                 doing entirely different things: this one leaves the rules, that
-                 one turns a page. Both are on screen at once and both are live
-                 from page two on, so the label was all that told them apart, and
-                 it did not. The lore screen's "left-arrow title" is the
-                 convention being followed here; js/main.js sets the word,
-                 because this panel opens from two places and goes back to
-                 whichever one it came from. -->
             <div class="instructions-topbar">
                 <button class="modal-back" id="instructionsBack" type="button"><span class="ui-arrow">&larr;</span> how to play</button>
             </div>
             <h3 style="margin-bottom: 25px;">full rules</h3>
             
-            <!-- ── For somebody who has never met a logic gate ──────────────
-                 Everything after this point assumed the reader already knew
-                 what a bit is. The gate cards say "sets bits where inputs
-                 differ", the codex says "AND two numbers that share no bits",
-                 and neither is any use if "bits" is the word you are stuck on.
-                 The codex cannot fill the gap either: every gate in it is
-                 locked until you have fired it, so the explanation is behind
-                 the thing it explains.
-
-                 So: four lamps, then one worked sum done a column at a time.
-
-                 These three sections used to sit in the middle of the panel,
-                 between "different numbers need gates" and the gate reference
-                 that explains gates in terms of bits -- which is to say, after
-                 the rules that need them and before the rules that assume them.
-                 Eight of the twenty-one pages, in the way of a player who
-                 already knows this and out of reach of one who does not.
-
-                 They are a chapter now, and they are first. The data-chapter
-                 on the heading below is the whole of the mechanism: js/rules-
-                 pages.js breaks a page there, counts pages within the chapter
-                 rather than across the panel, and labels the pager's buttons
-                 with the chapter on either side at the seam. "full rules" on
-                 the how-to-play screen still opens at GOAL, so somebody who
-                 came to check the overflow rule never walks through any of
-                 this; "new to binary?" opens here at page 1 of 8. A section
-                 added between two marks joins whichever chapter it lands in
-                 and needs nothing here. -->
             <h4 data-chapter="basics" style="font-size: 13px; margin: 15px 0 10px 0; color: #ffff00; text-shadow: 2px 2px 0 #999900;">NEW TO THIS? START WITH COUNTING</h4>
 
             <div class="rule-box" style="background: rgba(0, 255, 255, 0.06); padding: 12px; margin-bottom: 15px; border-left: 3px solid #00ffff;">
@@ -640,11 +409,6 @@
                 </p>
             </div>
 
-            <!-- Its own box, not a longer one above. The pager gives a section
-                 a page and moves a block that does not fit to the next, so a
-                 block taller than a whole page leaves its heading stranded on
-                 an empty one. Two modest boxes page cleanly where one tall one
-                 did not. -->
             <div class="rule-box" style="background: rgba(0, 255, 255, 0.06); padding: 12px; margin-bottom: 15px; border-left: 3px solid #00ffff;">
                 <div style="font-family: monospace; font-size: 13px; line-height: 1.8; color: #00ffff; margin-left: 4px;">
                     <div><span style="color:#ffd700;">8 4 2 1</span></div>
@@ -814,13 +578,6 @@
             <h4 style="font-size: 13px; margin: 15px 0 10px 0; color: #ffff00; text-shadow: 2px 2px 0 #999900;">LOGIC GATES</h4>
             
             <div class="gates-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 15px;">
-                <!-- The symbol on its own line and twice the size it was. These
-                     four glyphs are the thing the section is about, and at 11px
-                     inline with the name they were the least legible text on the
-                     card: <span class="glyph">∨</span> and <span class="glyph">∧</span> differ by one row of pixels at that size, and
-                     <span class="glyph">⊕</span> is a circle with a cross in it rendered into about eight.
-                     The body was 9px, which is under this face's floor on a
-                     phone. -->
                 <div class="gate-card" style="background: rgba(0, 255, 255, 0.08); padding: 10px; border: 2px solid rgba(0, 255, 255, 0.3);">
                     <div class="gate-glyph" style="font-size: 24px; line-height: 1.1; color: #00ffff; text-shadow: 0 0 10px rgba(0,255,255,0.6);">⊕</div>
                     <div style="font-size: 11px; color: #00ffff; margin: 4px 0 5px 0;"><strong>XOR</strong></div>
@@ -948,11 +705,6 @@
                 </p>
             </div>
             
-            <!-- One control, not two. "settings" sat here: a sideways jump
-                 parked beside an exit, reaching a panel that the back button at
-                 the top of this one already reaches in two taps. Five controls
-                 were on screen at once and now there are four, two of them the
-                 pager. -->
             <div class="modal-btn-row" style="margin-top: 25px; display: flex; gap: 10px;">
                 <button id="closeInstructions">close</button>
             </div>
@@ -990,7 +742,6 @@
                             <span class="toggle-status">ON</span>
                         </button>
                     </div>
-                    <!-- Wired by js/math-overlay.js, which also remembers it. -->
                     <div class="toggle-item">
                         <span class="toggle-label">show the math</span>
                         <button class="toggle-button active" id="mathToggle">
@@ -1007,10 +758,6 @@
                 <p style="font-size: 8px; color: rgba(255, 255, 255, 0.6); margin-top: 10px; line-height: 1.4;">Turns off visual effects to save power.</p>
             </div>
             
-            <!-- No "information" section here. It held a gate codex link and a
-                 credits link, and both are on the rules screen now, beside
-                 "full rules"; the codex is also on the strip under the board
-                 and on every gate symbol. Settings is for settings. -->
             
             <button id="closeSettings">close</button>
         </div>
@@ -1018,45 +765,14 @@
 
     <div class="credits-modal" id="creditsModal">
         <div class="credits-content">
-            <!-- In the heading rather than on a line of its own: the panel
-                 fits one phone screen exactly, and 58px of mark and margin
-                 put it back to scrolling. -->
             <h3><img class="credits-mark" src="img/mc-logo.png" alt="" width="26" height="32">credits</h3>
 
-            <!-- THE HOUSE, NOT A PERSON. `magmacrunch media` is what
-                 hypnopompia's HOUSE.md prescribes for a credits line, and a
-                 byline naming one developer stopped being true the moment a
-                 second person contributed. A house credit covers everyone who
-                 works on it without needing a line added each time, which is
-                 the point of having one.
-
-                 Not "magmacrunch media, LLC": HOUSE.md records that comma as
-                 one D&B inserts and the registration does not have, and `LLC`
-                 belongs to the App Store seller name, nowhere else.
-
-                 The music credit below is a third party's attribution rather
-                 than a house byline, and stays as it is. -->
             <p><strong>game by:</strong><br><a href="https://magmacrunch.com">magmacrunch media</a></p>
             
-            <!-- The artist's own hub rather than one album page: it is the link the
-                     artist maintains, so it survives a move between platforms,
-                     and it is a name being linked rather than a record. The
-                     share URL this came from carried utm_source and an ltsid,
-                     a Linktree share-session id, both stripped: baked into a
-                     shipped app they would attribute every player to one share
-                     event forever. -->
                 <p><strong>music:</strong><br>"George Boole Has Entered the Chat" by <a href="https://linktr.ee/juanitothompson">Juanito Thompson</a></p>
 
-                <!-- Separate from "built with", where this sat until
-                     2026-10-06. A Grandmother is the instrument every one of
-                     the six effects was played on, which is authorship, not a
-                     dependency: it belongs beside the music credit rather than
-                     in a list with HTML5 and Capacitor. -->
                 <p><strong>sound effects:</strong><br>Played on a MOOG <em>GRANDMOTHER</em> synthesizer</p>
             
-            <!-- The lineage line stays, in these words. Guideline 4.3 is about
-                 undisclosed clones, so saying it is the protection; it is the
-                 one sentence in this panel not to shorten away. -->
             <p><strong>original concept:</strong><br>Inspired by Gabriele Cirulli's <em>2048</em> (2014), reimagined with Boolean logic instead of addition.</p>
             
             <p><strong>built with:</strong><br>HTML5, CSS3 and vanilla JavaScript &middot; Web Audio API &middot; Press Start 2P by CodeMan38 &middot; <a href="https://magmacrunch.com/ware/adenosine/">adenosine</a></p>
@@ -1067,18 +783,17 @@
 
             <p><strong>last updated:</strong><br>September 17, 2026</p>
             
-            <!-- As in the rules panel: no sideways jump to settings. It is on
-                 the how-to-play screen this closes back to, and on the board. -->
             <div class="modal-btn-row" style="margin-top: 25px; display: flex; gap: 10px;">
                 <button id="closeCredits">close</button>
             </div>
         </div>
     </div>
 
-    <!-- JavaScript files -->
 <script src="../shared/adenosine-score-client.js?v=8c6493d6"></script>
 <script src="../shared/score-server.js?v=9acd988c"></script>
-<script>const scoreClient = new AdScore.ScoreClient().auto(MC_SCORE_OPTS);</script>
+<script>
+const scoreClient=new AdScore.ScoreClient().auto(MC_SCORE_OPTS);
+</script>
 <script src="../shared/adenosine-audio.js?v=2b54f50b"></script>
 <script src="../shared/adenosine-puzzle.js?v=92f27c17"></script>
     <script src="js/arrow-label.js?v=8f6e64ed"></script>
@@ -1088,7 +803,9 @@
     <script src="js/math-overlay.js?v=43a84ae2"></script>
     <script src="js/rules-pages.js?v=5eb81e1f"></script>
     <script src="js/main.js?v=4bfe70af"></script>
-<script>if("serviceWorker" in navigator){navigator.serviceWorker.register("sw.js");}</script>
+<script>
+if("serviceWorker"in navigator){navigator.serviceWorker.register("sw.js")}
+</script>
 
 </body>
 </html>

@@ -27,9 +27,6 @@
         </nav>
     </header>
 
-    <!-- The compact breadcrumb trail every ware page carries (ware/crumbs.css),
-         without "home", styled by the shell's .back-link so nothing is vendored
-         for it. It only resolves on the website; the desktop build hides it. -->
     <nav class="tool-nav" aria-label="breadcrumb" style="font-family: 'Press Start 2P', monospace; font-size: 7px; letter-spacing: 0.1em; color: var(--backlink-color);">
         <a href="../" class="back-link">ware</a> › <a href="../utilities/" class="back-link">creative utilities</a> › <span aria-current="page" style="color: var(--backlink-hover);">punch//roll</span>
     </nav>
@@ -48,7 +45,6 @@
                 <div id="roll-extent"></div>
                 <canvas id="roll-canvas"></canvas>
             </section>
-            <!-- Over the roll's empty top-left corner, beside the bar numbers. -->
             <select id="in-meter" aria-label="Meter" title="Meter: the time signature, where the bars fall"></select>
         </div>
     </main>
@@ -63,7 +59,6 @@
                 </span>
             </span>
             <button id="btn-theme-mode" title="Light or dark themes">Dark</button>
-            <!-- Help: a menu above the button, like the theme picker's list. -->
             <span class="help-picker">
                 <button id="btn-help" type="button" aria-haspopup="menu" aria-expanded="false" aria-controls="help-menu" title="How to use, shortcuts and credits">Help</button>
                 <span id="help-menu" role="menu" aria-label="Help" hidden>
@@ -169,10 +164,6 @@
 
     <input id="file-open" type="file" accept=".punch,.json,application/json" hidden>
 
-    <!-- Load order is the dependency order, asserted by tests/run.mjs.
-         kit/boot.js is FIRST: it exists to report failures in everything
-         after it. Then the rest of the kit, then vendor/ and core/ (pure),
-         then ui/. -->
     <script src="kit/boot.js?v=3867389f"></script>
     <script src="kit/bridge-core.js?v=1a0ffb5c"></script>
     <script src="kit/keys.js?v=a0ef34b7"></script>

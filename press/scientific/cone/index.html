@@ -7,224 +7,12 @@
     <link rel="icon" type="image/x-icon" href="../../../favicon.ico">
     <link rel="stylesheet" href="../../../style.css?v=981601e0">
     <script>
-    MathJax = {
-      tex: {
-        inlineMath: [['$', '$'], ['\\(', '\\)']],
-        displayMath: [['$$', '$$'], ['\\[', '\\]']],
-        tags: 'all',
-        processEscapes: true,
-        macros: {
-          vb: ['{\\mathbf{#1}}', 1],
-          vu: ['{\\hat{#1}}', 1],
-          dv: ['\\frac{\\mathrm{d} #1}{\\mathrm{d} #2}', 2],
-          pdv: ['\\frac{\\partial #1}{\\partial #2}', 2],
-          dd: ['\\mathrm{d}#1', 1],
-          expval: ['\\langle #1 \\rangle', 1],
-          comm: ['[#1, #2]', 2],
-          ket: ['|#1\\rangle', 1],
-          bra: ['\\langle #1|', 1],
-          braket: ['\\langle #1 | #2 \\rangle', 2],
-          dyad: ['|#1\\rangle\\langle #1|', 1],
-          norm: ['\\|#1\\|', 1],
-          abs: ['|#1|', 1],
-          matrixel: ['\\langle #1 | #2 | #3 \\rangle', 3]
-        }
-      },
-      loader: {load: ['[tex]/physics']}
-    };
-    </script>
+MathJax={tex:{inlineMath:[["$","$"],["\\(","\\)"]],displayMath:[["$$","$$"],["\\[","\\]"]],tags:"all",processEscapes:true,macros:{vb:["{\\mathbf{#1}}",1],vu:["{\\hat{#1}}",1],dv:["\\frac{\\mathrm{d} #1}{\\mathrm{d} #2}",2],pdv:["\\frac{\\partial #1}{\\partial #2}",2],dd:["\\mathrm{d}#1",1],expval:["\\langle #1 \\rangle",1],comm:["[#1, #2]",2],ket:["|#1\\rangle",1],bra:["\\langle #1|",1],braket:["\\langle #1 | #2 \\rangle",2],dyad:["|#1\\rangle\\langle #1|",1],norm:["\\|#1\\|",1],abs:["|#1|",1],matrixel:["\\langle #1 | #2 | #3 \\rangle",3]}},loader:{load:["[tex]/physics"]}};
+</script>
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
     <style>
-        :root {
-            --nav-accent: #c02828;
-            --nav-glow: rgba(192,40,40,0.4);
-            --nav-brand: #c02828;
-            --nav-brand-glow: rgba(192,40,40,0.6);
-        }
-
-        body {
-            background-color: #1a1a1a;
-            color: #f0e4c8;
-        }
-
-        main {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 72px 20px 60px;
-        }
-
-        .breadcrumb {
-            font-family: 'Press Start 2P', monospace;
-            font-size: 7px;
-            color: #666;
-            letter-spacing: 0.1em;
-            margin-top: 0;
-            margin-bottom: 16px;
-            align-self: flex-start;
-        }
-        .breadcrumb a { color: #888; text-decoration: none; transition: color 0.15s; }
-        .breadcrumb a:hover { color: #c02828; }
-        .breadcrumb .sep { margin: 0 8px; color: #c02828; opacity: 0.7; }
-        .breadcrumb .current { color: #c02828; }
-
-        .article-header {
-            width: min(700px, 90vw);
-            text-align: center;
-            margin-bottom: 40px;
-            animation: fadeUp 0.5s ease both;
-        }
-
-        .article-type {
-            font-family: 'Press Start 2P', monospace;
-            font-size: 7px;
-            color: #f0e4c8;
-            background: #c02828;
-            display: inline-block;
-            padding: 3px 10px;
-            letter-spacing: 0.1em;
-            margin-bottom: 20px;
-        }
-
-        .article-title {
-            font-family: 'Press Start 2P', monospace;
-            font-size: clamp(10px, 2vw, 15px);
-            color: #f0e4c8;
-            letter-spacing: 0.06em;
-            line-height: 1.8;
-            margin-bottom: 16px;
-        }
-
-        .article-meta {
-            font-family: 'Courier Prime', monospace;
-            font-size: 12px;
-            color: #666;
-            line-height: 1.6;
-        }
-
-        .article-meta .author { color: #c02828; font-weight: 700; }
-
-        .article-body {
-            width: min(700px, 90vw);
-            animation: fadeUp 0.5s 0.1s ease both;
-        }
-
-        .article-body h2 {
-            font-family: 'Press Start 2P', monospace;
-            font-size: 10px;
-            color: #c02828;
-            letter-spacing: 0.08em;
-            margin-top: 40px;
-            margin-bottom: 16px;
-            line-height: 1.8;
-        }
-
-        .article-body p {
-            font-family: 'Courier Prime', monospace;
-            font-size: 14px;
-            line-height: 1.85;
-            color: #c8c0a8;
-            margin-bottom: 16px;
-            text-align: justify;
-        }
-
-        .article-body p:first-of-type::first-letter {
-            font-family: 'Press Start 2P', monospace;
-            font-size: 2.2em;
-            float: left;
-            line-height: 0.85;
-            margin-right: 8px;
-            margin-top: 4px;
-            color: #c02828;
-        }
-
-        .article-body a {
-            color: #c02828;
-            text-decoration: underline;
-            text-decoration-color: rgba(192,40,40,0.3);
-        }
-        .article-body a:hover { color: #e88080; }
-
-        .article-body strong { color: #f0e4c8; }
-        .article-body em { color: #888; }
-
-        /* ── EQUATIONS ── */
-        .equation {
-            margin: 20px 0;
-            text-align: center;
-            width: 100%;
-        }
-
-        .article-body .mjx-container {
-            overflow-x: auto;
-            overflow-y: hidden;
-            max-width: 100%;
-        }
-
-        /* ── FIGURES ── */
-        figure {
-            margin: 28px 0;
-            text-align: center;
-        }
-
-        figure img {
-            display: block;
-            margin: 0 auto;
-            max-width: 100%;
-            height: auto;
-            border: 1px solid #333;
-            image-rendering: auto;
-        }
-
-        figcaption {
-            font-family: 'Courier Prime', monospace;
-            font-size: 12px;
-            color: #666;
-            margin-top: 8px;
-            line-height: 1.5;
-            font-style: italic;
-        }
-
-        .article-end {
-            width: min(700px, 90vw);
-            text-align: center;
-            margin-top: 40px;
-            margin-bottom: 40px;
-        }
-
-        .article-end span { color: #c02828; font-size: 12px; }
-
-        .article-back {
-            display: inline-block;
-            margin-top: 24px;
-            font-family: 'Press Start 2P', monospace;
-            font-size: 8px;
-            color: #c02828;
-            text-decoration: none;
-            border: 2px solid #c02828;
-            padding: 8px 16px;
-            transition: all 0.15s;
-        }
-        .article-back:hover {
-            background: #c02828;
-            color: #1a1a1a;
-        }
-
-        footer {
-            background: #111 !important;
-            border-top-color: #333 !important;
-            color: #666 !important;
-        }
-        footer span { color: #c02828 !important; }
-
-        @media (max-width: 640px) {
-            .article-title { font-size: 10px; }
-            .article-body p { font-size: 13px; }
-            .article-body h2 { font-size: 9px; }
-            .equation { overflow-x: auto; }
-        }
-    </style>
+:root{--nav-accent: #c02828;--nav-glow: rgba(192,40,40,0.4);--nav-brand: #c02828;--nav-brand-glow: rgba(192,40,40,0.6)}body{background-color:#1a1a1a;color:#f0e4c8}main{flex:1;display:flex;flex-direction:column;align-items:center;padding:72px 20px 60px}.breadcrumb{font-family:"Press Start 2P",monospace;font-size:7px;color:#666;letter-spacing:0.1em;margin-top:0;margin-bottom:16px;align-self:flex-start}.breadcrumb a{color:#888;text-decoration:none;transition:color 0.15s}.breadcrumb a:hover{color:#c02828}.breadcrumb .sep{margin:0 8px;color:#c02828;opacity:0.7}.breadcrumb .current{color:#c02828}.article-header{width:min(700px,90vw);text-align:center;margin-bottom:40px;animation:fadeUp 0.5s ease both}.article-type{font-family:"Press Start 2P",monospace;font-size:7px;color:#f0e4c8;background:#c02828;display:inline-block;padding:3px 10px;letter-spacing:0.1em;margin-bottom:20px}.article-title{font-family:"Press Start 2P",monospace;font-size:clamp(10px,2vw,15px);color:#f0e4c8;letter-spacing:0.06em;line-height:1.8;margin-bottom:16px}.article-meta{font-family:"Courier Prime",monospace;font-size:12px;color:#666;line-height:1.6}.article-meta .author{color:#c02828;font-weight:700}.article-body{width:min(700px,90vw);animation:fadeUp 0.5s 0.1s ease both}.article-body h2{font-family:"Press Start 2P",monospace;font-size:10px;color:#c02828;letter-spacing:0.08em;margin-top:40px;margin-bottom:16px;line-height:1.8}.article-body p{font-family:"Courier Prime",monospace;font-size:14px;line-height:1.85;color:#c8c0a8;margin-bottom:16px;text-align:justify}.article-body p:first-of-type::first-letter{font-family:"Press Start 2P",monospace;font-size:2.2em;float:left;line-height:0.85;margin-right:8px;margin-top:4px;color:#c02828}.article-body a{color:#c02828;text-decoration:underline;text-decoration-color:rgba(192,40,40,0.3)}.article-body a:hover{color:#e88080}.article-body strong{color:#f0e4c8}.article-body em{color:#888}.equation{margin:20px 0;text-align:center;width:100%}.article-body .mjx-container{overflow-x:auto;overflow-y:hidden;max-width:100%}figure{margin:28px 0;text-align:center}figure img{display:block;margin:0 auto;max-width:100%;height:auto;border:1px solid #333;image-rendering:auto}figcaption{font-family:"Courier Prime",monospace;font-size:12px;color:#666;margin-top:8px;line-height:1.5;font-style:italic}.article-end{width:min(700px,90vw);text-align:center;margin-top:40px;margin-bottom:40px}.article-end span{color:#c02828;font-size:12px}.article-back{display:inline-block;margin-top:24px;font-family:"Press Start 2P",monospace;font-size:8px;color:#c02828;text-decoration:none;border:2px solid #c02828;padding:8px 16px;transition:all 0.15s}.article-back:hover{background:#c02828;color:#1a1a1a}footer{background:#111!important;border-top-color:#333!important;color:#666!important}footer span{color:#c02828!important}@media(max-width:640px){.article-title{font-size:10px}.article-body p{font-size:13px}.article-body h2{font-size:9px}.equation{overflow-x:auto}}
+</style>
 </head>
 <body>
 
@@ -253,9 +41,6 @@
 
     <div class="article-body">
 
-<!-- ═══════════════════════════════════════════════ -->
-<!-- INTRODUCTION                                   -->
-<!-- ═══════════════════════════════════════════════ -->
 
 <p>The equation for a cone oriented along the $z$-axis with an opening angle $2\gamma$ is given by</p>
 
@@ -282,9 +67,6 @@ $$
 
 <p>which is made possible by the $z$-component, $k_z$, being preserved from the incident wave vector, $\mathbf{k}$; this is a result of $z$ being the groove direction. The components $k_{x,n}'$ and $k_{y,n}'$ then describe the location of the $n^{\text{th}}$ order on the arc of diffraction. The reasons for all of this are outlined as follows.</p>
 
-<!-- ═══════════════════════════════════════════════ -->
-<!-- SECTION 1                                       -->
-<!-- ═══════════════════════════════════════════════ -->
 
 <h2 id="sec:wave_vectors">Wave Vectors and the Grating Equation</h2>
 
@@ -359,9 +141,6 @@ $$
 
 <p>Owing to the periodicity of the groove border with $g(x) = g(x+d)$, spatial harmonics can be picked up along $\hat{x}$ such that the relation $k_x = k_x'$ for a mirror is replaced by $k_{x,n}' = k_x + nK$ in the case of a grating. With the direction of grating periodicity being purely confined to $\hat{x}$ by the grating wave vector, however, $k_z = k_z'$ for the case of a mirror is still valid such that $k_{z,n}' = k_z$. This is because the grating <em>behaves like a mirror along the groove direction</em>; it only <em>behaves like a grating along the dispersion direction</em>.</p>
 
-<!-- ═══════════════════════════════════════════════ -->
-<!-- SECTION 2                                       -->
-<!-- ═══════════════════════════════════════════════ -->
 
 <h2 id="sec:conical_diffraction">Conical Diffraction</h2>
 
@@ -422,9 +201,6 @@ $$
 
 <p>which is equivalent to Equation 1: the equation for a cone. This is why the usual off-plane grating figure, shown in <a href="#fig:conical_diff">Figure 3</a> is drawn in the way that it is, where the $0^{\text{th}}$ and $n^{\text{th}}$ orders define the surface of a cone.</p>
 
-<!-- ═══════════════════════════════════════════════ -->
-<!-- SECTION 3                                       -->
-<!-- ═══════════════════════════════════════════════ -->
 
 <h2 id="sec:effective_wavelength">Effective Wavelength for Diffraction</h2>
 
@@ -476,6 +252,8 @@ $$
 </footer>
 
 <script src="../../../nav.js?v=17bba9c8"></script>
-<script>window.addEventListener("pageshow",function(e){if(e.persisted)location.reload();});</script>
+<script>
+window.addEventListener("pageshow",function(e){if(e.persisted)location.reload()});
+</script>
 </body>
 </html>

@@ -1,14 +1,4 @@
-// ═══════════════════════════════════════════════════════════════════════════
-// excuse-card.js — MagmaCrunch Tarot Deck
-// The Excuse (Fool) card — jester character with cap and bells
-// ═══════════════════════════════════════════════════════════════════════════
-
-const TarotExcuse = {
-
-    getExcuseHTML() {
-        const color = 'var(--t-excuse-pink)';
-
-        const corners = `
+const TarotExcuse={getExcuseHTML(){const color="var(--t-excuse-pink)";const corners=`
             <div class="t-card-corner top-left">
                 <div class="corner-rank" style="color:${color};font-size:10px;">★</div>
                 <div class="corner-suit" style="color:${color};font-size:6px;">EXC</div>
@@ -16,10 +6,7 @@ const TarotExcuse = {
             <div class="t-card-corner bottom-right">
                 <div class="corner-rank" style="color:${color};font-size:10px;">★</div>
                 <div class="corner-suit" style="color:${color};font-size:6px;">EXC</div>
-            </div>`;
-
-        // Jester pixel art — small figure with cap, bells, and stick
-        const jesterSVG = `
+            </div>`;const jesterSVG=`
             <svg viewBox="0 0 32 48" width="32" height="48"
                  style="shape-rendering:crispEdges;image-rendering:pixelated;">
                 <!-- Jester cap (three points with bells) -->
@@ -54,9 +41,7 @@ const TarotExcuse = {
                 <!-- Shoes with bells -->
                 <rect x="8" y="38" width="6" height="2" fill="#ffd700"/>
                 <rect x="18" y="38" width="6" height="2" fill="#ffd700"/>
-            </svg>`;
-
-        return `
+            </svg>`;return`
             <div class="t-card excuse">
                 ${corners}
                 <div class="t-excuse-center">
@@ -68,6 +53,4 @@ const TarotExcuse = {
                         EXCUSE
                     </div>
                 </div>
-            </div>`;
-    }
-};
+            </div>`}};

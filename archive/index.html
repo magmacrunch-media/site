@@ -17,80 +17,8 @@
     <link rel="stylesheet" href="../style.css?v=981601e0">
     <link rel="stylesheet" href="archive.css">
     <style>
-        /* ── EMERAC: this page's own theme ─────────────────────────────────────
-           Inline rather than in archive.css, which the artist subpages load too.
-           The console already carried it: mint phosphor, an amber frame and
-           ticker, red and gold LEDs. This makes the rest of the page agree.
-           Mint is 167 degrees, clear of the three indexes it leads to (ember
-           14, orchid 314, gold 45), and the structural mints are the
-           ultraviolet ramp's saturation and lightness at that hue, as theirs
-           are. Ground is the indexes' #0a0a0c. Kept in magma-themes as
-           `emerac`. */
-        :root {
-            --nav-accent:     #189a7e;
-            --nav-brand:      #00e5b3;
-            --nav-glow:       rgba(24,154,126,0.4);
-            --nav-brand-glow: rgba(0,229,179,0.7);
-            --em-mint:   #00e5b3;
-            --em-amber:  #e5b300;
-            --em-dark:   #096d57;
-            --em-line:   #0f2e28;
-            --ground:    #0a0a0c;
-        }
-        body { background: var(--ground); }
-
-        #mini-emerac,
-        .mini-tape,
-        #emerac-leds         { border-color: var(--em-dark); }
-        .emerac-top          { border-bottom-color: var(--em-dark); }
-        .mini-tape-spokes {
-            background-image:
-                linear-gradient(0deg, transparent 40%, var(--em-dark) 40%, var(--em-dark) 60%, transparent 60%),
-                linear-gradient(90deg, transparent 40%, var(--em-dark) 40%, var(--em-dark) 60%, transparent 60%);
-        }
-        .note                { border-top-color: var(--em-line); }
-
-        /* ── The three ways in ─────────────────────────────────────────────────
-           Each card wears the index it leads to, the way every card in the
-           archive wears its page: that index's hue for the title, border, tint
-           and glow, and three steps of its ramp along the bottom edge. Each
-           color-mix is preceded by a plain fallback. */
-        .browse-card.by-artist { --accent:#dd6f4e; --a2:#9a3818; --a3:#ff9d7d; } /* ember  */
-        .browse-card.by-place  { --accent:#dd4ec0; --a2:#9a1879; --a3:#ff7dd0; } /* orchid */
-        .browse-card.by-label  { --accent:#deba4f; --a2:#9a7a18; --a3:#ffdf80; } /* gold   */
-        .browse-card,
-        .browse-card.by-artist:hover,
-        .browse-card.by-place:hover,
-        .browse-card.by-label:hover {
-            background-color: #141012;
-            background-color: color-mix(in srgb, var(--accent) 9%, var(--ground));
-            background-image: linear-gradient(90deg,
-                var(--accent) 0 33.334%,
-                var(--a2)     33.334% 66.667%,
-                var(--a3)     66.667% 100%);
-            background-repeat: no-repeat;
-            background-size: 100% 4px;
-            background-position: left bottom;
-            border-color: #3a3238;
-            border-color: color-mix(in srgb, var(--accent) 55%, var(--ground));
-            box-shadow: none;
-            transition: border-color 0.15s, box-shadow 0.15s, transform 0.15s,
-                        background-color 0.15s, background-size 0.15s;
-        }
-        .browse-card.by-artist:hover,
-        .browse-card.by-place:hover,
-        .browse-card.by-label:hover,
-        .browse-card:focus-visible {
-            background-color: color-mix(in srgb, var(--accent) 16%, var(--ground));
-            background-size: 100% 7px;
-            border-color: var(--accent);
-            box-shadow: 0 0 20px -2px var(--accent);
-            box-shadow: 0 0 20px -2px color-mix(in srgb, var(--accent) 45%, transparent);
-            outline: none;
-        }
-        .browse-card .browse-card-title { color: var(--accent); }
-        .browse-card .browse-card-desc  { color: #8a8580; }
-    </style>
+:root{--nav-accent: #189a7e;--nav-brand: #00e5b3;--nav-glow: rgba(24,154,126,0.4);--nav-brand-glow: rgba(0,229,179,0.7);--em-mint: #00e5b3;--em-amber: #e5b300;--em-dark: #096d57;--em-line: #0f2e28;--ground: #0a0a0c}body{background:var(--ground)}#mini-emerac,.mini-tape,#emerac-leds{border-color:var(--em-dark)}.emerac-top{border-bottom-color:var(--em-dark)}.mini-tape-spokes{background-image:linear-gradient(0deg,transparent 40%,var(--em-dark) 40%,var(--em-dark) 60%,transparent 60%),linear-gradient(90deg,transparent 40%,var(--em-dark) 40%,var(--em-dark) 60%,transparent 60%)}.note{border-top-color:var(--em-line)}.browse-card.by-artist{--accent:#dd6f4e;--a2:#9a3818;--a3:#ff9d7d}.browse-card.by-place{--accent:#dd4ec0;--a2:#9a1879;--a3:#ff7dd0}.browse-card.by-label{--accent:#deba4f;--a2:#9a7a18;--a3:#ffdf80}.browse-card,.browse-card.by-artist:hover,.browse-card.by-place:hover,.browse-card.by-label:hover{background-color:#141012;background-color:color-mix(in srgb,var(--accent) 9%,var(--ground));background-image:linear-gradient(90deg,var(--accent) 0 33.334%,var(--a2) 33.334% 66.667%,var(--a3) 66.667% 100%);background-repeat:no-repeat;background-size:100% 4px;background-position:left bottom;border-color:#3a3238;border-color:color-mix(in srgb,var(--accent) 55%,var(--ground));box-shadow:none;transition:border-color 0.15s,box-shadow 0.15s,transform 0.15s,background-color 0.15s,background-size 0.15s}.browse-card.by-artist:hover,.browse-card.by-place:hover,.browse-card.by-label:hover,.browse-card:focus-visible{background-color:color-mix(in srgb,var(--accent) 16%,var(--ground));background-size:100% 7px;border-color:var(--accent);box-shadow:0 0 20px -2px var(--accent);box-shadow:0 0 20px -2px color-mix(in srgb,var(--accent) 45%,transparent);outline:none}.browse-card .browse-card-title{color:var(--accent)}.browse-card .browse-card-desc{color:#8a8580}
+</style>
 </head>
 <body>
 
@@ -106,9 +34,7 @@
 
     <h1 class="page-title">// archive //</h1>
     <p class="page-subtitle">database of artists, places, & labels</p>
-    <!--<p class="page-subtitle">the magmacrunch archive</p>-->
 
-    <!-- EMERAC COMPONENT START -->
     <div id="mini-emerac">
         <div class="emerac-top">
             <div class="mini-tape"><div class="mini-tape-spokes"></div></div>
@@ -122,7 +48,6 @@
             <div id="emerac-leds"></div>
         </div>
     </div>
-    <!-- EMERAC COMPONENT END -->
 
 <div class="ticker-wrap"><span class="ticker">:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.: \/\/ [- |_ ( () |\/| [- ~|~ () ~|~ |-| [- /\ /? ( |-| | \/ [- _\~ :.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.</span></div>    
 

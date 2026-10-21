@@ -7,246 +7,12 @@
     <link rel="icon" type="image/x-icon" href="../../favicon.ico">
     <link rel="stylesheet" href="../../style.css?v=981601e0">
     <script>
-    MathJax = {
-      tex: {
-        inlineMath: [['$', '$'], ['\\(', '\\)']],
-        displayMath: [['$$', '$$'], ['\\[', '\\]']],
-        tags: 'all',
-        processEscapes: true,
-        macros: {
-          vb: ['{\\mathbf{#1}}', 1],
-          vu: ['{\\hat{#1}}', 1],
-          dv: ['\\frac{\\mathrm{d} #1}{\\mathrm{d} #2}', 2],
-          pdv: ['\\frac{\\partial #1}{\\partial #2}', 2],
-          expval: ['\\langle #1 \\rangle', 1],
-          comm: ['[#1, #2]', 2],
-          ket: ['|#1\\rangle', 1],
-          bra: ['\\langle #1|', 1],
-          braket: ['\\langle #1 | #2 \\rangle', 2],
-          dyad: ['|#1\\rangle\\langle #1|', 1],
-          norm: ['\\|#1\\|', 1],
-          abs: ['|#1|', 1],
-          matrixel: ['\\langle #1 | #2 | #3 \\rangle', 3]
-        }
-      },
-      loader: {load: ['[tex]/physics']}
-    };
-    </script>
+MathJax={tex:{inlineMath:[["$","$"],["\\(","\\)"]],displayMath:[["$$","$$"],["\\[","\\]"]],tags:"all",processEscapes:true,macros:{vb:["{\\mathbf{#1}}",1],vu:["{\\hat{#1}}",1],dv:["\\frac{\\mathrm{d} #1}{\\mathrm{d} #2}",2],pdv:["\\frac{\\partial #1}{\\partial #2}",2],expval:["\\langle #1 \\rangle",1],comm:["[#1, #2]",2],ket:["|#1\\rangle",1],bra:["\\langle #1|",1],braket:["\\langle #1 | #2 \\rangle",2],dyad:["|#1\\rangle\\langle #1|",1],norm:["\\|#1\\|",1],abs:["|#1|",1],matrixel:["\\langle #1 | #2 | #3 \\rangle",3]}},loader:{load:["[tex]/physics"]}};
+</script>
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
     <style>
-        :root {
-            --nav-accent: #c02828;
-            --nav-glow: rgba(192,40,40,0.4);
-            --nav-brand: #c02828;
-            --nav-brand-glow: rgba(192,40,40,0.6);
-        }
-
-        body {
-            background-color: #1a1a1a;
-            color: #f0e4c8;
-        }
-
-        main {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 72px 20px 60px;
-        }
-
-        .breadcrumb {
-            font-family: 'Press Start 2P', monospace;
-            font-size: 7px;
-            color: #666;
-            letter-spacing: 0.1em;
-            margin-top: 0;
-            margin-bottom: 16px;
-            align-self: flex-start;
-        }
-        .breadcrumb a { color: #888; text-decoration: none; transition: color 0.15s; }
-        .breadcrumb a:hover { color: #c02828; }
-        .breadcrumb .sep { margin: 0 8px; color: #c02828; opacity: 0.7; }
-        .breadcrumb .current { color: #c02828; }
-
-        .article-header {
-            width: min(700px, 90vw);
-            text-align: center;
-            margin-bottom: 40px;
-            animation: fadeUp 0.5s ease both;
-        }
-
-        .article-type {
-            font-family: 'Press Start 2P', monospace;
-            font-size: 7px;
-            color: #f0e4c8;
-            background: #c02828;
-            display: inline-block;
-            padding: 3px 10px;
-            letter-spacing: 0.1em;
-            margin-bottom: 20px;
-        }
-
-        .article-title {
-            font-family: 'Press Start 2P', monospace;
-            font-size: clamp(11px, 2.2vw, 16px);
-            color: #f0e4c8;
-            letter-spacing: 0.06em;
-            line-height: 1.8;
-            margin-bottom: 16px;
-        }
-
-        .article-meta {
-            font-family: 'Courier Prime', monospace;
-            font-size: 12px;
-            color: #666;
-            line-height: 1.6;
-        }
-
-        .article-meta .author { color: #c02828; font-weight: 700; }
-
-        /* ── ARTICLE BODY ── */
-        .article-body {
-            width: min(700px, 90vw);
-            animation: fadeUp 0.5s 0.1s ease both;
-        }
-
-        .article-body h2 {
-            font-family: 'Press Start 2P', monospace;
-            font-size: 10px;
-            color: #c02828;
-            letter-spacing: 0.08em;
-            margin-top: 40px;
-            margin-bottom: 16px;
-            line-height: 1.8;
-        }
-
-        .article-body h3 {
-            font-family: 'Press Start 2P', monospace;
-            font-size: 8px;
-            color: #888;
-            letter-spacing: 0.06em;
-            margin-top: 32px;
-            margin-bottom: 12px;
-            line-height: 1.8;
-        }
-
-        .article-body p {
-            font-family: 'Courier Prime', monospace;
-            font-size: 14px;
-            line-height: 1.85;
-            color: #c8c0a8;
-            margin-bottom: 16px;
-            text-align: justify;
-        }
-
-        .article-body p:first-of-type::first-letter {
-            font-family: 'Press Start 2P', monospace;
-            font-size: 2.2em;
-            float: left;
-            line-height: 0.85;
-            margin-right: 8px;
-            margin-top: 4px;
-            color: #c02828;
-        }
-
-        .article-body a {
-            color: #c02828;
-            text-decoration: underline;
-            text-decoration-color: rgba(192,40,40,0.3);
-        }
-        .article-body a:hover { color: #e88080; }
-
-        .article-body ul {
-            font-family: 'Courier Prime', monospace;
-            font-size: 14px;
-            line-height: 1.85;
-            color: #c8c0a8;
-            margin-bottom: 16px;
-            padding-left: 24px;
-        }
-        .article-body li { margin-bottom: 4px; }
-
-        .article-body strong { color: #f0e4c8; }
-        .article-body em { color: #444; }
-
-        /* ── EQUATIONS ── */
-        .equation {
-            margin: 20px 0;
-            text-align: center;
-            width: 100%;
-        }
-
-        .subequations {
-            margin: 16px 0;
-        }
-
-        .article-body .mjx-container {
-            overflow-x: auto;
-            overflow-y: hidden;
-            max-width: 100%;
-        }
-
-        .appendix-divider {
-            width: 100%;
-            height: 2px;
-            background: #333;
-            margin: 48px 0 32px;
-            position: relative;
-        }
-        .appendix-divider::after {
-            content: 'APPENDICES';
-            position: absolute;
-            left: 50%;
-            top: 50%;
-            transform: translate(-50%, -50%);
-            background: #1a1a1a;
-            padding: 0 16px;
-            font-family: 'Press Start 2P', monospace;
-            font-size: 7px;
-            color: #666;
-            letter-spacing: 0.15em;
-        }
-
-        .article-end {
-            width: min(700px, 90vw);
-            text-align: center;
-            margin-top: 40px;
-            margin-bottom: 40px;
-        }
-
-        .article-end span { color: #c02828; font-size: 12px; }
-
-        .article-back {
-            display: inline-block;
-            margin-top: 24px;
-            font-family: 'Press Start 2P', monospace;
-            font-size: 8px;
-            color: #c02828;
-            text-decoration: none;
-            border: 2px solid #c02828;
-            padding: 8px 16px;
-            transition: all 0.15s;
-        }
-        .article-back:hover {
-            background: #c02828;
-            color: #1a1a1a;
-        }
-
-        footer {
-            background: #111 !important;
-            border-top-color: #333 !important;
-            color: #666 !important;
-        }
-        footer span { color: #c02828 !important; }
-
-        @media (max-width: 640px) {
-            .article-title { font-size: 11px; }
-            .article-body p { font-size: 13px; }
-            .article-body h2 { font-size: 9px; }
-            .article-body h3 { font-size: 7px; }
-            .equation { overflow-x: auto; }
-        }
-    </style>
+:root{--nav-accent: #c02828;--nav-glow: rgba(192,40,40,0.4);--nav-brand: #c02828;--nav-brand-glow: rgba(192,40,40,0.6)}body{background-color:#1a1a1a;color:#f0e4c8}main{flex:1;display:flex;flex-direction:column;align-items:center;padding:72px 20px 60px}.breadcrumb{font-family:"Press Start 2P",monospace;font-size:7px;color:#666;letter-spacing:0.1em;margin-top:0;margin-bottom:16px;align-self:flex-start}.breadcrumb a{color:#888;text-decoration:none;transition:color 0.15s}.breadcrumb a:hover{color:#c02828}.breadcrumb .sep{margin:0 8px;color:#c02828;opacity:0.7}.breadcrumb .current{color:#c02828}.article-header{width:min(700px,90vw);text-align:center;margin-bottom:40px;animation:fadeUp 0.5s ease both}.article-type{font-family:"Press Start 2P",monospace;font-size:7px;color:#f0e4c8;background:#c02828;display:inline-block;padding:3px 10px;letter-spacing:0.1em;margin-bottom:20px}.article-title{font-family:"Press Start 2P",monospace;font-size:clamp(11px,2.2vw,16px);color:#f0e4c8;letter-spacing:0.06em;line-height:1.8;margin-bottom:16px}.article-meta{font-family:"Courier Prime",monospace;font-size:12px;color:#666;line-height:1.6}.article-meta .author{color:#c02828;font-weight:700}.article-body{width:min(700px,90vw);animation:fadeUp 0.5s 0.1s ease both}.article-body h2{font-family:"Press Start 2P",monospace;font-size:10px;color:#c02828;letter-spacing:0.08em;margin-top:40px;margin-bottom:16px;line-height:1.8}.article-body h3{font-family:"Press Start 2P",monospace;font-size:8px;color:#888;letter-spacing:0.06em;margin-top:32px;margin-bottom:12px;line-height:1.8}.article-body p{font-family:"Courier Prime",monospace;font-size:14px;line-height:1.85;color:#c8c0a8;margin-bottom:16px;text-align:justify}.article-body p:first-of-type::first-letter{font-family:"Press Start 2P",monospace;font-size:2.2em;float:left;line-height:0.85;margin-right:8px;margin-top:4px;color:#c02828}.article-body a{color:#c02828;text-decoration:underline;text-decoration-color:rgba(192,40,40,0.3)}.article-body a:hover{color:#e88080}.article-body ul{font-family:"Courier Prime",monospace;font-size:14px;line-height:1.85;color:#c8c0a8;margin-bottom:16px;padding-left:24px}.article-body li{margin-bottom:4px}.article-body strong{color:#f0e4c8}.article-body em{color:#444}.equation{margin:20px 0;text-align:center;width:100%}.subequations{margin:16px 0}.article-body .mjx-container{overflow-x:auto;overflow-y:hidden;max-width:100%}.appendix-divider{width:100%;height:2px;background:#333;margin:48px 0 32px;position:relative}.appendix-divider::after{content:"APPENDICES";position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);background:#1a1a1a;padding:0 16px;font-family:"Press Start 2P",monospace;font-size:7px;color:#666;letter-spacing:0.15em}.article-end{width:min(700px,90vw);text-align:center;margin-top:40px;margin-bottom:40px}.article-end span{color:#c02828;font-size:12px}.article-back{display:inline-block;margin-top:24px;font-family:"Press Start 2P",monospace;font-size:8px;color:#c02828;text-decoration:none;border:2px solid #c02828;padding:8px 16px;transition:all 0.15s}.article-back:hover{background:#c02828;color:#1a1a1a}footer{background:#111!important;border-top-color:#333!important;color:#666!important}footer span{color:#c02828!important}@media(max-width:640px){.article-title{font-size:11px}.article-body p{font-size:13px}.article-body h2{font-size:9px}.article-body h3{font-size:7px}.equation{overflow-x:auto}}
+</style>
 </head>
 <body>
 
@@ -275,9 +41,6 @@
 
     <div class="article-body">
 
-<!-- ═══════════════════════════════════════════════ -->
-<!-- SECTION 1: Classical Harmonic Oscillator       -->
-<!-- ═══════════════════════════════════════════════ -->
 
 <h2 id="sec:classical_HO">Classical Harmonic Oscillator</h2>
 
@@ -345,9 +108,6 @@ $$
 
 <p>A key property of the harmonic oscillator to note is that despite $\phi$ and $t$ appearing in $x(t)$ and $p_x(t)$, the total energy of the system is independent of these parameters. These classical equations of motion will be used as a reference for their quantum counterparts in the following sections.</p>
 
-<!-- ═══════════════════════════════════════════════ -->
-<!-- SECTION 2: Quantum Harmonic Oscillator         -->
-<!-- ═══════════════════════════════════════════════ -->
 
 <h2 id="sec:QHO">Quantum Harmonic Oscillator</h2>
 
@@ -385,7 +145,6 @@ $$
 
 <p>where $\underline{N}$ is the <strong>number operator</strong>: a Hermitian operator associated with a measured number of excited energy quanta in a given quantum state.</p>
 
-<!-- ── Subsection: Energy eigenstates ── -->
 
 <h3 id="sec:energy_eigenstates">Energy eigenstates are like particles</h3>
 
@@ -453,7 +212,6 @@ $$
 
 <p>where only $n=0$ corresponds to a state of minimum uncertainty. In this scenario where the expectation values for position and momentum are constant, the quantum oscillator in a single energy eigenstate can be thought of as a <strong>particle-like</strong>, excited state, rather than some sort of physically oscillating system.</p>
 
-<!-- ── Subsection: Uncertainty in amplitude and phase ── -->
 
 <h3>Uncertainty in amplitude and phase</h3>
 
@@ -549,7 +307,6 @@ $$
 
 <p>which can be shown noting $\underline{U}_a |n\rangle = |n-1\rangle$, where phase information is now contained in the complex eigenvalue.</p>
 
-<!-- ── Subsection: Coherent states ── -->
 
 <h3>Coherent states are the real oscillators</h3>
 
@@ -583,9 +340,6 @@ $$
 
 <p>which describes a <em>Poisson distribution</em>.</p>
 
-<!-- ═══════════════════════════════════════════════ -->
-<!-- SECTION 3: Classical Electromagnetic Field     -->
-<!-- ═══════════════════════════════════════════════ -->
 
 <h2 id="sec:EM_field">Classical Electromagnetic Field</h2>
 
@@ -669,9 +423,6 @@ $$
     where it is assumed (as a mathematical trick) that there are boundaries imposed by a large box of volume $\mathcal{V}$.</li>
 </ul>
 
-<!-- ═══════════════════════════════════════════════ -->
-<!-- APPENDICES                                     -->
-<!-- ═══════════════════════════════════════════════ -->
 
 <div class="appendix-divider"></div>
 
@@ -805,6 +556,8 @@ $$
 </footer>
 
 <script src="../../nav.js?v=17bba9c8"></script>
-<script>window.addEventListener("pageshow",function(e){if(e.persisted)location.reload();});</script>
+<script>
+window.addEventListener("pageshow",function(e){if(e.persisted)location.reload()});
+</script>
 </body>
 </html>

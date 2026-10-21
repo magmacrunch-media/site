@@ -23,32 +23,8 @@
   <link rel="stylesheet" href="../magma-themes.css?v=9e723c54">
   <link rel="stylesheet" href="../game-page.css?v=645aa2c0">
   <style>
-    /* Caldera's look: the vent's glow rising from below, as its game.css
-       paints the page, rock-edged screens that throw heat, the title's
-       orange bloom on every heading, and its .btn colours. Colours come
-       from the caldera theme. */
-    body {
-      --line: var(--mt-p-cd-rock-hi);
-      --link: var(--mt-p-cd-sand);
-      --radius: 3px;
-      --head-glow: 0 0 10px var(--mt-p-cd-lava), 0 0 2px var(--mt-p-cd-glow);
-      --btn-bg: var(--mt-p-cd-flame);
-      --btn-ink: #1a0700;
-      --btn-shadow: var(--mt-p-cd-crust);
-      --frame: var(--mt-p-cd-rock-hi);
-      --frame-glow: 0 0 36px color-mix(in srgb, var(--mt-p-cd-lava) 35%, transparent);
-      --panel-border: var(--mt-p-cd-rock);
-      background: radial-gradient(ellipse at 50% 100%, var(--mt-p-cd-vent) 0%, var(--mt-bg) 60%) var(--mt-bg);
-    }
-    .hero h1 { font-size: clamp(22px, 5vw, 40px); }
-    .hero .pair {
-      display: flex; gap: 1rem; justify-content: center;
-      margin: 0 auto 1.75rem;
-    }
-    .hero .pair .screen { width: min(44vw, 300px); margin: 0; }
-    .platform, .built a, .built div { background: color-mix(in srgb, var(--mt-surface) 80%, transparent); }
-    .play-btn:hover, .play-btn:focus-visible { background: var(--mt-p-cd-glow); }
-  </style>
+body{--line: var(--mt-p-cd-rock-hi);--link: var(--mt-p-cd-sand);--radius: 3px;--head-glow: 0 0 10px var(--mt-p-cd-lava), 0 0 2px var(--mt-p-cd-glow);--btn-bg: var(--mt-p-cd-flame);--btn-ink: #1a0700;--btn-shadow: var(--mt-p-cd-crust);--frame: var(--mt-p-cd-rock-hi);--frame-glow: 0 0 36px color-mix(in srgb, var(--mt-p-cd-lava) 35%, transparent);--panel-border: var(--mt-p-cd-rock);background:radial-gradient(ellipse at 50% 100%,var(--mt-p-cd-vent) 0%,var(--mt-bg) 60%) var(--mt-bg)}.hero h1{font-size:clamp(22px,5vw,40px)}.hero .pair{display:flex;gap:1rem;justify-content:center;margin:0 auto 1.75rem}.hero .pair .screen{width:min(44vw,300px);margin:0}.platform,.built a,.built div{background:color-mix(in srgb,var(--mt-surface) 80%,transparent)}.play-btn:hover,.play-btn:focus-visible{background:var(--mt-p-cd-glow)}
+</style>
 </head>
 <body data-magma-theme="caldera">
 

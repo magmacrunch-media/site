@@ -32,7 +32,6 @@
 
     <div class="container"></div>
 
-    <!-- Backgammon-specific extras (injected into game-layout) -->
     <template id="bgGameExtra">
         <div class="dice-area">
             <div><div id="die1" class="die" data-value="0"></div><div class="dice-label">DIE 1</div></div>
@@ -44,72 +43,17 @@
 
     <script src="../shared/board-game-template.js?v=daa1cd2a"></script>
     <script>
-    BoardGameTemplate.render({
-        title: 'BACKGAMMON',
-        subtitle: '// NEON EDITION //',
-        chat: true,
-        footer: ['CLASSIC BOARD GAME \u00a0·\u00a0 VS AI OPPONENT', 'DOUBLING CUBE \u00a0·\u00a0 NEON RETRO STYLE'],
-        buttons: [
-            { id: 'startGameBtn', label: 'CLICK OR PRESS SPACE TO START', cls: 'primary', icon: '▶\u00a0\u00a0' },
-            { id: 'onlineBtn', label: 'PLAY ONLINE', icon: '🌐\u00a0\u00a0' },
-            { id: 'helpBtn', label: 'HOW TO PLAY' },
-            { id: 'creditsBtn', label: 'CREDITS' }
-        ],
-        gameHeader: '<div class="stat-item"><span class="stat-label">STAKES</span><span class="stat-value" id="scoreValue">1</span></div>',
-        gameControls: [
-            { id: 'newGameBtn', label: 'NEW GAME' },
-            { id: 'menuBtn', label: 'MENU' }
-        ],
-        instructions: '<h3>Backgammon Rules</h3>' +
-            '<p>Backgammon is a classic two-player board game. The goal is to move all your checkers to your home board and then bear them off.</p>' +
-            '<h4>Setup</h4><ul>' +
-            '<li>You are <strong style="color: #00f5ff;">CYAN</strong> — your home is points <strong>1-6</strong> (bottom right)</li>' +
-            '<li>AI is <strong style="color: #ff2d78;">MAGENTA</strong> — its home is points <strong>19-24</strong> (top right)</li>' +
-            '<li>You move from high points (24) to low points (1)</li></ul>' +
-            '<h4>Gameplay</h4><ul>' +
-            '<li>Roll dice to determine how many points you can move</li>' +
-            '<li>Click a checker to select it, then click a destination</li>' +
-            '<li>You must use both dice if possible</li>' +
-            '<li>If you roll doubles, you get 4 moves instead of 2</li></ul>' +
-            '<h4>Hitting</h4><ul>' +
-            '<li>Landing on a single opponent checker sends it to the bar</li>' +
-            '<li>Checkers on the bar must re-enter before other moves</li></ul>' +
-            '<h4>Bearing Off</h4><ul>' +
-            '<li>Once all your checkers are in your home board, you can bear off</li>' +
-            '<li>Roll the exact number or higher to remove a checker</li></ul>' +
-            '<h4>Doubling Cube</h4><ul>' +
-            '<li>Before your turn, you can offer to double the stakes</li>' +
-            '<li>If the opponent accepts, the cube value doubles</li>' +
-            '<li>If they reject, they forfeit the game</li></ul>',
-        credits: '<h3>Backgammon — Neon Edition</h3>' +
-            '<h4>Game Design & Development</h4><p>Jake A. McCoy</p>' +
-            '<h4>Publisher</h4><p><strong>magmacrunch media</strong></p>' +
-            '<h4>Built With</h4><p>Vanilla HTML, CSS & JavaScript · Press Start 2P font · Neon retro aesthetic</p>' +
-            '<h4>About</h4><p>Classic backgammon with a neon arcade twist. Play against the AI opponent and master the doubling cube!</p>'
-    });
+BoardGameTemplate.render({title:"BACKGAMMON",subtitle:"// NEON EDITION //",chat:true,footer:["CLASSIC BOARD GAME  ·  VS AI OPPONENT","DOUBLING CUBE  ·  NEON RETRO STYLE"],buttons:[{id:"startGameBtn",label:"CLICK OR PRESS SPACE TO START",cls:"primary",icon:"▶  "},{id:"onlineBtn",label:"PLAY ONLINE",icon:"🌐  "},{id:"helpBtn",label:"HOW TO PLAY"},{id:"creditsBtn",label:"CREDITS"}],gameHeader:'<div class="stat-item"><span class="stat-label">STAKES</span><span class="stat-value" id="scoreValue">1</span></div>',gameControls:[{id:"newGameBtn",label:"NEW GAME"},{id:"menuBtn",label:"MENU"}],instructions:'<h3>Backgammon Rules</h3><p>Backgammon is a classic two-player board game. The goal is to move all your checkers to your home board and then bear them off.</p><h4>Setup</h4><ul><li>You are <strong style="color: #00f5ff;">CYAN</strong> — your home is points <strong>1-6</strong> (bottom right)</li><li>AI is <strong style="color: #ff2d78;">MAGENTA</strong> — its home is points <strong>19-24</strong> (top right)</li><li>You move from high points (24) to low points (1)</li></ul><h4>Gameplay</h4><ul><li>Roll dice to determine how many points you can move</li><li>Click a checker to select it, then click a destination</li><li>You must use both dice if possible</li><li>If you roll doubles, you get 4 moves instead of 2</li></ul><h4>Hitting</h4><ul><li>Landing on a single opponent checker sends it to the bar</li><li>Checkers on the bar must re-enter before other moves</li></ul><h4>Bearing Off</h4><ul><li>Once all your checkers are in your home board, you can bear off</li><li>Roll the exact number or higher to remove a checker</li></ul><h4>Doubling Cube</h4><ul><li>Before your turn, you can offer to double the stakes</li><li>If the opponent accepts, the cube value doubles</li><li>If they reject, they forfeit the game</li></ul>',credits:"<h3>Backgammon — Neon Edition</h3><h4>Game Design & Development</h4><p>Jake A. McCoy</p><h4>Publisher</h4><p><strong>magmacrunch media</strong></p><h4>Built With</h4><p>Vanilla HTML, CSS & JavaScript · Press Start 2P font · Neon retro aesthetic</p><h4>About</h4><p>Classic backgammon with a neon arcade twist. Play against the AI opponent and master the doubling cube!</p>"});(function(){var extra=document.getElementById("bgGameExtra");var layout=document.querySelector(".game-layout");if(extra&&layout){var clone=extra.content.cloneNode(true);var boardArea=layout.querySelector(".board-area");var children=Array.from(clone.children);children.forEach(function(el){layout.appendChild(el)})}})();
+</script>
 
-    // Inject backgammon-specific extras into game-layout
-    (function () {
-        var extra = document.getElementById('bgGameExtra');
-        var layout = document.querySelector('.game-layout');
-        if (extra && layout) {
-            var clone = extra.content.cloneNode(true);
-            var boardArea = layout.querySelector('.board-area');
-            // Insert dice area and roll button after board-area
-            var children = Array.from(clone.children);
-            children.forEach(function (el) { layout.appendChild(el); });
-        }
-    })();
-    </script>
-
-    <!-- Game scripts. These are static on purpose: BoardGameTemplate.render()
-         builds markup only — scripts it injected via insertAdjacentHTML never
-         executed, which is why this game did not run at all. render() must
-         still come first, since these bind to the DOM it creates. -->
     <script src="../shared/adenosine-multiplayer.js?v=aa0a94eb"></script>
-    <script>const { MP, MSG, MP_PALETTE } = AdMP;</script>
+    <script>
+const{MP,MSG,MP_PALETTE}=AdMP;
+</script>
     <script src="../shared/mp-server.js?v=f66f285b"></script>
-    <script>var MP_DEFAULT_SERVER = mpServerFor('backgammon', 8771);</script>
+    <script>
+var MP_DEFAULT_SERVER=mpServerFor("backgammon",8771);
+</script>
     <script src="js/config.js?v=4cb3590c"></script>
     <script src="js/board.js?v=59340f26"></script>
     <script src="js/dice.js?v=05ba9129"></script>

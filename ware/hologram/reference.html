@@ -14,7 +14,6 @@
     <meta property="og:site_name" content="magmacrunch media">
     <meta property="og:locale" content="en_US">
     <link rel="icon" type="image/x-icon" href="../../favicon.ico">
-    <!-- Press Start 2P and Courier Prime are self-hosted by the shell. -->
     <link rel="stylesheet" href="../shell/fonts.css?v=08818834">
     <link rel="stylesheet" href="../shell/app-shell.css?v=2eb63ac6">
     <link rel="stylesheet" href="hologram.css?v=6e6b72ed">
@@ -65,7 +64,6 @@
 
     <div id="modules">
 
-        <!-- ── linalg ─────────────────────────────────────── -->
         <section class="module-section" data-module="linalg">
             <div class="module-header">
                 <h2>linalg</h2>
@@ -132,7 +130,6 @@
                     the two separate is what lets a Stokes vector ride through the same interface.</p></div>
         </section>
 
-        <!-- ── geometry ───────────────────────────────────── -->
         <section class="module-section" data-module="geometry">
             <div class="module-header">
                 <h2>geometry</h2>
@@ -199,7 +196,6 @@ typedef struct {
                     the GPU build the same one.</p></div>
         </section>
 
-        <!-- ── camera ─────────────────────────────────────── -->
         <section class="module-section" data-module="camera">
             <div class="module-header">
                 <h2>camera</h2>
@@ -231,7 +227,6 @@ typedef struct {
                     ((x + 0.5) / w, (y + 0.5) / h).</p></div>
         </section>
 
-        <!-- ── spectrum ───────────────────────────────────── -->
         <section class="module-section" data-module="spectrum">
             <div class="module-header">
                 <h2>spectrum</h2>
@@ -270,7 +265,6 @@ typedef struct {
                     several times that.</p></div>
         </section>
 
-        <!-- ── polar ──────────────────────────────────────── -->
         <section class="module-section" data-module="polar">
             <div class="module-header">
                 <h2>polar</h2>
@@ -322,7 +316,6 @@ typedef struct {
                     delta_s, the number a Fresnel rhomb is cut to.</p></div>
         </section>
 
-        <!-- ── cpu_trace ──────────────────────────────────── -->
         <section class="module-section" data-module="cpu_trace">
             <div class="module-header">
                 <h2>cpu_trace</h2>
@@ -451,7 +444,6 @@ typedef struct {
                 <p class="fn-desc">The same frame rendered through holo_trace_ray_spectral.</p></div>
         </section>
 
-        <!-- ── gpu_scene ──────────────────────────────────── -->
         <section class="module-section" data-module="gpu_scene">
             <div class="module-header">
                 <h2>gpu_scene</h2>
@@ -480,7 +472,6 @@ typedef struct {
                     tracing RGB and 1 tracing per wavelength.</p></div>
         </section>
 
-        <!-- ── display ────────────────────────────────────── -->
         <section class="module-section" data-module="display">
             <div class="module-header">
                 <h2>display</h2>
@@ -549,7 +540,6 @@ typedef struct {
                     exists for the oracle, whose image diff needs the GPU's actual pixels.</p></div>
         </section>
 
-        <!-- ── input ──────────────────────────────────────── -->
         <section class="module-section" data-module="input">
             <div class="module-header">
                 <h2>input</h2>
@@ -579,7 +569,6 @@ typedef struct {
                     frame. Returns nothing while the mouse is not captured.</p></div>
         </section>
 
-        <!-- ── collision ──────────────────────────────────── -->
         <section class="module-section" data-module="collision">
             <div class="module-header">
                 <h2>collision</h2>
@@ -625,7 +614,6 @@ typedef struct {
                     since walking is kinematic, while vel.y belongs to gravity and jumps.</p></div>
         </section>
 
-        <!-- ── oracle ─────────────────────────────────────── -->
         <section class="module-section" data-module="oracle">
             <div class="module-header">
                 <h2>oracle</h2>
@@ -671,7 +659,6 @@ typedef struct {
                     cannot be written.</p></div>
         </section>
 
-        <!-- ── timestep ───────────────────────────────────── -->
         <section class="module-section" data-module="timestep">
             <div class="module-header">
                 <h2>timestep</h2>

@@ -31,7 +31,6 @@
 
     <div class="container">
 
-        <!-- ═══════════════ START SCREEN ═══════════════ -->
         <div id="startScreen" class="start-screen">
             <div class="start-content">
                 <h1 class="game-title">FRENCH<br>TAROT</h1>
@@ -54,33 +53,26 @@
             </div>
         </div>
 
-        <!-- ═══════════════ GAME SCREEN ═══════════════ -->
         <div id="gameScreen" class="game-screen" style="display: none;">
 
-            <!-- Header -->
             <div class="game-header">
                 <h1>FRENCH TAROT</h1>
             </div>
 
-            <!-- Score display -->
             <div id="scoreDisplay" class="score-display"></div>
 
-            <!-- Main game layout -->
             <div class="game-layout">
 
-                <!-- North player (AI) -->
                 <div class="player-area player-top">
                     <div class="player-label">NORTH</div>
                     <div id="northHand" class="ai-hand"></div>
                 </div>
 
-                <!-- West player (AI) -->
                 <div class="player-area player-left">
                     <div class="player-label">WEST</div>
                     <div id="westHand" class="ai-hand"></div>
                 </div>
 
-                <!-- Center trick area -->
                 <div class="trick-area" id="trickArea">
                     <div class="trick-cards">
                         <div class="trick-slot north" id="trickNorth"></div>
@@ -92,13 +84,11 @@
                     <div class="trick-info">Trick 0 of 18</div>
                 </div>
 
-                <!-- East player (AI) -->
                 <div class="player-area player-right">
                     <div class="player-label">EAST</div>
                     <div id="eastHand" class="ai-hand"></div>
                 </div>
 
-                <!-- Player hand (south) -->
                 <div class="player-area player-bottom">
                     <div class="player-label">YOUR HAND</div>
                     <div id="playerHand" class="player-hand"></div>
@@ -106,15 +96,12 @@
 
             </div>
 
-            <!-- Message area -->
             <div id="messageArea" class="message-area">
                 <div class="game-message">Welcome to French Tarot!</div>
             </div>
 
-            <!-- Action buttons -->
             <div id="actionButtons" class="action-buttons"></div>
 
-            <!-- Game controls -->
             <div class="game-controls">
                 <button id="bidBtn" class="control-btn" style="display: none;">Bid</button>
                 <button id="newGameBtn" class="control-btn">New Game</button>
@@ -124,20 +111,17 @@
         </div>
     </div>
 
-    <!-- JavaScript — ORDER MATTERS -->
-    <!-- Adenosine packages -->
     <script src="../shared/adenosine-score-client.js?v=8c6493d6"></script>
     <script src="../shared/score-server.js?v=9acd988c"></script>
-    <script>const scoreClient = new AdScore.ScoreClient().auto(MC_SCORE_OPTS);</script>
-    <!-- Game scripts -->
+    <script>
+const scoreClient=new AdScore.ScoreClient().auto(MC_SCORE_OPTS);
+</script>
     <script src="js/config.js?v=5dc95e0e"></script>
     <script src="js/tarot-deck.js?v=7224b7b8"></script>
-    <!-- New deck rendering -->
     <script src="deck/js/suited-cards.js?v=826309ca"></script>
     <script src="deck/js/trump-cards.js?v=eab10332"></script>
     <script src="deck/js/excuse-card.js?v=4e0a0ff9"></script>
     <script src="deck/js/tarot-card-factory.js?v=e278f835"></script>
-    <!-- Game logic -->
     <script src="js/tarot-cards.js?v=734323b8"></script>
     <script src="js/trick-logic.js?v=ce480ae5"></script>
     <script src="js/scoring.js?v=bfbb2b2d"></script>

@@ -15,14 +15,9 @@
     <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23FFFFFF'/%3E%3Crect x='0' y='11' width='32' height='10' fill='%23003580'/%3E%3Crect x='10' y='0' width='10' height='32' fill='%23003580'/%3E%3C/svg%3E">
 <style>
-    :root {
-        --mc-back-color: var(--slate);
-    }
+:root{--mc-back-color: var(--slate)}
 </style>
 <link rel="stylesheet" href="../shared/arcade-base.css?v=de5e0d7b">
-<!-- Both faces are self-hosted; the @font-face blocks are at the top of
-     base.css. Preloaded because they are declared in a stylesheet the browser
-     has not parsed yet, so without this the fetch waits on base.css. -->
 <link rel="preload" as="font" type="font/woff2" href="../../fonts/PressStart2P-Regular.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="../../fonts/ShareTechMono-Regular.woff2" crossorigin>
 <link rel="stylesheet" href="base.css?v=12c1392e">
@@ -36,7 +31,6 @@
 <div class="bg-horizon"></div>
 <div class="bg-aurora"></div>
 
-<!-- Gameplay background snow -->
 <div id="gameplay-snow">
   <div class="gs-particle gs-layer-a"></div>
   <div class="gs-particle gs-layer-b"></div>
@@ -53,7 +47,6 @@
 
   <div class="game-row">
 
-    <!-- LEFT PANEL: hold + stats -->
     <div style="display:flex;flex-direction:column;gap:12px;">
       <div class="panel">
         <div class="panel-label">PIDÄ</div>
@@ -100,12 +93,10 @@
       </div>
     </div>
 
-    <!-- BOARD -->
     <div id="board-wrap">
       <canvas id="board" width="300" height="600"></canvas>
     </div>
 
-    <!-- RIGHT PANEL: next + controls -->
     <div style="display:flex;flex-direction:column;gap:12px;">
       <div class="panel">
         <div class="panel-label">SEURAAVA</div>
@@ -157,12 +148,10 @@
   <div style="font-size:8px;color:#2A4A5A;letter-spacing:3px;text-transform:uppercase;">© 2026 magmacrunch media · Yhdysvallat</div>
 </div>
 
-<!-- TITLE SCREEN -->
 <div id="title-overlay">
   <div id="title-scanlines"></div>
   <a href="../puzzles/" class="mc-back">puzzles</a>
 
-  <!-- Cathedral silhouette, behind all content -->
   <div id="uspenski-haze">
     <div class="nordic-snow snow-near"></div>
     <div class="nordic-snow snow-far"></div>
@@ -229,7 +218,6 @@
 
     <div id="title-subtitle">poista rivit · selviä · rakenna kombo</div>
 
-    <!-- Piece preview strip -->
     <div id="title-pieces">
       <div class="title-piece piece-i">
         <div class="tp-row"><div class="tc"></div><div class="tc lit"></div><div class="tc lit"></div><div class="tc lit"></div><div class="tc lit"></div><div class="tc"></div></div>
@@ -270,10 +258,8 @@
   </div>
 </div>
 
-<!-- hidden btn-start still wired by game.js -->
 <button id="btn-start" style="display:none;"></button>
 
-<!-- GAME OVER -->
 <div class="modal-overlay hidden" id="modal-gameover">
   <div class="modal">
     <h2>PELI OHI</h2>
@@ -287,7 +273,6 @@
   </div>
 </div>
 
-<!-- PAUSE -->
 <div class="modal-overlay hidden" id="modal-pause">
   <div class="modal">
     <h2>TAUKO</h2>
@@ -298,7 +283,6 @@
   </div>
 </div>
 
-<!-- HIGH SCORES -->
 <div class="modal-overlay hidden" id="modal-scores">
   <div class="modal" style="max-width:440px;">
     <h2>TULOKSET</h2>
@@ -318,7 +302,6 @@
 </div>
 
 
-<!-- CREDITS -->
 <div class="modal-overlay hidden" id="modal-credits">
   <div class="modal modal-credits">
     <div class="modal-titlebar">
@@ -374,7 +357,9 @@
 <script src="../shared/adenosine-rpg.js?v=ffe9a960"></script>
 <script src="../shared/adenosine-score-client.js?v=8c6493d6"></script>
 <script src="../shared/score-server.js?v=9acd988c"></script>
-<script>const scoreClient = new AdScore.ScoreClient().auto(MC_SCORE_OPTS);</script>
+<script>
+const scoreClient=new AdScore.ScoreClient().auto(MC_SCORE_OPTS);
+</script>
 <script src="game.js?v=249aaba2"></script>
 
 </body>

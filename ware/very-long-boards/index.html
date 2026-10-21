@@ -23,34 +23,8 @@
   <link rel="stylesheet" href="../magma-themes.css?v=9e723c54">
   <link rel="stylesheet" href="../game-page.css?v=645aa2c0">
   <style>
-    /* Very Long Boards' look: violet-black around a hot pink frame, which
-       is how the game sits on its page, a pink glow from the top, pink
-       headings with a purple shadow, gold for links and scores, and the
-       balance bar's green as the rule under the title. Colours come from
-       the very-long-boards theme. */
-    body {
-      --line: color-mix(in srgb, var(--mt-p-vlb-purple) 25%, var(--mt-bg));
-      --link: var(--mt-p-vlb-gold);
-      --radius: 2px;
-      --head-glow: 2px 2px 0 var(--mt-p-vlb-purple), 0 0 12px color-mix(in srgb, var(--mt-p-vlb-pink) 50%, transparent);
-      --btn-ink: #fff;
-      --btn-shadow: var(--mt-p-vlb-purple);
-      --frame: var(--mt-p-vlb-pink);
-      --frame-glow: 0 0 22px color-mix(in srgb, var(--mt-p-vlb-pink) 45%, transparent);
-      --panel-border: color-mix(in srgb, var(--mt-p-vlb-pink) 30%, var(--mt-surface));
-      background: radial-gradient(ellipse 80% 45% at 50% 0%, color-mix(in srgb, var(--mt-p-vlb-pink) 13%, transparent), transparent), var(--mt-bg);
-    }
-    .hero .tagline { color: var(--mt-p-vlb-purple); }
-    .hero .tagline::after {
-      content: '';
-      display: block;
-      width: 200px; height: 6px;
-      margin: 1.25rem auto 0;
-      border: 1px solid color-mix(in srgb, var(--mt-p-vlb-green) 60%, transparent);
-      background: linear-gradient(90deg, var(--mt-p-vlb-green) 70%, transparent 70%);
-    }
-    .platform, .built a, .built div { background: color-mix(in srgb, var(--mt-surface) 85%, transparent); }
-  </style>
+body{--line: color-mix(in srgb, var(--mt-p-vlb-purple) 25%, var(--mt-bg));--link: var(--mt-p-vlb-gold);--radius: 2px;--head-glow: 2px 2px 0 var(--mt-p-vlb-purple), 0 0 12px color-mix(in srgb, var(--mt-p-vlb-pink) 50%, transparent);--btn-ink: #fff;--btn-shadow: var(--mt-p-vlb-purple);--frame: var(--mt-p-vlb-pink);--frame-glow: 0 0 22px color-mix(in srgb, var(--mt-p-vlb-pink) 45%, transparent);--panel-border: color-mix(in srgb, var(--mt-p-vlb-pink) 30%, var(--mt-surface));background:radial-gradient(ellipse 80% 45% at 50% 0%,color-mix(in srgb,var(--mt-p-vlb-pink) 13%,transparent),transparent),var(--mt-bg)}.hero .tagline{color:var(--mt-p-vlb-purple)}.hero .tagline::after{content:"";display:block;width:200px;height:6px;margin:1.25rem auto 0;border:1px solid color-mix(in srgb,var(--mt-p-vlb-green) 60%,transparent);background:linear-gradient(90deg,var(--mt-p-vlb-green) 70%,transparent 70%)}.platform,.built a,.built div{background:color-mix(in srgb,var(--mt-surface) 85%,transparent)}
+</style>
 </head>
 <body data-magma-theme="very-long-boards">
 

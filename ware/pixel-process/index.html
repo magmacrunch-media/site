@@ -7,10 +7,6 @@
     <meta name="theme-color" content="#ff6b2b">
     <link rel="manifest" href="manifest.json">
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
-    <!-- Press Start 2P and Courier Prime are self-hosted by the shell. VT323,
-         for the readouts and the .sys-stat chips, is the one face fetched
-         from Google, and the iOS build replaces this request with a bundled
-         copy (ios/package.mjs). -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
@@ -20,10 +16,6 @@
     <link rel="stylesheet" href="css/style.css?v=fb0d209a">
 </head>
 <body>
-    <!-- The title screen. Its wordmark is not written here: js/title.js reads
-         the <h1> below and draws it, so the app's name stays in one place and
-         a rename stays cheap. The canvas is sized and labeled by that file
-         too. -->
     <div class="title-screen" id="titleScreen">
         <div class="title-inner">
             <canvas id="titleCanvas" class="title-canvas"></canvas>
@@ -32,12 +24,6 @@
             <p class="title-hint">or press any key</p>
         </div>
 
-        <!-- The publisher's mark, as the games carry it: the logo above the
-             name rather than beside it, so it reads as a signature block. The
-             image is derived from the website's own logo by
-             scripts/make-logo.py, and is not a link: the footer carries that
-             on the website, and in the app there is nowhere for a link to go
-             that is not Safari. -->
         <div class="title-publisher">
             <img class="title-publisher-mark" src="img/mc-logo.png" alt="" width="26" height="32">
             <span>magmacrunch media</span>
@@ -54,15 +40,11 @@
         </div>
     </header>
 
-    <!-- The compact breadcrumb trail: the ware pages all carry one
-         (ware/crumbs.css), and this is the same trail without "home",
-         styled by the shell's .back-link so nothing is vendored for it. -->
     <nav class="tool-nav" aria-label="breadcrumb" style="font-family: 'Press Start 2P', monospace; font-size: 7px; letter-spacing: 0.1em; color: var(--backlink-color);">
         <a href="../" class="back-link">ware</a> › <a href="../utilities/" class="back-link">creative utilities</a> › <span aria-current="page" style="color: var(--backlink-hover);">crunch//scope</span>
     </nav>
 
     <div class="workspace">
-        <!-- LEFT PANEL: Input & Sources -->
         <aside class="panel input-panel">
             <div class="panel-label">INPUT</div>
 
@@ -153,7 +135,6 @@
             <button class="export-btn" id="exportBtn">EXPORT PNG</button>
         </aside>
 
-        <!-- CENTER: Display Canvas -->
         <div class="center-area">
             <div class="canvas-wrap" id="canvasWrap">
                 <canvas id="displayCanvas"></canvas>
@@ -163,8 +144,6 @@
                     <span>DROP IMAGE</span>
                 </div>
             </div>
-            <!-- The monitor. js/meter.js owns everything inside it and draws
-                 on every repaint; canvas.js calls it and reads nothing back. -->
             <section class="meter" id="meter" aria-label="signal monitor">
                 <div class="meter-head">
                     <button type="button" class="meter-power" id="meterPower"
@@ -181,7 +160,6 @@
             <div class="canvas-hint">drag &amp; drop · ctrl+v paste · upload image · add effects →</div>
         </div>
 
-        <!-- RIGHT PANEL: Signal Chain -->
         <aside class="panel chain-panel">
             <div class="panel-label">SIGNAL CHAIN</div>
             <p class="panel-hint">effects process the source image</p>
@@ -197,14 +175,6 @@
                 <button class="lab-btn" id="undoBtn">UNDO</button>
             </div>
 
-            <!-- Under their own heading, not under CHAIN SEED. These two carry
-                 the whole chain as text, which is the thing a seed cannot do:
-                 a seed replays a roll, and nothing else replays a chain you
-                 tuned by hand. Sat in one row with MUTATE and UNDO they read
-                 as two more operations on the number above them, and on a
-                 phone, where MUTATE and UNDO are hidden because the action bar
-                 carries them, they were the only two buttons left under a seed
-                 box. -->
             <div class="panel-label">PRESET</div>
             <p class="panel-hint">the whole chain, as text</p>
             <div class="lab-row">
@@ -214,12 +184,9 @@
 
             <div class="panel-divider"></div>
 
-            <!-- Below 768px the chain is a row of chips and only the selected
-                 card is shown. Rendered by js/ui.js; empty on a wide screen. -->
             <div class="chain-chips" id="chainChips" aria-label="effects in the chain"></div>
 
             <div class="chain-list" id="chainList">
-                <!-- effect cards rendered by JS -->
             </div>
 
             <div class="add-effect-wrap">
@@ -250,9 +217,6 @@
         </aside>
     </div>
 
-    <!-- The phone action bar. Every button forwards to the real control
-         elsewhere on the page, so each action has one handler rather than
-         two that can drift. tests/test-page.js checks every target exists. -->
     <nav class="mobile-bar" aria-label="actions">
         <button type="button" data-forward="uploadBtn">UPLOAD</button>
         <button type="button" data-forward="diceBtn">DICE</button>
@@ -276,20 +240,15 @@
     <script src="js/effects/corrupt.js?v=987639f6"></script>
     <script src="js/effects/fft.js?v=3194a438"></script>
     <script src="js/effects/feedback.js?v=2210a612"></script>
-    <!-- After the effects: SPECTRUM mode uses the transform fft.js exposes
-         as Chain.fft, and before canvas.js repaints anything real. -->
     <script src="js/meter.js?v=e5fed789"></script>
     <script src="js/ui.js?v=6a9cd34e"></script>
     <script src="js/app.js?v=16f4d115"></script>
-    <!-- After app.js: it reads the page's own script tags to find the
-         stamped core files, and hands them to a worker. -->
     <script src="js/render.js?v=1147d332"></script>
-    <!-- preset.js is the logic and lab.js the buttons; both need Chain,
-         Canvas and UI to exist, so they follow app.js. -->
     <script src="js/preset.js?v=dc5c3382"></script>
     <script src="js/lab.js?v=183a049b"></script>
-    <!-- Last: it reads the effect registry the files above fill in. -->
     <script src="js/title.js?v=ded209c5"></script>
-    <script>if("serviceWorker" in navigator){navigator.serviceWorker.register("sw.js");}</script>
+    <script>
+if("serviceWorker"in navigator){navigator.serviceWorker.register("sw.js")}
+</script>
 </body>
 </html>

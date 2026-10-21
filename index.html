@@ -21,176 +21,8 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Courier+Prime:wght@400;700&display=swap">
     <link rel="stylesheet" href="style.css?v=981601e0">
     <style>
-        /* ── PAGE-SPECIFIC: homepage ── */
-        main {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 72px 20px 60px;
-        }
-
-        /* ── VOLCANO ANIMATION ── */
-        .volcano-wrap {
-            animation: fadeUp 0.6s ease both;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin-bottom: 8px;
-        }
-
-        .volcano-title {
-            font-family: 'Press Start 2P', monospace;
-            font-size: clamp(20px, 3.5vw, 48px);
-            text-align: center;
-            text-transform: lowercase;
-            color: var(--mc-crater);
-            /* Offsets are a fraction of the font size, not fixed pixels, so
-               the extrusion keeps the same proportions at every size and the
-               media query below needs no second set of numbers. At 4px steps
-               against a 48px face the layers read as five separate ghosts;
-               --title-layer is the one number to turn if it wants tightening
-               or loosening again. */
-            --title-layer: 0.05em;
-            text-shadow:
-                calc(var(--title-layer) * 1) calc(var(--title-layer) * 1) 0 var(--mc-mount-mid),
-                calc(var(--title-layer) * 2) calc(var(--title-layer) * 2) 0 var(--mc-lava-deep),
-                calc(var(--title-layer) * 3) calc(var(--title-layer) * 3) 0 var(--mc-mount-dark),
-                calc(var(--title-layer) * 4) calc(var(--title-layer) * 4) 0 var(--mc-lava-amber),
-                calc(var(--title-layer) * 5) calc(var(--title-layer) * 5) 0 #000000;
-            letter-spacing: 0.05em;
-            margin-bottom: 1.5rem;
-            line-height: 1.4;
-        }
-
-        .hero-emblem {
-            width: min(380px, 76vw);
-            margin-top: 6px;
-        }
-        .hero-emblem img {
-            display: block;
-            width: 100%;
-            height: auto;
-        }
-
-        .volcano-tagline {
-            margin-top: 1.5rem;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 10px;
-        }
-        .volcano-est {
-            font-family: 'Press Start 2P', monospace;
-            font-size: 10px;
-            color: var(--mc-lava-amber);
-            text-shadow: 2px 2px 0 #000;
-            letter-spacing: 0.12em;
-        }
-        .volcano-quote {
-            font-family: 'Press Start 2P', monospace;
-            font-size: clamp(6px, 1vw, 9px);
-            color: var(--mc-text-dim);
-            text-align: center;
-            line-height: 2.2;
-            text-shadow: 2px 2px 0 #000;
-            letter-spacing: 0.06em;
-        }
-        .volcano-quote .blink-cyan {
-            color: var(--mc-cereal-cyan);
-            animation: blink 1.2s step-end infinite;
-        }
-
-        /* ── WHAT THIS IS ──
-           Press Start 2P is unreadable below about 10px, so the one piece of
-           prose on the page is set in Courier Prime like the rest of the
-           site's body copy. */
-        .home-intro {
-            font-family: 'Courier Prime', monospace;
-            font-size: 15px;
-            line-height: 1.85;
-            color: var(--mc-text, #f0ead8);
-            text-align: center;
-            max-width: 62ch;
-            margin: 44px 0 0;
-            animation: fadeUp 0.6s 0.25s ease both;
-        }
-        .home-intro b {
-            color: var(--mc-lava-amber);
-            font-weight: 700;
-        }
-        .home-intro a {
-            color: var(--mc-cereal-cyan);
-            text-decoration: none;
-            border-bottom: 1px solid rgba(0,245,255,0.35);
-        }
-        .home-intro a:hover {
-            color: var(--mc-lava-bright);
-            border-bottom-color: var(--mc-lava-bright);
-        }
-
-        /* ── SECTION CARDS ──
-           .nav-cards / .nav-card are the shared components in style.css, plus
-           the five homepage-only colors it already defines. All this block
-           adds is the second line, so the cards can say what is behind them
-           rather than only naming it. */
-        /* Grid rather than the shared flex wrap: eight cards of unequal
-           label length wrap 3/4/1 under flex, which looks like an accident. */
-        .nav-cards {
-            animation: fadeUp 0.6s 0.4s ease both;
-            margin-top: 48px;
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            max-width: 760px;
-            width: 100%;
-        }
-        .nav-card {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            gap: 8px;
-            padding: 14px 16px;
-        }
-        .card-sub {
-            font-family: 'Courier Prime', monospace;
-            font-size: 12px;
-            letter-spacing: 0;
-            opacity: 0.72;
-        }
-
-        /* ── EMAIL LIST LINE ──
-           Set like .home-intro rather than like a card, because it is a
-           request and not a destination. See the comment at the markup. */
-        .home-mail {
-            font-family: 'Courier Prime', monospace;
-            font-size: 14px;
-            line-height: 1.8;
-            color: var(--mc-text-dim, #8a7a8a);
-            text-align: center;
-            max-width: 52ch;
-            margin: 36px 0 0;
-            animation: fadeUp 0.6s 0.5s ease both;
-        }
-        .home-mail a {
-            color: var(--mc-lava-amber);
-            text-decoration: none;
-            border-bottom: 1px solid rgba(255,124,31,0.4);
-        }
-        .home-mail a:hover {
-            color: var(--mc-cereal-cyan);
-            border-bottom-color: var(--mc-cereal-cyan);
-        }
-
-        @media (max-width: 640px) {
-            main { padding: 48px 18px 48px; }
-            .home-intro { font-size: 13px; line-height: 1.7; margin-top: 32px; }
-            /* Two per row rather than one, so the grid is still a grid. */
-            .nav-cards { grid-template-columns: repeat(2, 1fr); gap: 10px; }
-            .nav-card { padding: 12px 10px; }
-            .card-sub { font-size: 11px; }
-            .home-mail { font-size: 12.5px; margin-top: 28px; }
-        }
-    </style>
+main{flex:1;display:flex;flex-direction:column;align-items:center;padding:72px 20px 60px}.volcano-wrap{animation:fadeUp 0.6s ease both;display:flex;flex-direction:column;align-items:center;margin-bottom:8px}.volcano-title{font-family:"Press Start 2P",monospace;font-size:clamp(20px,3.5vw,48px);text-align:center;text-transform:lowercase;color:var(--mc-crater);--title-layer: 0.05em;text-shadow:calc(var(--title-layer) * 1) calc(var(--title-layer) * 1) 0 var(--mc-mount-mid),calc(var(--title-layer) * 2) calc(var(--title-layer) * 2) 0 var(--mc-lava-deep),calc(var(--title-layer) * 3) calc(var(--title-layer) * 3) 0 var(--mc-mount-dark),calc(var(--title-layer) * 4) calc(var(--title-layer) * 4) 0 var(--mc-lava-amber),calc(var(--title-layer) * 5) calc(var(--title-layer) * 5) 0 #000000;letter-spacing:0.05em;margin-bottom:1.5rem;line-height:1.4}.hero-emblem{width:min(380px,76vw);margin-top:6px}.hero-emblem img{display:block;width:100%;height:auto}.volcano-tagline{margin-top:1.5rem;display:flex;flex-direction:column;align-items:center;gap:10px}.volcano-est{font-family:"Press Start 2P",monospace;font-size:10px;color:var(--mc-lava-amber);text-shadow:2px 2px 0 #000;letter-spacing:0.12em}.volcano-quote{font-family:"Press Start 2P",monospace;font-size:clamp(6px,1vw,9px);color:var(--mc-text-dim);text-align:center;line-height:2.2;text-shadow:2px 2px 0 #000;letter-spacing:0.06em}.volcano-quote .blink-cyan{color:var(--mc-cereal-cyan);animation:blink 1.2s step-end infinite}.home-intro{font-family:"Courier Prime",monospace;font-size:15px;line-height:1.85;color:var(--mc-text, #f0ead8);text-align:center;max-width:62ch;margin:44px 0 0;animation:fadeUp 0.6s 0.25s ease both}.home-intro b{color:var(--mc-lava-amber);font-weight:700}.home-intro a{color:var(--mc-cereal-cyan);text-decoration:none;border-bottom:1px solid rgba(0,245,255,0.35)}.home-intro a:hover{color:var(--mc-lava-bright);border-bottom-color:var(--mc-lava-bright)}.nav-cards{animation:fadeUp 0.6s 0.4s ease both;margin-top:48px;display:grid;grid-template-columns:repeat(4,1fr);max-width:760px;width:100%}.nav-card{display:flex;flex-direction:column;justify-content:center;gap:8px;padding:14px 16px}.card-sub{font-family:"Courier Prime",monospace;font-size:12px;letter-spacing:0;opacity:0.72}.home-mail{font-family:"Courier Prime",monospace;font-size:14px;line-height:1.8;color:var(--mc-text-dim, #8a7a8a);text-align:center;max-width:52ch;margin:36px 0 0;animation:fadeUp 0.6s 0.5s ease both}.home-mail a{color:var(--mc-lava-amber);text-decoration:none;border-bottom:1px solid rgba(255,124,31,0.4)}.home-mail a:hover{color:var(--mc-cereal-cyan);border-bottom-color:var(--mc-cereal-cyan)}@media(max-width:640px){main{padding:48px 18px 48px}.home-intro{font-size:13px;line-height:1.7;margin-top:32px}.nav-cards{grid-template-columns:repeat(2,1fr);gap:10px}.nav-card{padding:12px 10px}.card-sub{font-size:11px}.home-mail{font-size:12.5px;margin-top:28px}}
+</style>
 </head>
 <body>
 
@@ -198,7 +30,6 @@
 
 <main>
 
-    <!-- VOLCANO ANIMATION -->
     <div class="volcano-wrap">
         <div class="volcano-title">magmacrunch<br>media</div>
         <div class="hero-emblem">
@@ -215,7 +46,6 @@
         </div>
     </div>
 
-    <!-- WHAT THIS IS -->
     <p class="home-intro">
         <b>magmacrunch media</b> is an independent record label and creative
         collective, founded in 2023 across Pennsylvania, California and New
@@ -224,7 +54,6 @@
         made them. <a href="home/about.html">More about us</a>.
     </p>
 
-    <!-- WHERE TO GO -->
     <div class="nav-cards">
         <a href="music/" class="nav-card c-violet">
             music<span class="card-sub">releases &amp; jukebox</span></a>
@@ -244,13 +73,6 @@
             guestbook<span class="card-sub">say hi</span></a>
     </div>
 
-    <!-- EMAIL LIST ──
-         Its own line rather than a ninth card. The grid above is four columns
-         for exactly eight cards, and the comment on .nav-cards says why: an
-         uneven wrap reads as a mistake. A ninth would sit alone on a third row,
-         and on the two-column mobile layout any odd count orphans one. It is
-         also not the same kind of thing as the cards, which name places to go;
-         this asks for something. -->
     <p class="home-mail">
         <a href="home/email-list.html">join the email list</a> and we will tell
         you when a record, a game or a film comes out.

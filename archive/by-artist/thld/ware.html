@@ -11,16 +11,8 @@
     <link rel="stylesheet" href="thld-ware.css">
 
     <script>
-    window.ARTIST_CONFIG = {
-        id:        '4d945923-9deb-4cd0-a477-6e1474cb306c',
-        name:      "texas hold'em lava dome, et al.",
-        abbr:      'THLD',
-        accent:    'apricot',
-        backColor: 'c-ware',
-        siblings:  ['about', 'events', 'links', 'lyrics', 'photography', 'recordings', 'releases', 'videos', 'ware', 'works'],
-        depth:     '../../../',
-    };
-    </script>
+window.ARTIST_CONFIG={id:"4d945923-9deb-4cd0-a477-6e1474cb306c",name:"texas hold'em lava dome, et al.",abbr:"THLD",accent:"apricot",backColor:"c-ware",siblings:["about","events","links","lyrics","photography","recordings","releases","videos","ware","works"],depth:"../../../"};
+</script>
 </head>
 <body class="thld-page thld-ware-page">
 
@@ -120,25 +112,13 @@
 
 <script src="../../../nav.js?v=17bba9c8"></script>
 <script>
-(function() {
-    const C = window.ARTIST_CONFIG;
-    if (!C) return;
-    const d = C.depth || '../../../';
-
-    const breadcrumbEl = document.querySelector('.breadcrumb');
-    if (breadcrumbEl) {
-        breadcrumbEl.innerHTML = `
+(function(){const C=window.ARTIST_CONFIG;if(!C)return;const d=C.depth||"../../../";const breadcrumbEl=document.querySelector(".breadcrumb");if(breadcrumbEl){breadcrumbEl.innerHTML=`
             <a href="${d}archive/">archive</a>
             <span class="sep">›</span>
             <a href="${d}archive/by-artist/">by artist</a>
             <span class="sep">›</span>
             <a href="./">${C.abbr.toLowerCase()}</a>
-        `;
-    }
-
-    const artistLabelEl = document.getElementById('artist-label');
-    if (artistLabelEl) artistLabelEl.textContent = `// ${C.name} //`;
-})();
+        `}const artistLabelEl=document.getElementById("artist-label");if(artistLabelEl)artistLabelEl.textContent=`// ${C.name} //`})();
 </script>
 
 </body>

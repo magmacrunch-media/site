@@ -47,7 +47,6 @@ __ejm\___/________dwb`---`____________________________________________
 
     <div class="guestbook-wrap">
 
-        <!-- FORM -->
         <div class="form-container">
             <input type="text" id="name" placeholder="your name" maxlength="80">
             <textarea id="message" placeholder="leave a message..."></textarea>
@@ -55,7 +54,6 @@ __ejm\___/________dwb`---`____________________________________________
             <div class="submit-status" id="submitStatus"></div>
         </div>
 
-        <!-- ENTRIES -->
         <div class="entries-header">// entries //</div>
         <div id="entries">
             <div class="loading-msg">loading entries...</div>
@@ -63,10 +61,6 @@ __ejm\___/________dwb`---`____________________________________________
 
     </div>
 
-    <!-- Site-wide visitor count. Rendered here and nowhere else, which is
-         what docs/ops/scores-counter.md always said -- but the element it
-         named existed in no HTML file in the repo, so the counter had been
-         incrementing into a file that nothing on the site displayed. -->
     <div class="counter-wrap"><div id="hit-counter"></div></div>
 
 </main>
@@ -76,93 +70,16 @@ __ejm\___/________dwb`---`____________________________________________
 </footer>
 
 <script src="../nav.js?v=17bba9c8"></script>
-<!-- nav.js lazy-loads counter-client.js on every page and calls increment(),
-     but skips that injection when the tag is already present. This page also
-     DISPLAYS the count, so it loads the script itself, which means increment()
-     has to be called here or a visitor landing directly on the guestbook would
-     never be counted. increment() is debounced per session, so this is safe. -->
 <script src="../assets/counter-client.js?v=6e8c2d55"></script>
 <script>
-    CounterClient.display('#hit-counter');
-    CounterClient.increment();
+CounterClient.display("#hit-counter");CounterClient.increment();
 </script>
 <script>
-    // ── Google Apps Script backend (unchanged from original) ──
-    const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzIKFyhLKbCR3VnOzl1vkKu8vQdWw8ENmUiHVgTBGSlQLYeTMn7hDiANlGbZACGElvc/exec';
-
-    function escapeHtml(text) {
-        const div = document.createElement('div');
-        div.textContent = text;
-        return div.innerHTML;
-    }
-
-    function loadEntries() {
-        fetch(SCRIPT_URL)
-            .then(r => r.json())
-            .then(data => {
-                const container = document.getElementById('entries');
-                if (!data.length) {
-                    container.innerHTML = '<div class="loading-msg">no entries yet — be the first!</div>';
-                    return;
-                }
-                container.innerHTML = '<div class="entries-list"></div>';
-                const list = container.querySelector('.entries-list');
-                [...data].reverse().forEach(entry => {
-                    const div = document.createElement('div');
-                    div.className = 'entry';
-                    div.innerHTML = `
+const SCRIPT_URL="https://script.google.com/macros/s/AKfycbzIKFyhLKbCR3VnOzl1vkKu8vQdWw8ENmUiHVgTBGSlQLYeTMn7hDiANlGbZACGElvc/exec";function escapeHtml(text){const div=document.createElement("div");div.textContent=text;return div.innerHTML}function loadEntries(){fetch(SCRIPT_URL).then(r=>r.json()).then(data=>{const container=document.getElementById("entries");if(!data.length){container.innerHTML='<div class="loading-msg">no entries yet — be the first!</div>';return}container.innerHTML='<div class="entries-list"></div>';const list=container.querySelector(".entries-list");[...data].reverse().forEach(entry=>{const div=document.createElement("div");div.className="entry";div.innerHTML=`
                         <div class="entry-name">${escapeHtml(entry.name)}</div>
                         <div class="entry-message">${escapeHtml(entry.message)}</div>
                         <div class="entry-time">${new Date(entry.timestamp).toLocaleString()}</div>
-                    `;
-                    list.appendChild(div);
-                });
-            })
-            .catch(() => {
-                document.getElementById('entries').innerHTML =
-                    '<div class="loading-msg">error loading entries</div>';
-            });
-    }
-
-    function submitEntry() {
-        const name    = document.getElementById('name').value.trim();
-        const message = document.getElementById('message').value.trim();
-        const status  = document.getElementById('submitStatus');
-
-        if (!name || !message) {
-            status.textContent = '! please fill in both fields';
-            status.className = 'submit-status error';
-            return;
-        }
-
-        status.textContent = 'sending...';
-        status.className = 'submit-status';
-
-        const formData = new FormData();
-        formData.append('name', name);
-        formData.append('message', message);
-
-        fetch(SCRIPT_URL, { method: 'POST', body: formData })
-            .then(r => r.json())
-            .then(data => {
-                if (data.status === 'success') {
-                    document.getElementById('name').value    = '';
-                    document.getElementById('message').value = '';
-                    status.textContent = '✦ message sent!';
-                    status.className = 'submit-status ok';
-                    loadEntries();
-                    setTimeout(() => { status.textContent = ''; }, 4000);
-                }
-            })
-            .catch(() => {
-                status.textContent = '! error sending — please try again';
-                status.className = 'submit-status error';
-            });
-    }
-
-    loadEntries();
-    const gbPollId = setInterval(loadEntries, 30000);
-    window.__pageCleanup = function() { clearInterval(gbPollId); };
+                    `;list.appendChild(div)})}).catch(()=>{document.getElementById("entries").innerHTML='<div class="loading-msg">error loading entries</div>'})}function submitEntry(){const name=document.getElementById("name").value.trim();const message=document.getElementById("message").value.trim();const status=document.getElementById("submitStatus");if(!name||!message){status.textContent="! please fill in both fields";status.className="submit-status error";return}status.textContent="sending...";status.className="submit-status";const formData=new FormData;formData.append("name",name);formData.append("message",message);fetch(SCRIPT_URL,{method:"POST",body:formData}).then(r=>r.json()).then(data=>{if(data.status==="success"){document.getElementById("name").value="";document.getElementById("message").value="";status.textContent="✦ message sent!";status.className="submit-status ok";loadEntries();setTimeout(()=>{status.textContent=""},4e3)}}).catch(()=>{status.textContent="! error sending — please try again";status.className="submit-status error"})}loadEntries();const gbPollId=setInterval(loadEntries,3e4);window.__pageCleanup=function(){clearInterval(gbPollId)};
 </script>
 
 </body>

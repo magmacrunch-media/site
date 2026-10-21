@@ -33,8 +33,6 @@
     <h1 class="page-title">magmacrunch music</h1>
     <p class="page-subtitle">recordings from <a href="../archive/by-label/magmacrunch-media/">magmacrunch media</a> · songs published by <a href="../archive/by-label/magmacrunch-music/">magmacrunch music</a></p>
 
-    <!-- THE DISPLAY: the latest release, filled from distributed-music/releases.js.
-         Hidden until the data arrives, so the page still works without it. -->
     <section class="display" aria-label="latest release">
         <div class="latest" id="latest" hidden>
             <a class="latest-art" id="latestArtLink" href="distributed-music/">
@@ -54,14 +52,12 @@
         <canvas id="waveCanvas" width="600" height="48"></canvas>
     </section>
 
-    <!-- ROSTER: one tile per artist with a distributed release, newest first -->
     <section class="roster-wrap" id="rosterWrap" hidden>
         <h2 class="section-head">roster</h2>
         <div class="roster" id="roster"></div>
         <a class="roster-all" href="../archive/by-artist/">every artist in the archive ›</a>
     </section>
 
-    <!-- LISTEN: the four ways in -->
     <section class="listen-wrap">
         <h2 class="section-head">listen</h2>
         <div class="music-cards">
@@ -118,179 +114,7 @@
 <script src="../nav.js?v=17bba9c8"></script>
 <script src="distributed-music/releases.js?v=37bc1e6e"></script>
 <script>
-// ── LABEL HOME: latest release and roster, from the distributed catalogue ──
-(function () {
-    const R = window.RELEASES;
-    if (!Array.isArray(R) || !R.length) return;
-    // releases.js paths are written relative to distributed-music/
-    const base = new URL('distributed-music/', location.href);
-    const url = p => new URL(p, base).href;
-    // The 320px copy scripts/sync-cover-thumbs.mjs makes of each cover.
-    const thumb = p => p.replace(/(\/assets\/album-art\/)(.+)\.[^./]+$/,
-        (m, dir, name) => dir + 'thumbs/' + name.split('/').join('__') + '.jpg');
-    const split = t => {
-        const m = /^(.*?)\s*\((\d{4})\)$/.exec(t);
-        return m ? { name: m[1], year: m[2] } : { name: t, year: '' };
-    };
-
-    // Latest: the catalogue is kept newest first.
-    const r = R[0], t = split(r.title);
-    const art = document.getElementById('latestArt');
-    art.src = url(r.art);
-    art.alt = t.name + ' cover';
-    document.getElementById('latestTitle').textContent = t.name;
-    const a = document.getElementById('latestArtist');
-    a.textContent = r.artist + (t.year ? ' · ' + t.year : '');
-    a.href = url(r.artistLink);
-    document.getElementById('latestDesc').textContent = r.description || '';
-    if (r.distLink) document.getElementById('latestStream').href = r.distLink;
-    document.getElementById('latest').hidden = false;
-
-    /* ── PLAY IT HERE ──
-       The button starts the latest release in the nav's player, on this
-       page, rather than sending the visitor to the jukebox to find it. The
-       nav loads that player on every page (assets/jukebox.js, window.MCJukebox)
-       and songs.json is grouped by release, newest first, so the release plays
-       through and the jukebox carries on after it.
-
-       It stays a link to the jukebox until it can do better: without
-       JavaScript, before the player has loaded, or when none of the release
-       is in the jukebox. play() is called inside the click when the player is
-       ready, because Safari plays audio only from within the gesture. */
-    const playBtn = document.getElementById('latestPlay');
-    fetch('jukebox/songs.json')
-        .then((res) => (res.ok ? res.json() : []))
-        .then((list) => {
-            const ids = list.filter((x) => !x.hidden && x.release === r.id).map((x) => x.file);
-            if (!ids.length) return;
-            const mine = new Set(ids);
-            const label = (J) => {
-                const st = J && J.state();
-                const on = !!st && st.status === 'playing' && mine.has(st.id);
-                playBtn.textContent = on ? '\u275A\u275A pause' : '\u25B6 play';
-                playBtn.setAttribute('aria-label', (on ? 'pause ' : 'play ') + t.name);
-            };
-            label(null);
-
-            let unsub = null;
-            const attach = () => {
-                const J = window.MCJukebox;
-                if (!J || unsub) return;
-                J.ready.then(() => { if (!unsub) { label(J); unsub = J.subscribe(() => label(J)); } });
-            };
-            attach();
-            const poll = setInterval(() => { if (window.MCJukebox) { clearInterval(poll); attach(); } }, 250);
-            setTimeout(() => clearInterval(poll), 15000);
-
-            playBtn.addEventListener('click', (e) => {
-                const J = window.MCJukebox;
-                if (!J) return; // not loaded yet: the link to the jukebox
-                e.preventDefault();
-                const go = () => {
-                    const st = J.state();
-                    if (mine.has(st.id)) J.toggle();
-                    else J.play(ids[0]);
-                };
-                if (J.state()) go();
-                else J.ready.then(go);
-            });
-
-            // The SPA router's leave hook: this page's listener goes, the
-            // music does not. Chained, because the waveform below claims the
-            // same single slot.
-            const prev = window.__pageCleanup;
-            window.__pageCleanup = () => {
-                if (typeof prev === 'function') prev();
-                if (unsub) unsub();
-                clearInterval(poll);
-            };
-        })
-        .catch(() => { /* the link still works */ });
-
-    // Roster: an artist's first appearance is their newest release.
-    const seen = new Map();
-    for (const x of R) {
-        if (!seen.has(x.artist)) seen.set(x.artist, { first: x, count: 0 });
-        seen.get(x.artist).count++;
-    }
-    const roster = document.getElementById('roster');
-    for (const [name, { first, count }] of seen) {
-        const tile = document.createElement('a');
-        tile.className = 'artist';
-        tile.href = url(first.artistLink);
-        const img = document.createElement('img');
-        const full = url(first.art), small = url(thumb(first.art));
-        if (small !== full) img.onerror = () => { img.onerror = null; img.src = full; };
-        img.src = small;
-        img.alt = '';
-        img.loading = 'lazy';
-        img.width = 160;
-        img.height = 160;
-        const n = document.createElement('span');
-        n.className = 'artist-name';
-        n.textContent = name;
-        const c = document.createElement('span');
-        c.className = 'artist-count';
-        c.textContent = count + (count === 1 ? ' release' : ' releases');
-        tile.append(img, n, c);
-        roster.appendChild(tile);
-    }
-    document.getElementById('rosterWrap').hidden = false;
-})();
-
-// ── ANIMATED WAVEFORM ──
-(function () {
-    const canvas = document.getElementById('waveCanvas');
-    const ctx = canvas.getContext('2d');
-    const W = canvas.width;
-    const H = canvas.height;
-    // On the navy display: silver bars, a few grey, and amber for the play-button colour.
-    const resolvedCols = ['#E0E0DC','#9098A8','#F8F8F8','#606878','#F0B800','#C8C8C4'];
-
-    // Each "bar" in the waveform
-    const BAR_W = 3;
-    const GAP   = 1;
-    const COUNT = Math.floor(W / (BAR_W + GAP));
-
-    // Seed heights with a mix of sine waves
-    const phases  = Array.from({length: COUNT}, (_, i) => Math.random() * Math.PI * 2);
-    const speeds  = Array.from({length: COUNT}, (_, i) => 0.018 + Math.random() * 0.024);
-    const heights = Array.from({length: COUNT}, (_, i) => 0.3 + Math.random() * 0.7);
-    const colorIdx = Array.from({length: COUNT}, (_, i) => i % resolvedCols.length);
-
-    let t = 0;
-
-    let animId;
-    function draw() {
-        ctx.clearRect(0, 0, W, H);
-        const mid = H / 2;
-
-        for (let i = 0; i < COUNT; i++) {
-            const amp = heights[i] * (mid - 2);
-            const y   = Math.sin(phases[i] + t * speeds[i] * 60) * amp;
-            const barH = Math.max(2, Math.abs(y) * 2);
-            const x   = i * (BAR_W + GAP);
-
-            ctx.fillStyle = resolvedCols[colorIdx[i]];
-            ctx.globalAlpha = 0.55 + 0.45 * Math.abs(Math.sin(phases[i] + t * speeds[i] * 60));
-            ctx.fillRect(x, mid - barH / 2, BAR_W, barH);
-        }
-        ctx.globalAlpha = 1;
-        t++;
-        animId = requestAnimationFrame(draw);
-    }
-
-    draw();
-    window.__pageCleanup = function() { cancelAnimationFrame(animId); };
-
-    document.addEventListener('visibilitychange', () => {
-        if (document.hidden) {
-            cancelAnimationFrame(animId);
-        } else {
-            draw();
-        }
-    });
-})();
+(function(){const R=window.RELEASES;if(!Array.isArray(R)||!R.length)return;const base=new URL("distributed-music/",location.href);const url=p=>new URL(p,base).href;const thumb=p=>p.replace(/(\/assets\/album-art\/)(.+)\.[^./]+$/,(m,dir,name)=>dir+"thumbs/"+name.split("/").join("__")+".jpg");const split=t2=>{const m=/^(.*?)\s*\((\d{4})\)$/.exec(t2);return m?{name:m[1],year:m[2]}:{name:t2,year:""}};const r=R[0],t=split(r.title);const art=document.getElementById("latestArt");art.src=url(r.art);art.alt=t.name+" cover";document.getElementById("latestTitle").textContent=t.name;const a=document.getElementById("latestArtist");a.textContent=r.artist+(t.year?" · "+t.year:"");a.href=url(r.artistLink);document.getElementById("latestDesc").textContent=r.description||"";if(r.distLink)document.getElementById("latestStream").href=r.distLink;document.getElementById("latest").hidden=false;const playBtn=document.getElementById("latestPlay");fetch("jukebox/songs.json").then(res=>res.ok?res.json():[]).then(list=>{const ids=list.filter(x=>!x.hidden&&x.release===r.id).map(x=>x.file);if(!ids.length)return;const mine=new Set(ids);const label=J=>{const st=J&&J.state();const on=!!st&&st.status==="playing"&&mine.has(st.id);playBtn.textContent=on?"❚❚ pause":"▶ play";playBtn.setAttribute("aria-label",(on?"pause ":"play ")+t.name)};label(null);let unsub=null;const attach=()=>{const J=window.MCJukebox;if(!J||unsub)return;J.ready.then(()=>{if(!unsub){label(J);unsub=J.subscribe(()=>label(J))}})};attach();const poll=setInterval(()=>{if(window.MCJukebox){clearInterval(poll);attach()}},250);setTimeout(()=>clearInterval(poll),15e3);playBtn.addEventListener("click",e=>{const J=window.MCJukebox;if(!J)return;e.preventDefault();const go=()=>{const st=J.state();if(mine.has(st.id))J.toggle();else J.play(ids[0])};if(J.state())go();else J.ready.then(go)});const prev=window.__pageCleanup;window.__pageCleanup=()=>{if(typeof prev==="function")prev();if(unsub)unsub();clearInterval(poll)}}).catch(()=>{});const seen=new Map;for(const x of R){if(!seen.has(x.artist))seen.set(x.artist,{first:x,count:0});seen.get(x.artist).count++}const roster=document.getElementById("roster");for(const[name,{first,count}]of seen){const tile=document.createElement("a");tile.className="artist";tile.href=url(first.artistLink);const img=document.createElement("img");const full=url(first.art),small=url(thumb(first.art));if(small!==full)img.onerror=()=>{img.onerror=null;img.src=full};img.src=small;img.alt="";img.loading="lazy";img.width=160;img.height=160;const n=document.createElement("span");n.className="artist-name";n.textContent=name;const c=document.createElement("span");c.className="artist-count";c.textContent=count+(count===1?" release":" releases");tile.append(img,n,c);roster.appendChild(tile)}document.getElementById("rosterWrap").hidden=false})();(function(){const canvas=document.getElementById("waveCanvas");const ctx=canvas.getContext("2d");const W=canvas.width;const H=canvas.height;const resolvedCols=["#E0E0DC","#9098A8","#F8F8F8","#606878","#F0B800","#C8C8C4"];const BAR_W=3;const GAP=1;const COUNT=Math.floor(W/(BAR_W+GAP));const phases=Array.from({length:COUNT},(_,i)=>Math.random()*Math.PI*2);const speeds=Array.from({length:COUNT},(_,i)=>.018+Math.random()*.024);const heights=Array.from({length:COUNT},(_,i)=>.3+Math.random()*.7);const colorIdx=Array.from({length:COUNT},(_,i)=>i%resolvedCols.length);let t=0;let animId;function draw(){ctx.clearRect(0,0,W,H);const mid=H/2;for(let i=0;i<COUNT;i++){const amp=heights[i]*(mid-2);const y=Math.sin(phases[i]+t*speeds[i]*60)*amp;const barH=Math.max(2,Math.abs(y)*2);const x=i*(BAR_W+GAP);ctx.fillStyle=resolvedCols[colorIdx[i]];ctx.globalAlpha=.55+.45*Math.abs(Math.sin(phases[i]+t*speeds[i]*60));ctx.fillRect(x,mid-barH/2,BAR_W,barH)}ctx.globalAlpha=1;t++;animId=requestAnimationFrame(draw)}draw();window.__pageCleanup=function(){cancelAnimationFrame(animId)};document.addEventListener("visibilitychange",()=>{if(document.hidden){cancelAnimationFrame(animId)}else{draw()}})})();
 </script>
 
 </body>

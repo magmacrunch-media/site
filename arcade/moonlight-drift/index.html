@@ -16,7 +16,6 @@
     <meta property="og:locale" content="en_US">
     <meta name="twitter:card" content="summary_large_image">
     
-    <!-- Favicon -->
     <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
     <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
@@ -40,177 +39,12 @@
     <link rel="stylesheet" href="css/fonts-retro.css?v=859a176c">
     <link rel="stylesheet" href="css/modals-retro.css?v=90298948">
     <style>
-        :root {
-            --mc-back-color: rgba(0, 212, 255, 0.5);
-            --mc-back-glow: 0 0 8px rgba(0, 212, 255, 0.95);
-        }
-        /* main.js sets game-active for the length of a run. The back-link
-           and the menu bar both sit over the top of the canvas: the link on
-           the score box, the bar on the incoming obstacles (a fifth of the
-           height on a landscape phone). The bar is shown with an inline
-           display: flex, hence the !important. */
-        body.game-active .mc-back,
-        body.game-active #characterSelector {
-            display: none !important;
-        }
-
-        /* Custom override for ASCII title - black background with glow */
-        #titleOverlay {
-            background: #000000 !important;
-            width: auto !important;
-            max-width: 90vw !important;
-            padding: 30px 40px !important;
-            border: 3px solid #00d4ff !important;
-            box-shadow: 0 0 30px rgba(0, 212, 255, 0.6) !important;
-        }
-        #asciiTitle {
-            color: #00d4ff !important;
-            text-shadow: 0 0 10px rgba(0, 212, 255, 0.8) !important;
-            background: none !important;
-            padding: 0 !important;
-        }
-        #titleMessage {
-            background: none !important;
-            padding: 0 !important;
-        }
-        
-        /* Custom override for Ready overlay - teal on transparent to match title */
-        #readyOverlay {
-            background: rgba(0, 0, 0, 0.85) !important;
-            width: fit-content !important;
-            max-width: 90vw !important;
-        }
-        #readyContent h2 {
-            color: #00d4ff !important;
-            background: transparent !important;
-            text-shadow: 0 0 10px rgba(0, 212, 255, 0.8) !important;
-            box-shadow: none !important;
-        }
-        /* Keep instruction text white */
-        #readyContent p {
-            color: #ffffff !important;
-        }
-        /* Keep "press [space]" message teal */
-        #readyMessage {
-            color: #00d4ff !important;
-        }
-        
-        /* Game Over styling - allow uppercase for "GAME OVER" */
-        #gameOver {
-            text-transform: none !important;
-        }
-        
-        /* Allow normal capitalization in credits */
-        #creditsModal .credits-content,
-        #creditsModal .credits-content p,
-        #creditsModal .credits-content strong {
-            text-transform: none !important;
-        }
-        
-        /* Pulse animation for all-time high score */
-        @keyframes pulse {
-            0%, 100% { 
-                transform: scale(1); 
-                opacity: 1; 
-            }
-            50% { 
-                transform: scale(1.05); 
-                opacity: 0.9; 
-            }
-        }
-        
-        /* Achievement message styling */
-        #achievementMessage {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-        
-        #gameOverAchievement {
-            text-align: center;
-            margin: 10px 0;
-        }
-        
-        /* FORCE credits button to match other buttons */
-        #creditsBtn {
-            background: #5a6988 !important;
-            color: #ffffff !important;
-            border: none !important;
-            padding: 12px 20px !important;
-            font-family: 'Press Start 2P', monospace !important;
-            font-size: 10px !important;
-            font-weight: normal !important;
-            cursor: pointer !important;
-            transition: none !important;
-            border-radius: 0 !important;
-            text-transform: lowercase !important;
-            letter-spacing: 0 !important;
-            position: relative !important;
-            margin-top: 0 !important;
-            
-            /* Chunky SNES-style border */
-            box-shadow: 
-                0 6px 0 #2a3344,
-                0 -4px 0 #7a89a8,
-                -4px 0 0 #4a5968,
-                4px 0 0 #4a5968,
-                -4px -4px 0 #6a7988,
-                4px -4px 0 #6a7988,
-                -4px 6px 0 #1a2334,
-                4px 6px 0 #1a2334 !important;
-        }
-
-        #creditsBtn:hover {
-            background: #00d4ff !important;
-            color: #000000 !important;
-            box-shadow: 
-                0 6px 0 #006a7f,
-                0 -4px 0 #33e0ff,
-                -4px 0 0 #00a0bf,
-                4px 0 0 #00a0bf,
-                -4px -4px 0 #00c4df,
-                4px -4px 0 #00c4df,
-                -4px 6px 0 #00505f,
-                4px 6px 0 #00505f !important;
-        }
-
-        #creditsBtn:active {
-            transform: translateY(4px) !important;
-            box-shadow: 
-                0 2px 0 #2a3344,
-                0 -4px 0 #7a89a8,
-                -4px 0 0 #4a5968,
-                4px 0 0 #4a5968 !important;
-        }
-        
-        /* Mobile character modal fix */
-        @media (max-width: 768px) {
-            #characterModal .modal-content {
-                max-width: 95vw !important;
-                max-height: 85vh !important;
-            }
-            
-            #characterGrid {
-                max-height: 60vh !important;
-            }
-            
-            #creditsBtn {
-                font-size: 8px !important;
-                padding: 10px 16px !important;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            #creditsBtn {
-                font-size: 7px !important;
-                padding: 8px 12px !important;
-            }
-        }
-    </style>
+:root{--mc-back-color: rgba(0, 212, 255, 0.5);--mc-back-glow: 0 0 8px rgba(0, 212, 255, 0.95)}body.game-active .mc-back,body.game-active #characterSelector{display:none!important}#titleOverlay{background:#000000!important;width:auto!important;max-width:90vw!important;padding:30px 40px!important;border:3px solid #00d4ff!important;box-shadow:0 0 30px rgba(0,212,255,0.6)!important}#asciiTitle{color:#00d4ff!important;text-shadow:0 0 10px rgba(0,212,255,0.8)!important;background:none!important;padding:0!important}#titleMessage{background:none!important;padding:0!important}#readyOverlay{background:rgba(0,0,0,0.85)!important;width:fit-content!important;max-width:90vw!important}#readyContent h2{color:#00d4ff!important;background:transparent!important;text-shadow:0 0 10px rgba(0,212,255,0.8)!important;box-shadow:none!important}#readyContent p{color:#ffffff!important}#readyMessage{color:#00d4ff!important}#gameOver{text-transform:none!important}#creditsModal .credits-content,#creditsModal .credits-content p,#creditsModal .credits-content strong{text-transform:none!important}@keyframes pulse{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.05);opacity:0.9}}#achievementMessage{text-align:center;margin-bottom:20px}#gameOverAchievement{text-align:center;margin:10px 0}#creditsBtn{background:#5a6988!important;color:#ffffff!important;border:none!important;padding:12px 20px!important;font-family:"Press Start 2P",monospace!important;font-size:10px!important;font-weight:normal!important;cursor:pointer!important;transition:none!important;border-radius:0!important;text-transform:lowercase!important;letter-spacing:0!important;position:relative!important;margin-top:0!important;box-shadow:0 6px 0 #2a3344,0 -4px 0 #7a89a8,-4px 0 0 #4a5968,4px 0 0 #4a5968,-4px -4px 0 #6a7988,4px -4px 0 #6a7988,-4px 6px 0 #1a2334,4px 6px 0 #1a2334!important}#creditsBtn:hover{background:#00d4ff!important;color:#000000!important;box-shadow:0 6px 0 #006a7f,0 -4px 0 #33e0ff,-4px 0 0 #00a0bf,4px 0 0 #00a0bf,-4px -4px 0 #00c4df,4px -4px 0 #00c4df,-4px 6px 0 #00505f,4px 6px 0 #00505f!important}#creditsBtn:active{transform:translateY(4px)!important;box-shadow:0 2px 0 #2a3344,0 -4px 0 #7a89a8,-4px 0 0 #4a5968,4px 0 0 #4a5968!important}@media(max-width:768px){#characterModal .modal-content{max-width:95vw!important;max-height:85vh!important}#characterGrid{max-height:60vh!important}#creditsBtn{font-size:8px!important;padding:10px 16px!important}}@media(max-width:480px){#creditsBtn{font-size:7px!important;padding:8px 12px!important}}
+</style>
 </head>
 <body>
     <a href="../action/" class="mc-back">action games</a>
     <div id="backgroundGradient"></div>
-    <!-- Loading Screen -->
     <div id="loadingScreen">
         <div class="loading-content">
             <pre class="loading-ascii">   
@@ -320,7 +154,6 @@
 
     </div>
 
-    <!-- Modals (outside gameContainer) -->
     <div id="characterModal" style="display: none;">
         <div class="modal-content">
             <h2>choose your pilot</h2>
@@ -376,15 +209,14 @@
         </div>
     </div>
 
-    <!-- Load in dependency order -->
     <script src="../shared/adenosine-audio.js?v=2b54f50b"></script>
     <script src="../shared/adenosine-score-client.js?v=8c6493d6"></script>
     <script src="../shared/score-server.js?v=9acd988c"></script>
-    <script>const scoreClient = new AdScore.ScoreClient().auto(MC_SCORE_OPTS);</script>
+    <script>
+const scoreClient=new AdScore.ScoreClient().auto(MC_SCORE_OPTS);
+</script>
     <script src="js/config.js?v=2a95af21"></script>
-    <!-- Character system core -->
     <script src="js/characters/index.js?v=5812f141"></script>
-    <!-- Individual characters -->
     <script src="js/characters/cat-synth.js?v=46420734"></script>
     <script src="js/characters/beava.js?v=56b3ea1a"></script>
     <script src="js/characters/vinny-bobarino.js?v=b5ebf640"></script>
@@ -405,7 +237,6 @@
     <script src="js/characters/svfp-van.js?v=5ddc739c"></script>
     <script src="js/characters/tardigrade.js?v=e3264238"></script>
     <script src="js/characters/elektra.js?v=998a9b54"></script>
-    <!-- Other game modules -->
     <script src="js/player.js?v=c3be28d1"></script>
     <script src="js/obstacles.js?v=4cd5f432"></script>
     <script src="js/stars.js?v=1c116135"></script>

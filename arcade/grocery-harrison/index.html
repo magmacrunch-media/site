@@ -27,7 +27,6 @@
 <a href="../action/" class="mc-back">action games</a>
 
 <div id="wrap">
-  <!-- width/height must match GH.W and GH.H in js/config.js. -->
   <canvas id="c" width="640" height="480"></canvas>
 
   <div id="title" class="title-screen">
@@ -37,9 +36,7 @@
     <p class="copyright">&copy; 2026 MAGMACRUNCH MEDIA</p>
   </div>
 
-  <!-- Only shown once a finger has touched the game: a phone has no P key. -->
   <button id="btnPause" class="btn-pause" aria-label="Pause" hidden>II</button>
-  <!-- Sound on or off. Shown on every screen except while playing; M does the same. -->
   <button id="btnSound" class="btn-sound" aria-label="Sound on" aria-pressed="false">&#9834;</button>
 
   <div id="over" class="panel panel-over" hidden>
@@ -47,19 +44,6 @@
   </div>
 </div>
 
-<!--
-  Classic scripts in dependency order, not ES modules. The page is written
-  against an arcade folder, so ../shared/ is the website's arcade/shared/:
-  in a checkout of this repo, `node tools/link-shared.mjs` links it, and the
-  page is served from the repo root and opened at /web/.
-
-  The logic files (config through game) are also what tools/sim.mjs loads, in
-  this order. Add one here and add it to SCRIPTS there.
-
-  Every asset carries ?v=<digest>, the website's cache-buster. After editing
-  any css or js here, run `node tools/stamp.mjs`; it uses the website's own
-  digest rule, and `--check` is what CI runs.
--->
 <script src="../shared/adenosine-rpg.js?v=ffe9a960"></script>
 <script src="../shared/adenosine-audio.js?v=2b54f50b"></script>
 

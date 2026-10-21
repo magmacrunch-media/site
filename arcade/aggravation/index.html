@@ -16,14 +16,11 @@
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     <style>
-        .font-loading body { visibility: hidden; }
-    </style>
+.font-loading body{visibility:hidden}
+</style>
     <script>
-        document.documentElement.classList.add('font-loading');
-        document.fonts.ready.then(function() {
-            document.documentElement.classList.remove('font-loading');
-        });
-    </script>
+document.documentElement.classList.add("font-loading");document.fonts.ready.then(function(){document.documentElement.classList.remove("font-loading")});
+</script>
     <link rel="stylesheet" href="../shared/arcade-base.css?v=de5e0d7b">
     <link rel="stylesheet" href="css/base.css?v=8247bdc2">
     <link rel="stylesheet" href="css/board.css?v=a548047a">
@@ -34,14 +31,10 @@
 
 <a href="../" class="mc-back">magmacrunch arcade</a>
 
-<!-- ═══════════════════════════════════════════════════════════════════
-     START SCREEN
-     ═══════════════════════════════════════════════════════════════════ -->
 <div id="startScreen">
     <div class="game-title">AGGRAVATION</div>
     <div class="game-subtitle">// the classic marble race //</div>
 
-    <!-- LOCAL GAME -->
     <div class="mode-section">
         <div class="mode-label">// LOCAL GAME //</div>
         <label class="form-label" for="playerCount">PLAYERS</label>
@@ -57,7 +50,6 @@
 
     <div class="mode-divider">OR</div>
 
-    <!-- ONLINE GAME -->
     <div class="mode-section">
         <div class="mode-label">// ONLINE //</div>
         <input type="text" id="nameInput" class="ag-input" placeholder="your name" maxlength="20" autocomplete="off">
@@ -70,9 +62,6 @@
     <div id="statusMsg" style="margin-top: 16px; font-size: 8px; color: var(--ag-text-dim);"></div>
 </div>
 
-<!-- ═══════════════════════════════════════════════════════════════════
-     LOBBY OVERLAY
-     ═══════════════════════════════════════════════════════════════════ -->
 <div id="lobbyOverlay" class="lobby-overlay">
     <div class="lobby-panel">
         <div class="lobby-title">LOBBY</div>
@@ -96,9 +85,6 @@
     </div>
 </div>
 
-<!-- ═══════════════════════════════════════════════════════════════════
-     GAME SCREEN
-     ═══════════════════════════════════════════════════════════════════ -->
 <div id="gameScreen">
     <div class="board-container">
         <canvas id="boardCanvas" width="210" height="210"></canvas>
@@ -130,9 +116,6 @@
     </div>
 </div>
 
-<!-- ═══════════════════════════════════════════════════════════════════
-     GAME OVER MODAL
-     ═══════════════════════════════════════════════════════════════════ -->
 <div id="gameOverModal" class="modal-overlay">
     <div class="modal-box">
         <div class="modal-title">GAME OVER</div>
@@ -141,7 +124,6 @@
     </div>
 </div>
 
-<!-- Scripts -->
 <script src="../shared/adenosine-race.js?v=0694f7e1"></script>
 <script src="js/board-config.js?v=e175b139"></script>
 <script src="js/game-state.js?v=cb5b3296"></script>
@@ -149,9 +131,13 @@
 <script src="js/board-renderer.js?v=99672153"></script>
 <script src="js/ai.js?v=b3e5f821"></script>
 <script src="../shared/mp-server.js?v=f66f285b"></script>
-<script>var MP_DEFAULT_SERVER = mpServerFor('aggravation', 8774);</script>
+<script>
+var MP_DEFAULT_SERVER=mpServerFor("aggravation",8774);
+</script>
 <script src="../shared/adenosine-multiplayer.js?v=aa0a94eb"></script>
-<script>const { MP } = AdMP;</script>
+<script>
+const{MP}=AdMP;
+</script>
 <script src="js/network.js?v=e9896f32"></script>
 <script src="js/ui.js?v=9279e1b4"></script>
 

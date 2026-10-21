@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>media//search — magmacrunch media</title>
     <link rel="icon" type="image/png" href="favicon.png">
-    <!-- Press Start 2P and Courier Prime are self-hosted by the shell. -->
     <link rel="stylesheet" href="../shell/fonts.css?v=08818834">
     <link rel="stylesheet" href="../shell/app-shell.css?v=2eb63ac6">
     <link rel="stylesheet" href="../shell/toast.css?v=2c51118f">
@@ -23,15 +22,11 @@
         </div>
     </header>
 
-    <!-- The compact breadcrumb trail: the ware pages all carry one
-         (ware/crumbs.css), and this is the same trail without "home",
-         styled by the shell's .back-link so nothing is vendored for it. -->
     <nav class="tool-nav" aria-label="breadcrumb" style="font-family: 'Press Start 2P', monospace; font-size: 7px; letter-spacing: 0.1em; color: var(--backlink-color);">
         <a href="../" class="back-link">ware</a> › <a href="../utilities/" class="back-link">creative utilities</a> › <span aria-current="page" style="color: var(--backlink-hover);">media//search</span>
     </nav>
 
     <div class="workspace">
-        <!-- LEFT PANEL: Filters -->
         <aside class="panel filters-panel">
             <div class="panel-label">SOURCES</div>
             <div id="sourceToggles" class="source-toggles"></div>
@@ -86,7 +81,6 @@
             </div>
         </aside>
 
-        <!-- CENTER: Search + Results -->
         <div class="center-area">
             <div class="search-bar">
                 <input type="text" id="searchInput" class="search-input" placeholder="SEARCH FREE IMAGES, VIDEO, AUDIO..." autocomplete="off">
@@ -113,7 +107,6 @@
         </div>
     </div>
 
-    <!-- Lightbox -->
     <div id="lightbox" class="lightbox hidden">
         <div class="lightbox-header">
             <div class="lightbox-nav">

@@ -11,16 +11,8 @@
     <link rel="stylesheet" href="juanito-thompson-ware.css">
 
     <script>
-    window.ARTIST_CONFIG = {
-        id:        'ddcbeb01-edb5-4e74-b5cd-23d1b64d3086',
-        name:      'juanito thompson',
-        abbr:      'JT',
-        accent:    'green',
-        backColor: 'c-green',
-        siblings:  ['about', 'links', 'network', 'photography', 'recordings', 'releases', 'videos', 'ware', 'works'],
-        depth:     '../../../',
-    };
-    </script>
+window.ARTIST_CONFIG={id:"ddcbeb01-edb5-4e74-b5cd-23d1b64d3086",name:"juanito thompson",abbr:"JT",accent:"green",backColor:"c-green",siblings:["about","links","network","photography","recordings","releases","videos","ware","works"],depth:"../../../"};
+</script>
 </head>
 <body class="jt-page jt-ware-page">
 
@@ -104,25 +96,13 @@
 
 <script src="../../../nav.js?v=17bba9c8"></script>
 <script>
-(function() {
-    const C = window.ARTIST_CONFIG;
-    if (!C) return;
-    const d = C.depth || '../../../';
-
-    const breadcrumbEl = document.querySelector('.breadcrumb');
-    if (breadcrumbEl) {
-        breadcrumbEl.innerHTML = `
+(function(){const C=window.ARTIST_CONFIG;if(!C)return;const d=C.depth||"../../../";const breadcrumbEl=document.querySelector(".breadcrumb");if(breadcrumbEl){breadcrumbEl.innerHTML=`
             <a href="${d}archive/">archive</a>
             <span class="sep">›</span>
             <a href="${d}archive/by-artist/">by artist</a>
             <span class="sep">›</span>
             <a href="./">${C.abbr.toLowerCase()}</a>
-        `;
-    }
-
-    const artistLabelEl = document.getElementById('artist-label');
-    if (artistLabelEl) artistLabelEl.textContent = `// ${C.name} //`;
-})();
+        `}const artistLabelEl=document.getElementById("artist-label");if(artistLabelEl)artistLabelEl.textContent=`// ${C.name} //`})();
 </script>
 
 </body>

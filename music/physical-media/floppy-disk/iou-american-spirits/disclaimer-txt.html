@@ -7,70 +7,8 @@
     <link rel="icon" type="image/x-icon" href="../../../../favicon.ico">
     <link rel="stylesheet" href="../../../../style.css?v=981601e0">
     <style>
-        :root {
-            --as-cerulean: #5B9DB8;
-            --as-sky: #7BBDD4;
-            --as-deep: #2E6A88;
-            --as-midnight: #1A3D52;
-            --as-white: #F8F4EE;
-            --as-black: #1A1A18;
-            --as-slate: #6A7A80;
-            --as-linen: #F5EDE0;
-
-            /* nav overrides */
-            --nav-accent: var(--as-cerulean);
-            --nav-glow: rgba(91,157,184,0.4);
-            --nav-brand: var(--as-linen);
-            --nav-brand-glow: rgba(245,237,224,0.7);
-        }
-        body { background: var(--as-black); }
-        footer { color: var(--as-slate); }
-        footer span { color: var(--as-cerulean); }
-        main { flex:1; display:flex; flex-direction:column; align-items:center; padding:80px 20px 60px; }
-
-        .breadcrumb {
-            font-family:'Press Start 2P',monospace;
-            font-size:7px; color:var(--dim); letter-spacing:.1em;
-            margin-bottom:32px; align-self:flex-start;
-        }
-        .breadcrumb a { color:var(--dim); text-decoration:none; transition:color .15s; }
-        .breadcrumb a:hover { color:var(--as-cerulean); }
-        .breadcrumb .sep { margin:0 8px; color:var(--as-cerulean); opacity:.7; }
-        .breadcrumb .current { color:var(--as-cerulean); }
-
-        .page-header { text-align:center; margin-bottom:40px; animation:fadeUp .5s ease both; }
-        .page-title {
-            font-family:'Press Start 2P',monospace; font-size:clamp(16px,3.5vw,28px);
-            color:var(--white); line-height:1.4; letter-spacing:.06em; margin-bottom:8px;
-        }
-        .page-subtitle { font-family:'Press Start 2P',monospace; font-size:9px; color:var(--as-deep); letter-spacing:.15em; margin-bottom:20px; opacity:.9; }
-
-        .back-link {
-            /* 7px type made a 9px-tall link. The padding is the thumb-sized
-               target, and the margins give back what it takes, so neither
-               the link's text nor the art below it moves. */
-            display:inline-block; padding:10px 0; margin:-10px 0 30px; align-self:flex-start;
-            font-family:'Press Start 2P',monospace; font-size:7px;
-            color:var(--dim); text-decoration:none; letter-spacing:.1em;
-            transition:color .15s;
-        }
-        .back-link:hover { color:var(--as-cerulean); }
-
-        .ascii-container { width:100%; max-width:1400px; overflow-x:auto; text-align:center; animation:fadeUp .5s .1s ease both; }
-        pre {
-            font-family:'Courier Prime',monospace;
-            font-size:clamp(3px,0.85vw,7px);
-            line-height:1.22; white-space:pre; color:#e2e2e2;
-            display:inline-block; padding:8px 0;
-            tab-size: 4;
-        }
-
-        @media (min-width:1400px) { pre { font-size:7px; } }
-        @media (min-width:1800px) { pre { font-size:8px; } }
-        @media (max-width:768px) { pre { font-size:3.5px; } main { padding:60px 12px 40px; } }
-        @media (max-width:480px) { pre { font-size:2.8px; } }
-        @media (max-width:400px) { pre { font-size:2.3px; } }
-    </style>
+:root{--as-cerulean: #5B9DB8;--as-sky: #7BBDD4;--as-deep: #2E6A88;--as-midnight: #1A3D52;--as-white: #F8F4EE;--as-black: #1A1A18;--as-slate: #6A7A80;--as-linen: #F5EDE0;--nav-accent: var(--as-cerulean);--nav-glow: rgba(91,157,184,0.4);--nav-brand: var(--as-linen);--nav-brand-glow: rgba(245,237,224,0.7)}body{background:var(--as-black)}footer{color:var(--as-slate)}footer span{color:var(--as-cerulean)}main{flex:1;display:flex;flex-direction:column;align-items:center;padding:80px 20px 60px}.breadcrumb{font-family:"Press Start 2P",monospace;font-size:7px;color:var(--dim);letter-spacing:.1em;margin-bottom:32px;align-self:flex-start}.breadcrumb a{color:var(--dim);text-decoration:none;transition:color .15s}.breadcrumb a:hover{color:var(--as-cerulean)}.breadcrumb .sep{margin:0 8px;color:var(--as-cerulean);opacity:.7}.breadcrumb .current{color:var(--as-cerulean)}.page-header{text-align:center;margin-bottom:40px;animation:fadeUp .5s ease both}.page-title{font-family:"Press Start 2P",monospace;font-size:clamp(16px,3.5vw,28px);color:var(--white);line-height:1.4;letter-spacing:.06em;margin-bottom:8px}.page-subtitle{font-family:"Press Start 2P",monospace;font-size:9px;color:var(--as-deep);letter-spacing:.15em;margin-bottom:20px;opacity:.9}.back-link{display:inline-block;padding:10px 0;margin:-10px 0 30px;align-self:flex-start;font-family:"Press Start 2P",monospace;font-size:7px;color:var(--dim);text-decoration:none;letter-spacing:.1em;transition:color .15s}.back-link:hover{color:var(--as-cerulean)}.ascii-container{width:100%;max-width:1400px;overflow-x:auto;text-align:center;animation:fadeUp .5s .1s ease both}pre{font-family:"Courier Prime",monospace;font-size:clamp(3px,0.85vw,7px);line-height:1.22;white-space:pre;color:#e2e2e2;display:inline-block;padding:8px 0;tab-size:4}@media(min-width:1400px){pre{font-size:7px}}@media(min-width:1800px){pre{font-size:8px}}@media(max-width:768px){pre{font-size:3.5px}main{padding:60px 12px 40px}}@media(max-width:480px){pre{font-size:2.8px}}@media(max-width:400px){pre{font-size:2.3px}}
+</style>
     <link rel="stylesheet" href="../../../music-chrome.css?v=d10b6450">
 </head>
 <body class="music-chrome">

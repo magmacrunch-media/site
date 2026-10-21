@@ -27,7 +27,6 @@
         <canvas id="renderCanvas"></canvas>
         <canvas id="garageCanvas" width="960" height="540" style="display:none; position:absolute; inset:0; z-index:1; pointer-events:none;"></canvas>
 
-        <!-- TITLE SCREEN -->
         <div id="titleScreen" class="overlay active">
             <div class="title-text">
                 <div class="title-main">VERY LONG<br>BOARDS</div>
@@ -37,22 +36,18 @@
             <div class="insert-coin" id="startPrompt" data-keys="— PRESS ENTER TO START —" data-touch="— TAP TO START —"></div>
         </div>
 
-        <!-- CHARACTER SELECT -->
         <div id="charSelect" class="overlay">
             <div class="cs-title">SELECT YOUR CARL</div>
-            <!-- Built from CHARACTERS in js/config.js by renderCharCards(). -->
             <div class="cs-cards" id="charCards"></div>
             <div class="cs-hint" data-keys="(LEFT) (RIGHT) TO SELECT &nbsp; ENTER TO PLAY" data-touch="TAP A CARL, THEN TAP AGAIN TO PLAY"></div>
         </div>
 
-        <!-- BOARD SELECT -->
         <div id="boardSelect" class="overlay">
             <div class="bs-title">CHOOSE YOUR BOARD</div>
             <div class="bs-cards" id="boardCards"></div>
             <div class="cs-hint" data-keys="(LEFT) (RIGHT) TO SELECT &nbsp; ENTER TO RIDE" data-touch="TAP A BOARD, THEN TAP AGAIN TO RIDE"></div>
         </div>
 
-        <!-- COUNTDOWN -->
         <div id="countdownOverlay" class="overlay">
             <div id="countdownText">3</div>
             <div class="how-to">
@@ -61,7 +56,6 @@
             </div>
         </div>
 
-        <!-- HUD -->
         <div id="hud" style="display:none;">
             <div class="hud-score">SCORE: <span id="hudScore">0</span></div>
             <div class="hud-speed">SPEED: <span id="hudSpeed">0</span> km/h</div>
@@ -74,7 +68,6 @@
             <div id="kickPrompt" data-keys="PRESS (UP) TO KICK OFF" data-touch="TAP THE MIDDLE TO KICK OFF"></div>
         </div>
 
-        <!-- GAME OVER -->
         <div id="gameOver" class="overlay">
             <div class="go-title">GAME OVER</div>
             <div class="go-cause" id="goCause">SPLAT!</div>
@@ -107,7 +100,6 @@
             </div>
         </div>
 
-        <!-- PAUSE -->
         <div id="pauseScreen" class="overlay">
             <div class="pause-text">PAUSED</div>
             <div class="insert-coin" data-keys="— PRESS ESC TO RESUME —" data-touch="— TAP TO RESUME —"></div>
@@ -117,7 +109,9 @@
     <script src="https://cdn.babylonjs.com/babylon.js"></script>
     <script src="../shared/adenosine-score-client.js?v=8c6493d6"></script>
     <script src="../shared/score-server.js?v=9acd988c"></script>
-    <script>const scoreClient = new AdScore.ScoreClient().auto(MC_SCORE_OPTS);</script>
+    <script>
+const scoreClient=new AdScore.ScoreClient().auto(MC_SCORE_OPTS);
+</script>
     <script src="js/config.js?v=cabc9a6d"></script>
     <script src="js/characters.js?v=e1349e81"></script>
     <script src="js/scene.js?v=8ac2c669"></script>

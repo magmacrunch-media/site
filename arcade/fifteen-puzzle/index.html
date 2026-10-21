@@ -16,40 +16,27 @@
     <link rel="icon" href="../../favicon.ico" type="image/x-icon">
 
     <style>
-        .font-loading body {
-            visibility: hidden;
-        }
-        :root {
-            --mc-back-color: rgba(255, 140, 0, 0.6);
-            --mc-back-glow: 0 0 8px rgba(255, 200, 80, 0.95);
-        }
-
-    </style>
+.font-loading body{visibility:hidden}:root{--mc-back-color: rgba(255, 140, 0, 0.6);--mc-back-glow: 0 0 8px rgba(255, 200, 80, 0.95)}
+</style>
     <script>
-        document.documentElement.classList.add('font-loading');
-        document.fonts.ready.then(() => {
-            document.documentElement.classList.remove('font-loading');
-        });
-    </script>
+document.documentElement.classList.add("font-loading");document.fonts.ready.then(()=>{document.documentElement.classList.remove("font-loading")});
+</script>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 
-    <!-- Framework CSS -->
     <link rel="stylesheet" href="../shared/arcade-base.css?v=de5e0d7b">
     <link rel="stylesheet" href="../shared/puzzle/puzzle-base.css?v=f8805713">
     <link rel="stylesheet" href="../shared/puzzle/puzzle-grid.css?v=ee834de4">
     <link rel="stylesheet" href="../shared/puzzle/puzzle-modals.css?v=957f8655">
     <link rel="stylesheet" href="../shared/puzzle/puzzle-responsive.css?v=07fb882b">
 
-    <!-- Game CSS -->
     <link rel="stylesheet" href="css/game.css?v=c55802df">
 </head>
 <body>
     <a href="../puzzles/" class="mc-back">puzzles</a>
 
-    <!-- Loading Screen -->
     <div class="loading-screen" id="loadingScreen">
         <div class="loading-content">
             <h1>15 PUZZLE</h1>
@@ -90,7 +77,6 @@
         <div class="game-board" id="gameBoard"></div>
     </div>
 
-    <!-- Title Screen -->
     <div class="title-screen active" id="titleScreen">
         <div class="title-screen-content">
             <div class="title-main">
@@ -104,7 +90,6 @@
         </div>
     </div>
 
-    <!-- Difficulty Selector Modal -->
     <div class="difficulty-modal" id="difficultyModal">
         <div class="difficulty-content">
             <h3>SELECT GRID SIZE</h3>
@@ -147,7 +132,6 @@
         </div>
     </div>
 
-    <!-- Victory Modal -->
     <div class="victory-modal" id="victoryModal">
         <div class="victory-content">
             <h2>PUZZLE SOLVED!</h2>
@@ -160,7 +144,6 @@
         </div>
     </div>
 
-    <!-- Initials Prompt -->
     <div class="initials-prompt" id="initialsPrompt">
         <h3>NEW HIGH SCORE!</h3>
         <p>enter your initials:</p>
@@ -169,7 +152,6 @@
         <button id="submitInitials">submit</button>
     </div>
 
-    <!-- Scoreboard Modal -->
     <div class="scoreboard-modal" id="scoreboardModal">
         <div class="scoreboard-content">
             <h3>all-time high scores</h3>
@@ -178,7 +160,6 @@
         </div>
     </div>
 
-    <!-- Instructions Modal -->
     <div class="instructions-modal" id="instructionsModal">
         <div class="instructions-content">
             <h3>how to play</h3>
@@ -190,7 +171,6 @@
         </div>
     </div>
 
-    <!-- Credits Modal -->
     <div class="credits-modal" id="creditsModal">
         <div class="credits-content">
             <h3>credits</h3>
@@ -206,13 +186,13 @@
         </div>
     </div>
 
-    <!-- Framework JS -->
 <script src="../shared/adenosine-score-client.js?v=8c6493d6"></script>
 <script src="../shared/score-server.js?v=9acd988c"></script>
-<script>const scoreClient = new AdScore.ScoreClient().auto(MC_SCORE_OPTS);</script>
+<script>
+const scoreClient=new AdScore.ScoreClient().auto(MC_SCORE_OPTS);
+</script>
 <script src="../shared/adenosine-puzzle.js?v=92f27c17"></script>
 
-    <!-- Game JS -->
     <script src="js/game.js?v=3352b20c"></script>
     <script src="js/main.js?v=3d4e9e65"></script>
 

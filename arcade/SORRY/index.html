@@ -22,60 +22,32 @@
   <link rel="stylesheet" href="css/lobby.css?v=730818e7" />
   <link rel="stylesheet" href="css/game.css?v=ee91cb41" />
   <style>
-    :root {
-      --mc-back-color: rgba(255, 140, 0, 0.6);
-      --mc-back-glow: 0 0 8px rgba(255, 200, 80, 0.95);
-    }
-
-    #mute-btn {
-      margin-left: auto;
-      background: transparent;
-      border: 1px solid var(--net-border);
-      border-radius: 5px;
-      color: var(--net-dim);
-      font-size: 14px;
-      line-height: 1;
-      padding: 2px 7px;
-      cursor: pointer;
-      transition: border-color 0.15s, color 0.15s;
-      flex-shrink: 0;
-    }
-    #mute-btn:hover { border-color: var(--net-accent); color: var(--net-accent); }
-  </style>
+:root{--mc-back-color: rgba(255, 140, 0, 0.6);--mc-back-glow: 0 0 8px rgba(255, 200, 80, 0.95)}#mute-btn{margin-left:auto;background:transparent;border:1px solid var(--net-border);border-radius:5px;color:var(--net-dim);font-size:14px;line-height:1;padding:2px 7px;cursor:pointer;transition:border-color 0.15s,color 0.15s;flex-shrink:0}#mute-btn:hover{border-color:var(--net-accent);color:var(--net-accent)}
+</style>
 </head>
 <body>
 <a href="../" class="mc-back">magmacrunch arcade</a>
 
-<!-- ═══════════════════════════════════════════════════════
-     TITLE SCREEN  (shown first; dismissed by click or spacebar)
-════════════════════════════════════════════════════════ -->
 <div id="title-overlay">
-  <!-- Phosphor grid + scanlines -->
   <div id="title-scanlines"></div>
 
-  <!-- Top server status bar — launch edition -->
   <div id="title-sysline">
     <span class="sysline-tag">SYS</span>
     MAGMACRUNCH SERVER &nbsp;·&nbsp; RASPBERRY PI &nbsp;·&nbsp; FIRST BOOT &nbsp;·&nbsp; 2026-02-28
   </div>
 
-  <!-- Central content -->
   <div id="title-content">
 
-    <!-- Server brand -->
     <div id="title-server-brand">
       <span class="brand-prompt">&gt;</span>
       <span class="brand-name">MAGMACRUNCH ARCADE</span>
     </div>
     <div id="title-server-sub">multiplayer&nbsp;—&nbsp; online</div>
 
-    <!-- Divider -->
     <div class="title-rule"></div>
 
-    <!-- Launch badge -->
     <div id="title-launch-badge">first&nbsp;game&nbsp;on&nbsp;the&nbsp;magmacrunch&nbsp;server&nbsp;</div>
 
-    <!-- Game logo with glitch layers -->
     <div id="title-logo-wrap">
       <div id="title-logo-glitch-a" aria-hidden="true">SORRY!</div>
       <div id="title-logo-glitch-b" aria-hidden="true">SORRY!</div>
@@ -84,7 +56,6 @@
 
     <div id="title-subtitle">2-4 players · adding more soon...</div>
 
-    <!-- All 12 palette colors as player pips -->
     <div id="title-pawns">
       <div class="title-pawn" style="--pc:#ff2d55" title="Cherry"></div>
       <div class="title-pawn" style="--pc:#ff7c1e" title="Orange"></div>
@@ -100,20 +71,15 @@
       <div class="title-pawn" style="--pc:#7b68ee" title="Bluebell"></div>
     </div>
 
-    <!-- Blinking prompt -->
     <div id="title-press-start">&gt;&gt; PRESS SPACE OR CLICK TO PLAY</div>
   </div>
 
-  <!-- Bottom bar — commemorates the launch -->
   <div id="title-copyright">
     MAGMACRUNCH MEDIA &nbsp;·&nbsp; SORRY! &nbsp;·&nbsp; LAST UPDATED &nbsp;·&nbsp; MAR 2026
   </div>
-</div><!-- /title-overlay -->
+</div>
 
 
-<!-- ═══════════════════════════════════════════════════════
-     LOBBY OVERLAY  (covers everything until game starts)
-════════════════════════════════════════════════════════ -->
 <div id="lobby-overlay">
   <h1>SORRY!</h1>
 
@@ -124,7 +90,6 @@
   </div>
 
   <div id="lobby-inner">
-    <!-- Left: join form + player slots + start -->
     <div id="lobby-left">
       <div class="net-box" id="join-box">
         <div class="net-box-label">Pick Your Color</div>
@@ -154,7 +119,6 @@
       </div>
     </div>
 
-    <!-- Right: lobby chat -->
     <div id="lobby-right">
       <div class="net-box" style="flex:1;display:flex;flex-direction:column;gap:10px;">
         <div class="net-box-label">Chat</div>
@@ -166,17 +130,13 @@
       </div>
     </div>
   </div>
-</div><!-- /lobby-overlay -->
+</div>
 
 
-<!-- ═══════════════════════════════════════════════════════
-     GAME VIEW  (hidden until game starts)
-════════════════════════════════════════════════════════ -->
 <div id="game-view" style="display:none;">
 
   <h1>SORRY!</h1>
 
-  <!-- Status bar -->
   <div id="net-status-bar-game">
     <div id="net-status-dot-game"></div>
     <span id="net-status-text-game"></span>
@@ -189,26 +149,21 @@
     <button id="mute-btn" title="Toggle sound" onclick="(function(){var m=SoundFX.toggleMute();document.getElementById('mute-btn').textContent=m?'🔇':'🔊';})()">🔊</button>
   </div>
 
-  <!-- Main layout: board+log column on left, sidebar on right -->
   <div id="game-layout">
 
-    <!-- Left column: board + game log -->
     <div id="game-main-col">
       <div class="board-frame">
         <div class="board" id="board"></div>
       </div>
 
-      <!-- Game log: move history, bumps, cards drawn — separate from chat -->
       <div class="net-box" id="game-log-box">
         <div class="net-box-label">📋 Game Log</div>
         <div id="game-log-window" class="chat-window game-log-window"></div>
       </div>
     </div>
 
-    <!-- Right sidebar: turn + card + chat -->
     <div id="game-sidebar">
 
-      <!-- Turn indicator -->
       <div class="net-box" id="turn-box">
         <div class="net-box-label">Current Turn</div>
         <div id="hud-turn-name">—</div>
@@ -216,7 +171,6 @@
         <div id="opponent-thinking"></div>
       </div>
 
-      <!-- Card draw -->
       <div class="net-box" id="card-box">
         <div class="net-box-label">Card</div>
         <div id="card-display">
@@ -232,7 +186,6 @@
         <div id="turn-status"></div>
       </div>
 
-      <!-- In-game chat: player messages only -->
       <div class="net-box" style="flex:1;display:flex;flex-direction:column;gap:10px;min-height:0;">
         <div class="net-box-label">💬 Chat</div>
         <div id="game-chat-window" class="chat-window"></div>
@@ -242,13 +195,10 @@
         </div>
       </div>
 
-      <!-- Global Arcade Chat -->
       <div class="net-box" style="flex:1;display:flex;flex-direction:column;gap:10px;min-height:0;">
         <div class="net-box-label">🌐 Arcade Chat</div>
-        <!-- Chat widget loaded via script -->
       </div>
 
-      <!-- Debug panel -->
       <div class="net-box" id="debug-box">
         <div class="net-box-label" style="cursor:pointer" id="debug-toggle">🔧 DEBUG ▶</div>
         <div id="debug-body" style="display:none">
@@ -257,15 +207,12 @@
         </div>
       </div>
 
-    </div><!-- /game-sidebar -->
+    </div>
 
-  </div><!-- /game-layout -->
-</div><!-- /game-view -->
+  </div>
+</div>
 
 
-<!-- ═══════════════════════════════════════════════════════
-     REJECTED OVERLAY
-════════════════════════════════════════════════════════ -->
 <div id="rejected-overlay">
   <div id="rejected-box">
     <h2>Game has already started...</h2>
@@ -278,9 +225,6 @@
   </div>
 </div>
 
-<!-- ═══════════════════════════════════════════════════════
-     GAME OVER OVERLAY
-════════════════════════════════════════════════════════ -->
 <div id="gameover-overlay">
   <div id="gameover-box">
     <div id="gameover-confetti"></div>
@@ -298,9 +242,6 @@
 </div>
 
 
-<!-- ═══════════════════════════════════════════════════════
-     HOW TO PLAY MODAL
-════════════════════════════════════════════════════════ -->
 <div id="how-to-play-modal" class="modal-overlay" onclick="closeModalOutside(event,'how-to-play-modal')">
   <div class="modal-box">
     <button class="modal-close" onclick="closeModal('how-to-play-modal')">✕</button>
@@ -342,9 +283,6 @@
   </div>
 </div>
 
-<!-- ═══════════════════════════════════════════════════════
-     CREDITS MODAL
-════════════════════════════════════════════════════════ -->
 <div id="credits-modal" class="modal-overlay" onclick="closeModalOutside(event,'credits-modal')">
   <div class="modal-box modal-box-narrow">
     <button class="modal-close" onclick="closeModal('credits-modal')">✕</button>
@@ -403,9 +341,6 @@
   </div>
 </div>
 
-<!-- ═══════════════════════════════════════════════════════
-     QUIT CONFIRM MODAL
-════════════════════════════════════════════════════════ -->
 <div id="quit-confirm-modal" class="modal-overlay" onclick="closeModalOutside(event,'quit-confirm-modal')">
   <div class="modal-box modal-box-narrow">
     <button class="modal-close" onclick="closeModal('quit-confirm-modal')">✕</button>
@@ -421,13 +356,14 @@
   </div>
 </div>
 
-<!-- ═══════════════════════════════════════════════════════
-     SCRIPTS — load order matters: protocol → mp → config → state → renderer → multiplayer → ui
-════════════════════════════════════════════════════════ -->
 <script src="../shared/mp-server.js?v=f66f285b"></script>
-<script>var MP_DEFAULT_SERVER = mpServerFor('sorry', 8765);</script>
+<script>
+var MP_DEFAULT_SERVER=mpServerFor("sorry",8765);
+</script>
 <script src="../shared/adenosine-multiplayer.js?v=aa0a94eb"></script>
-<script>const { MP, MSG, MP_PALETTE } = AdMP;</script>
+<script>
+const{MP,MSG,MP_PALETTE}=AdMP;
+</script>
 <script src="../shared/adenosine-race.js?v=0694f7e1"></script>
 <script src="js/board-config.js?v=0ebfa2de"></script>
 <script src="js/game-state.js?v=08ff42b7"></script>
@@ -436,110 +372,7 @@
 <script src="js/audio.js?v=89248a24"></script>
 <script src="js/ui.js?v=16e340af"></script>
 <script>
-// ── Modal helpers ─────────────────────────────────────────────────────────────
-function openModal(id) {
-  var el = document.getElementById(id);
-  if (el) el.classList.add('modal-open');
-}
-function closeModal(id) {
-  var el = document.getElementById(id);
-  if (el) el.classList.remove('modal-open');
-}
-function closeModalOutside(event, id) {
-  if (event.target.id === id) closeModal(id);
-}
-document.addEventListener('keydown', function(e) {
-  if (e.key === 'Escape') {
-    document.querySelectorAll('.modal-overlay.modal-open').forEach(function(m) {
-      m.classList.remove('modal-open');
-    });
-  }
-});
-
-// ── Quit game ─────────────────────────────────────────────────────────────────
-function doQuitGame() {
-  closeModal('quit-confirm-modal');
-  if (typeof Multiplayer !== 'undefined' && Multiplayer.isConnected()) {
-    Multiplayer.quit();
-  }
-  setTimeout(function() { window.location.reload(); }, 350);
-}
-
-// ── Rejected overlay actions ──────────────────────────────────────────────────
-function doRejectedSpectate() {
-  document.getElementById('rejected-overlay').classList.remove('show');
-  var name = document.getElementById('name-input').value.trim() || 'Spectator';
-  Multiplayer.reconnectAndDo(function() {
-    Multiplayer.spectate(name, 'SORRY');
-  });
-}
-function doRejectedLateJoin() {
-  document.getElementById('rejected-overlay').classList.remove('show');
-  var name = document.getElementById('name-input').value.trim() || 'Player';
-  // Shared framework makes late joiners into spectators
-  Multiplayer.reconnectAndDo(function() {
-    Multiplayer.spectate(name, 'SORRY');
-  });
-}
-
-// ── Board scale for mobile ───────────────────────────────────────────────────
-(function() {
-  var BOARD_PX = 662;  // matches .board-frame explicit width
-
-  function applyBoardScale() {
-    // Measure the actual usable width from the game-view container if it's
-    // visible, otherwise fall back to window.innerWidth. This correctly
-    // accounts for browser chrome, safe-area insets, and any container padding
-    // on iOS Safari and other mobile browsers.
-    var gameView = document.getElementById('game-view');
-    var containerWidth = (gameView && gameView.offsetWidth > 0)
-      ? gameView.offsetWidth
-      : window.innerWidth;
-
-    // Subtract the game-view's own horizontal padding (0 8px on mobile = 16px total)
-    // so the board never butts right up against the edge.
-    var SIDE_PADDING = containerWidth < 780 ? 16 : 0;
-    var available = containerWidth - SIDE_PADDING;
-
-    var scale = available < BOARD_PX ? available / BOARD_PX : 1;
-    scale = Math.round(scale * 1000) / 1000;  // 3dp is plenty
-    document.documentElement.style.setProperty('--board-scale', scale);
-  }
-
-  applyBoardScale();
-  window.addEventListener('resize', applyBoardScale);
-  // Re-measure once fonts/layout settle — offsetWidth can be 0 on first paint
-  window.addEventListener('load', applyBoardScale);
-})();
-
-// ── Title screen dismiss ──────────────────────────────────────────────────────
-(function() {
-  var titleOverlay = document.getElementById('title-overlay');
-  var dismissed = false;
-
-  function dismiss() {
-    if (dismissed) return;
-    dismissed = true;
-    titleOverlay.classList.add('dismissing');
-    // Remove from DOM after transition so it can't block clicks
-    setTimeout(function() {
-      titleOverlay.style.display = 'none';
-    }, 650);
-  }
-
-  titleOverlay.addEventListener('click', dismiss);
-
-  document.addEventListener('keydown', function(e) {
-    // Never steal keypresses from chat inputs or any other text field
-    var tag = document.activeElement && document.activeElement.tagName;
-    if (tag === 'INPUT' || tag === 'TEXTAREA') return;
-    // Only intercept space/enter while the title is still showing
-    if (!dismissed && (e.code === 'Space' || e.key === ' ' || e.key === 'Enter')) {
-      e.preventDefault();
-      dismiss();
-    }
-  });
-})();
+function openModal(id){var el=document.getElementById(id);if(el)el.classList.add("modal-open")}function closeModal(id){var el=document.getElementById(id);if(el)el.classList.remove("modal-open")}function closeModalOutside(event,id){if(event.target.id===id)closeModal(id)}document.addEventListener("keydown",function(e){if(e.key==="Escape"){document.querySelectorAll(".modal-overlay.modal-open").forEach(function(m){m.classList.remove("modal-open")})}});function doQuitGame(){closeModal("quit-confirm-modal");if(typeof Multiplayer!=="undefined"&&Multiplayer.isConnected()){Multiplayer.quit()}setTimeout(function(){window.location.reload()},350)}function doRejectedSpectate(){document.getElementById("rejected-overlay").classList.remove("show");var name=document.getElementById("name-input").value.trim()||"Spectator";Multiplayer.reconnectAndDo(function(){Multiplayer.spectate(name,"SORRY")})}function doRejectedLateJoin(){document.getElementById("rejected-overlay").classList.remove("show");var name=document.getElementById("name-input").value.trim()||"Player";Multiplayer.reconnectAndDo(function(){Multiplayer.spectate(name,"SORRY")})}(function(){var BOARD_PX=662;function applyBoardScale(){var gameView=document.getElementById("game-view");var containerWidth=gameView&&gameView.offsetWidth>0?gameView.offsetWidth:window.innerWidth;var SIDE_PADDING=containerWidth<780?16:0;var available=containerWidth-SIDE_PADDING;var scale=available<BOARD_PX?available/BOARD_PX:1;scale=Math.round(scale*1e3)/1e3;document.documentElement.style.setProperty("--board-scale",scale)}applyBoardScale();window.addEventListener("resize",applyBoardScale);window.addEventListener("load",applyBoardScale)})();(function(){var titleOverlay=document.getElementById("title-overlay");var dismissed=false;function dismiss(){if(dismissed)return;dismissed=true;titleOverlay.classList.add("dismissing");setTimeout(function(){titleOverlay.style.display="none"},650)}titleOverlay.addEventListener("click",dismiss);document.addEventListener("keydown",function(e){var tag=document.activeElement&&document.activeElement.tagName;if(tag==="INPUT"||tag==="TEXTAREA")return;if(!dismissed&&(e.code==="Space"||e.key===" "||e.key==="Enter")){e.preventDefault();dismiss()}})})();
 </script>
 
 </body>

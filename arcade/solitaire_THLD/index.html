@@ -30,7 +30,6 @@
 <a href="../card-games/" class="mc-back">card games</a>
 
 <div class="container">
-        <!-- Start Screen -->
         <div id="startScreen" class="start-screen">
             <div class="start-content">
                 <h1 class="game-title">TEXAS HOLD'EM<br>LAVA DOME</h1>
@@ -52,11 +51,9 @@
             </div>
         </div>
 
-        <!-- Game Screen (populated by ui.js at runtime) -->
         <div id="gameScreen" style="display: none;"></div>
     </div>
 
-    <!-- Instructions Modal -->
     <div class="instructions-modal" id="instructionsModal">
         <div class="instructions-content">
             <h3>How to Play</h3>
@@ -103,7 +100,6 @@
         </div>
     </div>
 
-    <!-- Initials Modal -->
     <div class="instructions-modal" id="initialsModal">
         <div class="instructions-content">
             <h3>New High Score!</h3>
@@ -113,7 +109,6 @@
         </div>
     </div>
 
-    <!-- High Scores Modal -->
     <div class="instructions-modal" id="highScoresModal">
         <div class="instructions-content scoreboard-modal">
             <h2>High Scores</h2>
@@ -127,7 +122,6 @@
         </div>
     </div>
 
-    <!-- Credits Modal -->
     <div class="instructions-modal" id="creditsModal">
         <div class="instructions-content">
             <h3>credits</h3>
@@ -161,12 +155,13 @@
         </div>
     </div>
 
-    <!-- JavaScript files - ORDER MATTERS! -->
     <script src="../shared/adenosine-cards.js?v=257d49f4"></script>
     <script src="../shared/cards/deck-choice.js?v=7bfe22eb"></script>
     <script src="../shared/adenosine-score-client.js?v=8c6493d6"></script>
     <script src="../shared/score-server.js?v=9acd988c"></script>
-    <script>const scoreClient = new AdScore.ScoreClient().auto(MC_SCORE_OPTS);</script>
+    <script>
+const scoreClient=new AdScore.ScoreClient().auto(MC_SCORE_OPTS);
+</script>
     <script src="js/config.js?v=900f3e95"></script>
     <script src="js/state.js?v=67876ea3"></script>
     <script src="js/dealer.js?v=18befaa7"></script>

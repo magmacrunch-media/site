@@ -27,7 +27,6 @@
 <body>
 <a href="../action/" class="mc-back">action games</a>
 
-<!-- Title -->
 <div id="titleScreen" class="title-screen">
     <h1>THE JOVIAN<br>HUMANITARIAN<br>CONFLICT</h1>
     <p class="subtitle">know what you are shooting at</p>
@@ -56,12 +55,10 @@
     <p class="copyright">&copy; 2026 MAGMACRUNCH MEDIA</p>
 </div>
 
-<!-- Canvas -->
 <div id="gameContainer" class="game-container">
     <canvas id="gameCanvas" width="480" height="270"></canvas>
 </div>
 
-<!-- HUD -->
 <div id="hud" class="hud hidden">
     <div class="hud-left">
         <div class="hud-label">SCORE</div>
@@ -89,7 +86,6 @@
     </div>
 </div>
 
-<!-- Pause -->
 <div id="pauseOverlay" class="overlay hidden">
     <div class="panel">
         <h2>PAUSED</h2>
@@ -97,7 +93,6 @@
     </div>
 </div>
 
-<!-- Game over -->
 <div id="gameOverOverlay" class="overlay hidden">
     <div class="panel panel-wide">
         <h2>FIN</h2>
@@ -136,7 +131,6 @@
     </div>
 </div>
 
-<!-- Credits -->
 <div id="creditsOverlay" class="overlay hidden">
     <div class="panel panel-wide">
         <h2>CREDITS</h2>
@@ -189,7 +183,9 @@
 <script src="../shared/adenosine-audio.js?v=2b54f50b"></script>
 <script src="../shared/adenosine-score-client.js?v=8c6493d6"></script>
 <script src="../shared/score-server.js?v=9acd988c"></script>
-<script>const scoreClient = new AdScore.ScoreClient().auto(MC_SCORE_OPTS);</script>
+<script>
+const scoreClient=new AdScore.ScoreClient().auto(MC_SCORE_OPTS);
+</script>
 <script src="js/config.js?v=c2c8aa7d"></script>
 <script src="js/projection.js?v=b949785e"></script>
 <script src="js/sfx.js?v=8028467e"></script>

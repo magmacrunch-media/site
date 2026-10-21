@@ -26,16 +26,13 @@
     <link rel="stylesheet" href="css/modals.css?v=92ce509e">
     <link rel="stylesheet" href="../shared/multiplayer/lobby.css?v=bb3782fe">
     <style>
-        body.game-active .mc-back {
-            display: block;
-        }
-    </style>
+body.game-active .mc-back{display:block}
+</style>
 </head>
 <body>
 <a href="../card-games/" class="mc-back">card games</a>
 
 <div class="container">
-    <!-- Start Screen -->
     <div id="startScreen" class="start-screen">
         <div class="start-content">
             <h1 class="game-title">SÖKÖ</h1>
@@ -60,7 +57,6 @@
         </div>
     </div>
 
-    <!-- Game Screen -->
     <div id="gameScreen" style="display: none;">
         <div class="game-header">
             <h1>SÖKÖ</h1>
@@ -81,64 +77,50 @@
             <div class="street-label" id="streetLabel">Piilokortti / hole card</div>
         </div>
 
-        <!-- AI Players -->
         <div id="aiAreas" class="ai-areas"></div>
 
-        <!-- Pot display -->
         <div class="pot-display">
             <div class="pot-icon">♠♥♦♣</div>
         </div>
 
-        <!-- Human Player -->
         <div id="playerArea" class="player-area"></div>
 
-        <!-- Chip Display -->
         <div id="chipAnimDisplay" class="chip-display"></div>
         <div class="chip-legend" id="chipAnimLegend"></div>
 
-        <!-- Action Buttons -->
         <div id="actionButtons" class="action-buttons"></div>
 
-        <!-- Message Area -->
         <div id="messageArea" class="message-area"></div>
 
-        <!-- Action Log -->
         <div id="actionLog" class="action-log"></div>
 
-        <!-- Controls -->
         <div class="game-controls">
             <button id="newGameBtn" class="control-btn">Uusi peli <span class="stat-en">/ new game</span></button>
             <button id="menuBtn" class="control-btn">Valikko <span class="stat-en">/ menu</span></button>
         </div>
 
-        <!-- Chat -->
     </div>
 </div>
 
-<!-- ═══════════════ LOBBY OVERLAY ═══════════════ -->
 <div id="lobbyOverlay" class="lobby-overlay" style="display: none;">
     <div class="lobby-panel">
         <h2 class="lobby-title">MULTIPLAYER LOBBY</h2>
 
-        <!-- Room Code -->
         <div id="lobbyRoomCode" class="lobby-room-code" style="display: none;">
             <div class="lobby-room-label">ROOM CODE</div>
             <div id="roomCodeValue" class="lobby-room-value">----</div>
         </div>
 
-        <!-- Player List -->
         <div class="lobby-players">
             <div class="lobby-players-title">Players</div>
             <div id="lobbyPlayerList"></div>
         </div>
 
-        <!-- Color Picker -->
         <div class="lobby-colors">
             <div class="lobby-colors-title">Your Color</div>
             <div id="lobbyColorGrid" class="lobby-color-grid"></div>
         </div>
 
-        <!-- Chat -->
         <div class="lobby-chat">
             <div id="lobbyChatMessages" class="lobby-chat-messages"></div>
             <div class="lobby-chat-input">
@@ -147,7 +129,6 @@
             </div>
         </div>
 
-        <!-- Buttons -->
         <div class="lobby-buttons">
             <button id="lobbyCreateRoom" class="lobby-btn primary">Create Room</button>
             <button id="lobbyJoinRoom" class="lobby-btn">Join Room</button>
@@ -155,7 +136,6 @@
             <button id="lobbyLeave" class="lobby-btn">&larr; Leave Lobby</button>
         </div>
 
-        <!-- Status -->
         <div id="lobbyStatus" class="lobby-status"></div>
     </div>
 </div>
@@ -164,11 +144,17 @@
 <script src="../shared/cards/deck-choice.js?v=7bfe22eb"></script>
 <script src="../shared/adenosine-score-client.js?v=8c6493d6"></script>
 <script src="../shared/score-server.js?v=9acd988c"></script>
-<script>const scoreClient = new AdScore.ScoreClient().auto(MC_SCORE_OPTS);</script>
+<script>
+const scoreClient=new AdScore.ScoreClient().auto(MC_SCORE_OPTS);
+</script>
 <script src="../shared/mp-server.js?v=f66f285b"></script>
-<script>var MP_DEFAULT_SERVER = mpServerFor('stud', 8767);</script>
+<script>
+var MP_DEFAULT_SERVER=mpServerFor("stud",8767);
+</script>
 <script src="../shared/adenosine-multiplayer.js?v=aa0a94eb"></script>
-<script>const { MP, MSG, MP_PALETTE } = AdMP;</script>
+<script>
+const{MP,MSG,MP_PALETTE}=AdMP;
+</script>
 <script src="js/config.js?v=5bd20622"></script>
 <script src="js/hand-eval.js?v=fc2290f7"></script>
 <script src="js/game.js?v=6e7585b3"></script>

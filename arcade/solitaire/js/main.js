@@ -1,4 +1,1 @@
-// main.js
-
-// Start the game
-const game = new Solitaire();
+const game=new Solitaire;

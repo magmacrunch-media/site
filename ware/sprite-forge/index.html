@@ -8,25 +8,9 @@
     <link rel="stylesheet" href="../shell/fonts.css?v=08818834">
     <link rel="stylesheet" href="../shell/app-shell.css?v=2eb63ac6">
     <link rel="stylesheet" href="../shell/toast.css?v=2c51118f">
-    <!-- magma-themes and the picker's look, ahead of style.css so the app's
-         own rules win. Neither changes the default editor theme; see
-         ui/theme.js. -->
     <link rel="stylesheet" href="kit/magma-themes.css?v=9e723c54">
     <link rel="stylesheet" href="kit/themes.css?v=38d89cb1">
     <link rel="stylesheet" href="style.css?v=97e0335c">
-    <!-- kit/ and bridge.js load here rather than with the other scripts at the
-         end of the body. bridge-core.js decides whether there is a filesystem
-         at all, and marks <html class="desktop"> when there is; doing that
-         after the body has painted flashes the website's back link on every
-         launch. They cannot be inline scripts either — the desktop build's CSP
-         is default-src 'self' with no script-src, so inline is blocked and only
-         files load. Nothing in them reads the DOM tree, so running before that
-         tree exists is safe.
-
-         kit/boot.js is FIRST, ahead of everything: it exists to report failures
-         in the modules that follow it, so it can depend on none of them. The
-         kit files are vendored from magma-kit — GENERATED, see app/kit/KIT.md;
-         edit them there and run `npm run sync-kit`. -->
     <script src="kit/boot.js?v=3867389f"></script>
     <script src="kit/bridge-core.js?v=1a0ffb5c"></script>
     <script src="kit/keys.js?v=a0ef34b7"></script>
@@ -38,9 +22,6 @@
     <script src="kit/themes.js?v=b16895dc"></script>
     <script src="kit/magma-themes-index.js?v=7a3b40b5"></script>
     <script src="bridge.js?v=34c168d5"></script>
-    <!-- Immediately after bridge.js and well before core/tier.js, which is the
-         only ordering this file has: it stands aside if Tauri already installed
-         a filesystem, and tier.js reads the result to decide the build. -->
     <script src="fsa.js?v=0fd07dd0"></script>
 </head>
 <body>
@@ -52,11 +33,6 @@
     <header>
         <div class="header-left">
             <h1 class="glitch" data-text="SPRITE//FORGE">SPRITE//FORGE</h1>
-            <!-- Desktop only. Drawn in the page rather than by Windows: a
-                 native menu bar is OS-drawn, so it cannot take the app's
-                 typeface. Every item names an action and menu.js dispatches
-                 it; the View items proxy the toolbar buttons they name, so
-                 there is still one implementation of each toggle. -->
             <nav class="menubar" id="menubar" aria-label="Main menu">
                 <div class="menu">
                     <button class="menu-title" data-menu="file">FILE</button>
@@ -67,9 +43,6 @@
                         <button data-action="project:save" title="A .forge file holds every sprite, the shared palette and the origins. A PNG sheet holds only pixels.">Save<i>Ctrl+S</i></button>
                         <button data-action="project:save-as" title="Save the project under a new name">Save As&hellip;<i>Ctrl+Shift+S</i></button>
                         <hr>
-                        <!-- The other three ways content gets in and out. They
-                             were sidebar-only, which is the one place a person
-                             coming from any other editor does not look. -->
                         <button data-action="file:templates">Templates&hellip;<i>T</i></button>
                         <button data-action="file:import">Import PNG Sheet&hellip;</button>
                         <button data-action="file:export">Export PNG Sheet&hellip;</button>
@@ -113,16 +86,9 @@
                     </div>
                 </div>
             </nav>
-            <!-- Desktop only, and empty until project-ui.js fills it: the open
-                 file's name and dirty marker. CSS hides it in the browser,
-                 where there is no file to name. -->
             <span class="doc-name" id="doc-name"></span>
         </div>
         <div class="header-right">
-            <!-- The EDITOR theme (ui/theme.js): the colours round the canvas,
-                 never the sprite's, which are THEME & REPLACE. The button and
-                 list share .theme-picker: magma-kit closes the list on a press
-                 outside it. -->
             <span class="theme-picker">
                 <button class="theme-pick" id="themeBtn" type="button" aria-haspopup="listbox"
                         aria-expanded="false" aria-controls="theme-list"
@@ -135,9 +101,6 @@
         </div>
     </header>
 
-    <!-- The compact breadcrumb trail: the ware pages all carry one
-         (ware/crumbs.css), and this is the same trail without "home",
-         styled by the shell's .back-link so nothing is vendored for it. -->
     <nav class="tool-nav" aria-label="breadcrumb" style="font-family: 'Press Start 2P', monospace; font-size: 7px; letter-spacing: 0.1em; color: var(--backlink-color);">
         <a href="../" class="back-link">ware</a> › <a href="../utilities/" class="back-link">creative utilities</a> › <span aria-current="page" style="color: var(--backlink-hover);">sprite//forge</span>
     </nav>
@@ -160,16 +123,8 @@
                 <span id="canvas-dims" class="tb-stat">32 &times; 32</span>
             </div>
 
-            <!-- The canvas scrolls inside the stage rather than growing the
-                 column. A 128x128 sprite at 16x is a 2048px canvas, and when
-                 it was a sibling of the previews it pushed them a screen and a
-                 half below the fold. -->
             <div id="canvas-stage">
                 <canvas id="frame-canvas"></canvas>
-                <!-- The reference, shown BESIDE the drawing at the scale the
-                     underlay would use. Inside the stage rather than a row of
-                     its own: the stage scrolls, and a new row would come
-                     straight off the canvas's height. -->
                 <canvas id="ref-beside" hidden></canvas>
             </div>
 
@@ -182,17 +137,8 @@
                     <span class="sheet-label">sheet; click a frame to edit it, drag to reorder</span>
                     <canvas id="sheet-canvas"></canvas>
                 </div>
-                <!-- The frame wrapped onto the surface it is bound for. A
-                     texture is the one sprite the canvas cannot show you: an
-                     engine's sphere unwrap puts u=0 on +Z, so a face drawn mid
-                     canvas comes out on the back of the head, and no zoom level
-                     hints at it. The layouts are core/mesh.js's. -->
                 <div class="preview-block" id="mesh-block">
                     <span class="sheet-label" id="mesh-label">surface</span>
-                    <!-- Controls beside the canvas, not under it. The dock is a
-                         row of the height-constrained canvas panel, so vertical
-                         space here comes straight off the drawing area; there
-                         is horizontal room and the dock scrolls anyway. -->
                     <div class="mesh-body">
                         <canvas id="mesh-canvas" width="108" height="108"
                                 title="Drag to turn it. Double-click to face front."></canvas>
@@ -220,10 +166,6 @@
         <div id="sidebar-resizer" title="Drag to resize the sidebar"></div>
 
         <aside id="sidebar" class="panel">
-            <!-- Outside the accordion, and first, so it never moves and is
-                 never the thing that got closed. Every tool has a single-key
-                 shortcut; a swatch has none, so the palette is the one panel
-                 that has to be reachable on every stroke. -->
             <div class="side-block">
                 <div class="block-label">COLOR</div>
                 <div id="palette"></div>
@@ -235,7 +177,6 @@
                 </div>
             </div>
 
-<!-- Both builds: a sprite list needs no filesystem. -->
             <details class="side-section" data-section="sprites" open>
                 <summary>SPRITES</summary>
                 <div id="sprite-list" class="sprite-list"></div>
@@ -252,9 +193,6 @@
                     exports as its own sheet, named by the name above.</div>
             </details>
 
-            <!-- Desktop only, like PROJECT above: targets-ui.js unhides it when a
-                 filesystem bridge is present. The list itself lives in the OS
-                 config directory, never in the repo. -->
             <details class="side-section" data-section="targets" hidden>
                 <summary>TARGETS</summary>
                 <div id="target-list" class="target-list"></div>
@@ -290,9 +228,6 @@
                 <div id="tool-readout" class="tool-readout"></div>
             </details>
 
-            <!-- Themes and REPLACE are occasional; they were two thirds of a
-                 COLOR section that the palette has to be able to sit outside of.
-                 The two hints alone were 133px of the old 421. -->
             <details class="side-section" data-section="theme">
                 <summary>THEME &amp; REPLACE</summary>
                 <div class="sub-label">theme</div>
@@ -420,8 +355,6 @@
                 <div class="hint">passed to <code>sprite_load</code>, not stored in the PNG</div>
             </details>
 
-            <!-- Both builds: opening a picture needs a file input and nothing
-                 else. Only the CAST list needs a disk, and only it is tiered. -->
             <details class="side-section" data-section="reference">
                 <summary>REFERENCE</summary>
                 <div class="action-row">
@@ -464,10 +397,6 @@
                     <code>magnolia</code>, <code>texastoast</code>, adenosine, and any
                     engine that slices a sheet by frame size.</div>
 
-                <!-- Both tiers. The desktop build writes a path and also has
-                     these in the File menu; the browser downloads the file and
-                     picks one back up, which needs no disk and no window. Here
-                     rather than menu-only because LITE has no menu bar. -->
                 <div class="sub-label">project file</div>
                 <div class="action-row">
                     <button id="forge-save">SAVE .FORGE</button>
@@ -479,9 +408,6 @@
         </aside>
     </div>
 
-    <!-- Web build only — the desktop build hides the footer and reaches Credits
-         through the HELP menu instead. The version string lives here and
-         nowhere else in this file; the Credits modal reads it back out. -->
     <footer>
         <button class="footer-text" id="credits-link">SPRITE//FORGE <span id="app-version">v0.3.0</span> &mdash; <span>MAGMACRUNCH MEDIA</span></button>
     </footer>
@@ -529,8 +455,6 @@
         </div>
     </dialog>
 
-    <!-- Desktop only in practice: it is opened from the TARGETS panel, which
-         only exists when there is a filesystem. -->
     <dialog id="gm-modal">
         <div class="modal-header">
             <h2>GAMEMAKER SPRITE</h2>
@@ -687,13 +611,6 @@
     </dialog>
 
     <script src="../shell/toast.js?v=d87a2776"></script>
-    <!-- core/ first: editor.js binds its exports at load. Order matters within
-         core/ too — sheet.js reads SpriteForge.color at IIFE time. The ?v=
-         cache-buster stamps are added by the website sync, not kept here, so
-         local edits are never served stale. -->
-    <!-- first: bridge.js in <head> has already decided whether there is a
-         filesystem, and this turns that one boolean into the capability table
-         the ui/ files below ask. -->
     <script src="core/tier.js?v=e3f818ca"></script>
     <script src="core/color.js?v=75c52b07"></script>
     <script src="core/draw.js?v=1e022211"></script>
@@ -707,36 +624,20 @@
     <script src="core/project.js?v=99f06f3b"></script>
     <script src="core/targets/gamemaker.js?v=6f0a6c02"></script>
     <script src="core/targets/engines.js?v=bb9f62ff"></script>
-    <!-- store reads engines.kinds() at load: an engine it has never heard
-         of is not a target anyone can add. -->
     <script src="core/targets/godot.js?v=3a888579"></script>
     <script src="core/targets/store.js?v=057911ee"></script>
-    <!-- data then the logic that reads it -->
     <script src="core/ops-themes.js?v=02273d65"></script>
     <script src="core/palettes.js?v=bf85f9ca"></script>
-    <!-- the one keyboard table; editor.js, project-ui.js and help-ui.js all
-         resolve through it -->
     <script src="core/keybindings.js?v=2f93e970"></script>
-    <!-- before menu.js, which reads the hints it rewrites. On Windows this
-         file does nothing at all. -->
     <script src="platform.js?v=93dbb0f4"></script>
-    <!-- before editor.js, which encodes the sheet it exports -->
     <script src="png.js?v=65978a7e"></script>
-    <!-- before editor.js, so a remembered editor theme is on before it paints -->
     <script src="theme.js?v=6d964422"></script>
     <script src="editor.js?v=1858f82f"></script>
-    <!-- after editor.js, and before project-ui.js which asks it for the list.
-         It seeds itself from the blank sprite the editor has already made. -->
     <script src="sprites-ui.js?v=b83854e0"></script>
     <script src="mesh-ui.js?v=fb54b0ad"></script>
-    <!-- after editor.js, whose render() asks it for the underlay at call
-         time; it asks targets-ui for roots at call time too -->
     <script src="reference-ui.js?v=0ed54a57"></script>
-    <!-- after editor.js: reads the state accessor it defines at the bottom -->
     <script src="project-ui.js?v=d1a7a15d"></script>
-    <!-- after project-ui.js: exporting a target reads the current project -->
     <script src="targets-ui.js?v=796c30af"></script>
-    <!-- last: dispatches to both of the above -->
     <script src="help-ui.js?v=b17f8632"></script>
     <script src="menu.js?v=e49924de"></script>
 </body>

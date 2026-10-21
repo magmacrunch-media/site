@@ -1,66 +1,4 @@
-/* ═══════════════════════════════════════════════
-   magmacrunch media — place events page template
-   templates/place_events.js
-
-   Requires window.PLACE_CONFIG (defined in stub) = {
-     id:        string   — MusicBrainz place ID
-     name:      string   — full place name
-     abbr:      string   — short label
-     accent:    string   — CSS var name without --  (e.g. 'green')
-     backColor: string   — nav-card class for ← back (e.g. 'c-magenta')
-     siblings:  string[] — sibling page names
-     depth:     string   — path prefix to site root
-     ticker:    string[] — extra ticker phrases
-   }
-   ═══════════════════════════════════════════════ */
-
-(function () {
-    const C = window.PLACE_CONFIG;
-    const __navIdAtStart = window.__mcNavId;
-    if (!C) { console.error('place_events.js: window.PLACE_CONFIG is not defined'); return; }
-
-    const d      = C.depth  || '../../../';
-    const accent = C.accent || 'green';
-
-    const ENTITY_MAP = window.__ENTITY_MAP || {};
-    function archiveLink(id, name, type) {
-        if (!id || !name) return esc(name || '');
-        const path = ENTITY_MAP[id];
-        if (path) return '<a href="' + path + '">' + esc(name) + '</a>';
-        return '<a href="https://musicbrainz.org/' + (type || 'artist') + '/' + esc(id) + '" target="_blank" rel="noopener">' + esc(name) + '</a>';
-    }
-
-    const COLOR_MAP = {
-        about:      'c-about',
-        links:      'c-links',
-        photography: 'c-photography',
-        events:     'c-events',
-        recordings: 'c-recordings',
-        works:      'c-works',
-        ware:       'c-ware',
-        personnel:  'c-personnel',
-    };
-
-    const BACK_COLOR_VAR = {
-        'c-green':   'var(--green)',
-        'c-cyan':    'var(--cyan)',
-        'c-rose':    'var(--rose)',
-        'c-yellow':  'var(--yellow)',
-        'c-orange':  'var(--orange)',
-        'c-purple':  'var(--purple)',
-        'c-slate':   'var(--slate)',
-        'c-blue':    'var(--blue)',
-        'c-magenta': 'var(--magenta)',
-        'c-darkgreen': 'var(--darkgreen)',
-        'c-events': 'var(--fm-brand)',
-    };
-    const backColorVar = BACK_COLOR_VAR[C.backColor] || 'var(--cyan)';
-
-    const accentVar = `var(--${accent})`;
-
-    // ── 1. INJECT PAGE STYLES ──
-    const style = document.createElement('style');
-    style.textContent = `
+(function(){const C=window.PLACE_CONFIG;const __navIdAtStart=window.__mcNavId;if(!C){console.error("place_events.js: window.PLACE_CONFIG is not defined");return}const d=C.depth||"../../../";const accent=C.accent||"green";const ENTITY_MAP=window.__ENTITY_MAP||{};function archiveLink(id,name,type){if(!id||!name)return esc(name||"");const path=ENTITY_MAP[id];if(path)return'<a href="'+path+'">'+esc(name)+"</a>";return'<a href="https://musicbrainz.org/'+(type||"artist")+"/"+esc(id)+'" target="_blank" rel="noopener">'+esc(name)+"</a>"}const COLOR_MAP={about:"c-about",links:"c-links",photography:"c-photography",events:"c-events",recordings:"c-recordings",works:"c-works",ware:"c-ware",personnel:"c-personnel"};const BACK_COLOR_VAR={"c-green":"var(--green)","c-cyan":"var(--cyan)","c-rose":"var(--rose)","c-yellow":"var(--yellow)","c-orange":"var(--orange)","c-purple":"var(--purple)","c-slate":"var(--slate)","c-blue":"var(--blue)","c-magenta":"var(--magenta)","c-darkgreen":"var(--darkgreen)","c-events":"var(--fm-brand)"};const backColorVar=BACK_COLOR_VAR[C.backColor]||"var(--cyan)";const accentVar=`var(--${accent})`;const style=document.createElement("style");style.textContent=`
         .event-card { display: flex; gap: 16px; border: 1px solid #1e1e2e; background: var(--deep); margin-bottom: 12px; transition: border-color 0.15s; overflow: hidden; }
         .event-card:hover { border-color: ${accentVar}; }
         .event-card.cancelled { border-color: #2a2a3a; opacity: 0.65; }
@@ -82,198 +20,26 @@
         .performer-cancelled { color: var(--rose); font-style: italic; font-size: 10px; }
 
         @media (max-width: 500px) { .event-poster { width: 72px; min-width: 72px; height: 72px; } }
-    `;
-    document.head.appendChild(style);
-
-    // ── 2. POPULATE DYNAMIC STUB ELEMENTS ──
-
-    const tickerPhrases = [C.name, 'events', ...(C.ticker || [])];
-    const tickerEl = document.getElementById('ticker-content');
-    if (tickerEl) {
-        tickerEl.innerHTML = [...tickerPhrases, ...tickerPhrases]
-            .map(p => `${p} <span class="sep">✦</span>`).join(' ');
-    }
-
-    const breadcrumbEl = document.querySelector('.breadcrumb');
-    if (breadcrumbEl) {
-        breadcrumbEl.innerHTML = `
+    `;document.head.appendChild(style);const tickerPhrases=[C.name,"events",...C.ticker||[]];const tickerEl=document.getElementById("ticker-content");if(tickerEl){tickerEl.innerHTML=[...tickerPhrases,...tickerPhrases].map(p=>`${p} <span class="sep">✦</span>`).join(" ")}const breadcrumbEl=document.querySelector(".breadcrumb");if(breadcrumbEl){breadcrumbEl.innerHTML=`
             <a href="${d}archive/">archive</a>
             <span class="sep">›</span>
             <a href="${d}archive/by-place/">by place</a>
             <span class="sep">›</span>
             <a href="./">${C.abbr.toLowerCase()}</a>
-        `;
-    }
-
-    const placeLabelEl = document.getElementById('place-label');
-    if (placeLabelEl) placeLabelEl.textContent = `// ${C.name} //`;
-
-    const subNavEl = document.getElementById('sub-nav');
-    if (subNavEl) {
-        subNavEl.innerHTML = [
-            `<a href="./" class="nav-card c-back">← back</a>`,
-            ...(C.siblings || []).filter(s => s !== 'events').map(s =>
-                `<a href="${s}.html" class="nav-card ${COLOR_MAP[s] || 'c-cyan'}">${s}</a>`
-            )
-        ].join('\n');
-    }
-
-    // ══════════════════════════════════════════
-    // 3. API LOGIC
-    // ══════════════════════════════════════════
-    const placeId         = C.id;
-    const PERFORMER_TYPES = ['main performer', 'support act', 'performer', 'guest'];
-    const delay           = ms => new Promise(r => setTimeout(r, ms));
-
-    // ── CACHE ──
-    let _cache = null;
-    let apiCallsMade = false;
-    async function loadCache() {
-        if (window.__MB_CACHE) { _cache = window.__MB_CACHE; return; }
-        try {
-            const r = await fetch(d + 'archive/_cache/places/' + placeId + '.json');
-            if (r.ok) { const j = await r.json(); if (j.fetchedAt) _cache = j; }
-        } catch {}
-    }
-    async function cached(path, cacheData) {
-        if (cacheData !== undefined) return cacheData;
-        apiCallsMade = true;
-        return fetchWithRetry('https://musicbrainz.org/ws/2/' + path);
-    }
-
-    function esc(str) {
-        return String(str ?? '')
-            .replace(/&/g, '&amp;')
-            .replace(/</g, '&lt;')
-            .replace(/>/g, '&gt;')
-            .replace(/"/g, '&quot;');
-    }
-
-    async function fetchWithRetry(url, retries = 4) {
-        if (window.__mcNavId !== __navIdAtStart) throw new Error('page navigated away');
-        for (let i = 0; i < retries; i++) {
-            let res;
-            try { res = await fetch(url); }
-            catch (err) {
-                if (i === retries - 1) throw err;
-                await delay(1000 * Math.pow(2, i));
-                continue;
-            }
-            if (res.status === 429 || res.status === 503) { await delay(1000 * Math.pow(2, i)); continue; }
-            if (!res.ok) throw new Error(`HTTP ${res.status}`);
-            return res.json();
-        }
-        throw new Error(`fetchWithRetry failed after ${retries} attempts: ${url}`);
-    }
-
-    let posterQueue = Promise.resolve();
-    function loadPoster(eventId) {
-        posterQueue = posterQueue.then(() => delay(300)).then(() => {
-            if (window.__mcNavId !== __navIdAtStart) return;
-            const art = document.getElementById(`art-${eventId}`);
-            const row = document.getElementById(`event-${eventId}`);
-            if (!art || !row) return;
-            return fetch(`https://eventartarchive.org/event/${eventId}`)
-                .then(r => r.ok ? r.json() : Promise.reject())
-                .then(data => {
-                    if (data.images?.length) {
-                        const img = data.images.find(i => i.front) || data.images[0];
-                        const url = img.thumbnails?.['250'] || img.image;
-                        art.innerHTML = `<a href="https://musicbrainz.org/event/${eventId}/event-art" target="_blank" rel="noopener"><img src="${esc(url)}" loading="lazy" onerror="this.parentElement.parentElement.remove();document.getElementById('event-${eventId}').classList.add('no-art');"></a>`;
-                    } else { art.remove(); row.classList.add('no-art'); }
-                })
-                .catch(() => { art.remove(); row.classList.add('no-art'); });
-        });
-    }
-
-    (async () => {
-        await loadCache();
-        const statusEl = document.getElementById('status-bar');
-        const countBar = document.getElementById('count-bar');
-        const list     = document.getElementById('events-list');
-
-        try {
-            let allEvents = [], offset = 0, totalCount = 0;
-            const cachedList = _cache?.subpages?.events?.list;
-            if (cachedList) {
-                totalCount = cachedList['event-count'];
-                allEvents = cachedList.events || [];
-                statusEl.textContent = `loaded ${allEvents.length} events from cache`;
-            } else {
-                do {
-                    const data = await fetchWithRetry(`https://musicbrainz.org/ws/2/event?place=${placeId}&limit=100&offset=${offset}&fmt=json`);
-                    totalCount = data['event-count'];
-                    allEvents  = allEvents.concat(data.events);
-                    offset += 100;
-                    statusEl.textContent = `fetching events… ${allEvents.length} of ${totalCount}`;
-                    if (offset < totalCount) await delay(1000);
-                } while (offset < totalCount);
-            }
-
-            if (totalCount === 0) { statusEl.textContent = 'no events found.'; return; }
-
-            allEvents.sort((a, b) => {
-                const da = a['life-span']?.begin || '0000-01-01';
-                const db = b['life-span']?.begin || '0000-01-01';
-                return db.localeCompare(da);
-            });
-            countBar.textContent = `found ${totalCount} event${totalCount !== 1 ? 's' : ''} (newest first):`;
-
-            allEvents.forEach(e => {
-                list.insertAdjacentHTML('beforeend', `
+        `}const placeLabelEl=document.getElementById("place-label");if(placeLabelEl)placeLabelEl.textContent=`// ${C.name} //`;const subNavEl=document.getElementById("sub-nav");if(subNavEl){subNavEl.innerHTML=[`<a href="./" class="nav-card c-back">← back</a>`,...(C.siblings||[]).filter(s=>s!=="events").map(s=>`<a href="${s}.html" class="nav-card ${COLOR_MAP[s]||"c-cyan"}">${s}</a>`)].join("\n")}const placeId=C.id;const PERFORMER_TYPES=["main performer","support act","performer","guest"];const delay=ms=>new Promise(r=>setTimeout(r,ms));let _cache=null;let apiCallsMade=false;async function loadCache(){if(window.__MB_CACHE){_cache=window.__MB_CACHE;return}try{const r=await fetch(d+"archive/_cache/places/"+placeId+".json");if(r.ok){const j=await r.json();if(j.fetchedAt)_cache=j}}catch{}}async function cached(path,cacheData){if(cacheData!==void 0)return cacheData;apiCallsMade=true;return fetchWithRetry("https://musicbrainz.org/ws/2/"+path)}function esc(str){return String(str??"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;")}async function fetchWithRetry(url,retries=4){if(window.__mcNavId!==__navIdAtStart)throw new Error("page navigated away");for(let i=0;i<retries;i++){let res;try{res=await fetch(url)}catch(err){if(i===retries-1)throw err;await delay(1e3*Math.pow(2,i));continue}if(res.status===429||res.status===503){await delay(1e3*Math.pow(2,i));continue}if(!res.ok)throw new Error(`HTTP ${res.status}`);return res.json()}throw new Error(`fetchWithRetry failed after ${retries} attempts: ${url}`)}let posterQueue=Promise.resolve();function loadPoster(eventId){posterQueue=posterQueue.then(()=>delay(300)).then(()=>{if(window.__mcNavId!==__navIdAtStart)return;const art=document.getElementById(`art-${eventId}`);const row=document.getElementById(`event-${eventId}`);if(!art||!row)return;return fetch(`https://eventartarchive.org/event/${eventId}`).then(r=>r.ok?r.json():Promise.reject()).then(data=>{if(data.images?.length){const img=data.images.find(i=>i.front)||data.images[0];const url=img.thumbnails?.["250"]||img.image;art.innerHTML=`<a href="https://musicbrainz.org/event/${eventId}/event-art" target="_blank" rel="noopener"><img src="${esc(url)}" loading="lazy" onerror="this.parentElement.parentElement.remove();document.getElementById('event-${eventId}').classList.add('no-art');"></a>`}else{art.remove();row.classList.add("no-art")}}).catch(()=>{art.remove();row.classList.add("no-art")})})}(async()=>{await loadCache();const statusEl=document.getElementById("status-bar");const countBar=document.getElementById("count-bar");const list=document.getElementById("events-list");try{let allEvents=[],offset=0,totalCount=0;const cachedList=_cache?.subpages?.events?.list;if(cachedList){totalCount=cachedList["event-count"];allEvents=cachedList.events||[];statusEl.textContent=`loaded ${allEvents.length} events from cache`}else{do{const data=await fetchWithRetry(`https://musicbrainz.org/ws/2/event?place=${placeId}&limit=100&offset=${offset}&fmt=json`);totalCount=data["event-count"];allEvents=allEvents.concat(data.events);offset+=100;statusEl.textContent=`fetching events… ${allEvents.length} of ${totalCount}`;if(offset<totalCount)await delay(1e3)}while(offset<totalCount)}if(totalCount===0){statusEl.textContent="no events found.";return}allEvents.sort((a,b)=>{const da=a["life-span"]?.begin||"0000-01-01";const db=b["life-span"]?.begin||"0000-01-01";return db.localeCompare(da)});countBar.textContent=`found ${totalCount} event${totalCount!==1?"s":""} (newest first):`;allEvents.forEach(e=>{list.insertAdjacentHTML("beforeend",`
                     <div class="event-card" id="event-${e.id}">
                         <div class="event-poster" id="art-${e.id}"></div>
                         <div class="event-info"><h3>${esc(e.name)}</h3><p>loading details…</p></div>
                     </div>
-                `);
-            });
-
-            let completed = 0, failed = 0;
-            for (let i = 0; i < allEvents.length; i++) {
-                const e = allEvents[i];
-                try {
-                    const d = await cached(`event/${e.id}?inc=place-rels+artist-rels&fmt=json`, _cache?.subpages?.events?.details?.[e.id]);
-                    const isCancelled = d.cancelled === true;
-                    if (isCancelled) document.getElementById(`event-${e.id}`)?.classList.add('cancelled');
-
-                    const performers = (d.relations?.filter(r =>
-                        r['target-type'] === 'artist' && PERFORMER_TYPES.includes(r.type)
-                    ) || []).map(r => {
-                        const wasCancelled = Array.isArray(r.attributes) && r.attributes.includes('cancelled');
-                        const typeLabel = r.type !== 'main performer' ? ` (${r.type})` : '';
-                        return archiveLink(r.artist.id, r.artist.name, 'artist') + typeLabel + (wasCancelled ? ' <span class="performer-cancelled">(cancelled)</span>' : '');
-                    }).join(', ');
-
-                    const eventType = d.type ? (d.type.toLowerCase() === 'concert' ? 'show' : esc(d.type.toLowerCase())) : 'event';
-
-                    document.querySelector(`#event-${e.id} .event-info`).innerHTML = `
+                `)});let completed=0,failed=0;for(let i=0;i<allEvents.length;i++){const e=allEvents[i];try{const d2=await cached(`event/${e.id}?inc=place-rels+artist-rels&fmt=json`,_cache?.subpages?.events?.details?.[e.id]);const isCancelled=d2.cancelled===true;if(isCancelled)document.getElementById(`event-${e.id}`)?.classList.add("cancelled");const performers=(d2.relations?.filter(r=>r["target-type"]==="artist"&&PERFORMER_TYPES.includes(r.type))||[]).map(r=>{const wasCancelled=Array.isArray(r.attributes)&&r.attributes.includes("cancelled");const typeLabel=r.type!=="main performer"?` (${r.type})`:"";return archiveLink(r.artist.id,r.artist.name,"artist")+typeLabel+(wasCancelled?' <span class="performer-cancelled">(cancelled)</span>':"")}).join(", ");const eventType=d2.type?d2.type.toLowerCase()==="concert"?"show":esc(d2.type.toLowerCase()):"event";document.querySelector(`#event-${e.id} .event-info`).innerHTML=`
                         <h3>
-                            <a href="https://musicbrainz.org/event/${esc(d.id)}" target="_blank" rel="noopener">${esc(d.name)}</a>
+                            <a href="https://musicbrainz.org/event/${esc(d2.id)}" target="_blank" rel="noopener">${esc(d2.name)}</a>
                             <span class="event-type">[${eventType}]</span>
-                            ${isCancelled ? '<span class="cancelled-label">CANCELLED</span>' : ''}
+                            ${isCancelled?'<span class="cancelled-label">CANCELLED</span>':""}
                         </h3>
-                        <p><strong>date</strong>${esc(d['life-span']?.begin || 'unknown')}${d.time ? ` at ${esc(d.time)}` : ''}</p>
-                        ${performers ? `<p><strong>performers</strong>${performers}</p>` : ''}
-                    `;
-                    loadPoster(e.id);
-                    completed++;
-                } catch {
-                    document.querySelector(`#event-${e.id} .event-info`).innerHTML = `
+                        <p><strong>date</strong>${esc(d2["life-span"]?.begin||"unknown")}${d2.time?` at ${esc(d2.time)}`:""}</p>
+                        ${performers?`<p><strong>performers</strong>${performers}</p>`:""}
+                    `;loadPoster(e.id);completed++}catch{document.querySelector(`#event-${e.id} .event-info`).innerHTML=`
                         <h3>${esc(e.name)}</h3>
                         <p style="color:var(--rose);opacity:0.7;">failed to load — <a href="https://musicbrainz.org/event/${esc(e.id)}" target="_blank" rel="noopener">view on MusicBrainz</a></p>
-                    `;
-                    failed++;
-                    completed++;
-                }
-                statusEl.textContent = `loading details… ${completed} of ${totalCount}${failed ? ` (${failed} failed)` : ''}`;
-                if (apiCallsMade && i < allEvents.length - 1) await delay(1000);
-            }
-
-            statusEl.textContent = `all ${totalCount} events loaded!${failed ? ` (${failed} failed — try refreshing)` : ''}`;
-
-        } catch (err) {
-            statusEl.textContent = 'error loading events — check your connection and refresh.';
-            console.error('place_events.js fetch failed:', err);
-        }
-    })();
-})();
+                    `;failed++;completed++}statusEl.textContent=`loading details… ${completed} of ${totalCount}${failed?` (${failed} failed)`:""}`;if(apiCallsMade&&i<allEvents.length-1)await delay(1e3)}statusEl.textContent=`all ${totalCount} events loaded!${failed?` (${failed} failed — try refreshing)`:""}`}catch(err){statusEl.textContent="error loading events — check your connection and refresh.";console.error("place_events.js fetch failed:",err)}})()})();

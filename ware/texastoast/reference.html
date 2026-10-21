@@ -19,192 +19,8 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Courier+Prime:wght@400;700&display=swap">
   <link rel="stylesheet" href="../../style.css?v=981601e0">
   <style>
-    :root { color-scheme: dark; }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-
-    body {
-      font: 14px/1.6 'Courier Prime', ui-monospace, SFMono-Regular, Menlo, monospace;
-      background: #14141b; color: #e8e6f0;
-      min-height: 100vh;
-      display: flex; flex-direction: column;
-    }
-
-    .page {
-      max-width: 760px;
-      margin: 0 auto;
-      padding: 2rem 1.5rem 3rem;
-      width: 100%;
-    }
-
-    .page-head { margin-bottom: 2rem; }
-
-    .page-head h1 {
-      font-family: 'Press Start 2P', monospace;
-      font-size: clamp(16px, 3vw, 24px);
-      font-weight: 400;
-      color: #ffe03a;
-      letter-spacing: 0.06em;
-      margin-bottom: .6rem;
-    }
-    .page-head p { font-size: 12px; color: #9d99b5; }
-
-    /* ── Table of contents ─────────────────────────────── */
-
-    .toc {
-      display: flex; flex-wrap: wrap; gap: .4rem;
-      margin: 1.25rem 0 2rem;
-    }
-    .toc a {
-      font-family: 'Press Start 2P', monospace;
-      font-size: 7px;
-      color: #9d99b5;
-      background: #1c1b26;
-      border: 1px solid #33304a;
-      border-radius: 4px;
-      padding: 6px 8px;
-      text-decoration: none;
-      letter-spacing: 0.08em;
-      transition: color .15s, border-color .15s;
-    }
-    .toc a:hover { color: #ffe03a; border-color: #ffe03a; }
-
-    /* ── Sections ──────────────────────────────────────── */
-
-    section { margin-bottom: 2.5rem; scroll-margin-top: 1rem; }
-
-    section h2 {
-      font-family: 'Press Start 2P', monospace;
-      font-size: 11px; font-weight: 400;
-      color: #ffe03a;
-      letter-spacing: 0.05em;
-      margin-bottom: .35rem;
-      padding-bottom: .5rem;
-      border-bottom: 1px solid #33304a;
-    }
-    section > p {
-      font-size: 12px; color: #9d99b5;
-      margin: .75rem 0;
-    }
-
-    h3 {
-      font-family: 'Courier Prime', monospace;
-      font-size: 14px; font-weight: 700;
-      color: #e8e6f0;
-      margin: 1.5rem 0 .5rem;
-    }
-
-    pre {
-      background: #1c1b26;
-      border: 1px solid #33304a;
-      border-radius: 6px;
-      padding: .7rem .85rem;
-      overflow-x: auto;
-      margin: .5rem 0 .75rem;
-      font-size: 12px;
-      line-height: 1.55;
-    }
-    pre code { color: #e8e6f0; font-family: 'Courier Prime', monospace; }
-
-    p code, li code, td code {
-      font-family: 'Courier Prime', monospace;
-      font-size: 12px;
-      background: #1c1b26;
-      border: 1px solid #33304a;
-      border-radius: 4px;
-      padding: .1rem .35rem;
-      color: #ffe03a;
-    }
-
-    /* ── Tables ────────────────────────────────────────── */
-
-    .table-wrap { overflow-x: auto; margin: .5rem 0 1rem; }
-
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      font-size: 12px;
-      background: #1c1b26;
-      border: 1px solid #33304a;
-      border-radius: 6px;
-    }
-    th, td {
-      text-align: left;
-      padding: .45rem .7rem;
-      border-bottom: 1px solid #33304a;
-      vertical-align: top;
-    }
-    th {
-      font-family: 'Press Start 2P', monospace;
-      font-size: 7px;
-      color: #ffe03a;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-    }
-    tr:last-child td { border-bottom: none; }
-    td:first-child { white-space: nowrap; color: #e8e6f0; }
-    td.desc { color: #9d99b5; }
-
-    ul { margin: .5rem 0 .75rem 1.25rem; font-size: 12px; color: #9d99b5; }
-    li { margin-bottom: .25rem; }
-
-    .note {
-      font-size: 11px;
-      color: #9d99b5;
-      background: #1c1b26;
-      border-left: 2px solid #ffe03a;
-      border-radius: 0 6px 6px 0;
-      padding: .5rem .75rem;
-      margin: .75rem 0;
-    }
-
-    /* ── Footer ────────────────────────────────────────── */
-
-    footer {
-      margin-top: auto;
-      padding: 1.5rem;
-      text-align: center;
-      font-size: 12px;
-      color: #9d99b5;
-      border-top: 1px solid #33304a;
-    }
-    footer span { color: #ffe03a; }
-
-    /* ── Override style.css conflicts ─────────────────── */
-    .tool-nav {
-      margin-top: 48px;
-      padding: 8px 24px;
-      border-bottom: 1px solid #33304a;
-      background: #14141b;
-      flex-shrink: 0;
-    }
-    .tool-nav .back-link {
-      font-family: 'Press Start 2P', monospace;
-      font-size: 7px;
-      color: #9d99b5;
-      background: #1c1b26;
-      padding: 6px 10px;
-      border: 1px solid #33304a;
-      text-decoration: none;
-      letter-spacing: 0.1em;
-      transition: color 0.15s, border-color 0.15s;
-    }
-    .tool-nav .back-link:hover {
-      color: #e8e6f0;
-      border-color: #ffe03a;
-    }
-    body {
-      background: #14141b;
-      background-image: none;
-      color: #e8e6f0;
-    }
-    a { color: #ffe03a; }
-    footer {
-      font-family: 'Courier Prime', monospace;
-      font-size: 12px;
-      border-top: 1px solid #33304a;
-    }
-    footer span { color: #ffe03a; }
-  </style>
+:root{color-scheme:dark}*{box-sizing:border-box;margin:0;padding:0}body{font:14px/1.6 "Courier Prime",ui-monospace,SFMono-Regular,Menlo,monospace;background:#14141b;color:#e8e6f0;min-height:100vh;display:flex;flex-direction:column}.page{max-width:760px;margin:0 auto;padding:2rem 1.5rem 3rem;width:100%}.page-head{margin-bottom:2rem}.page-head h1{font-family:"Press Start 2P",monospace;font-size:clamp(16px,3vw,24px);font-weight:400;color:#ffe03a;letter-spacing:0.06em;margin-bottom:.6rem}.page-head p{font-size:12px;color:#9d99b5}.toc{display:flex;flex-wrap:wrap;gap:.4rem;margin:1.25rem 0 2rem}.toc a{font-family:"Press Start 2P",monospace;font-size:7px;color:#9d99b5;background:#1c1b26;border:1px solid #33304a;border-radius:4px;padding:6px 8px;text-decoration:none;letter-spacing:0.08em;transition:color .15s,border-color .15s}.toc a:hover{color:#ffe03a;border-color:#ffe03a}section{margin-bottom:2.5rem;scroll-margin-top:1rem}section h2{font-family:"Press Start 2P",monospace;font-size:11px;font-weight:400;color:#ffe03a;letter-spacing:0.05em;margin-bottom:.35rem;padding-bottom:.5rem;border-bottom:1px solid #33304a}section>p{font-size:12px;color:#9d99b5;margin:.75rem 0}h3{font-family:"Courier Prime",monospace;font-size:14px;font-weight:700;color:#e8e6f0;margin:1.5rem 0 .5rem}pre{background:#1c1b26;border:1px solid #33304a;border-radius:6px;padding:.7rem .85rem;overflow-x:auto;margin:.5rem 0 .75rem;font-size:12px;line-height:1.55}pre code{color:#e8e6f0;font-family:"Courier Prime",monospace}p code,li code,td code{font-family:"Courier Prime",monospace;font-size:12px;background:#1c1b26;border:1px solid #33304a;border-radius:4px;padding:.1rem .35rem;color:#ffe03a}.table-wrap{overflow-x:auto;margin:.5rem 0 1rem}table{width:100%;border-collapse:collapse;font-size:12px;background:#1c1b26;border:1px solid #33304a;border-radius:6px}th,td{text-align:left;padding:.45rem .7rem;border-bottom:1px solid #33304a;vertical-align:top}th{font-family:"Press Start 2P",monospace;font-size:7px;color:#ffe03a;letter-spacing:0.06em;text-transform:uppercase}tr:last-child td{border-bottom:none}td:first-child{white-space:nowrap;color:#e8e6f0}td.desc{color:#9d99b5}ul{margin:.5rem 0 .75rem 1.25rem;font-size:12px;color:#9d99b5}li{margin-bottom:.25rem}.note{font-size:11px;color:#9d99b5;background:#1c1b26;border-left:2px solid #ffe03a;border-radius:0 6px 6px 0;padding:.5rem .75rem;margin:.75rem 0}footer{margin-top:auto;padding:1.5rem;text-align:center;font-size:12px;color:#9d99b5;border-top:1px solid #33304a}footer span{color:#ffe03a}.tool-nav{margin-top:48px;padding:8px 24px;border-bottom:1px solid #33304a;background:#14141b;flex-shrink:0}.tool-nav .back-link{font-family:"Press Start 2P",monospace;font-size:7px;color:#9d99b5;background:#1c1b26;padding:6px 10px;border:1px solid #33304a;text-decoration:none;letter-spacing:0.1em;transition:color 0.15s,border-color 0.15s}.tool-nav .back-link:hover{color:#e8e6f0;border-color:#ffe03a}body{background:#14141b;background-image:none;color:#e8e6f0}a{color:#ffe03a}footer{font-family:"Courier Prime",monospace;font-size:12px;border-top:1px solid #33304a}footer span{color:#ffe03a}
+</style>
 </head>
 <body>
 
@@ -237,7 +53,6 @@
     </div>
   </div>
 
-  <!-- ── Install ─────────────────────────────────────── -->
   <section id="install">
     <h2>install</h2>
     <pre><code>pip install texastoast
@@ -261,7 +76,6 @@ pip install "texastoast[audio]"      # pygame-ce, for a real sound mixer</code><
       touch hardware until you actually use a class that needs it.</div>
   </section>
 
-  <!-- ── Game ────────────────────────────────────────── -->
   <section id="game">
     <h2>Game</h2>
     <p>Owns the window, the canvas, and the game lifecycle.</p>
@@ -288,7 +102,6 @@ pip install "texastoast[audio]"      # pygame-ce, for a real sound mixer</code><
       owns the main loop and <code>quit()</code> leaves the window standing.</p>
   </section>
 
-  <!-- ── Config & loop ───────────────────────────────── -->
   <section id="config">
     <h2>Config &amp; GameLoop</h2>
 
@@ -320,7 +133,6 @@ pip install "texastoast[audio]"      # pygame-ce, for a real sound mixer</code><
       re-raises from <code>start()</code> instead of logging the same traceback thirty times a second.</div>
   </section>
 
-  <!-- ── Scenes ──────────────────────────────────────── -->
   <section id="scenes">
     <h2>scenes</h2>
     <p>Modality as a stack instead of a pile of flags. Pushing a scene freezes the scenes
@@ -371,7 +183,6 @@ game.bind_key("&lt;Key&gt;", stack.dispatch_key)</code></pre>
       frames, lands before that frame renders, so Escape shows the pause menu the same frame.</div>
   </section>
 
-  <!-- ── World ───────────────────────────────────────── -->
   <section id="world">
     <h2>world</h2>
 
@@ -430,7 +241,6 @@ len(entities), iter(entities), npc in entities</code></pre>
       first bug of every entity system.</div>
   </section>
 
-  <!-- ── Rendering ───────────────────────────────────── -->
   <section id="render">
     <h2>rendering</h2>
 
@@ -471,7 +281,6 @@ camera.follow(target_x, target_y, map_width=0, map_height=0, dt=dt)</code></pre>
     <div class="note">Not available in the browser playground; sprites and image drawing need a desktop Python install.</div>
   </section>
 
-  <!-- ── Input ───────────────────────────────────────── -->
   <section id="input">
     <h2>input</h2>
     <p>Every input source returns the same <code>InputState</code> snapshot, so game code never
@@ -517,7 +326,6 @@ replay.start()          # or wall-clock playback
 replay.poll()           # -&gt; InputState</code></pre>
   </section>
 
-  <!-- ── Players ─────────────────────────────────────── -->
   <section id="players">
     <h2>players</h2>
     <p>Seats for multi-controller games: join by button press, hotplug handling, and a
@@ -552,7 +360,6 @@ def update(dt):
       a bounced cable must not reshuffle who is P1 and who is P2.</div>
   </section>
 
-  <!-- ── UI ──────────────────────────────────────────── -->
   <section id="ui">
     <h2>ui widgets</h2>
     <p>All three are frame-driven: call <code>render()</code> every frame and they draw nothing
@@ -608,7 +415,6 @@ ocean.font(10, "bold")   # -&gt; ("Courier", 10, "bold") in the theme's family</
       theme. Layout metrics are deliberately not theme fields; layout is not theme.</div>
   </section>
 
-  <!-- ── Audio ───────────────────────────────────────── -->
   <section id="audio">
     <h2>audio</h2>
     <p>Sound with the same degradation contract as the rest of the engine: no method ever raises
@@ -639,7 +445,6 @@ mixer.backend_name                 # which tier won</code></pre>
       Inject a fake backend with <code>Mixer(backend=...)</code> to test audio without a device.</div>
   </section>
 
-  <!-- ── I2C ─────────────────────────────────────────── -->
   <section id="i2c">
     <h2>i2c hardware</h2>
     <p>For magmacrunch's Raspberry Pi cabinets. Requires the <code>[hardware]</code> extra (smbus2)
@@ -656,7 +461,6 @@ mixer.backend_name                 # which tier won</code></pre>
     </ul>
   </section>
 
-  <!-- ── Dev kit ─────────────────────────────────────── -->
   <section id="devkit">
     <h2>hardware dev kit</h2>
     <p>You should not need the hardware to build for the hardware. <code>SimBus</code> implements the
@@ -687,7 +491,6 @@ texastoast-bench --record session.ttrec</code></pre>
       <code>SimBus.play_recording()</code> as a regression test that runs on any machine.</div>
   </section>
 
-  <!-- ── magmascript ─────────────────────────────────── -->
   <section id="mgs">
     <h2>magmascript binding</h2>
     <p>Installing texastoast alongside magmascript 3.2+ registers the engine as the

@@ -31,7 +31,6 @@
 
     <div class="container">
 
-        <!-- Window chrome title bar -->
         <div class="win-titlebar">
             <span class="win-title-icon">🃏</span>
             <span class="win-title-text">Solitaire — magmacrunch media</span>
@@ -42,7 +41,6 @@
             </span>
         </div>
 
-        <!-- Menu bar -->
         <div class="win-menubar">
             <span id="menuGame">New</span>
             <span id="menuOptions">Scores</span>
@@ -50,10 +48,8 @@
             <span id="menuCredits">Credits</span>
         </div>
 
-        <!-- Neon accent stripe -->
         <div class="neon-stripe"></div>
 
-        <!-- ═══════════════ START SCREEN ═══════════════ -->
         <div id="startScreen" class="start-screen">
             <div class="start-content">
 
@@ -97,7 +93,6 @@
             </div>
         </div>
 
-        <!-- ═══════════════ GAME SCREEN ═══════════════ -->
         <div id="gameScreen" style="display: none;">
 
             <div class="header">
@@ -147,7 +142,6 @@
         </div>
     </div>
 
-    <!-- ═══════════════ MODALS ═══════════════ -->
 
     <div class="instructions-modal" id="instructionsModal">
         <div class="instructions-content">
@@ -232,7 +226,6 @@
         </div>
     </div>
 
-    <!-- WIN SCREEN MODAL -->
     <div class="instructions-modal" id="winModal">
         <div class="instructions-content win-modal-content">
             <div class="win-particles" id="winParticles"></div>
@@ -271,10 +264,11 @@
         </div>
     </div>
 
-    <!-- JavaScript — ORDER MATTERS -->
     <script src="../shared/adenosine-score-client.js?v=8c6493d6"></script>
     <script src="../shared/score-server.js?v=9acd988c"></script>
-    <script>const scoreClient = new AdScore.ScoreClient().auto(MC_SCORE_OPTS);</script>
+    <script>
+const scoreClient=new AdScore.ScoreClient().auto(MC_SCORE_OPTS);
+</script>
     <script src="../shared/adenosine-cards.js?v=257d49f4"></script>
     <script src="../shared/cards/deck-choice.js?v=7bfe22eb"></script>
     <script src="js/game.js?v=b5d6b467"></script>

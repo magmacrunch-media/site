@@ -27,11 +27,8 @@
 <a href="../action/" class="mc-back">action games</a>
 
 <div id="wrap">
-  <!-- width/height must match CA.W and CA.H in js/config.js. -->
   <canvas id="c" width="480" height="720"></canvas>
 
-  <!-- The title card. It explains nothing: the scene behind it is drawn by
-       js/title.js on the canvas, and the controls are on the pause screen. -->
   <div id="title" class="title-screen">
     <h1>CALDERA</h1>
     <p class="sub-title">the only way out is up</p>
@@ -42,8 +39,6 @@
     <p class="copyright">&copy; 2026 MAGMACRUNCH MEDIA</p>
   </div>
 
-  <!-- Everything a thumb has to press is HTML; the canvas behind these draws
-       the result and the table. -->
   <div id="initials" class="panel panel-initials" hidden>
     <input id="initialsInput" maxlength="3" autocomplete="off" autocapitalize="characters"
            spellcheck="false" placeholder="AAA" aria-label="Your initials">
@@ -57,7 +52,6 @@
     <button id="btnChange" class="btn btn-ghost">CHANGE CLIMBER</button>
   </div>
 
-  <!-- The climber select, shaped like Moonlight Drift's character modal. -->
   <div id="charModal" class="char-modal" hidden>
     <div class="char-modal-content">
       <h2>select your climber</h2>
@@ -71,15 +65,6 @@
   <button id="btnPause" class="btn-pause" aria-label="Pause" hidden>II</button>
 </div>
 
-<!--
-  Classic scripts in dependency order, not ES modules. The page is written
-  against the arcade's arcade/caldera/, so ../shared/ is the website's
-  arcade/shared/: in a checkout of this repo, `node tools/link-shared.mjs`
-  links it, and the page is served from the repo root and opened at /web/.
-
-  The logic files (config through game) are also what tools/sim.mjs loads, in
-  this order. Add one here and add it to SCRIPTS there.
--->
 <script src="../shared/adenosine-rpg.js?v=ffe9a960"></script>
 <script src="../shared/adenosine-score-client.js?v=8c6493d6"></script>
 <script src="../shared/score-server.js?v=9acd988c"></script>
