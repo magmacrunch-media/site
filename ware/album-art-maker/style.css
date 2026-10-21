@@ -1045,6 +1045,68 @@ body.dragging #mainCanvas { cursor: grabbing; }
 
 
 /* ═══════════════════════════════════════════════
+   NARROW SCREENS
+
+   Three columns cannot fit a phone: two 240px panels already take 480px, so
+   at 390px the centre column was squeezed to its 40px of padding, the canvas
+   was drawn at 0x0, and the properties panel ran off the right edge with the
+   whole-page overflow:hidden from the shell making it unreachable.
+
+   So below the shell's own mobile breakpoint (its .mobile-notice turns on at
+   the same width) the workspace becomes one column and the PAGE scrolls:
+   canvas first, then the tools, then the properties. Nothing is hidden; every
+   control the desktop layout has is still here, one above the other.
+
+   THE CANVAS NEEDS A DEFINITE HEIGHT, for the reason given at .canvas-wrap
+   above: its max-height is a percentage of .center-area, and in a column of
+   auto-height boxes that resolves to nothing. min(100vw, 70svh) is a square
+   on a portrait phone and leaves room for the tools below it in landscape.
+   A non-square cover still fits, because max-width and max-height both bind.
+
+   The shell is not touched (it is the website's file); these are overrides.
+   The desktop window has a 1100px minWidth, so html.desktop never gets here.
+   ═══════════════════════════════════════════════ */
+@media (max-width: 768px) {
+    html, body {
+        height: auto;
+        min-height: 100%;
+        overflow-x: hidden;
+        overflow-y: auto;
+    }
+
+    header {
+        flex-wrap: wrap;
+        gap: 8px 12px;
+        padding: 12px 16px;
+    }
+
+    .header-right { flex-wrap: wrap; gap: 8px; }
+
+    .workspace {
+        flex: none;
+        flex-direction: column;
+        overflow: visible;
+    }
+
+    .center-area {
+        order: -1;
+        flex: none;
+        height: min(100vw, 70svh);
+        padding: 12px;
+    }
+
+    .panel {
+        width: auto;
+        overflow: visible;
+        border-right: none;
+        border-left: none;
+        border-top: 2px solid var(--border);
+        padding: 12px 16px;
+    }
+}
+
+
+/* ═══════════════════════════════════════════════
    THE DESKTOP BUILD
 
    html.desktop is set by kit/bridge-core.js, in <head>, before the body
