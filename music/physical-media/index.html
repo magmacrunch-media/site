@@ -103,7 +103,7 @@
             position: relative;
             overflow: hidden;
         }
-        .format-card:last-child { border-bottom: 2px solid #1e1e2e; }
+        .format-card:last-of-type { border-bottom: 2px solid #1e1e2e; }
         .format-card:hover {
             border-color: var(--green);
             background: #0c1a10;
@@ -158,11 +158,6 @@
             vertical-align: middle;
         }
 
-        .format-card-meta .tag.soon {
-            background: #444;
-            color: #888;
-        }
-
         .format-card-arrow {
             font-family: 'Press Start 2P', monospace;
             font-size: 10px;
@@ -177,13 +172,48 @@
             transform: translateX(0);
         }
 
-        .format-card.disabled {
-            opacity: 0.4;
-            pointer-events: none;
+        .formats-label + .formats-label,
+        .format-card + .formats-label { margin-top: 36px; }
+
+        /* ── releases: a photo of the actual disk ── */
+        .release-card {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            border: 2px solid #1e1e2e;
+            border-bottom: none;
+            background: var(--deep);
+            text-decoration: none;
+            padding: 12px 20px 12px 12px;
+            transition: border-color 0.15s, background 0.15s;
         }
-        .format-card.disabled::before { background: #444; }
-        .format-card.disabled .format-card-title { color: #666; }
-        .format-card.disabled .format-card-meta { color: #555; }
+        .release-card.last { border-bottom: 2px solid #1e1e2e; }
+        .release-card:hover {
+            border-color: var(--green);
+            background: #0c1a10;
+        }
+        .release-card img {
+            width: 88px;
+            height: 88px;
+            object-fit: cover;
+            flex-shrink: 0;
+            display: block;
+            background: #0d0d18;
+        }
+        .release-card:hover .format-card-arrow {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .in-the-works {
+            font-family: 'Press Start 2P', monospace;
+            font-size: 7px;
+            color: var(--dim);
+            letter-spacing: 0.1em;
+            line-height: 2;
+            margin-top: 20px;
+            text-align: center;
+        }
 
         footer {
             border-top-color: #1e1e2e !important;
@@ -210,6 +240,26 @@
     <div class="section-divider"></div>
 
     <div class="formats-wrap">
+        <div class="formats-label">// releases //</div>
+
+        <a href="floppy-disk/iou-american-spirits/" class="release-card">
+            <img src="../../assets/album-art/american_spirits-2026/american_spirits_blue.jpg" alt="" width="88" height="88" loading="lazy">
+            <div class="format-card-text">
+                <div class="format-card-title">iou a pack of american spirits</div>
+                <div class="format-card-meta">sex van floor plan &middot; 3.5&Prime; floppy &middot; jun 2026</div>
+            </div>
+            <span class="format-card-arrow">&#9654;</span>
+        </a>
+
+        <a href="floppy-disk/pay2play-2025/" class="release-card last">
+            <img src="../../assets/album-art/pay2play-2025/floppy-green.png" alt="" width="88" height="88" loading="lazy">
+            <div class="format-card-text">
+                <div class="format-card-title">pay2play</div>
+                <div class="format-card-meta">sex van floor plan &middot; 3.5&Prime; floppy &middot; jul 2025</div>
+            </div>
+            <span class="format-card-arrow">&#9654;</span>
+        </a>
+
         <div class="formats-label">// formats //</div>
 
         <a href="floppy-disk/" class="format-card">
@@ -218,36 +268,14 @@
                     <div class="format-card-title">3.5" FLOPPY DISK</div>
                     <div class="format-card-meta">
                         <span class="tag">active</span>
-                        est. july 2025
+                        a series since july 2025
                     </div>
                 </div>
                 <span class="format-card-arrow">&#9654;</span>
             </div>
         </a>
 
-        <div class="format-card disabled">
-            <div class="format-card-info">
-                <div class="format-card-text">
-                    <div class="format-card-title">CD</div>
-                    <div class="format-card-meta">
-                        <span class="tag soon">soon</span>
-                        coming soon
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="format-card disabled">
-            <div class="format-card-info">
-                <div class="format-card-text">
-                    <div class="format-card-title">TAPE</div>
-                    <div class="format-card-meta">
-                        <span class="tag soon">soon</span>
-                        coming soon
-                    </div>
-                </div>
-            </div>
-        </div>
+        <p class="in-the-works">CD and tape: in the works</p>
 
     </div>
 
