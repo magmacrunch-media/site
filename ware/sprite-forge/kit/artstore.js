@@ -36,6 +36,15 @@
 
     const MagmaKit = (window.MagmaKit = window.MagmaKit || {});
 
+    /* THE LARGEST REF INDEX THE COUNTER WILL SEED FROM. A loaded file can name
+       a ref anything, and img9007199254740993 seeded `seq` past 2^53, where
+       `++seq` returns the same number: every later import got one ref and
+       register() wrote it over the last, so two elements showed one picture
+       and the first was gone at the next save. A ref above this is kept, and
+       still round-trips, but it is not a number the counter has to count
+       past. A billion imports into one document is not a real document. */
+    const MAX_INDEX = 1e9;
+
     function create() {
         let store = new Map();        // ref -> entry
         let byPayload = new Map();    // payload -> ref, for dedupe
@@ -49,7 +58,9 @@
 
         function indexOf(ref) {
             const m = /^img(\d+)$/.exec(String(ref));
-            return m ? Number(m[1]) : 0;
+            if (!m) return 0;
+            const n = Number(m[1]);
+            return Number.isSafeInteger(n) && n <= MAX_INDEX ? n : 0;
         }
 
         /**
@@ -68,7 +79,12 @@
             const existing = byPayload.get(payload);
             if (existing) return existing;
 
-            const ref = 'img' + (++seq);
+            /* Never over a ref the store already holds. The counter is
+               re-seeded past every ref it adopts, so this should never loop;
+               it is here so that the day a seeding rule is wrong, the cost is
+               a skipped number rather than somebody's picture. */
+            let ref;
+            do { ref = 'img' + (++seq); } while (store.has(ref));
             store.set(ref, Object.assign({
                 kind: 'raster', w: 0, h: 0, name: '', bytes: 0, mime: '',
             }, meta || {}, { payload: payload }));
@@ -112,7 +128,17 @@
             const keep = new Set(usedRefs || refs());
             const out = {};
             for (const [ref, entry] of store) {
-                if (keep.has(ref)) out[ref] = Object.assign({}, entry);
+                /* DEFINED, NOT ASSIGNED. JSON.parse makes "__proto__" an own
+                   key, so a file can hold art under it and adopt() keeps it
+                   (the store is a Map), but `out['__proto__'] = ...` sets the
+                   object's prototype instead of a key, and the art vanished
+                   from the next save. */
+                if (keep.has(ref)) {
+                    Object.defineProperty(out, ref, {
+                        value: Object.assign({}, entry),
+                        enumerable: true, writable: true, configurable: true,
+                    });
+                }
             }
             return out;
         }
