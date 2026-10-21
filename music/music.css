@@ -157,28 +157,199 @@ main {
     font-size: 7px;
     color: #343848;
     letter-spacing: 0.1em;
-    margin-bottom: 48px;
+    margin-bottom: 36px;
     animation: fadeUp 0.5s 0.05s ease both;
 }
+.page-subtitle a {
+    color: #1A1E28;
+    text-decoration: none;
+    border-bottom: 1px solid #A8A8A4;
+}
+.page-subtitle a:hover { border-bottom-color: #1A1E28; }
 
-/* ── WAVEFORM CANVAS ── */
-.waveform-wrap {
-    width: min(600px, 90vw);
-    margin-bottom: 44px;
+/* ── THE DISPLAY: latest release ── */
+.display {
+    width: min(680px, 92vw);
+    margin-bottom: 48px;
     /* The grip: the one dark mass on the player, here as its display. */
     border-radius: 6px;
     background: linear-gradient(180deg, #242838, #1A1E28);
     border: 1px solid #080A10;
     box-shadow: inset 0 1px 0 #343848, 0 1px 0 #F8F8F8, 0 6px 16px rgba(8,10,16,0.18);
-    padding: 12px;
+    padding: 16px;
     animation: fadeUp 0.5s 0.1s ease both;
 }
 
+.latest {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    margin-bottom: 14px;
+}
+.latest[hidden] { display: none; }
+
+.latest-art {
+    flex-shrink: 0;
+    display: block;
+    line-height: 0;
+    border: 1px solid #343848;
+    border-radius: 3px;
+    overflow: hidden;
+}
+.latest-art img {
+    width: 180px;
+    height: 180px;
+    object-fit: cover;
+    display: block;
+}
+
+.latest-info { min-width: 0; }
+
+.display-label {
+    display: block;
+    font-family: 'Press Start 2P', monospace;
+    font-size: 7px;
+    color: #9098A8;
+    letter-spacing: 0.12em;
+    margin-bottom: 12px;
+}
+
+.latest-title {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #F8F8F8;
+    margin: 0 0 8px;
+}
+
+.latest-artist {
+    font-family: 'Courier Prime', monospace;
+    font-size: 13px;
+    color: #E0E0DC;
+    text-decoration: none;
+}
+.latest-artist:hover { color: #F0B800; }
+
+.latest-desc {
+    font-family: 'Courier Prime', monospace;
+    font-size: 12px;
+    color: #9098A8;
+    line-height: 1.5;
+    margin: 8px 0 16px;
+}
+
+.latest-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+/* The one amber button, as on the player. */
+.btn-play,
+.btn-stream {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 8px;
+    letter-spacing: 0.08em;
+    text-decoration: none;
+    padding: 10px 14px;
+    border-radius: 3px;
+    transition: background 0.15s, color 0.15s, border-color 0.15s;
+}
+.btn-play {
+    background: #F0B800;
+    color: #1A1E28;
+    border: 1px solid #C89000;
+    box-shadow: inset 0 1px 0 #F8E080;
+}
+.btn-play:hover { background: #F8C800; }
+.btn-stream {
+    color: #E0E0DC;
+    border: 1px solid #404858;
+}
+.btn-stream:hover { border-color: #9098A8; color: #F8F8F8; }
+
 #waveCanvas {
     width: 100%;
-    height: 60px;
+    height: 48px;
     display: block;
     image-rendering: pixelated;
+}
+
+/* ── SECTION HEADINGS ── */
+.section-head {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 8px;
+    color: #686868;
+    letter-spacing: 0.14em;
+    margin: 0 0 14px;
+    text-shadow: 0 1px 0 #F8F8F8;
+}
+
+/* ── ROSTER ── */
+.roster-wrap {
+    width: min(680px, 92vw);
+    margin-bottom: 48px;
+    animation: fadeUp 0.5s 0.15s ease both;
+}
+.roster-wrap[hidden] { display: none; }
+
+.roster {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 12px;
+}
+
+.artist {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    background: #F8F8F8;
+    border: 1px solid #B8B8B4;
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: 0 1px 0 #F8F8F8, 0 4px 12px rgba(8,10,16,0.08);
+    transition: border-color 0.15s, transform 0.15s;
+}
+.artist:hover {
+    border-color: #1A1E28;
+    transform: translateY(-2px);
+}
+.artist img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1;
+    object-fit: cover;
+    display: block;
+    border-bottom: 1px solid #D0D0CC;
+}
+.artist-name {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 8px;
+    line-height: 1.6;
+    color: #1A1E28;
+    padding: 10px 10px 4px;
+}
+.artist-count {
+    font-family: 'Courier Prime', monospace;
+    font-size: 11px;
+    color: #686868;
+    padding: 0 10px 10px;
+}
+
+.roster-all {
+    display: inline-block;
+    margin-top: 14px;
+    font-family: 'Courier Prime', monospace;
+    font-size: 12px;
+    color: #484848;
+    text-decoration: none;
+}
+.roster-all:hover { color: #1A1E28; text-decoration: underline; }
+
+/* ── LISTEN ── */
+.listen-wrap {
+    width: min(680px, 92vw);
+    animation: fadeUp 0.5s 0.2s ease both;
 }
 
 /* ── MUSIC CARDS ── */
@@ -186,8 +357,7 @@ main {
     display: flex;
     flex-direction: column;
     gap: 0;
-    width: min(520px, 90vw);
-    animation: fadeUp 0.5s 0.15s ease both;
+    width: 100%;
 }
 
 .music-card {
@@ -293,6 +463,10 @@ body.dorfic footer span { color: #F0B800; }
 /* ── MOBILE ── */
 @media (max-width: 640px) {
     .page-title { font-size: 13px; }
+    .latest { flex-direction: column; align-items: flex-start; }
+    .latest-art img { width: 100%; height: auto; aspect-ratio: 1; }
+    .latest-art { width: 100%; }
+    .roster { grid-template-columns: repeat(2, 1fr); }
     .mc-label { font-size: 8px; }
 
     body.dorfic .nav-links {
