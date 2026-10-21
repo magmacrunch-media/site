@@ -21,9 +21,9 @@
 <link rel="preload" as="font" type="font/woff2" href="../../fonts/PressStart2P-Regular.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="../../fonts/ShareTechMono-Regular.woff2" crossorigin>
 <link rel="stylesheet" href="base.css?v=12c1392e">
-<link rel="stylesheet" href="layout.css?v=93bf802e">
+<link rel="stylesheet" href="layout.css?v=6af6ecb1">
 <link rel="stylesheet" href="modals.css?v=e71607ee">
-<link rel="stylesheet" href="title.css?v=bed2e590">
+<link rel="stylesheet" href="title.css?v=e062b9f5">
 </head>
 <body>
 
@@ -47,13 +47,13 @@
 
   <div class="game-row">
 
-    <div style="display:flex;flex-direction:column;gap:12px;">
-      <div class="panel">
+    <div class="side side-left" style="display:flex;flex-direction:column;gap:12px;">
+      <div class="panel panel-hold">
         <div class="panel-label">PIDÄ</div>
         <div class="panel-label-sub">hold</div>
         <canvas id="hold-canvas" width="80" height="64"></canvas>
       </div>
-      <div class="panel">
+      <div class="panel panel-stats">
         <div class="stat-block">
           <div class="stat-label">
             <svg width="11" height="11" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -97,13 +97,13 @@
       <canvas id="board" width="300" height="600"></canvas>
     </div>
 
-    <div style="display:flex;flex-direction:column;gap:12px;">
-      <div class="panel">
+    <div class="side side-right" style="display:flex;flex-direction:column;gap:12px;">
+      <div class="panel panel-next">
         <div class="panel-label">SEURAAVA</div>
         <div class="panel-label-sub">next</div>
         <canvas id="next-canvas" width="80" height="64"></canvas>
       </div>
-      <div class="panel">
+      <div class="panel panel-ctrl">
         <div class="panel-label" style="margin-bottom:2px;">OHJAUS</div>
         <div class="panel-label-sub" style="margin-bottom:10px;">controls</div>
         <ul class="ctrl-list">
@@ -260,6 +260,16 @@
 
 <button id="btn-start" style="display:none;"></button>
 
+<div class="touch-controls" id="touch-controls" aria-label="controls">
+  <button class="tbtn" data-hold-key="arrowleft" aria-label="move left">&#9664;</button>
+  <button class="tbtn" data-hold-key="arrowright" aria-label="move right">&#9654;</button>
+  <button class="tbtn" data-tap-key="arrowup" aria-label="rotate">&#10227;</button>
+  <button class="tbtn" data-repeat-key="arrowdown" aria-label="soft drop">&#9660;</button>
+  <button class="tbtn tbtn-drop" data-tap-key=" " aria-label="hard drop">&#10515;</button>
+  <button class="tbtn tbtn-small" data-touch="hold" aria-label="hold">PIDÄ</button>
+  <button class="tbtn tbtn-small" data-touch="pause" aria-label="pause">II</button>
+</div>
+
 <div class="modal-overlay hidden" id="modal-gameover">
   <div class="modal">
     <h2>PELI OHI</h2>
@@ -360,7 +370,7 @@
 <script>
 const scoreClient=new AdScore.ScoreClient().auto(MC_SCORE_OPTS);
 </script>
-<script src="game.js?v=249aaba2"></script>
+<script src="game.js?v=e7fd1ca5"></script>
 
 </body>
 </html>
