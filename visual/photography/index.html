@@ -99,6 +99,11 @@
         .section-divider { width:100%; max-width:900px; background:linear-gradient(90deg,transparent,#FF8FB0,#5EEEF0,#C8AEFF,transparent); margin:0 20px 56px; opacity:0.3; animation:fadeUp 0.5s 0.05s ease both; }
 
         /* ── SERIES BLOCK ── */
+        /* main centres its children, so without a width this shrank to fit its
+           contents, and the contents are photo strips meant to scroll sideways
+           inside themselves: it took the full 960px and the whole page scrolled
+           on a phone instead of the strips. Full width up to that 960. */
+        #series-container { width:100%; max-width:960px; }
         .series { width:100%; max-width:960px; padding:0 20px; margin-bottom:72px; animation:fadeUp 0.5s ease both; }
         .series-header { display:flex; align-items:baseline; gap:20px; margin-bottom:6px; }
         .series-title { font-family:'Press Start 2P',monospace; font-size:clamp(9px,1.6vw,13px); color:#F0EEF8; letter-spacing:0.08em; }
