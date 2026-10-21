@@ -741,6 +741,29 @@ input[type="file"]::file-selector-button:hover { border-color: var(--dim); }
     font-family: 'Courier Prime', monospace;
     font-size: 11px;
     color: var(--dim);
+    flex: 1;
+}
+
+.slot-shades {
+    display: flex;
+    gap: 2px;
+}
+
+.slot-shade {
+    width: 8px;
+    height: 8px;
+    border: 1px solid var(--border);
+}
+
+.slot-remove {
+    padding: 0 6px;
+    font-size: 11px;
+    line-height: 18px;
+}
+
+#slot-name-input {
+    flex: 1;
+    min-width: 0;
 }
 
 #replace-color {

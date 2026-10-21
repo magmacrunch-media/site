@@ -20,7 +20,7 @@
 window.SpriteForge = window.SpriteForge || {};
 window.SpriteForge.project = (function () {
 
-    const { nearestHex, shadeHex } = window.SpriteForge.color;
+    const { nearestHex, shadeHex, hexToHsl } = window.SpriteForge.color;
     const FR = window.SpriteForge.frames;
 
     const FORMAT = 'sprite-forge/1';
@@ -92,6 +92,74 @@ window.SpriteForge.project = (function () {
             return [step, to];
         });
         return { map, ramp: next };
+    }
+
+    const SLOT_NAME_MAX = 24;
+
+    /**
+     * Declaring a slot on any project: `hex` becomes slot `name`, or joins it
+     * as another shade when the slot exists. Returns the new { slots, ramps };
+     * throws with a message fit to show the user when it cannot.
+     *
+     * This is how a freehand sprite gets what a template gives for free. The
+     * steps are not chosen by the user but by lightness against the base:
+     * darker shades take -1 then -2, nearest the base first, lighter ones +1
+     * then +2, and the slot's existing shades are re-stepped with the new one.
+     * The step is what a recolor shades by, so a dark shade must stay dark.
+     * That allows two shades either side of the base and no more, which is
+     * the range the format holds.
+     *
+     * A color already in a slot is refused. The format allows a shared color
+     * because a theme can produce one, but declaring it twice by hand is a
+     * slip, and it would make recoloring either slot move the other.
+     */
+    function declareSlot(slots, ramps, name, hex) {
+        const n = String(name == null ? '' : name).trim();
+        if (!n) throw new Error('name the slot first');
+        if (n.length > SLOT_NAME_MAX) throw new Error(`a slot name is at most ${SLOT_NAME_MAX} characters`);
+        if (!/^#[0-9a-f]{6}$/i.test(hex || '')) throw new Error('select a color to put in the slot');
+        const h = hex.toLowerCase();
+
+        const s = { ...(slots || {}) };
+        const r = rampsFor(slots, ramps) || {};
+        for (const [other, ramp] of Object.entries(r))
+            if (ramp.some(([, x]) => x.toLowerCase() === h))
+                throw new Error(`${h} is already in slot "${other}"`);
+
+        if (!(n in s)) {
+            s[n] = h;
+            r[n] = [[0, h]];
+            return { slots: s, ramps: r };
+        }
+
+        const base = s[n];
+        const lightOf = (x) => hexToHsl(x)[2];
+        const l0 = lightOf(base);
+        const shades = [...r[n].filter(([step]) => step !== 0).map(([, x]) => x), h];
+        const darker = shades.filter(x => lightOf(x) < l0).sort((a, b) => lightOf(b) - lightOf(a));
+        const lighter = shades.filter(x => lightOf(x) >= l0).sort((a, b) => lightOf(a) - lightOf(b));
+        if (darker.length > -MIN_STEP || lighter.length > MAX_STEP)
+            throw new Error(`slot "${n}" already has two shades ${lightOf(h) < l0 ? 'darker' : 'lighter'} than its base`);
+        r[n] = [
+            ...darker.map((x, i) => [-(i + 1), x]).reverse(),
+            [0, base],
+            ...lighter.map((x, i) => [i + 1, x]),
+        ];
+        return { slots: s, ramps: r };
+    }
+
+    /**
+     * Forgetting a slot. The pixels are untouched: a slot is only a name for
+     * some colors, and dropping the name changes nothing that is drawn.
+     * Null for both once the last slot goes, which is what a freehand project
+     * has, so its file stops carrying the fields at all.
+     */
+    function removeSlot(slots, ramps, name) {
+        const s = { ...(slots || {}) };
+        const r = rampsFor(slots, ramps) || {};
+        delete s[name];
+        delete r[name];
+        return Object.keys(s).length ? { slots: s, ramps: r } : { slots: null, ramps: null };
     }
 
     /**
@@ -468,5 +536,5 @@ window.SpriteForge.project = (function () {
         return deserialize(o);
     }
 
-    return { FORMAT, ALPHABET, TRANSPARENT, MIN_STEP, MAX_STEP, blank, rampsFor, recolorRamp, newSprite, uniqueName, colorsOf, paletteFor, remap, retheme, reduce, serialize, deserialize, stringify, parse, validate };
+    return { FORMAT, ALPHABET, TRANSPARENT, MIN_STEP, MAX_STEP, blank, rampsFor, recolorRamp, declareSlot, removeSlot, SLOT_NAME_MAX, newSprite, uniqueName, colorsOf, paletteFor, remap, retheme, reduce, serialize, deserialize, stringify, parse, validate };
 })();

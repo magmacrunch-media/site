@@ -1313,6 +1313,8 @@ document.getElementById('copy-btn').addEventListener('click', async () => {
 const templateModal = document.getElementById('template-modal');
 const tplGrid = document.getElementById('tpl-grid');
 const slotList = document.getElementById('slot-list');
+const slotNameInput = document.getElementById('slot-name-input');
+const slotAddBtn = document.getElementById('slot-add');
 
 // Replaces every frame, the size and the palette — the same wholesale swap the
 // PNG import performs, so it follows that routine's order and is one undo step.
@@ -1399,7 +1401,7 @@ function renderSlots() {
   if (!activeTemplate) {
     const hint = document.createElement('div');
     hint.className = 'hint';
-    hint.textContent = 'Load a template to recolor its parts by name.';
+    hint.textContent = 'Load a template, or name a slot below, to recolor parts by name.';
     slotList.appendChild(hint);
     return;
   }
@@ -1417,8 +1419,24 @@ function renderSlots() {
     input.addEventListener('change', (e) => recolorSlot(name, e.target.value.toLowerCase()));
     const label = document.createElement('span');
     label.className = 'slot-name'; label.textContent = name;
+    // Every shade the slot holds, dark to light, so what a recolor will move
+    // is visible before it moves.
+    const shades = document.createElement('span');
+    shades.className = 'slot-shades';
+    for (const [step, hex] of (activeTemplate.ramps && activeTemplate.ramps[name]) || [[0, base]]) {
+      const chip = document.createElement('span');
+      chip.className = 'slot-shade';
+      chip.style.backgroundColor = hex;
+      chip.title = `${hex}, step ${step}`;
+      shades.appendChild(chip);
+    }
+    const remove = document.createElement('button');
+    remove.className = 'slot-remove';
+    remove.textContent = '×';
+    remove.title = `Forget slot "${name}"; the pixels stay as they are`;
+    remove.addEventListener('click', (e) => { e.preventDefault(); forgetSlot(name); });
     sw.appendChild(input);
-    row.append(sw, label);
+    row.append(sw, label, shades, remove);
     slotList.appendChild(row);
   }
   const hint = document.createElement('div');
@@ -1426,6 +1444,42 @@ function renderSlots() {
   hint.textContent = 'Recolors every pixel of that shade, including any you painted in the same color.';
   slotList.appendChild(hint);
 }
+
+// Declaring a slot is how a freehand sprite gets what a template gives: the
+// selected swatch becomes a named slot, or another shade of one. One undo
+// step, and the slots are saved in the .forge with everything else.
+function declareSlot() {
+  let next;
+  try {
+    next = PROJ.declareSlot(activeTemplate && activeTemplate.slots,
+      activeTemplate && activeTemplate.ramps, slotNameInput.value, selectedColor);
+  } catch (e) {
+    Toast.show(e.message.toUpperCase());
+    return;
+  }
+  snapshot();
+  activeTemplate = activeTemplate
+    ? { ...activeTemplate, slots: next.slots, ramps: next.ramps }
+    : { id: null, label: 'project', slots: next.slots, ramps: next.ramps };
+  renderSlots();
+}
+
+function forgetSlot(name) {
+  if (!activeTemplate) return;
+  snapshot();
+  const next = PROJ.removeSlot(activeTemplate.slots, activeTemplate.ramps, name);
+  // A template project keeps its id with no slots left; a freehand one goes
+  // back to having none at all.
+  activeTemplate = next.slots
+    ? { ...activeTemplate, slots: next.slots, ramps: next.ramps }
+    : (activeTemplate.id ? { ...activeTemplate, slots: {}, ramps: {} } : null);
+  renderSlots();
+}
+
+slotAddBtn.addEventListener('click', declareSlot);
+slotNameInput.addEventListener('keydown', (e) => {
+  if (e.key === 'Enter') { e.preventDefault(); declareSlot(); }
+});
 
 function recolorSlot(name, newBase) {
   if (!activeTemplate) return;

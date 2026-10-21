@@ -133,7 +133,15 @@ nav {
     text-decoration: none;
     text-shadow: 0 0 10px var(--nav-brand-glow, rgba(196,95,255,0.7));
     white-space: nowrap;
+    /* 9px type made a 7px-tall link; the padding makes it a thumb-sized
+       target inside the 48px bar without changing how the bar looks */
+    display: inline-block;
+    padding: 12px 0;
 }
+
+/* search.css draws this at 22px; nav-scoped so it outranks that file,
+   which nav.js appends after this one */
+nav .nav-search-btn { padding: 9px; }
 
 .nav-links { display: flex; gap: 0; list-style: none; margin-left: auto; }
 

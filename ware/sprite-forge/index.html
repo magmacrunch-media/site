@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="../shell/fonts.css?v=08818834">
     <link rel="stylesheet" href="../shell/app-shell.css?v=2eb63ac6">
     <link rel="stylesheet" href="../shell/toast.css?v=2c51118f">
-    <link rel="stylesheet" href="style.css?v=b68102d5">
+    <link rel="stylesheet" href="style.css?v=7fddfafc">
     <!-- kit/ and bridge.js load here rather than with the other scripts at the
          end of the body. bridge-core.js decides whether there is a filesystem
          at all, and marks <html class="desktop"> when there is; doing that
@@ -308,6 +308,13 @@
                 </div>
                 <div class="sub-label">slots</div>
                 <div id="slot-list"></div>
+                <div class="row">
+                    <input type="text" id="slot-name-input" placeholder="slot name" maxlength="24">
+                    <button id="slot-add" title="Make the selected swatch a slot of this name, or add it to that slot as another shade">+ SLOT</button>
+                </div>
+                <div class="hint">a new name makes the selected swatch a slot;
+                    a slot's own name adds it as a shade, darker or lighter
+                    than the base by its own lightness. two each way.</div>
             </details>
 
             <details class="side-section" data-section="frames">
@@ -679,7 +686,7 @@
     <script src="core/mesh.js?v=1de8d0dc"></script>
     <script src="core/templates.js?v=173d2d72"></script>
     <script src="core/reference.js?v=20ef83d8"></script>
-    <script src="core/project.js?v=8a5c0086"></script>
+    <script src="core/project.js?v=268ec1cb"></script>
     <script src="core/targets/gamemaker.js?v=6f0a6c02"></script>
     <script src="core/targets/engines.js?v=bb9f62ff"></script>
     <!-- store reads engines.kinds() at load: an engine it has never heard
@@ -697,7 +704,7 @@
     <script src="platform.js?v=93dbb0f4"></script>
     <!-- before editor.js, which encodes the sheet it exports -->
     <script src="png.js?v=65978a7e"></script>
-    <script src="editor.js?v=413c1d41"></script>
+    <script src="editor.js?v=1858f82f"></script>
     <!-- after editor.js, and before project-ui.js which asks it for the list.
          It seeds itself from the blank sprite the editor has already made. -->
     <script src="sprites-ui.js?v=b83854e0"></script>
