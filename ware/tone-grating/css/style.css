@@ -188,6 +188,58 @@ input[type=range]::-moz-range-thumb {
 
 .preset:hover { color: var(--accent); border-color: var(--accent); }
 
+/* ── PLAYING ──────────────────────────────────────────────────────────
+ * The patch buttons, octave and pedal are amber because they shape the
+ * sound, which is the time domain's color. The only cyan is still beta. */
+
+.patch-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 5px;
+    margin-bottom: 8px;
+}
+
+.patch-grid .preset {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 6px;
+    letter-spacing: 0.06em;
+    padding: 7px 2px;
+}
+
+.preset.on {
+    color: var(--bg);
+    background: var(--tone);
+    border-color: var(--tone);
+}
+
+.patch-grid .preset:hover:not(.on),
+.play-row .preset:hover:not(.on) { color: var(--tone); border-color: var(--tone); }
+
+.play-row {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-bottom: 6px;
+}
+
+.play-row .preset {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 7px;
+    padding: 7px 2px;
+}
+
+.oct {
+    flex: 0 0 44px;
+    text-align: center;
+    font-family: 'Courier Prime', monospace;
+    font-size: 13px;
+    color: var(--text);
+}
+
+/* The header's note readout lights while a note sounds: it is then the
+   note the panels are drawing, rather than the last one that did. */
+#noteStat.live { color: var(--tone); border-color: var(--tone); }
+
 .action-btn {
     width: 100%;
     background: var(--surface);
@@ -265,6 +317,19 @@ input[type=range]::-moz-range-thumb {
     color: var(--dim);
 }
 
+.dom-hand {
+    margin-left: auto;
+    font-family: 'Courier Prime', monospace;
+    font-size: 11px;
+    color: var(--dim);
+    opacity: 0.8;
+}
+
+/* Either source strip is a surface to press: vertical travel is beta. */
+.strip.hand { cursor: ns-resize; touch-action: none; }
+.strip.hand:hover { border-color: var(--dim); }
+.strip.hand.pressed { border-color: var(--accent); box-shadow: 0 0 10px rgba(53,224,208,0.25); }
+
 .strip {
     width: 100%;
     height: 62px;
@@ -282,12 +347,78 @@ input[type=range]::-moz-range-thumb {
     margin-top: 8px;
 }
 
-.dom-foot {
+/* ── THE KEYS ─────────────────────────────────────────────────────────
+ * Two octaves and a C, laid out by percentage so they fill whatever width the
+ * stage has. Black keys sit over the seams, as on the real thing, which is
+ * why they are absolutely positioned rather than flowed. */
+
+.keybed {
+    flex-shrink: 0;
+    padding: 8px 18px 10px;
+    border-top: 1px solid var(--border);
+    background: var(--panel);
+}
+
+.keys {
+    position: relative;
+    height: 92px;
+    touch-action: none;
+    user-select: none;
+}
+
+.key {
+    position: absolute;
+    top: 0;
+    box-sizing: border-box;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    padding-bottom: 5px;
+    font-family: 'Courier Prime', monospace;
+}
+
+.key.white {
+    height: 100%;
+    background: #c9d3df;
+    border: 1px solid var(--bg);
+    z-index: 1;
+}
+
+.key.black {
+    height: 58%;
+    background: #141a24;
+    border: 1px solid var(--border);
+    z-index: 2;
+}
+
+.key.white.down { background: var(--tone); }
+.key.black.down { background: #b8862a; border-color: var(--tone); }
+
+.key-label {
+    font-size: 10px;
+    text-transform: uppercase;
+    color: #5a6678;
+    pointer-events: none;
+}
+
+.key.black .key-label { color: var(--dim); }
+
+.key-name {
+    font-size: 9px;
+    color: #7a8698;
+    pointer-events: none;
+}
+
+.key-hint {
     font-family: 'Courier Prime', monospace;
     font-size: 11px;
     color: var(--dim);
-    margin-top: 4px;
+    margin-top: 6px;
 }
+
+.key-hint b { color: var(--tone); font-weight: normal; }
 
 /* ── THE TABLE ────────────────────────────────────────────────────────── */
 

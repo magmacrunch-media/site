@@ -3,15 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>tone grating — magmacrunch media</title>
+    <title>tone grating, magmacrunch media</title>
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="stylesheet" href="../shell/fonts.css?v=08818834">
     <link rel="stylesheet" href="../shell/app-shell.css?v=2eb63ac6">
-    <link rel="stylesheet" href="css/style.css?v=bac5069c">
+    <link rel="stylesheet" href="css/style.css?v=8bda797b">
 </head>
 <body>
     <div class="mobile-notice">
-        This instrument wants two panels side by side.<br>
+        This instrument wants two panels and a keyboard side by side.<br>
         Please visit on a wider screen.
     </div>
 
@@ -20,6 +20,7 @@
             <h1 class="glitch" data-text="TONE//GRATING">TONE//GRATING</h1>
         </div>
         <div class="header-right">
+            <span class="sys-stat" id="noteStat">A4 440 Hz</span>
             <span class="sys-stat" id="betaStat">&beta; 2.405</span>
             <span class="sys-stat" id="stateStat">CARRIER NULL</span>
         </div>
@@ -34,16 +35,29 @@
 
     <div class="workspace">
 
-        <!-- LEFT: the controls. Beta is set apart from the rest because it is
-             the only one that reaches both panels; everything below the first
-             divider belongs to one domain or the other. -->
+        <!-- LEFT: the patch. Beta is set apart because it is the only control
+             that reaches both panels; below the first divider everything
+             belongs to one domain or the other. -->
         <aside class="panel controls">
 
+            <div class="panel-label">PATCH</div>
+            <div class="patch-grid">
+                <button class="preset" data-patch="null organ">NULL ORGAN</button>
+                <button class="preset" data-patch="brass">BRASS</button>
+                <button class="preset" data-patch="reed">REED</button>
+                <button class="preset" data-patch="bell">BELL</button>
+                <button class="preset" data-patch="chime">CHIME</button>
+                <button class="preset" data-patch="grit">GRIT</button>
+            </div>
+            <p class="panel-hint" id="patchNote"></p>
+
+            <div class="panel-divider"></div>
+
             <div class="panel-label shared">SHARED</div>
-            <p class="panel-hint">one number, both panels</p>
+            <p class="panel-hint">one number, both panels: where every note comes to rest</p>
 
             <label class="ctl big" for="beta">
-                <span class="ctl-name">MODULATION INDEX &beta;</span>
+                <span class="ctl-name">RESTING DEPTH &beta;</span>
                 <span class="ctl-val" id="betaOut">2.405</span>
             </label>
             <input type="range" id="beta" class="shared-range" min="0" max="12" step="0.001" value="2.405">
@@ -59,24 +73,52 @@
 
             <div class="panel-label tone">TIME DOMAIN</div>
 
-            <label class="ctl" for="fc">
-                <span class="ctl-name">CARRIER f<sub>c</sub></span>
-                <span class="ctl-val" id="fcOut">440 Hz</span>
+            <label class="ctl" for="strike">
+                <span class="ctl-name">STRIKE &Delta;&beta;</span>
+                <span class="ctl-val" id="strikeOut">+0.0</span>
             </label>
-            <input type="range" id="fc" min="110" max="880" step="1" value="440">
+            <input type="range" id="strike" min="0" max="9" step="0.1" value="0">
+
+            <label class="ctl" for="decay">
+                <span class="ctl-name">STRIKE DECAY</span>
+                <span class="ctl-val" id="decayOut">0.30 s</span>
+            </label>
+            <input type="range" id="decay" min="0.02" max="3" step="0.01" value="0.3">
 
             <label class="ctl" for="ratio">
                 <span class="ctl-name">RATIO f<sub>m</sub>/f<sub>c</sub></span>
-                <span class="ctl-val" id="ratioOut">0.25</span>
+                <span class="ctl-val" id="ratioOut">0.50</span>
             </label>
-            <input type="range" id="ratio" min="0.05" max="4" step="0.05" value="0.25">
+            <input type="range" id="ratio" min="0.05" max="4" step="0.01" value="0.5">
 
-            <div class="derived">
-                <span>modulator f<sub>m</sub></span><span id="fmOut">110 Hz</span>
+            <label class="ctl" for="attack">
+                <span class="ctl-name">ATTACK</span>
+                <span class="ctl-val" id="attackOut">30 ms</span>
+            </label>
+            <input type="range" id="attack" min="0.002" max="1" step="0.001" value="0.03">
+
+            <label class="ctl" for="fade">
+                <span class="ctl-name">FADE WHILE HELD</span>
+                <span class="ctl-val" id="fadeOut">hold</span>
+            </label>
+            <input type="range" id="fade" min="0" max="4" step="0.1" value="0">
+
+            <label class="ctl" for="release">
+                <span class="ctl-name">RELEASE</span>
+                <span class="ctl-val" id="releaseOut">0.25 s</span>
+            </label>
+            <input type="range" id="release" min="0.01" max="3" step="0.01" value="0.25">
+
+            <div class="play-row">
+                <button class="preset" id="octDown" title="Octave down (-)">OCT -</button>
+                <span class="oct" id="octOut">C4</span>
+                <button class="preset" id="octUp" title="Octave up (=)">OCT +</button>
             </div>
-
-            <button class="action-btn" id="play" type="button">PLAY TONE</button>
-            <p class="panel-hint">at &beta; = 2.405 the pitch you started on is the one frequency missing</p>
+            <div class="play-row">
+                <button class="preset" id="hold" title="Latch the sustain pedal. Space is the pedal while held">HOLD</button>
+                <button class="preset" id="midi" title="Play from a MIDI controller: velocity, sustain pedal, mod wheel, pitch bend">MIDI</button>
+            </div>
+            <p class="panel-hint" id="midiOut"></p>
 
             <div class="panel-divider"></div>
 
@@ -103,37 +145,48 @@
 
         </aside>
 
-        <!-- CENTER: the two panels. Same bar heights, different placement rule.
-             Each has its source above its spectrum. -->
+        <!-- CENTER: the two panels and the keys. Same bar heights, different
+             placement rule. Either source strip is also a surface to press. -->
         <main class="stage">
 
             <section class="dom dom-time">
                 <div class="dom-head">
                     <span class="dom-title">TIME</span>
                     <span class="dom-rule">sidebands at f<sub>c</sub> + m&middot;f<sub>m</sub></span>
+                    <span class="dom-hand">drag the strip to press &beta;</span>
                 </div>
-                <canvas id="waveCanvas" class="strip"></canvas>
+                <canvas id="waveCanvas" class="strip hand"></canvas>
                 <canvas id="toneCanvas" class="spectrum"></canvas>
-                <p class="dom-foot">a carrier phase-modulated by &beta;&middot;sin(2&pi;f<sub>m</sub>t)</p>
             </section>
 
             <section class="dom dom-space">
                 <div class="dom-head">
                     <span class="dom-title">SPACE</span>
                     <span class="dom-rule">orders at sin&thinsp;&theta; = m&lambda;/d</span>
+                    <span class="dom-hand">or the grating itself</span>
                 </div>
-                <canvas id="grooveCanvas" class="strip"></canvas>
+                <canvas id="grooveCanvas" class="strip hand"></canvas>
                 <canvas id="orderCanvas" class="spectrum"></canvas>
-                <p class="dom-foot">a wavefront phase-modulated by &beta;&middot;sin(2&pi;x/d)</p>
             </section>
+
+            <div class="keybed">
+                <div class="keys" id="keys" aria-label="Keyboard: play with the mouse, or Z to M and Q to I on the computer keyboard"></div>
+                <p class="key-hint">
+                    <b>Z</b>&ndash;<b>M</b> and <b>Q</b>&ndash;<b>I</b> play &middot;
+                    <b>Shift</b> strikes harder &middot;
+                    <b>Space</b> is the pedal &middot;
+                    <b>&minus;</b> / <b>=</b> octave &middot;
+                    lower on a key is a harder hit
+                </p>
+            </div>
 
         </main>
 
-        <!-- RIGHT: the column both panels read. This is the argument. -->
+        <!-- RIGHT: the column both panels read, live. This is the argument. -->
         <aside class="panel numbers">
 
             <div class="panel-label shared">J<sub>m</sub>(&beta;)</div>
-            <p class="panel-hint">the middle column is computed once and drawn twice</p>
+            <p class="panel-hint">computed once per frame for the note you last played, and drawn twice</p>
 
             <div class="table-wrap">
                 <table class="orders">
@@ -163,11 +216,14 @@
             </div>
 
             <p class="panel-note">
-                Both axes run out. A sideband pushed below zero folds back onto
-                its own magnitude; an order past sin&thinsp;&theta; = 1 stops
-                propagating and is simply not there. That's the one place the
-                two domains stop agreeing, and it's where &lambda; enters: only
-                the optical axis knows what color the light is.
+                A hard strike is a deep grating: the spectrum crowds with
+                sidebands and the fan of orders opens wide, then both close as
+                the note settles. Land the resting depth on a zero of J<sub>0</sub>
+                and the carrier drops out of the sound while the straight-through
+                beam goes dark. The two axes still run out differently: a
+                sideband pushed below zero folds back, and an order past
+                sin&thinsp;&theta; = 1 stops propagating. Only the optical axis
+                knows what color the light is.
             </p>
 
         </aside>
@@ -175,12 +231,13 @@
     </div>
 
     <footer>
-        <span class="footer-text">TONE//GRATING v0.1 &ndash; <span>MAGMACRUNCH MEDIA</span></span>
+        <span class="footer-text">TONE//GRATING v0.2 &middot; <span>MAGMACRUNCH MEDIA</span></span>
     </footer>
 
     <script src="js/bessel.js?v=806fd60a"></script>
-    <script src="js/audio.js?v=c8339558"></script>
+    <script src="js/audio.js?v=d671f890"></script>
     <script src="js/draw.js?v=3baabb43"></script>
-    <script src="js/app.js?v=37e43f2d"></script>
+    <script src="js/play.js?v=3dd86c8a"></script>
+    <script src="js/app.js?v=6fdb1816"></script>
 </body>
 </html>

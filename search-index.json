@@ -200,7 +200,7 @@
     "c": "page",
     "u": "/ware/utilities/index.html",
     "d": "browser-based tools for art, media & image processing",
-    "b": "creative utilities — ware — magmacrunch media home › ware › creative utilities // creative utilities // browser-based tools for art, media & image processing GATE//FOLD pixel art editor for album covers · text, shapes, images ▶ MEDIA//SEARCH free media aggregator · CC-licensed images, video & audio ▶ CRUNCH//SCOPE an image signal chain you play like an instrument · pixel sort, FFT filter, feedback ▶ TONE//GRATING FM synthesis and a diffraction grating are the same calculation · one Bessel column, two domains ▶ SPRITE//FORGE game sprite editor · animation, onion skin, PNG sheet export ▶ PUNCH//..."
+    "b": "creative utilities — ware — magmacrunch media home › ware › creative utilities // creative utilities // browser-based tools for art, media & image processing GATE//FOLD pixel art editor for album covers · text, shapes, images ▶ MEDIA//SEARCH free media aggregator · CC-licensed images, video & audio ▶ CRUNCH//SCOPE an image signal chain you play like an instrument · pixel sort, FFT filter, feedback ▶ TONE//GRATING an FM synth you play through a diffraction grating · keys, MIDI, and a grating to press ▶ SPRITE//FORGE game sprite editor · animation, onion skin, PNG sheet export ▶ PUNCH//ROLL chip..."
   },
   {
     "t": "developer tools",
@@ -2086,11 +2086,11 @@
     "b": "threes · magmacrunch media home › ware › video games › threes THREES slide · merge · survive Slide every tile at once. 1 and 2 make 3, and from there only matching tiles merge. New tiles come in from the edge you slid away from, and your score is the sum of every merge. Its rules are tuned for short games: most new tiles are 1s, so a run lasts a few dozen moves. // at the board // slide, merge, survive ones and twos make three // where to play // BROWSER ▶ PLAY free, in the arcade . Arrow keys or swipe. TERMINAL a terminal version that shares the browser's scoreboard, built on the magmacrunch ..."
   },
   {
-    "t": "tone grating",
+    "t": "tone grating, magmacrunch media",
     "c": "tool",
     "u": "/ware/tone-grating/",
-    "d": "FM synthesis and a diffraction grating are the same calculation · one Bessel column, two domains",
-    "b": "tone grating — magmacrunch media This instrument wants two panels side by side. Please visit on a wider screen. TONE//GRATING β 2.405 CARRIER NULL SHARED one number, both panels MODULATION INDEX β 2.405 0 2.405 5.520 8.654 TIME DOMAIN CARRIER f c 440 Hz RATIO f m /f c 0.25 modulator f m 110 Hz PLAY TONE at β = 2.405 the pitch you started on is the one frequency missing SPACE DOMAIN GROOVE SPACING d 2.00 µm WAVELENGTH λ 500 nm groove depth (p–v) 191.4 nm highest order ±4 TIME sidebands at f c + m·f m a carrier phase-modulated by β·sin(2πf m t) SPACE orders at sin&thinsp;&theta; = mλ/d a wavefro..."
+    "d": "an FM synth you play through a diffraction grating · keys, MIDI, and a grating to press",
+    "b": "tone grating, magmacrunch media This instrument wants two panels and a keyboard side by side. Please visit on a wider screen. TONE//GRATING A4 440 Hz β 2.405 CARRIER NULL PATCH NULL ORGAN BRASS REED BELL CHIME GRIT SHARED one number, both panels: where every note comes to rest RESTING DEPTH β 2.405 0 2.405 5.520 8.654 TIME DOMAIN STRIKE δβ +0.0 STRIKE DECAY 0.30 s RATIO f m /f c 0.50 ATTACK 30 ms FADE WHILE HELD hold RELEASE 0.25 s OCT - C4 OCT + HOLD MIDI SPACE DOMAIN GROOVE SPACING d 2.00 µm WAVELENGTH λ 500 nm groove depth (p–v) 191.4 nm highest order ±4 TIME sidebands at f c + m·f m drag t..."
   },
   {
     "t": "2^n · magmacrunch media",
