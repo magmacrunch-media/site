@@ -48,53 +48,6 @@
     --dorf-bg:             #F8F8F8;
 }
 
-/* ── REVERSE-DORFIC: NAV ── */
-:root {
-    --nav-accent: #F0B800;
-    --nav-glow: rgba(240,184,0,0.35);
-    --nav-brand: #F0B800;
-    --nav-brand-glow: rgba(240,184,0,0.5);
-}
-
-body.dorfic nav {
-    background: #1A1E28;
-    border-bottom: 1px solid #343848;
-    box-shadow: 0 1px 0 #F8F8F8, 0 4px 12px rgba(8,10,16,0.18);
-}
-body.dorfic .nav-brand {
-    color: #F0B800;
-    text-shadow: none;
-}
-body.dorfic .nav-links a {
-    color: #F0F0EE;
-    border-left-color: #343848;
-}
-body.dorfic .nav-links > li > a:hover {
-    color: #1A1E28;
-    background: #F0B800;
-}
-body.dorfic .hamburger span { background: #F0B800; }
-body.dorfic .hamburger { border-color: #F0B800; }
-
-/* ── DROPDOWN ── */
-body.dorfic .dropdown {
-    background: #1A1E28;
-    border-color: #343848;
-    box-shadow: 0 8px 24px rgba(8,10,16,0.35);
-}
-body.dorfic .dropdown a {
-    color: #F0F0EE;
-    border-bottom-color: #343848;
-}
-body.dorfic .dropdown a:hover {
-    color: #1A1E28;
-    background: #F0B800;
-}
-body.dorfic .dropdown-view-all {
-    color: #F0B800 !important;
-    border-bottom-color: #F0B800 !important;
-}
-
 /* ── REVERSE-DORFIC: BODY ── */
 body.dorfic {
     --black: #080A10;
@@ -452,14 +405,6 @@ main {
 }
 .coming-soon span { color: #A8A8A8; }
 
-/* ── FOOTER ── */
-body.dorfic footer {
-    background: #1A1E28;
-    border-top: 1px solid #343848;
-    color: #9098A8;
-}
-body.dorfic footer span { color: #F0B800; }
-
 /* ── MOBILE ── */
 @media (max-width: 640px) {
     .page-title { font-size: 13px; }
@@ -469,20 +414,4 @@ body.dorfic footer span { color: #F0B800; }
     .roster { grid-template-columns: repeat(2, 1fr); }
     .mc-label { font-size: 8px; }
 
-    body.dorfic .nav-links {
-        background: #1A1E28;
-        border-bottom-color: #F0B800;
-    }
-    body.dorfic .nav-links > li > a {
-        color: #F0F0EE;
-        border-bottom-color: #343848;
-    }
-    body.dorfic .dropdown {
-        background: #242838;
-        border-top-color: #343848;
-    }
-    body.dorfic .dropdown a {
-        color: #F0F0EE;
-        border-bottom-color: #343848;
-    }
 }
