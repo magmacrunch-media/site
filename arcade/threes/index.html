@@ -131,7 +131,7 @@ document.documentElement.classList.add("font-loading");document.fonts.ready.then
             <p>&bull; <strong style="color: #5ba3f5">1</strong> + <strong style="color: #6ec8ff">2</strong> = <strong style="color: #00f5ff">3</strong> (or 2 + 1 = 3)</p>
             <p>&bull; <strong style="color: #00f5ff">3</strong> + <strong style="color: #00f5ff">3</strong> = <strong style="color: #39ff6e">6</strong>, then 6+6=12, 12+12=24, and so on</p>
             <p>&bull; <strong style="color: #ff3d6e">1+1 and 2+2 do NOT merge</strong></p>
-            <p>After each move, a new tile (1, 2, or 3) appears on the <strong>edge opposite</strong> to the direction you swiped.</p>
+            <p>After each move, a new tile (1, 2, or 3, dealt from a shuffled bag of four of each) appears on the <strong>edge opposite</strong> to the direction you swiped, at the end of a row or column that moved.</p>
             <p>The game ends when the board is full and <strong>no merges are possible</strong>.</p>
             <p>Your score is the <strong>sum of all merged values</strong>. How high can you go?</p>
             <button id="closeInstructions">close</button>
@@ -160,8 +160,8 @@ const scoreClient=new AdScore.ScoreClient().auto(MC_SCORE_OPTS);
 </script>
 <script src="../shared/adenosine-puzzle.js?v=92f27c17"></script>
 
-    <script src="js/game.js?v=59fbd9d0"></script>
-    <script src="js/main.js?v=5921e2de"></script>
+    <script src="js/game.js?v=784059b9"></script>
+    <script src="js/main.js?v=570c6a08"></script>
 
 </body>
 </html>

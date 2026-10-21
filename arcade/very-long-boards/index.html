@@ -18,14 +18,14 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../shared/arcade-base.css?v=de5e0d7b">
-    <link rel="stylesheet" href="css/style.css?v=37923223">
+    <link rel="stylesheet" href="css/style.css?v=ca8672d0">
 </head>
 <body>
     <a href="../action/" class="mc-back">action games</a>
 
     <div id="game-container">
         <canvas id="renderCanvas"></canvas>
-        <canvas id="garageCanvas" width="960" height="540" style="display:none; position:absolute; inset:0; z-index:1; pointer-events:none;"></canvas>
+        <canvas id="garageCanvas" width="960" height="540" style="display:none; position:absolute; inset:0; width:100%; height:100%; z-index:1; pointer-events:none;"></canvas>
 
         <div id="titleScreen" class="overlay active">
             <div class="title-text">
@@ -45,7 +45,13 @@
         <div id="boardSelect" class="overlay">
             <div class="bs-title">CHOOSE YOUR BOARD</div>
             <div class="bs-cards" id="boardCards"></div>
-            <div class="cs-hint" data-keys="(LEFT) (RIGHT) TO SELECT &nbsp; ENTER TO RIDE" data-touch="TAP A BOARD, THEN TAP AGAIN TO RIDE"></div>
+            <div class="cs-hint" data-keys="(LEFT) (RIGHT) TO SELECT &nbsp; ENTER TO CHOOSE A COURSE" data-touch="TAP A BOARD, THEN TAP AGAIN TO CHOOSE A COURSE"></div>
+        </div>
+
+        <div id="courseSelect" class="overlay">
+            <div class="bs-title">CHOOSE YOUR COURSE</div>
+            <div class="cr-cards" id="courseCards"></div>
+            <div class="cs-hint" data-keys="(LEFT) (RIGHT) TO SELECT &nbsp; ENTER TO RIDE" data-touch="TAP A COURSE, THEN TAP AGAIN TO RIDE"></div>
         </div>
 
         <div id="countdownOverlay" class="overlay">
@@ -57,23 +63,28 @@
         </div>
 
         <div id="hud" style="display:none;">
-            <div class="hud-score">SCORE: <span id="hudScore">0</span></div>
+            <div class="hud-score"><span id="hudScoreLabel">SCORE</span>: <span id="hudScore">0</span></div>
             <div class="hud-speed">SPEED: <span id="hudSpeed">0</span> km/h</div>
             <div class="hud-dist">DIST: <span id="hudDist">0</span>m</div>
+            <div class="hud-target" id="hudTarget"></div>
+            <div class="hud-split" id="hudSplit"></div>
+            <div class="hud-crash" id="hudCrash"></div>
             <div id="hudBalanceWrap" class="hud-balance">
                 <div class="hud-balance-label"><span class="hb-ok">BALANCE</span><span class="hb-low">CARVE!</span></div>
                 <div class="hud-balance-track"><div id="hudBalance" class="hud-balance-fill"></div></div>
             </div>
             <div id="hudTrick">OLLIE!</div>
             <div id="kickPrompt" data-keys="PRESS (UP) TO KICK OFF" data-touch="TAP THE MIDDLE TO KICK OFF"></div>
+            <div id="hudPause" class="hud-pause" aria-label="Pause">II</div>
         </div>
 
         <div id="gameOver" class="overlay">
-            <div class="go-title">GAME OVER</div>
+            <div class="go-title" id="goTitle">GAME OVER</div>
             <div class="go-cause" id="goCause">SPLAT!</div>
             <div class="go-hint" id="goHint"></div>
-            <div class="go-score">SCORE: <span id="goScore">0</span></div>
-            <div class="go-dist">DISTANCE: <span id="goDist">0</span>m</div>
+            <div class="go-score"><span id="goScoreLabel">SCORE</span>: <span id="goScore">0</span></div>
+            <div class="go-dist" id="goDistRow">DISTANCE: <span id="goDist">0</span>m</div>
+            <div class="go-breakdown" id="goBreakdown"></div>
             <div class="go-best">BEST: <span id="goBest">0</span></div>
 
             <div class="go-leaderboard">
@@ -94,6 +105,9 @@
                 <div class="go-action" data-action="retry">
                     <span class="go-key" data-keys="ENTER" data-touch="TAP"></span> RIDE AGAIN
                 </div>
+                <div class="go-action" data-action="next" id="goNext">
+                    <span class="go-key" data-keys="(RIGHT)"></span> NEXT COURSE
+                </div>
                 <div class="go-action" data-action="setup">
                     <span class="go-key">TAB</span> NEW SETUP
                 </div>
@@ -112,20 +126,21 @@
     <script>
 const scoreClient=new AdScore.ScoreClient().auto(MC_SCORE_OPTS);
 </script>
-    <script src="js/config.js?v=cabc9a6d"></script>
-    <script src="js/characters.js?v=e1349e81"></script>
+    <script src="js/config.js?v=6b9a2162"></script>
+    <script src="js/characters.js?v=704c0f0a"></script>
     <script src="js/scene.js?v=8ac2c669"></script>
-    <script src="js/terrain.js?v=03d83204"></script>
-    <script src="js/player.js?v=867957f9"></script>
-    <script src="js/obstacles.js?v=ab1a9dae"></script>
-    <script src="js/scenery.js?v=8f75d2c0"></script>
-    <script src="js/particles.js?v=8ec9b715"></script>
+    <script src="js/terrain.js?v=e6b19860"></script>
+    <script src="js/player.js?v=3654eb9d"></script>
+    <script src="js/obstacles.js?v=7f77a7f7"></script>
+    <script src="js/scenery.js?v=dfa82ff9"></script>
+    <script src="js/particles.js?v=d569459e"></script>
+    <script src="js/course.js?v=c12f0baf"></script>
     <script src="js/statbars.js?v=ee25dafc"></script>
-    <script src="js/hud.js?v=542d710b"></script>
-    <script src="js/input.js?v=c0c89ce6"></script>
+    <script src="js/hud.js?v=afc4d6fc"></script>
+    <script src="js/input.js?v=1cdb3a43"></script>
     <script src="js/audio.js?v=d2202f5a"></script>
     <script src="js/garage.js?v=8526920f"></script>
-    <script src="js/main.js?v=a0760173"></script>
+    <script src="js/main.js?v=0c19f5be"></script>
 
 </body>
 </html>

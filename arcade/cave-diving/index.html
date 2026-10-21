@@ -20,8 +20,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../shared/arcade-base.css?v=de5e0d7b">
     <link rel="stylesheet" href="css/base.css?v=e320ca92">
-    <link rel="stylesheet" href="css/start-screen.css?v=54baae1f">
-    <link rel="stylesheet" href="css/game.css?v=64f05f13">
+    <link rel="stylesheet" href="css/start-screen.css?v=fa4e3540">
+    <link rel="stylesheet" href="css/game.css?v=65b35270">
     <link rel="stylesheet" href="css/modals.css?v=255d91f2">
 </head>
 <body>
@@ -58,6 +58,7 @@
         <div class="hud-value zone" id="zoneDisplay">THE ENTRY</div>
     </div>
 </div>
+<button id="btnPause" class="touch-pause" aria-label="pause">II</button>
 
 <div id="pauseOverlay" class="overlay hidden">
     <div class="panel">
@@ -66,6 +67,10 @@
         <div class="controls-hint">
             ARROWS / WASD: swim &middot; Z / SPACE: stroke<br>
             M: sound &middot; P: pause &middot; Q: quit to title
+        </div>
+        <div class="controls-hint touch-hint">
+            LEFT SIDE: drag to swim<br>
+            RIGHT SIDE: tap to stroke
         </div>
         <button id="btnResume" class="btn">RESUME</button>
         <button id="btnQuit" class="btn btn-quiet">QUIT TO TITLE</button>
@@ -123,16 +128,16 @@ const scoreClient=new AdScore.ScoreClient().auto(MC_SCORE_OPTS);
 <script src="js/config.js?v=72aea458"></script>
 <script src="js/pixels.js?v=3c7c6684"></script>
 <script src="js/sfx.js?v=f7b39bd4"></script>
-<script src="js/music.js?v=11fcddec"></script>
-<script src="js/input.js?v=a30886cc"></script>
+<script src="js/music.js?v=0535e62e"></script>
+<script src="js/input.js?v=9b3f7547"></script>
 <script src="js/renderer.js?v=ec6fcb4c"></script>
 <script src="js/light.js?v=7e2e5051"></script>
 <script src="js/title.js?v=ab7e6c40"></script>
 <script src="js/player.js?v=497a0e2e"></script>
-<script src="js/world.js?v=f50d300a"></script>
-<script src="js/entities.js?v=2a2fab2c"></script>
+<script src="js/world.js?v=b0dfc022"></script>
+<script src="js/entities.js?v=2771541e"></script>
 <script src="js/guideline.js?v=985609dc"></script>
-<script src="js/creatures.js?v=cd7b7fc1"></script>
-<script src="js/main.js?v=51b4c74f"></script>
+<script src="js/creatures.js?v=fa1c7eba"></script>
+<script src="js/main.js?v=de409c39"></script>
 </body>
 </html>
