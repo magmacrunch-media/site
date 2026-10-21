@@ -78,8 +78,42 @@
         return snapToBox(b, { x: 0, y: 0, w: canvasPx, h: canvasPx }, tolerance);
     }
 
+    /**
+     * How far to move a box so that some of it is still on the surface.
+     *
+     * AN ELEMENT DRAGGED WHOLLY OFF THE CANVAS COULD NOT BE CLICKED AGAIN.
+     * Hit testing needs the pointer on the canvas, and in the browser build
+     * there is no layers panel to select it from, so only undo brought it
+     * back. Partly off is real work and must stay possible: type cropped by
+     * the edge, a photo bleeding off a cover. So this does not fence an
+     * element in. It only keeps `keep` of it on the surface on each axis,
+     * which is enough to grab, or all of it when it is smaller than that.
+     *
+     * `b` is the element's ENVELOPE (the axis-aligned box round its rotated
+     * bounds), so a rotated element is judged by what is drawn. `m` is the
+     * document's metrics; the surface is trim plus bleed, and element
+     * coordinates start at the trim, so the surface begins at -origin.
+     */
+    function keepOnSurface(b, m, keep) {
+        const none = { dx: 0, dy: 0 };
+        if (!b || !m || !m.surface || !(keep > 0)) return none;
+        const fix = (lo, len, s0, s1) => {
+            const k = Math.min(keep, len);
+            if (lo + len < s0 + k) return s0 + k - (lo + len);
+            if (lo > s1 - k) return s1 - k - lo;
+            return 0;
+        };
+        const x0 = -m.origin.x;
+        const y0 = -m.origin.y;
+        return {
+            dx: fix(b.x, b.w, x0, x0 + m.surface.w),
+            dy: fix(b.y, b.h, y0, y0 + m.surface.h),
+        };
+    }
+
     App.guides = {
         snapToBox: snapToBox,
         snapToCentre: snapToCentre,
+        keepOnSurface: keepOnSurface,
     };
 }());

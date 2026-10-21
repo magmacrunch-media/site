@@ -45,6 +45,12 @@
        pixels off centre stays five pixels off centre. */
     const SNAP_SCREEN_PX = 4;
 
+    /* How much of an element a drag must leave on the canvas, in SCREEN
+       pixels for the same reason as the snap: it is a thing to grab, so it
+       should be the same size under the pointer at every cover size. A bit
+       over two corner handles. See guides.keepOnSurface. */
+    const KEEP_SCREEN_PX = 24;
+
     function init(callbacks) { cb = callbacks || {}; }
 
     function setTool(next) {
@@ -180,6 +186,14 @@
             dragging.el.y += snap.dy;
             if (cb.onGuides) cb.onGuides(snap.lines);
 
+            /* Last, after the snap, because the snap is a suggestion and this
+               is a floor: an element may hang off the edge but never leave. */
+            const env = G().envelope(G().bounds(dragging.el, measure()), dragging.el.rotation || 0);
+            const keep = App.guides.keepOnSurface(env, App.formats.metrics(doc.size),
+                KEEP_SCREEN_PX * App.canvas.scale());
+            dragging.el.x += keep.dx;
+            dragging.el.y += keep.dy;
+
             if (cb.onChange) cb.onChange();
             return;
         }
@@ -292,6 +306,7 @@
     function busy() { return !!(dragging || resizing || rotating || drawing); }
 
     App.tools = {
+        KEEP_SCREEN_PX: KEEP_SCREEN_PX,
         init: init,
         setTool: setTool,
         getTool: getTool,

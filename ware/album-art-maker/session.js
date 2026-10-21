@@ -325,6 +325,20 @@
         render();
     }
 
+    /* The arrow keys and paste follow the rule a drag does
+       (guides.keepOnSurface): an element may hang off the canvas but never
+       leave it. Held down, an arrow key would otherwise walk one clean off,
+       and a paste near the edge lands 20 units further out. */
+    function keepReachable(el) {
+        if (!App.guides || !App.guides.keepOnSurface || !App.canvas || !App.canvas.scale) return;
+        const G = App.geometry;
+        const env = G.envelope(G.bounds(el, App.canvas.measure), el.rotation || 0);
+        const keep = App.guides.keepOnSurface(env, App.formats.metrics(doc().size),
+            ((App.tools && App.tools.KEEP_SCREEN_PX) || 24) * App.canvas.scale());
+        el.x += keep.dx;
+        el.y += keep.dy;
+    }
+
     function nudge(dx, dy) {
         const el = selectedElement();
         // Locked means fixed in place, and the arrow keys are a way to move
@@ -346,6 +360,7 @@
         beginStroke();
         el.x += dx;
         el.y += dy;
+        keepReachable(el);
         App.canvas.schedule();
         /* Rapid nudges collapse into ONE undo entry: holding an arrow key for
            a second is a single intention, not thirty of them. */
@@ -384,6 +399,7 @@
         clone.id = App.element.nextId();
         clone.x = (clone.x || 0) + 20;
         clone.y = (clone.y || 0) + 20;
+        keepReachable(clone);
         add(clone);
         return true;
     }
