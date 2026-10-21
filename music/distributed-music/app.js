@@ -2,31 +2,67 @@
   var releases = window.RELEASES;
   if (!releases) return;
 
-  /* ── render quick jump list ── */
-  var quickList = document.getElementById('quick-list');
-  if (quickList) {
+  function artFor(r) {
+    return r.art || (r.mbid
+      ? 'https://coverartarchive.org/release/' + r.mbid + '/front-250'
+      : '');
+  }
+
+  /* "Lost Months EP (2026)" -> name and year, for the grid's two lines */
+  function splitTitle(t) {
+    var m = /^(.*?)\s*\((\d{4})\)$/.exec(t);
+    return m ? { name: m[1], year: m[2] } : { name: t, year: '' };
+  }
+
+  /* ── render cover grid ── */
+  var grid = document.getElementById('cover-grid');
+  var tiles = [];
+  if (grid) {
     releases.forEach(function (r) {
-      var li = document.createElement('li');
+      var t = splitTitle(r.title);
       var a = document.createElement('a');
+      a.className = 'cover-tile';
       a.href = '#' + r.id;
-      a.textContent = r.artist + ' - ' + r.title;
-      li.appendChild(a);
-      quickList.appendChild(li);
+      a.title = r.artist + ' - ' + r.title;
+      var src = artFor(r);
+      if (src) {
+        var img = document.createElement('img');
+        img.src = src;
+        img.alt = '';
+        img.loading = 'lazy';
+        img.width = 160;
+        img.height = 160;
+        a.appendChild(img);
+      } else {
+        var ph = document.createElement('div');
+        ph.className = 'cover-placeholder';
+        ph.textContent = 'no art';
+        a.appendChild(ph);
+      }
+      var name = document.createElement('span');
+      name.className = 'cover-name';
+      name.textContent = t.name;
+      var by = document.createElement('span');
+      by.className = 'cover-artist';
+      by.textContent = r.artist + (t.year ? ' · ' + t.year : '');
+      a.appendChild(name);
+      a.appendChild(by);
+      grid.appendChild(a);
+      tiles.push({ el: a, r: r });
     });
   }
 
   /* ── render release cards ── */
   var container = document.getElementById('releases');
+  var cards = [];
   if (container) {
     releases.forEach(function (r) {
-      var artSrc = r.art || (r.mbid
-        ? 'https://coverartarchive.org/release/' + r.mbid + '/front-250'
-        : '');
+      var artSrc = artFor(r);
       var card = document.createElement('div');
       card.className = 'dist-card';
       card.id = r.id;
       var artHTML = artSrc
-        ? '<img class="release-hero-img" src="' + artSrc + '" alt="' + r.title + '">'
+        ? '<img class="release-hero-img" src="' + artSrc + '" alt="' + r.title + '" loading="lazy">'
         : '<div class="dist-art-placeholder">no art</div>';
       card.innerHTML =
         '<div class="dist-art">' +
@@ -42,19 +78,55 @@
           '</div>' +
         '</div>';
       container.appendChild(card);
+      cards.push({ el: card, r: r });
     });
   }
 
-  /* ── search filter ── */
-  var filter = document.getElementById('release-filter');
-  if (filter && quickList) {
-    filter.addEventListener('input', function () {
-      var q = this.value.toLowerCase();
-      var items = quickList.querySelectorAll('li');
-      for (var i = 0; i < items.length; i++) {
-        var text = items[i].textContent.toLowerCase();
-        items[i].style.display = text.indexOf(q) !== -1 ? '' : 'none';
-      }
+  /* ── artist chips: one per artist, newest release first ── */
+  var chips = document.getElementById('artist-chips');
+  var artist = '';
+  if (chips) {
+    var counts = {}, order = [];
+    releases.forEach(function (r) {
+      if (!counts[r.artist]) { counts[r.artist] = 0; order.push(r.artist); }
+      counts[r.artist]++;
+    });
+    var all = [{ label: 'all', value: '', n: releases.length }].concat(
+      order.map(function (a) { return { label: a, value: a, n: counts[a] }; }));
+    all.forEach(function (c) {
+      var b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'artist-chip';
+      b.textContent = c.label + ' ' + c.n;
+      b.setAttribute('aria-pressed', c.value === '' ? 'true' : 'false');
+      b.addEventListener('click', function () {
+        artist = c.value;
+        var bs = chips.querySelectorAll('.artist-chip');
+        for (var i = 0; i < bs.length; i++) bs[i].setAttribute('aria-pressed', 'false');
+        b.setAttribute('aria-pressed', 'true');
+        apply();
+      });
+      chips.appendChild(b);
     });
   }
+
+  /* ── search filter: hides grid tiles and cards together ── */
+  var filter = document.getElementById('release-filter');
+  var empty = document.getElementById('filter-empty');
+  function matches(r, q) {
+    if (artist && r.artist !== artist) return false;
+    return !q || (r.artist + ' ' + r.title).toLowerCase().indexOf(q) !== -1;
+  }
+  function apply() {
+    var q = filter ? filter.value.toLowerCase().trim() : '';
+    var shown = 0;
+    tiles.forEach(function (t) {
+      var ok = matches(t.r, q);
+      t.el.hidden = !ok;
+      if (ok) shown++;
+    });
+    cards.forEach(function (c) { c.el.hidden = !matches(c.r, q); });
+    if (empty) empty.hidden = shown !== 0;
+  }
+  if (filter) filter.addEventListener('input', apply);
 })();

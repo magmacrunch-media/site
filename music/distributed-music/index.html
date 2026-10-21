@@ -7,7 +7,7 @@
     <link rel="icon" type="image/x-icon" href="../../favicon.ico">
     <link rel="stylesheet" href="../../style.css?v=53e9e146">
     <link rel="stylesheet" href="../../assets/archive.css?v=3ed2f2cb">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css?v=4f1d5ea2">
 </head>
 <body>
 <nav id="auto-nav" data-depth="../../"></nav>
@@ -57,10 +57,12 @@
 
     <div class="section-divider"></div>
 
-    <!-- quick jump list (rendered by JS) -->
+    <!-- cover grid (rendered by JS): every release at a glance, each a jump to its card -->
     <div class="quick-list-wrap" id="quick-jump-menu">
-        <input type="text" id="release-filter" class="quick-list-filter" placeholder="search releases...">
-        <ul class="quick-list" id="quick-list"></ul>
+        <input type="text" id="release-filter" class="quick-list-filter" placeholder="search releases..." aria-label="search releases">
+        <div class="artist-chips" id="artist-chips" aria-label="filter by artist"></div>
+        <div class="cover-grid" id="cover-grid"></div>
+        <p class="filter-empty" id="filter-empty" hidden>no releases match</p>
     </div>
 
     <!-- release cards (rendered by JS) -->
@@ -80,7 +82,7 @@
 </main>
 <footer>&copy; 2026 <span>magmacrunch media</span></footer>
 <script src="../../nav.js?v=c4eb2aef"></script>
-<script src="releases.js"></script>
-<script src="app.js"></script>
+<script src="releases.js?v=37bc1e6e"></script>
+<script src="app.js?v=ac2c1eef"></script>
 </body>
 </html>
