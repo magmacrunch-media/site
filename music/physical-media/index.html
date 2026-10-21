@@ -104,6 +104,7 @@
             overflow: hidden;
         }
         .format-card:last-of-type { border-bottom: 2px solid #1e1e2e; }
+        .format-card + .format-card { border-top: 2px solid #1e1e2e; }
         .format-card:hover {
             border-color: var(--green);
             background: #0c1a10;
@@ -252,6 +253,15 @@
             <span class="format-card-arrow">&#9654;</span>
         </a>
 
+        <a href="cd/" class="release-card">
+            <img src="../../assets/album-art/thumbs/sexvanfloorplan-ep.jpg" alt="" width="88" height="88">
+            <div class="format-card-text">
+                <div class="format-card-title">sex van floor plan</div>
+                <div class="format-card-meta">sex van floor plan &middot; CD &middot; jun 2026</div>
+            </div>
+            <span class="format-card-arrow">&#9654;</span>
+        </a>
+
         <a href="floppy-disk/pay2play-2025/" class="release-card last">
             <img src="thumbs/pay2play.jpg" alt="" width="88" height="88">
             <div class="format-card-text">
@@ -276,7 +286,20 @@
             </div>
         </a>
 
-        <p class="in-the-works">CD and tape: in the works</p>
+        <a href="cd/" class="format-card">
+            <div class="format-card-info">
+                <div class="format-card-text">
+                    <div class="format-card-title">CD</div>
+                    <div class="format-card-meta">
+                        <span class="tag">active</span>
+                        since june 2026
+                    </div>
+                </div>
+                <span class="format-card-arrow">&#9654;</span>
+            </div>
+        </a>
+
+        <p class="in-the-works">tape: in the works</p>
 
     </div>
 

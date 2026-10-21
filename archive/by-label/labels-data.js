@@ -98,8 +98,9 @@
                 parent: null,
                 associated: true,
                 blurb: 'a creative agency owned by Sex Van Floor Plan, and not part of the label. ' +
-                       'it presents shows, and it shares a release with magmacrunch media: ' +
-                       'both manufactured iou a pack of american spirits.',
+                       'it presents shows, and it shares two releases with magmacrunch media: ' +
+                       'both manufactured iou a pack of american spirits, and it made and designed ' +
+                       'the Sex Van Floor Plan EP on CD, whose recordings magmacrunch media releases.',
             },
         ],
     };
