@@ -1,0 +1,45 @@
+/* dag henderson, ware page, accent: violet */
+body.dh-page.dh-ware-page main { flex: 1; display: flex; flex-direction: column; align-items: center; padding: 72px 20px 60px; }
+body.dh-page.dh-ware-page main > * { background: var(--dh-bg); }
+body.dh-page.dh-ware-page main .breadcrumb { position: relative; top: auto; left: auto; z-index: 10; margin: 0 0 16px; align-self: flex-start; }
+
+body.dh-page.dh-ware-page .breadcrumb a { color: var(--dh-violet-light); }
+body.dh-page.dh-ware-page .breadcrumb a:hover { color: var(--dh-gold); }
+body.dh-page.dh-ware-page .breadcrumb .sep { color: var(--dh-violet-light); opacity: 0.6; }
+
+body.dh-page.dh-ware-page .page-header { width: 100%; max-width: 960px; margin-top: 16px; margin-bottom: 32px; animation: fadeUp 0.5s ease both; }
+body.dh-page.dh-ware-page .artist-label { font-family: 'Press Start 2P', monospace; font-size: 10px; color: var(--dh-violet-light); letter-spacing: 0.2em; margin-bottom: 8px; opacity: 0.9; }
+body.dh-page.dh-ware-page .page-title { font-family: 'Press Start 2P', monospace; font-size: clamp(12px, 2.5vw, 20px); color: var(--dh-violet-light); letter-spacing: 0.08em; line-height: 1.6; margin-bottom: 20px; text-shadow: 0 0 20px rgba(168,128,208,0.5); }
+
+body.dh-page.dh-ware-page .divider { width: 100%; max-width: 960px; height: 1px; background: linear-gradient(90deg, transparent, var(--dh-violet-light), var(--dh-gold), var(--dh-violet-light), transparent); margin: 0 0 36px; opacity: 0.4; }
+
+body.dh-page.dh-ware-page .ware-intro { width: 100%; max-width: 960px; padding: 0 20px; animation: fadeUp 0.5s 0.2s ease both; }
+body.dh-page.dh-ware-page .ware-intro p { font-family: 'Courier Prime', monospace; font-size: 14px; color: var(--dh-mist); line-height: 1.8; margin-bottom: 16px; }
+body.dh-page.dh-ware-page .ware-intro a { color: var(--dh-violet-light); }
+body.dh-page.dh-ware-page .ware-intro a:hover { color: var(--dh-gold); }
+
+/* Nav card overrides */
+body.dh-page.dh-ware-page .nav-card.c-back { background: transparent; color: var(--dh-violet-light); border-color: var(--dh-violet-light); }
+body.dh-page.dh-ware-page .nav-card.c-back:hover { background: var(--dh-violet-light); color: var(--dh-bg); }
+body.dh-page.dh-ware-page .nav-card::after { display: none; }
+
+/* Ware grid */
+.ware-grid { width: 100%; max-width: 960px; padding: 0 20px; display: grid; gap: 16px; }
+
+.ware-card-link { text-decoration: none; display: block; }
+.ware-card-link:hover .ware-card { border-color: var(--dh-violet-light); box-shadow: 0 0 24px rgba(168,128,208,0.15); }
+.ware-card-link:hover .ware-card-badge { background: var(--dh-violet-light); color: var(--dh-bg); }
+
+.ware-card { border: 2px solid var(--dh-muted); background: var(--dh-surface); transition: border-color 0.2s, box-shadow 0.2s; overflow: hidden; }
+.ware-card-header { padding: 20px 24px; border-bottom: 2px solid var(--dh-muted); display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; }
+.ware-card-title { font-family: 'Press Start 2P', monospace; font-size: 10px; color: var(--dh-violet-light); line-height: 1.8; letter-spacing: 0.06em; }
+.ware-card-badge { font-family: 'Press Start 2P', monospace; font-size: 7px; color: var(--dh-violet-light); border: 2px solid var(--dh-violet-light); padding: 5px 12px; letter-spacing: 0.1em; flex-shrink: 0; transition: background 0.15s, color 0.15s; }
+.ware-card-body { padding: 20px 24px; }
+.ware-card-desc { font-family: 'Courier Prime', monospace; font-size: 15px; color: var(--dh-mist); line-height: 1.6; margin-bottom: 16px; opacity: 0.85; }
+.ware-card-meta { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
+.ware-card-tag { font-family: 'Press Start 2P', monospace; font-size: 5px; color: var(--dh-bg); background: var(--dh-violet-light); padding: 3px 8px; letter-spacing: 0.08em; }
+.ware-card-note { font-family: 'Courier Prime', monospace; font-size: 13px; color: var(--dh-mist); opacity: 0.7; }
+
+@media (max-width: 500px) {
+    .ware-card-header { flex-direction: column; gap: 12px; }
+}

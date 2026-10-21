@@ -40,7 +40,7 @@
         works:       'c-works',
         lyrics:      'c-lyrics',
         'videos': 'c-videos',
-        games:       'c-games',
+        ware:        'c-ware',
     };
 
     const BACK_COLOR_VAR = {

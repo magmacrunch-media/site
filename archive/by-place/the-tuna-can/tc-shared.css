@@ -146,6 +146,10 @@ body.tc-page .sub-nav .nav-card.c-links:hover { background: transparent; color: 
 body.tc-page .sub-nav .nav-card.c-photography { background: var(--tc-slate-mid); color: var(--tc-offwhite); border-color: var(--tc-slate-mid); }
 body.tc-page .sub-nav .nav-card.c-photography:hover { background: transparent; color: var(--tc-offwhite); border-color: var(--tc-slate-mid); }
 
+/* c-ware: copper */
+body.tc-page .sub-nav .nav-card.c-ware { background: var(--tc-copper); color: var(--tc-dark); border-color: var(--tc-copper); }
+body.tc-page .sub-nav .nav-card.c-ware:hover { background: transparent; color: var(--tc-offwhite); border-color: var(--tc-copper); }
+
 /* About button self-link hider — khaki solid */
 body.tc-page .sub-nav a[href="about.html"] {
     background: var(--tc-khaki);

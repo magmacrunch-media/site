@@ -132,6 +132,9 @@ body.tm-page .sub-nav .nav-card.c-works { background: var(--tm-warm); color: var
 body.tm-page .sub-nav .nav-card.c-works:hover { background: transparent; color: var(--tm-cream); border-color: var(--tm-warm); }
 
 /* c-green: leaf */
+body.tm-page .sub-nav .nav-card.c-ware { background: var(--tm-lavender); color: var(--tm-deep); border-color: var(--tm-lavender); }
+body.tm-page .sub-nav .nav-card.c-ware:hover { background: transparent; color: var(--tm-cream); border-color: var(--tm-lavender); }
+
 body.tm-page .sub-nav .nav-card.c-green { background: var(--tm-leaf); color: var(--tm-deep); border-color: var(--tm-leaf); }
 body.tm-page .sub-nav .nav-card.c-green:hover { background: transparent; color: var(--tm-cream); border-color: var(--tm-leaf); }
 

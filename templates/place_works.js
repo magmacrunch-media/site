@@ -37,6 +37,7 @@
         events:     'c-events',
         recordings: 'c-recordings',
         works:      'c-works',
+        ware:       'c-ware',
         personnel:  'c-personnel',
     };
 

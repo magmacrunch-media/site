@@ -84,9 +84,9 @@ body.thld-page .sub-nav .nav-card.c-accent:hover { background: inherit !importan
 body.thld-page .sub-nav .nav-card.c-works { background: var(--thld-highlight); color: var(--thld-bg); border-color: var(--thld-highlight); }
 body.thld-page .sub-nav .nav-card.c-works:hover { background: inherit !important; color: var(--thld-offwhite) !important; box-shadow: none !important; }
 
-/* c-games: solid apricot (games) */
-body.thld-page .sub-nav .nav-card.c-games { background: var(--thld-apricot); color: var(--thld-bg); border-color: var(--thld-apricot); }
-body.thld-page .sub-nav .nav-card.c-games:hover { background: inherit !important; color: var(--thld-offwhite) !important; box-shadow: none !important; }
+/* c-ware: solid apricot (ware) */
+body.thld-page .sub-nav .nav-card.c-ware { background: var(--thld-apricot); color: var(--thld-bg); border-color: var(--thld-apricot); }
+body.thld-page .sub-nav .nav-card.c-ware:hover { background: inherit !important; color: var(--thld-offwhite) !important; box-shadow: none !important; }
 
 /* c-links: solid sky blue (links) */
 body.thld-page .sub-nav .nav-card.c-links { background: var(--thld-sky); color: var(--thld-bg); border-color: var(--thld-sky); }

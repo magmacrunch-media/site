@@ -130,6 +130,16 @@ body.dh-page .nav-card.c-links:hover {
     color: var(--dh-white);
 }
 
+body.dh-page .nav-card.c-ware {
+    background: var(--dh-violet-light);
+    color: var(--dh-deep);
+    border-color: var(--dh-violet-light);
+}
+body.dh-page .nav-card.c-ware:hover {
+    background: transparent;
+    color: var(--dh-white);
+}
+
 body.dh-page .nav-card::after { display: none; }
 
 

@@ -47,7 +47,7 @@ const COLOR_MAP = {
         works:       'c-works',
         lyrics:      'c-lyrics',
         'videos': 'c-videos',
-    games:       'c-games',
+    ware:        'c-ware',
     documentary: 'c-documentary',
     network:     'c-network',
     };

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>THLD — ware — magmacrunch media</title>
+    <link rel="icon" type="image/x-icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../style.css?v=981601e0">
+    <link rel="stylesheet" href="../../../assets/archive.css?v=3ed2f2cb">
+    <link rel="stylesheet" href="thld-shared.css">
+    <link rel="stylesheet" href="thld-ware.css">
+
+    <script>
+    window.ARTIST_CONFIG = {
+        id:        '4d945923-9deb-4cd0-a477-6e1474cb306c',
+        name:      "texas hold'em lava dome, et al.",
+        abbr:      'THLD',
+        accent:    'apricot',
+        backColor: 'c-ware',
+        siblings:  ['about', 'events', 'links', 'lyrics', 'photography', 'recordings', 'releases', 'videos', 'ware', 'works'],
+        depth:     '../../../',
+    };
+    </script>
+</head>
+<body class="thld-page thld-ware-page">
+
+<nav id="auto-nav" data-depth="../../../"></nav>
+
+<main>
+    <div class="breadcrumb"></div>
+
+    <div class="page-header">
+        <div class="artist-label" id="artist-label"></div>
+        <div class="page-title">WARE</div>
+        <div class="sub-nav">
+            <a href="./"        class="nav-card c-back">← back</a>
+            <a href="about.html"        class="nav-card c-about">about</a>
+            <a href="events.html"       class="nav-card c-events">events</a>
+            <a href="links.html"        class="nav-card c-links">links</a>
+            <a href="lyrics.html"       class="nav-card c-lyrics">lyrics</a>
+            <a href="photography.html"  class="nav-card c-photography">photography</a>
+            <a href="recordings.html"   class="nav-card c-recordings">recordings</a>
+            <a href="releases.html"     class="nav-card c-releases">releases</a>
+            <a href="videos.html"   class="nav-card c-videos">videos</a>
+            <a href="works.html"        class="nav-card c-works">works</a>
+        </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="ware-intro">
+        <p>Games and engines from magmacrunch, named after THLD songs, and one after <a href="../../by-place/the-tuna-can/">the Tuna Can</a>, where the band practised.</p>
+    </div>
+
+    <div class="ware-grid">
+        <a href="../../../ware/texas-holdem-lava-dome/" class="ware-card-link">
+            <div class="ware-card">
+                <div class="ware-card-header">
+                    <div class="ware-card-title">TEXAS HOLD'EM<br>LAVA DOME</div>
+                    <div class="ware-card-badge">MORE</div>
+                </div>
+                <div class="ware-card-body">
+                    <div class="ware-card-desc">poker solitaire. build hands. score big. don't get burned.</div>
+                    <div class="ware-card-meta">
+                        <span class="ware-card-tag">game</span>
+                        <span class="ware-card-note">named after a THLD song</span>
+                    </div>
+                </div>
+            </div>
+        </a>
+        <a href="../../../ware/adenosine/" class="ware-card-link">
+            <div class="ware-card">
+                <div class="ware-card-header">
+                    <div class="ware-card-title">ADENOSINE</div>
+                    <div class="ware-card-badge">MORE</div>
+                </div>
+                <div class="ware-card-body">
+                    <div class="ware-card-desc">lightweight web game engines. every package playable live.</div>
+                    <div class="ware-card-meta">
+                        <span class="ware-card-tag">engine</span>
+                        <span class="ware-card-note">named after the THLD song “Adenosine”</span>
+                    </div>
+                </div>
+            </div>
+        </a>
+        <a href="../../../ware/hypnopompia/" class="ware-card-link">
+            <div class="ware-card">
+                <div class="ware-card-header">
+                    <div class="ware-card-title">HYPNOPOMPIA</div>
+                    <div class="ware-card-badge">MORE</div>
+                </div>
+                <div class="ware-card-body">
+                    <div class="ware-card-desc">the iOS shell for the arcade games. Game Center, bundling, store tooling.</div>
+                    <div class="ware-card-meta">
+                        <span class="ware-card-tag">engine</span>
+                        <span class="ware-card-note">named after the THLD song “Hypnopompia”</span>
+                    </div>
+                </div>
+            </div>
+        </a>
+        <a href="../../../ware/tunacan/" class="ware-card-link">
+            <div class="ware-card">
+                <div class="ware-card-header">
+                    <div class="ware-card-title">TUNACAN</div>
+                    <div class="ware-card-badge">MORE</div>
+                </div>
+                <div class="ware-card-body">
+                    <div class="ware-card-desc">a pixel-art game engine in C, with its level editor built in.</div>
+                    <div class="ware-card-meta">
+                        <span class="ware-card-tag">engine</span>
+                        <span class="ware-card-note">named after the Tuna Can, and “Tuna Can” by Tornado Massacre</span>
+                    </div>
+                </div>
+            </div>
+        </a>
+    </div>
+</main>
+
+<footer>&copy; 2026 <span>magmacrunch media</span></footer>
+
+<script src="../../../nav.js?v=17bba9c8"></script>
+<script>
+(function() {
+    const C = window.ARTIST_CONFIG;
+    if (!C) return;
+    const d = C.depth || '../../../';
+
+    const breadcrumbEl = document.querySelector('.breadcrumb');
+    if (breadcrumbEl) {
+        breadcrumbEl.innerHTML = `
+            <a href="${d}archive/">archive</a>
+            <span class="sep">›</span>
+            <a href="${d}archive/by-artist/">by artist</a>
+            <span class="sep">›</span>
+            <a href="./">${C.abbr.toLowerCase()}</a>
+        `;
+    }
+
+    const artistLabelEl = document.getElementById('artist-label');
+    if (artistLabelEl) artistLabelEl.textContent = `// ${C.name} //`;
+})();
+</script>
+
+</body>
+</html>

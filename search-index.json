@@ -368,21 +368,14 @@
     "c": "artist",
     "u": "/archive/by-artist/c-p-rutledge/about.html",
     "d": "C P Rutledge — About",
-    "b": "C.P. Rutledge — about — magmacrunch media archive › by artist › cpr // C.P. Rutledge // ABOUT ← back games links lyrics photography recordings releases works coming soon..."
-  },
-  {
-    "t": "C.P. Rutledge",
-    "c": "artist",
-    "u": "/archive/by-artist/c-p-rutledge/games.html",
-    "d": "C P Rutledge — Games",
-    "b": "C.P. Rutledge — games — magmacrunch media GAMES ← back about links lyrics photography recordings releases works Music-inspired games from the magmacrunch arcade. MOONLIGHT DRIFT MORE coast through space. dodge obstacles. ride the moon. music-inspired named after a C.P. Rutledge song"
+    "b": "C.P. Rutledge — about — magmacrunch media archive › by artist › cpr // C.P. Rutledge // ABOUT ← back links lyrics photography recordings releases ware works coming soon..."
   },
   {
     "t": "C.P. Rutledge",
     "c": "artist",
     "u": "/archive/by-artist/c-p-rutledge/index.html",
     "d": "artist archive — recordings, works, events, releases",
-    "b": "C.P. Rutledge — archive — magmacrunch media archive › by artist › cpr rendering: courtesy of C.P. Rutledge & Madison Russo // artist archive // C.P. RUTLEDGE also performing as Brother Dynamo about games links lyrics photography recordings releases works"
+    "b": "C.P. Rutledge — archive — magmacrunch media archive › by artist › cpr rendering: courtesy of C.P. Rutledge & Madison Russo // artist archive // C.P. RUTLEDGE also performing as Brother Dynamo about links lyrics photography recordings releases ware works"
   },
   {
     "t": "C.P. Rutledge",
@@ -417,7 +410,7 @@
     "c": "artist",
     "u": "/archive/by-artist/c-p-rutledge/photography.html",
     "d": "C P Rutledge — Photography",
-    "b": "C.P. Rutledge — photography — magmacrunch media archive › by artist › cpr // C.P. Rutledge // PHOTOGRAPHY ← back about games links lyrics recordings releases works // photos // C.P. Rutledge Brother Dynamo Brother Dynamo Brother Dynamo scroll → [ close ] ← prev next →"
+    "b": "C.P. Rutledge — photography — magmacrunch media archive › by artist › cpr // C.P. Rutledge // PHOTOGRAPHY ← back about links lyrics recordings releases ware works // photos // C.P. Rutledge Brother Dynamo Brother Dynamo Brother Dynamo scroll → [ close ] ← prev next →"
   },
   {
     "t": "C.P. Rutledge",
@@ -436,6 +429,13 @@
   {
     "t": "C.P. Rutledge",
     "c": "artist",
+    "u": "/archive/by-artist/c-p-rutledge/ware.html",
+    "d": "C P Rutledge — Ware",
+    "b": "C.P. Rutledge — ware — magmacrunch media WARE ← back about links lyrics photography recordings releases works Games and engines from magmacrunch, named after C.P. Rutledge songs. MOONLIGHT DRIFT MORE coast through space. dodge obstacles. ride the moon. game named after a C.P. Rutledge song MAGNOLIA MORE a small C engine for Wii homebrew score-attack games. engine named after the C.P. Rutledge song “Magnolia”"
+  },
+  {
+    "t": "C.P. Rutledge",
+    "c": "artist",
     "u": "/archive/by-artist/c-p-rutledge/works.html",
     "d": "C P Rutledge — Works",
     "b": "C.P. Rutledge — works — magmacrunch media WORKS loading works…"
@@ -445,14 +445,14 @@
     "c": "artist",
     "u": "/archive/by-artist/dag-henderson/about.html",
     "d": "Dag Henderson — About",
-    "b": "dag henderson — about — magmacrunch media archive › by artist › dh // dag henderson // ABOUT ← back links photography recordings releases videos works coming soon..."
+    "b": "dag henderson — about — magmacrunch media archive › by artist › dh // dag henderson // ABOUT ← back links photography recordings releases videos ware works coming soon..."
   },
   {
     "t": "dag henderson",
     "c": "artist",
     "u": "/archive/by-artist/dag-henderson/index.html",
     "d": "artist archive — recordings, works, events, releases",
-    "b": "dag henderson — magmacrunch media archive › by artist › dh photo: Jake McCoy // artist archive // DAG HENDERSON about links photography recordings releases videos works"
+    "b": "dag henderson — magmacrunch media archive › by artist › dh photo: Jake McCoy // artist archive // DAG HENDERSON about links photography recordings releases videos ware works"
   },
   {
     "t": "dag henderson",
@@ -466,7 +466,7 @@
     "c": "artist",
     "u": "/archive/by-artist/dag-henderson/photography.html",
     "d": "Dag Henderson — Photography",
-    "b": "dag henderson — photography — magmacrunch media archive › by artist › dh // dag henderson // PHOTOGRAPHY ← back about links recordings releases videos works"
+    "b": "dag henderson — photography — magmacrunch media archive › by artist › dh // dag henderson // PHOTOGRAPHY ← back about links recordings releases videos ware works"
   },
   {
     "t": "dag henderson",
@@ -487,7 +487,14 @@
     "c": "artist",
     "u": "/archive/by-artist/dag-henderson/videos.html",
     "d": "Dag Henderson — Videos",
-    "b": "dag henderson — videos — magmacrunch media archive › by artist › dh // dag henderson // VIDEOS ← back about links photography recordings releases works"
+    "b": "dag henderson — videos — magmacrunch media archive › by artist › dh // dag henderson // VIDEOS ← back about links photography recordings releases ware works"
+  },
+  {
+    "t": "dag henderson",
+    "c": "artist",
+    "u": "/archive/by-artist/dag-henderson/ware.html",
+    "d": "Dag Henderson — Ware",
+    "b": "dag henderson — ware — magmacrunch media archive › by artist › dh // dag henderson // WARE ← back about links photography recordings releases videos works Software from magmacrunch, named after Dag Henderson tracks. HOLOGRAM MORE an optics-first 3D game engine. a spectral ray tracer where light obeys physics. engine named after the Dag Henderson track “hologram of a dream”"
   },
   {
     "t": "dag henderson",
@@ -802,21 +809,14 @@
     "c": "artist",
     "u": "/archive/by-artist/juanito-thompson/about.html",
     "d": "Juanito Thompson — About",
-    "b": "juanito thompson — about — magmacrunch media ABOUT ← back games links network photography recordings releases videos works A close relative to Vinny Bobarino , Juanito Thompson started as a home recording project during summer & winter breaks from college in 2009. What began as improvised recordings in a spare bedroom evolved into a years-long collaboration with a rotating cast of musicians, all captured on cheap equipment in borrowed spaces. The project has released ten albums across formats ranging from CDR home copies to streaming platforms, always operating outside any formal music industr..."
-  },
-  {
-    "t": "juanito thompson",
-    "c": "artist",
-    "u": "/archive/by-artist/juanito-thompson/games.html",
-    "d": "Juanito Thompson — Games",
-    "b": "juanito thompson — games — magmacrunch media GAMES ← back about links network photography recordings releases videos works Music-inspired games from the magmacrunch arcade. GEORGE BOOLE HAS ENTERED THE CHAT MORE boolean logic puzzles. true or false? and, or, not. music-inspired named after a Juanito Thompson song CAVE DIVING (NOT EVEN ONCE) MORE one song, one tank. your lamp is the only light down there. music-inspired the dive lasts exactly as long as Juanito Thompson's cave diving (not even once)"
+    "b": "juanito thompson — about — magmacrunch media ABOUT ← back links network photography recordings releases videos ware works A close relative to Vinny Bobarino , Juanito Thompson started as a home recording project during summer & winter breaks from college in 2009. What began as improvised recordings in a spare bedroom evolved into a years-long collaboration with a rotating cast of musicians, all captured on cheap equipment in borrowed spaces. The project has released ten albums across formats ranging from CDR home copies to streaming platforms, always operating outside any formal music industry..."
   },
   {
     "t": "Juanito Thompson",
     "c": "artist",
     "u": "/archive/by-artist/juanito-thompson/index.html",
     "d": "artist archive — recordings, works, events, releases",
-    "b": "Juanito Thompson — magmacrunch media archive › by artist › jt photo: Jake McCoy // artist archive // JUANITO THOMPSON about games links network photography recordings releases videos works"
+    "b": "Juanito Thompson — magmacrunch media archive › by artist › jt photo: Jake McCoy // artist archive // JUANITO THOMPSON about links network photography recordings releases videos ware works"
   },
   {
     "t": "juanito thompson",
@@ -837,35 +837,42 @@
     "c": "artist",
     "u": "/archive/by-artist/juanito-thompson/photography.html",
     "d": "Juanito Thompson — Photography",
-    "b": "juanito thompson — photography — magmacrunch media PHOTOGRAPHY ← back about games links network recordings releases videos works BAND ← drag to scroll → YOU'LL UNDERSTAND WHEN YOU'RE OLDER ← drag to scroll → THAT DEFINITELY DID DESTROY ME ← drag to scroll → THE EARTH IS A COLD DEAD PLACE AND I AM VERY AFRAID TO DIE ← drag to scroll → REVERSE TELESCOPE REVERSED ← drag to scroll → NIGEL ← drag to scroll → RECORDING OF REVERSE OSMOSIS REVERSED frogwood manor · august 2013 [ close ] ← prev next →"
+    "b": "juanito thompson — photography — magmacrunch media PHOTOGRAPHY ← back about links network recordings releases videos ware works BAND ← drag to scroll → YOU'LL UNDERSTAND WHEN YOU'RE OLDER ← drag to scroll → THAT DEFINITELY DID DESTROY ME ← drag to scroll → THE EARTH IS A COLD DEAD PLACE AND I AM VERY AFRAID TO DIE ← drag to scroll → REVERSE TELESCOPE REVERSED ← drag to scroll → NIGEL ← drag to scroll → RECORDING OF REVERSE OSMOSIS REVERSED frogwood manor · august 2013 [ close ] ← prev next →"
   },
   {
     "t": "juanito thompson",
     "c": "artist",
     "u": "/archive/by-artist/juanito-thompson/recordings.html",
     "d": "Juanito Thompson — Recordings",
-    "b": "juanito thompson — recordings — magmacrunch media RECORDINGS ← back about games links network photography releases videos works loading recordings… Point Judith, Reverse telescope reversed, Sitting on a Dock in New Shoreham, Daffodil & Sweet Pea, Point Judith, Kevin Juanito Thompson, Basement Nostalgia, Parade Float Electronics, Thought Equilibrium, Sunlight is more green than any other color, What year is this?, The Earth is a Cold Dead Place and I am Very Afraid to Die, Packed Bags, Gravitational Voltage, Ed Sleezer for State Representative, George Boole has entered the chat, Weird Things, Leaves, Earth as a Place of Human Occupation, The Bowser Song, That's Home, That's Us, That's Home, That's Us, I'm gonna need more of a commitment than that, Mind Satellite, Gravitational Voltage, What year is this?, Reverse Osmosis Reversed, hi jeff, how were you., I think I might have just figured out what death actually is, R. T., Ancient Weeds, Bobbi G., Leaves, I think I might have just figured out what death actually is, Qikiqtarjuaq, Who is Richard Parker?, Ehhh maybe we'll do that next weekend, Untitled, Red & Green Apples, 3:08 A.M., Cave Diving - Not Even Once, Dane Sleezer, Realtor, Bender Bending Rodriguez ascends to heaven, Who is Richard Parker?, (It Can't Be Christmas) Every Day, hi jeff, how were you., Leaves, Breakdown on Banshee Boardwalk, Darius Hodgekins, T. R., Untitled, George Boole has entered the chat, AMBi040, Ancient Weeds, Oh Brother, Earth as a Place of Human Occupation, Beach Ave., Untitled, Drinking Beer, Daffodil & Sweet Pea, Beach Ave., T. S., I'm gonna need more of a commitment than that, Ancient Weeds, Ehhh maybe we'll do that next weekend, I want Deadwood dead, Parade Float Electronics"
+    "b": "juanito thompson — recordings — magmacrunch media RECORDINGS ← back about links network photography releases videos ware works loading recordings… Point Judith, Reverse telescope reversed, Sitting on a Dock in New Shoreham, Daffodil & Sweet Pea, Point Judith, Kevin Juanito Thompson, Basement Nostalgia, Parade Float Electronics, Thought Equilibrium, Sunlight is more green than any other color, What year is this?, The Earth is a Cold Dead Place and I am Very Afraid to Die, Packed Bags, Gravitational Voltage, Ed Sleezer for State Representative, George Boole has entered the chat, Weird Things, Leaves, Earth as a Place of Human Occupation, The Bowser Song, That's Home, That's Us, That's Home, That's Us, I'm gonna need more of a commitment than that, Mind Satellite, Gravitational Voltage, What year is this?, Reverse Osmosis Reversed, hi jeff, how were you., I think I might have just figured out what death actually is, R. T., Ancient Weeds, Bobbi G., Leaves, I think I might have just figured out what death actually is, Qikiqtarjuaq, Who is Richard Parker?, Ehhh maybe we'll do that next weekend, Untitled, Red & Green Apples, 3:08 A.M., Cave Diving - Not Even Once, Dane Sleezer, Realtor, Bender Bending Rodriguez ascends to heaven, Who is Richard Parker?, (It Can't Be Christmas) Every Day, hi jeff, how were you., Leaves, Breakdown on Banshee Boardwalk, Darius Hodgekins, T. R., Untitled, George Boole has entered the chat, AMBi040, Ancient Weeds, Oh Brother, Earth as a Place of Human Occupation, Beach Ave., Untitled, Drinking Beer, Daffodil & Sweet Pea, Beach Ave., T. S., I'm gonna need more of a commitment than that, Ancient Weeds, Ehhh maybe we'll do that next weekend, I want Deadwood dead, Parade Float Electronics"
   },
   {
     "t": "juanito thompson",
     "c": "artist",
     "u": "/archive/by-artist/juanito-thompson/releases.html",
     "d": "Juanito Thompson — Releases",
-    "b": "juanito thompson — releases — magmacrunch media RELEASES ← back about games links network photography recordings videos works loading releases… What year is this?, Juanito Thompson 7\", The Earth is a Cold Dead Place and I am Very Afraid to Die, Ancient Weeds, Millstone Woods May 2018, You'll Understand When You're Older, I'm gonna need more of a commitment than that, That Definitely Did Destroy Me, You'll Understand When You're Older, The Earth is a Cold Dead Place and I am Very Afraid to Die, Sitting on a Curb in Sturgis, Beach Ave., Sitting on a Dock in New Shoreham, Daffodil & Sweet Pea, The Earth is a Cold Dead Place and I am Very Afraid to Die, Ancient Weeds, Who is Richard Parker?, It's Twenty-Fourteen, Much Better Than Carl Spatski, Random Recordings: For Better or For Worse, Much Better Than Carl Spatski, Juanito Thompson's Transatlantic Colleague, Millstone Woods May 2018, It's Twenty-Fourteen, Reverse Telescope Reversed, Leaves, Sitting on a Curb in Sturgis, That Definitely Did Destroy Me, Much Better Than Carl Spatski, It's Twenty-Fourteen, A Close Relative to Vinny Bobarino, That Definitely Did Destroy Me, A Close Relative to Vinny Bobarino, Spooked, Sitting on a Dock in New Shoreham, George Boole has entered the chat, Qikiqtarjuaq, What year is this?, Parade Float Electronics, Gravitational Voltage, Point Judith"
+    "b": "juanito thompson — releases — magmacrunch media RELEASES ← back about links network photography recordings videos ware works loading releases… What year is this?, Juanito Thompson 7\", The Earth is a Cold Dead Place and I am Very Afraid to Die, Ancient Weeds, Millstone Woods May 2018, You'll Understand When You're Older, I'm gonna need more of a commitment than that, That Definitely Did Destroy Me, You'll Understand When You're Older, The Earth is a Cold Dead Place and I am Very Afraid to Die, Sitting on a Curb in Sturgis, Beach Ave., Sitting on a Dock in New Shoreham, Daffodil & Sweet Pea, The Earth is a Cold Dead Place and I am Very Afraid to Die, Ancient Weeds, Who is Richard Parker?, It's Twenty-Fourteen, Much Better Than Carl Spatski, Random Recordings: For Better or For Worse, Much Better Than Carl Spatski, Juanito Thompson's Transatlantic Colleague, Millstone Woods May 2018, It's Twenty-Fourteen, Reverse Telescope Reversed, Leaves, Sitting on a Curb in Sturgis, That Definitely Did Destroy Me, Much Better Than Carl Spatski, It's Twenty-Fourteen, A Close Relative to Vinny Bobarino, That Definitely Did Destroy Me, A Close Relative to Vinny Bobarino, Spooked, Sitting on a Dock in New Shoreham, George Boole has entered the chat, Qikiqtarjuaq, What year is this?, Parade Float Electronics, Gravitational Voltage, Point Judith"
   },
   {
     "t": "juanito thompson",
     "c": "artist",
     "u": "/archive/by-artist/juanito-thompson/videos.html",
     "d": "Juanito Thompson — Videos",
-    "b": "juanito thompson — videos — magmacrunch media archive › by artist › jt // juanito thompson // VIDEOS ← back about games links network photography recordings releases works"
+    "b": "juanito thompson — videos — magmacrunch media archive › by artist › jt // juanito thompson // VIDEOS ← back about links network photography recordings releases ware works"
+  },
+  {
+    "t": "juanito thompson",
+    "c": "artist",
+    "u": "/archive/by-artist/juanito-thompson/ware.html",
+    "d": "Juanito Thompson — Ware",
+    "b": "juanito thompson — ware — magmacrunch media WARE ← back about links network photography recordings releases videos works Games and engines from magmacrunch, named after Juanito Thompson songs. daffodil is also named after a cabin at Twin Maples . GEORGE BOOLE HAS ENTERED THE CHAT MORE boolean logic puzzles. true or false? and, or, not. game named after a Juanito Thompson song CAVE DIVING (NOT EVEN ONCE) MORE one song, one tank. your lamp is the only light down there. game the dive lasts exactly as long as Juanito Thompson's cave diving (not even once) DAFFODIL MORE a C99 heightfield terrain en..."
   },
   {
     "t": "juanito thompson",
     "c": "artist",
     "u": "/archive/by-artist/juanito-thompson/works.html",
     "d": "Juanito Thompson — Works",
-    "b": "juanito thompson — works — magmacrunch media WORKS ← back about games links network photography recordings releases videos loading works…"
+    "b": "juanito thompson — works — magmacrunch media WORKS ← back about links network photography recordings releases videos ware loading works…"
   },
   {
     "t": "SVFP",
@@ -977,7 +984,7 @@
     "c": "artist",
     "u": "/archive/by-artist/thld/about.html",
     "d": "Thld — About",
-    "b": "THLD — about — magmacrunch media archive › by artist › thld // texas hold'em lava dome, et al. // ABOUT ← back events games links lyrics photography recordings releases videos works \"We are a Venn Diagram of brothers and physics grad school classmates from New Hampshire, New York and Wisconsin.\" THLD was active from October 2015 to May 2016, playing four local shows in Iowa City. With neither the time nor budget for studio recording, material home-recorded during sessions in The Tuna Can was used to produce a series of albums around 2018–2019, originally released on Bandcamp. ▶ stream / downlo..."
+    "b": "THLD — about — magmacrunch media archive › by artist › thld // texas hold'em lava dome, et al. // ABOUT ← back events links lyrics photography recordings releases videos ware works \"We are a Venn Diagram of brothers and physics grad school classmates from New Hampshire, New York and Wisconsin.\" THLD was active from October 2015 to May 2016, playing four local shows in Iowa City. With neither the time nor budget for studio recording, material home-recorded during sessions in The Tuna Can was used to produce a series of albums around 2018–2019, originally released on Bandcamp. ▶ stream / downloa..."
   },
   {
     "t": "THLD",
@@ -989,16 +996,9 @@
   {
     "t": "THLD",
     "c": "artist",
-    "u": "/archive/by-artist/thld/games.html",
-    "d": "Thld — Games",
-    "b": "THLD — games — magmacrunch media GAMES ← back about events links lyrics photography recordings releases videos works Music-inspired games from the magmacrunch arcade. TEXAS HOLD'EM LAVA DOME MORE poker solitaire. build hands. score big. don't get burned. music-inspired named after a THLD song"
-  },
-  {
-    "t": "THLD",
-    "c": "artist",
     "u": "/archive/by-artist/thld/index.html",
     "d": "artist archive — recordings, works, events, releases",
-    "b": "THLD — archive — magmacrunch media archive › by artist › thld drawing: Sergio Pontillo // artist archive // TEXAS HOLD'EM LAVA DOME, ET AL. THLD | Tornado Massacre | Ocean, I Miss You about events games links lyrics photography recordings releases videos works [ close ] ← prev next →"
+    "b": "THLD — archive — magmacrunch media archive › by artist › thld drawing: Sergio Pontillo // artist archive // TEXAS HOLD'EM LAVA DOME, ET AL. THLD | Tornado Massacre | Ocean, I Miss You about events links lyrics photography ware recordings releases videos works [ close ] ← prev next →"
   },
   {
     "t": "THLD",
@@ -1026,7 +1026,7 @@
     "c": "artist",
     "u": "/archive/by-artist/thld/photography.html",
     "d": "Thld — Photography",
-    "b": "THLD — photography — magmacrunch media archive › by artist › thld // texas hold'em lava dome, et al. // PHOTOGRAPHY ← back about events games links lyrics recordings releases videos works the tuna can · night first show · nov 19, 2015 · photo: k. rejsek first show · nov 19, 2015 · photo: k. rejsek first show · drums rehearsal · the tuna can ocean i miss you show third show · instruments scroll → PINE IMG 0721 IMG 0724 IMG 0726 scroll → SECRET CONFERENCE ROOMS IMG 0186 IMG 0187 IMG 0188 IMG 0189 IMG 0190 scroll → [ close ] ← prev next → [ close ] ← prev next → [ close ] ← prev next →"
+    "b": "THLD — photography — magmacrunch media archive › by artist › thld // texas hold'em lava dome, et al. // PHOTOGRAPHY ← back about events links lyrics recordings releases videos ware works the tuna can · night first show · nov 19, 2015 · photo: k. rejsek first show · nov 19, 2015 · photo: k. rejsek first show · drums rehearsal · the tuna can ocean i miss you show third show · instruments scroll → PINE IMG 0721 IMG 0724 IMG 0726 scroll → SECRET CONFERENCE ROOMS IMG 0186 IMG 0187 IMG 0188 IMG 0189 IMG 0190 scroll → [ close ] ← prev next → [ close ] ← prev next → [ close ] ← prev next →"
   },
   {
     "t": "THLD",
@@ -1047,7 +1047,14 @@
     "c": "artist",
     "u": "/archive/by-artist/thld/videos.html",
     "d": "Thld — Videos",
-    "b": "THLD — videos — magmacrunch media archive › by artist › thld // texas hold'em lava dome, et al. // VIDEOS ← back about events games links lyrics photography recordings releases works"
+    "b": "THLD — videos — magmacrunch media archive › by artist › thld // texas hold'em lava dome, et al. // VIDEOS ← back about events links lyrics photography recordings releases ware works"
+  },
+  {
+    "t": "THLD",
+    "c": "artist",
+    "u": "/archive/by-artist/thld/ware.html",
+    "d": "Thld — Ware",
+    "b": "THLD — ware — magmacrunch media WARE ← back about events links lyrics photography recordings releases videos works Games and engines from magmacrunch, named after THLD songs, and one after the Tuna Can , where the band practised. TEXAS HOLD'EM LAVA DOME MORE poker solitaire. build hands. score big. don't get burned. game named after a THLD song ADENOSINE MORE lightweight web game engines. every package playable live. engine named after the THLD song “Adenosine” HYPNOPOMPIA MORE the iOS shell for the arcade games. Game Center, bundling, store tooling. engine named after the THLD song “Hypnopomp..."
   },
   {
     "t": "THLD",
@@ -1467,14 +1474,14 @@
     "c": "place",
     "u": "/archive/by-place/the-tuna-can/about.html",
     "d": "The Tuna Can — About",
-    "b": "The Tuna Can — about — magmacrunch media archive › by place › tuna can // The Tuna Can // ABOUT ← back links personnel photography recordings works The Tuna Can was the de facto music space in the attic of a house on Evans Street in Iowa City. After leaving Melrose House near Kinnick Stadium in 2015, Jake moved into this place on the east side of Iowa City."
+    "b": "The Tuna Can — about — magmacrunch media archive › by place › tuna can // The Tuna Can // ABOUT ← back links personnel photography recordings ware works The Tuna Can was the de facto music space in the attic of a house on Evans Street in Iowa City. After leaving Melrose House near Kinnick Stadium in 2015, Jake moved into this place on the east side of Iowa City."
   },
   {
     "t": "The Tuna Can",
     "c": "place",
     "u": "/archive/by-place/the-tuna-can/index.html",
     "d": "place archive — recordings, works, events, releases",
-    "b": "The Tuna Can — magmacrunch media archive › by place › tuna can photo: Jake McCoy // place archive // THE TUNA CAN IOWA CITY, IOWA (2015-2018) about links personnel photography recordings works"
+    "b": "The Tuna Can — magmacrunch media archive › by place › tuna can photo: Jake McCoy // place archive // THE TUNA CAN IOWA CITY, IOWA (2015-2018) about links personnel photography recordings ware works"
   },
   {
     "t": "The Tuna Can",
@@ -1507,6 +1514,13 @@
   {
     "t": "The Tuna Can",
     "c": "place",
+    "u": "/archive/by-place/the-tuna-can/ware.html",
+    "d": "The Tuna Can — Ware",
+    "b": "The Tuna Can — ware — magmacrunch media archive › by place › tuna can // The Tuna Can // WARE ← back about links personnel photography recordings works Software from magmacrunch, named after the Tuna Can. The engine also carries the name of “Tuna Can”, the Tornado Massacre track and album, and is listed with the rest of THLD’s ware . TUNACAN MORE a pixel-art game engine in C, with its level editor built in. engine named after this place, where THLD, Audio Sound Paper and Dino Spumoni practised and recorded"
+  },
+  {
+    "t": "The Tuna Can",
+    "c": "place",
     "u": "/archive/by-place/the-tuna-can/works.html",
     "d": "The Tuna Can — Works",
     "b": "The Tuna Can — works — magmacrunch media WORKS loading works…"
@@ -1516,14 +1530,14 @@
     "c": "place",
     "u": "/archive/by-place/twin-maples/about.html",
     "d": "Twin Maples — About",
-    "b": "Twin Maples — about — magmacrunch media archive › by place › twin maples // Twin Maples // ABOUT ← back links personnel photography recordings works coming soon..."
+    "b": "Twin Maples — about — magmacrunch media archive › by place › twin maples // Twin Maples // ABOUT ← back links personnel photography recordings ware works coming soon..."
   },
   {
     "t": "Twin Maples",
     "c": "place",
     "u": "/archive/by-place/twin-maples/index.html",
     "d": "place archive — recordings, works, events, releases",
-    "b": "Twin Maples — magmacrunch media archive › by place › twin maples photo: Jake McCoy // place archive // TWIN MAPLES NEW SHOREHAM, RHODE ISLAND about links personnel photography recordings works"
+    "b": "Twin Maples — magmacrunch media archive › by place › twin maples photo: Jake McCoy // place archive // TWIN MAPLES NEW SHOREHAM, RHODE ISLAND about links personnel photography recordings ware works"
   },
   {
     "t": "Twin Maples",
@@ -1552,6 +1566,13 @@
     "u": "/archive/by-place/twin-maples/recordings.html",
     "d": "Twin Maples — Recordings",
     "b": "Twin Maples — recordings — magmacrunch media RECORDINGS loading recordings…"
+  },
+  {
+    "t": "Twin Maples",
+    "c": "place",
+    "u": "/archive/by-place/twin-maples/ware.html",
+    "d": "Twin Maples — Ware",
+    "b": "Twin Maples — ware — magmacrunch media archive › by place › twin maples // Twin Maples // WARE ← back about links personnel photography recordings works Software from magmacrunch, named after Twin Maples. The engine also carries the name of Juanito Thompson’s “Daffodil & Sweet Pea”, and is listed with the rest of Juanito Thompson’s ware . DAFFODIL MORE a C99 heightfield terrain engine. real landscape at 1:1, measured, not invented. engine named after the Daffodil cabin here, the first ground it renders"
   },
   {
     "t": "Twin Maples",
@@ -1838,7 +1859,7 @@
     "c": "tool",
     "u": "/ware/album-art-maker/",
     "d": "pixel art editor for album covers · text, shapes, images",
-    "b": "GATE//FOLD This tool is best experienced on a desktop or laptop. Please visit on a wider screen for the full workspace. GATE//FOLD 1024×1024 0 ELEMENTS UNDO REDO DELETE CLEAR ALL CANVAS 1024 ▾ BG ► SELECT T TEXT ▢ IMAGE RECT ▾ FREQUENCY 5 WAVE MODE FILLED OPEN REFERENCE ▾ UPLOAD IMAGE × click to sample color BASIC ▭ RECT ○ CIRCLE ╱ LINE ▵ TRI ⬣ PENTA ⬤ HEXA ◇ DIAMOND ★ STAR ➤ ARROW ◯ R. RECT WAVES ∿ SINE ⊝ SQUARE ⊾ SAWTOOTH ⊿ TRI WAVE ∖ STEP ⊟ PULSE CLIP ART EMPTY COVER PICK A SHAPE OR TEXT, THEN DRAG ON THE CANVAS R RECT · T TEXT · CTRL+I IMAGE · OR DROP ONE HERE LAYERS ▾ PROPERTIES FILL ‒ ST..."
+    "b": "GATE//FOLD This tool is best experienced on a desktop or laptop. Please visit on a wider screen for the full workspace. GATE//FOLD Dark 1024×1024 0 ELEMENTS UNDO REDO DELETE CLEAR ALL CANVAS 1024 ▾ BG ► SELECT T TEXT ▢ IMAGE RECT ▾ FREQUENCY 5 WAVE MODE FILLED OPEN REFERENCE ▾ UPLOAD IMAGE × click to sample color BASIC ▭ RECT ○ CIRCLE ╱ LINE ▵ TRI ⬣ PENTA ⬤ HEXA ◇ DIAMOND ★ STAR ➤ ARROW ◯ R. RECT WAVES ∿ SINE ⊝ SQUARE ⊾ SAWTOOTH ⊿ TRI WAVE ∖ STEP ⊟ PULSE CLIP ART EMPTY COVER PICK A SHAPE OR TEXT, THEN DRAG ON THE CANVAS R RECT · T TEXT · CTRL+I IMAGE · OR DROP ONE HERE LAYERS ▾ PROPERTIES FILL..."
   },
   {
     "t": "backgammon · magmacrunch media",
@@ -2055,7 +2076,7 @@
     "c": "tool",
     "u": "/ware/sprite-forge/",
     "d": "game sprite editor · animation, onion skin, PNG sheets",
-    "b": "sprite forge — magmacrunch media This tool is best experienced on a desktop or laptop. Please visit on a wider screen for the full workspace. SPRITE//FORGE 32×32 1 FRAME − 16× + ⇲ FIT ▦ GRID ⇋ MIRROR ◎ ONION 1 ◫ PREVIEW 32 × 32 animation sheet; click a frame to edit it, drag to reorder surface ◀ ▶ EXPORT OUTPUT COPY COLOR #000000 + ADD RAMP SPRITES ADD DUP DEL every sprite here shares one palette, so a character's facings cannot drift onto different browns. each exports as its own sheet, named by the name above. TARGETS engine ADD FOLDER… the sheet lands in the engine's own directory under the..."
+    "b": "sprite forge — magmacrunch media This tool is best experienced on a desktop or laptop. Please visit on a wider screen for the full workspace. SPRITE//FORGE Dark 32×32 1 FRAME − 16× + ⇲ FIT ▦ GRID ⇋ MIRROR ◎ ONION 1 ◫ PREVIEW 32 × 32 animation sheet; click a frame to edit it, drag to reorder surface ◀ ▶ EXPORT OUTPUT COPY COLOR #000000 + ADD RAMP SPRITES ADD DUP DEL every sprite here shares one palette, so a character's facings cannot drift onto different browns. each exports as its own sheet, named by the name above. TARGETS engine ADD FOLDER… the sheet lands in the engine's own directory unde..."
   },
   {
     "t": "french tarot · magmacrunch media",

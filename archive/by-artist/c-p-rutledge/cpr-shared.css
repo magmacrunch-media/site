@@ -75,12 +75,12 @@ body.cpr-page .nav-card.c-works:hover {
     color: var(--cpr-cream);
 }
 
-body.cpr-page .nav-card.c-games {
+body.cpr-page .nav-card.c-ware {
     background: var(--cpr-green);
     color: var(--cpr-surface);
     border-color: var(--cpr-green);
 }
-body.cpr-page .nav-card.c-games:hover {
+body.cpr-page .nav-card.c-ware:hover {
     background: var(--cpr-dark-green);
     color: var(--cpr-cream);
 }
@@ -105,12 +105,12 @@ body.cpr-page .nav-card.c-links:hover {
     color: var(--cpr-cream);
 }
 
-body.cpr-page .nav-card.c-games {
+body.cpr-page .nav-card.c-ware {
     background: var(--cpr-green);
     color: var(--cpr-surface);
     border-color: var(--cpr-green);
 }
-body.cpr-page .nav-card.c-games:hover {
+body.cpr-page .nav-card.c-ware:hover {
     background: var(--cpr-dark-green);
     color: var(--cpr-cream);
 }

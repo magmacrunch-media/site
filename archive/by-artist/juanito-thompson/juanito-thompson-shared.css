@@ -106,9 +106,9 @@ body.jt-page .sub-nav .nav-card.c-releases:hover { background: inherit !importan
 body.jt-page .sub-nav .nav-card.c-works { background: var(--jt-gold); color: var(--jt-bg); border-color: var(--jt-gold); }
 body.jt-page .sub-nav .nav-card.c-works:hover { background: inherit !important; color: var(--jt-offwhite) !important; box-shadow: none !important; }
 
-/* c-games: solid green (games) */
-body.jt-page .sub-nav .nav-card.c-games { background: var(--jt-green); color: var(--jt-bg); border-color: var(--jt-green); }
-body.jt-page .sub-nav .nav-card.c-games:hover { background: inherit !important; color: var(--jt-offwhite) !important; box-shadow: none !important; }
+/* c-ware: solid green (ware) */
+body.jt-page .sub-nav .nav-card.c-ware { background: var(--jt-green); color: var(--jt-bg); border-color: var(--jt-green); }
+body.jt-page .sub-nav .nav-card.c-ware:hover { background: inherit !important; color: var(--jt-offwhite) !important; box-shadow: none !important; }
 
 /* c-links: solid purple (links button) */
 body.jt-page .sub-nav .nav-card.c-links { background: var(--jt-purple); color: var(--jt-offwhite); border-color: var(--jt-purple); }

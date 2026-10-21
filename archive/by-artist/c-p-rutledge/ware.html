@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>C.P. Rutledge — ware — magmacrunch media</title>
+    <link rel="icon" type="image/x-icon" href="../../../favicon.ico">
+    <link rel="stylesheet" href="../../../style.css?v=981601e0">
+    <link rel="stylesheet" href="../../../assets/archive.css?v=3ed2f2cb">
+    <link rel="stylesheet" href="cpr-shared.css">
+    <link rel="stylesheet" href="cpr-ware.css">
+
+    <script>
+    window.ARTIST_CONFIG = {
+        id:        '44c1e0bd-be4c-4a0b-8f06-864c8e2fedcc',
+        name:      'C.P. Rutledge',
+        abbr:      'CPR',
+        accent:    'green',
+        backColor: 'c-green',
+        siblings:  ['about', 'links', 'lyrics', 'photography', 'recordings', 'releases', 'ware', 'works'],
+        depth:     '../../../',
+    };
+    </script>
+</head>
+<body class="cpr-page cpr-ware-page">
+
+<nav id="auto-nav" data-depth="../../../"></nav>
+
+<main>
+    <div class="breadcrumb"></div>
+
+    <div class="page-header">
+        <div class="artist-label" id="artist-label"></div>
+        <div class="page-title">WARE</div>
+        <div class="sub-nav">
+            <a href="./"        class="nav-card c-back">← back</a>
+            <a href="about.html"        class="nav-card c-about">about</a>
+            <a href="links.html"        class="nav-card c-links">links</a>
+            <a href="lyrics.html"       class="nav-card c-lyrics">lyrics</a>
+            <a href="photography.html"  class="nav-card c-photography">photography</a>
+            <a href="recordings.html"   class="nav-card c-recordings">recordings</a>
+            <a href="releases.html"     class="nav-card c-releases">releases</a>
+            <a href="works.html"        class="nav-card c-works">works</a>
+        </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="bio-section">
+        <p>Games and engines from magmacrunch, named after C.P. Rutledge songs.</p>
+    </div>
+
+    <div class="ware-grid">
+        <a href="../../../ware/moonlight-drift/" class="ware-card-link">
+            <div class="ware-card">
+                <div class="ware-card-header">
+                    <div class="ware-card-title">MOONLIGHT<br>DRIFT</div>
+                    <div class="ware-card-badge">MORE</div>
+                </div>
+                <div class="ware-card-body">
+                    <div class="ware-card-desc">coast through space. dodge obstacles. ride the moon.</div>
+                    <div class="ware-card-meta">
+                        <span class="ware-card-tag">game</span>
+                        <span class="ware-card-note">named after a C.P. Rutledge song</span>
+                    </div>
+                </div>
+            </div>
+        </a>
+        <a href="../../../ware/magnolia/" class="ware-card-link">
+            <div class="ware-card">
+                <div class="ware-card-header">
+                    <div class="ware-card-title">MAGNOLIA</div>
+                    <div class="ware-card-badge">MORE</div>
+                </div>
+                <div class="ware-card-body">
+                    <div class="ware-card-desc">a small C engine for Wii homebrew score-attack games.</div>
+                    <div class="ware-card-meta">
+                        <span class="ware-card-tag">engine</span>
+                        <span class="ware-card-note">named after the C.P. Rutledge song “Magnolia”</span>
+                    </div>
+                </div>
+            </div>
+        </a>
+    </div>
+</main>
+
+<footer>&copy; 2026 <span>magmacrunch media</span></footer>
+
+<script src="../../../nav.js?v=17bba9c8"></script>
+<script>
+(function() {
+    const C = window.ARTIST_CONFIG;
+    if (!C) return;
+    const d = C.depth || '../../../';
+
+    const breadcrumbEl = document.querySelector('.breadcrumb');
+    if (breadcrumbEl) {
+        breadcrumbEl.innerHTML = `
+            <a href="${d}archive/">archive</a>
+            <span class="sep">›</span>
+            <a href="${d}archive/by-artist/">by artist</a>
+            <span class="sep">›</span>
+            <a href="./">${C.abbr.toLowerCase()}</a>
+        `;
+    }
+
+    const artistLabelEl = document.getElementById('artist-label');
+    if (artistLabelEl) artistLabelEl.textContent = `// ${C.name} //`;
+})();
+</script>
+
+</body>
+</html>
