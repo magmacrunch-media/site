@@ -444,6 +444,14 @@ var audioSrc = function (path) { return path.replace(/\.ogg$/, AUDIO_EXT); };
         if (widgetEl && widgetEl.isConnected) return;
         if (widgetEl && !widgetEl.isConnected) widgetEl = null;
         if (document.body.classList.contains('no-jukebox')) return;
+        /* Not on touch and not under 900px: nav.js's loader makes exactly this
+           call and loads neither this file nor jukebox.css there. The jukebox
+           page loads this file itself, for the engine, so without the same
+           test here a phone got the widget with no stylesheet: its controls
+           spilled out bare over the top of the page. The engine still runs;
+           only the widget is skipped. */
+        if (window.matchMedia &&
+            window.matchMedia('(max-width: 900px), (pointer: coarse)').matches) return;
         // In the nav or not at all. __initJukeboxPlayer can be re-entered by
         // the SPA router, so the guard stays.
         const nav = document.querySelector('nav');

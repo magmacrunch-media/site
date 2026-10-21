@@ -398,7 +398,7 @@ window.NAV_CONFIG = {
         if (!document.querySelector('script[src*="jukebox.js"]')) {
             window.__jukeboxReady = cssReady.then(() => new Promise((resolve) => {
                 const script = document.createElement('script');
-                script.src = root + 'assets/jukebox.js?v=579a677d';
+                script.src = root + 'assets/jukebox.js?v=23ee3b84';
                 script.onload = resolve;
                 script.onerror = resolve;
                 document.body.appendChild(script);
