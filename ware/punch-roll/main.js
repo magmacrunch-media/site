@@ -543,7 +543,7 @@
     function load(text, from) {
         let next;
         try {
-            const raw = JSON.parse(text);
+            const raw = App.songfile.parse(text);
             next = fine(R.keepLoop(raw, S.normalizeSong(raw)));
         } catch (err) {
             status(`Could not open ${from}: ${err.message}`);
@@ -561,7 +561,7 @@
     }
 
     async function save() {
-        const text = JSON.stringify(song, null, 1);
+        const text = App.songfile.stringify(song);
         if (App.fs) {
             const p = path || await App.fs.pickSongSave('song.punch');
             if (!p) return;
