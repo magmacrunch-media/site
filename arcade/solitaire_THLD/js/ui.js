@@ -48,7 +48,7 @@ class UI{constructor(state,dealer,evaluator,dome,betting,scoring){this.state=sta
         `}_phaseBetting(){const status=this.betting.bettingStatus;const bets=this.betting.suggestedBets;const bank=this.state.bank;const canWithdraw=bank>0&&status.chips<MIN_BET;return`
             <div class="phase-panel betting-panel">
                 <div class="phase-title">PLACE YOUR BET</div>
-                <div class="phase-subtitle">Pre-flop &mdash; ${status.chips} chips available</div>
+                <div class="phase-subtitle">Pre-flop: ${status.chips} chips available</div>
                 ${canWithdraw?`
                 <div class="ante-danger">
                     ⚠ NOT ENOUGH CHIPS TO BET MINIMUM (${status.minBet}). DIG INTO SAVINGS?

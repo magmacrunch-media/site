@@ -206,10 +206,10 @@
                     <button id="target-add">ADD FOLDER&hellip;</button>
                 </div>
                 <div class="hint">the sheet lands in the engine's own directory
-                    under the folder you pick &mdash; godot takes C# source
+                    under the folder you pick, and godot takes C# source
                     instead of a PNG, so nothing needs importing before the game
-                    will run. the list of folders is yours, not the project's
-                    &mdash; it never leaves this machine.</div>
+                    will run. the list of folders is yours, not the project's,
+                    and it never leaves this machine.</div>
             </details>
 
             <details class="side-section" data-section="tools">
@@ -250,7 +250,7 @@
                     <button id="replace-btn" title="Replace the selected color across every frame of every sprite">REPLACE</button>
                 </div>
                 <div class="hint">swaps the selected swatch for this color in
-                    every frame of every sprite &mdash; the palette is the
+                    every frame of every sprite. the palette is the
                     project's. one undo step.</div>
             </details>
 
@@ -409,7 +409,7 @@
     </div>
 
     <footer>
-        <button class="footer-text" id="credits-link">SPRITE//FORGE <span id="app-version">v0.3.0</span> &mdash; <span>MAGMACRUNCH MEDIA</span></button>
+        <button class="footer-text" id="credits-link">SPRITE//FORGE <span id="app-version">v0.3.0</span> &middot; <span>MAGMACRUNCH MEDIA</span></button>
     </footer>
 
     <dialog id="template-modal">
@@ -480,20 +480,20 @@
             <div class="sub-label">tools</div>
             <dl class="ref-grid">
                 <dt><kbd>B</kbd></dt><dd>Pencil</dd>
-                <dt><kbd>E</kbd></dt><dd>Erase &mdash; or right-click with any tool</dd>
+                <dt><kbd>E</kbd></dt><dd>Erase, or right-click with any tool</dd>
                 <dt><kbd>G</kbd></dt><dd>Flood fill</dd>
                 <dt><kbd>L</kbd></dt><dd>Line</dd>
                 <dt><kbd>U</kbd></dt><dd>Rectangle</dd>
                 <dt><kbd>C</kbd></dt><dd>Ellipse</dd>
-                <dt><kbd>I</kbd></dt><dd>Pick a color off the canvas &mdash; or alt-click</dd>
+                <dt><kbd>I</kbd></dt><dd>Pick a color off the canvas, or alt-click</dd>
                 <dt><kbd>O</kbd></dt><dd>Set the origin</dd>
-                <dt><kbd>S</kbd></dt><dd>Select a region &mdash; drag to mark it, drag inside to move it</dd>
+                <dt><kbd>S</kbd></dt><dd>Select a region: drag to mark it, drag inside to move it</dd>
             </dl>
 
             <div class="sub-label">the selection</div>
             <dl class="ref-grid">
                 <dt><kbd>Ctrl</kbd><kbd>A</kbd></dt><dd>Select the whole frame</dd>
-                <dt><kbd>Esc</kbd></dt><dd>Drop the selection &mdash; so does picking another tool</dd>
+                <dt><kbd>Esc</kbd></dt><dd>Drop the selection. So does picking another tool</dd>
                 <dt><kbd>Ctrl</kbd><kbd>C</kbd></dt><dd>Copy the selected pixels</dd>
                 <dt><kbd>Ctrl</kbd><kbd>X</kbd></dt><dd>Cut them</dd>
                 <dt><kbd>Ctrl</kbd><kbd>V</kbd></dt><dd>Paste at the selection's corner, or the frame's</dd>
@@ -504,21 +504,21 @@
                 the colored cells down and leaves whatever is under the
                 transparent ones. It survives changing frame, changing sprite
                 and changing tool, so a hand drawn once can go on every facing.
-                Moving something off the edge loses what goes over &mdash; the
+                Moving something off the edge loses what goes over: the
                 arrows wrap the whole frame, but a selection does not.</p>
 
             <div class="sub-label">frames</div>
             <dl class="ref-grid">
                 <dt><kbd>[</kbd> <kbd>]</kbd></dt><dd>Previous / next frame</dd>
-                <dt><kbd>Shift</kbd><kbd>[</kbd> <kbd>]</kbd></dt><dd>Move this frame earlier / later &mdash; or drag it in the sheet strip</dd>
+                <dt><kbd>Shift</kbd><kbd>[</kbd> <kbd>]</kbd></dt><dd>Move this frame earlier / later, or drag it in the sheet strip</dd>
                 <dt><kbd>Space</kbd></dt><dd>Play / pause</dd>
                 <dt>hold</dt><dd>How many beats of the frame rate this frame stays up.
                     1 is an even animation; the sheet strip marks anything more with
-                    &times;n. It's in the .forge file and nowhere else &mdash; so is the
+                    &times;n. It's in the .forge file and nowhere else, and so is the
                     frame rate, because no export target takes one.</dd>
-                <dt><kbd>&larr;&uarr;&darr;&rarr;</kbd></dt><dd>Nudge the whole drawing a pixel, wrapping at the edge &mdash; with a selection up they move that instead</dd>
+                <dt><kbd>&larr;&uarr;&darr;&rarr;</kbd></dt><dd>Nudge the whole drawing a pixel, wrapping at the edge. With a selection up they move that instead</dd>
                 <dt><kbd>H</kbd> <kbd>V</kbd></dt><dd>Flip this frame across the vertical / horizontal</dd>
-                <dt><kbd>R</kbd></dt><dd>Turn the whole sprite 90&deg; clockwise &mdash; every frame, and the frame size with them. A 16&times;24 becomes a 24&times;16 and the origin goes with it.</dd>
+                <dt><kbd>R</kbd></dt><dd>Turn the whole sprite 90&deg; clockwise: every frame, and the frame size with them. A 16&times;24 becomes a 24&times;16 and the origin goes with it.</dd>
             </dl>
 
             <div class="sub-label">view</div>
@@ -526,7 +526,7 @@
                 <dt><kbd>&minus;</kbd> <kbd>=</kbd></dt><dd>Zoom out / in</dd>
                 <dt><kbd>D</kbd></dt><dd>Pixel grid</dd>
                 <dt><kbd>M</kbd></dt><dd>Mirror across the vertical center</dd>
-                <dt><kbd>N</kbd></dt><dd>Onion skin &mdash; ghosts of the frames either side of this one,
+                <dt><kbd>N</kbd></dt><dd>Onion skin: ghosts of the frames either side of this one,
                     rose for the ones behind and cyan for the ones ahead. It wraps, so the
                     last frame ghosts against the first.</dd>
                 <dt><kbd>Shift</kbd><kbd>N</kbd></dt><dd>How far the ghosts reach, 1 to 4 each way.
@@ -538,13 +538,13 @@
             <dl class="ref-grid">
                 <dt><kbd>Ctrl</kbd><kbd>N</kbd></dt><dd>New</dd>
                 <dt><kbd>Ctrl</kbd><kbd>O</kbd></dt><dd>Open a .forge project</dd>
-                <dt><kbd>Ctrl</kbd><kbd>S</kbd></dt><dd>Save &mdash; add <kbd>Shift</kbd> for Save As</dd>
+                <dt><kbd>Ctrl</kbd><kbd>S</kbd></dt><dd>Save. Add <kbd>Shift</kbd> for Save As</dd>
                 <dt><kbd>T</kbd></dt><dd>Character templates</dd>
-                <dt><kbd>Ctrl</kbd><kbd>Z</kbd></dt><dd>Undo &mdash; add <kbd>Shift</kbd> to redo</dd>
+                <dt><kbd>Ctrl</kbd><kbd>Z</kbd></dt><dd>Undo. Add <kbd>Shift</kbd> to redo</dd>
             </dl>
 
             <div class="sub-label">the origin</div>
-            <p>The point the game positions a sprite by &mdash; the feet, for
+            <p>The point the game positions a sprite by: the feet, for
                 someone walking. It's kept in the .forge file and handed to the
                 loader at run time. It's never written into a PNG, so every
                 engine reading a sheet has to be told it separately.</p>
@@ -553,7 +553,7 @@
             <p>A <strong>.forge</strong> file is the whole project: every sprite,
                 the one shared palette, the origins and the frame rates. It is
                 JSON, and deliberately readable in a diff. A <strong>PNG
-                sheet</strong> is only pixels &mdash; a uniform grid of
+                sheet</strong> is only pixels: a uniform grid of
                 frame-width by frame-height cells, counted left to right, then
                 top to bottom.</p>
 
