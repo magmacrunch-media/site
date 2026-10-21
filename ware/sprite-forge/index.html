@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-app="SpriteForge">
+<html lang="en" data-app="SpriteForge" data-magma-theme="sprite-forge">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,7 +8,12 @@
     <link rel="stylesheet" href="../shell/fonts.css?v=08818834">
     <link rel="stylesheet" href="../shell/app-shell.css?v=2eb63ac6">
     <link rel="stylesheet" href="../shell/toast.css?v=2c51118f">
-    <link rel="stylesheet" href="style.css?v=7fddfafc">
+    <!-- magma-themes and the picker's look, ahead of style.css so the app's
+         own rules win. Neither changes the default editor theme; see
+         ui/theme.js. -->
+    <link rel="stylesheet" href="kit/magma-themes.css?v=9e723c54">
+    <link rel="stylesheet" href="kit/themes.css?v=38d89cb1">
+    <link rel="stylesheet" href="style.css?v=97e0335c">
     <!-- kit/ and bridge.js load here rather than with the other scripts at the
          end of the body. bridge-core.js decides whether there is a filesystem
          at all, and marks <html class="desktop"> when there is; doing that
@@ -30,6 +35,8 @@
     <script src="kit/modal.js?v=0549bda4"></script>
     <script src="kit/dom.js?v=1d063261"></script>
     <script src="kit/menu.js?v=21cff107"></script>
+    <script src="kit/themes.js?v=b16895dc"></script>
+    <script src="kit/magma-themes-index.js?v=7a3b40b5"></script>
     <script src="bridge.js?v=34c168d5"></script>
     <!-- Immediately after bridge.js and well before core/tier.js, which is the
          only ordering this file has: it stands aside if Tauri already installed
@@ -112,6 +119,17 @@
             <span class="doc-name" id="doc-name"></span>
         </div>
         <div class="header-right">
+            <!-- The EDITOR theme (ui/theme.js): the colours round the canvas,
+                 never the sprite's, which are THEME & REPLACE. The button and
+                 list share .theme-picker: magma-kit closes the list on a press
+                 outside it. -->
+            <span class="theme-picker">
+                <button class="theme-pick" id="themeBtn" type="button" aria-haspopup="listbox"
+                        aria-expanded="false" aria-controls="theme-list"
+                        title="Editor theme, the colours round the canvas (not the sprite's): hover or arrow through the list to preview, click or Enter to keep"></button>
+                <ul class="theme-list" id="theme-list" role="listbox" hidden></ul>
+            </span>
+            <button class="theme-mode" id="themeModeBtn" type="button" title="Dark, light or follow the system">Dark</button>
             <span class="sys-stat" id="dimStat">32&times;32</span>
             <span class="sys-stat" id="frameStat">1 FRAME</span>
         </div>
@@ -704,6 +722,8 @@
     <script src="platform.js?v=93dbb0f4"></script>
     <!-- before editor.js, which encodes the sheet it exports -->
     <script src="png.js?v=65978a7e"></script>
+    <!-- before editor.js, so a remembered editor theme is on before it paints -->
+    <script src="theme.js?v=6d964422"></script>
     <script src="editor.js?v=1858f82f"></script>
     <!-- after editor.js, and before project-ui.js which asks it for the list.
          It seeds itself from the blank sprite the editor has already made. -->

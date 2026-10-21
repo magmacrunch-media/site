@@ -29,6 +29,43 @@
     --chrome-tint-2: rgba(0,245,255,0.35);
 }
 
+/* ── EDITOR THEMES ──
+   The :root block above IS the default editor theme, 'sprite-forge', and is
+   left exactly as it was. Every other magma-themes theme is mapped here, onto
+   the same tokens, only when <html> names something else, so the default
+   cannot drift. bg, text and accent are always supplied; surface, muted and
+   accent2 not always, so the derived tokens fall back to mixes of the three.
+   The sprite is not themed: the canvases draw the frames' own colours and no
+   canvas code reads these tokens. */
+:root:not([data-magma-theme="sprite-forge"]) {
+    --bg:      var(--mt-bg);
+    --surface: var(--mt-surface, color-mix(in srgb, var(--mt-bg) 92%, var(--mt-text)));
+    --panel:   color-mix(in srgb, var(--surface) 94%, var(--mt-text));
+    --border:  color-mix(in srgb, var(--surface) 78%, var(--mt-text));
+    --text:    var(--mt-text);
+    --dim:     var(--mt-muted, color-mix(in srgb, var(--mt-text) 55%, var(--mt-bg)));
+    --accent:  var(--mt-accent);
+    --rose:    var(--mt-accent2, var(--mt-accent));
+    --cyan:    var(--mt-accent);
+}
+/* The shell's scanlines, black at 12%, read as stripes on a pale page. */
+:root:not([data-magma-theme="sprite-forge"])[data-theme-mode="light"] {
+    --scanline: rgba(0, 0, 0, 0.03);
+    /* Text on the --rose highlight (the chosen sprite, an open menu) is
+       --bg, which is dark on the default and on every dark theme but pale on
+       a light one, where it all but vanished into the accent. Unset on the
+       default, so those rules read var(--bg) exactly as they always did. */
+    --on-rose: #ffffff;
+}
+
+/* In the header, so the list opens downward (kit/themes.css opens it upward,
+   for a footer), and above the canvases and the dock. */
+.theme-list {
+    top: calc(100% + 4px);
+    bottom: auto;
+    z-index: 50;
+}
+
 body {
     user-select: none;
     -webkit-user-select: none;
@@ -897,7 +934,7 @@ input[type="file"]::file-selector-button:hover { border-color: var(--dim); }
    same color, so the two read as one shape rather than a button and a box
    that happen to be near each other. */
 .desktop .menu.open .menu-title {
-    color: var(--bg);
+    color: var(--on-rose, var(--bg));
     background: var(--rose);
 }
 
@@ -946,7 +983,7 @@ input[type="file"]::file-selector-button:hover { border-color: var(--dim); }
 .desktop .menu-drop button:hover:not(:disabled) {
     background: var(--rose);
     border-left-color: var(--cyan);
-    color: var(--bg);
+    color: var(--on-rose, var(--bg));
 }
 
 /* Grayed rather than hidden: an Undo that vanishes when the stack is empty
@@ -1107,7 +1144,7 @@ input[type="file"]::file-selector-button:hover { border-color: var(--dim); }
 
 .gm-sprite:hover {
     background: var(--rose);
-    color: var(--bg);
+    color: var(--on-rose, var(--bg));
 }
 
 /* ── SPRITES panel ────────────────────────────────────────
@@ -1140,7 +1177,7 @@ input[type="file"]::file-selector-button:hover { border-color: var(--dim); }
 .sprite-row:hover { color: var(--text); border-left-color: var(--dim); }
 
 .sprite-row.active {
-    color: var(--bg);
+    color: var(--on-rose, var(--bg));
     background: var(--rose);
     border-left-color: var(--cyan);
 }
