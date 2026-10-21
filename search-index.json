@@ -1572,7 +1572,7 @@
     "c": "place",
     "u": "/archive/by-place/twin-maples/ware.html",
     "d": "Twin Maples — Ware",
-    "b": "Twin Maples · ware · magmacrunch media archive › by place › twin maples // Twin Maples // WARE ← back about links personnel photography recordings works Software from magmacrunch, named after Twin Maples. The engine also carries the name of Juanito Thompson’s “Daffodil & Sweet Pea”, and is listed with the rest of Juanito Thompson’s ware . DAFFODIL MORE a C99 heightfield terrain engine. real landscape at 1:1, measured, not invented. engine named after the Daffodil cabin here, the first ground it renders"
+    "b": "Twin Maples · ware · magmacrunch media archive › by place › twin maples // Twin Maples // WARE ← back about links personnel photography recordings works Software from magmacrunch that comes from Twin Maples: a game that starts here, and the engine named after one of its cabins. The engine also carries the name of Juanito Thompson’s “Daffodil & Sweet Pea”, and is listed with the rest of Juanito Thompson’s ware . BLOCK ISLAND SIMULATOR MORE the real island at 1:1, built from lidar, to walk, sail and drive. in development. game you start here, at Twin Maples on Beach Avenue DAFFODIL MORE a C99 he..."
   },
   {
     "t": "Twin Maples · works · magmacrunch media",
@@ -1867,6 +1867,13 @@
     "u": "/ware/backgammon/",
     "d": "neon backgammon for the browser and the terminal",
     "b": "backgammon · magmacrunch media home › ware › video games › backgammon BACKGAMMON neon edition · vs the computer or a friend · doubling cube Backgammon in the arcade's neon edition: a purple-black board, cyan against magenta, pixel-art pieces and CRT scanlines. Play the computer or a friend online with chat, with hitting, the bar, bearing off and a doubling cube. The terminal version plays the same computer opponent. // at the board // neon edition fifteen each, and a doubling cube // where to play // BROWSER ▶ PLAY free, in the arcade , with online play against friends. TERMINAL pipx install m..."
+  },
+  {
+    "t": "block island simulator · magmacrunch media",
+    "c": "tool",
+    "u": "/ware/block-island-simulator/",
+    "d": "the real Block Island at 1:1, built from lidar, to walk, sail and drive. in development",
+    "b": "block island simulator · magmacrunch media home › ware › video games › block island simulator BLOCK ISLAND SIMULATOR the real island, at 1:1 · in development Block Island, Rhode Island, measured rather than designed. The ground is USGS lidar at one metre, so every hill, bluff and pond is where it is, and it is a real 9.6 km on foot from Sandy Point to the Mohegan Bluffs. All 3,240 buildings stand where buildings stand, their footprints, heights and roofs read from the same survey. Both lighthouses light. The sun, the tide and the weather are the real ones for the date you play. Walk it, sail i..."
   },
   {
     "t": "caldera · magmacrunch media",
