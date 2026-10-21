@@ -14,9 +14,11 @@
 (function () {
   'use strict';
 
-  var SONGS_PER_PAGE = 4;
-  var currentPage = 1;
   var selectedId = null;
+  // file -> release id, from songs.json's `release` field. The engine's track
+  // list carries only what playing needs, so the page reads the manifest
+  // itself; the browser has it cached from the engine's own fetch.
+  var releaseOf = {};
   var J = null;
   var unsubscribe = null;
   // What was last written, compared as strings. Comparing against innerHTML
@@ -37,8 +39,6 @@
   var neonLights = document.getElementById('neonLights');
   var songListInner = document.getElementById('songListInner');
   var slPage = document.getElementById('slPage');
-  var prevPageBtn = document.getElementById('prevPageBtn');
-  var nextPageBtn = document.getElementById('nextPageBtn');
   var queueList = document.getElementById('queueList');
 
   function fmtTime(s) {
@@ -54,34 +54,123 @@
     });
   }
 
-  /* ── RENDER ── */
-  function totalPages() {
-    return Math.max(1, Math.ceil(J.tracks().length / SONGS_PER_PAGE));
+  /* ── RELEASES ──
+     Songs grouped under the release they come from, with its cover, in the
+     manifest's order: songs.json keeps each release's songs together, newest
+     release first, so the queue (which plays the manifest in order) runs
+     through an album rather than jumping between artists. Songs with no
+     release share a group at the end. Titles, years and covers come from
+     music/distributed-music/releases.js, the catalogue the streaming page
+     renders, and covers are its 320px thumbnails. */
+  var catalogueBase = new URL('../distributed-music/', location.href);
+
+  function releaseInfo(id) {
+    var list = window.RELEASES || [];
+    for (var i = 0; i < list.length; i++) {
+      if (list[i].id !== id) continue;
+      var r = list[i];
+      var m = /^(.*?)\s*\((\d{4})\)$/.exec(r.title);
+      var art = r.art ? new URL(r.art, catalogueBase).pathname : '';
+      var thumb = art.replace(/(\/assets\/album-art\/)(.+)\.[^./]+$/, function (x, dir, name) {
+        return dir + 'thumbs/' + name.split('/').join('__') + '.jpg';
+      });
+      return { name: m ? m[1] : r.title, year: m ? m[2] : '', artist: r.artist, art: art, thumb: thumb };
+    }
+    return null;
+  }
+
+  function groups() {
+    var out = [];
+    var at = {};
+    J.tracks().forEach(function (t) {
+      var key = releaseOf[t.id] || '';
+      if (!(key in at)) {
+        at[key] = out.length;
+        out.push({ key: key, info: key ? releaseInfo(key) : null, tracks: [] });
+      }
+      out[at[key]].tracks.push(t);
+    });
+    // The no-release group goes last whatever order the manifest is in.
+    out.sort(function (a, b) { return (a.key ? 0 : 1) - (b.key ? 0 : 1); });
+    return out;
+  }
+
+  // The full cover is the fallback if a thumbnail is ever missing; see the
+  // error listener in bind().
+  function coverOf(info) {
+    return info && info.thumb
+      ? '<img class="rg-cover" src="' + esc(info.thumb) + '" alt="" width="56" height="56" loading="lazy"' +
+        (info.thumb !== info.art ? ' data-full="' + esc(info.art) + '"' : '') + '>'
+      : '<div class="rg-cover rg-vinyl" aria-hidden="true"></div>';
+  }
+
+  function buttons(t) {
+    return '<div class="song-btns">' +
+        '<button class="song-btn play" data-action="play" data-id="' + esc(t.id) + '" aria-label="play ' + esc(t.title) + '">&#9654;</button>' +
+        '<button class="song-btn queue" data-action="queue" data-id="' + esc(t.id) + '" aria-label="play ' + esc(t.title) + ' next">+</button>' +
+      '</div>';
+  }
+
+  function rowClass(t, state, extra) {
+    return 'song-item' + (extra || '') + (t.id === state.id ? ' playing' : '') + (t.id === selectedId ? ' selected' : '');
+  }
+
+  /* Most releases here are represented by one song, and a header over a
+     single row doubled the list's length for nothing. One song is one row:
+     the cover, the song, and where it is from. */
+  function singleRow(g, t, state) {
+    var info = g.info;
+    var where = (t.title === info.name ? '' : 'from ' + info.name + ' \u00b7 ') +
+      info.artist + (info.year ? ' \u00b7 ' + info.year : '');
+    return '<section class="release-group single">' +
+        '<div class="' + rowClass(t, state, ' has-cover') + '">' + coverOf(info) +
+          '<div class="song-info">' +
+            '<div class="song-title">' + esc(t.title) + '</div>' +
+            '<div class="song-artist">' + esc(where) + '</div>' +
+          '</div>' + buttons(t) +
+        '</div>' +
+      '</section>';
+  }
+
+  function groupHead(g) {
+    var info = g.info;
+    if (!info) {
+      return '<div class="rg-head">' +
+          '<div class="rg-cover rg-vinyl" aria-hidden="true"></div>' +
+          '<div class="rg-text"><div class="rg-title">other recordings</div>' +
+          '<div class="rg-meta">not on a release</div></div>' +
+        '</div>';
+    }
+    return '<div class="rg-head">' + coverOf(info) +
+        '<div class="rg-text"><div class="rg-title">' + esc(info.name) + '</div>' +
+        '<div class="rg-meta">' + esc(info.artist) + (info.year ? ' \u00b7 ' + info.year : '') + '</div></div>' +
+      '</div>';
   }
 
   function renderSongList(state) {
-    var tracks = J.tracks();
-    var pages = totalPages();
-    if (currentPage > pages) currentPage = pages;
-    var start = (currentPage - 1) * SONGS_PER_PAGE;
-    var end = Math.min(start + SONGS_PER_PAGE, tracks.length);
-    slPage.textContent = currentPage + '/' + pages;
+    var gs = groups();
+    var count = J.tracks().length;
+    var releases = gs.filter(function (g) { return g.key; }).length;
+    slPage.textContent = count + ' songs \u00b7 ' + releases + ' releases';
     var html = '';
-    for (var i = start; i < end; i++) {
-      var t = tracks[i];
-      html +=
-        '<div class="song-item' + (t.id === state.id ? ' playing' : '') + (t.id === selectedId ? ' selected' : '') + '">' +
-          '<span class="song-num">' + String(i + 1).padStart(2, '0') + '</span>' +
-          '<div class="song-info">' +
-            '<div class="song-title">' + esc(t.title) + '</div>' +
-            '<div class="song-artist">' + esc(t.artist) + '</div>' +
-          '</div>' +
-          '<div class="song-btns">' +
-            '<button class="song-btn play" data-action="play" data-id="' + esc(t.id) + '" aria-label="play ' + esc(t.title) + '">&#9654;</button>' +
-            '<button class="song-btn queue" data-action="queue" data-id="' + esc(t.id) + '" aria-label="play ' + esc(t.title) + ' next">+</button>' +
-          '</div>' +
-        '</div>';
-    }
+    gs.forEach(function (g) {
+      if (g.info && g.tracks.length === 1) { html += singleRow(g, g.tracks[0], state); return; }
+      var groupArtist = g.info ? g.info.artist : null;
+      html += '<section class="release-group">' + groupHead(g);
+      g.tracks.forEach(function (t, i) {
+        html +=
+          '<div class="' + rowClass(t, state) + '">' +
+            '<span class="song-num">' + String(i + 1).padStart(2, '0') + '</span>' +
+            '<div class="song-info">' +
+              '<div class="song-title">' + esc(t.title) + '</div>' +
+              // The release header names the artist once; a row repeats it
+              // only where it differs, which is every row of the other group.
+              (t.artist !== groupArtist ? '<div class="song-artist">' + esc(t.artist) + '</div>' : '') +
+            '</div>' + buttons(t) +
+          '</div>';
+      });
+      html += '</section>';
+    });
     if (html !== lastSongs) { songListInner.innerHTML = html; lastSongs = html; }
   }
 
@@ -142,12 +231,14 @@
     playBtn.addEventListener('click', function () { J.toggle(); });
     stopBtn.addEventListener('click', function () { J.stop(); });
 
-    prevPageBtn.addEventListener('click', function () {
-      if (currentPage > 1) { currentPage--; renderSongList(J.state()); }
-    });
-    nextPageBtn.addEventListener('click', function () {
-      if (currentPage < totalPages()) { currentPage++; renderSongList(J.state()); }
-    });
+    // A missing thumbnail falls back to the full cover. Delegated, because
+    // the list is rebuilt, and error does not bubble, hence the capture.
+    songListInner.addEventListener('error', function (e) {
+      var img = e.target;
+      if (img.tagName === 'IMG' && img.dataset.full && img.src.indexOf(img.dataset.full) < 0) {
+        img.src = img.dataset.full;
+      }
+    }, true);
 
     songListInner.addEventListener('click', function (e) {
       var btn = e.target.closest('[data-action]');
@@ -172,11 +263,12 @@
      loading its core and the manifest, so everything waits on ready. */
   function start() {
     J = window.MCJukebox;
-    J.ready.then(function () {
+    var manifest = fetch('songs.json')
+      .then(function (r) { return r.ok ? r.json() : []; })
+      .then(function (list) { list.forEach(function (x) { if (x.release) releaseOf[x.file] = x.release; }); })
+      .catch(function () { /* ungrouped is still a working jukebox */ });
+    Promise.all([J.ready, manifest]).then(function () {
       var s = J.state();
-      // Open on the page holding what is playing, not always page one.
-      var at = s.id ? J.tracks().findIndex(function (t) { return t.id === s.id; }) : -1;
-      if (at >= 0) currentPage = Math.floor(at / SONGS_PER_PAGE) + 1;
       bind();
       render(s);
       unsubscribe = J.subscribe(render);

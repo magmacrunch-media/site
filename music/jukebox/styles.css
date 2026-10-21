@@ -390,26 +390,6 @@
             letter-spacing: 0.15em;
         }
 
-        .sl-nav {
-            display: flex;
-            gap: 8px;
-        }
-
-        .sl-nav-btn {
-            font-family: 'Press Start 2P', monospace;
-            font-size: 10px;
-            color: var(--j-purple);
-            background: var(--mc-surface);
-            border: 2px solid var(--j-purple);
-            padding: 4px 8px;
-            cursor: pointer;
-        }
-
-        .sl-nav-btn:hover {
-            background: var(--j-purple);
-            color: #fff;
-        }
-
         .sl-page {
             font-family: 'Press Start 2P', monospace;
             font-size: 8px;
@@ -417,19 +397,86 @@
             padding: 4px 8px;
         }
 
-        /* Paged four at a time, so no scroll box: the fixed height cut the
-           fourth song in half and put a white browser scrollbar inside the
-           cabinet. */
+        /* No scroll box: a fixed height cut songs in half and put a white
+           browser scrollbar inside the cabinet. The list is as long as the
+           releases in it. */
         .song-list-inner {
             padding: 8px;
+        }
+
+        /* ── RELEASE GROUPS ──
+           Each release under its cover, like the title strips on a real
+           jukebox's selector: the songs follow as rows, numbered within it. */
+        .release-group + .release-group {
+            margin-top: 18px;
+            padding-top: 14px;
+            border-top: 2px dashed var(--j-border);
+        }
+        .rg-head {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 4px 4px 10px;
+        }
+        .rg-cover {
+            width: 56px;
+            height: 56px;
+            flex-shrink: 0;
+            object-fit: cover;
+            display: block;
+            border: 2px solid var(--j-gold);
+            box-shadow: 0 0 10px rgba(255, 173, 31, 0.25);
+            background: var(--j-panel);
+        }
+        /* No release, so no cover: a record instead of a guessed sleeve. */
+        .rg-vinyl {
+            border-radius: 50%;
+            border-color: var(--j-purple);
+            box-shadow: none;
+            background:
+                radial-gradient(circle, var(--j-pink) 0 14%, #111 15% 22%, transparent 23%),
+                repeating-radial-gradient(circle, #1a1a1a 0 2px, #0b0b0b 2px 4px);
+        }
+        .rg-text { min-width: 0; }
+        /* A one-song release: the cover sits in the row itself. */
+        .song-item.has-cover .rg-cover {
+            width: 44px;
+            height: 44px;
+            margin-right: 14px;
+        }
+        .release-group.single + .release-group.single {
+            margin-top: 0;
+            padding-top: 0;
+            border-top: 0;
+        }
+        /* On a phone the cover and two buttons left a title about 100px, so
+           names broke over five lines: the buttons take their own line. */
+        @media (max-width: 520px) {
+            .song-item { flex-wrap: wrap; }
+            .song-info { flex: 1 1 0; min-width: 0; }
+            .song-btns { width: 100%; justify-content: flex-end; margin-top: 8px; }
+            .song-list-header { flex-wrap: wrap; gap: 6px; }
+        }
+        .rg-title {
+            font-family: 'Press Start 2P', monospace;
+            font-size: 10px;
+            line-height: 1.6;
+            color: var(--j-gold);
+            letter-spacing: 0.05em;
+        }
+        .rg-meta {
+            font-family: 'Courier Prime', monospace;
+            font-size: 12px;
+            color: var(--dim);
+            margin-top: 4px;
         }
 
         .song-item {
             display: flex;
             align-items: center;
-            padding: 12px;
+            padding: 9px 12px;
             border: 3px solid var(--mc-mount);
-            margin-bottom: 6px;
+            margin-bottom: 5px;
             cursor: pointer;
             transition: all 0.15s;
         }
