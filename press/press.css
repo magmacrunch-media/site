@@ -46,8 +46,8 @@
 
         .page-subtitle {
             font-family: 'Press Start 2P', monospace;
-            font-size: 7px;
-            color: #666;
+            font-size: 8px;
+            color: #8a8270;
             letter-spacing: 0.12em;
             margin-bottom: 32px;
             animation: fadeUp 0.5s 0.05s ease both;
@@ -65,7 +65,7 @@
             font-family: 'Courier Prime', monospace;
             font-size: 14px;
             line-height: 1.8;
-            color: #a89f88;
+            color: #c8c0a8;
         }
 
         .press-intro a {
@@ -160,6 +160,16 @@
             letter-spacing: 0.06em;
             line-height: 1.7;
             margin-bottom: 5px;
+        }
+
+        /* a sentence-length title is unreadable in the pixel face */
+        .piece-card-title.long {
+            font-family: 'Courier Prime', monospace;
+            font-size: 15px;
+            font-weight: 700;
+            letter-spacing: 0;
+            line-height: 1.45;
+            margin-bottom: 8px;
         }
 
         .piece-card-meta {
