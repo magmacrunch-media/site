@@ -47,7 +47,8 @@
         var s = summary && summary[label.mbid];
         var est = s && s.begin ? 'est ' + s.begin.slice(0, 4) : '';
         var st = stats(label, summary);
-        return '<a href="' + label.slug + '/" class="fam-card ' + (cls || '') + '">' +
+        // l-<slug> lets the index give each card its own label's colours.
+        return '<a href="' + label.slug + '/" class="fam-card l-' + label.slug + ' ' + (cls || '') + '">' +
             '<span class="fam-name">' + esc(label.name.toUpperCase()) + '</span>' +
             '<span class="fam-kind">' + esc(label.kind) + (est ? ' \u00b7 ' + est : '') + '</span>' +
             '<span class="fam-blurb">' + esc(label.blurb) + '</span>' +

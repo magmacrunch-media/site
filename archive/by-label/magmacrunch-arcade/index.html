@@ -25,6 +25,29 @@
             align-items: center;
             padding: 80px 20px 60px;
         }
+        /* Phosphor: phosphor green, the site's cereal green on a CRT.
+           The ultraviolet ramp's saturation and lightness at 135 degrees,
+           set over label-theme.css the way the archive indexes set theirs
+           over contributor-theme.css. Kept in magma-themes as `phosphor`. */
+        body.lbl-page {
+            --lbl-void:      #00290a;
+            --lbl-darkest:   #004712;
+            --lbl-dark:      #096d22;
+            --lbl-mid-dark:  #189a39;
+            --lbl-deep:      #1cb041;
+            --lbl-bright:    #2bbf50;
+            --lbl-muted:     #85db9b;
+            --lbl-violet:    #4fde73;
+            --lbl-light:     #80ff9f;
+            --lbl-pale:      #a8ffbe;
+            background:      #00290a;
+            /* label-theme.css hard-codes these on body.lbl-page as purple. */
+            --nav-brand-glow: rgba(79,222,115,0.7);
+            --nav-glow:       rgba(24,154,57,0.4);
+        }
+        body.lbl-page .contrib-name {
+            text-shadow: 2px 2px 0px var(--lbl-darkest), 0 0 20px rgba(168,255,190,0.5);
+        }
     </style>
 </head>
 <body class="lbl-page">

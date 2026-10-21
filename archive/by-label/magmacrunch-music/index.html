@@ -25,6 +25,29 @@
             align-items: center;
             padding: 80px 20px 60px;
         }
+        /* Ink: ink blue, for the songs on paper.
+           The ultraviolet ramp's saturation and lightness at 222 degrees,
+           set over label-theme.css the way the archive indexes set theirs
+           over contributor-theme.css. Kept in magma-themes as `ink`. */
+        body.lbl-page {
+            --lbl-void:      #000c29;
+            --lbl-darkest:   #001547;
+            --lbl-dark:      #09276d;
+            --lbl-mid-dark:  #183f9a;
+            --lbl-deep:      #1c48b0;
+            --lbl-bright:    #2b58bf;
+            --lbl-muted:     #859fdb;
+            --lbl-violet:    #4f7ade;
+            --lbl-light:     #80a6ff;
+            --lbl-pale:      #a8c2ff;
+            background:      #000c29;
+            /* label-theme.css hard-codes these on body.lbl-page as purple. */
+            --nav-brand-glow: rgba(79,122,222,0.7);
+            --nav-glow:       rgba(24,63,154,0.4);
+        }
+        body.lbl-page .contrib-name {
+            text-shadow: 2px 2px 0px var(--lbl-darkest), 0 0 20px rgba(168,194,255,0.5);
+        }
     </style>
 </head>
 <body class="lbl-page">
