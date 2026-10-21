@@ -25,6 +25,47 @@
     --panel-w:   240px;
 }
 
+/* ── THEMES ──
+   The :root block above IS the default theme, 'gatefold', and it is left
+   exactly as it was. Every other theme is mapped here, onto the same tokens,
+   only when <html> names something else, so the default cannot drift from
+   what this app has always looked like. magma-themes supplies bg, text and
+   accent always; surface, muted and accent2 not always, so each derived token
+   falls back to a mix of the ones that are always there.
+   The canvas is not themed: the cover is drawn from the document's colours,
+   not from these tokens. */
+:root:not([data-magma-theme="gatefold"]) {
+    --bg:      var(--mt-bg);
+    --surface: var(--mt-surface, color-mix(in srgb, var(--mt-bg) 92%, var(--mt-text)));
+    --panel:   color-mix(in srgb, var(--surface) 94%, var(--mt-text));
+    --border:  color-mix(in srgb, var(--surface) 78%, var(--mt-text));
+    --text:    var(--mt-text);
+    --dim:     var(--mt-muted, color-mix(in srgb, var(--mt-text) 55%, var(--mt-bg)));
+    --accent:  var(--mt-accent);
+    --rose:    var(--mt-accent2, var(--mt-accent));
+    --cyan:    var(--mt-accent);
+}
+
+/* Two colours that are not tokens on the default, followed here only for the
+   other themes so the default stays byte-for-byte what it was. The empty-canvas
+   hint's chip is a dark glass that suits a dark theme and buries the text of a
+   light one, and the shell's scanlines, black at 12%, read as stripes on a
+   pale page. */
+:root:not([data-magma-theme="gatefold"]) .canvas-hint {
+    background: color-mix(in srgb, var(--bg) 88%, transparent);
+}
+:root:not([data-magma-theme="gatefold"])[data-theme-mode="light"] {
+    --scanline: rgba(0, 0, 0, 0.03);
+}
+
+/* The picker sits in the header, so its list opens downward (kit/themes.css
+   opens it upward, for a footer), and above the canvas and the panels. */
+.theme-list {
+    top: calc(100% + 4px);
+    bottom: auto;
+    z-index: 50;
+}
+
 /* Shell defaults already match this app, so there is nothing to override.
    The canvas tools suppress text selection; media-search does not, which is
    why the shell leaves it to each app. */

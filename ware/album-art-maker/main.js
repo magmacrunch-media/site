@@ -11,6 +11,9 @@
     const App = window.Gatefold;
     const $ = (id) => document.getElementById(id);
 
+    /* First, so a remembered theme is on the page before anything paints. */
+    App.theme.init();
+
     /* The footer carries v1.9.0 in the markup because the web build has no
        binary to ask. On the desktop the binary is the truth. */
     const slot = $('app-version');
