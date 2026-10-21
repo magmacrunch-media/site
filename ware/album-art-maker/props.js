@@ -211,21 +211,28 @@
             $('rotation').value = rot;
             $('rotationVal').textContent = rot + '°';
 
-            const wl = el.wavelength || 5;
-            $('wavelength').value = wl;
-            $('wavelengthVal').textContent = wl;
+            /* ONLY A WAVE SPEAKS FOR THE WAVE CONTROLS. These sliders are
+               also what currentStyle() reads for the NEXT wave drawn, and a
+               rect has no wavelength, steps or duty: syncing one wrote the
+               fallbacks over whatever had been set, so selecting any shape
+               quietly reset the next wave to 5 / 5 / 20%. */
+            if (App.element.isWave(el.type)) {
+                const wl = el.wavelength || 5;
+                $('wavelength').value = wl;
+                $('wavelengthVal').textContent = wl;
 
-            const mode = el.waveMode || 'filled';
-            $('waveFilledBtn').classList.toggle('active', mode === 'filled');
-            $('waveOpenBtn').classList.toggle('active', mode === 'open');
+                const mode = el.waveMode || 'filled';
+                $('waveFilledBtn').classList.toggle('active', mode === 'filled');
+                $('waveOpenBtn').classList.toggle('active', mode === 'open');
 
-            const steps = el.steps || 5;
-            $('stepCount').value = steps;
-            $('stepCountVal').textContent = steps;
+                const steps = el.steps || 5;
+                $('stepCount').value = steps;
+                $('stepCountVal').textContent = steps;
 
-            const duty = (el.duty || 0.2) * 100;
-            $('dutyCycle').value = duty;
-            $('dutyCycleVal').textContent = Math.round(duty) + '%';
+                const duty = (el.duty || 0.2) * 100;
+                $('dutyCycle').value = duty;
+                $('dutyCycleVal').textContent = Math.round(duty) + '%';
+            }
 
             const op = el.opacity != null ? el.opacity : 100;
             $('opacity').value = op;

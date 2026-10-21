@@ -100,7 +100,13 @@
     function snapIn(b, m, tolerance) {
         const empty = { dx: 0, dy: 0, lines: [] };
         if (!b || !m || !(tolerance > 0)) return empty;
-        const box = at(m, b.x + b.w / 2, b.y + b.h / 2) || primary(m);
+        /* Clamped into the trim first. at() says the bleed is outside every
+           panel, which is right for a point, but an element centred in the
+           bleed still overhangs one panel, and falling back to primary()
+           snapped it to the front cover instead, or to nothing. */
+        const cx = Math.min(Math.max(b.x + b.w / 2, 0), m.trim.w);
+        const cy = Math.min(Math.max(b.y + b.h / 2, 0), m.trim.h);
+        const box = at(m, cx, cy) || primary(m);
         if (!box) return empty;
         return App.guides.snapToBox(b, box, tolerance);
     }
@@ -149,7 +155,13 @@
             const lo = along === 'x' ? box.x : box.y;
             const len = along === 'x' ? box.w : box.h;
             if (lo > NEAR) out.push({ kind: 'fold', axis: along, at: lo });
-            if (safe > 0) {
+            /* A PANEL NARROWER THAN TWO MARGINS HAS NO SAFE AREA, and its
+               two lines would cross over into the panels either side: the
+               7in gatefold's 56-dot spine against a 75-dot margin drew them
+               19 dots inside each cover, reading as a safe boundary inside
+               the covers' own unsafe band. Exactly two margins (the CD tray's
+               spines) is one line at the centre, which is true, so it stays. */
+            if (safe > 0 && len >= 2 * safe - NEAR) {
                 out.push({ kind: 'safe', axis: along, at: lo + safe });
                 out.push({ kind: 'safe', axis: along, at: lo + len - safe });
             }

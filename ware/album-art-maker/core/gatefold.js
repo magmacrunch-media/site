@@ -371,6 +371,25 @@
     function present(v) { return v !== undefined && v !== null; }
 
     /**
+     * Object.assign for a parsed file: own keys only, and never `__proto__`.
+     *
+     * JSON.parse makes "__proto__" an ordinary OWN key, and Object.assign
+     * then SETS it, which swaps the target's prototype instead of copying a
+     * field. A size whose "__proto__" held panels drew ghost folds that were
+     * on no own key, so they vanished on the next save; an art entry under
+     * that key was held and then never written back. Returns whether one was
+     * skipped, so the caller can count it.
+     */
+    function assignOwn(target, src) {
+        let skipped = false;
+        for (const key of Object.keys(src)) {
+            if (key === '__proto__') { skipped = true; continue; }
+            target[key] = src[key];
+        }
+        return skipped;
+    }
+
+    /**
      * The number a file meant, or null.
      *
      * NOT `Number(v)`, and that is the whole point of it being a function.
@@ -410,6 +429,11 @@
      * && s.trim.w) || DEFAULT` turns 0 into 1024 and leaves -500 and 'big'
      * standing, which become a canvas of 1 and a canvas of NaN.
      */
+    /** One side of the trim the file gave, unrepaired, for the panel sum. */
+    function trim0(raw, side) {
+        return raw.trim && typeof raw.trim === 'object' ? raw.trim[side] : undefined;
+    }
+
     function repairSize(raw, report) {
         const next = defaultSize();
         const note = () => { if (report) report.size = true; };
@@ -419,7 +443,34 @@
             return next;
         }
 
-        Object.assign(next, raw);
+        if (assignOwn(next, raw)) note();
+
+        /* PANELS ARE VALIDATED, NOT TRUSTED. metrics() multiplies each len
+           straight through, so one panel of len "abc" made the front panel
+           NaN wide and every image imported onto it landed at NaN, invisible,
+           and was saved as null. A set that is wrong anywhere is dropped
+           whole, because a partial set does not add up to the card: the
+           document becomes a plain trim, which is honest, and SIZE RESET says
+           so. */
+        if (present(raw.panels) || present(raw.panelAxis)) {
+            const list = Array.isArray(raw.panels) ? raw.panels : null;
+            const axis = raw.panelAxis === 'x' || raw.panelAxis === 'y' ? raw.panelAxis : null;
+            const good = !!list && list.length > 0 && !!axis && list.every(
+                (p) => p && typeof p === 'object' && !Array.isArray(p)
+                    && typeof p.name === 'string' && finite(p.len) !== null && finite(p.len) > 0);
+            const total = good ? list.reduce((s, p) => s + finite(p.len), 0) : 0;
+            const along = good ? finite(axis === 'x' ? trim0(raw, 'w') : trim0(raw, 'h')) : null;
+            const sums = good && along !== null && Math.abs(total - along) <= along * 1e-6;
+            if (sums) {
+                next.panels = list.map((p) => ({ name: p.name, len: finite(p.len) }));
+                next.panelAxis = axis;
+            } else {
+                const empty = Array.isArray(raw.panels) && raw.panels.length === 0;
+                if (!empty) note();
+                delete next.panels;
+                delete next.panelAxis;
+            }
+        }
 
         /* metrics() already reads an unrecognised unit as 'px', so this changes
            no geometry. It is here because isSquarePx() tests `unit === 'px'`
@@ -502,7 +553,9 @@
            thing it is repairing and change nothing at all. Unknown keys are
            KEPT, as element.create() keeps them: a file ahead of this build is
            not a file to quietly strip. */
-        const el = Object.assign({}, defaults, raw, { type: raw.type });
+        const el = Object.assign({}, defaults);
+        let touched = assignOwn(el, raw);
+        el.type = raw.type;
         /* The id is decided by reseatIds() against the whole list, so carry
            what the FILE said rather than the default 0. Absent and 0 are
            different answers there: an element that never had an id is simply
@@ -515,8 +568,6 @@
            same number 10 does, and reporting it would make an ordinary file
            announce a repair. Only a value that could not be used at all, or
            one a bound actually moved, is something the user lost. */
-        let touched = false;
-
         /* Read off defaultsFor() rather than a list written out here, so a
            numeric field added to that table is covered the day it lands. */
         for (const key of Object.keys(defaults)) {
@@ -532,6 +583,44 @@
                default stands and there is nothing to report. */
             if (present(el[key])) touched = true;
             el[key] = defaults[key];
+        }
+
+        /* THE STRING FIELDS, the same way round. The sweep above only ever
+           looked at numbers, so `text: 5` loaded unremarked and then threw
+           from the layers panel on the first render, before the panels had
+           been told the document had changed: the app stayed wedged until
+           NEW. text, font, name and the like are read off defaultsFor() as
+           well. fill and stroke are colours and have their own rule below;
+           src and clipartId default to null and are checked once the art is
+           known. */
+        for (const key of Object.keys(defaults)) {
+            if (typeof defaults[key] !== 'string' || key === 'fill' || key === 'stroke' || key === 'type') continue;
+            if (typeof el[key] === 'string') continue;
+            if (present(el[key])) touched = true;
+            el[key] = defaults[key];
+        }
+        if (App.element.isWave(el.type) && el.waveMode !== 'filled' && el.waveMode !== 'open') {
+            touched = true;
+            el.waveMode = defaults.waveMode;
+        }
+
+        /* Opacity is a percentage. Below 0 the canvas ignores the alpha and
+           draws the element fully opaque, which reads as the opposite of
+           what the file says. */
+        const opacity = Math.max(0, Math.min(100, el.opacity));
+        if (opacity !== el.opacity) touched = true;
+        el.opacity = opacity;
+
+        /* An image's aspect ratio drives every corner drag, and the sweep
+           only asked that it be a number: 1e-6 turned one drag into an image
+           120 million units tall, and -1 a negative height. Out of range, it
+           is put back from the box it sits in. */
+        if (el.type === 'image') {
+            const ar = el.aspectRatio;
+            if (!(ar >= 1e-4 && ar <= 1e4)) {
+                touched = true;
+                el.aspectRatio = el.w > 0 && el.h > 0 ? el.w / el.h : 1;
+            }
         }
 
         /* Geometry only. The bound is about where the element SITS, so it must
@@ -552,7 +641,8 @@
            isValidHex. */
         for (const key of ['fill', 'stroke']) {
             const hex = App.palette.normalizeHex(el[key]);
-            if (hex === null) touched = true;
+            /* null is absent, as it is for every field above, not damage. */
+            if (hex === null && present(el[key])) touched = true;
             el[key] = hex === null ? defaults[key] : hex;
         }
 
@@ -581,15 +671,18 @@
      * it, and the two together are what make the id reliable.
      */
     function reseatIds(list, report) {
+        /* Usable means a whole number from 1 to element.MAX_ID. A huge id was
+           read as the maximum, and ++max on 1e300 is 1e300 again, so the
+           reseat handed a colliding element the same id it already had. */
+        const usable = (v) => {
+            const n = finite(v);
+            return n !== null && n >= 1 && n <= App.element.MAX_ID ? Math.floor(n) : 0;
+        };
         let max = 0;
-        for (const el of list) {
-            const n = finite(el.id);
-            if (n !== null && n > max) max = Math.floor(n);
-        }
+        for (const el of list) max = Math.max(max, usable(el.id));
         const seen = Object.create(null);
         for (const el of list) {
-            const n = finite(el.id);
-            const id = n !== null && n > 0 ? Math.floor(n) : 0;
+            const id = usable(el.id);
             const next = (!id || seen[id]) ? ++max : id;
             /* Against `id` rather than `el.id`, so a file holding "7" is read
                as 7 and reported as nothing, while a genuine collision counts.
@@ -625,6 +718,70 @@
             else if (report) report.dropped++;
         }
         return reseatIds(out, report);
+    }
+
+    /**
+     * The art map, made safe for MagmaKit.artstore before it adopts it.
+     *
+     * THE KIT SEEDS ITS REF COUNTER FROM THE LARGEST imgN IT IS GIVEN, and
+     * a file can say img9007199254740993. Past 2^53 `'img' + (++seq)` stops
+     * advancing, so every later import got the same ref and register()
+     * overwrote the earlier image: two elements, one picture, and the first
+     * picture gone at the next save. The proper fix is in the kit, which is
+     * vendored; this keeps a file from reaching it. A ref the counter could
+     * not count past is renamed to a fresh one, and the elements pointing at
+     * it are pointed at the new name, so nothing is lost and the rename is
+     * counted as an id.
+     *
+     * An entry with no payload is left out, as adopt() would leave it out
+     * silently; dropUnresolved() then counts the elements that pointed at it.
+     */
+    function repairArt(raw, elements, report) {
+        const out = {};
+        if (!raw || typeof raw !== 'object' || Array.isArray(raw)) return out;
+        const refIndex = (ref) => {
+            const m = /^img([0-9]{1,9})$/.exec(ref);
+            return m ? Number(m[1]) : 0;
+        };
+        let max = 0;
+        for (const ref of Object.keys(raw)) max = Math.max(max, refIndex(ref));
+        const renamed = Object.create(null);
+        for (const ref of Object.keys(raw)) {
+            const entry = raw[ref];
+            if (ref === '__proto__') continue;
+            if (!entry || typeof entry !== 'object' || typeof entry.payload !== 'string' || !entry.payload) continue;
+            let key = ref;
+            if (!refIndex(ref)) {
+                key = 'img' + (++max);
+                renamed[ref] = key;
+                if (report) report.ids++;
+            }
+            out[key] = entry;
+        }
+        for (const el of elements) {
+            if (el.type === 'image' && typeof el.src === 'string' && renamed[el.src]) el.src = renamed[el.src];
+        }
+        return out;
+    }
+
+    /**
+     * Drop the elements that would draw nothing and still catch clicks.
+     *
+     * An image whose art is not in the file, or clip art this build has no
+     * icon for, is the "invisible AND selectable" shape this file's header
+     * names: listed in the layers panel, hit by every click, drawn as
+     * nothing. It loaded with no notice at all. Run after the art is
+     * adopted, because only then is it known what the store holds.
+     */
+    function dropUnresolved(elements, report) {
+        const icons = App.clipart ? App.clipart.getIconIds() : null;
+        return elements.filter((el) => {
+            let ok = true;
+            if (el.type === 'image') ok = typeof el.src === 'string' && App.artstore.has(el.src);
+            else if (el.type === 'clipart' && icons) ok = icons.indexOf(el.clipartId) !== -1;
+            if (!ok && report) report.dropped++;
+            return ok;
+        });
     }
 
     /* ── deserialize ────────────────────────────────────── */
@@ -720,7 +877,8 @@
             next.name = 'untitled';
         }
 
-        App.artstore.adopt(d.art);
+        App.artstore.adopt(repairArt(d.art, next.elements, report));
+        next.elements = dropUnresolved(next.elements, report);
         App.element.seedIds(next.elements);
 
         doc = next;

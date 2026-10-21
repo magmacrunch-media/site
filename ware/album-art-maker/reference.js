@@ -35,10 +35,16 @@
     function sampleAt(e) {
         if (!image) return null;
         const r = canvas.getBoundingClientRect();
-        const x = Math.floor((e.clientX - r.left) * (canvas.width / r.width));
-        const y = Math.floor((e.clientY - r.top) * (canvas.height / r.height));
+        /* Multiplied before dividing. width / r.width first loses the last
+           bit, so a click exactly on a pixel boundary (107 of 214 on a
+           4-pixel image) floored to the pixel before it. */
+        const x = Math.floor((e.clientX - r.left) * canvas.width / r.width);
+        const y = Math.floor((e.clientY - r.top) * canvas.height / r.height);
         if (x < 0 || x >= canvas.width || y < 0 || y >= canvas.height) return null;
         const px = ctx.getImageData(x, y, 1, 1).data;
+        /* A transparent pixel has no colour. A canvas stores one as rgb 0,
+           so it used to pick black. */
+        if (px[3] === 0) return null;
         return App.palette.rgbToHex(px[0], px[1], px[2]);
     }
 

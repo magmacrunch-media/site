@@ -94,8 +94,15 @@
     $('exportBtn').addEventListener('click', () => App.export.exportPNG());
     App.session.registerAction('file:export', () => App.export.exportPNG());
 
+    /* What the fill controls held before the eyedropper started previewing.
+       Leaving used to restore from $('fillColor').value, which the preview
+       had just overwritten, so a hover that never clicked changed the fill
+       the next shape was drawn in. */
+    let beforePreview = null;
+
     App.reference.init({
         onSample: (color) => {
+            beforePreview = null;   // a click commits; nothing to put back
             $('fillColor').value = color;
             $('fillHex').value = color;
             $('noFillBtn').classList.remove('active');
@@ -111,11 +118,18 @@
         },
         onPreview: (color) => {
             // A preview only, never applied to the element. Null means the
-            // cursor left the strip, so put back what is actually selected.
-            const el = App.session.selectedElement();
-            const shown = color || (el && el.fill !== 'none' ? el.fill : $('fillColor').value);
-            $('fillColor').value = shown;
-            $('fillHex').value = shown;
+            // cursor left the strip, so put back what was there before.
+            if (color) {
+                if (!beforePreview) beforePreview = [$('fillColor').value, $('fillHex').value];
+                $('fillColor').value = color;
+                $('fillHex').value = color;
+                return;
+            }
+            if (beforePreview) {
+                $('fillColor').value = beforePreview[0];
+                $('fillHex').value = beforePreview[1];
+                beforePreview = null;
+            }
         },
     });
 

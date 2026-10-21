@@ -116,6 +116,15 @@
         const right = left + m.trim.w;
         const bottom = top + m.trim.h;
 
+        /* THE FAR MARKS START AT THE ROUNDED SURFACE EDGE when that is
+           further out. The surface is a whole number of dots, rounded UP, so
+           on a JP0 the bottom bleed edge is 1312.5 and the surface ends at
+           1313: a mark starting at the true edge half-covered the artwork's
+           last row of pixels. The near side needs nothing, because the
+           artwork starts exactly at g. */
+        const farX = Math.max(right + off, g + m.surface.w);
+        const farY = Math.max(bottom + off, g + m.surface.h);
+
         const out = [];
         const mark = (kind, ax, ay, bx, by) =>
             out.push({ kind: kind, x1: ax, y1: ay, x2: bx, y2: by });
@@ -125,11 +134,11 @@
            locates a line, not a point. */
         for (const y of [top, bottom]) {
             mark('crop', left - off - len, y, left - off, y);
-            mark('crop', right + off, y, right + off + len, y);
+            mark('crop', farX, y, farX + len, y);
         }
         for (const x of [left, right]) {
             mark('crop', x, top - off - len, x, top - off);
-            mark('crop', x, bottom + off, x, bottom + off + len);
+            mark('crop', x, farY, x, farY + len);
         }
 
         /* A tick on both sides of every internal fold, so the card can be
@@ -142,11 +151,11 @@
             if (along === 'y') {
                 const y = top + p.at;
                 mark('fold', left - off - len, y, left - off, y);
-                mark('fold', right + off, y, right + off + len, y);
+                mark('fold', farX, y, farX + len, y);
             } else {
                 const x = left + p.at;
                 mark('fold', x, top - off - len, x, top - off);
-                mark('fold', x, bottom + off, x, bottom + off + len);
+                mark('fold', x, farY, x, farY + len);
             }
         }
 

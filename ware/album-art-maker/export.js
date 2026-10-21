@@ -170,6 +170,14 @@
     }
 
     async function exportPNG() {
+        /* NOT MID-GESTURE. A shape being dragged out is already in the
+           document so that it draws, and a move in progress has the element
+           at an unfinished place, so Ctrl+E with the button held exported
+           both, including a shape the Escape that followed then took away. */
+        if (App.tools && App.tools.busy && App.tools.busy()) {
+            if (window.Toast) Toast.show('FINISH THE DRAG, THEN EXPORT');
+            return null;
+        }
         const doc = App.gatefold.get();
         const name = filename();
 

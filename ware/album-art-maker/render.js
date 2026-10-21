@@ -201,10 +201,19 @@
 
         for (const [px, py] of points) ctx.lineTo(px, py);
 
-        if (!isOpen) {
-            ctx.lineTo(el.x + el.w, el.y + el.h);
-            ctx.closePath();
+        if (isOpen) {
+            /* Stroked only. fill() closes an open path with a straight chord
+               from the last point to the first, so an OPEN wave with a fill
+               colour painted the lobes between the wave and that chord. */
+            if (hasStroke(el)) {
+                ctx.strokeStyle = el.stroke;
+                ctx.lineWidth = el.strokeWidth;
+                ctx.stroke();
+            }
+            return;
         }
+        ctx.lineTo(el.x + el.w, el.y + el.h);
+        ctx.closePath();
         fillOrStroke(ctx, el);
     }
 
@@ -325,6 +334,16 @@
     function drawElement(ctx, el, measure) {
         const fn = DRAW[el.type];
         if (!fn || el.visible === false) return;
+        /* AN ELEMENT BEING DRAGGED OUT UP OR LEFT IS INSIDE OUT until the
+           mouse is released, when tools.js normalizes it. Drawn as stored, a
+           wave ran its phase backwards and closed its fill along the top, and
+           the triangle, arrow and polygon shapes were flipped, so the preview
+           jumped on release. Drawing the normalized twin makes the preview
+           the shape that will be committed. A line is exempt, as it is from
+           normalize: its sign is its direction. */
+        if (el.type !== 'line' && (el.w < 0 || el.h < 0)) {
+            el = App.element.normalize(Object.assign({}, el));
+        }
         ctx.save();
         if (el.opacity != null && el.opacity < 100) ctx.globalAlpha = el.opacity / 100;
         applyRotation(ctx, el, App.geometry.bounds(el, measure));

@@ -96,13 +96,20 @@
        bug, one level up, that artstore.adopt() re-seeds against. */
     let seq = 0;
 
+    /* THE LARGEST ID THIS APP WILL USE. Past 2^53 `++seq` returns the same
+       number, so a file holding id 1e300 gave every element created after it
+       that id too, and Delete, which removes by id, took all of them at once.
+       Anything above this is not an id somebody needs; gatefold.js reseats it
+       on load, and seedIds below will not seed from it. */
+    const MAX_ID = 1e9;
+
     function nextId() { return ++seq; }
 
     function seedIds(elements) {
         seq = 0;
         for (const el of elements || []) {
             const n = Number(el && el.id);
-            if (isFinite(n) && n > seq) seq = n;
+            if (isFinite(n) && n > seq && n <= MAX_ID) seq = n;
         }
         return seq;
     }
@@ -147,7 +154,10 @@
     /** A label for the layers panel when the element has no name of its own. */
     function describe(el) {
         if (!el) return '';
-        if (el.type === 'text') return (el.text || '').split('\n')[0].slice(0, 32);
+        /* String(), because a hand-written file can hold any JSON value
+           here, and .split on a number threw from inside the layers panel,
+           which took every later render down with it. */
+        if (el.type === 'text') return String(el.text ?? '').split('\n')[0].slice(0, 32);
         return '';
     }
 
@@ -164,6 +174,7 @@
         normalize: normalize,
         describe: describe,
         nextId: nextId,
+        MAX_ID: MAX_ID,
         seedIds: seedIds,
         resetIds: resetIds,
     };

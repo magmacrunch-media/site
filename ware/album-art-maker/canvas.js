@@ -49,6 +49,14 @@
         if (document.fonts && document.fonts.ready) {
             document.fonts.ready.then(function () { schedule(); }).catch(function () {});
         }
+        /* And again whenever a face finishes later. fonts.ready has already
+           resolved by the time a text element first asks for, say, Oswald, so
+           that face loaded and the canvas went on showing the fallback, with
+           the hit box and selection measured in it, while the export used
+           the real one. */
+        if (document.fonts && document.fonts.addEventListener) {
+            document.fonts.addEventListener('loadingdone', function () { schedule(); });
+        }
     }
 
     function element() { return canvas; }

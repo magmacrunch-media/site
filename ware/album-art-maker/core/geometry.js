@@ -409,18 +409,29 @@
             return { x: x, y: y, w: w, h: h };
         }
 
+        /* x and y come from the CLAMPED size, measured back from the edge
+           that must not move. They used to be ob.x + dx, unclamped, so a tl,
+           tr or bl handle dragged past the opposite edge stopped shrinking at
+           MIN_SIZE and then carried the whole box along with the cursor. br
+           never had the bug because it moves no origin. */
+        const right = ob.x + ob.w;
+        const bottom = ob.y + ob.h;
         switch (handle) {
             case 'br':
                 return { w: Math.max(MIN_SIZE, ob.w + dx), h: Math.max(MIN_SIZE, ob.h + dy) };
-            case 'bl':
-                return { x: ob.x + dx, w: Math.max(MIN_SIZE, ob.w - dx), h: Math.max(MIN_SIZE, ob.h + dy) };
-            case 'tr':
-                return { y: ob.y + dy, w: Math.max(MIN_SIZE, ob.w + dx), h: Math.max(MIN_SIZE, ob.h - dy) };
-            case 'tl':
-                return {
-                    x: ob.x + dx, y: ob.y + dy,
-                    w: Math.max(MIN_SIZE, ob.w - dx), h: Math.max(MIN_SIZE, ob.h - dy),
-                };
+            case 'bl': {
+                const w = Math.max(MIN_SIZE, ob.w - dx);
+                return { x: right - w, w: w, h: Math.max(MIN_SIZE, ob.h + dy) };
+            }
+            case 'tr': {
+                const h = Math.max(MIN_SIZE, ob.h - dy);
+                return { y: bottom - h, w: Math.max(MIN_SIZE, ob.w + dx), h: h };
+            }
+            case 'tl': {
+                const w = Math.max(MIN_SIZE, ob.w - dx);
+                const h = Math.max(MIN_SIZE, ob.h - dy);
+                return { x: right - w, y: bottom - h, w: w, h: h };
+            }
             default:
                 return {};
         }

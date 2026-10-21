@@ -76,7 +76,11 @@
             if (!payload) return Promise.resolve();
             bitmap(ref);
             const img = bitmaps.get(ref);
-            if (!img || (img.complete && img.naturalWidth)) return Promise.resolve();
+            /* COMPLETE, NOT COMPLETE-AND-DECODED. An image that failed is
+               complete with naturalWidth 0, and its onerror has already
+               fired, so waiting on it waited for ever: one damaged image in a
+               project hung every export after it with no file and no word. */
+            if (!img || img.complete) return Promise.resolve();
             return new Promise(function (resolve) {
                 const prevLoad = img.onload;
                 const prevErr = img.onerror;

@@ -76,6 +76,36 @@
     }
 
     /**
+     * Where in one cycle each discontinuous sampler jumps, as phases in 0..1.
+     *
+     * A JUMP BETWEEN TWO SAMPLES IS NOT DRAWN, it is guessed at. samplePath
+     * takes about one sample per pixel whatever the frequency, so a 5% pulse
+     * at 20 cycles across 103px is high for half a sample: most of its pulses
+     * fell between samples and vanished, and which ones came and went as the
+     * box was resized. Every jump listed here gets a point on each side of
+     * it, so each one is drawn exactly where it is, at any width.
+     *
+     * The continuous samplers, sine and triangle, are absent: a sample per
+     * pixel already draws them faithfully.
+     */
+    const EDGES = {
+        squarewave: () => [0, 0.5],
+        sawtooth: () => [0.5],
+        pulse: (el) => [0, (el && el.duty) || 0.2],
+        step: (el) => {
+            const n = Math.max(1, Math.floor((el && el.steps) || 5));
+            const out = [];
+            for (let j = 0; j < n; j++) out.push(j / n);
+            return out;
+        },
+    };
+
+    /* How far either side of a jump its two points are sampled, in cycles.
+       Small enough to be the same x on any canvas, large enough to land on
+       the right side of the sampler's own comparison. */
+    const EDGE_EPS = 1e-7;
+
+    /**
      * The wave as points in canvas space, left edge to right edge.
      *
      * `Math.max(64, round(w))` is the original's resolution rule: about one
@@ -88,8 +118,10 @@
      * total, so a wide wave dragged out before the slider is touched looks
      * like a wave instead of a single hump.
      *
-     * Returns steps + 1 points; the first is exactly at x and the last exactly
-     * at x + w, so a filled wave closes on the box rather than near it.
+     * The first point is exactly at x and the last exactly at x + w, so a
+     * filled wave closes on the box rather than near it. Between them are the
+     * steps + 1 regular samples, and for a wave with jumps two more points at
+     * each jump (see EDGES), so the count is not steps + 1 for those.
      */
     function samplePath(el) {
         const fn = samplerFor(el.type);
@@ -100,10 +132,37 @@
         const freq = el.wavelength || Math.max(1, Math.round(el.w / 100));
         const steps = Math.max(64, Math.round(el.w));
 
-        const points = [];
+        /* The regular samples, plus a pair either side of every jump. Each is
+           a fraction of the width, so they merge into one sorted run. */
+        const jumps = [];
+        const edges = EDGES[el.type] ? EDGES[el.type](el) : [];
+        if (edges.length && freq > 0 && isFinite(freq)) {
+            for (let k = 0; k <= Math.ceil(freq); k++) {
+                for (const e of edges) {
+                    const f = (k + e) / freq;
+                    if (f > 0 && f < 1) jumps.push(f);
+                }
+            }
+        }
+        /* A REGULAR SAMPLE THAT LANDS ON A JUMP IS DROPPED. Its own phase is
+           the jump to within rounding, so which side the sampler puts it on
+           is float noise, and on the wrong side it drew a spike back up
+           between the jump's two points. The pair says everything it did. */
+        const onJump = new Set(jumps.map((f) => Math.round(f * 1e9)));
+        const at = [];
         for (let i = 0; i <= steps; i++) {
             const f = i / steps;
-            points.push([el.x + f * el.w, midY - amp * fn(f * freq, el)]);
+            const key = Math.round(f * 1e9);
+            if (i > 0 && i < steps && (onJump.has(key) || onJump.has(key - 1) || onJump.has(key + 1))) continue;
+            at.push([f, 0]);
+        }
+        for (const f of jumps) at.push([f, -EDGE_EPS], [f, EDGE_EPS]);
+        if (jumps.length) at.sort((a, b) => a[0] - b[0] || a[1] - b[1]);
+
+        const points = [];
+        for (const [f, side] of at) {
+            const t = f * freq + side;
+            points.push([el.x + f * el.w, midY - amp * fn(t, el)]);
         }
         return points;
     }
