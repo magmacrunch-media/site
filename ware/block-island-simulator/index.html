@@ -22,7 +22,7 @@
   <link rel="stylesheet" href="../crumbs.css?v=1c868a19">
   <link rel="stylesheet" href="../game-page.css?v=645aa2c0">
   <style>
-body{--mt-bg: #08141c;--mt-surface: #142c38;--mt-text: #eef2ec;--mt-muted: #9bb3b6;--mt-accent: #efe0b0;--mt-accent2: #86d2e2;--line: #23485a;--radius: 4px;--head-glow: 0 3px 0 #1d4b5e;--btn-ink: #08141c;--frame: #2c5c70;--frame-glow: 0 0 0 2px #2c5c70, 0 0 60px rgba(134, 210, 226, .14);background:radial-gradient(ellipse at 50% 0%,#1d4558 0%,transparent 60%),linear-gradient(180deg,#0d2230 0%,#08141c 55%) #08141c}.hero h1{font-size:clamp(20px,4.6vw,40px)}.hero .tagline{color:#9ccf7a}.shots .screen{aspect-ratio:16 / 9}.platform,.built a,.built div{background:rgba(20,44,56,.75)}
+body{--mt-bg: #08141c;--mt-surface: #142c38;--mt-text: #eef2ec;--mt-muted: #9bb3b6;--mt-accent: #efe0b0;--mt-accent2: #86d2e2;--line: #23485a;--radius: 4px;--head-glow: 0 3px 0 #1d4b5e;--btn-ink: #08141c;--frame: #2c5c70;--frame-glow: 0 0 0 2px #2c5c70, 0 0 60px rgba(134, 210, 226, .14);background:radial-gradient(ellipse at 50% 0%,#1d4558 0%,transparent 60%),linear-gradient(180deg,#0d2230 0%,#08141c 55%) #08141c}.hero h1{font-size:clamp(20px,4.6vw,40px)}.hero .tagline{color:#9ccf7a}.shots .screen{aspect-ratio:16 / 9}.platform,.built a,.built div{background:rgba(20,44,56,.75)}.zoom{display:block;cursor:zoom-in}.lightbox{margin:auto;padding:0;border:0;background:transparent;max-width:96vw;max-height:96vh;overflow:visible}.lightbox::backdrop{background:rgba(4,10,14,.9)}.lightbox img{display:block;max-width:96vw;max-height:88vh;width:auto;height:auto;border:2px solid var(--frame);cursor:zoom-out}.lightbox p{margin-top:.6rem;text-align:center;font-size:13px;color:var(--dim)}.lightbox button{position:fixed;top:50%;transform:translateY(-50%);font:20px var(--font-head);color:var(--text);background:rgba(8,20,28,.7);border:1px solid var(--line);border-radius:4px;padding:14px 12px;cursor:pointer}.lightbox .prev{left:12px}.lightbox .next{right:12px}.lightbox .close{top:12px;right:12px;transform:none;font-size:14px}
 </style>
 </head>
 <body>
@@ -39,7 +39,7 @@ body{--mt-bg: #08141c;--mt-surface: #142c38;--mt-text: #eef2ec;--mt-muted: #9bb3
 </div>
 
 <div class="hero">
-  <img class="screen" src="img/old-harbor-aerial.webp" alt="Old Harbor from the air: the breakwaters and the ferry landing, the town's streets and roofs, Crescent Beach running north and the island's green interior beyond" width="1280" height="720">
+  <a class="zoom" href="img/old-harbor-aerial-1600.webp"><img class="screen" src="img/old-harbor-aerial-1600.webp" alt="Old Harbor from the air: the breakwaters and the ferry landing, the town's streets and roofs, Crescent Beach running north and the island's green interior beyond" width="1600" height="900"></a>
   <h1>BLOCK ISLAND<br>SIMULATOR</h1>
   <p class="tagline">the real island, at 1:1 &middot; in development</p>
 </div>
@@ -54,19 +54,23 @@ body{--mt-bg: #08141c;--mt-surface: #142c38;--mt-text: #eef2ec;--mt-muted: #9bb3
   <h2>// on the island //</h2>
   <div class="shots">
     <figure>
-      <img class="screen" src="img/twin-maples.webp" alt="Twin Maples on a summer afternoon: a white cottage and a green one on the rise above Trims Pond, the town strung along the far shore" width="1280" height="720" loading="lazy">
+      <a class="zoom" href="img/twin-maples-1600.webp"><img class="screen" src="img/twin-maples.webp" alt="Twin Maples on a summer afternoon: a white cottage and a green one on the rise above Trims Pond, the town strung along the far shore" width="800" height="450" loading="lazy"></a>
       <figcaption>Twin Maples, above Trims Pond</figcaption>
     </figure>
     <figure>
-      <img class="screen" src="img/old-harbor-evening.webp" alt="Old Harbor at sunset: the waterfront hotels lit orange, the ferry dock's pilings in the foreground and the sun going down over the town" width="1280" height="720" loading="lazy">
+      <a class="zoom" href="img/southeast-light-1600.webp"><img class="screen" src="img/southeast-light.webp" alt="Southeast Light on the Mohegan Bluffs: the brick keeper's dwelling with its tower and lantern at one end, a white outbuilding beside it, low scrub falling away in front" width="800" height="450" loading="lazy"></a>
+      <figcaption>Southeast Light, on the Mohegan Bluffs</figcaption>
+    </figure>
+    <figure>
+      <a class="zoom" href="img/old-harbor-evening-1600.webp"><img class="screen" src="img/old-harbor-evening.webp" alt="Old Harbor at sunset: the waterfront hotels lit orange, the ferry dock's pilings in the foreground and the sun going down over the town" width="800" height="450" loading="lazy"></a>
       <figcaption>Old Harbor at sundown</figcaption>
     </figure>
     <figure>
-      <img class="screen" src="img/new-harbor.webp" alt="New Harbor on Great Salt Pond: the marina's docks full of sailboats, moorings beyond, and the island's west side across the water" width="1280" height="720" loading="lazy">
+      <a class="zoom" href="img/new-harbor-1600.webp"><img class="screen" src="img/new-harbor.webp" alt="New Harbor on Great Salt Pond: the marina's docks full of sailboats, moorings beyond, and the island's west side across the water" width="800" height="450" loading="lazy"></a>
       <figcaption>the marina on Great Salt Pond</figcaption>
     </figure>
     <figure>
-      <img class="screen" src="img/mansion-beach.webp" alt="Mansion Beach from the water: a long pale beach, stone walls and houses on the green above it" width="1280" height="720" loading="lazy">
+      <a class="zoom" href="img/mansion-beach-1600.webp"><img class="screen" src="img/mansion-beach.webp" alt="Mansion Beach from the water: a long pale beach, stone walls and houses on the green above it" width="800" height="450" loading="lazy"></a>
       <figcaption>Mansion Beach</figcaption>
     </figure>
   </div>
@@ -110,6 +114,17 @@ body{--mt-bg: #08141c;--mt-surface: #142c38;--mt-text: #eef2ec;--mt-muted: #9bb3
 <footer>
   &copy; 2026 <span>magmacrunch media</span>
 </footer>
+
+<dialog class="lightbox" aria-label="screenshot">
+  <img alt="">
+  <p></p>
+  <button class="prev" type="button" aria-label="previous screenshot">&lsaquo;</button>
+  <button class="next" type="button" aria-label="next screenshot">&rsaquo;</button>
+  <button class="close" type="button" aria-label="close">&times;</button>
+</dialog>
+<script>
+(function(){var box=document.querySelector(".lightbox");if(!box||typeof box.showModal!=="function")return;var links=Array.prototype.slice.call(document.querySelectorAll("a.zoom"));var big=box.querySelector("img"),cap=box.querySelector("p"),at=0;function show(i){at=(i+links.length)%links.length;var a=links[at],small=a.querySelector("img"),fig=a.closest("figure");big.src=a.href;big.alt=small.alt;cap.textContent=fig?fig.querySelector("figcaption").textContent:""}links.forEach(function(a,i){a.addEventListener("click",function(e){e.preventDefault();show(i);box.showModal()})});box.querySelector(".prev").addEventListener("click",function(){show(at-1)});box.querySelector(".next").addEventListener("click",function(){show(at+1)});box.querySelector(".close").addEventListener("click",function(){box.close()});box.addEventListener("click",function(e){if(e.target===box||e.target===big)box.close()});box.addEventListener("keydown",function(e){if(e.key==="ArrowLeft")show(at-1);else if(e.key==="ArrowRight")show(at+1)})})();
+</script>
 
 <script src="../../nav.js?v=17bba9c8"></script>
 </body>
