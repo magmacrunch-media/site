@@ -125,6 +125,9 @@
     // releases.js paths are written relative to distributed-music/
     const base = new URL('distributed-music/', location.href);
     const url = p => new URL(p, base).href;
+    // The 320px copy scripts/sync-cover-thumbs.mjs makes of each cover.
+    const thumb = p => p.replace(/(\/assets\/album-art\/)(.+)\.[^./]+$/,
+        (m, dir, name) => dir + 'thumbs/' + name.split('/').join('__') + '.jpg');
     const split = t => {
         const m = /^(.*?)\s*\((\d{4})\)$/.exec(t);
         return m ? { name: m[1], year: m[2] } : { name: t, year: '' };
@@ -155,7 +158,9 @@
         tile.className = 'artist';
         tile.href = url(first.artistLink);
         const img = document.createElement('img');
-        img.src = url(first.art);
+        const full = url(first.art), small = url(thumb(first.art));
+        if (small !== full) img.onerror = () => { img.onerror = null; img.src = full; };
+        img.src = small;
         img.alt = '';
         img.loading = 'lazy';
         img.width = 160;

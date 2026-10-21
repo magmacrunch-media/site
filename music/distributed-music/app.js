@@ -8,6 +8,22 @@
       : '');
   }
 
+  /* The 320px copy scripts/sync-cover-thumbs.mjs makes of a local cover:
+     its path under album-art/ with "/" as "__", as .jpg, in thumbs/. */
+  function thumbFor(art) {
+    var m = /^(.*\/assets\/album-art\/)(.+)\.[^./]+$/.exec(art);
+    return m ? m[1] + 'thumbs/' + m[2].split('/').join('__') + '.jpg' : art;
+  }
+
+  /* Ask for the thumbnail, and fall back to the full cover if it is missing. */
+  function setCover(img, art) {
+    var thumb = thumbFor(art);
+    if (thumb !== art) {
+      img.onerror = function () { this.onerror = null; this.src = art; };
+    }
+    img.src = thumb;
+  }
+
   /* "Lost Months EP (2026)" -> name and year, for the grid's two lines */
   function splitTitle(t) {
     var m = /^(.*?)\s*\((\d{4})\)$/.exec(t);
@@ -27,7 +43,7 @@
       var src = artFor(r);
       if (src) {
         var img = document.createElement('img');
-        img.src = src;
+        setCover(img, src);
         img.alt = '';
         img.loading = 'lazy';
         img.width = 160;
@@ -62,7 +78,7 @@
       card.className = 'dist-card';
       card.id = r.id;
       var artHTML = artSrc
-        ? '<img class="release-hero-img" src="' + artSrc + '" alt="' + r.title + '" loading="lazy">'
+        ? '<img class="release-hero-img" alt="" loading="lazy">'
         : '<div class="dist-art-placeholder">no art</div>';
       card.innerHTML =
         '<div class="dist-art">' +
@@ -77,6 +93,11 @@
             '<a href="#quick-jump-menu" class="dist-top-link">[ ^ top ]</a>' +
           '</div>' +
         '</div>';
+      var hero = card.querySelector('.release-hero-img');
+      if (hero) {
+        hero.alt = r.title;
+        setCover(hero, artSrc);
+      }
       container.appendChild(card);
       cards.push({ el: card, r: r });
     });
