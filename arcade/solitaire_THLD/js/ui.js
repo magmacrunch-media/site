@@ -20,7 +20,7 @@ class UI{constructor(state,dealer,evaluator,dome,betting,scoring){this.state=sta
                 </div>
                 ${cantAffordAnte?`
                 <div class="ante-danger">
-                    ⚠ YOU CAN'T AFFORD THE ${ante} ANTE — DIG INTO SAVINGS?
+                    ⚠ YOU CAN'T AFFORD THE ${ante} ANTE. DIG INTO SAVINGS?
                 </div>
                 <div class="withdraw-label">WITHDRAW FROM BANK:</div>
                 <div class="withdraw-quick-picks">
@@ -51,7 +51,7 @@ class UI{constructor(state,dealer,evaluator,dome,betting,scoring){this.state=sta
                 <div class="phase-subtitle">Pre-flop &mdash; ${status.chips} chips available</div>
                 ${canWithdraw?`
                 <div class="ante-danger">
-                    ⚠ NOT ENOUGH CHIPS TO BET MINIMUM (${status.minBet}) — DIG INTO SAVINGS?
+                    ⚠ NOT ENOUGH CHIPS TO BET MINIMUM (${status.minBet}). DIG INTO SAVINGS?
                 </div>
                 <div class="withdraw-label">WITHDRAW FROM BANK:</div>
                 <div class="withdraw-quick-picks">
@@ -166,7 +166,7 @@ class UI{constructor(state,dealer,evaluator,dome,betting,scoring){this.state=sta
                     </div>
                 </div>
 
-                ${danger?`<div class="ante-danger">⚠ NEXT ANTE IS ${preview.ante} — LOW CHIPS</div>`:""}
+                ${danger?`<div class="ante-danger">⚠ NEXT ANTE IS ${preview.ante}: LOW CHIPS</div>`:""}
 
                 <div class="cashout-label">MOVE CHIPS TO BANK:</div>
                 <div class="bet-quick-picks">
@@ -244,7 +244,7 @@ class UI{constructor(state,dealer,evaluator,dome,betting,scoring){this.state=sta
 
                 ${isHigh?`
                 <div class="high-score-entry">
-                    <div class="phase-subtitle">★ NEW HIGH SCORE — ENTER INITIALS:</div>
+                    <div class="phase-subtitle">★ NEW HIGH SCORE! ENTER INITIALS:</div>
                     <div class="bet-custom">
                         <input type="text" id="initials-input" maxlength="3"
                                placeholder="AAA"
@@ -314,7 +314,7 @@ class UI{constructor(state,dealer,evaluator,dome,betting,scoring){this.state=sta
                         <div class="community-cards" id="ui-community-cards"></div>
                     </div>
 
-                    <!-- Phase panel — changes each phase -->
+                    <!-- Phase panel: changes each phase -->
                     <div id="ui-phase-panel"></div>
                 </div>
 

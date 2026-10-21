@@ -2,7 +2,7 @@ function escapeScoreText(value){const div=document.createElement("div");div.text
                 <div style="text-align:center; padding: 20px;">
                     <span style="font-family: var(--font-pixel); font-size: 7px;
                                  color: var(--orange-glow);">
-                        NO SCORES YET — BE THE FIRST
+                        NO SCORES YET. BE THE FIRST
                     </span>
                 </div>`;return}const fragment=document.createDocumentFragment();this.state.highScores.slice(0,10).forEach((entry,i)=>{const row=document.createElement("div");row.className="score-entry"+(entry.isNew?" new-score":"");row.innerHTML=`
                 <span class="rank">#${i+1}</span>

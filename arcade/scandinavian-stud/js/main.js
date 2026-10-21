@@ -14,7 +14,7 @@ const{ChipAnim}=AdCards;document.addEventListener("DOMContentLoaded",()=>{const 
             `;const initialsInput=document.getElementById("stud-initials");initialsInput.addEventListener("input",e=>{e.target.value=e.target.value.toUpperCase().replace(/[^A-Z]/g,"")});document.getElementById("stud-save-btn").addEventListener("click",()=>{const initials=initialsInput.value.trim()||"AAA";scoreClient.save("scandinavian-stud",initials,playerChips,{rounds:game.totalRounds});document.getElementById("stud-save-btn").textContent="SAVED!";document.getElementById("stud-save-btn").disabled=true;initialsInput.disabled=true})}else{messageArea.innerHTML=`
                 <div class="game-over-message ${isPlayerWin?"win":"lose"}">
                     <h2>${isPlayerWin?LABELS[lang].youWin:LABELS[lang].youLose}</h2>
-                    <p>${winner?winner.name:LABELS[lang].player} — ${isPlayerWin?LABELS[lang].gameOverWin:LABELS[lang].gameOverLose} (${state.pot})</p>
+                    <p>${winner?winner.name:LABELS[lang].player}: ${isPlayerWin?LABELS[lang].gameOverWin:LABELS[lang].gameOverLose} (${state.pot})</p>
                     <button id="nextHandBtn" class="action-btn">Seuraava käsi / next hand <span class="btn-sub">/ next hand</span></button>
                 </div>
             `}document.getElementById("nextHandBtn").addEventListener("click",()=>{messageArea.innerHTML="";if(isTournamentWin){startGame()}else{game.prepareNextHand();renderGame()}})}function showRules(){const modal=createModal(LABELS[lang].rulesTitle,`

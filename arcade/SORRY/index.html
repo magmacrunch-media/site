@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>SORRY!</title>
-    <meta property="og:title" content="SORRY! — magmacrunch media">
+    <meta property="og:title" content="SORRY! · magmacrunch media">
     <meta property="og:description" content="Play SORRY! in the magmacrunch arcade">
     <meta property="og:image" content="https://magmacrunch.com/og/arcade-sorry.png?v=1">
     <meta property="og:image:width" content="1200">
@@ -42,7 +42,7 @@
       <span class="brand-prompt">&gt;</span>
       <span class="brand-name">MAGMACRUNCH ARCADE</span>
     </div>
-    <div id="title-server-sub">multiplayer&nbsp;—&nbsp; online</div>
+    <div id="title-server-sub">multiplayer&nbsp;·&nbsp;online</div>
 
     <div class="title-rule"></div>
 
@@ -94,12 +94,12 @@
       <div class="net-box" id="join-box">
         <div class="net-box-label">Pick Your Color</div>
         <div id="color-swatches"></div>
-        <div id="color-picker-hint">Pick a color (optional — one will be assigned if you skip).</div>
+        <div id="color-picker-hint">Pick a color, or skip and one will be assigned.</div>
 
         <div class="net-box-label" style="margin-top:4px;">Your Name</div>
         <input id="name-input" type="text" placeholder="Enter name…" maxlength="20" />
         <button id="join-btn" disabled>JOIN</button>
-        <button id="spectate-btn" disabled>👁 SPECTATE</button>
+        <button id="spectate-btn" disabled>SPECTATE</button>
       </div>
 
       <div class="net-box">
@@ -113,7 +113,7 @@
         <button id="start-btn" disabled>START GAME</button>
         <div id="waiting-for-host">Waiting for<br/>host to start…</div>
         <div id="lobby-help-row">
-          <button class="help-link-btn" onclick="openModal('how-to-play-modal')">📖 HOW TO PLAY</button>
+          <button class="help-link-btn" onclick="openModal('how-to-play-modal')">? HOW TO PLAY</button>
           <button class="help-link-btn" onclick="openModal('credits-modal')">★ CREDITS</button>
         </div>
       </div>
@@ -142,11 +142,11 @@
     <span id="net-status-text-game"></span>
     <span id="net-player-badge-game"></span>
     <span id="my-color-badge"></span>
-    <span id="spectator-badge" style="display:none">👁 SPECTATING</span>
-    <button class="game-hdr-btn" onclick="openModal('how-to-play-modal')" title="How to play">📖</button>
+    <span id="spectator-badge" style="display:none">SPECTATING</span>
+    <button class="game-hdr-btn" onclick="openModal('how-to-play-modal')" title="How to play">?</button>
     <button class="game-hdr-btn" onclick="openModal('credits-modal')" title="Credits">★</button>
     <button id="quit-game-btn" style="display:none" title="Leave game" onclick="openModal('quit-confirm-modal')">✕ QUIT</button>
-    <button id="mute-btn" title="Toggle sound" onclick="(function(){var m=SoundFX.toggleMute();document.getElementById('mute-btn').textContent=m?'🔇':'🔊';})()">🔊</button>
+    <button id="mute-btn" title="Toggle sound" onclick="(function(){var m=SoundFX.toggleMute();document.getElementById('mute-btn').textContent=m?'✖':'♪';})()">♪</button>
   </div>
 
   <div id="game-layout">
@@ -157,7 +157,7 @@
       </div>
 
       <div class="net-box" id="game-log-box">
-        <div class="net-box-label">📋 Game Log</div>
+        <div class="net-box-label">Game Log</div>
         <div id="game-log-window" class="chat-window game-log-window"></div>
       </div>
     </div>
@@ -187,7 +187,7 @@
       </div>
 
       <div class="net-box" style="flex:1;display:flex;flex-direction:column;gap:10px;min-height:0;">
-        <div class="net-box-label">💬 Chat</div>
+        <div class="net-box-label">Chat</div>
         <div id="game-chat-window" class="chat-window"></div>
         <div class="chat-input-row">
           <input id="game-msg-input" type="text" placeholder="Say something…" disabled />
@@ -196,11 +196,11 @@
       </div>
 
       <div class="net-box" style="flex:1;display:flex;flex-direction:column;gap:10px;min-height:0;">
-        <div class="net-box-label">🌐 Arcade Chat</div>
+        <div class="net-box-label">Arcade Chat</div>
       </div>
 
       <div class="net-box" id="debug-box">
-        <div class="net-box-label" style="cursor:pointer" id="debug-toggle">🔧 DEBUG ▶</div>
+        <div class="net-box-label" style="cursor:pointer" id="debug-toggle">DEBUG ▶</div>
         <div id="debug-body" style="display:none">
           <div id="debug-log" class="debug-log"></div>
           <button id="debug-clear" style="margin-top:6px;font-size:9px;padding:4px 8px;font-family:'IBM Plex Mono',monospace;background:#1a1a2e;color:#888;border:1px solid #333;border-radius:4px;cursor:pointer">CLEAR</button>
@@ -245,7 +245,7 @@
 <div id="how-to-play-modal" class="modal-overlay" onclick="closeModalOutside(event,'how-to-play-modal')">
   <div class="modal-box">
     <button class="modal-close" onclick="closeModal('how-to-play-modal')">✕</button>
-    <h2 class="modal-title">📖 HOW TO PLAY</h2>
+    <h2 class="modal-title">? HOW TO PLAY</h2>
     <div class="modal-body">
       <div class="modal-section-title">GOAL</div>
       <p>Be the first player to move all 4 of your pawns from <strong>Start</strong> to <strong>Home</strong>.</p>
@@ -275,7 +275,7 @@
       <p>Landing on an opponent's pawn sends it back to Start. You cannot bump your own pawns.</p>
 
       <div class="modal-section-title">SLIDES</div>
-      <p>Landing on the <strong>start</strong> of a colored slide (that isn't your color) sends your pawn zooming to the end — bumping anyone in between!</p>
+      <p>Landing on the <strong>start</strong> of a colored slide (that isn't your color) sends your pawn zooming to the end, bumping anyone in between!</p>
 
       <div class="modal-section-title">SAFE ZONE</div>
       <p>After completing a full lap, your pawn may enter your color's Safe Zone. Pawns in the Safe Zone cannot be bumped. Move all 4 to the final Home square to win!</p>
@@ -360,7 +360,7 @@
 <script>
 var MP_DEFAULT_SERVER=mpServerFor("sorry",8765);
 </script>
-<script src="../shared/adenosine-multiplayer.js?v=aa0a94eb"></script>
+<script src="../shared/adenosine-multiplayer.js?v=5bb3284f"></script>
 <script>
 const{MP,MSG,MP_PALETTE}=AdMP;
 </script>
@@ -370,7 +370,7 @@ const{MP,MSG,MP_PALETTE}=AdMP;
 <script src="js/board-renderer.js?v=5c92b664"></script>
 <script src="js/multiplayer.js?v=a1ac2694"></script>
 <script src="js/audio.js?v=89248a24"></script>
-<script src="js/ui.js?v=16e340af"></script>
+<script src="js/ui.js?v=e7b2b472"></script>
 <script>
 function openModal(id){var el=document.getElementById(id);if(el)el.classList.add("modal-open")}function closeModal(id){var el=document.getElementById(id);if(el)el.classList.remove("modal-open")}function closeModalOutside(event,id){if(event.target.id===id)closeModal(id)}document.addEventListener("keydown",function(e){if(e.key==="Escape"){document.querySelectorAll(".modal-overlay.modal-open").forEach(function(m){m.classList.remove("modal-open")})}});function doQuitGame(){closeModal("quit-confirm-modal");if(typeof Multiplayer!=="undefined"&&Multiplayer.isConnected()){Multiplayer.quit()}setTimeout(function(){window.location.reload()},350)}function doRejectedSpectate(){document.getElementById("rejected-overlay").classList.remove("show");var name=document.getElementById("name-input").value.trim()||"Spectator";Multiplayer.reconnectAndDo(function(){Multiplayer.spectate(name,"SORRY")})}function doRejectedLateJoin(){document.getElementById("rejected-overlay").classList.remove("show");var name=document.getElementById("name-input").value.trim()||"Player";Multiplayer.reconnectAndDo(function(){Multiplayer.spectate(name,"SORRY")})}(function(){var BOARD_PX=662;function applyBoardScale(){var gameView=document.getElementById("game-view");var containerWidth=gameView&&gameView.offsetWidth>0?gameView.offsetWidth:window.innerWidth;var SIDE_PADDING=containerWidth<780?16:0;var available=containerWidth-SIDE_PADDING;var scale=available<BOARD_PX?available/BOARD_PX:1;scale=Math.round(scale*1e3)/1e3;document.documentElement.style.setProperty("--board-scale",scale)}applyBoardScale();window.addEventListener("resize",applyBoardScale);window.addEventListener("load",applyBoardScale)})();(function(){var titleOverlay=document.getElementById("title-overlay");var dismissed=false;function dismiss(){if(dismissed)return;dismissed=true;titleOverlay.classList.add("dismissing");setTimeout(function(){titleOverlay.style.display="none"},650)}titleOverlay.addEventListener("click",dismiss);document.addEventListener("keydown",function(e){var tag=document.activeElement&&document.activeElement.tagName;if(tag==="INPUT"||tag==="TEXTAREA")return;if(!dismissed&&(e.code==="Space"||e.key===" "||e.key==="Enter")){e.preventDefault();dismiss()}})})();
 </script>

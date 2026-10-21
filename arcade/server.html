@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>the server — arcade — magmacrunch media</title>
+    <title>the server · arcade · magmacrunch media</title>
     <link rel="icon" type="image/x-icon" href="../favicon.ico">
     <link rel="stylesheet" href="../style.css?v=981601e0">
     <style>
@@ -40,13 +40,13 @@
             <p>
                 The magmacrunch arcade runs on a <strong>Raspberry Pi</strong> sitting
                 in a closet. It hosts all the game servers and the chat, 24/7.
-                No cloud, no hosting provider — just a little computer with a
+                No cloud, no hosting provider, just a little computer with a
                 big job.
             </p>
             <p>
                 Everything talks over <strong>WebSockets</strong>, which means
                 your browser maintains a live connection to the server while you
-                play. No page refreshes, no polling — moves and messages show up
+                play. No page refreshes, no polling: moves and messages show up
                 instantly.
             </p>
         </div>
@@ -62,16 +62,16 @@
             <p>
                 Up to <strong>6 players</strong> can play at once, and anyone else
                 with the code can watch as a spectator. The server handles all the
-                game logic — your browser just sends moves and receives updates.
+                game logic, and your browser just sends moves and receives updates.
             </p>
             <p>Multiplayer games:</p>
             <ul class="game-list">
-                <li><span class="game-dot"></span><span class="game-name">Cribbage</span> — the classic card game, 2 players</li>
-                <li><span class="game-dot"></span><span class="game-name">Backgammon</span> — neon edition, 2 players</li>
-                <li><span class="game-dot"></span><span class="game-name">Checkers</span> — neon edition, 2 players</li>
-                <li><span class="game-dot"></span><span class="game-name">Sökö</span> — scandinavian stud poker, 2–4 players</li>
-                <li><span class="game-dot"></span><span class="game-name">Chinese Checkers</span> — hex-grid classic, 2–6 players</li>
-                <li><span class="game-dot"></span><span class="game-name">Parchisi</span> — indian cross and circle game, 2–4 players</li>
+                <li><span class="game-dot"></span><span class="game-name">Cribbage</span>: the classic card game, 2 players</li>
+                <li><span class="game-dot"></span><span class="game-name">Backgammon</span>: neon edition, 2 players</li>
+                <li><span class="game-dot"></span><span class="game-name">Checkers</span>: neon edition, 2 players</li>
+                <li><span class="game-dot"></span><span class="game-name">Sökö</span>: scandinavian stud poker, 2–4 players</li>
+                <li><span class="game-dot"></span><span class="game-name">Chinese Checkers</span>: hex-grid classic, 2–6 players</li>
+                <li><span class="game-dot"></span><span class="game-name">Parchisi</span>: indian cross and circle game, 2–4 players</li>
                 <li><span class="game-dot"></span><span class="game-name">..and more</span> (in the private arcade)</li>
             </ul>
         </div>
@@ -84,13 +84,13 @@
             </p>
             <p>
                 When you're in a multiplayer game, there's also a
-                <strong>room chat</strong> — a private channel just for the people
+                <strong>room chat</strong>, a private channel just for the people
                 in that game. It's like having a table mic at the arcade.
             </p>
             <p>
                 The chat server also keeps an eye on the network. That's
                 where the <strong>"MULTIPLAYER ONLINE"</strong> status light comes
-                from — the arcade page checks if the chat server is reachable
+                from. The arcade page checks whether the chat server is reachable
                 over HTTPS every 30 seconds.
             </p>
         </div>
@@ -118,7 +118,7 @@
                 The servers are written in <strong>Python</strong> using the
                 <span style="color: #00f5ff;">websockets</span> library. Newer
                 games share a common server base that handles rooms, lobbies, and
-                player management — each game only needs to implement its own rules.
+                player management, so each game only needs to implement its own rules.
             </p>
         </div>
 
@@ -127,7 +127,7 @@
             <p>
                 All traffic is encrypted via <strong>HTTPS</strong> (Let's Encrypt
                 certificates, auto-renewed). The server runs a
-                <strong>firewall</strong> that only allows the ports it needs —
+                <strong>firewall</strong> that only allows the ports it needs;
                 everything else is blocked.
             </p>
             <p>

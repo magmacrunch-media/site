@@ -51,7 +51,7 @@ using Godot;
 /// <summary>
 /// ${cls}, drawn in SPRITE//FORGE.
 ///
-/// GENERATED from <c>${forgeName}</c> — re-export rather than editing a row here by hand.
+/// GENERATED from <c>${forgeName}</c>. Re-export rather than editing a row here by hand.
 /// ${w}x${h}, ${key.length} color${key.length===1?"":"s"}.
 /// </summary>
 public static class ${cls}

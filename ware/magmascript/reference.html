@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>magmascript language reference — magmacrunch media</title>
+  <title>magmascript language reference · magmacrunch media</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Courier+Prime:wght@400;700&display=swap">
@@ -35,7 +35,7 @@
     <h2>string interpolation</h2>
     <p style="font-size:11px;color:#9d99b5;margin-bottom:.5rem;">Only <code>f"..."</code> interpolates. Plain strings treat <code>{</code> as a literal character.</p>
 <pre><code>print(f<span class="str">"Hello, {name} v{version}!"</span>)  <span class="cmt">// interpolated</span>
-print(<span class="str">"use {braces} safely"</span>)         <span class="cmt">// plain — {braces} printed literally</span></code></pre>
+print(<span class="str">"use {braces} safely"</span>)         <span class="cmt">// plain: {braces} printed literally</span></code></pre>
   </div>
 
   <div class="ref-section">
@@ -242,7 +242,7 @@ print(result.exit_code)</code></pre>
 n = <span class="fn">u8</span>(<span class="num">255</span>)
 n = n + <span class="num">1</span>              <span class="cmt">// wraps to 0, and says so (spooked)</span>
 <span class="fn">i32</span>(<span class="num">-7</span>) / <span class="fn">i32</span>(<span class="num">2</span>)      <span class="cmt">// -3: truncates toward zero, like C</span>
-<span class="fn">i32</span>(<span class="num">1</span>) + <span class="fn">u8</span>(<span class="num">1</span>)       <span class="cmt">// error: no promotion — use osmosis(x, i32)</span>
+<span class="fn">i32</span>(<span class="num">1</span>) + <span class="fn">u8</span>(<span class="num">1</span>)       <span class="cmt">// error: no promotion, use osmosis(x, i32)</span>
 
 <span class="cmt">// the arena: garrison claims bytes, scorch frees them</span>
 p = <span class="fn">garrison</span>(<span class="num">16</span>)
@@ -262,16 +262,16 @@ pt = <span class="fn">garrison</span>(Point)
 pt.x = <span class="fn">i32</span>(<span class="num">10</span>)
 <span class="fn">scorch</span>(pt)
 
-<span class="cmt">// a pine field points at another floorplan — linked lists work</span>
+<span class="cmt">// a pine field points at another floorplan, so linked lists work</span>
 <span class="kw">floorplan</span> <span class="fn">Node</span> {
     value: i32
     next: pine[Node]
 }
 
 <span class="cmt">// faults, all caught by try / haunter:</span>
-<span class="cmt">//   quicksand           — reading ground you already scorched</span>
-<span class="cmt">//   area does not exist — reading outside a block</span>
-<span class="cmt">//   ancient weeds       — anything never scorched, reported at exit</span></code></pre>
+<span class="cmt">//   quicksand             reading ground you already scorched</span>
+<span class="cmt">//   area does not exist   reading outside a block</span>
+<span class="cmt">//   ancient weeds         anything never scorched, reported at exit</span></code></pre>
   </div>
 
 </div>

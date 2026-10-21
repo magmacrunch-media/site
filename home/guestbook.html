@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>guestbook — magmacrunch media</title>
-    <meta property="og:title" content="guestbook — magmacrunch media">
+    <title>guestbook · magmacrunch media</title>
+    <meta property="og:title" content="guestbook · magmacrunch media">
     <meta property="og:description" content="sign the guestbook">
     <meta property="og:image" content="https://magmacrunch.com/og/guestbook.png?v=2">
     <meta property="og:image:width" content="1200">
@@ -75,11 +75,11 @@ __ejm\___/________dwb`---`____________________________________________
 CounterClient.display("#hit-counter");CounterClient.increment();
 </script>
 <script>
-const SCRIPT_URL="https://script.google.com/macros/s/AKfycbzIKFyhLKbCR3VnOzl1vkKu8vQdWw8ENmUiHVgTBGSlQLYeTMn7hDiANlGbZACGElvc/exec";function escapeHtml(text){const div=document.createElement("div");div.textContent=text;return div.innerHTML}function loadEntries(){fetch(SCRIPT_URL).then(r=>r.json()).then(data=>{const container=document.getElementById("entries");if(!data.length){container.innerHTML='<div class="loading-msg">no entries yet — be the first!</div>';return}container.innerHTML='<div class="entries-list"></div>';const list=container.querySelector(".entries-list");[...data].reverse().forEach(entry=>{const div=document.createElement("div");div.className="entry";div.innerHTML=`
+const SCRIPT_URL="https://script.google.com/macros/s/AKfycbzIKFyhLKbCR3VnOzl1vkKu8vQdWw8ENmUiHVgTBGSlQLYeTMn7hDiANlGbZACGElvc/exec";function escapeHtml(text){const div=document.createElement("div");div.textContent=text;return div.innerHTML}function loadEntries(){fetch(SCRIPT_URL).then(r=>r.json()).then(data=>{const container=document.getElementById("entries");if(!data.length){container.innerHTML='<div class="loading-msg">no entries yet. be the first!</div>';return}container.innerHTML='<div class="entries-list"></div>';const list=container.querySelector(".entries-list");[...data].reverse().forEach(entry=>{const div=document.createElement("div");div.className="entry";div.innerHTML=`
                         <div class="entry-name">${escapeHtml(entry.name)}</div>
                         <div class="entry-message">${escapeHtml(entry.message)}</div>
                         <div class="entry-time">${new Date(entry.timestamp).toLocaleString()}</div>
-                    `;list.appendChild(div)})}).catch(()=>{document.getElementById("entries").innerHTML='<div class="loading-msg">error loading entries</div>'})}function submitEntry(){const name=document.getElementById("name").value.trim();const message=document.getElementById("message").value.trim();const status=document.getElementById("submitStatus");if(!name||!message){status.textContent="! please fill in both fields";status.className="submit-status error";return}status.textContent="sending...";status.className="submit-status";const formData=new FormData;formData.append("name",name);formData.append("message",message);fetch(SCRIPT_URL,{method:"POST",body:formData}).then(r=>r.json()).then(data=>{if(data.status==="success"){document.getElementById("name").value="";document.getElementById("message").value="";status.textContent="✦ message sent!";status.className="submit-status ok";loadEntries();setTimeout(()=>{status.textContent=""},4e3)}}).catch(()=>{status.textContent="! error sending — please try again";status.className="submit-status error"})}loadEntries();const gbPollId=setInterval(loadEntries,3e4);window.__pageCleanup=function(){clearInterval(gbPollId)};
+                    `;list.appendChild(div)})}).catch(()=>{document.getElementById("entries").innerHTML='<div class="loading-msg">error loading entries</div>'})}function submitEntry(){const name=document.getElementById("name").value.trim();const message=document.getElementById("message").value.trim();const status=document.getElementById("submitStatus");if(!name||!message){status.textContent="! please fill in both fields";status.className="submit-status error";return}status.textContent="sending...";status.className="submit-status";const formData=new FormData;formData.append("name",name);formData.append("message",message);fetch(SCRIPT_URL,{method:"POST",body:formData}).then(r=>r.json()).then(data=>{if(data.status==="success"){document.getElementById("name").value="";document.getElementById("message").value="";status.textContent="✦ message sent!";status.className="submit-status ok";loadEntries();setTimeout(()=>{status.textContent=""},4e3)}}).catch(()=>{status.textContent="! error sending, please try again";status.className="submit-status error"})}loadEntries();const gbPollId=setInterval(loadEntries,3e4);window.__pageCleanup=function(){clearInterval(gbPollId)};
 </script>
 
 </body>

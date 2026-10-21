@@ -1,7 +1,7 @@
 {
   "name": "George Boole",
   "short_name": "george-boole",
-  "description": "Boolean logic meets 2048 — merge tiles with XOR, OR, AND, NOT gates",
+  "description": "Boolean logic meets 2048: merge tiles with XOR, OR, AND, NOT gates",
   "start_url": "./index.html",
   "display": "standalone",
   "background_color": "#0a0a1a",

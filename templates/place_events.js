@@ -41,5 +41,5 @@
                         ${performers?`<p><strong>performers</strong>${performers}</p>`:""}
                     `;loadPoster(e.id);completed++}catch{document.querySelector(`#event-${e.id} .event-info`).innerHTML=`
                         <h3>${esc(e.name)}</h3>
-                        <p style="color:var(--rose);opacity:0.7;">failed to load — <a href="https://musicbrainz.org/event/${esc(e.id)}" target="_blank" rel="noopener">view on MusicBrainz</a></p>
-                    `;failed++;completed++}statusEl.textContent=`loading details… ${completed} of ${totalCount}${failed?` (${failed} failed)`:""}`;if(apiCallsMade&&i<allEvents.length-1)await delay(1e3)}statusEl.textContent=`all ${totalCount} events loaded!${failed?` (${failed} failed — try refreshing)`:""}`}catch(err){statusEl.textContent="error loading events — check your connection and refresh.";console.error("place_events.js fetch failed:",err)}})()})();
+                        <p style="color:var(--rose);opacity:0.7;">failed to load. <a href="https://musicbrainz.org/event/${esc(e.id)}" target="_blank" rel="noopener">view on MusicBrainz</a></p>
+                    `;failed++;completed++}statusEl.textContent=`loading details… ${completed} of ${totalCount}${failed?` (${failed} failed)`:""}`;if(apiCallsMade&&i<allEvents.length-1)await delay(1e3)}statusEl.textContent=`all ${totalCount} events loaded!${failed?` (${failed} failed, try refreshing)`:""}`}catch(err){statusEl.textContent="error loading events: check your connection and refresh.";console.error("place_events.js fetch failed:",err)}})()})();
