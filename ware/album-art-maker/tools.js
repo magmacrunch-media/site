@@ -104,10 +104,14 @@
                     // Opened here, before the first mutation, and exactly
                     // once — not per mousemove.
                     if (cb.onStrokeStart) cb.onStrokeStart();
+                    /* A line's own signed geometry, not its folded box:
+                       resize() needs to know which end is which. */
                     resizing = {
                         el: sel, handle: handle.id, startX: p.x, startY: p.y,
-                        orig: Object.assign(G().bounds(sel, measure()),
-                            { fontSize: sel.fontSize }),
+                        orig: sel.type === 'line'
+                            ? { x: sel.x, y: sel.y, w: sel.w, h: sel.h }
+                            : Object.assign(G().bounds(sel, measure()),
+                                { fontSize: sel.fontSize }),
                     };
                     return;
                 }
@@ -261,12 +265,28 @@
         if (hit && hit.type === 'text' && cb.onTextEdit) cb.onTextEdit(hit);
     }
 
-    /** Abandon whatever is in progress — Escape, or a lost pointer capture. */
+    /** Abandon whatever is in progress, which is what Escape does mid-drag.
+        The element goes back to where the gesture found it: dropping the
+        stroke alone would leave it moved with no undo entry to reach it. */
     function cancel() {
         if (drawing && cb.onDrawCancel) cb.onDrawCancel(drawing.el);
+        if (dragging) {
+            dragging.el.x = dragging.origX;
+            dragging.el.y = dragging.origY;
+        }
+        if (resizing) {
+            const o = resizing.orig;
+            // Text has no stored box, only the font size a resize scales.
+            if (resizing.el.type === 'text') resizing.el.fontSize = o.fontSize;
+            else Object.assign(resizing.el, { x: o.x, y: o.y, w: o.w, h: o.h });
+        }
+        if (rotating) rotating.el.rotation = rotating.origRotation;
+        const wasBusy = busy();
         dragging = resizing = rotating = drawing = null;
         moved = false;
         if (cb.onStrokeCancel) cb.onStrokeCancel();
+        if (cb.onGuides) cb.onGuides([]);
+        if (wasBusy && cb.onChange) cb.onChange();
     }
 
     function busy() { return !!(dragging || resizing || rotating || drawing); }

@@ -106,6 +106,31 @@
         'view:layers', 'help:reference',
     ];
 
+    /* Chords a text field already means something by. The kit lets every
+       Ctrl binding through while typing, which is right for Ctrl+S, but in the
+       file name or a hex field Ctrl+V pasted a duplicate element and kept the
+       text out, Ctrl+C never reached the clipboard, and Ctrl+Z undid the
+       document instead of the typing. */
+    const FIELD_OWNS = ['edit:undo', 'edit:redo', 'edit:copy', 'edit:paste'];
+
+    /* Only fields that hold editable text. A range slider or a colour picker
+       keeps focus after it is dragged, and Ctrl+Z there has to undo the drag,
+       so the kit's isTyping, which counts every INPUT, is too wide here. */
+    const TEXT_INPUTS = ['', 'text', 'search', 'url', 'email', 'tel', 'password', 'number'];
+
+    function editsText(target) {
+        if (!target) return false;
+        if (target.isContentEditable) return true;
+        const tag = String(target.tagName || '').toUpperCase();
+        if (tag === 'TEXTAREA') return true;
+        return tag === 'INPUT' && TEXT_INPUTS.indexOf(String(target.type || '').toLowerCase()) !== -1;
+    }
+
+    /** Should this action be left to the focused field instead? */
+    function fieldOwns(action, target) {
+        return FIELD_OWNS.indexOf(action) !== -1 && editsText(target);
+    }
+
     /** How far an arrow key moves an element. Shift is the coarse step. */
     const NUDGE = { fine: 1, coarse: 10 };
 
@@ -121,6 +146,8 @@
         BINDINGS: BINDINGS,
         AVAILABLE: AVAILABLE,
         PREVENT: PREVENT,
+        FIELD_OWNS: FIELD_OWNS,
+        fieldOwns: fieldOwns,
         NUDGE: NUDGE,
         NUDGE_DEBOUNCE_MS: NUDGE_DEBOUNCE_MS,
         create: create,

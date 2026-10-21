@@ -39,7 +39,12 @@
         onCursor: (cursor) => { canvas.style.cursor = cursor || ''; },
         onToolChange: () => App.props.updateVisibility(),
         onStrokeStart: () => App.session.beginStroke(),
-        onStrokeEnd: () => App.session.commitStroke(),
+        /* A corner drag changes a text element's font size and a rotate drag
+           its rotation, so the sliders have to be told once it lands. */
+        onStrokeEnd: () => {
+            App.session.commitStroke();
+            App.props.syncFrom(App.session.selectedElement());
+        },
         onStrokeCancel: () => App.session.cancelStroke(),
         onDrawStart: (el) => {
             // The in-progress element is in the document so it draws while it

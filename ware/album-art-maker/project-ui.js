@@ -236,6 +236,7 @@
         save: save,
         saveAs: saveAs,
         refreshLabel: refreshLabel,
+        syncCanvasControls: syncCanvasControls,
         path: () => currentPath,
     };
 }());

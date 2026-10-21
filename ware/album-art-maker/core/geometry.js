@@ -297,10 +297,81 @@
      *   else    a free box
      */
     function resize(el, handle, dx, dy, orig, canvasPx) {
+        const deg = (el && el.rotation) || 0;
+        if (!deg) return resizeLocal(el, handle, dx, dy, orig, canvasPx);
+
+        /* ROTATED, the drag is in canvas space and the box is not. The
+           handles are hit-tested in the element's frame, so the delta has to
+           go there too, or a 90° rect dragged outward at a corner shrinks
+           along one side. */
+        const a = -deg * DEG;
+        const patch = resizeLocal(el, handle,
+            dx * Math.cos(a) - dy * Math.sin(a),
+            dx * Math.sin(a) + dy * Math.cos(a), orig, canvasPx);
+
+        /* And the box rotates about its own centre, which a resize moves, so
+           the corner that should stay put would swing. Shift the origin by
+           however far it went. */
+        if (el.type === 'text') return anchorText(el, patch, orig);
+        if (!('w' in patch)) return patch;
+        const before = { type: el.type, x: orig.x, y: orig.y, w: orig.w, h: orig.h };
+        const after = Object.assign({}, before, patch);
+        const was = toWorld(...fixedPoint(before, handle, orig), el, bounds(before));
+        const now = toWorld(...fixedPoint(after, handle, orig), el, bounds(after));
+        patch.x = after.x + was.x - now.x;
+        patch.y = after.y + was.y - now.y;
+        return patch;
+    }
+
+    /* Text grows from x,y at any angle, as it does unrotated. Its box is
+       measured, not stored, but glyph widths and the line height both scale
+       with the font size, so the new box is the old one times the ratio,
+       which is enough to keep x,y where it was on screen. */
+    function anchorText(el, patch, orig) {
+        if (!(patch.fontSize > 0) || !(orig.fontSize > 0)) return patch;
+        const k = patch.fontSize / orig.fontSize;
+        const before = { x: orig.x, y: orig.y, w: orig.w, h: orig.h };
+        const after = { x: orig.x, y: orig.y, w: orig.w * k, h: orig.h * k };
+        const was = toWorld(orig.x, orig.y, el, before);
+        const now = toWorld(orig.x, orig.y, el, after);
+        patch.x = orig.x + was.x - now.x;
+        patch.y = orig.y + was.y - now.y;
+        return patch;
+    }
+
+    /** The point a drag of `handle` must not move, in the element's frame:
+        the other end of a line, the opposite corner of anything else. */
+    function fixedPoint(e, handle, orig) {
+        if (e.type === 'line') {
+            return lineEnd(orig, handle) === 'start' ? [e.x + e.w, e.y + e.h] : [e.x, e.y];
+        }
+        return [
+            handle === 'tl' || handle === 'bl' ? e.x + e.w : e.x,
+            handle === 'tl' || handle === 'tr' ? e.y + e.h : e.y,
+        ];
+    }
+
+    /**
+     * Which end of a line a handle drags. A line keeps the sign of w,h, so
+     * its start is not always top-left: drawn right to left, the start sits
+     * at the 'br' handle. It is whichever end is nearer the handle's corner.
+     * `ob` is the line's own signed x,y,w,h, not its folded bounds.
+     */
+    function lineEnd(ob, handle) {
+        const b = bounds(Object.assign({ type: 'line' }, ob));
+        const cx = handle === 'tl' || handle === 'bl' ? b.x : b.x + b.w;
+        const cy = handle === 'tl' || handle === 'tr' ? b.y : b.y + b.h;
+        const toStart = Math.hypot(cx - ob.x, cy - ob.y);
+        const toEnd = Math.hypot(cx - (ob.x + ob.w), cy - (ob.y + ob.h));
+        return toStart < toEnd || (toStart === toEnd && handle === 'tl') ? 'start' : 'end';
+    }
+
+    /** resize() for an unrotated element, or one already in its own frame. */
+    function resizeLocal(el, handle, dx, dy, orig, canvasPx) {
         const ob = orig;
 
         if (el.type === 'line') {
-            if (handle === 'tl') {
+            if (lineEnd(ob, handle) === 'start') {
                 const x = ob.x + dx;
                 const y = ob.y + dy;
                 return { x: x, y: y, w: (ob.x + ob.w) - x, h: (ob.y + ob.h) - y };

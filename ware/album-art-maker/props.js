@@ -114,10 +114,13 @@
             const raw = parseInt(input.value, 10);
             out.textContent = format(raw);
             if (syncing) return;
-            S().beginStroke();
+            /* The stroke opens inside the write, after apply() has found
+               something to write to. Opened up here, a slider dragged with
+               nothing selected (or a stroke width over a photo) left an
+               entry that undid nothing and marked the document dirty. */
             if (o.onInput) o.onInput(read(raw));
-            else if (o.style) applyStyle((el) => { el[prop] = read(raw); });
-            else apply((el) => { el[prop] = read(raw); });
+            else if (o.style) applyStyle((el) => { S().beginStroke(); el[prop] = read(raw); });
+            else apply((el) => { S().beginStroke(); el[prop] = read(raw); });
         });
         input.addEventListener('change', () => S().commitStroke());
     }
@@ -145,6 +148,16 @@
         $('waveModeGroup').hidden = !isWaveEl;
         $('stepCountGroup').hidden = !(tool === 'step' || (el && el.type === 'step'));
         $('dutyGroup').hidden = !(tool === 'pulse' || (el && el.type === 'pulse'));
+    }
+
+    /* A corner drag can take a font well past the slider's 200 (up to the
+       canvas size), and a range input clamps what it is given, so EDIT TEXT
+       then ADD with nothing touched used to shrink a 600 to 200. Widen the
+       slider to fit the size it is seeded with, and narrow it back after. */
+    const sliderMax = new WeakMap();
+    function fitSlider(input, size) {
+        if (!sliderMax.has(input)) sliderMax.set(input, Number(input.max) || 200);
+        input.max = String(Math.max(sliderMax.get(input), Number(size) || 0));
     }
 
     /* ── the element -> the panel ── */
@@ -188,6 +201,7 @@
             if (el.type === 'text') {
                 if (el.font) RetroDropdown.setValue('fontSelectDropdown', el.font);
                 if (el.fontSize) {
+                    fitSlider($('fontSize'), el.fontSize);
                     $('fontSize').value = el.fontSize;
                     $('fontSizeVal').textContent = el.fontSize;
                 }
@@ -271,6 +285,7 @@
             read: (v) => v / 100,
             onInput: (pct) => apply((el) => {
                 if (el.type !== 'image' || !el.origW) return;
+                S().beginStroke();
                 el.w = el.origW * pct;
                 el.h = el.origH * pct;
                 $('imageDims').textContent = `${Math.round(el.w)} × ${Math.round(el.h)}`;
@@ -363,6 +378,7 @@
     App.props = {
         init: init,
         syncFrom: syncFrom,
+        fitSlider: fitSlider,
         updateVisibility: updateVisibility,
         currentStyle: currentStyle,
     };

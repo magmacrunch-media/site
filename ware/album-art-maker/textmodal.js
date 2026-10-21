@@ -210,6 +210,7 @@
             const sizeInput = $('modalFontSize');
 
             input.value = seed.text || '';
+            App.props.fitSlider(sizeInput, seed.fontSize);
             sizeInput.value = seed.fontSize || DEFAULT_SIZE;
             $('modalFontSizeVal').textContent = sizeInput.value;
             // setValue moves the .active class but fires no handler, so the

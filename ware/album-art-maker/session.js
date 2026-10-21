@@ -62,12 +62,17 @@
                    top-left quarter. It read as a zoom glitch while every size
                    was a square; undoing into a J-card would be unmissable.
                    The dropdown is resynced for the same reason — the label
-                   has to agree with what is actually open. */
-                if (App.sizes) {
-                    App.sizes.applyToCanvas();
-                    App.sizes.syncControls();
-                }
+                   has to agree with what is actually open, and so is the
+                   background colour beside it, which is document state too. */
+                if (App.sizes) App.sizes.applyToCanvas();
+                if (App.projectUI) App.projectUI.syncCanvasControls();
+                else if (App.sizes) App.sizes.syncControls();
                 render();
+                /* render() only shows and hides the panel's groups. The values
+                   in them were written by the last select() or edit, so undo a
+                   rotation and the slider kept reading 5° over an element back
+                   at 0°, and the same for fill, stroke and the rest. */
+                if (App.props) App.props.syncFrom(selectedElement());
             },
         });
         markSaved();
@@ -103,8 +108,13 @@
         if (history) history.cancelStroke();
     }
 
-    function undo() { flushNudge(); if (history && history.undo()) refreshDirty(); }
-    function redo() { flushNudge(); if (history && history.redo()) refreshDirty(); }
+    /* An edit still in its stroke is committed first, like a nudge run.
+       Type a colour into the fill hex and press Ctrl+Z before it blurs, and
+       without this the undo popped the entry BELOW it, then the stale stroke
+       committed on blur and threw away the redo. */
+    function undo() { flushNudge(); flushStroke(); if (history && history.undo()) refreshDirty(); }
+    function redo() { flushNudge(); flushStroke(); if (history && history.redo()) refreshDirty(); }
+    function flushStroke() { if (history) history.commitStroke(); }
     function canUndo() { return !!history && history.canUndo(); }
     function canRedo() { return !!history && history.canRedo(); }
 
@@ -388,7 +398,12 @@
         'edit:delete': () => remove(),
         'edit:lock': toggleLock,
         'edit:unlock-all': unlockAll,
-        'select:none': () => select(null),
+        /* Mid-drag, Escape abandons the drag and keeps the selection; only
+           a second press deselects. */
+        'select:none': () => {
+            if (App.tools && App.tools.busy()) App.tools.cancel();
+            else select(null);
+        },
         'nudge:up': (e) => nudge(0, -stepFor(e)),
         'nudge:down': (e) => nudge(0, stepFor(e)),
         'nudge:left': (e) => nudge(-stepFor(e), 0),
@@ -416,6 +431,7 @@
             const surface = document.querySelector('dialog[open]') ? 'modal' : 'editor';
             const action = resolver.resolve(e, App.keybindings.AVAILABLE[surface]);
             if (!action) return;
+            if (App.keybindings.fieldOwns(action, e.target)) return;
             const handler = ACTIONS[action];
             if (!handler) return;
             if (App.keybindings.PREVENT.indexOf(action) !== -1) e.preventDefault();
