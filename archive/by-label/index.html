@@ -15,8 +15,39 @@
     <meta name="twitter:card" content="summary_large_image">
     <link rel="icon" type="image/x-icon" href="../../favicon.ico">
     <link rel="stylesheet" href="../../style.css?v=53e9e146">
-    <link rel="stylesheet" href="../../templates/label-theme.css">
+    <link rel="stylesheet" href="../../templates/contributor-theme.css">
     <style>
+        :root {
+            --nav-brand:    #deba4f;
+            --nav-brand-glow: rgba(222,186,79,0.7);
+            --nav-accent:   #9a7a18;
+            --nav-glow:     rgba(154,122,24,0.4);
+        }
+        /* Neutral near-black ground, identical to the by-artist and by-place
+           indexes. The ramp is theirs too, the ultraviolet ramp's saturation
+           and lightness at a third hue: artist orange is 14 degrees, place
+           magenta 314, and label gold 45. */
+        body.ctb-page {
+            --ctb-void:     #0a0a0c;
+            --ctb-darkest:  #473600;
+            --ctb-dark:     #6d5409;
+            --ctb-mid-dark: #9a7a18;
+            --ctb-deep:     #b08b1c;
+            --ctb-bright:   #bf9a2b;
+            --ctb-muted:    #dbc585;
+            --ctb-cyan:     #deba4f;
+            --ctb-light:    #ffdf80;
+            --ctb-pale:     #ffe9a8;
+            background:     #0a0a0c;
+
+            /* contributor-theme.css hard-codes these two on body.ctb-page, which
+               outranks the :root block above. Without repeating them here the
+               nav brand glows cyan and the nav bar casts a teal shadow. */
+            --nav-brand-glow: rgba(222,186,79,0.7);
+            --nav-glow:       rgba(154,122,24,0.4);
+
+            --ground:       #0a0a0c;
+        }
         main {
             flex: 1;
             display: flex;
@@ -28,94 +59,119 @@
         .breadcrumb {
             font-family: 'Press Start 2P', monospace;
             font-size: 7px;
-            color: var(--dim);
             letter-spacing: 0.1em;
             margin-top: -8px;
             margin-bottom: 16px;
             align-self: flex-start;
         }
-        .breadcrumb a { color: var(--dim); text-decoration: none; transition: color 0.15s; }
-        .breadcrumb a:hover { color: var(--lbl-violet); }
-        .breadcrumb .sep { margin: 0 8px; color: var(--lbl-violet); opacity: 0.7; }
-        .breadcrumb .current { color: var(--lbl-violet); }
-
+        .breadcrumb a { text-decoration: none; transition: color 0.15s; }
+        .breadcrumb .sep { margin: 0 8px; opacity: 0.7; }
         .page-title {
             font-family: 'Press Start 2P', monospace;
             font-size: 16px;
-            color: var(--lbl-violet);
-            text-shadow: 0 0 16px rgba(157,78,221,0.6);
             margin-bottom: 8px;
             letter-spacing: 0.1em;
         }
-        .page-subtitle {
-            font-family: 'Press Start 2P', monospace;
-            font-size: 7px;
-            color: var(--dim);
-            margin-bottom: 32px;
-            letter-spacing: 0.12em;
-        }
-
         .intro {
             font-family: 'Courier Prime', monospace;
             font-size: 14px;
-            color: var(--white);
             line-height: 1.7;
             max-width: 600px;
             text-align: center;
             margin-bottom: 40px;
-            opacity: 0.8;
+        }
+        /* ── Neutral page chrome, as on by-artist and by-place ─────────────────
+           Bone greys, so the cards carry the colour. These need the
+           body.ctb-page prefix: contributor-theme.css styles the breadcrumb,
+           title, intro and note at that specificity and outranks bare rules. */
+        body.ctb-page .breadcrumb,
+        body.ctb-page .breadcrumb a,
+        body.ctb-page .fam-sub,
+        body.ctb-page .note                { color: #8a8580; }
+        body.ctb-page .breadcrumb a:hover,
+        body.ctb-page .breadcrumb .sep,
+        body.ctb-page .breadcrumb .current,
+        body.ctb-page .intro,
+        body.ctb-page .fam-heading         { color: #c8c4bc; }
+        body.ctb-page .page-title {
+            color: #c8c4bc;
+            text-shadow: 0 0 16px rgba(200,196,188,0.3);
         }
 
         /* The family: a root card, its children hung off a rail beneath it,
-           then the associated labels apart. Drawn by templates/label-index.js. */
+           then the associated labels apart. Drawn by templates/label-index.js.
+
+           ── Label card theme ─────────────────────────────────────────────────
+           A card wears the page it leads to, as on by-artist and by-place, and
+           every label page is ultraviolet (templates/label-theme.css), so all
+           four take its colours. --accent drives the border, tint and hover
+           glow, all three fill the bar along the bottom edge, --ink is the
+           name. Each color-mix is preceded by a plain fallback. */
         .fam-wrap {
             width: min(820px, 95vw);
+            --accent: #9d4edd; --a2: #5a189a; --a3: #c77dff; --ink: #e0aaff;
+            --rail: #3a2450;
+            --rail: color-mix(in srgb, var(--accent) 35%, var(--ground));
         }
-        .fam-card {
+        body.ctb-page .fam-card {
             display: flex;
             flex-direction: column;
             gap: 8px;
-            border: 2px solid var(--lbl-dark);
-            background: var(--lbl-darkest);
+            border: 2px solid;
             padding: 18px 20px;
             text-decoration: none;
-            transition: border-color 0.15s, box-shadow 0.15s;
+            background-color: #151019;
+            background-color: color-mix(in srgb, var(--accent) 9%, var(--ground));
+            background-image: linear-gradient(90deg,
+                var(--accent) 0 33.334%,
+                var(--a2)     33.334% 66.667%,
+                var(--a3)     66.667% 100%);
+            background-repeat: no-repeat;
+            background-size: 100% 4px;
+            background-position: left bottom;
+            border-color: #5a3a78;
+            border-color: color-mix(in srgb, var(--accent) 55%, var(--ground));
+            transition: border-color 0.15s, box-shadow 0.15s,
+                        background-color 0.15s, background-size 0.15s;
         }
-        .fam-card:hover {
-            border-color: var(--lbl-violet);
-            box-shadow: 0 0 16px rgba(157,78,221,0.3);
+        body.ctb-page .fam-card:hover,
+        body.ctb-page .fam-card:focus-visible {
+            background-color: color-mix(in srgb, var(--accent) 16%, var(--ground));
+            background-size: 100% 7px;
+            border-color: var(--accent);
+            box-shadow: 0 0 18px -2px var(--accent);
+            box-shadow: 0 0 18px -2px color-mix(in srgb, var(--accent) 45%, transparent);
+            outline: none;
         }
-        .fam-root { border-color: var(--lbl-mid-dark); }
         .fam-name {
             font-family: 'Press Start 2P', monospace;
             font-size: 11px;
-            color: var(--lbl-pale);
+            color: var(--ink);
             letter-spacing: 0.08em;
             line-height: 1.5;
         }
-        .fam-root .fam-name { font-size: 13px; color: var(--lbl-light); }
+        .fam-root .fam-name { font-size: 13px; }
         .fam-kind {
             font-family: 'Press Start 2P', monospace;
             font-size: 7px;
-            color: var(--lbl-violet);
+            color: var(--accent);
             letter-spacing: 0.12em;
             text-transform: uppercase;
         }
         .fam-blurb {
             font-family: 'Courier Prime', monospace;
             font-size: 13px;
-            color: var(--white);
-            opacity: 0.8;
+            color: #c8c4bc;
             line-height: 1.6;
         }
         .fam-stats {
             font-family: 'Courier Prime', monospace;
             font-size: 12px;
-            color: var(--lbl-muted);
+            color: #b185db;
         }
         .fam-children {
             margin-left: 24px;
-            border-left: 2px solid var(--lbl-mid-dark);
+            border-left: 2px solid var(--rail);
             padding-top: 14px;
             display: flex;
             flex-direction: column;
@@ -131,7 +187,7 @@
             left: 0;
             top: 28px;
             width: 22px;
-            border-top: 2px solid var(--lbl-mid-dark);
+            border-top: 2px solid var(--rail);
         }
         /* The rail stops at the last child rather than running past it. */
         .fam-branch:last-child::after {
@@ -140,12 +196,11 @@
             left: -2px;
             top: 30px;
             bottom: 0;
-            border-left: 2px solid var(--lbl-void);
+            border-left: 2px solid var(--ground);
         }
         .fam-heading {
             font-family: 'Press Start 2P', monospace;
             font-size: 9px;
-            color: var(--lbl-violet);
             letter-spacing: 0.12em;
             margin: 48px 0 8px;
             text-align: center;
@@ -153,30 +208,28 @@
         .fam-sub {
             font-family: 'Courier Prime', monospace;
             font-size: 12px;
-            color: var(--dim);
             text-align: center;
             margin: 0 0 16px;
         }
-        .fam-other { border-style: dashed; }
+        body.ctb-page .fam-other { border-style: dashed; }
         .fam-fallback { display: flex; flex-direction: column; gap: 12px; }
 
         @media (max-width: 520px) {
             .fam-children { margin-left: 10px; }
             .fam-branch { padding-left: 14px; }
             .fam-branch::before { width: 14px; }
-            .fam-card { padding: 14px; }
+            body.ctb-page .fam-card { padding: 14px; }
         }
 
         .note {
             font-family: 'Courier Prime', monospace;
             font-size: 12px;
-            color: var(--dim);
             margin-top: 40px;
             text-align: center;
         }
     </style>
 </head>
-<body class="lbl-page">
+<body class="ctb-page">
 
 <nav id="auto-nav" data-depth="../../"></nav>
 
