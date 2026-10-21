@@ -102,6 +102,10 @@
         .cd-credit dd { color: var(--white); margin: 0; }
         .cd-credit a { color: var(--green); text-decoration: none; }
         .cd-credit a:hover { text-decoration: underline; }
+        @media (max-width: 480px) {
+            .cd-credit { flex-direction: column; gap: 2px; }
+            .cd-credit dt { width: auto; }
+        }
         .cd-card img {
             width: 120px;
             height: 120px;

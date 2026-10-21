@@ -148,11 +148,11 @@ main { flex:1; display:flex; flex-direction:column; align-items:center; padding:
 /* ── back to top link ── */
 .dist-top-link {
     font-family: 'Press Start 2P', monospace;
-    font-size: 5px;
+    font-size: 7px;
     letter-spacing: 0.08em;
     color: var(--dim);
     text-decoration: none;
-    padding: 4px 0;
+    padding: 9px 0;
     transition: color 0.15s;
     margin-left: auto;
     display: flex;
@@ -224,9 +224,9 @@ main { flex:1; display:flex; flex-direction:column; align-items:center; padding:
 }
 .dist-link {
     font-family:'Press Start 2P',monospace;
-    font-size:5px; letter-spacing:0.08em;
+    font-size:7px; letter-spacing:0.08em;
     color:var(--dim); text-decoration:none;
-    border:1px solid #2a2a3a; padding:4px 10px;
+    border:1px solid #2a2a3a; padding:8px 12px;
     transition:color 0.15s, border-color 0.15s;
     display:inline-block;
 }
@@ -244,6 +244,13 @@ main { flex:1; display:flex; flex-direction:column; align-items:center; padding:
 
 @media (max-width:500px) {
     .dist-art { width:90px; min-width:90px; height:90px; }
+}
+
+/* thumb-sized targets on a phone: the card's one action, and the filters */
+@media (max-width:640px) {
+    .dist-link { padding:12px 14px; }
+    .dist-top-link { padding:12px 0; }
+    .artist-chip { padding:10px 10px; }
 }
 
 .dist-description {
