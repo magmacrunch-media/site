@@ -46,7 +46,7 @@
                 <a class="latest-artist" id="latestArtist" href="../archive/by-artist/"></a>
                 <p class="latest-desc" id="latestDesc"></p>
                 <div class="latest-actions">
-                    <a class="btn-play" href="jukebox/">▶ play the jukebox</a>
+                    <a class="btn-play" id="latestPlay" href="jukebox/">▶ play the jukebox</a>
                     <a class="btn-stream" id="latestStream" href="distributed-music/" target="_blank" rel="noopener">stream it ↗</a>
                 </div>
             </div>
@@ -145,6 +145,67 @@
     document.getElementById('latestDesc').textContent = r.description || '';
     if (r.distLink) document.getElementById('latestStream').href = r.distLink;
     document.getElementById('latest').hidden = false;
+
+    /* ── PLAY IT HERE ──
+       The button starts the latest release in the nav's player, on this
+       page, rather than sending the visitor to the jukebox to find it. The
+       nav loads that player on every page (assets/jukebox.js, window.MCJukebox)
+       and songs.json is grouped by release, newest first, so the release plays
+       through and the jukebox carries on after it.
+
+       It stays a link to the jukebox until it can do better: without
+       JavaScript, before the player has loaded, or when none of the release
+       is in the jukebox. play() is called inside the click when the player is
+       ready, because Safari plays audio only from within the gesture. */
+    const playBtn = document.getElementById('latestPlay');
+    fetch('jukebox/songs.json')
+        .then((res) => (res.ok ? res.json() : []))
+        .then((list) => {
+            const ids = list.filter((x) => !x.hidden && x.release === r.id).map((x) => x.file);
+            if (!ids.length) return;
+            const mine = new Set(ids);
+            const label = (J) => {
+                const st = J && J.state();
+                const on = !!st && st.status === 'playing' && mine.has(st.id);
+                playBtn.textContent = on ? '\u275A\u275A pause' : '\u25B6 play';
+                playBtn.setAttribute('aria-label', (on ? 'pause ' : 'play ') + t.name);
+            };
+            label(null);
+
+            let unsub = null;
+            const attach = () => {
+                const J = window.MCJukebox;
+                if (!J || unsub) return;
+                J.ready.then(() => { if (!unsub) { label(J); unsub = J.subscribe(() => label(J)); } });
+            };
+            attach();
+            const poll = setInterval(() => { if (window.MCJukebox) { clearInterval(poll); attach(); } }, 250);
+            setTimeout(() => clearInterval(poll), 15000);
+
+            playBtn.addEventListener('click', (e) => {
+                const J = window.MCJukebox;
+                if (!J) return; // not loaded yet: the link to the jukebox
+                e.preventDefault();
+                const go = () => {
+                    const st = J.state();
+                    if (mine.has(st.id)) J.toggle();
+                    else J.play(ids[0]);
+                };
+                if (J.state()) go();
+                else J.ready.then(go);
+            });
+
+            // The SPA router's leave hook: this page's listener goes, the
+            // music does not. Chained, because the waveform below claims the
+            // same single slot.
+            const prev = window.__pageCleanup;
+            window.__pageCleanup = () => {
+                if (typeof prev === 'function') prev();
+                if (unsub) unsub();
+                clearInterval(poll);
+            };
+        })
+        .catch(() => { /* the link still works */ });
 
     // Roster: an artist's first appearance is their newest release.
     const seen = new Map();
