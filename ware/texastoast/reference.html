@@ -307,7 +307,9 @@ state = keyboard.poll()      # a copy, so you can diff against last frame</code>
       it installed; pair it with <code>game.on_close(keyboard.destroy)</code>.</p>
 
     <h3>MagmaHubInput &amp; CompositeInput</h3>
-    <p><code>MagmaHubInput</code> reads a Magma Hub controller over I2C.
+    <p><code>MagmaHubInput</code> reads a controller over I2C, using the protocol texastoast
+      was designed with (two bytes per controller, hubs at 0x08 to 0x0B). The shipped Magma Hub
+      uses a different register map, so this does not read it yet.
       <code>CompositeInput</code> merges several sources, so a game can accept the controller
       when it is plugged in and the keyboard when it is not:</p>
     <pre><code>inputs = CompositeInput(MagmaHubInput(hub), KeyboardInput(game.root))</code></pre>

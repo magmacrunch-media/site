@@ -40,7 +40,7 @@
     <h1>texastoast</h1>
     <p class="tagline">Python RPG engine with I2C hardware abstraction for magmacrunch game systems</p>
     <div class="badges">
-      <span class="badge">v0.5.0</span>
+      <span class="badge">v0.12.1</span>
       <span class="badge">PolyForm Noncommercial 1.0.0</span>
       <span class="badge">Python 3.10+</span>
     </div>
@@ -49,14 +49,26 @@
   <div class="lead">
     <p>A tkinter-based 2D game engine by <a href="https://magmacrunch.com">magmacrunch media</a>,
       inspired by <a href="../adenosine/">adenosine</a> and built for the same kind of small RPGs,
-      but in Python, and able to read real controllers over I2C when it runs on a Raspberry Pi.
+      but in Python, with an input layer that can read controllers over I2C on a Raspberry Pi.
       Game logic never depends on tkinter, and hardware degrades gracefully to the keyboard when
       it's absent.</p>
 
     <p>It also ships a hardware dev kit: a bus-level simulator that runs the real I2C stack against
       imaginary controllers, a live test bench for bringing real ones up, and session record/replay
-      that turns a captured session into a regression test. You can build for the Magma Hub before
-      the Magma Hub exists.</p>
+      that turns a captured session into a regression test. It was written to build for the Magma
+      Hub before the Magma Hub existed.</p>
+
+    <p><strong>Status:</strong> texastoast is feature-complete and in maintenance. It is a working
+      reference engine rather than the starting point for new magmacrunch games, which are built
+      on the C engines such as <a href="../magnolia/">magnolia</a> and
+      <a href="../daffodil/">daffodil</a>.</p>
+
+    <p><strong>A note on the hub.</strong> The Magma Hub now exists, and its register map is not
+      the one texastoast was written against: the real hub answers at 0x17 and reports each
+      controller as a 4-byte word of buttons, stick angle and magnitude, where texastoast expects
+      two bytes per controller at 0x08 to 0x0B. So its I2C input does not read the shipped hub
+      yet, though the simulator, keyboard play and recordings all work as described. For quick
+      experiments with the real hub, a one-file Python reader now ships with the hub firmware.</p>
 
     <div class="about-links">
       <a href="https://pypi.org/project/texastoast/" target="_blank" rel="noopener">PyPI</a>
@@ -118,7 +130,7 @@
       </div>
       <div class="feat-item">
         <strong>I2C Hardware</strong>
-        <span>Magma Hub controllers over I2C on Raspberry Pi, with keyboard fallback</span>
+        <span>Controllers over I2C on Raspberry Pi, with keyboard fallback; written to the pre-hardware protocol, not yet the shipped hub's</span>
       </div>
       <div class="feat-item">
         <strong>Hardware Dev Kit</strong>
