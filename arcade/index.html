@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Courier+Prime:wght@400;700&display=swap">
     <link rel="stylesheet" href="../style.css?v=981601e0">
     <link rel="stylesheet" href="arcade.css?v=a44e3f77">
-    <link rel="stylesheet" href="catalogue.css?v=becd3212">
+    <link rel="stylesheet" href="catalogue.css?v=fce0bc0e">
 </head>
 <body>
 
@@ -73,10 +73,10 @@
         <div class="chip-group" id="genreChips">
             <span class="chip-label">GENRE</span>
             <button class="chip" data-genre="ALL" aria-pressed="true">ALL<span class="n"></span></button>
-            <button class="chip" data-genre="BOARD" style="--chip-color:#00f5ff" aria-pressed="false">BOARD<span class="n"></span></button>
-            <button class="chip" data-genre="CARD" style="--chip-color:#39ff6e" aria-pressed="false">CARD<span class="n"></span></button>
-            <button class="chip" data-genre="PUZZLE" style="--chip-color:#ffe03a" aria-pressed="false">PUZZLE<span class="n"></span></button>
-            <button class="chip" data-genre="ACTION" style="--chip-color:#ff2e9c" aria-pressed="false">ACTION<span class="n"></span></button>
+            <button class="chip" data-genre="BOARD" aria-pressed="false">BOARD<span class="n"></span></button>
+            <button class="chip" data-genre="CARD" aria-pressed="false">CARD<span class="n"></span></button>
+            <button class="chip" data-genre="PUZZLE" aria-pressed="false">PUZZLE<span class="n"></span></button>
+            <button class="chip" data-genre="ACTION" aria-pressed="false">ACTION<span class="n"></span></button>
         </div>
         <div class="chip-group" id="platChips">
             <span class="chip-label">PLAYS ON</span>
@@ -99,7 +99,7 @@
 
     <div class="catalogue" id="catalogue">
     <section class="genre-block" data-genre="BOARD">
-        <h2 class="genre-head" style="--genre-color: #00f5ff"><span>// BOARD //</span><span class="genre-count">5</span></h2>
+        <h2 class="genre-head"><span>// BOARD //</span><span class="genre-count">5</span></h2>
         <div class="game-grid">
         <article class="game-card" style="--card-color: #00f5ff" data-genre="BOARD" data-plat="web">
             <a class="card-link" href="chess/" aria-label="play CHESS"></a>
@@ -154,7 +154,7 @@
         </div>
     </section>
     <section class="genre-block" data-genre="CARD">
-        <h2 class="genre-head" style="--genre-color: #39ff6e"><span>// CARD //</span><span class="genre-count">5</span></h2>
+        <h2 class="genre-head"><span>// CARD //</span><span class="genre-count">5</span></h2>
         <div class="game-grid">
         <article class="game-card" style="--card-color: #00f0ff" data-genre="CARD" data-plat="web">
             <a class="card-link" href="solitaire/" aria-label="play KLONDIKE SOLITAIRE"></a>
@@ -209,7 +209,7 @@
         </div>
     </section>
     <section class="genre-block" data-genre="PUZZLE">
-        <h2 class="genre-head" style="--genre-color: #ffe03a"><span>// PUZZLE //</span><span class="genre-count">6</span></h2>
+        <h2 class="genre-head"><span>// PUZZLE //</span><span class="genre-count">6</span></h2>
         <div class="game-grid">
         <article class="game-card" style="--card-color: #00f0ff" data-genre="PUZZLE" data-plat="web">
             <a class="card-link" href="2^N/" aria-label="play 2048 (actually, 2^N)"></a>
@@ -274,7 +274,7 @@
         </div>
     </section>
     <section class="genre-block" data-genre="ACTION">
-        <h2 class="genre-head" style="--genre-color: #ff2e9c"><span>// ACTION //</span><span class="genre-count">8</span></h2>
+        <h2 class="genre-head"><span>// ACTION //</span><span class="genre-count">8</span></h2>
         <div class="game-grid">
         <article class="game-card" style="--card-color: #ff2e9c" data-genre="ACTION" data-plat="web terminal wii">
             <a class="card-link" href="moonlight-drift/" aria-label="play MOONLIGHT DRIFT"></a>
@@ -392,7 +392,7 @@
 <script src="../nav.js?v=17bba9c8"></script>
 <script src="../animations/server.js?v=7557c1d2"></script>
 <script src="catalogue-previews.js?v=c71466c7"></script>
-<script src="catalogue.js?v=2de6c711"></script>
+<script src="catalogue.js?v=2cd9ced7"></script>
 <script src="shared/mp-server.js?v=f66f285b"></script>
 <script>
 (function(){const statusDot=document.getElementById("mpServerStatus");const statusText=document.getElementById("mpServerStatusText");function checkStatus(){try{var probeUrl=window.location.protocol+"//"+mpServerFor("chess",8769);var controller=new AbortController;var timeout=setTimeout(function(){controller.abort()},5e3);fetch(probeUrl,{mode:"no-cors",signal:controller.signal}).then(function(){clearTimeout(timeout);statusDot.className="mp-status-dot online";statusText.textContent="MULTIPLAYER ONLINE"}).catch(function(){clearTimeout(timeout);statusDot.className="mp-status-dot offline";statusText.textContent="SERVERS OFFLINE"})}catch(e){statusDot.className="mp-status-dot offline";statusText.textContent="SERVERS OFFLINE"}}checkStatus();setInterval(checkStatus,3e4)})();
