@@ -2009,6 +2009,13 @@
     "b": "klotski · magmacrunch media home › ware › video games › klotski KLOTSKI 横刀立马 · slide the general to the exit 横刀立马: slide Cao Cao, the gold two-by-two block, past his generals and soldiers and out of the four-by-five board. Pieces only slide, never jump. The text is in Chinese, English or both, in a neo-arcade take on new-age China. // at the board // 横刀立马, the classic layout Cao Cao starts at the top // where to play // BROWSER ▶ PLAY free, in the arcade . Arrow keys or swipe. // built with // adenosine browser · JavaScript // credits // game by magmacrunch media original game Klotski (横刀立马), ..."
   },
   {
+    "t": "magmacrunch · magmacrunch media",
+    "c": "tool",
+    "u": "/ware/magmacrunch/",
+    "d": "the terminal arcade, and the Python engine its cabinets run on",
+    "b": "magmacrunch · magmacrunch media home › ware › developer tools › magmacrunch magmacrunch the terminal arcade, and the Python engine its cabinets run on v0.14.0 PolyForm Noncommercial Python 3.10+ 16 cabinets 🕹 Play it Install and play: one command, and a menu of every cabinet on the machine. 📦 PyPI The arcade and each cabinet are pure-Python wheels, with nothing to compile anywhere. ✉ Get in touch The source is not public. Email for access, licensing, or to build a cabinet. The real launcher, rendered headless at 80x24 with three cabinets installed. Install a cabinet and its card appears; uni..."
+  },
+  {
     "t": "magmascript · magmacrunch media",
     "c": "tool",
     "u": "/ware/magmascript/",

@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>magmacrunch · magmacrunch media</title>
+  <meta property="og:title" content="magmacrunch · magmacrunch media">
+  <meta property="og:description" content="the terminal arcade, and the Python engine its cabinets run on">
+  <meta property="og:image" content="https://magmacrunch.com/og/ware.png?v=1">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta property="og:site_name" content="magmacrunch media">
+  <meta property="og:locale" content="en_US">
+  <link rel="icon" type="image/x-icon" href="../../favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Courier+Prime:wght@400;700&display=swap">
+  <link rel="stylesheet" href="../../style.css?v=981601e0">
+  <link rel="stylesheet" href="../crumbs.css?v=a7887a26">
+  <style>
+:root{color-scheme:dark;--magma: #ff6a2b;--phos: #39ff6e;--line: #33304a;--card: #1c1b26;--text: #e8e6f0;--muted: #9d99b5}*{box-sizing:border-box;margin:0;padding:0}body{font:14px/1.6 "Courier Prime",ui-monospace,SFMono-Regular,Menlo,monospace;background:#14141b;background-image:none;color:var(--text);min-height:100vh;display:flex;flex-direction:column}a{color:var(--magma)}.hero{text-align:center;padding:3.5rem 1.5rem 2rem}.hero h1{font-family:"Press Start 2P",monospace;font-size:clamp(20px,4vw,44px);font-weight:400;letter-spacing:0.06em;margin-bottom:.75rem;color:var(--magma);text-shadow:3px 3px 0 #7a1f05,0 0 18px rgba(255,106,43,0.35)}.hero .tagline{font-size:13px;color:var(--muted);margin-bottom:1.25rem}.badges{display:flex;flex-wrap:wrap;justify-content:center;gap:.5rem}.badge{font:8px/1 "Press Start 2P",monospace;color:var(--muted);background:var(--card);border:1px solid var(--line);border-radius:4px;padding:.45rem .55rem;letter-spacing:0.05em}.badge.now{color:#14141b;background:var(--magma);border-color:var(--magma)}.rule{height:2px;border:0;max-width:600px;margin:2.5rem auto;background:linear-gradient(90deg,transparent,var(--magma) 20%,var(--phos) 80%,transparent);opacity:.45}.rule.wide{max-width:940px}.tools{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:1rem;max-width:700px;margin:0 auto;padding:0 1.5rem}.tool-card{display:block;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:1.25rem;text-decoration:none;color:inherit;transition:border-color .15s,transform .15s}.tool-card:hover,.tool-card:focus-visible{border-color:var(--magma);transform:translateY(-2px);outline:none}.tool-card .icon{font-size:24px;margin-bottom:.5rem}.tool-card h2{font-family:"Press Start 2P",monospace;font-size:10px;font-weight:400;color:var(--text);margin-bottom:.4rem;line-height:1.5}.tool-card p{font-size:12px;color:var(--muted);line-height:1.5}.sec{width:100%;min-width:0;max-width:640px;margin:0 auto;padding:0 1.5rem}.sec.wide{max-width:940px}.sec h2{font-family:"Press Start 2P",monospace;font-size:10px;font-weight:400;color:var(--magma);margin-bottom:.75rem;letter-spacing:0.05em}.sec h3{font-family:"Press Start 2P",monospace;font-size:8px;font-weight:400;color:var(--text);margin:1.5rem 0 .5rem;letter-spacing:0.05em}.sec p{font-size:12px;color:var(--muted);line-height:1.6;margin-bottom:.6rem}.sec p strong{color:var(--text)}.sec code{font-family:"Courier Prime",monospace;color:var(--phos)}.sec pre{background:#0b0b10;border:1px solid var(--line);border-left:3px solid var(--phos);border-radius:6px;padding:.7rem .85rem;margin:.25rem 0 1rem;overflow-x:auto;font-size:12px;line-height:1.5}.screen{margin:0 auto;max-width:820px;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:#0b0b10}.screen object,.screen img{display:block;width:100%;height:auto;aspect-ratio:994 / 636}.screen figcaption{font-size:11px;color:var(--muted);padding:.6rem .85rem;border-top:1px solid var(--line)}.tbl{background:var(--card);border:1px solid var(--line);border-radius:8px;overflow:hidden;margin-bottom:1rem}.tbl-row{display:grid;grid-template-columns:150px 1fr;gap:.75rem;padding:.5rem .75rem;font-size:11px;border-bottom:1px solid #2a2940;color:var(--muted)}.tbl-row:last-child{border-bottom:0}.tbl-row.head{font-family:"Press Start 2P",monospace;font-size:8px;color:var(--magma);letter-spacing:0.05em}.tbl-row .k{color:var(--phos);font-family:"Courier Prime",monospace}.tbl-row .k a{color:var(--phos);text-decoration:none}.tbl-row .k a:hover{text-decoration:underline}.feat-grid{display:grid;grid-template-columns:1fr 1fr;gap:.5rem}.feat-item{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:.6rem .75rem}.feat-item strong{color:var(--magma);display:block;margin-bottom:.15rem;font-size:11px}.feat-item span{color:var(--muted);font-size:11px}.about{margin-bottom:3rem}.about-links{display:flex;flex-wrap:wrap;gap:1rem;margin:1.5rem 0 .75rem}.about-links a{color:var(--magma);text-decoration:none;font-family:"Press Start 2P",monospace;font-size:8px;padding:.4rem .6rem;border:1px solid var(--line);border-radius:6px;transition:border-color .15s}.about-links a:hover{border-color:var(--phos)}.about-license{color:#555;font-size:11px;margin-top:1rem}.src-note-box{border:1px solid var(--line);border-left:3px solid var(--magma);border-radius:6px;background:rgba(255,255,255,.02);padding:.9rem 1rem;margin-bottom:3rem}.src-note-label{font-family:"Press Start 2P",monospace;font-size:8px;color:var(--magma);letter-spacing:0.05em;margin-bottom:.6rem}.src-note-box p{margin:0;line-height:1.7}.src-note-box p+p{margin-top:.5rem}.tool-nav{margin-top:48px;padding:8px 24px;border-bottom:1px solid var(--line);background:#14141b;flex-shrink:0}.tool-nav .breadcrumb{--crumb-accent: var(--magma)}footer{margin-top:auto;padding:1.5rem;text-align:center;font-family:"Courier Prime",monospace;font-size:12px;color:var(--muted);border-top:1px solid var(--line)}footer span{color:var(--magma)}.hero,.tools,.rule,.screen{width:100%;min-width:0}@media(max-width:480px){.tools,.feat-grid{grid-template-columns:1fr}.tbl-row{grid-template-columns:1fr;gap:.15rem}}@media(prefers-reduced-motion:reduce){.tool-card,.tool-card:hover{transition:none;transform:none}}
+</style>
+</head>
+<body class="ware-accent" style="--ware-accent:#ff6a2b">
+
+<nav id="auto-nav" data-depth="../../"></nav>
+
+<div class="tool-nav">
+    <div class="breadcrumb">
+      <a href="../../">home</a> <span class="sep">›</span>
+      <a href="../">ware</a> <span class="sep">›</span>
+      <a href="../dev/">developer tools</a> <span class="sep">›</span>
+      <span class="current">magmacrunch</span>
+    </div>
+</div>
+
+  <div class="hero">
+    <h1>magmacrunch</h1>
+    <p class="tagline">the terminal arcade, and the Python engine its cabinets run on</p>
+    <div class="badges">
+      <span class="badge">v0.14.0</span>
+      <span class="badge">PolyForm Noncommercial</span>
+      <span class="badge">Python 3.10+</span>
+      <span class="badge now">16 cabinets</span>
+    </div>
+  </div>
+
+  <div class="tools">
+    <a href="../../arcade/terminal.html" class="tool-card">
+      <div class="icon">&#128377;</div>
+      <h2>Play it</h2>
+      <p>Install and play: one command, and a menu of every cabinet on the machine.</p>
+    </a>
+    <a href="https://pypi.org/project/magmacrunch/" class="tool-card" target="_blank" rel="noopener">
+      <div class="icon">&#128230;</div>
+      <h2>PyPI</h2>
+      <p>The arcade and each cabinet are pure-Python wheels, with nothing to compile anywhere.</p>
+    </a>
+    <a href="mailto:info@magmacrunch.com?subject=magmacrunch" class="tool-card">
+      <div class="icon">&#9993;</div>
+      <h2>Get in touch</h2>
+      <p>The source is not public. Email for access, licensing, or to build a cabinet.</p>
+    </a>
+  </div>
+
+  <hr class="rule wide">
+
+  <div class="sec wide">
+    <figure class="screen">
+      <object type="image/svg+xml" data="img/arcade-menu.svg" width="994" height="636"
+              aria-label="The magmacrunch launcher in an 80 by 24 terminal: the magmacrunch logo in ASCII, the words EVERY CABINET ON THIS MACHINE, and two cabinet cards side by side, George Boole Has Entered The Chat and Moonlight Drift, each with a one-line blurb and ENTER, then PAGE 1/2 and the keys to choose, play and quit">
+        <img src="img/arcade-menu.svg" width="994" height="636" alt="The magmacrunch launcher in an 80 by 24 terminal: the magmacrunch logo in ASCII, the words EVERY CABINET ON THIS MACHINE, and two cabinet cards side by side, George Boole Has Entered The Chat and Moonlight Drift, each with a one-line blurb and ENTER, then PAGE 1/2 and the keys to choose, play and quit">
+      </object>
+      <figcaption>The real launcher, rendered headless at 80x24 with three cabinets
+        installed. Install a cabinet and its card appears; uninstall it and the card goes.</figcaption>
+    </figure>
+  </div>
+
+  <hr class="rule">
+
+  <div class="sec">
+    <h2>a cabinet is an entry point</h2>
+    <p>Games are not bundled into the arcade. Each one lives in its own repository beside its
+      browser and Wii versions, publishes its own wheel, and declares one line:</p>
+    <pre><code>[project.entry-points."magmacrunch.games"]
+george-boole = "boole.arcade:GAME"</code></pre>
+    <p>The launcher enumerates that group at startup. <strong>Installing a game makes it
+      appear; uninstalling makes it vanish; neither needs a release of the arcade.</strong>
+      Nothing in the launcher imports a game, so it runs with none installed and says how to
+      get one. A game that fails to load is reported by <code>magmacrunch --list</code>
+      rather than silently skipped.</p>
+
+    <h3>the object it points at</h3>
+    <p>Anything with an <code>info</code> and a <code>start(host)</code>. Both halves are
+      structural protocols, so a game qualifies by having the members, not by inheriting
+      anything.</p>
+    <div class="tbl">
+      <div class="tbl-row head"><span>GameInfo</span><span>what the menu reads before seating it</span></div>
+      <div class="tbl-row"><span class="k">key, title, blurb</span><span>the entry point name, the card's title, and one line under it</span></div>
+      <div class="tbl-row"><span class="k">fps</span><span>frames per second the game wants; a turn-based game says so too</span></div>
+      <div class="tbl-row"><span class="k">hold_ms</span><span>how long a keypress counts as held, since terminals report presses and never releases. 0 is one key, one action</span></div>
+      <div class="tbl-row"><span class="k">min_cols, min_rows</span><span>the smallest terminal it draws in; below that its card greys out and says the size</span></div>
+      <div class="tbl-row"><span class="k">score_key</span><span>the scoreboard name, when it is not the key: a board shared with the browser build</span></div>
+      <div class="tbl-row"><span class="k">accent</span><span>the colour the cabinet is known by, brought by the game rather than kept in the launcher</span></div>
+      <div class="tbl-row"><span class="k">lower_is_better</span><span>for games whose record is the smallest number: moves, seconds</span></div>
+    </div>
+    <div class="tbl">
+      <div class="tbl-row head"><span>Host</span><span>what a game may ask of whatever runs it</span></div>
+      <div class="tbl-row"><span class="k">renderer, input</span><span>the character-cell surface to draw on, and the session's input</span></div>
+      <div class="tbl-row"><span class="k">push_scene, pop_scene</span><span>a scene stack; popping the last one hands control back to the menu</span></div>
+      <div class="tbl-row"><span class="k">seated</span><span>whether the game was placed over a launcher, so it can show the way back</span></div>
+      <div class="tbl-row"><span class="k">quit</span><span>end the session and release the terminal</span></div>
+    </div>
+    <p>The same game runs alone as its own command, owning the terminal, or seated in the
+      arcade, where the launcher owns it. Nothing in the game changes between the two.</p>
+  </div>
+
+  <hr class="rule">
+
+  <div class="sec">
+    <h2>in the engine</h2>
+    <div class="feat-grid">
+      <div class="feat-item"><strong>character-cell renderer</strong><span>a cell buffer, a camera, and Textual and Rich as the only dependencies</span></div>
+      <div class="feat-item"><strong>scene stack and loop</strong><span>a fixed-step game loop with a scheduler, and scenes that push and pop</span></div>
+      <div class="feat-item"><strong>input that knows terminals</strong><span>held keys inferred from auto-repeat, or one key, one action, chosen per game</span></div>
+      <div class="feat-item"><strong>a UI kit</strong><span>big pixel text, menus, dialogue, a HUD, glyphs and themes</span></div>
+      <div class="feat-item"><strong>high scores that last</strong><span>a file per game, written atomically, shaped like the web arcade's scoreboard</span></div>
+      <div class="feat-item"><strong>colour optional</strong><span><code>NO_COLOR</code> is honoured, and nothing is readable only in colour</span></div>
+    </div>
+    <p style="margin-top:1rem">It came out of <a href="../texastoast/">texastoast</a>'s
+      terminal backend, with no tkinter and no GUI.</p>
+  </div>
+
+  <hr class="rule">
+
+  <div class="sec">
+    <h2>the cabinets</h2>
+    <p>Installing <code>magmacrunch</code> installs all sixteen. Each is also its own wheel.</p>
+    <div class="tbl">
+      <div class="tbl-row head"><span>cabinet</span><span>the blurb on its card</span></div>
+      <div class="tbl-row"><span class="k"><a href="../george-boole/">george-boole</a></span><span>2048 played with logic gates</span></div>
+      <div class="tbl-row"><span class="k"><a href="../texas-holdem-lava-dome/">thld</a></span><span>solo hold'em against a climbing threshold</span></div>
+      <div class="tbl-row"><span class="k"><a href="../moonlight-drift/">moonlight-drift</a></span><span>thread the columns; hold to climb</span></div>
+      <div class="tbl-row"><span class="k"><a href="../jovian-humanitarian-conflict/">jhc</a></span><span>know what you are shooting at</span></div>
+      <div class="tbl-row"><span class="k"><a href="../roderick-tron/">roderick-tron</a></span><span>a robot composer on the rooftops; find T-R-O-N</span></div>
+      <div class="tbl-row"><span class="k"><a href="../caldera/">caldera</a></span><span>climb the vent, outrun the magma</span></div>
+      <div class="tbl-row"><span class="k"><a href="../nelikko/">nelikko</a></span><span>the falling-block puzzle as Finland invented it</span></div>
+      <div class="tbl-row"><span class="k"><a href="../threes/">threes</a></span><span>slide, merge, survive: 1 and 2 make 3</span></div>
+      <div class="tbl-row"><span class="k"><a href="../two-to-the-n/">two-to-the-n</a></span><span>2048, generalised: pick a power of two, or play endless</span></div>
+      <div class="tbl-row"><span class="k"><a href="../fifteen-puzzle/">fifteen-puzzle</a></span><span>the sliding tile puzzle, 3x3 to 6x6; fewest moves wins</span></div>
+      <div class="tbl-row"><span class="k"><a href="../chess/">chess</a></span><span>against the computer</span></div>
+      <div class="tbl-row"><span class="k"><a href="../checkers/">checkers</a></span><span>against the computer</span></div>
+      <div class="tbl-row"><span class="k"><a href="../backgammon/">backgammon</a></span><span>against the computer</span></div>
+      <div class="tbl-row"><span class="k"><a href="../chinese-checkers/">chinese-checkers</a></span><span>two to six seats</span></div>
+      <div class="tbl-row"><span class="k"><a href="../cribbage/">cribbage</a></span><span>against the computer</span></div>
+      <div class="tbl-row"><span class="k"><a href="../tarot/">tarot</a></span><span>French tarot against three computers</span></div>
+    </div>
+  </div>
+
+  <hr class="rule">
+
+  <div class="sec about">
+    <h2>about</h2>
+    <p>A terminal arcade by <a href="https://magmacrunch.com">magmacrunch media</a>: one
+      command, a menu of every cabinet installed, and a way into one. It needs Python 3.10
+      and a terminal of at least 36x17; the cabinets ask for more, around 59x22.</p>
+    <p>Run it without installing anything with <code>uvx magmacrunch</code>, or see
+      <a href="../../arcade/terminal.html">the terminal arcade page</a> for pipx, pip and
+      Homebrew.</p>
+
+    <div class="about-links">
+      <a href="../../arcade/terminal.html">terminal arcade</a>
+      <a href="../texastoast/">texastoast</a>
+      <a href="https://pypi.org/project/magmacrunch/" target="_blank" rel="noopener">pypi</a>
+      <a href="mailto:info@magmacrunch.com?subject=magmacrunch">contact</a>
+    </div>
+
+    <p class="about-license">PolyForm Noncommercial 1.0.0 &#183; Copyright 2026 magmacrunch media.</p>
+  </div>
+
+  <div class="sec">
+    <div class="src-note-box">
+      <div class="src-note-label">// source access //</div>
+      <p>The magmacrunch repository is private. The arcade and its cabinets install from PyPI
+        for anyone.</p>
+      <p>To build a cabinet, for source access, or anything else, email
+        <a href="mailto:info@magmacrunch.com?subject=magmacrunch">info@magmacrunch.com</a>.</p>
+    </div>
+  </div>
+
+  <footer>
+      &copy; 2026 <span>magmacrunch media</span>
+  </footer>
+
+  <script src="../../nav.js?v=17bba9c8"></script>
+</body>
+</html>
