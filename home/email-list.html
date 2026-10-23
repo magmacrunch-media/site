@@ -14,7 +14,7 @@
     <meta property="og:site_name" content="magmacrunch media">
     <meta property="og:locale" content="en_US">
     <link rel="icon" type="image/x-icon" href="../favicon.ico">
-    <link rel="stylesheet" href="../style.css?v=981601e0">
+    <link rel="stylesheet" href="../style.css?v=6b1e19d6">
     <link rel="stylesheet" href="email-list.css">
 </head>
 <body>
@@ -83,7 +83,7 @@
     &copy; 2026 <span>magmacrunch media</span>
 </footer>
 
-<script src="../nav.js?v=17bba9c8"></script>
+<script src="../nav.js?v=9b2224ed"></script>
 <script>
 const SCRIPT_URL="https://script.google.com/macros/s/AKfycbxw5T0vo0w8fYDEMIRSaBm2pqHZJe2upWKXCyokjZUQYTKZkU-nERGXiz0XW9ZfV5OuiA/exec";const emailEl=document.getElementById("email");const hpEl=document.getElementById("referral_code");const btnEl=document.getElementById("submitBtn");const statusEl=document.getElementById("submitStatus");function setStatus(text,kind){statusEl.textContent=text;statusEl.className="submit-status"+(kind?" "+kind:"")}function looksLikeEmail(value){return value.length<=254&&/^[^@\s,;]+@[^@\s,;.]+(\.[^@\s,;.]+)+$/.test(value)}function submitSignup(){const email=emailEl.value.trim();if(!email){setStatus("! an address goes here","error");emailEl.focus();return}if(!looksLikeEmail(email)){setStatus("! that does not look like an address","error");emailEl.focus();return}btnEl.disabled=true;setStatus("sending...");const formData=new FormData;formData.append("email",email);formData.append("source",location.pathname);formData.append("referral_code",hpEl.value);fetch(SCRIPT_URL,{method:"POST",body:formData}).then(r=>r.json()).then(data=>{if(data.status==="success"){emailEl.value="";setStatus("✦ you are on the list","ok");btnEl.textContent="[ done ]";return}btnEl.disabled=false;if(data.error==="bad_email"){setStatus("! that address was refused","error")}else if(data.error==="rate_limited"||data.error==="busy"){setStatus("! too many at once, try again in a minute","error")}else{setStatus("! could not add you, please try again","error")}}).catch(()=>{btnEl.disabled=false;setStatus("! could not reach the list, please try again","error")})}if(SCRIPT_URL){btnEl.addEventListener("click",submitSignup);emailEl.addEventListener("keydown",ev=>{if(ev.key==="Enter")submitSignup()})}else{emailEl.disabled=true;btnEl.disabled=true;emailEl.placeholder="not open yet";statusEl.innerHTML='the form is not live yet. email <a href="mailto:info@magmacrunch.com?subject=email%20list">info@magmacrunch.com</a> to be added by hand';statusEl.className="submit-status pending"}
 </script>
