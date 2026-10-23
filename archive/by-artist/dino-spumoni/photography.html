@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>dino spumoni · photography · magmacrunch media</title>
     <link rel="icon" type="image/x-icon" href="../../../favicon.ico">
-    <link rel="stylesheet" href="../../../style.css?v=95675166">
+    <link rel="stylesheet" href="../../../style.css?v=40c085d6">
     <link rel="stylesheet" href="../../../assets/archive.css?v=807043b8">
     <link rel="stylesheet" href="ds-shared.css">
     <link rel="stylesheet" href="ds-photography.css">
@@ -109,7 +109,7 @@
 
 <footer>&copy; 2026 <span>magmacrunch media</span></footer>
 
-<script src="../../../nav.js?v=e9a203c0"></script>
+<script src="../../../nav.js?v=2752230b"></script>
 <script>
 (function(){var strip=document.getElementById("dsStrip");var wrap=document.getElementById("dsStripWrap");var isDown=false,startX,scrollLeft;strip.addEventListener("mousedown",function(e){isDown=true;strip.classList.add("dragging");startX=e.pageX-strip.offsetLeft;scrollLeft=strip.scrollLeft});strip.addEventListener("mouseleave",function(){isDown=false;strip.classList.remove("dragging")});strip.addEventListener("mouseup",function(){isDown=false;strip.classList.remove("dragging")});strip.addEventListener("mousemove",function(e){if(!isDown)return;e.preventDefault();strip.scrollLeft=scrollLeft-(e.pageX-strip.offsetLeft-startX)*1.2});strip.addEventListener("scroll",function(){if(strip.scrollLeft>30)wrap.classList.add("scrolled")},{passive:true})})();(function(){var items=document.querySelectorAll("#dsStrip .photo-item");var lb=document.getElementById("dsLightbox");var lbImg=document.getElementById("dsLbImg");var lbCap=document.getElementById("dsLbCap");var lbCount=document.getElementById("dsLbCounter");var strip=document.getElementById("dsStrip");var photos=Array.from(items).map(function(item){return{src:item.querySelector("img").src,alt:item.querySelector("img").alt,caption:item.querySelector(".photo-caption").textContent.trim()}});var current=0;function open(index){current=index;show();lb.classList.add("open");document.body.style.overflow="hidden"}function close(){lb.classList.remove("open");document.body.style.overflow=""}function show(){lbImg.src=photos[current].src;lbImg.alt=photos[current].alt;lbCap.textContent=photos[current].caption;lbCount.textContent=current+1+" / "+photos.length;var wrap=lbImg.closest(".lb-img-wrap");wrap.classList.remove("vertical");if(lbImg.complete&&lbImg.naturalWidth&&lbImg.naturalHeight){if(lbImg.naturalHeight>lbImg.naturalWidth)wrap.classList.add("vertical")}lbImg.onload=function(){if(lbImg.naturalHeight>lbImg.naturalWidth)wrap.classList.add("vertical");else wrap.classList.remove("vertical")}}function nav(dir){current=(current+dir+photos.length)%photos.length;show()}items.forEach(function(item){item.addEventListener("click",function(){if(!strip.classList.contains("dragging"))open(parseInt(item.dataset.index))})});document.getElementById("dsLbClose").addEventListener("click",close);document.getElementById("dsLbPrev").addEventListener("click",function(){nav(-1)});document.getElementById("dsLbNext").addEventListener("click",function(){nav(1)});lb.addEventListener("click",function(e){if(e.target===lb)close()});document.addEventListener("keydown",function(e){if(!lb.classList.contains("open"))return;if(e.key==="Escape")close();if(e.key==="ArrowLeft")nav(-1);if(e.key==="ArrowRight")nav(1)})})();
 </script>
