@@ -25,7 +25,7 @@
     "c": "page",
     "u": "/home/email-list.html",
     "d": "get a note when something comes out",
-    "b": "email list - magmacrunch media home › email list // email list // leave an address ✦ hear about it first .----------------------------. |\\ /| | \\________________________/ | | | | E-MAIL LIST | | | '----------------------------' your email referral code [ sign me up ] // the deal // Coming soon. Sign up for a future newsletter and email content by magmacrunch media. No spam, no ads, no tracking, and no sharing of your email address. Unsubscribe anytime. Write to info@magmacrunch.com and you are off it. Every mail we eventually send will say so too."
+    "b": "email list - magmacrunch media home › email list // email list // leave an address ✦ hear about it first .----------------------------. |\\ /| | \\________________________/ | | | | E-MAIL LIST | | | '----------------------------' your email referral code [ sign me up ] // the deal // The newsletter has not started yet. Sign up now and you will get the first one when it does. We will not send ads, track you, or give your address to anyone. To unsubscribe, write to info@magmacrunch.com and you are off it. Every mail we eventually send will say so too."
   },
   {
     "t": "music · magmacrunch media",
@@ -158,7 +158,7 @@
     "c": "page",
     "u": "/arcade/server.html",
     "d": "Server status and info",
-    "b": "the server · arcade · magmacrunch media home › arcade › server ._ _ _ ___ ___ ._ _ _ ___ ___ _ _ _ _ ._ _ ___ | |_ ___ ___ _ _ _ _ ___ _ _ | ' ' | |/ . || ' ' | |/ | '| '_>| | || ' |/ | '| . | | '_>| | |/ ._>| '_> |_|_|_| // how it works // // THE SERVER // The magmacrunch arcade runs on a Raspberry Pi sitting in a closet. It hosts all the game servers and the chat, 24/7. No cloud, no hosting provider, just a little computer with a big job. Everything talks over WebSockets , which means your browser maintains a live connection to the server while you play. No page refreshes, no polling: moves ..."
+    "b": "the server · arcade · magmacrunch media home › arcade › server ._ _ _ ___ ___ ._ _ _ ___ ___ _ _ _ _ ._ _ ___ | |_ ___ ___ _ _ _ _ ___ _ _ | ' ' | |/ . || ' ' | |/ | '| '_>| | || ' |/ | '| . | | '_>| | |/ ._>| '_> |_|_|_| // how it works // // THE SERVER // The magmacrunch arcade runs on a Raspberry Pi in a closet, which hosts every game server and the chat around the clock. Nothing runs on a cloud service or a hosting provider. Everything talks over WebSockets, so your browser keeps a live connection to the server while you play and moves and messages arrive as they happen, without the page r..."
   },
   {
     "t": "terminal arcade · arcade · magmacrunch media",
@@ -207,7 +207,7 @@
     "c": "page",
     "u": "/ware/dev/index.html",
     "d": "game engines, scripting language, & memory course",
-    "b": "developer tools · ware · magmacrunch media home › ware › developer tools // developer tools // game engines, scripting language, & educational tools // game engines // the engines under the arcade, the wii games & the 3D work ADENOSINE game engine collection for the magmacrunch web arcade JavaScript npm ▶ DAFFODIL heightfield terrain engine: real-world landscape at 1:1 C ▶ HOLOGRAM optics-first 3D engine with a spectral ray tracer C ▶ GERRIDAE meshes rasterized beside hologram's ray tracer C new ▶ TUNACAN pixel-art game engine with its level editor built in C browser new ▶ MAGNOLIA wii homebre..."
+    "b": "developer tools · ware · magmacrunch media home › ware › developer tools // developer tools // game engines, scripting language, & educational tools // game engines // the engines under the arcade, the wii games & the 3D work ADENOSINE game engine collection for the magmacrunch web arcade JavaScript npm ▶ DAFFODIL heightfield terrain engine: real-world landscape at 1:1 C ▶ HOLOGRAM optics-first 3D engine with a spectral ray tracer C ▶ GERRIDAE meshes rasterized beside hologram's ray tracer C new ▶ TUNACAN pixel-art game engine with its level editor built in C browser new ▶ LITHOSPHERE typesett..."
   },
   {
     "t": "Coruscating Dissonance",
@@ -1866,7 +1866,7 @@
     "c": "tool",
     "u": "/ware/adenosine/",
     "d": "lightweight web game engines · try every package live",
-    "b": "adenosine · magmacrunch media home › ware › developer tools › adenosine adenosine lightweight game engines by magmacrunch media A collection of lightweight web game engines by magmacrunch media . TypeScript and JavaScript, zero runtime dependencies, built for browsers. Powering the magmacrunch web arcade since 2026. npm contact ▶ Playground Try every package live. Code editor with syntax highlighting, pre-loaded examples, and console output. ▢ Tile Map Editor Draw tile maps for the RPG engine. Paint, fill, export JSON, preview with AdRPG. ✎ Theme Customizer Customize CSS colors for cards, puzz..."
+    "b": "adenosine · magmacrunch media home › ware › developer tools › adenosine adenosine lightweight game engines by magmacrunch media A collection of lightweight web game engines by magmacrunch media . TypeScript and JavaScript, zero runtime dependencies, built for browsers. Powering the magmacrunch web arcade since 2026. npm contact try it playground every package live, with examples tile map editor tile maps for the RPG engine theme customizer colours for the card, puzzle, chat and multiplayer packages packages Package Description npm rpg 2D tile-based RPG engine v0.4.0 puzzle Sliding tile puzzle ..."
   },
   {
     "t": "GATE//FOLD",
@@ -1942,8 +1942,8 @@
     "t": "daffodil · magmacrunch media",
     "c": "tool",
     "u": "/ware/daffodil/",
-    "d": "A C99 heightfield terrain engine: real-world landscape at 1:1, measured, not invented.",
-    "b": "daffodil · magmacrunch media home › ware › developer tools › daffodil daffodil heightfield terrain engine · real-world landscape at 1:1 v0.1.0-dev PolyForm Noncommercial C99 + sokol A C99 heightfield terrain engine by magmacrunch media . daffodil draws real ground: it reads a heightfield built offline from LiDAR elevation data, reprojected, tiled and written as raw float32 meters, then renders it faithfully and lets you walk on it. The landscape is surveyed, not sculpted . There's no procedural generation and no terrain sculpting: the shape of the ground comes from the survey, and the engine's..."
+    "d": "A C99 heightfield terrain engine: real-world landscape at 1:1, from LiDAR survey.",
+    "b": "daffodil · magmacrunch media home › ware › developer tools › daffodil daffodil heightfield terrain engine · real-world landscape at 1:1 v0.1.0-dev PolyForm Noncommercial C99 + sokol A C99 heightfield terrain engine by magmacrunch media . daffodil draws real ground: it reads a heightfield built offline from LiDAR elevation data, reprojected, tiled and written as raw float32 meters, then renders it faithfully and lets you walk on it. Nothing is generated or sculpted. The shape of the ground comes from the survey, and the engine's job is to reproduce it. It was built for Block Island Simulator, w..."
   },
   {
     "t": "15 puzzle · magmacrunch media",
@@ -1971,7 +1971,7 @@
     "c": "tool",
     "u": "/ware/gerridae/",
     "d": "meshes rasterized beside hologram's ray tracer, composited by depth",
-    "b": "gerridae · magmacrunch media home › ware › developer tools › gerridae gerridae meshes rasterized beside hologram's ray tracer, composited by depth v0.0.1 PolyForm Noncommercial C99 + HLSL early: m1 🔭 hologram The ray tracer gerridae draws beside. It traces what light has to be right on: glass, mirrors, gratings, polarizers, lamps. ✉ Get in touch The engine is not publicly distributed. Email for source access or licensing. the composite hologram traces what light has to be right on. gerridae draws everything else: the room, the furniture and anything that moves. The two meet per pixel, by dept..."
+    "b": "gerridae · magmacrunch media home › ware › developer tools › gerridae gerridae meshes rasterized beside hologram's ray tracer, composited by depth v0.0.1 PolyForm Noncommercial C99 + HLSL early: m1 Meshes rasterized beside hologram ’s ray tracer and composited by depth. hologram traces what light has to be right on, glass, mirrors, gratings, polarizers and lamps, and gerridae draws everything else. hologram contact the composite hologram traces what light has to be right on. gerridae draws everything else: the room, the furniture and anything that moves. The two meet per pixel, by depth. m1: t..."
   },
   {
     "t": "grocery harrison · magmacrunch media",
@@ -1985,14 +1985,14 @@
     "c": "tool",
     "u": "/ware/hologram/",
     "d": "optics-first 3D game engine: a spectral ray tracer where light obeys physics",
-    "b": "hologram · magmacrunch media home › ware › developer tools › hologram hologram an optics-first 3D game engine: a spectral ray tracer where light obeys physics v0.1.0 PolyForm Noncommercial C99 + HLSL/GLSL/MSL 📚 Modules Reference The public C API across twelve modules. Structs, constants and every function the umbrella header exposes. ✉ Get in touch The engine is not publicly distributed. Email for source access, licensing, or the deeper reference. what it does that other engines don't Every effect below is computed from the physics rather than approximated by a shader trick, and every one is ..."
+    "b": "hologram · magmacrunch media home › ware › developer tools › hologram hologram an optics-first 3D game engine: a spectral ray tracer where light obeys physics v0.1.0 PolyForm Noncommercial C99 + HLSL/GLSL/MSL An optics-first 3D game engine: a real-time spectral ray tracer in C99, built for games made of glass, mirrors and lenses. The public C API is documented module by module in the reference, which covers every function the umbrella header exposes. modules reference contact what it does that other engines don't Every effect below is computed from the physics rather than approximated by a sha..."
   },
   {
     "t": "hypnopompia · magmacrunch media",
     "c": "tool",
     "u": "/ware/hypnopompia/",
     "d": "the iOS shell for magmacrunch arcade games: Game Center plugin, bundle pipeline, store tooling",
-    "b": "hypnopompia · magmacrunch media home › ware › developer tools › hypnopompia hypnopompia the iOS shell for magmacrunch arcade games The Capacitor and Xcode half of an App Store build, the native Game Center plugin, and the store tooling, by magmacrunch media . It is to iOS what magnolia is to the Wii: the part that's the same every time. It runs no game logic. A game’s rules live in that game’s repo, once per platform. This holds what every App Store build needs and no game should have to reinvent: a plugin, a project, a pipeline and a checklist that fails loudly. contact what's here native/ Th..."
+    "b": "hypnopompia · magmacrunch media home › ware › developer tools › hypnopompia hypnopompia the iOS shell for magmacrunch arcade games Everything an App Store build of a magmacrunch game needs that has nothing to do with the game: the Capacitor and Xcode project, a native Game Center plugin, the pipeline that turns a web page into an app bundle, and the tooling for the store and for testers. magma-kit does the same job for the desktop apps. It runs no game logic. A game’s rules live in that game’s repo, once per platform. Every piece here started inside george boole ’s port and moved out once a se..."
   },
   {
     "t": "the jovian humanitarian conflict · magmacrunch media",
@@ -2009,25 +2009,39 @@
     "b": "klotski · magmacrunch media home › ware › video games › klotski KLOTSKI 横刀立马 · slide the general to the exit 横刀立马: slide Cao Cao, the gold two-by-two block, past his generals and soldiers and out of the four-by-five board. Pieces only slide, never jump. The text is in Chinese, English or both, in a neo-arcade take on new-age China. // at the board // 横刀立马, the classic layout Cao Cao starts at the top // where to play // BROWSER ▶ PLAY free, in the arcade . Arrow keys or swipe. // built with // adenosine browser · JavaScript // credits // game by magmacrunch media original game Klotski (横刀立马), ..."
   },
   {
+    "t": "lithosphere · magmacrunch media",
+    "c": "tool",
+    "u": "/ware/lithosphere/",
+    "d": "a typesetting engine for game text: Knuth-Plass line breaking on a pixel grid, live on the web, the desktop and the Wii",
+    "b": "lithosphere · magmacrunch media home › ware › developer tools › lithosphere lithosphere a typesetting engine for game text Line breaking for the words inside a game: dialogue boxes, signs, item descriptions. It uses the Knuth-Plass method from TeX, which compares the possible breaks across the whole paragraph instead of filling one line at a time, so the spaces come out more even. It works on whole pixels and reads pixel fonts made in font//litho, our pixel font editor, directly. A game can re-break a paragraph every time the box changes size. It is portable C99 that never allocates, and the s..."
+  },
+  {
+    "t": "magma-kit · magmacrunch media",
+    "c": "tool",
+    "u": "/ware/magma-kit/",
+    "d": "the shared half of the magmacrunch desktop apps: runtime modules, a Tauri crate, a project template and the tooling that keeps nine apps in step",
+    "b": "magma-kit · magmacrunch media home › ware › developer tools › magma-kit magma-kit the shared half of the magmacrunch desktop apps Everything a magmacrunch desktop app needs that has nothing to do with what the app is for: crash logging, the bridge to the native side, keyboard shortcuts, undo, settings, dialogs, a menu bar, themes, and the Rust underneath them. The apps are built with Tauri ; hypnopompia does the same job for the App Store builds. Every module here started as two or three copies in different apps and was merged once they had been compared. Anything only one app needs stays in t..."
+  },
+  {
     "t": "magmacrunch · magmacrunch media",
     "c": "tool",
     "u": "/ware/magmacrunch/",
     "d": "the terminal arcade, and the Python engine its cabinets run on",
-    "b": "magmacrunch · magmacrunch media home › ware › developer tools › magmacrunch magmacrunch the terminal arcade, and the Python engine its cabinets run on v0.14.0 PolyForm Noncommercial Python 3.10+ 16 cabinets 🕹 Play it Install and play: one command, and a menu of every cabinet on the machine. 📦 PyPI The arcade and each cabinet are pure-Python wheels, with nothing to compile anywhere. ✉ Get in touch The source is not public. Email for access, licensing, or to build a cabinet. The real launcher, rendered headless at 80x24 with three cabinets installed. Install a cabinet and its card appears; uni..."
+    "b": "magmacrunch · magmacrunch media home › ware › developer tools › magmacrunch magmacrunch the terminal arcade, and the Python engine its cabinets run on v0.14.0 PolyForm Noncommercial Python 3.10+ 16 cabinets A terminal arcade by magmacrunch media: one command, a menu of every cabinet installed on the machine, and the Python engine those cabinets run on. The arcade and each cabinet are pure-Python wheels on PyPI, with nothing to compile anywhere. play it PyPI contact The real launcher, rendered headless at 80x24 with three cabinets installed. Install a cabinet and its card appears; uninstall it ..."
   },
   {
     "t": "magmascript · magmacrunch media",
     "c": "tool",
     "u": "/ware/magmascript/",
     "d": "a Python-inspired mini language for magmacrunch infrastructure",
-    "b": "magmascript · magmacrunch media home › ware › developer tools › magmascript magmascript a Python-inspired mini language for magmacrunch infrastructure A Python-inspired mini scripting language by magmacrunch media . Write .mgs scripts that combine general-purpose programming with infrastructure automation via the domain bridge. Tree-walk interpreter, no compilation step, runs in your terminal or browser. Docs PyPI ▶ Playground Write and run .mgs scripts in-browser with Pyodide. 14 examples, syntax highlighting, console output. 📖 Language Reference Syntax cheat sheet: variables, functions, cla..."
+    "b": "magmascript · magmacrunch media home › ware › developer tools › magmascript magmascript a Python-inspired mini language for magmacrunch infrastructure A Python-inspired mini scripting language by magmacrunch media . Write .mgs scripts that combine general-purpose programming with infrastructure automation via the domain bridge. Tree-walk interpreter, no compilation step, runs in your terminal or browser. The playground runs scripts in the browser under Pyodide, with fourteen examples. playground Docs PyPI what's in it values Dynamic typing, and f-strings that interpolate {expressions} function..."
   },
   {
     "t": "magnolia · magmacrunch media",
     "c": "tool",
     "u": "/ware/magnolia/",
     "d": "lightweight C engine for Wii homebrew score-attack games",
-    "b": "magnolia · magmacrunch media home › ware › developer tools › magnolia magnolia lightweight C engine for Wii homebrew games A lightweight C engine for Wii homebrew by magmacrunch media . It handles initialization, input, rendering, scoring, audio, and the game state shell, so you only write the gameplay. Built with devkitPPC and GRRLIB . API reference contact 📚 API Reference 153 functions across 12 modules. Interactive search, module tabs, code examples with syntax highlighting. 🛠 Scaffold Generate a new game project with the magnolia engine pre-configured. coming soon modules core Engine ini..."
+    "b": "magnolia · magmacrunch media home › ware › developer tools › magnolia magnolia lightweight C engine for Wii homebrew games A lightweight C engine for Wii homebrew by magmacrunch media . It handles initialization, input, rendering, scoring, audio, and the game state shell, so you only write the gameplay. The API reference covers all twelve modules, and a scaffold that starts a new game project is planned. Built with devkitPPC and GRRLIB . API reference contact modules core Engine init, SD mount, asset paths renderer Video, font, frame presentation sprite Textures, sprite sheets, mirroring, orig..."
   },
   {
     "t": "makemecookies!x4 · magmacrunch media",
@@ -2132,7 +2146,7 @@
     "c": "tool",
     "u": "/ware/texastoast/",
     "d": "Python RPG engine with I2C hardware abstraction for magmacrunch game systems",
-    "b": "texastoast · magmacrunch media home › ware › developer tools › texastoast texastoast Python RPG engine with I2C hardware abstraction for magmacrunch game systems v0.12.1 PolyForm Noncommercial 1.0.0 Python 3.10+ A tkinter-based 2D game engine by magmacrunch media , inspired by adenosine and built for the same kind of small RPGs, but in Python, with an input layer that can read controllers over I2C on a Raspberry Pi. Game logic never depends on tkinter, and hardware degrades gracefully to the keyboard when it's absent. It also ships a hardware dev kit: a bus-level simulator that runs the real I..."
+    "b": "texastoast · magmacrunch media home › ware › developer tools › texastoast texastoast Python RPG engine with I2C hardware abstraction for magmacrunch game systems v0.12.1 PolyForm Noncommercial 1.0.0 Python 3.10+ A tkinter-based 2D game engine by magmacrunch media , inspired by adenosine and built for the same kind of small RPGs, but in Python, with an input layer that can read controllers over I2C on a Raspberry Pi. Game logic never depends on tkinter, and hardware degrades gracefully to the keyboard when it's absent. The playground runs the real engine in your browser under Pyodide, four exam..."
   },
   {
     "t": "threes · magmacrunch media",
@@ -2153,7 +2167,7 @@
     "c": "tool",
     "u": "/ware/tunacan/",
     "d": "a pixel-art game engine in C, with its level editor built in",
-    "b": "tunacan · magmacrunch media home › ware › developer tools › tunacan tunacan a pixel-art game engine in C, with its level editor built in v0.0.1 PolyForm Noncommercial C99 + sokol early: m7 🥣 Grocery Harrison The first game on it. The cereal aisle is being rebuilt in tunacan from the web version. 🎨 SPRITE//FORGE Where the sprites are drawn. tunacan reads its .forge files as they are, with no export step. ✉ Get in touch The engine is not publicly distributed. Email for source access or licensing. in the engine Both frames are the engine's own 320x180, captured from its web build. The editor is..."
+    "b": "tunacan · magmacrunch media home › ware › developer tools › tunacan tunacan a pixel-art game engine in C, with its level editor built in v0.0.1 PolyForm Noncommercial C99 + sokol early: m7 A 2D engine in C99 on sokol, for large pixel-art games that run in a browser today. The first game on it is Grocery Harrison , whose cereal aisle is being rebuilt here from the web version. Its sprites are drawn in SPRITE//FORGE , and tunacan reads those .forge files as they are, with no export step. grocery harrison sprite//forge contact in the engine Both frames are the engine's own 320x180, captured from ..."
   },
   {
     "t": "2^n · magmacrunch media",
