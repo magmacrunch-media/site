@@ -88,9 +88,9 @@
             <h2>// INSTALL //</h2>
             <p>
                 Every package in the stack is a pure-Python wheel, so there is nothing
-                to compile on macOS, Linux or Windows. What differs between the three
-                is not the build, it is which installer you already have, so that is
-                what this table is keyed on.
+                to compile on macOS, Linux or Windows. The only difference between
+                them is which installer you already have, so the table is keyed on
+                that.
             </p>
             <div class="t-wrap"><table class="t">
                 <tr><th>you already have</th><th>run</th><th></th></tr>
@@ -124,12 +124,11 @@
 <span class="p">$</span> pipx install magmacrunch</div>
             <p>
                 Either one puts <code>magmacrunch</code> (and each cabinet's own
-                command) on your PATH inside an isolated virtualenv. Whichever route
-                you take, that one install brings the arcade and all four cabinets.
+                command) on your PATH inside an isolated virtualenv, and brings all
+                sixteen cabinets with it.
             </p>
             <p>
-                On Windows, note that <strong><code>python3</code> is usually not
-                Python</strong>: Windows ships an app-execution alias of that name
+                On Windows, <code>python3</code> is usually not Python: Windows ships an app-execution alias of that name
                 pointing at the Microsoft Store, so <code>python3 -m magmacrunch</code>
                 can answer <em>Python was not found</em> on a machine that has both
                 Python and the arcade. Use the launcher, <code>py -m magmacrunch</code>,
@@ -145,9 +144,8 @@
 <span class="p">$</span> moonlight-drift  <span class="c">the endless drifter, on its own</span>
 <span class="p">$</span> jovian           <span class="c">the rail over Jupiter, on its own</span></div>
             <p>
-                A game plays identically whether you start it directly or pick it from
-                the arcade: the arcade is not a wrapper around them, it is the same
-                host they run on.
+                A game plays the same whether you start it directly or pick it from
+                the arcade, because both run it on the same host.
             </p>
             <div class="keys">
                 <span class="key">←→</span> move between cabinets<br>
@@ -158,7 +156,7 @@
             </div>
             <p style="margin-top:16px">
                 That last one is the whole reason the host exists. A cabinet says so on
-                its own title screen, and <em>only</em> when the arcade started it. The
+                its own title screen, and only when the arcade started it. The
                 same key ends the session when the game was launched as its own command,
                 so a hint printed unconditionally would be a lie half the time.
             </p>
@@ -176,9 +174,21 @@
                 <li><span class="cab-name">lava-dome</span><span>solo hold'em against a climbing threshold</span></li>
                 <li><span class="cab-name">moonlight-drift</span><span>thread the columns; hold to climb</span></li>
                 <li><span class="cab-name">jovian</span><span>know what you are shooting at</span></li>
+                <li><span class="cab-name">roderick-tron</span><span>a clockwork gentleman on the rooftops</span></li>
+                <li><span class="cab-name">caldera</span><span>climb the vent and outrun the magma</span></li>
+                <li><span class="cab-name">nelikko</span><span>Helsinki 1989: clear rows, build the four</span></li>
+                <li><span class="cab-name">threes</span><span>1 and 2 make 3, then same plus same</span></li>
+                <li><span class="cab-name">two-to-the-n</span><span>2048 with any power of two from 4 to 65,536</span></li>
+                <li><span class="cab-name">fifteen-puzzle</span><span>sliding tiles, 3x3 to 6x6</span></li>
+                <li><span class="cab-name">chess</span><span>against the computer, at three depths of search</span></li>
+                <li><span class="cab-name">checkers</span><span>against the computer; jumps are compulsory</span></li>
+                <li><span class="cab-name">backgammon</span><span>against the computer, with the doubling cube</span></li>
+                <li><span class="cab-name">chinese-checkers</span><span>against two to five computers</span></li>
+                <li><span class="cab-name">cribbage</span><span>first to 121 against the computer</span></li>
+                <li><span class="cab-name">tarot</span><span>four-handed French tarot against three computers</span></li>
             </ul>
             <p>
-                Installing <code>magmacrunch</code> installs all four. To see what is
+                Installing <code>magmacrunch</code> installs all sixteen. To see what is
                 actually on the machine:
             </p>
             <div class="cmd"><span class="p">$</span> magmacrunch --list</div>
@@ -192,7 +202,7 @@
         <div class="content-section">
             <h2>// HOW GAMES GET HERE //</h2>
             <p>
-                Games are <strong>not</strong> bundled. Each one lives in its own repo
+                Each game is a package of its own. It lives in its own repo
                 alongside its browser and Wii versions, publishes its own wheel, and
                 declares an entry point:
             </p>
@@ -200,9 +210,9 @@
 george-boole = "boole.arcade:GAME"</div>
             <p>
                 pointing at an object with <code>info: GameInfo</code> and
-                <code>start(host)</code>. The launcher enumerates that group at startup.
-                <strong>Installing a game makes it appear here; uninstalling makes it
-                vanish; neither needs a release of the arcade.</strong>
+                <code>start(host)</code>. The launcher enumerates that group at startup,
+                so installing a game adds it to the menu and uninstalling removes it,
+                with no new release of the arcade.
             </p>
             <p>
                 Nothing in the launcher imports a game, so the arcade runs with none
