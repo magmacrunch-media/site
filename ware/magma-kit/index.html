@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>magma-kit · magmacrunch media</title>
+  <meta property="og:title" content="magma-kit · magmacrunch media">
+  <meta property="og:description" content="the shared half of the magmacrunch desktop apps: runtime modules, a Tauri crate, a project template and the tooling that keeps nine apps in step">
+  <meta property="og:image" content="https://magmacrunch.com/og/ware.png?v=1">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta property="og:site_name" content="magmacrunch media">
+  <meta property="og:locale" content="en_US">
+  <link rel="icon" type="image/x-icon" href="../../favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Courier+Prime:wght@400;700&display=swap">
+  <link rel="stylesheet" href="../../style.css?v=981601e0">
+  <link rel="stylesheet" href="../crumbs.css?v=a7887a26">
+  <style>
+:root{color-scheme:dark;--mk-deep: #6f84f0;--mk-accent: #8ea2ff}*{box-sizing:border-box;margin:0;padding:0}body{font:14px/1.6 "Courier Prime",ui-monospace,SFMono-Regular,Menlo,monospace;background:#13141b;color:#e6e8f0;min-height:100vh;display:flex;flex-direction:column}body>*{width:100%}.hero{text-align:center;padding:3.5rem 1.5rem 2.5rem}.hero h1{font-family:"Press Start 2P",monospace;font-size:clamp(22px,4vw,44px);font-weight:400;color:var(--mk-deep);text-shadow:3px 3px 0 #2e3148,6px 6px 0 #1b1c27;letter-spacing:0.08em;margin-bottom:.75rem}.hero .tagline{font-size:13px;color:#9a9db5}.lead,.features,.about,.src-note{max-width:600px;margin:0 auto 2.75rem;padding:0 1.5rem}.lead{font-size:13px;line-height:1.7;color:#b6b9cc}.lead p{margin-bottom:.6rem}.lead strong{color:#e6e8f0}.features h2,.about h2{font-family:"Press Start 2P",monospace;font-size:10px;font-weight:400;color:var(--mk-deep);margin-bottom:.75rem;letter-spacing:0.05em}.section-blurb{font-size:12px;color:#9a9db5;margin-bottom:.75rem;line-height:1.6}.feat-grid{display:grid;grid-template-columns:1fr 1fr;gap:.5rem}.feat-item{background:#1b1c27;border:1px solid #2e3148;border-radius:8px;padding:.6rem .75rem;font-size:12px}.feat-item strong{color:var(--mk-accent);display:block;margin-bottom:.15rem;font-size:11px}.feat-item span{color:#9a9db5;font-size:11px}.feat-item code{font-family:"Courier Prime",monospace;color:#c3ccff}a.feat-item{text-decoration:none;transition:border-color .15s}a.feat-item:hover,a.feat-item:focus-visible{border-color:var(--mk-accent);outline:none}a.feat-item strong::after{content:" ▸"}.apps{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:.25rem 1rem;font-size:12px}.apps li{color:#9a9db5;padding:.2rem 0;border-top:1px solid #2e3148}.apps li strong{color:#e6e8f0;font-weight:400}.about{font-size:12px;color:#9a9db5;line-height:1.6}.about p{margin-bottom:.5rem}.about strong{color:#e6e8f0}.about pre{background:#1b1c27;border:1px solid #2e3148;border-radius:6px;padding:.6rem .75rem;overflow-x:auto;margin-bottom:.5rem}.about code{font-family:"Courier Prime",monospace;font-size:11px;color:var(--mk-accent)}.about-label{color:#666a80;font-size:11px;margin-bottom:.25rem}.about-links{display:flex;flex-wrap:wrap;gap:1rem;margin:1.25rem 0 .75rem}.about-links a{color:var(--mk-accent);text-decoration:none;font-family:"Press Start 2P",monospace;font-size:8px;padding:.4rem .6rem;border:1px solid #2e3148;border-radius:6px;transition:border-color .15s}.about-links a:hover{border-color:var(--mk-accent)}.about-license{color:#555869;font-size:11px;margin-top:1rem}.src-note-box{border:1px solid #2e3148;border-left:3px solid var(--mk-accent);border-radius:6px;background:rgba(255,255,255,.02);padding:.9rem 1rem}.src-note-label{font-family:"Press Start 2P",monospace;font-size:8px;color:var(--mk-accent);letter-spacing:0.05em;margin-bottom:.6rem}.src-note p{font-size:12px;line-height:1.7;color:#9a9db5}.src-note p+p{margin-top:.5rem}@media(max-width:480px){.hero{padding:2.5rem 1.25rem 1.75rem}.lead,.features,.about,.src-note{padding:0 1rem}.feat-grid,.apps{grid-template-columns:1fr}.about pre{white-space:pre-wrap;overflow-wrap:anywhere}.about-links a{padding:.55rem .9rem;min-height:44px;display:inline-flex;align-items:center}}.tool-nav{margin-top:48px;padding:8px 24px;border-bottom:1px solid #2e3148;background:#13141b;flex-shrink:0}.tool-nav .breadcrumb{--crumb-accent: var(--mk-accent)}body{background:#13141b;background-image:none;color:#e6e8f0}a{color:var(--mk-accent)}footer{margin-top:auto;padding:1.5rem;text-align:center;font-family:"Courier Prime",monospace;font-size:12px;color:#9a9db5;border-top:1px solid #2e3148}footer span{color:var(--mk-accent)}
+</style>
+</head>
+<body class="ware-accent" style="--ware-accent:#8ea2ff">
+
+<nav id="auto-nav" data-depth="../../"></nav>
+
+<div class="tool-nav">
+    <div class="breadcrumb">
+      <a href="../../">home</a> <span class="sep">›</span>
+      <a href="../">ware</a> <span class="sep">›</span>
+      <a href="../dev/">developer tools</a> <span class="sep">›</span>
+      <span class="current">magma-kit</span>
+    </div>
+</div>
+
+  <div class="hero">
+    <h1>magma-kit</h1>
+    <p class="tagline">the shared half of the magmacrunch desktop apps</p>
+  </div>
+
+  <div class="lead">
+    <p>Everything a magmacrunch desktop app needs that has nothing to do with what the app is
+      for: crash logging, the bridge to the native side, keyboard shortcuts, undo, settings,
+      dialogs, a menu bar, themes, and the Rust underneath them. The apps are built with
+      <a href="https://tauri.app" target="_blank" rel="noopener">Tauri</a>;
+      <a href="../hypnopompia/">hypnopompia</a> does the same job for the App Store builds.</p>
+    <p>Every module here started as two or three copies in different apps and was merged
+      once they had been compared. Anything only one app needs stays in that app.</p>
+    <p>It runs no app logic of its own. An app passes in its vocabulary (its key bindings, its
+      commands, its colours), and the kit's files stay byte-identical in every app that uses
+      them.</p>
+  </div>
+
+  <div class="features">
+    <h2>running in your browser</h2>
+    <p class="section-blurb">Three of the apps also ship as web pages on this site, and each one
+      carries its own copy of the kit.</p>
+    <div class="feat-grid">
+      <a class="feat-item" href="../sprite-forge/">
+        <strong>SPRITE//FORGE</strong>
+        <span>game sprite editor</span>
+      </a>
+      <a class="feat-item" href="../album-art-maker/">
+        <strong>GATE//FOLD</strong>
+        <span>pixel art editor for album covers</span>
+      </a>
+      <a class="feat-item" href="../punch-roll/">
+        <strong>PUNCH//ROLL</strong>
+        <span>chiptune piano roll, and the reference for the theme picker</span>
+      </a>
+    </div>
+  </div>
+
+  <div class="features">
+    <h2>what's here</h2>
+    <div class="feat-grid">
+      <div class="feat-item">
+        <strong>js/</strong>
+        <span>The runtime: crash-reporting boot, the bridge to Rust, keys, undo history, prefs, modals, DOM helpers, a menu bar drawn in the page, and the theme picker</span>
+      </div>
+      <div class="feat-item">
+        <strong>artstore.js</strong>
+        <span>Imported images kept off the document by reference, so one photo is not 11 MB in every undo state</span>
+      </div>
+      <div class="feat-item">
+        <strong>crate/</strong>
+        <span>The Rust half: file access contained to its folder, the shared log file, tray-popover placement, unsaved-change tracking with a close guard, autostart</span>
+      </div>
+      <div class="feat-item">
+        <strong>themes/</strong>
+        <span>The <code>magma-themes</code> palettes, so every app can offer the same looks while keeping its own as the default</span>
+      </div>
+      <div class="feat-item">
+        <strong>sync.mjs</strong>
+        <span>Byte-copies the kit into an app and records a hash per file; <code>--check</code> catches any copy that has drifted</span>
+      </div>
+      <div class="feat-item">
+        <strong>new-app.mjs</strong>
+        <span>Stamps <code>template/</code> into a new app that builds and runs on its first try</span>
+      </div>
+      <div class="feat-item">
+        <strong>package-pwa.mjs</strong>
+        <span>Turns an app's web half into an installable, offline web app from one manifest file</span>
+      </div>
+      <div class="feat-item">
+        <strong>testkit/</strong>
+        <span>The test harness the apps share, plus an integrity check that runs in each app's own suite</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="features">
+    <h2>built on it</h2>
+    <ul class="apps">
+      <li><strong>SPRITE//FORGE</strong> sprites</li>
+      <li><strong>GATE//FOLD</strong> album covers</li>
+      <li><strong>DECK//PRESS</strong> card decks</li>
+      <li><strong>FONT//LITHO</strong> pixel fonts</li>
+      <li><strong>PUNCH//ROLL</strong> chiptune</li>
+      <li><strong>BOT//FARM</strong> bot monitor</li>
+      <li><strong>MAGMA//OPS</strong> server console</li>
+      <li><strong>media player</strong> music player</li>
+      <li><strong>DAFFODIL WORKS</strong> terrain editor for <a href="../daffodil/">daffodil</a></li>
+    </ul>
+  </div>
+
+  <div class="about">
+    <h2>keeping the copies in step</h2>
+    <p>A kit file is <strong>byte-identical in every app</strong>. Nothing is templated on the
+      way in, so a hash comparison is a complete drift check, and it runs from both ends: each app's
+      own tests catch a kit file edited in place, and the kit's tests catch a change made here
+      that never reached an app.</p>
+    <p>Edit a kit file here, never in an app, then sync it out:</p>
+    <pre><code>node ../magma-kit/scripts/sync.mjs .          # vendor into an app
+node ../magma-kit/scripts/sync.mjs --check .  # is this app current?
+node scripts/new-app.mjs ../my-app --name "MY//APP" --ns MyApp --from ../sprite-forge</code></pre>
+
+    <div class="about-links">
+      <a href="../hypnopompia/">hypnopompia</a>
+      <a href="../utilities/">the apps</a>
+      <a href="mailto:info@magmacrunch.com?subject=magma-kit">contact</a>
+    </div>
+
+    <p class="about-license">PolyForm Noncommercial 1.0.0 &middot; Copyright 2026 magmacrunch media</p>
+  </div>
+
+  <div class="src-note">
+    <div class="src-note-box">
+      <div class="src-note-label">// source access //</div>
+      <p>magma-kit is developed in-house and is not publicly distributed. It ships inside the
+        apps it exists for, rather than on its own.</p>
+      <p>For source access, licensing, or anything else, email
+        <a href="mailto:info@magmacrunch.com?subject=magma-kit">info@magmacrunch.com</a>.</p>
+    </div>
+  </div>
+
+  <footer>
+      &copy; 2026 <span>magmacrunch media</span>
+  </footer>
+
+  <script src="../../nav.js?v=17bba9c8"></script>
+</body>
+</html>
