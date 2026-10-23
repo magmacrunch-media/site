@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>lithosphere debug view · magmacrunch media</title>
+<style>
+:root{--bg: #f4f1ea;--panel: #fbf9f4;--ink: #1d1b18;--muted: #6c665c;--rule: #d8d2c4;--accent: #c2410c;--box: rgba(37, 99, 235, 0.35);--glue: #0f766e;--glue-fill: rgba(15, 118, 110, 0.18);--stretch: rgba(15, 118, 110, 0.55);--pen: #a21caf;--bad: #b91c1c;--edge: rgba(29, 27, 24, 0.12);--chosen: #c2410c;--measure: rgba(194, 65, 12, 0.5)}@media(prefers-color-scheme:dark){:root:not([data-theme=light]){--bg: #161513;--panel: #1f1d1a;--ink: #ece7dc;--muted: #9a9387;--rule: #3a362f;--accent: #fb923c;--box: rgba(96, 165, 250, 0.4);--glue: #2dd4bf;--glue-fill: rgba(45, 212, 191, 0.16);--stretch: rgba(45, 212, 191, 0.6);--pen: #e879f9;--bad: #f87171;--edge: rgba(236, 231, 220, 0.12);--chosen: #fb923c;--measure: rgba(251, 146, 60, 0.5)}}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:14px/1.4 system-ui,sans-serif}header{padding:12px 16px;border-bottom:1px solid var(--rule);display:flex;flex-wrap:wrap;gap:8px 20px;align-items:center}header h1{font-size:16px;margin:0 12px 0 0;letter-spacing:0.04em}label{display:inline-flex;gap:6px;align-items:center;color:var(--muted)}select,input[type=number],input[type=text]{background:var(--panel);color:var(--ink);border:1px solid var(--rule);border-radius:4px;padding:2px 6px;font:inherit}input[type=range]{width:220px}main{display:grid;grid-template-columns:minmax(220px,300px) 1fr;gap:16px;padding:16px}@media(max-width:760px){main{grid-template-columns:1fr}}textarea{width:100%;min-height:220px;background:var(--panel);color:var(--ink);border:1px solid var(--rule);border-radius:4px;padding:8px;font:13px/1.4 ui-monospace,monospace}.side p{color:var(--muted);font-size:12px;margin:8px 0}.panel{background:var(--panel);border:1px solid var(--rule);border-radius:6px;padding:10px 12px;margin-bottom:16px;overflow-x:auto}.panel h2{font-size:13px;font-weight:600;margin:0 0 8px;display:flex;gap:12px;flex-wrap:wrap;align-items:baseline}.panel h2 span{font-weight:400;color:var(--muted);font-family:ui-monospace,monospace;font-size:12px}canvas{display:block;image-rendering:pixelated}#timing{font-family:ui-monospace,monospace;font-size:12px;color:var(--accent)}#error{color:var(--bad);font-family:ui-monospace,monospace;white-space:pre-wrap}#tip{position:fixed;pointer-events:none;background:var(--ink);color:var(--bg);font:12px ui-monospace,monospace;padding:3px 6px;border-radius:3px;display:none}.legend{font-size:12px;color:var(--muted);display:flex;flex-wrap:wrap;gap:4px 14px}.legend i{display:inline-block;width:18px;height:8px;margin-right:4px;vertical-align:middle}
+</style>
+</head>
+<body>
+<header>
+  <h1><a href="../" style="color:inherit">lithosphere</a></h1>
+  <label>face <select id="face">
+    <option value="litho-display.litho">Litho Display (16px, kerned)</option>
+    <option value="litho-mono.litho">Litho Mono (8px, monospaced)</option>
+  </select></label>
+  <label>measure <input id="measure" type="range" min="24" max="640" value="140"> <output id="measureOut">140</output> px</label>
+  <label>shape <input id="shape" type="text" size="12" placeholder="e.g. 90,110,140"></label>
+  <label>scale <select id="scale"><option>1</option><option>2</option><option selected>3</option><option>4</option><option>6</option></select></label>
+  <label>mode <select id="mode"><option value="0">justified</option><option value="1">ragged</option></select></label>
+  <label>tolerance <input id="tolerance" type="number" min="0" max="10000" value="200" style="width:6em"></label>
+  <label><input type="checkbox" id="hyphenate" checked> hyphenate</label>
+  <span id="timing"></span>
+</header>
+<main>
+  <div class="side">
+    <label>text <select id="sample">
+      <option value="granny.txt">Granny Granola (no punctuation)</option>
+      <option value="beamtime.txt">Beamtime, wrong sector</option>
+      <option value="hyphen.txt">explicit hyphen</option>
+      <option value="overlong.txt">a word wider than the box</option>
+      <option value="soft-hyphen.txt">soft hyphens</option>
+      <option value="granny-names.txt">names, with a game's exceptions</option>
+    </select></label>
+    <textarea id="text" spellcheck="false"></textarea>
+    <p>Litho Display has letters, digits and space only; anything else is a missing glyph, drawn as a box an em wide.
+      It has no hyphen either, so it is never hyphenated: switch to Litho Mono to see hyphenation.</p>
+    <label>a game's exceptions, one word per line, breaks marked</label>
+    <textarea id="exceptions" spellcheck="false" style="min-height:90px">gra-no-la
+roderick
+tron
+har-ri-son</textarea>
+    <div id="excError" style="color:var(--bad);font:12px ui-monospace,monospace"></div>
+    <div class="legend">
+      <span><i style="outline:1px solid var(--box)"></i>glyph advance</span>
+      <span><i style="background:var(--glue-fill);border-bottom:2px solid var(--glue)"></i>glue: set width</span>
+      <span><i style="border-top:2px solid var(--stretch)"></i>stretch / shrink limits</span>
+      <span><i style="background:var(--pen)"></i>penalty</span>
+      <span><i style="background:var(--measure)"></i>measure</span>
+    </div>
+    <p>
+      <label><input type="checkbox" id="showBoxes" checked> boxes</label>
+      <label><input type="checkbox" id="showGlue" checked> glue</label>
+      <label><input type="checkbox" id="showPen" checked> penalties</label>
+      <label><input type="checkbox" id="showNums" checked> numbers</label>
+    </p>
+    <div id="error"></div>
+  </div>
+  <div>
+    <div class="panel"><h2>total fit <span id="tfStat"></span></h2><canvas id="tf"></canvas></div>
+    <div class="panel"><h2>breakpoint graph <span id="graphStat"></span></h2><canvas id="graph"></canvas></div>
+    <div class="panel"><h2>first fit <span id="ffStat"></span></h2><canvas id="ff"></canvas></div>
+  </div>
+</main>
+<div id="tip"></div>
+<script src="lithosphere.js?v=0c50b233"></script>
+<script src="app.js?v=2795d36d"></script>
+</body>
+</html>

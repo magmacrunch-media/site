@@ -1,0 +1,6 @@
+# A game's own words, read by ts_hyph_add_exceptions.
+# Breaks are marked; a word with none is never hyphenated.
+gra-no-la
+roderick
+tron
+har-ri-son
