@@ -18,8 +18,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Courier+Prime:wght@400;700&display=swap">
-  <link rel="stylesheet" href="../../style.css?v=6b1e19d6">
-  <link rel="stylesheet" href="../crumbs.css?v=a7887a26">
+  <link rel="stylesheet" href="../../style.css?v=95675166">
+  <link rel="stylesheet" href="../crumbs.css?v=e00af2c5">
   <link rel="stylesheet" href="../game-page.css?v=d8dc30f8">
   <style>
 body{--mt-bg: #03040a;--mt-surface: #121633;--mt-text: #fff3d0;--mt-muted: #8a90b8;--mt-accent: #ffd27a;--mt-accent2: #9fe1cb;--line: #1f2440;--radius: 3px;--head-glow: 0 0 14px rgba(255, 210, 122, .35);--btn-bg: #9fe1cb;--btn-ink: #04241a;--frame: #1f2440;--frame-glow: 0 0 0 2px #1f2440, 0 0 50px rgba(255, 210, 122, .10);background:radial-gradient(ellipse at 50% 30%,#121633 0%,#03040a 65%) #03040a}.hero h1{font-size:clamp(18px,4.2vw,36px)}.hero .pair{display:flex;gap:1rem;justify-content:center;margin:0 auto 1.75rem}.hero .pair .screen{width:min(44vw,300px);margin:0}.hero .tagline{color:#9fe1cb}.shots .screen{aspect-ratio:3 / 4;image-rendering:pixelated}.hero .screen{image-rendering:pixelated}.platform,.built a,.built div{background:rgba(18,22,51,.8)}.zoom{display:block;cursor:zoom-in}.lightbox{margin:auto;padding:0;border:0;background:transparent;max-width:96vw;max-height:96vh;overflow:visible}.lightbox::backdrop{background:rgba(2,3,8,.92)}.lightbox img{display:block;max-width:96vw;max-height:88vh;width:auto;height:auto;border:2px solid var(--frame);cursor:zoom-out;image-rendering:pixelated}.lightbox p{margin-top:.6rem;text-align:center;font-size:13px;color:var(--dim)}.lightbox button{position:fixed;top:50%;transform:translateY(-50%);font:20px var(--font-head);color:var(--text);background:rgba(3,4,10,.7);border:1px solid var(--line);border-radius:3px;padding:14px 12px;cursor:pointer}.lightbox .prev{left:12px}.lightbox .next{right:12px}.lightbox .close{top:12px;right:12px;transform:none;font-size:14px}
@@ -109,6 +109,6 @@ body{--mt-bg: #03040a;--mt-surface: #121633;--mt-text: #fff3d0;--mt-muted: #8a90
 (function(){var box=document.querySelector(".lightbox");if(!box||typeof box.showModal!=="function")return;var links=Array.prototype.slice.call(document.querySelectorAll("a.zoom"));var big=box.querySelector("img"),cap=box.querySelector("p"),at=0;function show(i){at=(i+links.length)%links.length;var a=links[at],small=a.querySelector("img"),fig=a.closest("figure");big.src=a.href;big.alt=small.alt;cap.textContent=fig?fig.querySelector("figcaption").textContent:""}links.forEach(function(a,i){a.addEventListener("click",function(e){e.preventDefault();show(i);box.showModal()})});box.querySelector(".prev").addEventListener("click",function(){show(at-1)});box.querySelector(".next").addEventListener("click",function(){show(at+1)});box.querySelector(".close").addEventListener("click",function(){box.close()});box.addEventListener("click",function(e){if(e.target===box||e.target===big)box.close()});box.addEventListener("keydown",function(e){if(e.key==="ArrowLeft")show(at-1);else if(e.key==="ArrowRight")show(at+1)})})();
 </script>
 
-<script src="../../nav.js?v=9b2224ed"></script>
+<script src="../../nav.js?v=e9a203c0"></script>
 </body>
 </html>

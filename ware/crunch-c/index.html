@@ -17,9 +17,9 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Courier+Prime:wght@400;700&display=swap">
-  <link rel="stylesheet" href="../../style.css?v=6b1e19d6">
+  <link rel="stylesheet" href="../../style.css?v=95675166">
   <link rel="stylesheet" href="landing.css?v=aac2a05d">
-  <link rel="stylesheet" href="../crumbs.css?v=a7887a26">
+  <link rel="stylesheet" href="../crumbs.css?v=e00af2c5">
 </head>
 <body class="ware-accent" style="--ware-accent:#7cc7ff">
 
@@ -101,6 +101,6 @@ magmascript 01-types/01-widths.mgs</pre>
 import{MODULES}from"./lessons.js";const grid=document.getElementById("module-grid");grid.textContent="";for(const module of MODULES){const card=document.createElement("a");card.className="module-card";card.href=`lesson.html?m=${encodeURIComponent(module.slug)}`;const num=document.createElement("span");num.className="m-num";num.textContent=module.number;const title=document.createElement("span");title.className="m-title";title.textContent=module.title.replace(/^Module\s+\d+:\s*/i,"");const count=document.createElement("span");count.className="m-count";count.textContent=`${module.count} ${module.count===1?"exercise":"exercises"}`;card.append(num,title,count);grid.appendChild(card)}
 </script>
 
-<script src="../../nav.js?v=9b2224ed"></script>
+<script src="../../nav.js?v=e9a203c0"></script>
 </body>
 </html>
