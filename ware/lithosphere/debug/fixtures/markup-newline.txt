@@ -1,0 +1,3 @@
+Wrong place.\\ A group you have never met
+looks up from their own experiment.\\\\
+You find your way back out: a \textbackslash{} and a \textasciitilde{} and \{braces\} survive.

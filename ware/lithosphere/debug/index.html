@@ -21,6 +21,7 @@
   <label>mode <select id="mode"><option value="0">justified</option><option value="1">ragged</option></select></label>
   <label>tolerance <input id="tolerance" type="number" min="0" max="10000" value="200" style="width:6em"></label>
   <label><input type="checkbox" id="hyphenate" checked> hyphenate</label>
+  <label title="~ \- \mbox{...} \\, see the README"><input type="checkbox" id="markup"> markup</label>
   <span id="timing"></span>
 </header>
 <main>
@@ -32,10 +33,17 @@
       <option value="overlong.txt">a word wider than the box</option>
       <option value="soft-hyphen.txt">soft hyphens</option>
       <option value="granny-names.txt">names, with a game's exceptions</option>
+      <option value="markup-tie.txt">markup: ~ ties</option>
+      <option value="markup-mbox.txt">markup: \mbox</option>
+      <option value="markup-break.txt">markup: \- break points</option>
+      <option value="markup-newline.txt">markup: \\ line breaks</option>
     </select></label>
     <textarea id="text" spellcheck="false"></textarea>
     <p>A character the face does not draw is a missing glyph, drawn as a box an em wide.
-      A face with no hyphen glyph is never hyphenated; both faces here have one.</p>
+      A face with no hyphen glyph is never hyphenated; both faces here have one.
+      With <b>markup</b> ticked the text is read as markup: <code>~</code> a space no line breaks at,
+      <code>\-</code> a break point, <code>\mbox{...}</code> kept on one line, <code>\\</code> a line break.
+      Anything else after a backslash is an error at its byte.</p>
     <label>a game's exceptions, one word per line, breaks marked</label>
     <textarea id="exceptions" spellcheck="false" style="min-height:90px">gra-no-la
 roderick
@@ -64,7 +72,7 @@ har-ri-son</textarea>
   </div>
 </main>
 <div id="tip"></div>
-<script src="lithosphere.js?v=d95554ad"></script>
-<script src="app.js?v=2795d36d"></script>
+<script src="lithosphere.js?v=87140573"></script>
+<script src="app.js?v=2f76fd26"></script>
 </body>
 </html>
