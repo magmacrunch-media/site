@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="../shell/app-shell.css">
     <link rel="stylesheet" href="../shell/toast.css">
     <link rel="stylesheet" href="kit/magma-themes.css?v=9e723c54">
-    <link rel="stylesheet" href="style.css?v=3d153773">
+    <link rel="stylesheet" href="style.css?v=234f33d8">
 </head>
 <body>
     <header class="app-header">
@@ -23,7 +23,10 @@
             <button id="btn-new" title="New song">New</button>
             <button id="btn-open" title="Open a song (Ctrl+O)">Open</button>
             <button id="btn-save" title="Save the song (Ctrl+S)">Save</button>
-            <button id="btn-wav" title="Render and export a WAV">Export WAV</button>
+            <span class="export-picker">
+                <button id="btn-export" type="button" aria-haspopup="menu" aria-expanded="false" aria-controls="export-menu" title="Render the song and export it as an audio file">Export</button>
+                <span id="export-menu" class="menu" role="menu" aria-label="Export format" hidden></span>
+            </span>
         </nav>
     </header>
 
@@ -61,7 +64,7 @@
             <button id="btn-theme-mode" title="Light or dark themes">Dark</button>
             <span class="help-picker">
                 <button id="btn-help" type="button" aria-haspopup="menu" aria-expanded="false" aria-controls="help-menu" title="How to use, shortcuts and credits">Help</button>
-                <span id="help-menu" role="menu" aria-label="Help" hidden>
+                <span id="help-menu" class="menu" role="menu" aria-label="Help" hidden>
                     <button id="btn-guide" role="menuitem" type="button">How to use</button>
                     <button id="btn-keys" role="menuitem" type="button" title="Keyboard shortcuts (? or F1)">Keyboard shortcuts<i>F1</i></button>
                     <button id="btn-credits" role="menuitem" type="button">Credits</button>
@@ -133,7 +136,8 @@
                 <h3>Keep it</h3>
                 <p>Save writes a <code>.punch</code> song file, and Open loads one back;
                     on the desktop, double-clicking a <code>.punch</code> file opens it too.
-                    Export WAV renders the song to an audio file. Ctrl+Z undoes almost
+                    Export renders the song to an audio file: WAV or FLAC, which keep every
+                    sample, or MP3 or Ogg Vorbis, which are far smaller. Ctrl+Z undoes almost
                     anything.</p>
             </section>
             <p class="doc-more">Every key is listed under Help, Keyboard shortcuts (or press F1).</p>
@@ -151,6 +155,8 @@
             <dl>
                 <dt>Sound</dt>
                 <dd>adenosine-synth, the MAGMACRUNCH chip synth: pulse, triangle, saw and noise voices</dd>
+                <dt>Export</dt>
+                <dd>MP3 by LAME (LGPL) and Ogg Vorbis by libvorbis (BSD), compiled to WebAssembly by wasm-media-encoders (MIT); FLAC by this app</dd>
                 <dt>Look</dt>
                 <dd>magma-themes colour palettes</dd>
                 <dt>Shell</dt>
@@ -175,15 +181,18 @@
     <script src="kit/magma-themes-index.js?v=7a3b40b5"></script>
     <script src="../shell/toast.js"></script>
     <script src="vendor/adenosine-synth.js?v=99a020db"></script>
+    <script src="vendor/wasm-media-encoders.js?v=dd4e17ab"></script>
     <script src="core/roll.js?v=5e8d8272"></script>
     <script src="core/keymap.js?v=53173c02"></script>
     <script src="core/songfile.js?v=c1169965"></script>
     <script src="core/midi.js?v=b4db0caf"></script>
-    <script src="bridge.js?v=d24f7de7"></script>
+    <script src="core/flac.js?v=67c1a8ac"></script>
+    <script src="bridge.js?v=3bb5b1f9"></script>
     <script src="faust-voice.js?v=3275a6f2"></script>
+    <script src="export.js?v=83ec5367"></script>
     <script src="theme.js?v=8057a6fe"></script>
     <script src="roll-view.js?v=78040674"></script>
     <script src="midi.js?v=b33fdd11"></script>
-    <script src="main.js?v=3a7f73f3"></script>
+    <script src="main.js?v=701debcd"></script>
 </body>
 </html>
