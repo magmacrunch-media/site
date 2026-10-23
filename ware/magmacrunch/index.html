@@ -83,8 +83,8 @@
       browser and Wii versions, publishes its own wheel, and declares one line:</p>
     <pre><code>[project.entry-points."magmacrunch.games"]
 george-boole = "boole.arcade:GAME"</code></pre>
-    <p>The launcher enumerates that group at startup. <strong>Installing a game makes it
-      appear; uninstalling makes it vanish; neither needs a release of the arcade.</strong>
+    <p>The launcher enumerates that group at startup, so installing a game adds it to the
+      menu and uninstalling removes it, with no new release of the arcade.
       Nothing in the launcher imports a game, so it runs with none installed and says how to
       get one. A game that fails to load is reported by <code>magmacrunch --list</code>
       rather than silently skipped.</p>

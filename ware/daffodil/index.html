@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>daffodil · magmacrunch media</title>
-    <meta name="description" content="A C99 heightfield terrain engine that renders real-world georeferenced landscape at 1:1 from LiDAR elevation data. Measured, not invented.">
+    <meta name="description" content="A C99 heightfield terrain engine that renders real-world georeferenced landscape at 1:1 from LiDAR elevation data.">
     <meta property="og:title" content="daffodil · magmacrunch media">
-    <meta property="og:description" content="A C99 heightfield terrain engine: real-world landscape at 1:1, measured, not invented.">
+    <meta property="og:description" content="A C99 heightfield terrain engine: real-world landscape at 1:1, from LiDAR survey.">
     <meta property="og:image" content="https://magmacrunch.com/og/ware.png?v=1">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
@@ -49,11 +49,11 @@
     <p>A C99 heightfield terrain engine by <a href="https://magmacrunch.com">magmacrunch media</a>.
       daffodil draws real ground: it reads a heightfield built offline from LiDAR elevation data,
       reprojected, tiled and written as raw float32 meters, then renders it faithfully and lets you
-      walk on it. The landscape is <strong>surveyed, not sculpted</strong>.</p>
+      walk on it.</p>
 
-    <p>There's no procedural generation and no terrain sculpting: the shape of the ground comes
-      from the survey, and the engine's job is to reproduce it rather than reshape it. It was
-      built for Block Island Simulator, which is the island below.</p>
+    <p>Nothing is generated or sculpted. The shape of the ground comes from the survey, and the
+      engine's job is to reproduce it. It was built for Block Island Simulator, which is the
+      island below.</p>
 
     <p>daffodil has two C99 siblings. <a href="../magnolia/">magnolia</a> runs the Wii games.
       <a href="../hologram/">hologram</a> makes the opposite trade: it traces light exactly,
@@ -69,11 +69,11 @@
 
   <div class="gallery">
     <h2>what it draws</h2>
-    <p class="lede">Every frame below is a regression baseline, not a promotional render. Eight
-      fixed views are photographed headless under software GL and compared pixel for pixel with
-      the committed copy, and what each view drew is compared with a triangle budget, so these are
-      reproducible by construction rather than posed. The counts are that budget, read off the
-      same frame. Flat shading is the renderer, not a placeholder.</p>
+    <p class="lede">Every frame below is a regression baseline. Eight fixed views are photographed
+      headless under software GL and compared pixel for pixel with the committed copy, and what
+      each view drew is checked against a triangle budget, so any build can reproduce them. The
+      counts are that budget, read off the same frame. The flat shading is how the renderer
+      draws.</p>
 
     <div class="shots">
 
@@ -96,8 +96,8 @@
         <div class="shot-body">
           <h3>Old Harbor</h3>
           <p>The town as one paved sheet with streets cut through it. 612 buildings stand solid,
-            with real openings into their rooms rather than windows painted on, and the walker
-            collides with them. Roads carry their own surface rather than being stripes on grass.
+            with real openings into their rooms, and the walker collides with them. Roads carry
+            their own paved surface.
             <span class="counts">1,020,416 terrain triangles &middot; 602,418 paving &middot; 574 trees</span></p>
         </div>
       </div>
@@ -138,7 +138,7 @@
     <div class="feat-grid">
       <div class="feat-item">
         <strong>terrain</strong>
-        <span>Chunked heightfield at 2 m posts, LOD by distance, seams provably invisible rather than approximately so</span>
+        <span>Chunked heightfield at 2 m posts, LOD by distance, with seams that are provably invisible</span>
       </div>
       <div class="feat-item">
         <strong>solar &amp; lunar</strong>
@@ -174,7 +174,7 @@
       </div>
       <div class="feat-item">
         <strong>audio</strong>
-        <span>Mixer, sample bank, WAV loading and a small synth, in-engine rather than bolted on</span>
+        <span>Mixer, sample bank, WAV loading and a small synth, all inside the engine</span>
       </div>
       <div class="feat-item">
         <strong>capture</strong>
@@ -203,15 +203,16 @@ DAFFODIL_POST_METRES    2.0f</code></pre>
       this way they cannot. The <code>+1</code> in the sample count is load-bearing too, because it
       makes adjacent tiles share their edge row exactly.</p>
 
-    <h3>measured against the specification, not against a box</h3>
-    <p>The engine's demands are checked against OpenGL ES 3.0's <em>guaranteed minimums</em> rather
-      than against whatever GPU is to hand. Fitting inside the floor means fitting on any conformant
-      device, so a failure on real hardware is a driver problem rather than a design one. The audit
-      runs with no GPU and no display, which means it runs over ssh.</p>
+    <h3>measured against the specification</h3>
+    <p>The engine's demands are checked against OpenGL ES 3.0's <em>guaranteed minimums</em>
+      instead of whatever GPU is to hand. Fitting inside the floor means fitting on any conformant
+      device, so a failure on real hardware points at the driver. The audit runs with no GPU and
+      no display, which means it runs over ssh.</p>
 
     <p>It says nothing about speed. Not one of those limits is a rate, and the island reported
       <code>ok</code> on every line while drawing at three frames a second on the one GLES3 GPU it
-      has met. <strong>Fits is not plays</strong>, and the two are worth keeping apart.</p>
+      has met. Fitting the limits and running fast are separate questions, and the audit answers
+      only the first.</p>
 
     <h3>targets</h3>
     <p>Windows / D3D11 &middot; Linux / OpenGL &middot; macOS / Metal &middot; Raspberry Pi 4 and 5
