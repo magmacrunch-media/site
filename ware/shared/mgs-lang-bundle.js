@@ -664,7 +664,7 @@ class DomainProxy:
     The client is built on first use, not at interpreter startup. Every domain
     used to be constructed for every script and every REPL session, which cost
     startup time for domains nobody touched and ruled out any domain whose
-    construction does something — opening a window, holding a socket.
+    construction does something, opening a window, holding a socket.
     """
 
     def __init__(self, name: str, client: Any = None, *,
@@ -1204,7 +1204,7 @@ class Interpreter:
             column = getattr(inner, "column", 0) or 0
         source_line = self._get_source_line(line) if line else None
         return RuntimeError(
-            f"Call depth exceeded {MAX_CALL_DEPTH} — is this recursion infinite?",
+            f"Call depth exceeded {MAX_CALL_DEPTH}, is this recursion infinite?",
             line,
             column,
             self.filename,
@@ -1218,7 +1218,7 @@ class Interpreter:
         # bodies against *this* instance. Without this, any entry point that
         # constructs an Interpreter directly (the CLI does) leaves the global
         # unset, and function bodies run on a blank interpreter with no source
-        # — costing every in-function error its filename and caret diagram.
+        #, costing every in-function error its filename and caret diagram.
         # Save/restore rather than assign, so an imported module's interpreter
         # does not outlive its own run().
         global _thread_interpreter
@@ -1302,7 +1302,7 @@ class Interpreter:
         except EnvironmentError as e:
             msg = f"Undefined variable '{node.name}'"
             if e.suggestion:
-                msg += f" — did you mean '{e.suggestion}'?"
+                msg += f", did you mean '{e.suggestion}'?"
             raise self.error(msg, node, prefix="devastate")
 
     def exec_BinaryOp(self, node: ast.BinaryOp, env: Environment) -> Any:
@@ -2012,7 +2012,7 @@ class Interpreter:
             obj[node.property] = value
             return value
 
-        # A host object from a domain — a game entity, a config, anything the
+        # A host object from a domain: a game entity, a config, anything the
         # bridge handed back. Reading its attributes already works
         # (exec_PropertyAccess falls through to getattr), so writing them has
         # to as well, or a script can inspect an object and never change it.
@@ -2060,7 +2060,7 @@ class Interpreter:
             return astheno.Fixed(obj.write_byte(at, value), astheno.SPECS["u8"])
 
         if isinstance(obj, str):
-            raise self.error("Cannot assign into a string — strings are immutable", node)
+            raise self.error("Cannot assign into a string, strings are immutable", node)
 
         if isinstance(obj, list):
             if not isinstance(index, int) or isinstance(index, bool):
@@ -2439,7 +2439,7 @@ class Lexer:
                 if self.match("="):
                     self.tokens.append(Token(TokenType.NEQ, "!=", line, col))
                 else:
-                    raise self.error(f"Unexpected character '!' — did you mean '!='?")
+                    raise self.error(f"Unexpected character '!', did you mean '!='?")
             elif ch == "<":
                 self.advance()
                 if self.match("="):
@@ -3470,7 +3470,7 @@ class Parser:
         if token.type == TokenType.IDENTIFIER:
             kw = suggest(token.value, list(KEYWORDS.keys()))
             if kw:
-                msg += f" — did you mean '{kw}'?"
+                msg += f", did you mean '{kw}'?"
 
         raise self.error(msg, token)
 

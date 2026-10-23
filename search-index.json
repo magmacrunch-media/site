@@ -2132,7 +2132,7 @@
     "c": "tool",
     "u": "/ware/texastoast/",
     "d": "Python RPG engine with I2C hardware abstraction for magmacrunch game systems",
-    "b": "texastoast · magmacrunch media home › ware › developer tools › texastoast texastoast Python RPG engine with I2C hardware abstraction for magmacrunch game systems v0.5.0 PolyForm Noncommercial 1.0.0 Python 3.10+ A tkinter-based 2D game engine by magmacrunch media , inspired by adenosine and built for the same kind of small RPGs, but in Python, and able to read real controllers over I2C when it runs on a Raspberry Pi. Game logic never depends on tkinter, and hardware degrades gracefully to the keyboard when it's absent. It also ships a hardware dev kit: a bus-level simulator that runs the real I..."
+    "b": "texastoast · magmacrunch media home › ware › developer tools › texastoast texastoast Python RPG engine with I2C hardware abstraction for magmacrunch game systems v0.12.1 PolyForm Noncommercial 1.0.0 Python 3.10+ A tkinter-based 2D game engine by magmacrunch media , inspired by adenosine and built for the same kind of small RPGs, but in Python, with an input layer that can read controllers over I2C on a Raspberry Pi. Game logic never depends on tkinter, and hardware degrades gracefully to the keyboard when it's absent. It also ships a hardware dev kit: a bus-level simulator that runs the real I..."
   },
   {
     "t": "threes · magmacrunch media",
