@@ -145,7 +145,7 @@
   <hr class="spectral-rule">
 
   <div class="oracle">
-    <h2>the oracle</h2>
+    <h2>how we know it's right</h2>
     <p>hologram is really two ray tracers. The fast one runs on the graphics card and draws the
       game. The other is a plain, slow copy that runs on the computer's main processor, written to
       match the fast one line for line, and its only job is to be right.</p>
@@ -260,7 +260,7 @@
       <div class="ex-row ex-header"><span>Example</span><span>What it shows</span></div>
       <div class="ex-row"><span class="ex-name">m0_window</span><span>A window, a fullscreen quad, uniforms arriving every frame.</span></div>
       <div class="ex-row"><span class="ex-name">m1_cpu</span><span>The CPU tracer's first picture, written to a PPM.</span></div>
-      <div class="ex-row"><span class="ex-name">m2_gpu</span><span>The same scene traced on the GPU, held to the oracle.</span></div>
+      <div class="ex-row"><span class="ex-name">m2_gpu</span><span>The same scene traced on the GPU, checked against the slow copy.</span></div>
       <div class="ex-row"><span class="ex-name">m3_mirrors</span><span>Facing mirror walls, a chrome sphere, a polished floor, all recursing.</span></div>
       <div class="ex-row"><span class="ex-name">m4_glass</span><span>A ball lens holding the checker floor upside down inside it.</span></div>
       <div class="ex-row"><span class="ex-name">m5_spectral</span><span>Crown and flint glass in front of one white stripe.</span></div>
@@ -308,7 +308,7 @@
     <p>C99 engine and one tracer in three dialects, HLSL for D3D11, GLSL for GL and GLES3/WebGL2, MSL
       for Metal, on <a href="https://github.com/floooh/sokol" target="_blank" rel="noopener">sokol</a>
       for the window, GPU device and swapchain. Windows ships and Linux is proven: all eight examples
-      pass the oracle natively on GL as well as under D3D11, and the unmodified Windows binary also
+      match the slow copy on Linux's own graphics driver (GL) as well as on Windows (D3D11), and the unmodified Windows binary also
       passes under Wine given Microsoft's <code>d3dcompiler_47.dll</code> beside it. The Metal
       dialect is written and type-checked, and has not yet met a Metal device. The tracing runs on
       the GPU as a fullscreen-quad fragment shader over a scene of analytic primitives delivered in one
