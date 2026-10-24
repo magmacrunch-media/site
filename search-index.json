@@ -431,7 +431,7 @@
     "c": "artist",
     "u": "/archive/by-artist/c-p-rutledge/ware.html",
     "d": "C P Rutledge — Ware",
-    "b": "C.P. Rutledge · ware · magmacrunch media WARE ← back about links lyrics photography recordings releases works Games and engines from magmacrunch, named after C.P. Rutledge songs. MOONLIGHT DRIFT MORE coast through space. dodge obstacles. ride the moon. game named after a C.P. Rutledge song MAGNOLIA MORE a small C engine for Wii homebrew score-attack games. engine named after the C.P. Rutledge song “Magnolia”"
+    "b": "C.P. Rutledge · ware · magmacrunch media WARE ← back about links lyrics photography recordings releases works Games and engines from magmacrunch, named after C.P. Rutledge songs. MOONLIGHT DRIFT MORE cave flyer. hold to rise, let go to fall. twenty pilots. game named after a C.P. Rutledge song MAGNOLIA MORE a small C engine for Wii homebrew score-attack games. engine named after the C.P. Rutledge song “Magnolia”"
   },
   {
     "t": "C.P. Rutledge · works · magmacrunch media",
@@ -1964,7 +1964,7 @@
     "c": "tool",
     "u": "/ware/george-boole/",
     "d": "a logic-gate puzzle game for the browser and the terminal, with Wii, iPhone and iPad versions on the way",
-    "b": "george boole has entered the chat · magmacrunch media home › ware › video games › george boole GEORGE BOOLE HAS ENTERED THE CHAT a logic-gate puzzle game · true or false? and, or, not. Slide the board, merge the bits, and let the logic gates do the rest. It started from Gabriele Cirulli's 2048 and swaps the addition for Boolean logic: AND, OR, XOR and NOT drop onto the board, and every tile that scores shows you the math. It is being made for four kinds of machine. Each version suits the one it runs on, and all of them play by exactly the same rules. // at the board // has entered the chat two..."
+    "b": "george boole has entered the chat · magmacrunch media home › ware › video games › george boole GEORGE BOOLE HAS ENTERED THE CHAT a logic-gate puzzle game · true or false? and, or, not. It started from Gabriele Cirulli's 2048 and swaps the addition for Boolean logic: AND, OR, XOR and NOT drop onto the board, and every tile that scores shows you the math. It is being made for four kinds of machine. Each version suits the one it runs on, and all of them play by exactly the same rules. // at the board // has entered the chat two bits to eight, or the gauntlet // where to play // BROWSER ▶ PLAY fre..."
   },
   {
     "t": "gerridae · magmacrunch media",
@@ -2062,7 +2062,7 @@
     "c": "tool",
     "u": "/ware/moonlight-drift/",
     "d": "a cave flyer for the browser and the terminal, with a Wii version on the way",
-    "b": "moonlight drift · magmacrunch media home › ware › video games › moonlight drift MOONLIGHT DRIFT coast through space · dodge obstacles · ride the moon Hold thrust to rise, let go to fall, and keep clear of the cave walls as they close in. Pick one of twenty pilots, each with their own handling, and see how far you can drift. It descends from the Flash-era helicopter games, and it plays the same on every machine it runs on. // in flight // thread the pillars, pass the milestones twenty pilots, unlocked by drifting // where to play // BROWSER ▶ PLAY free demo in the arcade : the endless game, not..."
+    "b": "moonlight drift · magmacrunch media home › ware › video games › moonlight drift MOONLIGHT DRIFT a cave flyer · hold to rise, let go to fall · twenty pilots Hold thrust to rise, let go to fall, and keep clear of the cave walls as they close in. Pick one of twenty pilots, each with their own handling. It descends from the Flash-era helicopter games, and it plays the same on every machine it runs on. // in flight // thread the pillars, pass the milestones twenty pilots, unlocked by drifting // where to play // BROWSER ▶ PLAY free demo in the arcade : the endless game, nothing to install. TERMINAL..."
   },
   {
     "t": "nelikko · magmacrunch media",
@@ -2181,6 +2181,6 @@
     "c": "tool",
     "u": "/ware/very-long-boards/",
     "d": "downhill longboarding: an endless run in the browser, and a desktop version in development",
-    "b": "very long boards · magmacrunch media home › ware › video games › very long boards VERY LONG BOARDS downhill longboarding · choose your carl · dodge everything Downhill skateboarding as Carl Spatski, in one of three looks: the everyman, the maniac or the enigma, each riding differently. In the browser it is an endless run: steer around obstacles, pull tricks for points and keep your stability up. The desktop version is a different, calmer game: timed runs down measured New Hampshire and Block Island roads. // down the hill // downhill skateboarding choose your carl // where to play // BROWSER ▶..."
+    "b": "very long boards · magmacrunch media home › ware › video games › very long boards VERY LONG BOARDS downhill longboarding · choose your carl · an endless run in the browser Downhill skateboarding as Carl Spatski, in one of three looks: the everyman, the maniac or the enigma, each riding differently. In the browser it is an endless run: steer around obstacles, pull tricks for points and keep your stability up. The desktop version is a different, calmer game: timed runs down measured New Hampshire and Block Island roads. // down the hill // downhill skateboarding choose your carl // where to play..."
   }
 ]
