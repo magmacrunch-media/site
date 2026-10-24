@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="../shell/app-shell.css">
     <link rel="stylesheet" href="../shell/toast.css">
     <link rel="stylesheet" href="kit/magma-themes.css?v=b064ae8f">
-    <link rel="stylesheet" href="style.css?v=f3b1d749">
+    <link rel="stylesheet" href="style.css?v=704df3a1">
 </head>
 <body>
     <header class="app-header">
@@ -70,6 +70,9 @@
                 <div id="steps-extent"></div>
                 <canvas id="steps-canvas"></canvas>
             </section>
+            <label id="steps-drums" title="Show only the drum tracks: the drum sounds and Noise">
+                <input id="in-steps-drums" type="checkbox"> Drums only
+            </label>
         </div>
     </main>
 
@@ -146,7 +149,8 @@
                     grid. Set some tracks to the drums (Kick, Snare, the hi-hats), then
                     click squares to add hits and click them again to take them away;
                     drag along a row to paint several. It is the same song, so the hits
-                    are notes in the roll too. G switches between the two.</p>
+                    are notes in the roll too. G switches between the two. Tick Drums
+                    only, in the grid's corner, to see just the drum tracks.</p>
                 <p>Swing, under Tuning, makes every second sixteenth play a little
                     late, for a shuffle; at 100% it is a full triplet swing. The notes
                     stay where you put them, and only the playing changes.</p>
@@ -220,15 +224,15 @@
     <script src="core/songfile.js?v=c1169965"></script>
     <script src="core/midi.js?v=b4db0caf"></script>
     <script src="core/flac.js?v=67c1a8ac"></script>
-    <script src="core/steps.js?v=f32a900f"></script>
+    <script src="core/steps.js?v=c253dc56"></script>
     <script src="bridge.js?v=3bb5b1f9"></script>
     <script src="faust-voice.js?v=3275a6f2"></script>
     <script src="drum-voices.js?v=75a78121"></script>
     <script src="export.js?v=4a6b1c2d"></script>
     <script src="theme.js?v=bf2baf47"></script>
     <script src="roll-view.js?v=80d056c6"></script>
-    <script src="step-view.js?v=2af418d4"></script>
+    <script src="step-view.js?v=3c0a5157"></script>
     <script src="midi.js?v=b33fdd11"></script>
-    <script src="main.js?v=e11b9c07"></script>
+    <script src="main.js?v=729a423c"></script>
 </body>
 </html>
