@@ -193,14 +193,14 @@
     "c": "page",
     "u": "/ware/index.html",
     "d": "software · creative utilities & developer tools",
-    "b": "ware · magmacrunch media home › ware ware software · creative utilities & developer tools video games every game, every platform: browser, terminal, Wii & iPhone ▶ creative utilities browser-based tools for art, media & image processing ▶ developer tools game engines, scripting language, C API reference & memory course ▶"
+    "b": "ware · magmacrunch media home › ware ware software · creative utilities & developer tools video games games for the browser, the terminal, the Wii and iPhone ▶ creative utilities browser-based tools for art, media & image processing ▶ developer tools game engines, scripting language, C API reference & memory course ▶"
   },
   {
     "t": "creative utilities · ware · magmacrunch media",
     "c": "page",
     "u": "/ware/utilities/index.html",
     "d": "browser-based tools for art, media & image processing",
-    "b": "creative utilities · ware · magmacrunch media home › ware › creative utilities creative utilities browser-based tools for art, media & image processing // music // instruments and sequencers that run in a browser tab punch roll chiptune piano roll pulse triangle noise WAV export ▶ tone grating an FM synth you play through a diffraction grating keys MIDI ▶ // art & image // pixel editors and an image signal chain gatefold pixel art editor for album covers text shapes images ▶ sprite forge game sprite editor animation onion skin PNG sheets ▶ crunchscope an image signal chain you play like an ins..."
+    "b": "creative utilities · ware · magmacrunch media home › ware › creative utilities creative utilities browser-based tools for art, media & image processing // music // instruments and sequencers that run in a browser tab punch roll chiptune piano roll pulse triangle noise WAV export ▶ tone grating an FM synth you play through a diffraction grating keys MIDI ▶ // art & image // pixel editors and an image signal chain gatefold square album-cover editor text shapes images ▶ sprite forge game sprite editor animation onion skin PNG sheets ▶ crunchscope an image signal chain you play like an instrument ..."
   },
   {
     "t": "developer tools · ware · magmacrunch media",
@@ -1872,7 +1872,7 @@
     "t": "GATE//FOLD",
     "c": "tool",
     "u": "/ware/album-art-maker/",
-    "d": "pixel art editor for album covers · text, shapes, images",
+    "d": "square album-cover editor · text, shapes, images",
     "b": "GATE//FOLD This tool is best experienced on a desktop or laptop. Please visit on a wider screen for the full workspace. GATE//FOLD Dark 1024×1024 0 ELEMENTS UNDO REDO DELETE CLEAR ALL CANVAS 1024 ▾ BG ► SELECT T TEXT ▢ IMAGE RECT ▾ FREQUENCY 5 WAVE MODE FILLED OPEN REFERENCE ▾ UPLOAD IMAGE × click to sample color BASIC ▭ RECT ○ CIRCLE ╱ LINE ▵ TRI ⬣ PENTA ⬤ HEXA ◇ DIAMOND ★ STAR ➤ ARROW ◯ R. RECT WAVES ∿ SINE ⊝ SQUARE ⊾ SAWTOOTH ⊿ TRI WAVE ∖ STEP ⊟ PULSE CLIP ART EMPTY COVER PICK A SHAPE OR TEXT, THEN DRAG ON THE CANVAS R RECT · T TEXT · CTRL+I IMAGE · OR DROP ONE HERE LAYERS ▾ PROPERTIES FILL..."
   },
   {
@@ -1956,7 +1956,7 @@
     "t": "video games · ware · magmacrunch media",
     "c": "tool",
     "u": "/ware/games/",
-    "d": "every game, every platform: browser, terminal, Wii & iPhone",
+    "d": "games for the browser, the terminal, the Wii and iPhone",
     "b": "video games · ware · magmacrunch media home › ware › video games video games one page per game, with every way to play it. to play in your browser right now, the arcade has them all. browser play it now Wii on its way // originals // games made here, from scratch George Boole Has Entered the Chat logic-gate puzzle browser terminal Wii iPhone & iPad ▶ Moonlight Drift cave flyer browser terminal Wii ▶ Texas Hold'Em Lava Dome solo poker browser terminal Wii ▶ The Jovian Humanitarian Conflict on-rails shooter browser terminal Wii ▶ makemecookies!x4 cookie factory browser Wii iPhone ▶ Very Long Boa..."
   },
   {
