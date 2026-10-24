@@ -1915,14 +1915,14 @@
     "c": "tool",
     "u": "/ware/chess/",
     "d": "neon chess for the browser and the terminal",
-    "b": "chess · magmacrunch media home › ware › video games › chess CHESS neon edition · three difficulty levels · blitz to classical Chess in the arcade's neon edition, cyan against magenta in pixel art under CRT scanlines. Play the computer at easy, medium or hard, with no clock or a blitz, rapid or classical one, or play a friend online with chat. Moves are kept in algebraic notation. // at the board // neon edition three depths, four clocks // where to play // BROWSER ▶ PLAY free, in the arcade , with online play against friends. TERMINAL A text-only version that runs in a terminal window. Install..."
+    "b": "chess · magmacrunch media home › ware › video games › chess CHESS neon edition · three difficulty levels · optional clock Chess in the arcade's neon edition, cyan against magenta in pixel art under CRT scanlines. Play the computer at easy, medium or hard, with no clock or a blitz, rapid or classical one, or play a friend online with chat. Moves are kept in algebraic notation. // at the board // neon edition easy, medium or hard, with or without a clock // where to play // BROWSER ▶ PLAY free, in the arcade , with online play against friends. TERMINAL A text-only version that runs in a terminal..."
   },
   {
     "t": "chinese checkers · magmacrunch media",
     "c": "tool",
     "u": "/ware/chinese-checkers/",
     "d": "neon chinese checkers for two to six players, in the browser and the terminal",
-    "b": "chinese checkers · magmacrunch media home › ware › video games › chinese checkers CHINESE CHECKERS neon edition · hexagonal star · hop to win Chinese checkers in the arcade's neon edition, on a hexagonal star with ten marbles each. Play two, three, four or six players against the computer, or friends online with room codes and chat. Steps light up green, hops yellow, and hops chain. // at the board // two to six players hop across to the far point // where to play // BROWSER ▶ PLAY free, in the arcade , with online rooms for up to six. TERMINAL A text-only version that runs in a terminal windo..."
+    "b": "chinese checkers · magmacrunch media home › ware › video games › chinese checkers CHINESE CHECKERS neon edition · hexagonal star · two to six players Chinese checkers in the arcade's neon edition, on a hexagonal star with ten marbles each. Play two, three, four or six players against the computer, or friends online with room codes and chat. Steps light up green, hops yellow, and hops chain. // at the board // two to six players hop across to the far point // where to play // BROWSER ▶ PLAY free, in the arcade , with online rooms for up to six. TERMINAL A text-only version that runs in a termin..."
   },
   {
     "t": "cribbage · magmacrunch media",
@@ -2006,7 +2006,7 @@
     "c": "tool",
     "u": "/ware/klotski/",
     "d": "Klotski, the Chinese sliding block puzzle, in the browser",
-    "b": "klotski · magmacrunch media home › ware › video games › klotski KLOTSKI 横刀立马 · slide the general to the exit 横刀立马: slide Cao Cao, the gold two-by-two block, past his generals and soldiers and out of the four-by-five board. Pieces only slide, never jump. The text is in Chinese, English or both, in a neo-arcade take on new-age China. // at the board // 横刀立马, the classic layout Cao Cao starts at the top // where to play // BROWSER ▶ PLAY free, in the arcade . Arrow keys or swipe. // built with // adenosine browser · JavaScript // credits // game by magmacrunch media original game Klotski (横刀立马), ..."
+    "b": "klotski · magmacrunch media home › ware › video games › klotski KLOTSKI 横刀立马 · slide the general to the exit 横刀立马: slide Cao Cao, the gold two-by-two block, past his generals and soldiers and out of the four-by-five board. Pieces only slide, never jump. The text is in Chinese, English or both. // at the board // 横刀立马, the classic layout Cao Cao starts at the top // where to play // BROWSER ▶ PLAY free, in the arcade . Arrow keys or swipe. // built with // adenosine browser · JavaScript // credits // version by magmacrunch media original game Klotski (横刀立马), a traditional Chinese sliding block ..."
   },
   {
     "t": "lithosphere · magmacrunch media",
@@ -2111,14 +2111,14 @@
     "c": "tool",
     "u": "/ware/scandinavian-stud/",
     "d": "Sökö, the Finnish five-card stud poker, against the computer or online, in the browser",
-    "b": "sökö · magmacrunch media home › ware › video games › sökö SÖKÖ scandinavian stud · five-card poker with a finnish twist Sökö, Finland's national poker: five-card stud with one hole card, four face-up cards and four rounds of betting. Two hands set it apart, the four-card flush and the four-card straight, and both beat a pair. Play three computer opponents or friends online, at a table written in Finnish with English glosses. // at the table // Finland’s national poker, in two languages first up: check, raise or fold // where to play // BROWSER ▶ PLAY free, in the arcade , with online play agai..."
+    "b": "sökö · magmacrunch media home › ware › video games › sökö SÖKÖ scandinavian stud · finnish five-card stud poker Sökö, Finland's national poker: five-card stud with one hole card, four face-up cards and four rounds of betting. Two hands set it apart, the four-card flush and the four-card straight, and both beat a pair. Play three computer opponents or friends online, at a table written in Finnish with English glosses. // at the table // Finland’s national poker, in two languages check, raise or fold // where to play // BROWSER ▶ PLAY free, in the arcade , with online play against friends. // bu..."
   },
   {
     "t": "klondike solitaire · magmacrunch media",
     "c": "tool",
     "u": "/ware/solitaire/",
     "d": "Klondike solitaire, draw three, with timed scoring, in the browser",
-    "b": "klondike solitaire · magmacrunch media home › ware › video games › klondike solitaire KLONDIKE SOLITAIRE draw 3 · timed scoring · top 10 leaderboard Klondike, draw three, with timed scoring and a bonus that grows the faster you win. It looks like vaporwave Miami meets Windows 3.1 shareware: a silver chrome window on a teal desktop, neon pink and cyan on green felt, and a Miami sunset when you win. Pick your deck design and chase the top ten. // at the table // draw three, timed scoring // where to play // BROWSER ▶ PLAY free, in the arcade . Nothing to install. // built with // adenosine brows..."
+    "b": "klondike solitaire · magmacrunch media home › ware › video games › klondike solitaire KLONDIKE SOLITAIRE draw 3 · timed scoring · top ten scores Klondike, draw three, with timed scoring and a bonus that grows the faster you win. It is drawn like Windows 3.1 shareware in vaporwave colours: a silver chrome window on a teal desktop, neon pink and cyan on green felt, and a Miami sunset when you win. Pick a deck design. The ten best scores are kept. // at the table // draw three, timed scoring // where to play // BROWSER ▶ PLAY free, in the arcade . Nothing to install. // built with // adenosine br..."
   },
   {
     "t": "sprite forge · magmacrunch media",
@@ -2132,7 +2132,7 @@
     "c": "tool",
     "u": "/ware/tarot/",
     "d": "four-player French Tarot against the computer, in the browser and the terminal",
-    "b": "french tarot · magmacrunch media home › ware › video games › french tarot FRENCH TAROT 78-card deck · bidding · the classic french trick-taker French Tarot for four, you against three computer players, on a custom 78-card magmacrunch deck with a vaporwave card back. The bids keep their French names, Passe, Prise, Garde, Garde Sans and Garde Contre, beside English labels, and a hand runs through the bidding, the dog and eighteen tricks. // where to play // BROWSER ▶ PLAY free, in the arcade . Nothing to install. TERMINAL A text-only version that runs in a terminal window. Install it with pipx i..."
+    "b": "french tarot · magmacrunch media home › ware › video games › french tarot FRENCH TAROT 78-card deck · bidding · four players French Tarot for four, you against three computer players, on a custom 78-card magmacrunch deck with a vaporwave card back. The bids keep their French names, Passe, Prise, Garde, Garde Sans and Garde Contre, beside English labels, and a hand runs through the bidding, the dog and eighteen tricks. // where to play // BROWSER ▶ PLAY free, in the arcade . Nothing to install. TERMINAL A text-only version that runs in a terminal window. Install it with pipx install magmacrunch..."
   },
   {
     "t": "texas hold'em lava dome · magmacrunch media",
@@ -2152,8 +2152,8 @@
     "t": "threes · magmacrunch media",
     "c": "tool",
     "u": "/ware/threes/",
-    "d": "slide, merge, survive: a take on Threes!, in the browser, with a terminal version on the way",
-    "b": "threes · magmacrunch media home › ware › video games › threes THREES slide · merge · survive Slide every tile at once. 1 and 2 make 3, and from there only matching tiles merge. New tiles come in from the edge you slid away from, and your score is the sum of every merge. Its rules are tuned for short games: most new tiles are 1s, so a run lasts a few dozen moves. // at the board // slide, merge, survive ones and twos make three // where to play // BROWSER ▶ PLAY free, in the arcade . Arrow keys or swipe. TERMINAL A text-only version that runs in a terminal window. Install it with pipx install m..."
+    "d": "a take on Threes!, in the browser and the terminal",
+    "b": "threes · magmacrunch media home › ware › video games › threes THREES slide every tile · ones and twos make three Slide every tile at once. 1 and 2 make 3, and from there only matching tiles merge. New tiles come in from the edge you slid away from, and your score is the sum of every merge. Its rules are tuned for short games: most new tiles are 1s, so a run lasts a few dozen moves. // at the board // every tile slides at once ones and twos make three // where to play // BROWSER ▶ PLAY free, in the arcade . Arrow keys or swipe. TERMINAL A text-only version that runs in a terminal window. Instal..."
   },
   {
     "t": "tone grating, magmacrunch media",
@@ -2174,7 +2174,7 @@
     "c": "tool",
     "u": "/ware/two-to-the-n/",
     "d": "2048, generalised: pick your target from 4 to 65,536, in the browser",
-    "b": "2^n · magmacrunch media home › ware › video games › 2^n 2^N 2048 (actually, 2^N) · slide & merge · how far can you go? 2048, generalised. Pick your target, from 2-bit mode at 4 up to 16-bit mode at 65,536, or play endless, with 2048 as the default. Slide and merge powers of two on a four-by-four board while the tiles heat from icy blue to white hot. // at the board // powers of two pick the power to reach // where to play // BROWSER ▶ PLAY free, in the arcade . Arrow keys or swipe. TERMINAL A text-only version that runs in a terminal window. Install it with pipx install magmacrunch-two-to-the-..."
+    "b": "2^n · magmacrunch media home › ware › video games › 2^n 2^N 2048 with a target you choose · slide & merge 2048, generalised. Pick your target, from 2-bit mode at 4 up to 16-bit mode at 65,536, or play endless, with 2048 as the default. Slide and merge powers of two on a four-by-four board while the tiles heat from icy blue to white hot. // at the board // powers of two pick the power to reach // where to play // BROWSER ▶ PLAY free, in the arcade . Arrow keys or swipe. TERMINAL A text-only version that runs in a terminal window. Install it with pipx install magmacrunch-two-to-the-n then run tw..."
   },
   {
     "t": "very long boards · magmacrunch media",
