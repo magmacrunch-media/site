@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="../shell/app-shell.css">
     <link rel="stylesheet" href="../shell/toast.css">
     <link rel="stylesheet" href="kit/magma-themes.css?v=b064ae8f">
-    <link rel="stylesheet" href="style.css?v=b2a530c2">
+    <link rel="stylesheet" href="style.css?v=e274e248">
 </head>
 <body>
     <header class="app-header">
@@ -179,6 +179,9 @@
                     softer. The meter menu at the top left sets the time signature, and
                     the Tuning menu swaps the usual twelve semitones for 19, 24 (quarter
                     tones) or 31 equal steps to the octave. Each note can also be detuned by a few cents.</p>
+                <p>Each track shows its sound: one cycle of the wave and its harmonics
+                    (a drum shows one hit), and ENV draws the envelope as a curve. Hover
+                    a key to read its pitch in hertz.</p>
             </section>
             <section>
                 <h3>Keep it</h3>
@@ -237,14 +240,16 @@
     <script src="core/midi.js?v=b4db0caf"></script>
     <script src="core/flac.js?v=67c1a8ac"></script>
     <script src="core/steps.js?v=c253dc56"></script>
+    <script src="core/wavescope.js?v=bcc88085"></script>
     <script src="bridge.js?v=3bb5b1f9"></script>
     <script src="faust-voice.js?v=3275a6f2"></script>
     <script src="drum-voices.js?v=75a78121"></script>
     <script src="export.js?v=4a6b1c2d"></script>
     <script src="theme.js?v=bf2baf47"></script>
-    <script src="roll-view.js?v=80d056c6"></script>
+    <script src="wave-glyph.js?v=654e5261"></script>
+    <script src="roll-view.js?v=fd42d36b"></script>
     <script src="step-view.js?v=3c0a5157"></script>
     <script src="midi.js?v=b33fdd11"></script>
-    <script src="main.js?v=89aee9ec"></script>
+    <script src="main.js?v=a501be4e"></script>
 </body>
 </html>
