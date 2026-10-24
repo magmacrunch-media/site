@@ -1935,8 +1935,8 @@
     "t": "crunch-c · magmacrunch media",
     "c": "tool",
     "u": "/ware/crunch-c/",
-    "d": "learn C memory management without segfaults",
-    "b": "crunch-c · magmacrunch media home › ware › developer tools › crunch-c crunch-c learn C memory management without segfaults Every memory error is caught and explained. No segfaults. No undefined behavior. Just C's behavior, narrated. ▶ Start the course What you'll learn Loading modules… How it works In C, memory mistakes cause segfaults, crashes and security vulnerabilities. Here the same mistakes are caught and named: quicksand at line 5, column 9 | 5 | val = p.peek(i32) | ^ this ground was scorched at line 4 (garrisoned at line 1) You learn what C does, and why it's dangerous, without the dan..."
+    "d": "a course in C memory management, in the browser",
+    "b": "crunch-c · magmacrunch media home › ware › developer tools › crunch-c crunch-c a course in C memory management, in the browser Every memory error is caught and explained, where real C would crash or behave unpredictably. ▶ Start the course What you'll learn Loading modules… How it works In C, memory mistakes cause segfaults, crashes and security vulnerabilities. Here the same mistakes are caught and named: quicksand at line 5, column 9 | 5 | val = p.peek(i32) | ^ this ground was scorched at line 4 (garrisoned at line 1) You learn what C does and why it is dangerous. The lessons run in your bro..."
   },
   {
     "t": "daffodil · magmacrunch media",
