@@ -35,10 +35,10 @@ document.documentElement.classList.add("font-loading");document.fonts.ready.then
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../shared/arcade-base.css?v=de5e0d7b">
     <link rel="stylesheet" href="css/base.css?v=c0fd618b">
-    <link rel="stylesheet" href="css/themes.css?v=7b5f0931">
+    <link rel="stylesheet" href="css/themes.css?v=7e70008f">
     <link rel="stylesheet" href="css/container.css?v=13f4f513">
-    <link rel="stylesheet" href="css/game.css?v=20afb9cd">
-    <link rel="stylesheet" href="css/modal-title.css?v=6121a3e1">
+    <link rel="stylesheet" href="css/game.css?v=75d2b82c">
+    <link rel="stylesheet" href="css/modal-title.css?v=a537cbe3">
     <link rel="stylesheet" href="css/modal-lore.css?v=64e0fdfc">
     <link rel="stylesheet" href="css/modal-difficulty.css?v=83a97210">
     <link rel="stylesheet" href="css/modal-scoreboard.css?v=68955006">
@@ -46,7 +46,7 @@ document.documentElement.classList.add("font-loading");document.fonts.ready.then
     <link rel="stylesheet" href="css/modal-misc.css?v=4d409b4e">
     <link rel="stylesheet" href="css/responsive.css?v=60d47522">
     <link rel="stylesheet" href="css/gates.css?v=fefddded">
-    <link rel="stylesheet" href="css/side-panels.css?v=d4944b81">
+    <link rel="stylesheet" href="css/side-panels.css?v=8dd63154">
     <link rel="stylesheet" href="css/math-overlay.css?v=103942b4">
 </head>
 <body>
@@ -141,7 +141,7 @@ document.documentElement.classList.add("font-loading");document.fonts.ready.then
                 <div class="rules-row">
                     <span class="rule-tag">same+same=same</span>
                     <span class="rule-tag">num+gate+num</span>
-                    <span class="rule-tag">NOT slides in</span>
+                    <span class="rule-tag" data-gate="not">NOT slides in</span>
                 </div>
                 <div class="rules-row gates-row">
                     <span class="gate-tag" data-gate="xor"><b>&oplus;</b> XOR</span>
@@ -402,10 +402,10 @@ document.documentElement.classList.add("font-loading");document.fonts.ready.then
                     That is all binary means.
                 </p>
                 <p style="margin: 0 0 10px 0; font-size: 10px; line-height: 1.7; color: rgba(255, 255, 255, 0.95);">
-                    Think of a tile as <strong style="color: #ffd700;">four lamps in a row</strong>, each on (1) or
-                    off (0). Each lamp is worth double the one to its right:
-                    <strong style="color: #ffd700;">8, 4, 2, 1</strong>. The number on the tile is whatever the lit
-                    ones add up to.
+                    Each of those digits is a <strong style="color: #ffd700;">bit</strong>. Think of a tile as four bits
+                    in a row, each 1 or 0. Each bit is worth double the one to its right:
+                    <strong style="color: #ffd700;">8, 4, 2, 1</strong>. The number on the tile is whatever the 1s
+                    add up to.
                 </p>
             </div>
 
@@ -419,19 +419,19 @@ document.documentElement.classList.add("font-loading");document.fonts.ready.then
                     <div>1 1 1 1 &nbsp;<span style="color: rgba(255,255,255,0.95);">= 8+4+2+1 =</span> <strong style="color:#00ff00;">15</strong></div>
                 </div>
                 <p style="margin: 10px 0 0 0; font-size: 10px; line-height: 1.7; color: rgba(255, 255, 255, 0.95);">
-                    Four lamps is why 4-bit tops out at <strong style="color: #ffd700;">15</strong>. Two lamps top out
-                    at 3, eight lamps at 255. That is the whole of the bit modes.
+                    Four bits is why 4-bit tops out at <strong style="color: #ffd700;">15</strong>. Two bits top out
+                    at 3, eight bits at 255. That is the whole of the bit modes.
                 </p>
             </div>
 
             <div class="section-divider" style="height: 3px; background: linear-gradient(90deg, transparent, #8a2be2, transparent); margin: 25px 0;"></div>
 
-            <h4 style="font-size: 13px; margin: 15px 0 10px 0; color: #ffff00; text-shadow: 2px 2px 0 #999900;">A GATE IS A RULE FOR ONE LAMP</h4>
+            <h4 style="font-size: 13px; margin: 15px 0 10px 0; color: #ffff00; text-shadow: 2px 2px 0 #999900;">A GATE IS A RULE FOR ONE BIT</h4>
 
             <div class="rule-box" style="background: rgba(138, 43, 226, 0.12); padding: 12px; margin-bottom: 15px; border-left: 3px solid #8a2be2;">
                 <p style="margin: 0; font-size: 10px; line-height: 1.7; color: rgba(255, 255, 255, 0.95);">
                     Before any of it touches a whole number, a gate is a rule about
-                    <strong>one lamp against one lamp</strong>: two in, one out. There are only four
+                    <strong>one bit against one bit</strong>: two in, one out. There are only four
                     rules, and each is four lines long. Read them as "in, in, out".
                 </p>
             </div>
@@ -446,7 +446,7 @@ document.documentElement.classList.add("font-loading");document.fonts.ready.then
                         1 <span class="glyph">⊕</span> 0 = 1<br>
                         1 <span class="glyph">⊕</span> 1 = 0
                     </div>
-                    <div style="font-size: 10px; line-height: 1.6; color: rgba(255, 255, 255, 0.9); margin-top: 5px;">on when they differ</div>
+                    <div style="font-size: 10px; line-height: 1.6; color: rgba(255, 255, 255, 0.9); margin-top: 5px;">1 when they differ</div>
                 </div>
                 <div class="gate-card" style="background: rgba(0, 255, 255, 0.08); padding: 10px; border: 2px solid rgba(0, 255, 255, 0.3);">
                     <div class="gate-glyph" style="font-size: 24px; line-height: 1.1; color: #00ffff; text-shadow: 0 0 10px rgba(0,255,255,0.6);">∨</div>
@@ -457,7 +457,7 @@ document.documentElement.classList.add("font-loading");document.fonts.ready.then
                         1 <span class="glyph">∨</span> 0 = 1<br>
                         1 <span class="glyph">∨</span> 1 = 1
                     </div>
-                    <div style="font-size: 10px; line-height: 1.6; color: rgba(255, 255, 255, 0.9); margin-top: 5px;">on if either is on</div>
+                    <div style="font-size: 10px; line-height: 1.6; color: rgba(255, 255, 255, 0.9); margin-top: 5px;">1 if either is 1</div>
                 </div>
                 <div class="gate-card" style="background: rgba(0, 255, 255, 0.08); padding: 10px; border: 2px solid rgba(0, 255, 255, 0.3);">
                     <div class="gate-glyph" style="font-size: 24px; line-height: 1.1; color: #00ffff; text-shadow: 0 0 10px rgba(0,255,255,0.6);">∧</div>
@@ -468,7 +468,7 @@ document.documentElement.classList.add("font-loading");document.fonts.ready.then
                         1 <span class="glyph">∧</span> 0 = 0<br>
                         1 <span class="glyph">∧</span> 1 = 1
                     </div>
-                    <div style="font-size: 10px; line-height: 1.6; color: rgba(255, 255, 255, 0.9); margin-top: 5px;">on only if both are on</div>
+                    <div style="font-size: 10px; line-height: 1.6; color: rgba(255, 255, 255, 0.9); margin-top: 5px;">1 only if both are 1</div>
                 </div>
                 <div class="gate-card" style="background: rgba(255, 215, 0, 0.08); padding: 10px; border: 2px solid rgba(255, 215, 0, 0.5);">
                     <div class="gate-glyph" style="font-size: 24px; line-height: 1.1; color: #ffd700; text-shadow: 0 0 10px rgba(255,215,0,0.6);">¬</div>
@@ -477,7 +477,7 @@ document.documentElement.classList.add("font-loading");document.fonts.ready.then
                         <span class="glyph">¬</span> 0 = 1<br>
                         <span class="glyph">¬</span> 1 = 0
                     </div>
-                    <div style="font-size: 10px; line-height: 1.6; color: rgba(255, 255, 255, 0.9); margin-top: 5px;">one lamp in, flipped</div>
+                    <div style="font-size: 10px; line-height: 1.6; color: rgba(255, 255, 255, 0.9); margin-top: 5px;">one bit in, flipped</div>
                 </div>
             </div>
 
@@ -487,7 +487,7 @@ document.documentElement.classList.add("font-loading");document.fonts.ready.then
 
             <div class="rule-box" style="background: rgba(0, 255, 255, 0.06); padding: 12px; margin-bottom: 15px; border-left: 3px solid #00ffff;">
                 <p style="margin: 0 0 10px 0; font-size: 10px; line-height: 1.7; color: rgba(255, 255, 255, 0.95);">
-                    A gate does not know what 5 is. It takes the two tiles' lamps
+                    A gate does not know what 5 is. It takes the two tiles' bits
                     <strong>column by column</strong>, applies that one rule four times, and reads the
                     answer back as a number. Nothing carries the way addition carries.
                 </p>
@@ -499,15 +499,15 @@ document.documentElement.classList.add("font-loading");document.fonts.ready.then
                     <div style="color:#00ff00;">0 1 1 0 &nbsp;<span style="color: rgba(255,255,255,0.8);">= 4+2 =</span> <strong>6</strong></div>
                 </div>
                 <p style="margin: 10px 0 0 0; font-size: 10px; line-height: 1.7; color: rgba(255, 255, 255, 0.95);">
-                    Column 1: both lamps on, XOR says off. Column 2: one on, one off, so on.
-                    Column 4: one on, so on. Column 8: neither, so off. That is
+                    Column 1: both 1, so XOR gives 0. Column 2: one 1, one 0, so 1.
+                    Column 4: one 1, so 1. Column 8: neither, so 0. That is
                     <strong style="color: #00ff00;">0110</strong>, which is 6.
                 </p>
             </div>
 
             <div class="rule-box" style="background: rgba(138, 43, 226, 0.12); padding: 12px; margin-bottom: 15px; border-left: 3px solid #8a2be2;">
                 <p style="margin: 0 0 10px 0; font-size: 10px; line-height: 1.7; color: rgba(255, 255, 255, 0.95);">
-                    The same two tiles through the other two gates. Same lamps, different rule,
+                    The same two tiles through the other two gates. Same bits, different rule,
                     different number out:
                 </p>
                 <div style="font-family: monospace; font-size: 13px; line-height: 1.8; margin-left: 4px;">
@@ -525,7 +525,7 @@ document.documentElement.classList.add("font-loading");document.fonts.ready.then
                     <div style="color:#00ff00;">0 0 0 1 &nbsp;<span style="color: rgba(255,255,255,0.8);">=</span> <strong>1</strong></div>
                 </div>
                 <p style="margin: 10px 0 0 0; font-size: 10px; line-height: 1.7; color: rgba(255, 255, 255, 0.95);">
-                    And <strong style="color: #ffd700;">NOT</strong> needs only one tile: it flips all four lamps.
+                    And <strong style="color: #ffd700;">NOT</strong> needs only one tile: it flips all four bits.
                     <span style="font-family: monospace; color: #00ff00;"><span class="glyph">¬</span>5</span>
                     is 0101 flipped to 1010, which is <strong style="color: #00ff00;">10</strong>.
                 </p>
@@ -799,8 +799,8 @@ const scoreClient=new AdScore.ScoreClient().auto(MC_SCORE_OPTS);
     <script src="js/arrow-label.js?v=8f6e64ed"></script>
     <script src="js/config.js?v=fdc4d4d3"></script>
     <script src="js/scoring.js?v=92ff87d7"></script>
-    <script src="js/game.js?v=88ee6bdc"></script>
-    <script src="js/math-overlay.js?v=acc9551d"></script>
+    <script src="js/game.js?v=9a0912e4"></script>
+    <script src="js/math-overlay.js?v=dcb46129"></script>
     <script src="js/rules-pages.js?v=5eb81e1f"></script>
     <script src="js/main.js?v=337255b2"></script>
 <script>
