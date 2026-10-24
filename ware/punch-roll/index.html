@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="../shell/app-shell.css">
     <link rel="stylesheet" href="../shell/toast.css">
     <link rel="stylesheet" href="kit/magma-themes.css?v=b064ae8f">
-    <link rel="stylesheet" href="style.css?v=e274e248">
+    <link rel="stylesheet" href="style.css?v=8efd30f9">
 </head>
 <body>
     <header class="app-header">
@@ -44,12 +44,12 @@
                 <button id="btn-view-roll" type="button" aria-pressed="true" title="The piano roll (G switches)">Roll</button>
                 <button id="btn-view-steps" type="button" aria-pressed="false" title="The step sequencer: a row per track, a column per step (G switches)">Steps</button>
             </div>
-            <div id="add-track-row"><button id="btn-add-track" type="button" title="Add a track, up to six">Add track</button></div>
             <label id="tuning-row" title="Tuning: equal steps to the octave">Tuning <select id="in-tuning"></select></label>
             <label id="swing-row" title="Swing: how late every second sixteenth plays, up to a full triplet shuffle">
                 <span>Swing <output id="out-swing" for="in-swing">0%</output></span>
                 <input id="in-swing" type="range" min="0" max="100" step="5" value="0">
             </label>
+            <div id="add-track-row"><button id="btn-add-track" type="button" title="Add a track, up to six">Add track</button></div>
             <div id="step-row">
                 <button id="btn-step" type="button" aria-pressed="false" aria-controls="step-help" title="Step entry (R): type notes from the computer keyboard, one grid step at a time from the start marker">Step entry</button>
                 <div id="step-help" hidden></div>
@@ -159,7 +159,7 @@
                     drag along a row to paint several. It is the same song, so the hits
                     are notes in the roll too. G switches between the two. Tick Drums
                     only, in the grid's corner, to see just the drum tracks.</p>
-                <p>Swing, under Tuning, makes every second sixteenth play a little
+                <p>Swing, at the top of the track panel under Tuning, makes every second sixteenth play a little
                     late, for a shuffle; at 100% it is a full triplet swing. The notes
                     stay where you put them, and only the playing changes.</p>
             </section>
@@ -250,6 +250,6 @@
     <script src="roll-view.js?v=fd42d36b"></script>
     <script src="step-view.js?v=3c0a5157"></script>
     <script src="midi.js?v=b33fdd11"></script>
-    <script src="main.js?v=a501be4e"></script>
+    <script src="main.js?v=a763a72e"></script>
 </body>
 </html>
