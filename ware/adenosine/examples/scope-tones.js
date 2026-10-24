@@ -47,8 +47,10 @@ playBtn.addEventListener('click', function () {
   out.gain.value = 0.05;
   merge.connect(out);
   out.connect(ctx.destination);
-  // The scope listens off a branch of `out`; it is never in the signal path.
-  view.attach(out);
+  // The scope listens off a branch of `merge`, ahead of the volume, so it
+  // sees the tones at full scale while what you hear stays quiet. It is
+  // never in the signal path.
+  view.attach(merge);
   console.log('Attached:', view.attached, '- settings:', JSON.stringify(view.settings));
 });
 
