@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="../shell/app-shell.css">
     <link rel="stylesheet" href="../shell/toast.css">
     <link rel="stylesheet" href="kit/magma-themes.css?v=b064ae8f">
-    <link rel="stylesheet" href="style.css?v=3de39207">
+    <link rel="stylesheet" href="style.css?v=d371588a">
 </head>
 <body>
     <header class="app-header">
@@ -36,6 +36,10 @@
 
     <main id="stage">
         <aside id="tracks" aria-label="Tracks">
+            <div id="view-row" class="view-switch" role="group" aria-label="View">
+                <button id="btn-view-roll" type="button" aria-pressed="true" title="The piano roll (G switches)">Roll</button>
+                <button id="btn-view-steps" type="button" aria-pressed="false" title="The step sequencer: a row per track, a column per step (G switches)">Steps</button>
+            </div>
             <div id="add-track-row"><button id="btn-add-track" type="button" title="Add a track, up to six">Add track</button></div>
             <label id="tuning-row" title="Tuning: equal steps to the octave">Tuning <select id="in-tuning"></select></label>
             <div id="step-row"><button id="btn-step" type="button" aria-pressed="false" title="Step entry: type notes from the computer keyboard at the start marker (R)">Step entry</button></div>
@@ -50,6 +54,12 @@
                 <canvas id="roll-canvas"></canvas>
             </section>
             <select id="in-meter" aria-label="Meter" title="Meter: the time signature, where the bars fall"></select>
+        </div>
+        <div id="steps-frame" hidden>
+            <section id="steps" aria-label="Step sequencer">
+                <div id="steps-extent"></div>
+                <canvas id="steps-canvas"></canvas>
+            </section>
         </div>
     </main>
 
@@ -115,9 +125,18 @@
             <section>
                 <h3>Pick a track</h3>
                 <p>The panel on the left holds the tracks: two pulse channels, a
-                    triangle and noise. Click one, or press 1 to 4, and new notes go
-                    onto it. M mutes the current track and S solos it. Click the
+                    triangle and noise; Add track makes up to six. Click one, or press
+                    1 to 6, and new notes go onto it. M mutes the current track and S solos it. Click the
                     keyboard beside the roll to hear a pitch on that track.</p>
+            </section>
+            <section>
+                <h3>Make a beat</h3>
+                <p>Steps, at the top of the panel, swaps the roll for a step
+                    sequencer: a row for each track and a column for each step of the
+                    grid. Set some tracks to the drums (Kick, Snare, the hi-hats), then
+                    click squares to add hits and click them again to take them away;
+                    drag along a row to paint several. It is the same song, so the hits
+                    are notes in the roll too. G switches between the two.</p>
             </section>
             <section>
                 <h3>Play it</h3>
@@ -184,17 +203,19 @@
     <script src="vendor/adenosine-synth.js?v=99a020db"></script>
     <script src="vendor/wasm-media-encoders.js?v=dd4e17ab"></script>
     <script src="core/roll.js?v=5e8d8272"></script>
-    <script src="core/keymap.js?v=1c2923cb"></script>
+    <script src="core/keymap.js?v=f608ee26"></script>
     <script src="core/songfile.js?v=c1169965"></script>
     <script src="core/midi.js?v=b4db0caf"></script>
     <script src="core/flac.js?v=67c1a8ac"></script>
+    <script src="core/steps.js?v=f32a900f"></script>
     <script src="bridge.js?v=3bb5b1f9"></script>
     <script src="faust-voice.js?v=3275a6f2"></script>
     <script src="drum-voices.js?v=75a78121"></script>
     <script src="export.js?v=4a6b1c2d"></script>
     <script src="theme.js?v=bf2baf47"></script>
     <script src="roll-view.js?v=80d056c6"></script>
+    <script src="step-view.js?v=2af418d4"></script>
     <script src="midi.js?v=b33fdd11"></script>
-    <script src="main.js?v=7f21135a"></script>
+    <script src="main.js?v=8da2e507"></script>
 </body>
 </html>
