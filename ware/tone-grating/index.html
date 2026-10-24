@@ -7,7 +7,7 @@
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="stylesheet" href="../shell/fonts.css?v=08818834">
     <link rel="stylesheet" href="../shell/app-shell.css?v=12781ff7">
-    <link rel="stylesheet" href="css/style.css?v=5fd1e0fa">
+    <link rel="stylesheet" href="css/style.css?v=656938cf">
 </head>
 <body>
     <div class="mobile-notice">
@@ -204,7 +204,9 @@
                 <span>evanescent orders</span><span id="evanOut">0</span>
             </div>
 
-            <p class="panel-note">
+            <details class="panel-note" id="aboutNote">
+                <summary>how the grating is driven</summary>
+                <p>
                 The grating is not drawn beside the sound, it is driven by it.
                 The modulator pushes a sound wave through the crystal, and
                 light crossing that moving wave comes out as orders that are
@@ -216,20 +218,21 @@
                 while the straight-through beam goes dark. The two axes still
                 run out differently: a sideband pushed below zero folds back,
                 and an order past sin&thinsp;&theta; = 1 stops propagating.
-            </p>
+                </p>
+            </details>
 
         </aside>
 
     </div>
 
     <footer>
-        <span class="footer-text">TONE//GRATING v0.3 &middot; <span>MAGMACRUNCH MEDIA</span></span>
+        <span class="footer-text">TONE//GRATING v0.4 &middot; <span>MAGMACRUNCH MEDIA</span></span>
     </footer>
 
     <script src="js/bessel.js?v=806fd60a"></script>
     <script src="js/audio.js?v=d671f890"></script>
-    <script src="js/draw.js?v=dd0159b7"></script>
+    <script src="js/draw.js?v=dfe87070"></script>
     <script src="js/play.js?v=f5effebe"></script>
-    <script src="js/app.js?v=5b485610"></script>
+    <script src="js/app.js?v=13af61e4"></script>
 </body>
 </html>
