@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>The Heap Mine</title>
+<meta name="description" content="A text adventure about C's heap, from crunch-c: dig chambers, walk stakes, and watch a use-after-free happen, or carry the lamp and see it caught.">
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Saira+Stencil+One&family=Newsreader:opsz,wght@6..72,400;6..72,600&family=JetBrains+Mono:wght@400;600&display=swap">
+<link rel="stylesheet" href="interpreter/glkote.css?v=154683aa">
+<link rel="stylesheet" href="interpreter/dialog.css?v=66ed8243">
+<style>
+:root{--rock: #1a1612;--face: #231e18;--chalk: #ebe3d3;--dust: #9b907e;--lamp: #7cc0ff;--seam: #3a3128;--display: "Saira Stencil One", "Impact", "Arial Narrow", sans-serif;--story: "Newsreader", Georgia, "Times New Roman", serif;--mono: "JetBrains Mono", ui-monospace, Consolas, monospace;color-scheme:dark}html,body{height:100%}body{margin:0;background:var(--rock);color:var(--chalk);display:flex;flex-direction:column;box-sizing:border-box;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:12px;gap:12px}.sign{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 20px;border-bottom:1px solid var(--seam);padding-bottom:10px}.sign h1{font:400 1.6rem/1 var(--display);letter-spacing:0.08em;text-transform:uppercase;margin:0;color:var(--chalk);text-wrap:balance}.flame{display:inline-block;width:0.45em;height:0.6em;border-radius:50% 50% 45% 45% / 60% 60% 40% 40%;background:var(--lamp);box-shadow:0 0 12px var(--lamp);margin-right:0.45em;vertical-align:0.05em}.sign .meta{font:400 0.78rem/1.5 var(--mono);color:var(--dust);min-width:0}.sign .meta b{color:var(--lamp);font-weight:600}.sign .meta a{color:var(--lamp)}#gameport{position:relative;flex:1;min-height:0;background:var(--face);border:1px solid var(--seam);border-radius:3px;overflow:hidden}#windowport{position:absolute;inset:0}#loadingpane{position:absolute;inset:0;display:grid;place-content:center;font:400 0.85rem var(--mono);color:var(--dust)}#loadingpane img{display:none}#errorpane{position:absolute;left:12px;right:12px;top:12px;background:var(--rock);border:1px solid var(--lamp);color:var(--chalk);padding:12px;font:400 0.9rem/1.5 var(--mono);border-radius:3px}.WindowFrame{background:var(--face)}.BufferWindow{padding:18px max(18px,4%) 24px;font:400 1.03rem/1.6 var(--story);color:var(--chalk)}.BufferWindow .BufferLine{max-width:70ch}.BufferWindow .Style_header{font:400 1.5rem/1.2 var(--display);letter-spacing:0.06em;color:var(--chalk)}.BufferWindow .Style_subheader{font:400 1.1rem var(--display);letter-spacing:0.08em;text-transform:uppercase;color:var(--lamp)}.BufferWindow .Style_emphasized{font-style:italic}.BufferWindow .Style_preformatted{font:400 0.86rem/1.55 var(--mono);color:var(--chalk);white-space:pre}.BufferWindow .Style_input,.BufferWindow .Input{font:600 0.95rem var(--mono);color:var(--lamp)}.Input{background:transparent;border:0;outline:none;caret-color:var(--lamp)}.Input:focus-visible{outline:1px dashed var(--seam)}.GridWindow{background:var(--rock);color:var(--dust);font:400 0.82rem/1.5 var(--mono);border-bottom:1px solid var(--seam)}.GridWindow .Style_normal{color:var(--dust)}.GridWindow .reverse,.GridWindow .Style_reverse{background:transparent}.MoreMsg{color:var(--lamp);font:600 0.8rem var(--mono)}.rack{display:flex;flex-direction:column;gap:8px}.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}.row .label{font:400 0.8rem/1 var(--display);letter-spacing:0.14em;text-transform:uppercase;color:var(--dust);width:5.5em}.rack button{font:600 0.88rem/1.2 var(--mono);padding:9px 13px;border-radius:3px;cursor:pointer;border:1px solid var(--seam);background:var(--face);color:var(--chalk);min-height:40px}.rack button.verb{color:var(--lamp)}.rack button:hover{border-color:var(--dust)}.rack button:focus-visible{outline:2px solid var(--lamp);outline-offset:2px}.hintline{font:400 0.75rem/1.4 var(--mono);color:var(--dust)}@media(max-width:480px){.row .label{width:100%}.rack button{padding:8px 10px;font-size:0.82rem}.BufferWindow{font-size:0.98rem;padding:14px 12px 20px}.BufferWindow .Style_preformatted{font-size:0.7rem}}@media(prefers-reduced-motion:reduce){.flame{box-shadow:none}}
+</style>
+</head>
+<body>
+
+<header class="sign">
+  <h1><span class="flame" aria-hidden="true"></span>The Heap Mine</h1>
+  <p class="meta">96 cells &middot; the <b>surveyor's lamp</b> is AddressSanitizer: carry it and faults are caught, leave it and they happen &middot; type commands, press Enter &middot; <a href="https://magmacrunch.com/ware/crunch-c/">part of crunch-c</a></p>
+</header>
+
+<div id="gameport">
+  <div id="windowport"></div>
+  <div id="loadingpane">Lowering the cage&hellip;</div>
+  <div id="errorpane" style="display:none"><div id="errorcontent">...</div></div>
+</div>
+
+<nav class="rack" aria-label="Commands">
+  <div class="row" id="look-row"><span class="label">Look</span></div>
+  <div class="row" id="verb-row"><span class="label">Start</span></div>
+  <p class="hintline">Look buttons run at once. Start buttons put the verb in the prompt for you to finish: dig 4, walk p+4, poke 42, scorch p, toss p.</p>
+</nav>
+
+<script src="interpreter/jquery-1.12.4.min.js?v=668b046d"></script>
+<script src="interpreter/glkote.min.js?v=18d51768"></script>
+<script src="interpreter/quixe.min.js?v=d21c1270"></script>
+<script src="interpreter/resourcemap.js?v=4431c489"></script>
+<script>
+game_options={image_info_map:"StaticImageInfo",use_query_story:false,set_page_title:false,inspacing:0,outspacing:0};
+</script>
+<script src="interpreter/heapmine.gblorb.js?v=c6bcaf35"></script>
+<script>
+(function(){var LOOK=["survey","ledger","peek","peek byte","look","help","undo"];var VERBS=["dig ","walk ","poke ","scorch ","toss ","take lamp","drop lamp"];function input(){return document.querySelector("#windowport .LineInput")}function send(cmd){var el=input();if(!el)return;el.value=cmd;$(el).trigger($.Event("keypress",{which:13,keyCode:13}))}function start(verb){var el=input();if(!el)return;if(verb.slice(-1)!==" "){send(verb);return}el.value=verb;el.focus();try{el.setSelectionRange(verb.length,verb.length)}catch(e){}}function button(label,cls,fn){var b=document.createElement("button");b.type="button";b.textContent=label.trim();if(cls)b.className=cls;b.addEventListener("click",fn);return b}var port=document.getElementById("windowport");var fine=window.matchMedia&&window.matchMedia("(pointer: fine)").matches;var pending=false;new MutationObserver(function(){if(pending)return;pending=true;requestAnimationFrame(function(){pending=false;var bw=port.querySelector(".BufferWindow");if(bw)bw.scrollTop=bw.scrollHeight;var more=port.querySelector(".MoreMsg");if(more)more.remove();var a=document.activeElement;var el=input();if(el&&fine&&(!a||a===document.body||a.tagName==="BUTTON"))el.focus()})}).observe(port,{childList:true,subtree:true});port.addEventListener("click",function(){if(window.getSelection&&String(window.getSelection()))return;var el=input();if(el)el.focus()});var lookRow=document.getElementById("look-row");var verbRow=document.getElementById("verb-row");LOOK.forEach(function(c){lookRow.appendChild(button(c,"",function(){send(c)}))});VERBS.forEach(function(v){verbRow.appendChild(button(v,v.slice(-1)===" "?"verb":"",function(){start(v)}))})})();
+</script>
+</body>
+</html>

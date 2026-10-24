@@ -1,0 +1,15 @@
+The Heap Mine's web page runs the story in Quixe, a Glulx interpreter in
+JavaScript, with GlkOte for its display. These files are the copies Inform
+10.1.2 writes into a web release, unmodified:
+
+  quixe.min.js, glkote.min.js, dialog.css, glkote.css, resourcemap.js
+      Quixe and GlkOte, copyright Andrew Plotkin, MIT licence.
+      https://github.com/erkyrath/quixe
+      https://github.com/erkyrath/glkote
+
+  jquery-1.12.4.min.js
+      jQuery 1.12.4, copyright the jQuery Foundation and other contributors,
+      MIT licence. https://jquery.org/license/
+
+heapmine.gblorb.js is not third-party: it is The Heap Mine itself, the
+compiled story base64-encoded for Quixe, written by `./build.sh release`.
