@@ -8,13 +8,17 @@
     <link rel="stylesheet" href="../shell/app-shell.css">
     <link rel="stylesheet" href="../shell/toast.css">
     <link rel="stylesheet" href="kit/magma-themes.css?v=b064ae8f">
-    <link rel="stylesheet" href="style.css?v=d647464b">
+    <link rel="stylesheet" href="style.css?v=b2a530c2">
 </head>
 <body>
     <header class="app-header">
         <h1>PUNCH//ROLL</h1>
         <nav class="toolbar" aria-label="Song">
-            <button id="btn-play" class="primary" title="Play / stop (Space)">Play</button>
+            <span class="transport" role="group" aria-label="Transport">
+                <button id="btn-rewind" class="icon" type="button" title="To start: the start marker goes to the start of the song, or of the loop"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2 2h1.6v8H2zM10.5 2v8L4.2 6z"/></svg><span class="sr">To start</span></button>
+                <button id="btn-play" class="primary icon" type="button" title="Play / pause (Shift+Space); Space plays and stops"><svg class="i-play" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 1.5v9L10.5 6z"/></svg><svg class="i-pause" viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 2h2.5v8H2.5zM7 2h2.5v8H7z"/></svg><span class="sr">Play</span></button>
+                <button id="btn-stop" class="icon" type="button" title="Stop, back to the start marker (Space)"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 2.5h7v7h-7z"/></svg><span class="sr">Stop</span></button>
+            </span>
             <label>BPM <input id="in-bpm" type="number" min="20" max="400" step="1"></label>
             <label>Bars <input id="in-bars" type="number" min="1" max="256" step="1"></label>
             <label>Grid <select id="in-grid" title="What notes snap to"></select></label>
@@ -161,7 +165,10 @@
             </section>
             <section>
                 <h3>Play it</h3>
-                <p>Press Space or Play. Click the ruler along the top to choose where
+                <p>Press Space or Play. The play button pauses (Shift+Space), and
+                    playing again goes on from there; the square stops and goes back
+                    to where playback starts, and the button before them takes that
+                    back to the start. Click the ruler along the top to choose where
                     playback starts, and untick Loop to play through once.
                     BPM, Bars and Grid in the toolbar set the speed, the length and how
                     finely notes snap. Double-click the ruler to add a tempo change.</p>
@@ -225,7 +232,7 @@
     <script src="vendor/adenosine-scope.js?v=f0f22ae8"></script>
     <script src="vendor/wasm-media-encoders.js?v=dd4e17ab"></script>
     <script src="core/roll.js?v=19c112e2"></script>
-    <script src="core/keymap.js?v=f608ee26"></script>
+    <script src="core/keymap.js?v=f81a0236"></script>
     <script src="core/songfile.js?v=c1169965"></script>
     <script src="core/midi.js?v=b4db0caf"></script>
     <script src="core/flac.js?v=67c1a8ac"></script>
@@ -238,6 +245,6 @@
     <script src="roll-view.js?v=80d056c6"></script>
     <script src="step-view.js?v=3c0a5157"></script>
     <script src="midi.js?v=b33fdd11"></script>
-    <script src="main.js?v=74aef697"></script>
+    <script src="main.js?v=c3efa688"></script>
 </body>
 </html>
