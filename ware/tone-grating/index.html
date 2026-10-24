@@ -7,7 +7,7 @@
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="stylesheet" href="../shell/fonts.css?v=08818834">
     <link rel="stylesheet" href="../shell/app-shell.css?v=12781ff7">
-    <link rel="stylesheet" href="css/style.css?v=29c4a996">
+    <link rel="stylesheet" href="css/style.css?v=ff2cbbe8">
 </head>
 <body>
     <div class="mobile-notice">
@@ -64,7 +64,21 @@
                 <button class="preset" data-profile="amp" title="Smooth shading, clear to dark. The sound is AM">SINE</button>
                 <button class="preset" data-profile="ronchi" title="Clear and black bars. The sound is gated">RONCHI</button>
             </div>
+            <div class="profile-group">
+                <span class="profile-kind" title="Draw one period of your own grating">DRAWN</span>
+                <button class="preset" data-profile="drawp" title="Draw the grooves: height is delay">PHASE</button>
+                <button class="preset" data-profile="drawa" title="Draw the bars: up is clear, down is dark">AMPLITUDE</button>
+            </div>
             <p class="panel-hint" id="profileNote"></p>
+
+            <div class="draw-box" id="drawBox" hidden>
+                <canvas id="drawPad" class="draw-pad" aria-label="Draw one period of the grating: drag across the pad"></canvas>
+                <div class="preset-row">
+                    <button class="preset" id="drawCopy" title="Start from the last built-in grating of this kind">COPY</button>
+                    <button class="preset" id="drawSmooth" title="Round off sharp steps, which also quiets the highest orders">SMOOTH</button>
+                    <button class="preset" id="drawFlip" title="Mirror the period left to right: a blaze toward +1 becomes one toward -1">FLIP</button>
+                </div>
+            </div>
 
             <label class="ctl big" for="beta">
                 <span class="ctl-name" id="depthName">PHASE DEPTH &phi;</span>
@@ -282,14 +296,14 @@
     </div>
 
     <footer>
-        <span class="footer-text">TONE//GRATING v0.5 &middot; <span>MAGMACRUNCH MEDIA</span></span>
+        <span class="footer-text">TONE//GRATING v0.6 &middot; <span>MAGMACRUNCH MEDIA</span></span>
     </footer>
 
     <script src="js/bessel.js?v=806fd60a"></script>
-    <script src="js/grating.js?v=b512340a"></script>
-    <script src="js/audio.js?v=50ae5e78"></script>
-    <script src="js/draw.js?v=baa87f4e"></script>
+    <script src="js/grating.js?v=b49aff88"></script>
+    <script src="js/audio.js?v=62174a2c"></script>
+    <script src="js/draw.js?v=0195a079"></script>
     <script src="js/play.js?v=773be98d"></script>
-    <script src="js/app.js?v=4f84a475"></script>
+    <script src="js/app.js?v=b64f4c2a"></script>
 </body>
 </html>
