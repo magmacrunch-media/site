@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="../shell/app-shell.css">
     <link rel="stylesheet" href="../shell/toast.css">
     <link rel="stylesheet" href="kit/magma-themes.css?v=b064ae8f">
-    <link rel="stylesheet" href="style.css?v=d371588a">
+    <link rel="stylesheet" href="style.css?v=239f7aca">
 </head>
 <body>
     <header class="app-header">
@@ -42,6 +42,10 @@
             </div>
             <div id="add-track-row"><button id="btn-add-track" type="button" title="Add a track, up to six">Add track</button></div>
             <label id="tuning-row" title="Tuning: equal steps to the octave">Tuning <select id="in-tuning"></select></label>
+            <label id="swing-row" title="Swing: how late every second sixteenth plays, up to a full triplet shuffle">
+                <span>Swing <output id="out-swing" for="in-swing">0%</output></span>
+                <input id="in-swing" type="range" min="0" max="100" step="5" value="0">
+            </label>
             <div id="step-row"><button id="btn-step" type="button" aria-pressed="false" title="Step entry: type notes from the computer keyboard at the start marker (R)">Step entry</button></div>
             <div id="midi-row" hidden>
                 <button id="btn-midi" type="button" title="Play the current track from a MIDI keyboard, and enter notes with Step entry">MIDI keyboard</button>
@@ -137,6 +141,9 @@
                     click squares to add hits and click them again to take them away;
                     drag along a row to paint several. It is the same song, so the hits
                     are notes in the roll too. G switches between the two.</p>
+                <p>Swing, under Tuning, makes every second sixteenth play a little
+                    late, for a shuffle; at 100% it is a full triplet swing. The notes
+                    stay where you put them, and only the playing changes.</p>
             </section>
             <section>
                 <h3>Play it</h3>
@@ -200,7 +207,7 @@
     <script src="kit/themes.js?v=4355e8bc"></script>
     <script src="kit/magma-themes-index.js?v=11b68c95"></script>
     <script src="../shell/toast.js"></script>
-    <script src="vendor/adenosine-synth.js?v=99a020db"></script>
+    <script src="vendor/adenosine-synth.js?v=1c17705e"></script>
     <script src="vendor/wasm-media-encoders.js?v=dd4e17ab"></script>
     <script src="core/roll.js?v=5e8d8272"></script>
     <script src="core/keymap.js?v=f608ee26"></script>
@@ -216,6 +223,6 @@
     <script src="roll-view.js?v=80d056c6"></script>
     <script src="step-view.js?v=2af418d4"></script>
     <script src="midi.js?v=b33fdd11"></script>
-    <script src="main.js?v=8da2e507"></script>
+    <script src="main.js?v=b0a7122d"></script>
 </body>
 </html>
