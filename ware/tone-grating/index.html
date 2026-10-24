@@ -97,6 +97,12 @@
                 <span>depth this light sees</span><span id="seenOut">2.405 rad</span>
             </div>
 
+            <label class="ctl" for="inc" title="Tilt the light hitting the grating. Every order moves with it, because the grating only adds m&middot;&lambda;/&Lambda; to the sine of the angle the light already had. In a thin grating the orders keep their strengths, so the sound does not change: this one is the light's alone">
+                <span class="ctl-name">INCIDENCE &theta;<sub>i</sub></span>
+                <span class="ctl-val" id="incOut">0°</span>
+            </label>
+            <input type="range" id="inc" min="-60" max="60" step="1" value="0">
+
             <div class="panel-divider"></div>
 
             <div class="panel-label tone">TIME DOMAIN</div>
@@ -285,6 +291,17 @@
                 timbre, while the amplitude gratings sound the same in any colour.
                 </p>
                 <p>
+                <b>Tilting the light.</b> Light arriving at an angle &theta;<sub>i</sub>
+                leaves in order m at sin&thinsp;&theta; = sin&thinsp;&theta;<sub>i</sub> +
+                m&lambda;/&Lambda;: the grating adds the same step to whatever angle
+                the light came in with, so the whole fan slides, and the side it slides
+                toward runs out of room first. In a thin grating the strengths
+                c<sub>m</sub> do not depend on the angle, so the sound does not
+                change. A thick grating is different: there the angle picks out which
+                orders get light at all, and that is how most real modulators are
+                built.
+                </p>
+                <p>
                 <b>Where the two stop matching.</b> A sideband pushed below 0&nbsp;Hz
                 folds back; an order past sin&thinsp;&theta; = 1 cannot leave the
                 grating at all. Both are drawn hollow or counted, not hidden.
@@ -296,14 +313,14 @@
     </div>
 
     <footer>
-        <span class="footer-text">TONE//GRATING v0.6 &middot; <span>MAGMACRUNCH MEDIA</span></span>
+        <span class="footer-text">TONE//GRATING v0.7 &middot; <span>MAGMACRUNCH MEDIA</span></span>
     </footer>
 
     <script src="js/bessel.js?v=806fd60a"></script>
     <script src="js/grating.js?v=b49aff88"></script>
     <script src="js/audio.js?v=62174a2c"></script>
-    <script src="js/draw.js?v=0195a079"></script>
+    <script src="js/draw.js?v=1337ee61"></script>
     <script src="js/play.js?v=773be98d"></script>
-    <script src="js/app.js?v=0565ed7d"></script>
+    <script src="js/app.js?v=92685cea"></script>
 </body>
 </html>
