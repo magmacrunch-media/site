@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="../shell/app-shell.css">
     <link rel="stylesheet" href="../shell/toast.css">
     <link rel="stylesheet" href="kit/magma-themes.css?v=b064ae8f">
-    <link rel="stylesheet" href="style.css?v=239f7aca">
+    <link rel="stylesheet" href="style.css?v=f3b1d749">
 </head>
 <body>
     <header class="app-header">
@@ -46,12 +46,18 @@
                 <span>Swing <output id="out-swing" for="in-swing">0%</output></span>
                 <input id="in-swing" type="range" min="0" max="100" step="5" value="0">
             </label>
-            <div id="step-row"><button id="btn-step" type="button" aria-pressed="false" title="Step entry: type notes from the computer keyboard at the start marker (R)">Step entry</button></div>
+            <div id="step-row">
+                <button id="btn-step" type="button" aria-pressed="false" aria-controls="step-help" title="Step entry (R): type notes from the computer keyboard, one grid step at a time from the start marker">Step entry</button>
+                <div id="step-help" hidden></div>
+            </div>
             <div id="midi-row" hidden>
                 <button id="btn-midi" type="button" title="Play the current track from a MIDI keyboard, and enter notes with Step entry">MIDI keyboard</button>
                 <select id="in-midi" aria-label="MIDI input" hidden></select>
             </div>
         </aside>
+        <div id="tracks-resizer" role="separator" aria-orientation="vertical" aria-controls="tracks"
+            aria-label="Track panel width" tabindex="0"
+            title="Drag to widen or narrow the track panel; double-click to reset"></div>
         <div id="roll-frame">
             <section id="roll" aria-label="Piano roll">
                 <div id="roll-extent"></div>
@@ -223,6 +229,6 @@
     <script src="roll-view.js?v=80d056c6"></script>
     <script src="step-view.js?v=2af418d4"></script>
     <script src="midi.js?v=b33fdd11"></script>
-    <script src="main.js?v=b0a7122d"></script>
+    <script src="main.js?v=e11b9c07"></script>
 </body>
 </html>
