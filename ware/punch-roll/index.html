@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="../shell/app-shell.css">
     <link rel="stylesheet" href="../shell/toast.css">
     <link rel="stylesheet" href="kit/magma-themes.css?v=b064ae8f">
-    <link rel="stylesheet" href="style.css?v=704df3a1">
+    <link rel="stylesheet" href="style.css?v=d647464b">
 </head>
 <body>
     <header class="app-header">
@@ -54,6 +54,10 @@
                 <button id="btn-midi" type="button" title="Play the current track from a MIDI keyboard, and enter notes with Step entry">MIDI keyboard</button>
                 <select id="in-midi" aria-label="MIDI input" hidden></select>
             </div>
+            <div id="scope-row">
+                <button id="btn-scope" type="button" aria-pressed="false" aria-controls="scope" title="An oscilloscope on everything the song plays">Scope</button>
+            </div>
+            <ad-scope id="scope" hidden></ad-scope>
         </aside>
         <div id="tracks-resizer" role="separator" aria-orientation="vertical" aria-controls="tracks"
             aria-label="Track panel width" tabindex="0"
@@ -218,6 +222,7 @@
     <script src="kit/magma-themes-index.js?v=11b68c95"></script>
     <script src="../shell/toast.js"></script>
     <script src="vendor/adenosine-synth.js?v=92493d91"></script>
+    <script src="vendor/adenosine-scope.js?v=f0f22ae8"></script>
     <script src="vendor/wasm-media-encoders.js?v=dd4e17ab"></script>
     <script src="core/roll.js?v=19c112e2"></script>
     <script src="core/keymap.js?v=f608ee26"></script>
@@ -233,6 +238,6 @@
     <script src="roll-view.js?v=80d056c6"></script>
     <script src="step-view.js?v=3c0a5157"></script>
     <script src="midi.js?v=b33fdd11"></script>
-    <script src="main.js?v=729a423c"></script>
+    <script src="main.js?v=74aef697"></script>
 </body>
 </html>
