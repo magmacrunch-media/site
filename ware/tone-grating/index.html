@@ -7,7 +7,7 @@
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="stylesheet" href="../shell/fonts.css?v=08818834">
     <link rel="stylesheet" href="../shell/app-shell.css?v=12781ff7">
-    <link rel="stylesheet" href="css/style.css?v=2d349047">
+    <link rel="stylesheet" href="css/style.css?v=18fb21a0">
 </head>
 <body>
     <div class="mobile-notice">
@@ -21,7 +21,7 @@
         </div>
         <div class="header-right">
             <span class="sys-stat" id="noteStat">A4 440 Hz</span>
-            <span class="sys-stat" id="betaStat">&beta; 2.405</span>
+            <span class="sys-stat" id="betaStat">&phi; 2.405 rad</span>
             <span class="sys-stat" id="stateStat">CARRIER NULL</span>
         </div>
     </header>
@@ -42,25 +42,45 @@
                 <button class="preset" data-patch="bell">BELL</button>
                 <button class="preset" data-patch="chime">CHIME</button>
                 <button class="preset" data-patch="grit">GRIT</button>
+                <button class="preset" data-patch="shifter">SHIFTER</button>
+                <button class="preset" data-patch="chopper">CHOPPER</button>
+                <button class="preset" data-patch="tremolo">TREMOLO</button>
             </div>
             <p class="panel-hint" id="patchNote"></p>
 
             <div class="panel-divider"></div>
 
-            <div class="panel-label shared">SHARED</div>
-            <p class="panel-hint">the number both spectra are made of: where every note comes to rest</p>
+            <div class="panel-label shared">THE GRATING</div>
+            <p class="panel-hint">one period of it is the oscillator: the light diffracts off it, and the note is played through it</p>
+
+            <div class="profile-group">
+                <span class="profile-kind" title="Delays the light without dimming it: nothing is lost, only redirected">PHASE</span>
+                <button class="preset" data-profile="sine" title="A smooth ripple of delay. The sound is FM">SINE</button>
+                <button class="preset" data-profile="blazed" title="Tilted, sawtooth grooves. The sound is a frequency shift">BLAZED</button>
+                <button class="preset" data-profile="lamellar" title="Square grooves, two delays. The sound flips phase">LAMELLAR</button>
+            </div>
+            <div class="profile-group">
+                <span class="profile-kind" title="Dims the light without delaying it: what is blocked is lost">AMPLITUDE</span>
+                <button class="preset" data-profile="amp" title="Smooth shading, clear to dark. The sound is AM">SINE</button>
+                <button class="preset" data-profile="ronchi" title="Clear and black bars. The sound is gated">RONCHI</button>
+            </div>
+            <p class="panel-hint" id="profileNote"></p>
 
             <label class="ctl big" for="beta">
-                <span class="ctl-name">RESTING DEPTH &beta;</span>
+                <span class="ctl-name" id="depthName">PHASE DEPTH &phi;</span>
                 <span class="ctl-val" id="betaOut">2.405</span>
             </label>
             <input type="range" id="beta" class="shared-range" min="0" max="12" step="0.001" value="2.405">
 
-            <div class="preset-row">
-                <button class="preset" data-beta="0" title="No modulation: a bare sine, and a flat mirror">0</button>
-                <button class="preset" data-beta="2.404826" title="First zero of J0: the carrier and the zero order both vanish">2.405</button>
-                <button class="preset" data-beta="5.520078" title="Second zero of J0">5.520</button>
-                <button class="preset" data-beta="8.653728" title="Third zero of J0">8.654</button>
+            <div class="preset-row" id="detents"></div>
+
+            <label class="ctl" for="lam">
+                <span class="ctl-name">WAVELENGTH &lambda;</span>
+                <span class="ctl-val" id="lamOut">500 nm</span>
+            </label>
+            <input type="range" id="lam" min="200" max="900" step="1" value="500">
+            <div class="derived" title="Grooves of fixed height cost blue light more phase than red: depth is set for 500 nm, and this light sees it scaled by 500/lambda. An amplitude grating blocks the same share at any colour">
+                <span>depth this light sees</span><span id="seenOut">2.405 rad</span>
             </div>
 
             <div class="panel-divider"></div>
@@ -117,19 +137,13 @@
             <div class="panel-divider"></div>
 
             <div class="panel-label space">SPACE DOMAIN</div>
-            <p class="panel-hint">the modulator drives a sound wave across a crystal, and the wave is the grating: its spacing comes from the note and the ratio</p>
-
-            <label class="ctl" for="lam">
-                <span class="ctl-name">WAVELENGTH &lambda;</span>
-                <span class="ctl-val" id="lamOut">500 nm</span>
-            </label>
-            <input type="range" id="lam" min="200" max="900" step="1" value="500">
+            <p class="panel-hint">the grating moves past the light, which is what shifts order m by m&middot;F; its period comes from the note and the ratio</p>
 
             <div class="derived">
                 <span>drive F (f<sub>m</sub> &times; 5&middot;10<sup>6</sup>)</span><span id="driveOut">1.10 GHz</span>
             </div>
             <div class="derived">
-                <span>sound period &Lambda; = v/F</span><span id="periodOut">3.82 &micro;m</span>
+                <span>grating period &Lambda; = v/F</span><span id="periodOut">3.82 &micro;m</span>
             </div>
             <div class="derived">
                 <span>highest order</span><span id="maxOrderOut">&plusmn;4</span>
@@ -174,16 +188,16 @@
 
         <aside class="panel numbers">
 
-            <div class="panel-label shared">J<sub>m</sub>(&beta;)</div>
-            <p class="panel-hint">computed once per frame for the note you last played, and drawn twice</p>
+            <div class="panel-label shared">ORDERS c<sub>m</sub></div>
+            <p class="panel-hint">how much of the wave goes into each component, for the note you last played: one list, drawn twice</p>
 
             <div class="table-wrap">
                 <table class="orders">
                     <thead>
                         <tr>
                             <th class="c-m">m</th>
-                            <th class="c-j j">J<sub>m</sub></th>
-                            <th class="c-sq">J<sub>m</sub><sup>2</sup></th>
+                            <th class="c-j j">|c<sub>m</sub>|</th>
+                            <th class="c-sq">|c<sub>m</sub>|<sup>2</sup></th>
                             <th class="c-f">Hz</th>
                             <th class="c-t">&theta;</th>
                         </tr>
@@ -195,7 +209,10 @@
             <div class="panel-divider"></div>
 
             <div class="derived check">
-                <span>&Sigma; J<sub>m</sub><sup>2</sup></span><span id="powerOut">1.0000</span>
+                <span>&Sigma; |c<sub>m</sub>|<sup>2</sup>, light through</span><span id="powerOut">1.0000</span>
+            </div>
+            <div class="derived">
+                <span>absorbed by the grating</span><span id="absorbOut">none</span>
             </div>
             <div class="derived">
                 <span>folded below 0 Hz</span><span id="foldOut">0</span>
@@ -205,19 +222,58 @@
             </div>
 
             <details class="panel-note" id="aboutNote">
-                <summary>how the grating is driven</summary>
+                <summary>what the symbols mean, and why sound and light agree</summary>
+                <dl class="key">
+                    <dt>m</dt>
+                    <dd>which component. 0 is the original: the note you played, or the
+                    light going straight through. +1 and &minus;1 are the first pair
+                    either side of it, +2 and &minus;2 the next pair out, and so on.</dd>
+                    <dt>c<sub>m</sub></dt>
+                    <dd>how much of the wave ends up in component m. The bars are its
+                    size, the table lists it, and its square is that component's share
+                    of the power, which is how bright a spot is.</dd>
+                    <dt>&phi;, depth</dt>
+                    <dd>for a phase grating, how far the grooves delay the light at their
+                    deepest, in radians (a whole wavelength is 2&pi;). For an amplitude
+                    grating, the contrast: 0 is clear glass, 1 is lines that block
+                    everything.</dd>
+                    <dt>f<sub>c</sub>, f<sub>m</sub></dt>
+                    <dd>the note's pitch, and how often the grating passes. Component m
+                    sounds at f<sub>c</sub> + m&middot;f<sub>m</sub>.</dd>
+                    <dt>&Lambda;, &lambda;, &theta;</dt>
+                    <dd>the grating's period, the light's wavelength, and the angle a beam
+                    leaves at: sin&thinsp;&theta; = m&lambda;/&Lambda;.</dd>
+                </dl>
                 <p>
-                The grating is not drawn beside the sound, it is driven by it.
-                The modulator pushes a sound wave through the crystal, and
-                light crossing that moving wave comes out as orders that are
-                FM sidebands of the light itself: order m is bent to its angle
-                and shifted in frequency by m&middot;F. A hard strike is a
-                harder drive and more orders; a higher note or a wider ratio
-                is a finer wave and a wider fan. Land the resting depth on a
-                zero of J<sub>0</sub> and the carrier drops out of the sound
-                while the straight-through beam goes dark. The two axes still
-                run out differently: a sideband pushed below zero folds back,
-                and an order past sin&thinsp;&theta; = 1 stops propagating.
+                <b>Why they agree.</b> One period of the grating says, point by
+                point, how much light it lets through and how much it delays it.
+                Break that pattern into its Fourier components and you get c<sub>m</sub>:
+                light leaving in direction m carries c<sub>m</sub> of the wave. The
+                note is played <i>through</i> the same pattern, swept past
+                f<sub>m</sub> times a second, and breaking the result into
+                frequencies gives the same c<sub>m</sub> at
+                f<sub>c</sub> + m&middot;f<sub>m</sub>. One pattern, read across space
+                and across time.
+                </p>
+                <p>
+                <b>Phase and amplitude.</b> A phase grating only delays, so all the
+                light gets through and is redirected: the sine one is FM, the blazed
+                one shifts the whole note up, the lamellar one flips it. An amplitude
+                grating blocks, and what it blocks is gone: the sine one is AM, the
+                Ronchi bars gate the note, and the lost light is the lost loudness.
+                </p>
+                <p>
+                <b>Where the wavelength comes in.</b> It sets the angle each order
+                leaves at. And for a phase grating it sets the depth: grooves of a
+                fixed height delay blue light by more of a cycle than red, so the
+                grating is deeper for short wavelengths. The depth is set for
+                500&nbsp;nm; move the wavelength and the phase gratings change
+                timbre, while the amplitude gratings sound the same in any colour.
+                </p>
+                <p>
+                <b>Where the two stop matching.</b> A sideband pushed below 0&nbsp;Hz
+                folds back; an order past sin&thinsp;&theta; = 1 cannot leave the
+                grating at all. Both are drawn hollow or counted, not hidden.
                 </p>
             </details>
 
@@ -226,13 +282,14 @@
     </div>
 
     <footer>
-        <span class="footer-text">TONE//GRATING v0.4 &middot; <span>MAGMACRUNCH MEDIA</span></span>
+        <span class="footer-text">TONE//GRATING v0.5 &middot; <span>MAGMACRUNCH MEDIA</span></span>
     </footer>
 
     <script src="js/bessel.js?v=806fd60a"></script>
-    <script src="js/audio.js?v=d671f890"></script>
-    <script src="js/draw.js?v=dfe87070"></script>
-    <script src="js/play.js?v=f5effebe"></script>
-    <script src="js/app.js?v=13af61e4"></script>
+    <script src="js/grating.js?v=d55ff2c9"></script>
+    <script src="js/audio.js?v=50ae5e78"></script>
+    <script src="js/draw.js?v=baa87f4e"></script>
+    <script src="js/play.js?v=773be98d"></script>
+    <script src="js/app.js?v=4f84a475"></script>
 </body>
 </html>
