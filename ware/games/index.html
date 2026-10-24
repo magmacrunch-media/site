@@ -20,8 +20,9 @@
     <style>
 .games-wrap{width:min(900px,100%)}.game-group{display:flex;align-items:center;gap:14px;font-family:"Press Start 2P",monospace;font-size:10px;font-weight:400;color:var(--cyan);letter-spacing:0.1em;text-shadow:0 0 8px rgba(0,255,255,0.4);margin:0 0 8px;animation:fadeUp 0.5s 0.12s ease both}.game-group::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,var(--cyan-dim),transparent)}.game-group-blurb{font-family:"Courier Prime",monospace;font-size:12px;color:var(--cyan-dim);margin:0 0 16px;animation:fadeUp 0.5s 0.12s ease both}.game-grid+.game-group{margin-top:52px}.game-legend{display:flex;flex-wrap:wrap;justify-content:center;gap:8px 18px;font-family:"Courier Prime",monospace;font-size:11px;color:var(--cyan-dim);margin:-28px 0 40px;animation:fadeUp 0.5s 0.1s ease both}.game-legend .pf{--accent: var(--cyan);margin-right:6px}.game-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px;animation:fadeUp 0.5s 0.15s ease both}.game-card{position:relative;display:flex;flex-direction:column;gap:8px;min-height:132px;padding:18px 18px 20px 22px;text-decoration:none;overflow:hidden;border:2px solid color-mix(in srgb,var(--accent) 35%,transparent);background:radial-gradient(120% 90% at 0% 0%,color-mix(in srgb,var(--accent) 10%,transparent),transparent 60%),rgba(7,6,15,0.7);transition:border-color 0.15s,box-shadow 0.15s,transform 0.15s}.game-card::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--accent);transition:width 0.15s}.game-card::after{content:"";position:absolute;left:0;right:0;bottom:0;height:3px;background:linear-gradient(90deg,var(--accent) 0 33.334%,var(--a2) 33.334% 66.667%,var(--a3) 66.667% 100%);transition:height 0.15s}.game-card:hover,.game-card:focus-visible{border-color:var(--accent);transform:translateY(-3px);box-shadow:0 0 22px color-mix(in srgb,var(--accent) 30%,transparent),inset 0 0 40px color-mix(in srgb,var(--accent) 6%,transparent);outline:none}.game-card:hover::before,.game-card:focus-visible::before{width:7px}.game-card:hover::after,.game-card:focus-visible::after{height:6px}.game-card:hover .tc-arrow,.game-card:focus-visible .tc-arrow{opacity:1;transform:translateX(0)}.gc-label{font-family:"Press Start 2P",monospace;font-size:10px;line-height:1.6;letter-spacing:0.06em;color:var(--accent);text-shadow:0 0 10px color-mix(in srgb,var(--accent) 55%,transparent);padding-right:22px}.gc-genre{font-family:"Courier Prime",monospace;font-size:13px;color:#b8c4d0}.gc-platforms{display:flex;flex-wrap:wrap;gap:6px;margin-top:auto;padding-top:6px}.game-card .tc-arrow{position:absolute;top:18px;right:16px;color:var(--accent);text-shadow:0 0 8px var(--accent)}.pf{font-family:"Courier Prime",monospace;font-size:11px;line-height:1;padding:4px 7px;color:var(--accent);border:1px solid color-mix(in srgb,var(--accent) 55%,transparent);background:color-mix(in srgb,var(--accent) 8%,transparent);white-space:nowrap}.pf-soon,.pf-dev{color:var(--cyan-dim);border-style:dashed;border-color:var(--cyan-dim);background:transparent}.pf-soon::after{content:" soon";opacity:0.8}.pf-dev::after{content:" in dev";opacity:0.8}@media(max-width:640px){.game-grid{grid-template-columns:1fr;gap:10px}.game-card{min-height:0}.game-legend{margin-top:-20px}}@media(prefers-reduced-motion:reduce){.game-card,.game-card:hover{transition:none;transform:none}}
 </style>
+  <link rel="stylesheet" href="../zine.css?v=15de357b">
 </head>
-<body class="ware-accent" style="--ware-accent:#ff2e9c">
+<body class="ware-accent zine" style="--ware-accent:#ff2e9c">
 
 <nav id="auto-nav" data-depth="../../"></nav>
 
@@ -37,7 +38,7 @@
 
 <main>
 
-    <h1 class="page-title">// video games //</h1>
+    <h1 class="page-title">video games</h1>
     <p class="page-subtitle">one page per game, with every way to play it.
         to play in your browser right now, the <a href="../../arcade/">arcade</a> has them all.</p>
 
@@ -45,199 +46,203 @@
 
     <div class="games-wrap">
 
-    <h2 class="game-group">// originals //</h2>
-    <p class="game-group-blurb">games made here, from scratch</p>
-    <div class="game-grid">
+    <section class="tool-sheet">
+        <h2 class="game-group">// originals //</h2>
+        <p class="game-group-blurb">games made here, from scratch</p>
+        <div class="game-grid">
 
-        <a href="../george-boole/" class="game-card" style="--accent:#39ff84; --a2:#0aff67; --a3:#00da53; --ink:#d0ffe0;">
-            <span class="gc-label">GEORGE BOOLE HAS ENTERED THE CHAT</span>
-            <span class="gc-genre">logic-gate puzzle</span>
-            <span class="gc-platforms"><span class="pf">browser</span><span class="pf">terminal</span><span class="pf pf-soon" title="coming soon">Wii</span><span class="pf pf-soon" title="coming soon">iPhone &amp; iPad</span></span>
-            <span class="tc-arrow">▶</span>
-        </a>
+            <a href="../george-boole/" class="game-card" style="--accent:#39ff84; --a2:#0aff67; --a3:#00da53; --ink:#d0ffe0;">
+                <span class="gc-label">GEORGE BOOLE HAS ENTERED THE CHAT</span>
+                <span class="gc-genre">logic-gate puzzle</span>
+                <span class="gc-platforms"><span class="pf">browser</span><span class="pf">terminal</span><span class="pf pf-soon" title="coming soon">Wii</span><span class="pf pf-soon" title="coming soon">iPhone &amp; iPad</span></span>
+                <span class="tc-arrow">▶</span>
+            </a>
 
-        <a href="../moonlight-drift/" class="game-card" style="--accent:#ff2e9c; --a2:#ff0187; --a3:#d3006f; --ink:#f0f0f8;">
-            <span class="gc-label">MOONLIGHT DRIFT</span>
-            <span class="gc-genre">cave flyer</span>
-            <span class="gc-platforms"><span class="pf">browser</span><span class="pf">terminal</span><span class="pf pf-soon" title="coming soon">Wii</span></span>
-            <span class="tc-arrow">▶</span>
-        </a>
+            <a href="../moonlight-drift/" class="game-card" style="--accent:#ff2e9c; --a2:#ff0187; --a3:#d3006f; --ink:#f0f0f8;">
+                <span class="gc-label">MOONLIGHT DRIFT</span>
+                <span class="gc-genre">cave flyer</span>
+                <span class="gc-platforms"><span class="pf">browser</span><span class="pf">terminal</span><span class="pf pf-soon" title="coming soon">Wii</span></span>
+                <span class="tc-arrow">▶</span>
+            </a>
 
-        <a href="../texas-holdem-lava-dome/" class="game-card" style="--accent:#ff6a2b; --a2:#fd4b00; --a3:#d13e00; --ink:#f0f0f8;">
-            <span class="gc-label">TEXAS HOLD&#x27;EM LAVA DOME</span>
-            <span class="gc-genre">solo poker</span>
-            <span class="gc-platforms"><span class="pf">browser</span><span class="pf">terminal</span><span class="pf pf-soon" title="coming soon">Wii</span></span>
-            <span class="tc-arrow">▶</span>
-        </a>
+            <a href="../texas-holdem-lava-dome/" class="game-card" style="--accent:#ff6a2b; --a2:#fd4b00; --a3:#d13e00; --ink:#f0f0f8;">
+                <span class="gc-label">TEXAS HOLD&#x27;EM LAVA DOME</span>
+                <span class="gc-genre">solo poker</span>
+                <span class="gc-platforms"><span class="pf">browser</span><span class="pf">terminal</span><span class="pf pf-soon" title="coming soon">Wii</span></span>
+                <span class="tc-arrow">▶</span>
+            </a>
 
-        <a href="../jovian-humanitarian-conflict/" class="game-card" style="--accent:#ffc247; --a2:#ffb216; --a3:#e49900; --ink:#f0f0f8;">
-            <span class="gc-label">THE JOVIAN HUMANITARIAN CONFLICT</span>
-            <span class="gc-genre">on-rails shooter</span>
-            <span class="gc-platforms"><span class="pf">browser</span><span class="pf">terminal</span><span class="pf pf-soon" title="coming soon">Wii</span></span>
-            <span class="tc-arrow">▶</span>
-        </a>
+            <a href="../jovian-humanitarian-conflict/" class="game-card" style="--accent:#ffc247; --a2:#ffb216; --a3:#e49900; --ink:#f0f0f8;">
+                <span class="gc-label">THE JOVIAN HUMANITARIAN CONFLICT</span>
+                <span class="gc-genre">on-rails shooter</span>
+                <span class="gc-platforms"><span class="pf">browser</span><span class="pf">terminal</span><span class="pf pf-soon" title="coming soon">Wii</span></span>
+                <span class="tc-arrow">▶</span>
+            </a>
 
-        <a href="../makemecookies/" class="game-card" style="--accent:#ff5fa2; --a2:#ff2b83; --a3:#f50067; --ink:#f0f0f8;">
-            <span class="gc-label">MAKEMECOOKIES!X4</span>
-            <span class="gc-genre">cookie factory</span>
-            <span class="gc-platforms"><span class="pf">browser</span><span class="pf pf-soon" title="coming soon">Wii</span><span class="pf pf-soon" title="coming soon">iPhone</span></span>
-            <span class="tc-arrow">▶</span>
-        </a>
+            <a href="../makemecookies/" class="game-card" style="--accent:#ff5fa2; --a2:#ff2b83; --a3:#f50067; --ink:#f0f0f8;">
+                <span class="gc-label">MAKEMECOOKIES!X4</span>
+                <span class="gc-genre">cookie factory</span>
+                <span class="gc-platforms"><span class="pf">browser</span><span class="pf pf-soon" title="coming soon">Wii</span><span class="pf pf-soon" title="coming soon">iPhone</span></span>
+                <span class="tc-arrow">▶</span>
+            </a>
 
-        <a href="../very-long-boards/" class="game-card" style="--accent:#b537f2; --a2:#a50fed; --a3:#880dc3; --ink:#f0f0f8;">
-            <span class="gc-label">VERY LONG BOARDS</span>
-            <span class="gc-genre">downhill longboarding</span>
-            <span class="gc-platforms"><span class="pf">browser</span><span class="pf pf-dev" title="in development">desktop</span></span>
-            <span class="tc-arrow">▶</span>
-        </a>
+            <a href="../very-long-boards/" class="game-card" style="--accent:#b537f2; --a2:#a50fed; --a3:#880dc3; --ink:#f0f0f8;">
+                <span class="gc-label">VERY LONG BOARDS</span>
+                <span class="gc-genre">downhill longboarding</span>
+                <span class="gc-platforms"><span class="pf">browser</span><span class="pf pf-dev" title="in development">desktop</span></span>
+                <span class="tc-arrow">▶</span>
+            </a>
 
-        <a href="../caldera/" class="game-card" style="--accent:#ff5a1f; --a2:#f34000; --a3:#c83500; --ink:#f0f0f8;">
-            <span class="gc-label">CALDERA</span>
-            <span class="gc-genre">vertical climber</span>
-            <span class="gc-platforms"><span class="pf">browser</span><span class="pf">terminal</span></span>
-            <span class="tc-arrow">▶</span>
-        </a>
+            <a href="../caldera/" class="game-card" style="--accent:#ff5a1f; --a2:#f34000; --a3:#c83500; --ink:#f0f0f8;">
+                <span class="gc-label">CALDERA</span>
+                <span class="gc-genre">vertical climber</span>
+                <span class="gc-platforms"><span class="pf">browser</span><span class="pf">terminal</span></span>
+                <span class="tc-arrow">▶</span>
+            </a>
 
-        <a href="../roderick-tron/" class="game-card" style="--accent:#00f0ff; --a2:#00ccd9; --a3:#00a8b2; --ink:#f0f0f8;">
-            <span class="gc-label">RODERICK TRON</span>
-            <span class="gc-genre">platformer</span>
-            <span class="gc-platforms"><span class="pf">browser</span><span class="pf">terminal</span></span>
-            <span class="tc-arrow">▶</span>
-        </a>
+            <a href="../roderick-tron/" class="game-card" style="--accent:#00f0ff; --a2:#00ccd9; --a3:#00a8b2; --ink:#f0f0f8;">
+                <span class="gc-label">RODERICK TRON</span>
+                <span class="gc-genre">platformer</span>
+                <span class="gc-platforms"><span class="pf">browser</span><span class="pf">terminal</span></span>
+                <span class="tc-arrow">▶</span>
+            </a>
 
-        <a href="../cave-diving/" class="game-card" style="--accent:#3fe0d0; --a2:#22d2c1; --a3:#1cad9f; --ink:#f0f0f8;">
-            <span class="gc-label">CAVE DIVING (NOT EVEN ONCE)</span>
-            <span class="gc-genre">one-song cave dive</span>
-            <span class="gc-platforms"><span class="pf">browser</span></span>
-            <span class="tc-arrow">▶</span>
-        </a>
+            <a href="../cave-diving/" class="game-card" style="--accent:#3fe0d0; --a2:#22d2c1; --a3:#1cad9f; --ink:#f0f0f8;">
+                <span class="gc-label">CAVE DIVING (NOT EVEN ONCE)</span>
+                <span class="gc-genre">one-song cave dive</span>
+                <span class="gc-platforms"><span class="pf">browser</span></span>
+                <span class="tc-arrow">▶</span>
+            </a>
 
-        <a href="../grocery-harrison/" class="game-card" style="--accent:#ffd84a; --a2:#ffcd19; --a3:#e6b500; --ink:#f0f0f8;">
-            <span class="gc-label">GROCERY HARRISON</span>
-            <span class="gc-genre">side-scroller</span>
-            <span class="gc-platforms"><span class="pf">browser demo</span></span>
-            <span class="tc-arrow">▶</span>
-        </a>
+            <a href="../grocery-harrison/" class="game-card" style="--accent:#ffd84a; --a2:#ffcd19; --a3:#e6b500; --ink:#f0f0f8;">
+                <span class="gc-label">GROCERY HARRISON</span>
+                <span class="gc-genre">side-scroller</span>
+                <span class="gc-platforms"><span class="pf">browser demo</span></span>
+                <span class="tc-arrow">▶</span>
+            </a>
 
-        <a href="../block-island-simulator/" class="game-card" style="--accent:#efe0b0; --a2:#86d2e2; --a3:#3f8fa6; --ink:#eef2ec;">
-            <span class="gc-label">BLOCK ISLAND SIMULATOR</span>
-            <span class="gc-genre">open-world exploration</span>
-            <span class="gc-platforms"><span class="pf pf-dev" title="in development">desktop</span><span class="pf pf-dev" title="in development">browser</span></span>
-            <span class="tc-arrow">▶</span>
-        </a>
+            <a href="../block-island-simulator/" class="game-card" style="--accent:#efe0b0; --a2:#86d2e2; --a3:#3f8fa6; --ink:#eef2ec;">
+                <span class="gc-label">BLOCK ISLAND SIMULATOR</span>
+                <span class="gc-genre">open-world exploration</span>
+                <span class="gc-platforms"><span class="pf pf-dev" title="in development">desktop</span><span class="pf pf-dev" title="in development">browser</span></span>
+                <span class="tc-arrow">▶</span>
+            </a>
 
-        <a href="../rendezvous-44i-boo/" class="game-card" style="--accent:#ffd27a; --a2:#9fe1cb; --a3:#3fb08c; --ink:#fff3d0;">
-            <span class="gc-label">RENDEZVOUS AT 44i BOO</span>
-            <span class="gc-genre">relativistic ramjet race</span>
-            <span class="gc-platforms"><span class="pf pf-dev" title="in development">browser</span></span>
-            <span class="tc-arrow">▶</span>
-        </a>
+            <a href="../rendezvous-44i-boo/" class="game-card" style="--accent:#ffd27a; --a2:#9fe1cb; --a3:#3fb08c; --ink:#fff3d0;">
+                <span class="gc-label">RENDEZVOUS AT 44i BOO</span>
+                <span class="gc-genre">relativistic ramjet race</span>
+                <span class="gc-platforms"><span class="pf pf-dev" title="in development">browser</span></span>
+                <span class="tc-arrow">▶</span>
+            </a>
 
-    </div>
+        </div>
+    </section>
 
-    <h2 class="game-group">// classics //</h2>
-    <p class="game-group-blurb">board, card &amp; puzzle classics, rebuilt for the arcade and the terminal</p>
-    <div class="game-grid">
+    <section class="tool-sheet">
+        <h2 class="game-group">// classics //</h2>
+        <p class="game-group-blurb">board, card &amp; puzzle classics, rebuilt for the arcade and the terminal</p>
+        <div class="game-grid">
 
-        <a href="../fifteen-puzzle/" class="game-card" style="--accent:#00f5ff; --a2:#00d0d9; --a3:#00abb2; --ink:#f0f0f8;">
-            <span class="gc-label">15 PUZZLE</span>
-            <span class="gc-genre">sliding tile puzzle</span>
-            <span class="gc-platforms"><span class="pf">browser</span></span>
-            <span class="tc-arrow">▶</span>
-        </a>
+            <a href="../fifteen-puzzle/" class="game-card" style="--accent:#00f5ff; --a2:#00d0d9; --a3:#00abb2; --ink:#f0f0f8;">
+                <span class="gc-label">15 PUZZLE</span>
+                <span class="gc-genre">sliding tile puzzle</span>
+                <span class="gc-platforms"><span class="pf">browser</span></span>
+                <span class="tc-arrow">▶</span>
+            </a>
 
-        <a href="../two-to-the-n/" class="game-card" style="--accent:#00f0ff; --a2:#00ccd9; --a3:#00a8b2; --ink:#f0f0f8;">
-            <span class="gc-label">2^N</span>
-            <span class="gc-genre">2048, generalised</span>
-            <span class="gc-platforms"><span class="pf">browser</span></span>
-            <span class="tc-arrow">▶</span>
-        </a>
+            <a href="../two-to-the-n/" class="game-card" style="--accent:#00f0ff; --a2:#00ccd9; --a3:#00a8b2; --ink:#f0f0f8;">
+                <span class="gc-label">2^N</span>
+                <span class="gc-genre">2048, generalised</span>
+                <span class="gc-platforms"><span class="pf">browser</span></span>
+                <span class="tc-arrow">▶</span>
+            </a>
 
-        <a href="../backgammon/" class="game-card" style="--accent:#00f5ff; --a2:#00d0d9; --a3:#00abb2; --ink:#f0f0f8;">
-            <span class="gc-label">BACKGAMMON</span>
-            <span class="gc-genre">board game</span>
-            <span class="gc-platforms"><span class="pf">browser</span><span class="pf">terminal</span></span>
-            <span class="tc-arrow">▶</span>
-        </a>
+            <a href="../backgammon/" class="game-card" style="--accent:#00f5ff; --a2:#00d0d9; --a3:#00abb2; --ink:#f0f0f8;">
+                <span class="gc-label">BACKGAMMON</span>
+                <span class="gc-genre">board game</span>
+                <span class="gc-platforms"><span class="pf">browser</span><span class="pf">terminal</span></span>
+                <span class="tc-arrow">▶</span>
+            </a>
 
-        <a href="../checkers/" class="game-card" style="--accent:#00f5ff; --a2:#00d0d9; --a3:#00abb2; --ink:#f0f0f8;">
-            <span class="gc-label">CHECKERS</span>
-            <span class="gc-genre">board game</span>
-            <span class="gc-platforms"><span class="pf">browser</span><span class="pf">terminal</span></span>
-            <span class="tc-arrow">▶</span>
-        </a>
+            <a href="../checkers/" class="game-card" style="--accent:#00f5ff; --a2:#00d0d9; --a3:#00abb2; --ink:#f0f0f8;">
+                <span class="gc-label">CHECKERS</span>
+                <span class="gc-genre">board game</span>
+                <span class="gc-platforms"><span class="pf">browser</span><span class="pf">terminal</span></span>
+                <span class="tc-arrow">▶</span>
+            </a>
 
-        <a href="../chess/" class="game-card" style="--accent:#00f5ff; --a2:#00d0d9; --a3:#00abb2; --ink:#f0f0f8;">
-            <span class="gc-label">CHESS</span>
-            <span class="gc-genre">board game</span>
-            <span class="gc-platforms"><span class="pf">browser</span><span class="pf">terminal</span></span>
-            <span class="tc-arrow">▶</span>
-        </a>
+            <a href="../chess/" class="game-card" style="--accent:#00f5ff; --a2:#00d0d9; --a3:#00abb2; --ink:#f0f0f8;">
+                <span class="gc-label">CHESS</span>
+                <span class="gc-genre">board game</span>
+                <span class="gc-platforms"><span class="pf">browser</span><span class="pf">terminal</span></span>
+                <span class="tc-arrow">▶</span>
+            </a>
 
-        <a href="../chinese-checkers/" class="game-card" style="--accent:#c45fff; --a2:#b12bff; --a3:#9b00f5; --ink:#f0f0f8;">
-            <span class="gc-label">CHINESE CHECKERS</span>
-            <span class="gc-genre">board game</span>
-            <span class="gc-platforms"><span class="pf">browser</span><span class="pf">terminal</span></span>
-            <span class="tc-arrow">▶</span>
-        </a>
+            <a href="../chinese-checkers/" class="game-card" style="--accent:#c45fff; --a2:#b12bff; --a3:#9b00f5; --ink:#f0f0f8;">
+                <span class="gc-label">CHINESE CHECKERS</span>
+                <span class="gc-genre">board game</span>
+                <span class="gc-platforms"><span class="pf">browser</span><span class="pf">terminal</span></span>
+                <span class="tc-arrow">▶</span>
+            </a>
 
-        <a href="../cribbage/" class="game-card" style="--accent:#ffd700; --a2:#d9b700; --a3:#b29600; --ink:#f0f0f8;">
-            <span class="gc-label">CRIBBAGE</span>
-            <span class="gc-genre">card game</span>
-            <span class="gc-platforms"><span class="pf">browser</span><span class="pf">terminal</span></span>
-            <span class="tc-arrow">▶</span>
-        </a>
+            <a href="../cribbage/" class="game-card" style="--accent:#ffd700; --a2:#d9b700; --a3:#b29600; --ink:#f0f0f8;">
+                <span class="gc-label">CRIBBAGE</span>
+                <span class="gc-genre">card game</span>
+                <span class="gc-platforms"><span class="pf">browser</span><span class="pf">terminal</span></span>
+                <span class="tc-arrow">▶</span>
+            </a>
 
-        <a href="../tarot/" class="game-card" style="--accent:#ffd700; --a2:#d9b700; --a3:#b29600; --ink:#f0f0f8;">
-            <span class="gc-label">FRENCH TAROT</span>
-            <span class="gc-genre">card game</span>
-            <span class="gc-platforms"><span class="pf">browser</span><span class="pf">terminal</span></span>
-            <span class="tc-arrow">▶</span>
-        </a>
+            <a href="../tarot/" class="game-card" style="--accent:#ffd700; --a2:#d9b700; --a3:#b29600; --ink:#f0f0f8;">
+                <span class="gc-label">FRENCH TAROT</span>
+                <span class="gc-genre">card game</span>
+                <span class="gc-platforms"><span class="pf">browser</span><span class="pf">terminal</span></span>
+                <span class="tc-arrow">▶</span>
+            </a>
 
-        <a href="../solitaire/" class="game-card" style="--accent:#00f0ff; --a2:#00ccd9; --a3:#00a8b2; --ink:#f0f0f8;">
-            <span class="gc-label">KLONDIKE SOLITAIRE</span>
-            <span class="gc-genre">card game</span>
-            <span class="gc-platforms"><span class="pf">browser</span></span>
-            <span class="tc-arrow">▶</span>
-        </a>
+            <a href="../solitaire/" class="game-card" style="--accent:#00f0ff; --a2:#00ccd9; --a3:#00a8b2; --ink:#f0f0f8;">
+                <span class="gc-label">KLONDIKE SOLITAIRE</span>
+                <span class="gc-genre">card game</span>
+                <span class="gc-platforms"><span class="pf">browser</span></span>
+                <span class="tc-arrow">▶</span>
+            </a>
 
-        <a href="../klotski/" class="game-card" style="--accent:#ff2d4a; --a2:#ff0023; --a3:#d2001d; --ink:#f0f0f8;">
-            <span class="gc-label">KLOTSKI</span>
-            <span class="gc-genre">sliding block puzzle</span>
-            <span class="gc-platforms"><span class="pf">browser</span></span>
-            <span class="tc-arrow">▶</span>
-        </a>
+            <a href="../klotski/" class="game-card" style="--accent:#ff2d4a; --a2:#ff0023; --a3:#d2001d; --ink:#f0f0f8;">
+                <span class="gc-label">KLOTSKI</span>
+                <span class="gc-genre">sliding block puzzle</span>
+                <span class="gc-platforms"><span class="pf">browser</span></span>
+                <span class="tc-arrow">▶</span>
+            </a>
 
-        <a href="../nelikko/" class="game-card" style="--accent:#9fd8ff; --a2:#61bfff; --a3:#23a6ff; --ink:#f0f0f8;">
-            <span class="gc-label">NELIKKO</span>
-            <span class="gc-genre">falling-block puzzle</span>
-            <span class="gc-platforms"><span class="pf">browser</span><span class="pf">terminal</span></span>
-            <span class="tc-arrow">▶</span>
-        </a>
+            <a href="../nelikko/" class="game-card" style="--accent:#9fd8ff; --a2:#61bfff; --a3:#23a6ff; --ink:#f0f0f8;">
+                <span class="gc-label">NELIKKO</span>
+                <span class="gc-genre">falling-block puzzle</span>
+                <span class="gc-platforms"><span class="pf">browser</span><span class="pf">terminal</span></span>
+                <span class="tc-arrow">▶</span>
+            </a>
 
-        <a href="../parchisi/" class="game-card" style="--accent:#f1bf00; --a2:#cda200; --a3:#a98600; --ink:#f0f0f8;">
-            <span class="gc-label">PARCHÍS</span>
-            <span class="gc-genre">board game</span>
-            <span class="gc-platforms"><span class="pf">browser</span><span class="pf">online</span></span>
-            <span class="tc-arrow">▶</span>
-        </a>
+            <a href="../parchisi/" class="game-card" style="--accent:#f1bf00; --a2:#cda200; --a3:#a98600; --ink:#f0f0f8;">
+                <span class="gc-label">PARCHÍS</span>
+                <span class="gc-genre">board game</span>
+                <span class="gc-platforms"><span class="pf">browser</span><span class="pf">online</span></span>
+                <span class="tc-arrow">▶</span>
+            </a>
 
-        <a href="../scandinavian-stud/" class="game-card" style="--accent:#39ff84; --a2:#0aff67; --a3:#00da53; --ink:#f0f0f8;">
-            <span class="gc-label">SÖKÖ</span>
-            <span class="gc-genre">card game</span>
-            <span class="gc-platforms"><span class="pf">browser</span><span class="pf">online</span></span>
-            <span class="tc-arrow">▶</span>
-        </a>
+            <a href="../scandinavian-stud/" class="game-card" style="--accent:#39ff84; --a2:#0aff67; --a3:#00da53; --ink:#f0f0f8;">
+                <span class="gc-label">SÖKÖ</span>
+                <span class="gc-genre">card game</span>
+                <span class="gc-platforms"><span class="pf">browser</span><span class="pf">online</span></span>
+                <span class="tc-arrow">▶</span>
+            </a>
 
-        <a href="../threes/" class="game-card" style="--accent:#00f5ff; --a2:#00d0d9; --a3:#00abb2; --ink:#f0f0f8;">
-            <span class="gc-label">THREES</span>
-            <span class="gc-genre">merge puzzle</span>
-            <span class="gc-platforms"><span class="pf">browser</span><span class="pf pf-soon" title="coming soon">terminal</span></span>
-            <span class="tc-arrow">▶</span>
-        </a>
+            <a href="../threes/" class="game-card" style="--accent:#00f5ff; --a2:#00d0d9; --a3:#00abb2; --ink:#f0f0f8;">
+                <span class="gc-label">THREES</span>
+                <span class="gc-genre">merge puzzle</span>
+                <span class="gc-platforms"><span class="pf">browser</span><span class="pf pf-soon" title="coming soon">terminal</span></span>
+                <span class="tc-arrow">▶</span>
+            </a>
 
-    </div>
+        </div>
+    </section>
 
     </div>
 
