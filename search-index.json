@@ -193,21 +193,21 @@
     "c": "page",
     "u": "/ware/index.html",
     "d": "software · creative utilities & developer tools",
-    "b": "ware · magmacrunch media home › ware // ware // software · creative utilities & developer tools VIDEO GAMES every game, every platform: browser, terminal, Wii & iPhone ▶ CREATIVE UTILITIES browser-based tools for art, media & image processing ▶ DEVELOPER TOOLS game engines, scripting language, C API reference & memory course ▶"
+    "b": "ware · magmacrunch media home › ware ware software · creative utilities & developer tools video games every game, every platform: browser, terminal, Wii & iPhone ▶ creative utilities browser-based tools for art, media & image processing ▶ developer tools game engines, scripting language, C API reference & memory course ▶"
   },
   {
     "t": "creative utilities · ware · magmacrunch media",
     "c": "page",
     "u": "/ware/utilities/index.html",
     "d": "browser-based tools for art, media & image processing",
-    "b": "creative utilities · ware · magmacrunch media home › ware › creative utilities // creative utilities // browser-based tools for art, media & image processing // music // instruments and sequencers that run in a browser tab PUNCH//ROLL chiptune piano roll pulse triangle noise WAV export ▶ TONE//GRATING an FM synth you play through a diffraction grating keys MIDI ▶ // art & image // pixel editors and an image signal chain GATE//FOLD pixel art editor for album covers text shapes images ▶ SPRITE//FORGE game sprite editor animation onion skin PNG sheets ▶ CRUNCH//SCOPE an image signal chain you pla..."
+    "b": "creative utilities · ware · magmacrunch media home › ware › creative utilities creative utilities browser-based tools for art, media & image processing // music // instruments and sequencers that run in a browser tab punch roll chiptune piano roll pulse triangle noise WAV export ▶ tone grating an FM synth you play through a diffraction grating keys MIDI ▶ // art & image // pixel editors and an image signal chain gatefold pixel art editor for album covers text shapes images ▶ sprite forge game sprite editor animation onion skin PNG sheets ▶ crunchscope an image signal chain you play like an ins..."
   },
   {
     "t": "developer tools · ware · magmacrunch media",
     "c": "page",
     "u": "/ware/dev/index.html",
     "d": "game engines, scripting language, & memory course",
-    "b": "developer tools · ware · magmacrunch media home › ware › developer tools // developer tools // game engines, scripting language, & educational tools // game engines // the engines under the arcade, the wii games & the 3D work ADENOSINE game engine collection for the magmacrunch web arcade JavaScript npm ▶ DAFFODIL heightfield terrain engine: real-world landscape at 1:1 C ▶ HOLOGRAM optics-first 3D engine with a spectral ray tracer C ▶ GERRIDAE meshes rasterized beside hologram's ray tracer C new ▶ TUNACAN pixel-art game engine with its level editor built in C browser new ▶ LITHOSPHERE typesett..."
+    "b": "developer tools · ware · magmacrunch media home › ware › developer tools developer tools game engines, scripting language, & educational tools // game engines // the engines under the arcade, the wii games & the 3D work adenosine game engine collection for the magmacrunch web arcade JavaScript npm ▶ daffodil heightfield terrain engine: real-world landscape at 1:1 C ▶ hologram optics-first 3D engine with a spectral ray tracer C ▶ gerridae draws the solid things in hologram's scenes C new ▶ tunacan pixel-art game engine with its level editor built in C browser new ▶ lithosphere typesetting engin..."
   },
   {
     "t": "Coruscating Dissonance",
@@ -1957,7 +1957,7 @@
     "c": "tool",
     "u": "/ware/games/",
     "d": "every game, every platform: browser, terminal, Wii & iPhone",
-    "b": "video games · ware · magmacrunch media home › ware › video games // video games // one page per game, with every way to play it. to play in your browser right now, the arcade has them all. browser play it now Wii on its way // originals // games made here, from scratch GEORGE BOOLE HAS ENTERED THE CHAT logic-gate puzzle browser terminal Wii iPhone & iPad ▶ MOONLIGHT DRIFT cave flyer browser terminal Wii ▶ TEXAS HOLD'EM LAVA DOME solo poker browser terminal Wii ▶ THE JOVIAN HUMANITARIAN CONFLICT on-rails shooter browser terminal Wii ▶ MAKEMECOOKIES!X4 cookie factory browser Wii iPhone ▶ VERY LO..."
+    "b": "video games · ware · magmacrunch media home › ware › video games video games one page per game, with every way to play it. to play in your browser right now, the arcade has them all. browser play it now Wii on its way // originals // games made here, from scratch George Boole Has Entered the Chat logic-gate puzzle browser terminal Wii iPhone & iPad ▶ Moonlight Drift cave flyer browser terminal Wii ▶ Texas Hold'Em Lava Dome solo poker browser terminal Wii ▶ The Jovian Humanitarian Conflict on-rails shooter browser terminal Wii ▶ makemecookies!x4 cookie factory browser Wii iPhone ▶ Very Long Boa..."
   },
   {
     "t": "george boole has entered the chat · magmacrunch media",
@@ -1970,8 +1970,8 @@
     "t": "gerridae · magmacrunch media",
     "c": "tool",
     "u": "/ware/gerridae/",
-    "d": "meshes rasterized beside hologram's ray tracer, composited by depth",
-    "b": "gerridae · magmacrunch media home › ware › developer tools › gerridae gerridae meshes rasterized beside hologram's ray tracer, composited by depth v0.0.1 PolyForm Noncommercial C99 + HLSL early: m1 The other half of hologram. hologram draws the things light has to be exactly right on, like glass and mirrors; gerridae draws everything else, like rooms and furniture, and the two pictures are combined pixel by pixel. the technical version Meshes rasterized beside hologram ’s ray tracer and composited by depth. hologram traces what light has to be right on, glass, mirrors, gratings, polarizers and..."
+    "d": "draws the solid things in hologram's scenes, combined pixel by pixel",
+    "b": "gerridae · magmacrunch media home › ware › developer tools › gerridae gerridae draws the solid things in hologram's scenes, combined pixel by pixel v0.0.1 PolyForm Noncommercial C99 + HLSL early: m1 The other half of hologram. hologram draws the things light has to be exactly right on, like glass and mirrors; gerridae draws everything else, like rooms and furniture, and the two pictures are combined pixel by pixel. the technical version Meshes rasterized beside hologram ’s ray tracer and composited by depth. hologram traces what light has to be right on, glass, mirrors, gratings, polarizers an..."
   },
   {
     "t": "grocery harrison · magmacrunch media",
@@ -2090,7 +2090,7 @@
     "c": "tool",
     "u": "/ware/punch-roll/",
     "d": "chiptune piano roll · pulse, triangle, noise, WAV export",
-    "b": "PUNCH//ROLL PUNCH//ROLL Roll Steps Add track Tuning Step entry MIDI keyboard Tempo × BPM Delete Cancel OK Keyboard shortcuts × How to use PUNCH//ROLL × Write notes Each row of the roll is a pitch and each column a step of the grid. Click an empty square to add a note, drag it to move it, and drag its right edge to make it longer. Right-click a note to delete it. Shift-drag across empty grid to select several notes at once. Pick a track The panel on the left holds the tracks: two pulse channels, a triangle and noise; Add track makes up to six. Click one, or press 1 to 6, and new notes go onto i..."
+    "b": "PUNCH//ROLL PUNCH//ROLL Roll Steps Tuning Swing 0% Add track Step entry MIDI keyboard Scope Drums only Tempo × BPM Delete Cancel OK Keyboard shortcuts × How to use PUNCH//ROLL × Write notes Each row of the roll is a pitch and each column a step of the grid. Click an empty square to add a note, drag it to move it, and drag its right edge to make it longer. Right-click a note to delete it. Shift-drag across empty grid to select several notes at once. Pick a track The panel on the left holds the tracks: two pulse channels, a triangle and noise; Add track makes up to six. Click one, or press 1 to ..."
   },
   {
     "t": "rendezvous at 44i boo · magmacrunch media",
@@ -2160,7 +2160,7 @@
     "c": "tool",
     "u": "/ware/tone-grating/",
     "d": "an FM synth you play through a diffraction grating · keys, MIDI",
-    "b": "tone grating, magmacrunch media This instrument wants two panels and a keyboard side by side. Please visit on a wider screen. TONE//GRATING A4 440 Hz β 2.405 CARRIER NULL PATCH NULL ORGAN BRASS REED BELL CHIME GRIT SHARED one number, both panels: where every note comes to rest RESTING DEPTH β 2.405 0 2.405 5.520 8.654 TIME DOMAIN STRIKE δβ +0.0 STRIKE DECAY 0.30 s RATIO f m /f c 0.50 ATTACK 30 ms FADE WHILE HELD hold RELEASE 0.25 s OCT - C4 OCT + HOLD MIDI SPACE DOMAIN GROOVE SPACING d 2.00 µm WAVELENGTH λ 500 nm groove depth (p–v) 191.4 nm highest order ±4 TIME sidebands at f c + m·f m drag t..."
+    "b": "tone grating, magmacrunch media This instrument wants two panels and a keyboard side by side. Please visit on a wider screen. TONE//GRATING A4 440 Hz φ 2.405 rad CARRIER NULL PATCH NULL ORGAN BRASS REED BELL CHIME GRIT SHIFTER CHOPPER TREMOLO THE GRATING one period of it is the oscillator: the light diffracts off it, and the note is played through it PHASE SINE BLAZED LAMELLAR AMPLITUDE SINE RONCHI DRAWN PHASE AMPLITUDE COPY SMOOTH FLIP PHASE DEPTH φ 2.405 WAVELENGTH λ 500 nm depth this light sees 2.405 rad INCIDENCE &theta; i 0° TIME DOMAIN STRIKE δβ +0.0 STRIKE DECAY 0.30 s RATIO f m /f c 0...."
   },
   {
     "t": "tunacan · magmacrunch media",
