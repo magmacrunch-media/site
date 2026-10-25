@@ -32,7 +32,7 @@
 </style>
 <link rel="stylesheet" href="css/base.css?v=bca29ea1">
 <link rel="stylesheet" href="css/layout.css?v=6aad0432">
-<link rel="stylesheet" href="css/modals.css?v=caf0c5eb">
+<link rel="stylesheet" href="css/modals.css?v=9f1894d3">
 <link rel="stylesheet" href="css/title.css?v=ee7b949a">
 
 </head>
@@ -135,29 +135,34 @@
     <h2>HOW TO PLAY</h2>
     <div class="modal-sub">one song, one shift</div>
 
-    <p class="rules-lead">Five machines, none of them waiting for you. Tap a
-    station, or press its number.</p>
+    <div class="rules-body">
+      <p class="rules-lead">Five machines, and none of them will wait. Tap a
+      station or press its number.</p>
 
-    <dl class="rules-list">
-      <dt><b>1</b>HOPPER</dt>
-      <dd>Dump a sack of flour. Overfill it and it goes on the floor.</dd>
-      <dt><b>2</b>MIXER</dt>
-      <dd>Press once to start, again to eject. Leave it and the dough toughens.</dd>
-      <dt><b>3</b>BELT</dt>
-      <dd>Unstick a jam and boost the line.</dd>
-      <dt><b>4</b>OVEN</dt>
-      <dd>Pull the tray golden, not after. Mash to put out a fire.</dd>
-      <dt><b>5</b>PACKING</dt>
-      <dd>Ship the box. Four cookies pays double.</dd>
-    </dl>
+      <dl class="rules-line">
+        <div class="bay0"><dt><span class="rules-key">1</span>HOPPER</dt>
+          <dd>Pour in flour. Overfill it and it ends up on the floor.</dd></div>
+        <div class="bay1"><dt><span class="rules-key">2</span>MIXER</dt>
+          <dd>Tap to start, tap again when ready. Leave it and the dough goes tough.</dd></div>
+        <div class="bay2"><dt><span class="rules-key">3</span>BELT</dt>
+          <dd>Tap to free a jam. It speeds the belt up for a moment.</dd></div>
+        <div class="bay3"><dt><span class="rules-key">4</span>OVEN</dt>
+          <dd>Pull it golden. Early is raw, late is burnt. Tap fast to put out a fire.</dd></div>
+        <div class="bay4"><dt><span class="rules-key">5</span>PACKING</dt>
+          <dd>Ship the tray. A full box of four pays double.</dd></div>
+      </dl>
 
-    <p class="rules-note"><b>RUSH</b> lands four times, on the music. The belt
-    speeds up and every box scores double.</p>
-    <p class="rules-note"><b>MESS</b> builds from spills, burnt trays and
-    fires. Fill the meter and the inspector freezes the line while the song
-    plays on.</p>
-    <p class="rules-note"><b>NO LOSING.</b> The shift ends with the song, and
-    is scored on what you shipped: <span id="rules-stars">&nbsp;</span></p>
+      <div class="rules-score">
+        <p class="rules-note"><b>RUSH</b> Four times a shift, on the beat:
+        a faster belt and double for every box.</p>
+        <p class="rules-note"><b>MESS</b> Spills, burns and fires add up.
+        Fill it and the inspector stops the line for four seconds.</p>
+        <p class="rules-note"><b>CLEAN FLOOR</b> Finish tidy for a bonus at
+        the whistle.</p>
+        <p class="rules-note"><b>NO LOSING</b> The shift ends with the song.
+        Stars go by cookies shipped: <span id="rules-stars">&nbsp;</span></p>
+      </div>
+    </div>
 
     <div class="controls">
       <button class="btn mint" id="btn-close-rules">CLOSE</button>
@@ -221,31 +226,30 @@
       <h2><img class="credits-mark" src="img/mc-logo.png" alt="" width="26" height="32">CREDITS</h2>
     </div>
 
-    <div class="modal-body">
-      <div class="credits-section">
+    <div class="modal-body credits-grid">
+      <div class="credits-section c-neon">
         <div class="credits-label">GAME BY</div>
-        <div class="credits-value">Jake A. McCoy for
-          <a href="https://magmacrunch.com">magmacrunch media</a></div>
+        <div class="credits-value"><a href="https://magmacrunch.com">magmacrunch media</a></div>
       </div>
-      <div class="credits-section">
+      <div class="credits-section c-butter">
         <div class="credits-label">MUSIC</div>
         <div class="credits-value">
           <strong>&ldquo;makemecookies! x4&rdquo;</strong> by Jimmi, from the
           album <em>JIMMI</em>.
         </div>
       </div>
-      <div class="credits-section">
+      <div class="credits-section c-sprinkle">
         <div class="credits-label">BUILT WITH</div>
         <div class="credits-value">
           <a href="https://magmacrunch.com/ware/adenosine/">adenosine</a>
           &middot; Press Start 2P &middot; Share Tech Mono
         </div>
       </div>
-      <div class="credits-section">
-        <div class="credits-label">SOURCE</div>
+      <div class="credits-section c-frosting">
+        <div class="credits-label">LICENSE</div>
         <div class="credits-value">
-          <a href="https://polyformproject.org/licenses/noncommercial/1.0.0">PolyForm
-          Noncommercial 1.0.0</a>. The song is reserved.
+          The code is <a href="https://polyformproject.org/licenses/noncommercial/1.0.0">PolyForm
+          Noncommercial 1.0.0</a>. The song is all rights reserved.
         </div>
       </div>
     </div>
