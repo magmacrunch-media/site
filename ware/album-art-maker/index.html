@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="../shell/dropdown.css?v=3025ec48">
     <link rel="stylesheet" href="kit/magma-themes.css?v=b064ae8f">
     <link rel="stylesheet" href="kit/themes.css?v=38d89cb1">
-    <link rel="stylesheet" href="style.css?v=9f4ae708">
+    <link rel="stylesheet" href="style.css?v=e74dd424">
 
     <script src="kit/boot.js?v=3867389f"></script>
     <script src="kit/bridge-core.js?v=1a0ffb5c"></script>
@@ -42,7 +42,7 @@
                     <button class="menu-title" data-menu="file">FILE</button>
                     <div class="menu-drop" role="menu">
                         <button data-action="project:new" title="Start an empty cover">New<i>Ctrl+N</i></button>
-                        <button data-action="project:open" title="Open an .gatefold project">Open&hellip;<i>Ctrl+O</i></button>
+                        <button data-action="project:open" title="Open a .gatefold project">Open&hellip;<i>Ctrl+O</i></button>
                         <hr>
                         <button data-action="project:save" title="An .gatefold file holds every element, the canvas and the imported art. A PNG holds only pixels.">Save<i>Ctrl+S</i></button>
                         <button data-action="project:save-as" title="Save the project under a new name">Save As&hellip;<i>Ctrl+Shift+S</i></button>
@@ -546,6 +546,26 @@
                 clicks pass straight through. Lock it from the panel, the layers
                 list, or <kbd>Ctrl+L</kbd>.</p>
 
+            <div class="ref-print">
+                <div class="sub-label">print</div>
+                <p>CANVAS in the side panel picks the format: a square cover,
+                    or a print template for a cassette, a CD, a record, a floppy
+                    disk or an SD card. A template is drawn at its real size,
+                    with guides that never export: the TRIM line, where the
+                    knife goes, with the bleed past it, which background and
+                    photos should run into so the cut leaves no white sliver;
+                    the SAFE line inside it, which text should stay within; and
+                    the FOLDS, with each panel named. Turn them on and off with
+                    View, Fold &amp; Safe Guides.</p>
+                <p>Hatched areas are parts of the card or the case a die cuts
+                    away, such as a cassette label's window or an SD card's cut
+                    corner. Art over them is lost, so keep anything that matters
+                    off them.</p>
+                <p>File, Crop &amp; Fold Marks adds the marks a printer trims
+                    and folds by, on paper outside the bleed. The exported image
+                    gets bigger; the card does not.</p>
+            </div>
+
             <div class="sub-label">the two files</div>
             <p>A <strong>.gatefold</strong> file is the whole cover: every
                 element, the canvas, and the imported art itself. A
@@ -560,7 +580,9 @@
         <div class="modal-header">CREDITS<button class="modal-close" title="Close">&times;</button></div>
         <div class="modal-body">
             <p class="credits-lede">GATE//FOLD <span id="creditsVersion"></span><br>
-                A square album-cover editor by <strong>magmacrunch media</strong>.</p>
+                An album-art editor by <strong>magmacrunch media</strong>. The
+                desktop app adds print templates, from cassette J-cards to SD
+                card labels.</p>
 
             <div class="sub-label">licence</div>
             <p>PolyForm Noncommercial 1.0.0. Copyright 2026 magmacrunch media,
@@ -582,8 +604,8 @@
 
             <div class="sub-label">built on</div>
             <p><strong>magma-kit</strong>: the shared shell, undo stack,
-                dialogs and art store behind this app, sprite-forge, deck-press
-                and magma-ops. <strong>Tauri</strong> wraps the desktop build.</p>
+                dialogs and art store behind this app and the other magmacrunch
+                desktop apps. <strong>Tauri</strong> wraps the desktop build.</p>
         </div>
         <div class="modal-btns">
             <button class="export-btn" id="creditsClose">CLOSE</button>
