@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>George Boole</title>
     <meta name="description" content="Slide tiles, learn logic. A puzzle game where the tiles combine through AND, OR, XOR and NOT, with a primer for anyone new to binary.">
-    <meta name="theme-color" content="#8a2be2">
+    <meta name="theme-color" content="#0a0a14">
     <link rel="manifest" href="manifest.json">
 
     <meta property="og:title" content="GEORGE BOOLE · magmacrunch media">
@@ -32,21 +32,21 @@ document.documentElement.classList.add("font-loading");document.fonts.ready.then
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../shared/arcade-base.css?v=de5e0d7b">
-    <link rel="stylesheet" href="css/base.css?v=c0fd618b">
-    <link rel="stylesheet" href="css/themes.css?v=60da2e30">
-    <link rel="stylesheet" href="css/container.css?v=72300fa8">
-    <link rel="stylesheet" href="css/game.css?v=00ee0e2c">
+    <link rel="stylesheet" href="css/base.css?v=7e6107cb">
+    <link rel="stylesheet" href="css/themes.css?v=565b5a11">
+    <link rel="stylesheet" href="css/container.css?v=b1858936">
+    <link rel="stylesheet" href="css/game.css?v=331b953d">
     <link rel="stylesheet" href="css/modal-title.css?v=a537cbe3">
-    <link rel="stylesheet" href="css/modal-lore.css?v=f0491cda">
-    <link rel="stylesheet" href="css/modal-difficulty.css?v=d5be9468">
-    <link rel="stylesheet" href="css/modal-scoreboard.css?v=1d317b8e">
-    <link rel="stylesheet" href="css/modal-settings.css?v=4c67f17b">
-    <link rel="stylesheet" href="css/modal-misc.css?v=d713b367">
-    <link rel="stylesheet" href="css/responsive.css?v=60d47522">
+    <link rel="stylesheet" href="css/modal-lore.css?v=1f8ef4c3">
+    <link rel="stylesheet" href="css/modal-difficulty.css?v=578cb91d">
+    <link rel="stylesheet" href="css/modal-scoreboard.css?v=45b5067d">
+    <link rel="stylesheet" href="css/modal-settings.css?v=eacefcc0">
+    <link rel="stylesheet" href="css/modal-misc.css?v=7826024a">
+    <link rel="stylesheet" href="css/responsive.css?v=b61c90aa">
     <link rel="stylesheet" href="css/gates.css?v=9b6320e3">
-    <link rel="stylesheet" href="css/side-panels.css?v=8dd63154">
+    <link rel="stylesheet" href="css/side-panels.css?v=7ce5fd95">
     <link rel="stylesheet" href="css/math-overlay.css?v=1f5a565a">
 </head>
 <body>
@@ -387,325 +387,216 @@ document.documentElement.classList.add("font-loading");document.fonts.ready.then
     </div>
 
     <div class="instructions-modal" id="instructionsModal">
-        <div class="instructions-content" style="max-width: 650px; max-height: 85vh; overflow-y: auto; padding: 35px; padding-right: 20px;">
-            <div class="instructions-topbar">
-                <button class="modal-back" id="instructionsBack" type="button"><span class="ui-arrow">&larr;</span> how to play</button>
-            </div>
-            <h3 style="margin-bottom: 25px;">full rules</h3>
-            
-            <h4 data-chapter="basics" style="font-size: 13px; margin: 15px 0 10px 0; color: #ffff00; text-shadow: 2px 2px 0 #999900;">NEW TO THIS? START WITH COUNTING</h4>
+        <div class="instructions-content">
+            <div class="instructions-topbar"><span class="rules-title">full rules</span></div>
+            <h3>full rules</h3>
 
-            <div class="rule-box" style="background: rgba(0, 255, 255, 0.06); padding: 12px; margin-bottom: 15px; border-left: 3px solid #00ffff;">
-                <p style="margin: 0 0 10px 0; font-size: 10px; line-height: 1.7; color: rgba(255, 255, 255, 0.95);">
-                    You count with ten digits, 0 to 9. A computer counts with two,
-                    <strong style="color: #00ff00;">0</strong> and <strong style="color: #00ff00;">1</strong>.
-                    That is all binary means.
-                </p>
-                <p style="margin: 0 0 10px 0; font-size: 10px; line-height: 1.7; color: rgba(255, 255, 255, 0.95);">
-                    Each of those digits is a <strong style="color: #ffd700;">bit</strong>. Think of a tile as four bits
-                    in a row, each 1 or 0. Each bit is worth double the one to its right:
-                    <strong style="color: #ffd700;">8, 4, 2, 1</strong>. The number on the tile is whatever the 1s
-                    add up to.
-                </p>
+            <h4 data-chapter="basics">COUNTING IN BINARY</h4>
+            <div class="rules-box">
+                <p>You count with ten digits, 0 through 9, whereas a computer counts with only two, <strong>0</strong> and <strong>1</strong>. That is all that binary means.</p>
+                <p>Each of those digits is a <strong>bit</strong>. A tile holds four bits in a row, and each bit is worth twice the one to its right, so the columns are worth <strong>8, 4, 2 and 1</strong>. The number on a tile is the sum of the columns that hold a 1.</p>
             </div>
-
-            <div class="rule-box" style="background: rgba(0, 255, 255, 0.06); padding: 12px; margin-bottom: 15px; border-left: 3px solid #00ffff;">
-                <div style="font-family: monospace; font-size: 13px; line-height: 1.8; color: #00ffff; margin-left: 4px;">
-                    <div><span style="color:#ffd700;">8 4 2 1</span></div>
-                    <div>0 0 0 1 &nbsp;<span style="color: rgba(255,255,255,0.95);">=</span> <strong style="color:#00ff00;">1</strong></div>
-                    <div>0 0 1 0 &nbsp;<span style="color: rgba(255,255,255,0.95);">=</span> <strong style="color:#00ff00;">2</strong></div>
-                    <div>0 0 1 1 &nbsp;<span style="color: rgba(255,255,255,0.95);">= 2+1 =</span> <strong style="color:#00ff00;">3</strong></div>
-                    <div>0 1 0 1 &nbsp;<span style="color: rgba(255,255,255,0.95);">= 4+1 =</span> <strong style="color:#00ff00;">5</strong></div>
-                    <div>1 1 1 1 &nbsp;<span style="color: rgba(255,255,255,0.95);">= 8+4+2+1 =</span> <strong style="color:#00ff00;">15</strong></div>
+            <div class="rules-box">
+                <div class="bits">
+                    <div class="bits-place">8 4 2 1</div>
+                    <div>0 0 0 1 <span class="bits-note">=</span> <span class="bits-res">1</span></div>
+                    <div>0 0 1 0 <span class="bits-note">=</span> <span class="bits-res">2</span></div>
+                    <div>0 0 1 1 <span class="bits-note">= 2+1 =</span> <span class="bits-res">3</span></div>
+                    <div>0 1 0 1 <span class="bits-note">= 4+1 =</span> <span class="bits-res">5</span></div>
+                    <div>1 1 1 1 <span class="bits-note">= 8+4+2+1 =</span> <span class="bits-res">15</span></div>
                 </div>
-                <p style="margin: 10px 0 0 0; font-size: 10px; line-height: 1.7; color: rgba(255, 255, 255, 0.95);">
-                    Four bits is why 4-bit tops out at <strong style="color: #ffd700;">15</strong>. Two bits top out
-                    at 3, eight bits at 255. That is the whole of the bit modes.
-                </p>
+                <p>Four bits can therefore hold nothing larger than <strong>15</strong>. Two bits top out at 3 and eight bits at 255, which is all that the bit modes are.</p>
             </div>
 
-            <div class="section-divider" style="height: 3px; background: linear-gradient(90deg, transparent, #8a2be2, transparent); margin: 25px 0;"></div>
+            <div class="section-divider"></div>
 
-            <h4 style="font-size: 13px; margin: 15px 0 10px 0; color: #ffff00; text-shadow: 2px 2px 0 #999900;">A GATE IS A RULE FOR ONE BIT</h4>
-
-            <div class="rule-box" style="background: rgba(138, 43, 226, 0.12); padding: 12px; margin-bottom: 15px; border-left: 3px solid #8a2be2;">
-                <p style="margin: 0; font-size: 10px; line-height: 1.7; color: rgba(255, 255, 255, 0.95);">
-                    Before any of it touches a whole number, a gate is a rule about
-                    <strong>one bit against one bit</strong>: two in, one out. There are only four
-                    rules, and each is four lines long. Read them as "in, in, out".
-                </p>
+            <h4>A GATE IS A RULE FOR ONE BIT</h4>
+            <div class="rules-box">
+                <p>Before it touches a whole number, a gate is a rule about <strong>one bit against one bit</strong>: two bits in, one bit out. There are only four such rules, and each fits in four lines, read as "in, in, out".</p>
+            </div>
+            <div class="gates-grid truth-grid">
+                <div class="gate-card" data-gate="xor">
+                    <div class="gate-glyph">⊕</div>
+                    <div class="gate-name">XOR</div>
+                    <div class="gate-table">0 <span class="glyph">⊕</span> 0 = 0<br>0 <span class="glyph">⊕</span> 1 = 1<br>1 <span class="glyph">⊕</span> 0 = 1<br>1 <span class="glyph">⊕</span> 1 = 0</div>
+                    <div class="gate-line">1 when the two differ</div>
+                </div>
+                <div class="gate-card" data-gate="or">
+                    <div class="gate-glyph">∨</div>
+                    <div class="gate-name">OR</div>
+                    <div class="gate-table">0 <span class="glyph">∨</span> 0 = 0<br>0 <span class="glyph">∨</span> 1 = 1<br>1 <span class="glyph">∨</span> 0 = 1<br>1 <span class="glyph">∨</span> 1 = 1</div>
+                    <div class="gate-line">1 when either is 1</div>
+                </div>
+                <div class="gate-card" data-gate="and">
+                    <div class="gate-glyph">∧</div>
+                    <div class="gate-name">AND</div>
+                    <div class="gate-table">0 <span class="glyph">∧</span> 0 = 0<br>0 <span class="glyph">∧</span> 1 = 0<br>1 <span class="glyph">∧</span> 0 = 0<br>1 <span class="glyph">∧</span> 1 = 1</div>
+                    <div class="gate-line">1 only when both are 1</div>
+                </div>
+                <div class="gate-card" data-gate="not">
+                    <div class="gate-glyph">¬</div>
+                    <div class="gate-name">NOT</div>
+                    <div class="gate-table"><span class="glyph">¬</span> 0 = 1<br><span class="glyph">¬</span> 1 = 0</div>
+                    <div class="gate-line">one bit in, flipped</div>
+                </div>
             </div>
 
-            <div class="gates-grid truth-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 15px;">
-                <div class="gate-card" style="background: rgba(0, 255, 255, 0.08); padding: 10px; border: 2px solid rgba(0, 255, 255, 0.3);">
-                    <div class="gate-glyph" style="font-size: 24px; line-height: 1.1; color: #00ffff; text-shadow: 0 0 10px rgba(0,255,255,0.6);">⊕</div>
-                    <div style="font-size: 11px; color: #00ffff; margin: 4px 0 5px 0;"><strong>XOR</strong></div>
-                    <div style="font-family: monospace; font-size: 12px; line-height: 1.7; color: #00ff00;">
-                        0 <span class="glyph">⊕</span> 0 = 0<br>
-                        0 <span class="glyph">⊕</span> 1 = 1<br>
-                        1 <span class="glyph">⊕</span> 0 = 1<br>
-                        1 <span class="glyph">⊕</span> 1 = 0
+            <div class="section-divider"></div>
+
+            <h4>NOW DO IT TO A WHOLE NUMBER</h4>
+            <div class="rules-box">
+                <p>A gate does not know what 5 is. It lines up the two tiles' bits <strong>column by column</strong>, applies its one rule to each column, and reads the answer back as a number, so nothing carries the way it does in addition.</p>
+                <div class="bits">
+                    <div class="bits-place">8 4 2 1</div>
+                    <div>0 1 0 1 <span class="bits-note">5</span></div>
+                    <div>0 0 1 1 <span class="bits-note">3</span></div>
+                    <div class="bits-rule"><span class="glyph" data-gate="xor">⊕</span></div>
+                    <div class="bits-res">0 1 1 0 <span class="bits-note">= 4+2 =</span> 6</div>
+                </div>
+                <p>In the 1 column both bits are 1, so XOR gives 0. In the 2 and 4 columns exactly one bit is 1, so each gives 1, and in the 8 column neither is. The result is <strong>0110</strong>, which is 6.</p>
+            </div>
+            <div class="rules-box">
+                <p>The same two tiles through the other two gates meet the same bits under a different rule, and so give a different number:</p>
+                <div class="bits-pair">
+                    <div class="bits">
+                        <div class="bits-place">8 4 2 1</div>
+                        <div>0 1 0 1 <span class="bits-note">5</span></div>
+                        <div>0 0 1 1 <span class="bits-note">3</span></div>
+                        <div class="bits-rule"><span class="glyph" data-gate="or">∨</span></div>
+                        <div class="bits-res">0 1 1 1 7</div>
                     </div>
-                    <div style="font-size: 10px; line-height: 1.6; color: rgba(255, 255, 255, 0.9); margin-top: 5px;">1 when they differ</div>
-                </div>
-                <div class="gate-card" style="background: rgba(0, 255, 255, 0.08); padding: 10px; border: 2px solid rgba(0, 255, 255, 0.3);">
-                    <div class="gate-glyph" style="font-size: 24px; line-height: 1.1; color: #00ffff; text-shadow: 0 0 10px rgba(0,255,255,0.6);">∨</div>
-                    <div style="font-size: 11px; color: #00ffff; margin: 4px 0 5px 0;"><strong>OR</strong></div>
-                    <div style="font-family: monospace; font-size: 12px; line-height: 1.7; color: #00ff00;">
-                        0 <span class="glyph">∨</span> 0 = 0<br>
-                        0 <span class="glyph">∨</span> 1 = 1<br>
-                        1 <span class="glyph">∨</span> 0 = 1<br>
-                        1 <span class="glyph">∨</span> 1 = 1
+                    <div class="bits">
+                        <div class="bits-place">8 4 2 1</div>
+                        <div>0 1 0 1 <span class="bits-note">5</span></div>
+                        <div>0 0 1 1 <span class="bits-note">3</span></div>
+                        <div class="bits-rule"><span class="glyph" data-gate="and">∧</span></div>
+                        <div class="bits-res">0 0 0 1 1</div>
                     </div>
-                    <div style="font-size: 10px; line-height: 1.6; color: rgba(255, 255, 255, 0.9); margin-top: 5px;">1 if either is 1</div>
                 </div>
-                <div class="gate-card" style="background: rgba(0, 255, 255, 0.08); padding: 10px; border: 2px solid rgba(0, 255, 255, 0.3);">
-                    <div class="gate-glyph" style="font-size: 24px; line-height: 1.1; color: #00ffff; text-shadow: 0 0 10px rgba(0,255,255,0.6);">∧</div>
-                    <div style="font-size: 11px; color: #00ffff; margin: 4px 0 5px 0;"><strong>AND</strong></div>
-                    <div style="font-family: monospace; font-size: 12px; line-height: 1.7; color: #00ff00;">
-                        0 <span class="glyph">∧</span> 0 = 0<br>
-                        0 <span class="glyph">∧</span> 1 = 0<br>
-                        1 <span class="glyph">∧</span> 0 = 0<br>
-                        1 <span class="glyph">∧</span> 1 = 1
-                    </div>
-                    <div style="font-size: 10px; line-height: 1.6; color: rgba(255, 255, 255, 0.9); margin-top: 5px;">1 only if both are 1</div>
-                </div>
-                <div class="gate-card" style="background: rgba(255, 215, 0, 0.08); padding: 10px; border: 2px solid rgba(255, 215, 0, 0.5);">
-                    <div class="gate-glyph" style="font-size: 24px; line-height: 1.1; color: #ffd700; text-shadow: 0 0 10px rgba(255,215,0,0.6);">¬</div>
-                    <div style="font-size: 11px; color: #ffd700; margin: 4px 0 5px 0;"><strong>NOT</strong></div>
-                    <div style="font-family: monospace; font-size: 12px; line-height: 1.7; color: #00ff00;">
-                        <span class="glyph">¬</span> 0 = 1<br>
-                        <span class="glyph">¬</span> 1 = 0
-                    </div>
-                    <div style="font-size: 10px; line-height: 1.6; color: rgba(255, 255, 255, 0.9); margin-top: 5px;">one bit in, flipped</div>
-                </div>
+                <p>NOT needs only one tile, since it flips all four bits: <span class="glyph" data-gate="not">¬</span>5 turns 0101 into 1010, which is <strong>10</strong>.</p>
+                <p class="rules-aside">That is all of binary and all four gates. Everything past this point is the game.</p>
             </div>
 
-            <div class="section-divider" style="height: 3px; background: linear-gradient(90deg, transparent, #8a2be2, transparent); margin: 25px 0;"></div>
+            <div class="section-divider"></div>
 
-            <h4 style="font-size: 13px; margin: 15px 0 10px 0; color: #ffff00; text-shadow: 2px 2px 0 #999900;">NOW DO IT TO A WHOLE NUMBER</h4>
-
-            <div class="rule-box" style="background: rgba(0, 255, 255, 0.06); padding: 12px; margin-bottom: 15px; border-left: 3px solid #00ffff;">
-                <p style="margin: 0 0 10px 0; font-size: 10px; line-height: 1.7; color: rgba(255, 255, 255, 0.95);">
-                    A gate does not know what 5 is. It takes the two tiles' bits
-                    <strong>column by column</strong>, applies that one rule four times, and reads the
-                    answer back as a number. Nothing carries the way addition carries.
-                </p>
-                <div style="font-family: monospace; font-size: 13px; line-height: 1.8; margin-left: 4px;">
-                    <div><span style="color:#ffd700;">8 4 2 1</span></div>
-                    <div style="color:#00ffff;">0 1 0 1 &nbsp;<span style="color: rgba(255,255,255,0.8);">5</span></div>
-                    <div style="color:#00ffff;">0 0 1 1 &nbsp;<span style="color: rgba(255,255,255,0.8);">3</span></div>
-                    <div style="color:#8a2be2;">------- <span style="color:#ff00ff;"><span class="glyph">⊕</span></span></div>
-                    <div style="color:#00ff00;">0 1 1 0 &nbsp;<span style="color: rgba(255,255,255,0.8);">= 4+2 =</span> <strong>6</strong></div>
-                </div>
-                <p style="margin: 10px 0 0 0; font-size: 10px; line-height: 1.7; color: rgba(255, 255, 255, 0.95);">
-                    Column 1: both 1, so XOR gives 0. Column 2: one 1, one 0, so 1.
-                    Column 4: one 1, so 1. Column 8: neither, so 0. That is
-                    <strong style="color: #00ff00;">0110</strong>, which is 6.
-                </p>
+            <div class="rules-box" data-chapter="the game">
+                <p>As in <em>2048</em>, you <strong>swipe</strong>, or use the arrow keys, to slide every tile on a 4 by 4 grid in one direction.</p>
             </div>
 
-            <div class="rule-box" style="background: rgba(138, 43, 226, 0.12); padding: 12px; margin-bottom: 15px; border-left: 3px solid #8a2be2;">
-                <p style="margin: 0 0 10px 0; font-size: 10px; line-height: 1.7; color: rgba(255, 255, 255, 0.95);">
-                    The same two tiles through the other two gates. Same bits, different rule,
-                    different number out:
-                </p>
-                <div style="font-family: monospace; font-size: 13px; line-height: 1.8; margin-left: 4px;">
-                    <div><span style="color:#ffd700;">8 4 2 1</span></div>
-                    <div style="color:#00ffff;">0 1 0 1 &nbsp;<span style="color: rgba(255,255,255,0.8);">5</span></div>
-                    <div style="color:#00ffff;">0 0 1 1 &nbsp;<span style="color: rgba(255,255,255,0.8);">3</span></div>
-                    <div style="color:#8a2be2;">------- <span style="color:#ff00ff;"><span class="glyph">∨</span></span></div>
-                    <div style="color:#00ff00;">0 1 1 1 &nbsp;<span style="color: rgba(255,255,255,0.8);">= 4+2+1 =</span> <strong>7</strong></div>
-                </div>
-                <div style="font-family: monospace; font-size: 13px; line-height: 1.8; margin: 12px 0 0 4px;">
-                    <div><span style="color:#ffd700;">8 4 2 1</span></div>
-                    <div style="color:#00ffff;">0 1 0 1 &nbsp;<span style="color: rgba(255,255,255,0.8);">5</span></div>
-                    <div style="color:#00ffff;">0 0 1 1 &nbsp;<span style="color: rgba(255,255,255,0.8);">3</span></div>
-                    <div style="color:#8a2be2;">------- <span style="color:#ff00ff;"><span class="glyph">∧</span></span></div>
-                    <div style="color:#00ff00;">0 0 0 1 &nbsp;<span style="color: rgba(255,255,255,0.8);">=</span> <strong>1</strong></div>
-                </div>
-                <p style="margin: 10px 0 0 0; font-size: 10px; line-height: 1.7; color: rgba(255, 255, 255, 0.95);">
-                    And <strong style="color: #ffd700;">NOT</strong> needs only one tile: it flips all four bits.
-                    <span style="font-family: monospace; color: #00ff00;"><span class="glyph">¬</span>5</span>
-                    is 0101 flipped to 1010, which is <strong style="color: #00ff00;">10</strong>.
-                </p>
-                <p style="margin: 10px 0 0 0; font-size: 10px; line-height: 1.7; color: #00ff00;">
-                    That is all of binary and all four gates. Everything past
-                    here is the game.
-                </p>
-            </div>
-
-            <div class="section-divider" style="height: 3px; background: linear-gradient(90deg, transparent, #8a2be2, transparent); margin: 25px 0;"></div>
-            
-            <div class="info-box" data-chapter="the game" style="background: rgba(138, 43, 226, 0.15); padding: 15px; margin-bottom: 20px; border-left: 4px solid #8a2be2;">
-                <p style="font-size: 11px; line-height: 1.8; margin: 0;">Just as in <em>2048</em>, <strong style="color: #00ffff;">use arrow keys or swipe</strong> to move tiles on a 4 by 4 grid in any direction.</p>
-            </div>
-            
-            <div class="section-divider" style="height: 3px; background: linear-gradient(90deg, transparent, #8a2be2, transparent); margin: 25px 0;"></div>
-            
-            <h4 style="font-size: 13px; margin: 15px 0 10px 0; color: #ffff00; text-shadow: 2px 2px 0 #999900;">GOAL: SURVIVE & SCORE!</h4>
-            <ul style="font-size: 11px; line-height: 1.9; margin: 8px 0 8px 20px; padding: 0; list-style: none;">
-                <li style="margin-bottom: 6px; color: rgba(255, 255, 255, 0.95);">• collect points through operations</li>
-                <li style="margin-bottom: 6px; color: rgba(255, 255, 255, 0.95);">• survive as long as possible, reach a high score</li>
-                <li style="margin-bottom: 6px; color: rgba(255, 255, 255, 0.95);">• game ends when the board fills with no moves</li>
+            <h4>THE GOAL</h4>
+            <ul>
+                <li>Score points by combining tiles.</li>
+                <li>Last as long as you can, since the game ends only when the board is full and no move is left.</li>
             </ul>
-            <p style="font-size: 11px; line-height: 1.9; margin-bottom: 8px;">
-                As a warm up, play <strong style="color: #ffff00;"><em>2048 (actually, 2^N)</em></strong> at magmacrunch.com/arcade!
-            </p>
-            
-            <div class="section-divider" style="height: 3px; background: linear-gradient(90deg, transparent, #8a2be2, transparent); margin: 25px 0;"></div>
-            
-            <h4 style="font-size: 13px; margin: 15px 0 10px 0; color: #ffff00; text-shadow: 2px 2px 0 #999900;">BOOLEAN LOGIC RULES</h4>
-            
-            <div class="rule-box" style="background: rgba(255, 255, 0, 0.08); padding: 12px; margin-bottom: 15px; border-left: 3px solid #ffff00;">
-                <p style="margin: 0 0 8px 0; font-size: 11px;"><strong style="color: #ffff00;">same + same = same</strong> <span style="color: #00ff00; opacity: 0.9;">(idempotence)</span></p>
-                <ul style="font-size: 10px; line-height: 1.7; margin: 0; margin-left: 15px; padding: 0; list-style: none; color: rgba(255, 255, 255, 0.95);">
-                    <li style="margin-bottom: 4px;"><span class="ui-arrow">→</span> 1 + 1 = 1 <span style="opacity: 0.8;">(consolidates, awards points)</span></li>
-                    <li style="margin-bottom: 4px;"><span class="ui-arrow">→</span> 2 + 2 = 2 <span style="opacity: 0.8;">(merges to same, no doubling!)</span></li>
-                    <li style="margin-bottom: 4px;"><span class="ui-arrow">→</span> 7 + 7 = 7 <span style="opacity: 0.8;">(Boolean logic: A<span class="glyph">∨</span>A = A)</span></li>
+            <p>As a warm up, play <strong>2^N</strong>, our take on 2048, at magmacrunch.com/arcade.</p>
+
+            <div class="section-divider"></div>
+
+            <h4>EQUAL TILES MERGE</h4>
+            <div class="rules-box">
+                <p>Two equal tiles merge into one tile of the <strong>same</strong> value rather than double it, because in Boolean logic A <span class="glyph">∨</span> A = A, a rule called idempotence. Each merge scores the tile's value.</p>
+                <ul>
+                    <li>1 and 1 make 1</li>
+                    <li>2 and 2 make 2</li>
+                    <li>7 and 7 make 7</li>
                 </ul>
             </div>
-            
-            <div class="rule-box" style="background: rgba(255, 0, 255, 0.08); padding: 12px; margin-bottom: 15px; border-left: 3px solid #ff00ff;">
-                <p style="margin: 0 0 8px 0; font-size: 11px;"><strong style="color: #ff00ff;">different numbers need gates</strong></p>
-                <p style="font-size: 10px; line-height: 1.7; margin: 0; color: rgba(255, 255, 255, 0.95);">
-                    e.g., you <strong>cannot</strong> merge 1 + 2 directly; you must use tiles with <strong>logic gates (<span class="glyph">⊕</span> <span class="glyph">∨</span> <span class="glyph">∧</span> <span class="glyph">¬</span>)</strong>.
-                </p>
+            <div class="rules-box is-key">
+                <p>Two different numbers do not merge at all. Combining them is what the gates <span class="glyph" data-gate="xor">⊕</span> <span class="glyph" data-gate="or">∨</span> <span class="glyph" data-gate="and">∧</span> <span class="glyph" data-gate="not">¬</span> are for.</p>
             </div>
-            
-            <div class="section-divider" style="height: 3px; background: linear-gradient(90deg, transparent, #8a2be2, transparent); margin: 25px 0;"></div>
 
-            <h4 style="font-size: 13px; margin: 15px 0 10px 0; color: #ffff00; text-shadow: 2px 2px 0 #999900;">LOGIC GATES</h4>
-            
-            <div class="gates-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 15px;">
-                <div class="gate-card" style="background: rgba(0, 255, 255, 0.08); padding: 10px; border: 2px solid rgba(0, 255, 255, 0.3);">
-                    <div class="gate-glyph" style="font-size: 24px; line-height: 1.1; color: #00ffff; text-shadow: 0 0 10px rgba(0,255,255,0.6);">⊕</div>
-                    <div style="font-size: 11px; color: #00ffff; margin: 4px 0 5px 0;"><strong>XOR</strong></div>
-                    <div style="font-size: 10px; line-height: 1.6; color: rgba(255, 255, 255, 0.9);">sets bits where inputs differ</div>
-                    <div style="font-size: 10px; color: #00ff00; margin-top: 5px;"><span class="gate-example-label">binary</span><span class="gate-bits">0001<span class="glyph">⊕</span>0010=0011</span><span class="gate-bits">0010<span class="glyph">⊕</span>0011=0001</span></div>
+            <div class="section-divider"></div>
+
+            <h4>THE FOUR GATES</h4>
+            <div class="gates-grid">
+                <div class="gate-card" data-gate="xor">
+                    <div class="gate-glyph">⊕</div>
+                    <div class="gate-name">XOR</div>
+                    <div class="gate-line">sets the bits where the two differ</div>
+                    <div class="gate-table"><span class="gate-bits">0001 <span class="glyph">⊕</span> 0010 = 0011</span><span class="gate-bits">0010 <span class="glyph">⊕</span> 0011 = 0001</span></div>
                 </div>
-                <div class="gate-card" style="background: rgba(0, 255, 255, 0.08); padding: 10px; border: 2px solid rgba(0, 255, 255, 0.3);">
-                    <div class="gate-glyph" style="font-size: 24px; line-height: 1.1; color: #00ffff; text-shadow: 0 0 10px rgba(0,255,255,0.6);">∨</div>
-                    <div style="font-size: 11px; color: #00ffff; margin: 4px 0 5px 0;"><strong>OR</strong></div>
-                    <div style="font-size: 10px; line-height: 1.6; color: rgba(255, 255, 255, 0.9);">sets any bit that is 1 in either</div>
-                    <div style="font-size: 10px; color: #00ff00; margin-top: 5px;"><span class="gate-example-label">binary</span><span class="gate-bits">0001<span class="glyph">∨</span>0010=0011</span><span class="gate-bits">0100<span class="glyph">∨</span>0011=0111</span></div>
+                <div class="gate-card" data-gate="or">
+                    <div class="gate-glyph">∨</div>
+                    <div class="gate-name">OR</div>
+                    <div class="gate-line">sets every bit that is 1 in either</div>
+                    <div class="gate-table"><span class="gate-bits">0001 <span class="glyph">∨</span> 0010 = 0011</span><span class="gate-bits">0100 <span class="glyph">∨</span> 0011 = 0111</span></div>
                 </div>
-                <div class="gate-card" style="background: rgba(0, 255, 255, 0.08); padding: 10px; border: 2px solid rgba(0, 255, 255, 0.3);">
-                    <div class="gate-glyph" style="font-size: 24px; line-height: 1.1; color: #00ffff; text-shadow: 0 0 10px rgba(0,255,255,0.6);">∧</div>
-                    <div style="font-size: 11px; color: #00ffff; margin: 4px 0 5px 0;"><strong>AND</strong></div>
-                    <div style="font-size: 10px; line-height: 1.6; color: rgba(255, 255, 255, 0.9);">keeps bits that are 1 in both</div>
-                    <div style="font-size: 10px; color: #00ff00; margin-top: 5px;"><span class="gate-example-label">binary</span><span class="gate-bits">0011<span class="glyph">∧</span>0010=0010</span><span class="gate-bits">0111<span class="glyph">∧</span>0100=0100</span></div>
+                <div class="gate-card" data-gate="and">
+                    <div class="gate-glyph">∧</div>
+                    <div class="gate-name">AND</div>
+                    <div class="gate-line">keeps the bits that are 1 in both</div>
+                    <div class="gate-table"><span class="gate-bits">0011 <span class="glyph">∧</span> 0010 = 0010</span><span class="gate-bits">0111 <span class="glyph">∧</span> 0100 = 0100</span></div>
                 </div>
-                <div class="gate-card" style="background: rgba(255, 215, 0, 0.08); padding: 10px; border: 2px solid rgba(255, 215, 0, 0.5);">
-                    <div class="gate-glyph" style="font-size: 24px; line-height: 1.1; color: #ffd700; text-shadow: 0 0 10px rgba(255,215,0,0.6);">¬</div>
-                    <div style="font-size: 11px; color: #ffd700; margin: 4px 0 5px 0;"><strong>NOT</strong></div>
-                    <div style="font-size: 10px; line-height: 1.6; color: rgba(255, 255, 255, 0.9);">flips every bit, on one number</div>
-                    <div style="font-size: 10px; color: #00ff00; margin-top: 5px;"><span class="gate-example-label">binary</span><span class="gate-bits"><span class="glyph">¬</span>01 = 10</span><span class="gate-bits"><span class="glyph">¬</span>1000 = 0111</span></div>
-                    <div style="font-size: 10px; color: #ff4444; margin-top: 4px;"><span class="glyph">¬</span>max = OVERFLOW</div>
+                <div class="gate-card" data-gate="not">
+                    <div class="gate-glyph">¬</div>
+                    <div class="gate-name">NOT</div>
+                    <div class="gate-line">flips every bit of one number</div>
+                    <div class="gate-table"><span class="gate-bits"><span class="glyph">¬</span>01 = 10</span><span class="gate-bits"><span class="glyph">¬</span>1000 = 0111</span></div>
                 </div>
             </div>
-            
-            <div class="info-box" style="background: rgba(138, 43, 226, 0.12); padding: 12px; margin-bottom: 15px; border-left: 3px solid #8a2be2;">
-                <p style="margin: 0 0 6px 0; font-size: 10px; line-height: 1.7; color: rgba(255, 255, 255, 0.95);"><strong style="color: #00ffff;">gate usage:</strong></p>
-                <ul style="font-size: 10px; line-height: 1.7; margin: 0; margin-left: 15px; padding: 0; list-style: none; color: rgba(255, 255, 255, 0.95);">
-                    <li style="margin-bottom: 4px;"><strong style="color: #ffd700;"><span class="glyph">¬</span> NOT:</strong> slide into any number! <span style="color: #00ff00;">[<span class="glyph">¬</span>][num]</span> or <span style="color: #00ff00;">[num][<span class="glyph">¬</span>]</span></li>
-                    <li style="margin-bottom: 4px;"><strong style="color: #ffd700;"><span class="glyph">¬</span> meets <span class="glyph">¬</span>:</strong> two NOTs cancel: both tiles clear, for no points</li>
-                    <li style="margin-bottom: 4px;"><strong style="color: #00ffff;"><span class="glyph">⊕</span> <span class="glyph">∨</span> <span class="glyph">∧</span>:</strong> sandwich between two numbers! <span style="color: #00ff00;">[num][gate][num]</span></li>
-                    <li style="margin-bottom: 4px;"><strong style="color: #ff4444;">result 0:</strong> a gate that comes out to 0 clears its tiles for no points: <span style="color: #00ff00;">0011<span class="glyph">⊕</span>0011 = 0000; 0001<span class="glyph">∧</span>0010 = 0000</span></li>
+            <div class="rules-box">
+                <p class="rules-lead"><strong>How the gates are used</strong></p>
+                <ul>
+                    <li><span class="glyph" data-gate="not">¬</span> slides into any number, from either side.</li>
+                    <li>Two <span class="glyph" data-gate="not">¬</span> that meet cancel each other, so both clear and score nothing.</li>
+                    <li><span class="glyph" data-gate="xor">⊕</span> <span class="glyph" data-gate="or">∨</span> <span class="glyph" data-gate="and">∧</span> sit between two numbers: number, gate, number.</li>
+                    <li>A gate whose result is 0 clears its tiles and scores nothing, as in 0011 <span class="glyph" data-gate="xor">⊕</span> 0011 = 0000.</li>
                 </ul>
             </div>
-            
-            <div class="section-divider" style="height: 3px; background: linear-gradient(90deg, transparent, #8a2be2, transparent); margin: 25px 0;"></div>
-            
-            <h4 style="font-size: 13px; margin: 15px 0 10px 0; color: #ffff00; text-shadow: 2px 2px 0 #999900;">MAXIMUM VALUES & OVERFLOW</h4>
-            
-            <div style="background: rgba(255, 0, 0, 0.08); padding: 15px; margin-bottom: 15px; border-left: 3px solid #ff4444;">
-                <p style="font-size: 11px; line-height: 1.8; margin-bottom: 10px; color: rgba(255, 255, 255, 0.95);">
-                    The N-bit mode has a <strong style="color: #ff00ff;">maximum value</strong> (2^N - 1):
-                </p>
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; font-size: 10px; line-height: 1.6; margin-bottom: 12px; color: rgba(255, 255, 255, 0.95);">
-                    <div><strong style="color: #00ffff;">2-bit:</strong> max 3</div>
-                    <div><strong style="color: #00ffff;">3-bit:</strong> max 7</div>
-                    <div><strong style="color: #00ffff;">4-bit:</strong> max 15</div>
-                    <div><strong style="color: #00ffff;">5-bit:</strong> max 31</div>
-                    <div><strong style="color: #00ffff;">6-bit:</strong> max 63</div>
-                    <div><strong style="color: #00ffff;">7-bit:</strong> max 127</div>
-                    <div><strong style="color: #00ffff;">8-bit:</strong> max 255</div>
-                    <div><strong style="color: #00ffff;">GAUNTLET:</strong> progressive</div>
-                </div>
-                <div style="background: rgba(255, 100, 100, 0.15); padding: 10px; border: 2px dashed #ff4444; margin-top: 10px;">
-                    <p style="margin: 0 0 8px 0; font-size: 11px; color: #ff4444;"><strong><span class="glyph">¬</span> MAX = OVERFLOW BONUS!</strong></p>
-                    <p style="margin: 0; font-size: 10px; line-height: 1.7; color: rgba(255, 255, 255, 0.95);">
-                        • bitwise operations never exceed the maximum, but <strong style="color: #ffd700;"><span class="glyph">¬</span> NOT of the max value is 0</strong>, and no tile can hold 0<br>
-                        • that tile disappears (clears space) and awards a <strong style="color: #ffff00;">3× max value bonus</strong><br>
-                        • this is the only way to overflow<br>
-                        • e.g., in 2-bit: <span class="glyph">¬</span>11 = 00 <span class="ui-arrow">→</span> <strong style="color: #00ff00;">overflow! +9 pts</strong><br>
-                        • e.g., in 4-bit: <span class="glyph">¬</span>1111 = 0000 <span class="ui-arrow">→</span> <strong style="color: #00ff00;">overflow! +45 pts</strong>
-                    </p>
+
+            <div class="section-divider"></div>
+
+            <h4>THE CEILING AND OVERFLOW</h4>
+            <div class="rules-box">
+                <p>Each mode has a <strong>ceiling</strong>, the largest number its bits can hold, which for N bits is 2^N - 1.</p>
+                <div class="mode-grid">
+                    <div>2-BIT <span>3</span></div>
+                    <div>3-BIT <span>7</span></div>
+                    <div>4-BIT <span>15</span></div>
+                    <div>5-BIT <span>31</span></div>
+                    <div>6-BIT <span>63</span></div>
+                    <div>7-BIT <span>127</span></div>
+                    <div>8-BIT <span>255</span></div>
+                    <div>GAUNTLET <span>each in turn</span></div>
                 </div>
             </div>
-            
-            <div class="section-divider" style="height: 3px; background: linear-gradient(90deg, transparent, #8a2be2, transparent); margin: 25px 0;"></div>
-            
-            <h4 style="font-size: 13px; margin: 15px 0 10px 0; color: #ffff00; text-shadow: 2px 2px 0 #999900;">GAUNTLET MODE: PROGRESSIVE CHALLENGE</h4>
-            
-            <div style="background: rgba(138, 43, 226, 0.15); padding: 15px; margin-bottom: 15px; border-left: 3px solid #8a2be2;">
-                <p style="font-size: 11px; line-height: 1.8; margin-bottom: 10px; color: rgba(255, 255, 255, 0.95);">
-                    This is the <strong style="color: #ff00ff;">ultimate survival mode</strong> with escalating difficulty!
-                </p>
-                
-                <div style="background: rgba(255, 255, 255, 0.05); padding: 12px; margin: 10px 0; border: 2px solid rgba(138, 43, 226, 0.4);">
-                    <p style="margin: 0 0 8px 0; font-size: 10px; color: #00ffff;"><strong>how it works:</strong></p>
-                    <ul style="font-size: 10px; line-height: 1.8; margin: 0; margin-left: 15px; padding: 0; list-style: none; color: rgba(255, 255, 255, 0.95);">
-                        <li style="margin-bottom: 5px;">• <strong style="color: #ffff00;">START:</strong> begin at 2-BIT mode (max value: 3)</li>
-                        <li style="margin-bottom: 5px;">• <strong style="color: #ffff00;">GOAL:</strong> merge tiles to create the max value</li>
-                        <li style="margin-bottom: 5px;">• <strong style="color: #ffff00;">UPGRADE:</strong> creating max <span class="ui-arrow">→</span> automatic upgrade</li>
-                        <li style="margin-bottom: 5px;">• <strong style="color: #ffff00;">PROGRESS:</strong> 2<span class="ui-arrow">→</span>3<span class="ui-arrow">→</span>4<span class="ui-arrow">→</span>5<span class="ui-arrow">→</span>6<span class="ui-arrow">→</span>7<span class="ui-arrow">→</span>8 BIT challenges</li>
-                        <li style="margin-bottom: 5px;">• <strong style="color: #ffff00;">DISPLAY:</strong> message reminder is at the top</li>
-                        <li style="margin-bottom: 5px;">• <strong style="color: #ffff00;">SURVIVE:</strong> final challenge is 8-BIT!</li>
-                    </ul>
-                </div>
-                
-                <div style="background: rgba(0, 255, 0, 0.08); padding: 10px; margin-top: 10px; border-left: 3px solid #00ff00;">
-                    <p style="margin: 0 0 6px 0; font-size: 10px; color: #00ff00;"><strong>example progression:</strong></p>
-                    <p style="margin: 0; font-size: 9px; line-height: 1.7; color: rgba(255, 255, 255, 0.95);">
-                        Start: 2-BIT, max = 3<br>
-                        Merge: 1 OR 2 to get 3<br>
-                        <strong style="color: #ff00ff;">UPGRADE!</strong> now 3-BIT, max = 7<br>
-                        Merge tiles in another way to create 7<br>
-                        <strong style="color: #ff00ff;">UPGRADE!</strong> now 4-BIT, max = 15<br>
-                        ...and so on through 8-BIT!
-                    </p>
-                </div>
-            
+            <div class="rules-box is-key">
+                <p>No gate can take a tile past the ceiling. NOT of the ceiling, however, flips every bit to 0, and since no tile can hold 0, the tile clears and pays <strong>three times the ceiling</strong>. That is the only way to overflow.</p>
+                <p class="rules-aside">2-bit: <span class="glyph" data-gate="not">¬</span>11 = 00, an overflow worth +9<br>4-bit: <span class="glyph" data-gate="not">¬</span>1111 = 0000, worth +45</p>
             </div>
-            
-            <div class="section-divider" style="height: 3px; background: linear-gradient(90deg, transparent, #8a2be2, transparent); margin: 25px 0;"></div>
-            
-            <h4 style="font-size: 13px; margin: 15px 0 10px 0; color: #ffff00; text-shadow: 2px 2px 0 #999900;">SCORING</h4>
-            
-            <ul style="font-size: 11px; line-height: 1.9; margin: 8px 0 8px 20px; padding: 0; list-style: none;">
-                <li style="margin-bottom: 8px; color: rgba(255, 255, 255, 0.95);"><strong style="color: #00ffff;">operations:</strong> points = result value</li>
-                <li style="margin-bottom: 8px; color: rgba(255, 255, 255, 0.95);"><strong style="color: #00ffff;">height bonuses:</strong> first time reaching certain values (2× value)</li>
-                <li style="margin-bottom: 8px; color: rgba(255, 255, 255, 0.95);"><strong style="color: #00ffff;">overflow bonuses:</strong> 3× max value when you overflow</li>
+
+            <div class="section-divider"></div>
+
+            <h4>GAUNTLET</h4>
+            <div class="rules-box">
+                <p>Gauntlet is the survival mode, in which the board gains a bit every time you build its ceiling.</p>
+                <ul>
+                    <li>It begins at 2 bits, with a ceiling of 3.</li>
+                    <li>Building the ceiling adds a bit, and the banner at the top names the next target.</li>
+                    <li>It runs 2, 3, 4, 5, 6, 7 and 8 bits, and 8 bits is the last.</li>
+                </ul>
+            </div>
+            <div class="rules-box">
+                <p class="rules-aside">Start at 2-BIT, where the ceiling is 3. Make 3 with 1 <span class="glyph" data-gate="or">∨</span> 2, and the board becomes 3-BIT, with a ceiling of 7. Make 7 by any route, and it becomes 4-BIT, and so on through 8-BIT.</p>
+            </div>
+
+            <div class="section-divider"></div>
+
+            <h4>SCORING</h4>
+            <ul>
+                <li>A gate or a merge scores the value it produces.</li>
+                <li>The first time you build a value large enough to count, it also pays a height bonus of twice that value.</li>
+                <li>An overflow scores three times the ceiling.</li>
             </ul>
-            
-            <div class="example-box" style="background: rgba(0, 255, 0, 0.08); padding: 10px; margin-top: 12px; border-left: 3px solid #00ff00;">
-                <p style="margin: 0; font-size: 10px; line-height: 1.7; color: #00ff00;">
-                    <strong>example (4-bit):</strong> first time reaching 15 <span class="ui-arrow">→</span> +15 pts + 30 bonus = <strong>45 pts total!</strong>
-                </p>
+            <div class="rules-box is-key">
+                <p>In 4-bit, the first 15 scores 15, plus a height bonus of 30, for <strong>45</strong> in all.</p>
             </div>
-            
-            <div class="quote-box" style="background: rgba(26, 26, 46, 0.3); padding: 15px; margin-top: 20px; border: 2px solid rgba(138, 43, 226, 0.3); text-align: center;">
-                <p style="margin: 0 0 10px 0; font-size: 9px; line-height: 1.7; color: #00ff00; text-shadow: 1px 1px 0px #006600;">
-                    "No general method for the solution of<br>questions in the theory of probabilities<br>can be established which does not<br>explicitly recognize [&hellip;] those universal<br>laws of thought which are the basis<br>of all reasoning."
-                </p>
-                <p style="margin: 0; font-size: 8px; color: #00ffff; text-shadow: 1px 1px 0px #006699;">
-                    George Boole, 1854
-                </p>
+            <div class="quote-box">
+                <p>"No general method for the solution of questions in the theory of probabilities can be established which does not explicitly recognize [&hellip;] those universal laws of thought which are the basis of all reasoning."</p>
+                <p class="quote-by">George Boole, 1854</p>
             </div>
-            
-            <div class="modal-btn-row" style="margin-top: 25px; display: flex; gap: 10px;">
+
+            <div class="modal-btn-row">
                 <button id="closeInstructions">close</button>
             </div>
         </div>
@@ -775,7 +666,7 @@ document.documentElement.classList.add("font-loading");document.fonts.ready.then
             
             <p><strong>original concept:</strong><br>Inspired by Gabriele Cirulli's <em>2048</em> (2014), reimagined with Boolean logic instead of addition.</p>
             
-            <p><strong>built with:</strong><br>HTML5, CSS3 and vanilla JavaScript &middot; Web Audio API &middot; Press Start 2P by CodeMan38 &middot; <a href="https://magmacrunch.com/ware/adenosine/">adenosine</a></p>
+            <p><strong>built with:</strong><br>HTML5, CSS3 and vanilla JavaScript &middot; Web Audio API &middot; Press Start 2P by CodeMan38 and VT323 by Peter Hull &middot; <a href="https://magmacrunch.com/ware/adenosine/">adenosine</a></p>
             
             <p><strong>named in honor of:</strong><br>George Boole (1815-1864), father of Boolean logic</p>
             
@@ -801,8 +692,8 @@ const scoreClient=new AdScore.ScoreClient().auto(MC_SCORE_OPTS);
     <script src="js/scoring.js?v=92ff87d7"></script>
     <script src="js/game.js?v=8d480747"></script>
     <script src="js/math-overlay.js?v=5cc51129"></script>
-    <script src="js/rules-pages.js?v=5eb81e1f"></script>
-    <script src="js/main.js?v=337255b2"></script>
+    <script src="js/rules-pages.js?v=5c4e9278"></script>
+    <script src="js/main.js?v=1dc33034"></script>
 <script>
 if("serviceWorker"in navigator){navigator.serviceWorker.register("sw.js")}
 </script>
