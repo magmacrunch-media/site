@@ -39,12 +39,12 @@ document.documentElement.classList.add("font-loading");document.fonts.ready.then
     <link rel="stylesheet" href="css/container.css?v=b1858936">
     <link rel="stylesheet" href="css/game.css?v=52dae1db">
     <link rel="stylesheet" href="css/modal-title.css?v=a537cbe3">
-    <link rel="stylesheet" href="css/modal-lore.css?v=1f8ef4c3">
+    <link rel="stylesheet" href="css/modal-lore.css?v=10c1795c">
     <link rel="stylesheet" href="css/modal-difficulty.css?v=578cb91d">
     <link rel="stylesheet" href="css/modal-scoreboard.css?v=45b5067d">
     <link rel="stylesheet" href="css/modal-settings.css?v=a1d1054d">
-    <link rel="stylesheet" href="css/modal-misc.css?v=5b766048">
-    <link rel="stylesheet" href="css/responsive.css?v=b61c90aa">
+    <link rel="stylesheet" href="css/modal-misc.css?v=7a442392">
+    <link rel="stylesheet" href="css/responsive.css?v=688c4c41">
     <link rel="stylesheet" href="css/gates.css?v=9b6320e3">
     <link rel="stylesheet" href="css/side-panels.css?v=7ce5fd95">
     <link rel="stylesheet" href="css/math-overlay.css?v=1f5a565a">
@@ -349,8 +349,18 @@ document.documentElement.classList.add("font-loading");document.fonts.ready.then
     
     <div class="game-over" id="gameOver">
         <div class="game-over-content">
-            <h2>GAME OVER!</h2>
-            <p>Final Score: <span id="finalScore">0</span></p>
+            <h2>GAME OVER</h2>
+            <p class="go-left">george boole has left the chat</p>
+            <div class="go-score">
+                <span id="finalScore">0</span>
+                <small>points</small>
+            </div>
+            <p class="go-bits" id="finalBits"></p>
+            <div class="go-stats">
+                <div class="go-stat"><span>mode</span><b id="finalMode">-</b></div>
+                <div class="go-stat"><span>best tile</span><b id="finalBest">-</b><i id="finalBestBits"></i></div>
+                <div class="go-stat"><span>moves</span><b id="finalMoves">-</b></div>
+            </div>
             <div class="modal-btn-row" style="display: flex; gap: 10px;">
                 <button id="restartGame">play again</button>
                 <button id="shareCard" type="button" hidden>share</button>
@@ -698,12 +708,12 @@ const scoreClient=new AdScore.ScoreClient().auto(MC_SCORE_OPTS);
     <script src="js/arrow-label.js?v=8f6e64ed"></script>
     <script src="js/config.js?v=fdc4d4d3"></script>
     <script src="js/scoring.js?v=92ff87d7"></script>
-    <script src="js/game.js?v=056c45f0"></script>
+    <script src="js/game.js?v=186829fb"></script>
     <script src="js/math-overlay.js?v=5cc51129"></script>
-    <script src="js/share-card.js?v=9833e64a"></script>
+    <script src="js/share-card.js?v=840e32d8"></script>
     <script src="js/rules-pages.js?v=5c4e9278"></script>
     <script src="js/looks.js?v=f2d88d37"></script>
-    <script src="js/main.js?v=c79c672a"></script>
+    <script src="js/main.js?v=3040013a"></script>
 <script>
 if("serviceWorker"in navigator){navigator.serviceWorker.register("sw.js")}
 </script>
