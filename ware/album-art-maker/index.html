@@ -49,6 +49,7 @@
                         <hr>
                         <button data-action="file:import">Import Image&hellip;<i>Ctrl+I</i></button>
                         <button data-action="file:export">Export PNG&hellip;<i>Ctrl+E</i></button>
+                        <button data-action="file:export-sheet" title="The design at every sticker position on its label sheet, as one page to print at 100%">Export Label Sheet&hellip;</button>
                         <button data-action="file:print-marks" title="Add crop and fold marks on paper outside the bleed. The exported image gets bigger; the card does not.">Crop &amp; Fold Marks</button>
                         <hr>
                         <button data-action="app:quit">Exit<i>Alt+F4</i></button>
@@ -565,6 +566,10 @@
                 <p>File, Crop &amp; Fold Marks adds the marks a printer trims
                     and folds by, on paper outside the bleed. The exported image
                     gets bigger; the card does not.</p>
+                <p>For a sticker sold on a sheet, such as the CD and mini CD
+                    labels, File, Export Label Sheet puts the design at every
+                    sticker on one page. Print it at 100%, never fit to page,
+                    or the stickers miss their cuts.</p>
             </div>
 
             <div class="sub-label">the two files</div>
@@ -639,7 +644,7 @@
     <script src="core/clipart.js?v=e2ffe43f"></script>
     <script src="core/keybindings.js?v=8bdfd29d"></script>
     <script src="core/artstore.js?v=3f878c18"></script>
-    <script src="core/formats.js?v=d5cd8fd0"></script>
+    <script src="core/formats.js?v=c1b2bb8b"></script>
     <script src="core/pngmeta.js?v=4f6af6e4"></script>
     <script src="core/gatefold.js?v=b41d4d1d"></script>
     <script src="platform.js?v=5716e9a7"></script>
@@ -651,7 +656,7 @@
     <script src="reference.js?v=8000fd32"></script>
     <script src="textmodal.js?v=fa54e85f"></script>
     <script src="png.js?v=16e934e1"></script>
-    <script src="export.js?v=5fd4a89d"></script>
+    <script src="export.js?v=c892ae57"></script>
     <script src="import.js?v=7433e741"></script>
     <script src="layers.js?v=e387f1ad"></script>
     <script src="confirm.js?v=c7234a68"></script>
@@ -660,7 +665,7 @@
     <script src="hint.js?v=d0bfa1ca"></script>
     <script src="project-ui.js?v=b4925053"></script>
     <script src="help-ui.js?v=7268519d"></script>
-    <script src="menu.js?v=5b86f2f2"></script>
+    <script src="menu.js?v=d0f9a811"></script>
     <script src="session.js?v=77edd5e2"></script>
     <script src="sizes.js?v=9e97307c"></script>
     <script src="main.js?v=1dec16e2"></script>
