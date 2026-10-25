@@ -35,15 +35,15 @@ document.documentElement.classList.add("font-loading");document.fonts.ready.then
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../shared/arcade-base.css?v=de5e0d7b">
     <link rel="stylesheet" href="css/base.css?v=7e6107cb">
-    <link rel="stylesheet" href="css/themes.css?v=565b5a11">
+    <link rel="stylesheet" href="css/themes.css?v=c9358138">
     <link rel="stylesheet" href="css/container.css?v=b1858936">
-    <link rel="stylesheet" href="css/game.css?v=9cdfc125">
+    <link rel="stylesheet" href="css/game.css?v=52dae1db">
     <link rel="stylesheet" href="css/modal-title.css?v=a537cbe3">
     <link rel="stylesheet" href="css/modal-lore.css?v=1f8ef4c3">
     <link rel="stylesheet" href="css/modal-difficulty.css?v=578cb91d">
     <link rel="stylesheet" href="css/modal-scoreboard.css?v=45b5067d">
-    <link rel="stylesheet" href="css/modal-settings.css?v=eacefcc0">
-    <link rel="stylesheet" href="css/modal-misc.css?v=7826024a">
+    <link rel="stylesheet" href="css/modal-settings.css?v=a1d1054d">
+    <link rel="stylesheet" href="css/modal-misc.css?v=5b766048">
     <link rel="stylesheet" href="css/responsive.css?v=b61c90aa">
     <link rel="stylesheet" href="css/gates.css?v=9b6320e3">
     <link rel="stylesheet" href="css/side-panels.css?v=7ce5fd95">
@@ -353,6 +353,7 @@ document.documentElement.classList.add("font-loading");document.fonts.ready.then
             <p>Final Score: <span id="finalScore">0</span></p>
             <div class="modal-btn-row" style="display: flex; gap: 10px;">
                 <button id="restartGame">play again</button>
+                <button id="shareCard" type="button" hidden>share</button>
                 <button id="gameOverMenu">menu</button>
             </div>
         </div>
@@ -640,6 +641,13 @@ document.documentElement.classList.add("font-loading");document.fonts.ready.then
                         </button>
                     </div>
                     <div class="toggle-item">
+                        <span class="toggle-label">board look</span>
+                        <button class="toggle-button" id="lookToggle" type="button">
+                            <span class="toggle-status">mode</span>
+                        </button>
+                    </div>
+                    <p class="look-hint" id="lookHint"></p>
+                    <div class="toggle-item">
                         <span class="toggle-label">performance mode</span>
                         <button class="toggle-button" id="performanceToggle">
                             <span class="toggle-status">OFF</span>
@@ -690,10 +698,12 @@ const scoreClient=new AdScore.ScoreClient().auto(MC_SCORE_OPTS);
     <script src="js/arrow-label.js?v=8f6e64ed"></script>
     <script src="js/config.js?v=fdc4d4d3"></script>
     <script src="js/scoring.js?v=92ff87d7"></script>
-    <script src="js/game.js?v=1fc5eb36"></script>
+    <script src="js/game.js?v=056c45f0"></script>
     <script src="js/math-overlay.js?v=5cc51129"></script>
+    <script src="js/share-card.js?v=9833e64a"></script>
     <script src="js/rules-pages.js?v=5c4e9278"></script>
-    <script src="js/main.js?v=1dc33034"></script>
+    <script src="js/looks.js?v=f2d88d37"></script>
+    <script src="js/main.js?v=c79c672a"></script>
 <script>
 if("serviceWorker"in navigator){navigator.serviceWorker.register("sw.js")}
 </script>
