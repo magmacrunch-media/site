@@ -6,7 +6,7 @@
     <title>jukebox · magmacrunch media</title>
     <link rel="icon" type="image/x-icon" href="../../favicon.ico">
     <link rel="stylesheet" href="../../style.css?v=40c085d6">
-    <link rel="stylesheet" href="styles.css?v=241e598d">
+    <link rel="stylesheet" href="styles.css?v=42881c83">
     <link rel="stylesheet" href="../music-chrome.css?v=01907463">
 </head>
 <body class="music-chrome">
@@ -23,76 +23,102 @@
         <span class="current">jukebox</span>
     </div>
 
-
     <div class="jukebox">
-        <div class="jukebox-inner">
-        <div class="title-strip">
-            <div class="title-strip-text">// jukebox //</div>
-            <div class="neon-lights" id="neonLights">
-                <div class="neon-light" id="light1"></div>
-                <div class="neon-light" id="light2"></div>
-                <div class="neon-light" id="light3"></div>
-                <div class="neon-light" id="light4"></div>
-                <div class="neon-light" id="light5"></div>
-                <div class="neon-light" id="light6"></div>
+        <header class="marquee">
+            <div class="title-strip">
+                <div class="title-strip-text">// jukebox //</div>
+                <div class="neon-lights" id="neonLights" aria-hidden="true">
+                    <div class="neon-light"></div>
+                    <div class="neon-light"></div>
+                    <div class="neon-light"></div>
+                    <div class="neon-light"></div>
+                    <div class="neon-light"></div>
+                    <div class="neon-light"></div>
+                </div>
+                <div class="coin-slot-strip" aria-hidden="true">
+                    <div class="coin-slot-label">INSERT COIN</div>
+                    <div class="coin-slot"></div>
+                </div>
             </div>
-        </div>
-        <div class="checker-strip"></div>
-
-        <div class="cabinet-stripes">
-            <div class="cabinet-stripe"></div>
-            <div class="cabinet-stripe"></div>
-            <div class="cabinet-stripe"></div>
-            <div class="cabinet-stripe"></div>
-            <div class="cabinet-stripe"></div>
-            <div class="cabinet-stripe"></div>
-        </div>
-
-        <div class="coin-slot-strip">
-            <div class="coin-slot-label">INSERT COIN</div>
-            <div class="coin-slot"></div>
-        </div>
-
-        <div class="now-playing">
-            <div class="np-label">NOW PLAYING</div>
-            <div class="np-title" id="npTitle">— select a song —</div>
-            <div class="np-artist" id="npArtist"></div>
-            <div class="np-time">
-                <span class="elapsed" id="npElapsed">0:00</span>
-                <span class="sep">/</span>
-                <span id="npDuration">0:00</span>
+            <div class="checker-strip"></div>
+            <div class="cabinet-stripes" aria-hidden="true">
+                <div class="cabinet-stripe"></div>
+                <div class="cabinet-stripe"></div>
+                <div class="cabinet-stripe"></div>
+                <div class="cabinet-stripe"></div>
+                <div class="cabinet-stripe"></div>
+                <div class="cabinet-stripe"></div>
             </div>
-            <div class="playing-indicator" id="playingIndicator">
-                <div class="pi-bar"></div>
-                <div class="pi-bar"></div>
-                <div class="pi-bar"></div>
-                <div class="pi-bar"></div>
-                <div class="pi-bar"></div>
-            </div>
+        </header>
+
+        <div class="cabinet-body">
+
+            <section class="deck" aria-label="Now playing">
+                <div class="np-label">NOW PLAYING</div>
+
+                <div class="np-sleeve" id="npSleeve">
+                    <div class="np-record" aria-hidden="true"></div>
+                    <img class="np-cover" id="npCover" alt="" hidden>
+                    <div class="np-cover np-blank" id="npBlank" aria-hidden="true"></div>
+                </div>
+
+                <div class="np-title" id="npTitle">select a song</div>
+                <div class="np-artist" id="npArtist"></div>
+                <div class="np-release" id="npRelease"></div>
+
+                <div class="scrub-row">
+                    <span class="t elapsed" id="npElapsed">0:00</span>
+                    <input class="scrub" id="scrub" type="range" min="0" max="1000" value="0"
+                           step="1" aria-label="position in song" disabled>
+                    <span class="t" id="npDuration">0:00</span>
+                </div>
+
+                <div class="transport">
+                    <button class="ctrl-btn" id="prevBtn" aria-label="previous">&#9664;&#9664;</button>
+                    <button class="ctrl-btn play" id="playBtn" aria-label="play">&#9654;</button>
+                    <button class="ctrl-btn" id="nextBtn" aria-label="next">&#9654;&#9654;</button>
+                    <button class="ctrl-btn stop" id="stopBtn" aria-label="stop"><span class="glyph-stop"></span></button>
+                </div>
+
+                <div class="vol-row">
+                    <button class="vol-btn" id="muteBtn" aria-label="mute">VOL</button>
+                    <input class="vol" id="vol" type="range" min="0" max="100" value="70" aria-label="volume">
+                    <div class="playing-indicator" id="playingIndicator" aria-hidden="true">
+                        <div class="pi-bar"></div>
+                        <div class="pi-bar"></div>
+                        <div class="pi-bar"></div>
+                        <div class="pi-bar"></div>
+                        <div class="pi-bar"></div>
+                    </div>
+                </div>
+
+                <div class="queue-display">
+                    <div class="queue-label">UP NEXT</div>
+                    <div class="queue-list" id="queueList">
+                        <div class="queue-empty">nothing queued: press + on a song</div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="song-list" aria-label="Song selections">
+                <div class="song-list-header">
+                    <span class="sl-title">SONG SELECTIONS</span>
+                    <span class="sl-page" id="slPage"></span>
+                </div>
+                <div class="list-head" aria-hidden="true">
+                    <span class="col-art"></span>
+                    <span class="col-title">TITLE</span>
+                    <span class="col-artist">ARTIST</span>
+                    <span class="col-release">RELEASE</span>
+                    <span class="col-dur">TIME</span>
+                    <span class="col-btns"></span>
+                </div>
+                <div class="song-list-inner" id="songListInner"></div>
+            </section>
+
         </div>
 
-        <div class="song-list">
-            <div class="song-list-header">
-                <span class="sl-title">SONG SELECTIONS</span>
-                <span class="sl-page" id="slPage"></span>
-            </div>
-            <div class="song-list-inner" id="songListInner"></div>
-        </div>
-
-        <div class="play-controls">
-            <button class="ctrl-btn" id="playBtn">PLAY</button>
-            <button class="ctrl-btn stop" id="stopBtn">STOP</button>
-        </div>
-
-        <div class="queue-display" id="queueDisplay">
-            <div class="queue-label">UP NEXT</div>
-            <div class="queue-list" id="queueList">
-                <div class="queue-empty">queue empty</div>
-            </div>
-        </div>
-
-        <div class="juke-footer">select • play • enjoy</div>
-        </div>
+        <div class="juke-footer">select &bull; play &bull; enjoy</div>
     </div>
 
 </main>
@@ -104,7 +130,7 @@
 <script src="../../nav.js?v=2752230b"></script>
 <script src="../distributed-music/releases.js?v=205cca11"></script>
 <script src="../../assets/jukebox.js?v=23ee3b84"></script>
-<script src="app.js?v=ab086da7"></script>
+<script src="app.js?v=77ce9866"></script>
 
 </body>
 </html>
