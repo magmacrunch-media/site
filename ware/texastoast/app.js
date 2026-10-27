@@ -1,6 +1,6 @@
 (async()=>{const PYODIDE_CDN="https://cdn.jsdelivr.net/pyodide/v0.25.1/full/pyodide.js";const TT_FILE_CONTENTS={"__init__.py":`"""texastoast: Python RPG engine with I2C hardware abstraction."""
 
-__version__ = "0.12.1"
+__version__ = "0.12.2"
 
 
 def __getattr__(name):
