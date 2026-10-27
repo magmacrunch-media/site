@@ -6,7 +6,7 @@
     <title>GATE//FOLD</title>
     <link rel="icon" type="image/png" href="favicon.png">
     <link rel="stylesheet" href="../shell/fonts.css?v=08818834">
-    <link rel="stylesheet" href="typefaces.css?v=4bf59c0c">
+    <link rel="stylesheet" href="typefaces.css?v=0763823d">
     <link rel="stylesheet" href="../shell/app-shell.css?v=12781ff7">
     <link rel="stylesheet" href="../shell/toast.css?v=2c51118f">
     <link rel="stylesheet" href="../shell/dropdown.css?v=3025ec48">
@@ -433,10 +433,10 @@
                         <div class="dropdown-option" data-value="Oswald">Oswald</div>
                         <div class="dropdown-option" data-value="Playfair Display">Playfair Display</div>
                         <div class="dropdown-option" data-value="Inter">Inter</div>
-                        <div class="dropdown-option" data-value="Times New Roman" title="Not shipped with GATE//FOLD: it comes from this computer. A machine without it draws a fallback face, and an export made there comes out in it">Times New Roman (SYSTEM)</div>
-                        <div class="dropdown-option" data-value="Georgia" title="Not shipped with GATE//FOLD: it comes from this computer. A machine without it draws a fallback face, and an export made there comes out in it">Georgia (SYSTEM)</div>
+                        <div class="dropdown-option" data-value="Times New Roman" title="This computer's Times New Roman where it has one; otherwise Liberation Serif, shipped with the app, which has the same letter widths, so a cover lays out the same">Times New Roman</div>
+                        <div class="dropdown-option" data-value="Georgia" title="This computer's Georgia where it has one; otherwise Gelasio, shipped with the app, which has the same letter widths, so a cover lays out the same">Georgia</div>
                         <div class="dropdown-option" data-value="Impact" title="Not shipped with GATE//FOLD: it comes from this computer. A machine without it draws a fallback face, and an export made there comes out in it">Impact (SYSTEM)</div>
-                        <div class="dropdown-option" data-value="Arial" title="Not shipped with GATE//FOLD: it comes from this computer. A machine without it draws a fallback face, and an export made there comes out in it">Arial (SYSTEM)</div>
+                        <div class="dropdown-option" data-value="Arial" title="This computer's Arial where it has one; otherwise Liberation Sans, shipped with the app, which has the same letter widths, so a cover lays out the same">Arial</div>
                     </div>
                 </div>
                 <button class="export-btn" id="loadFontBtn" type="button" title="A .ttf or .otf of your own, from FONT//LITHO or anywhere. It is kept inside the project, so it opens the same on another machine">LOAD FONT</button>
@@ -511,10 +511,10 @@
                     <div class="dropdown-option" data-value="Oswald">Oswald</div>
                     <div class="dropdown-option" data-value="Playfair Display">Playfair Display</div>
                     <div class="dropdown-option" data-value="Inter">Inter</div>
-                    <div class="dropdown-option" data-value="Times New Roman" title="Not shipped with GATE//FOLD: it comes from this computer. A machine without it draws a fallback face, and an export made there comes out in it">Times New Roman (SYSTEM)</div>
-                    <div class="dropdown-option" data-value="Georgia" title="Not shipped with GATE//FOLD: it comes from this computer. A machine without it draws a fallback face, and an export made there comes out in it">Georgia (SYSTEM)</div>
+                    <div class="dropdown-option" data-value="Times New Roman" title="This computer's Times New Roman where it has one; otherwise Liberation Serif, shipped with the app, which has the same letter widths, so a cover lays out the same">Times New Roman</div>
+                    <div class="dropdown-option" data-value="Georgia" title="This computer's Georgia where it has one; otherwise Gelasio, shipped with the app, which has the same letter widths, so a cover lays out the same">Georgia</div>
                     <div class="dropdown-option" data-value="Impact" title="Not shipped with GATE//FOLD: it comes from this computer. A machine without it draws a fallback face, and an export made there comes out in it">Impact (SYSTEM)</div>
-                    <div class="dropdown-option" data-value="Arial" title="Not shipped with GATE//FOLD: it comes from this computer. A machine without it draws a fallback face, and an export made there comes out in it">Arial (SYSTEM)</div>
+                    <div class="dropdown-option" data-value="Arial" title="This computer's Arial where it has one; otherwise Liberation Sans, shipped with the app, which has the same letter widths, so a cover lays out the same">Arial</div>
                 </div>
             </div>
         </div>
@@ -645,10 +645,12 @@
                 ships beside the faces in <code>fonts/</code>. Self-hosted
                 rather than fetched, so a cover looks the same offline,
                 and so an export cannot come out in the fallback face.
-                The four marked SYSTEM in the picker, Times New Roman,
-                Georgia, Impact and Arial, are not shipped: they come from
-                the computer, and one without them draws, and exports, a
-                fallback.</p>
+                Times New Roman, Georgia and Arial are the computer's where it
+                has them; where it does not, Liberation Serif, Gelasio and
+                Liberation Sans stand in, also under the SIL Open Font
+                License, with the same letter widths, so a cover lays out the
+                same. Impact, marked SYSTEM in the picker, has no open
+                equivalent and is the computer's alone.</p>
 
             <div class="sub-label">clip art</div>
             <p>The 27 icons are from <strong>Lucide</strong>, under the ISC
@@ -693,7 +695,7 @@
     <script src="core/palette.js?v=c5bd2864"></script>
     <script src="core/element.js?v=a17cab52"></script>
     <script src="core/waves.js?v=24613e92"></script>
-    <script src="core/geometry.js?v=d5240450"></script>
+    <script src="core/geometry.js?v=eb44f129"></script>
     <script src="core/guides.js?v=0efe7804"></script>
     <script src="core/panels.js?v=2b21081c"></script>
     <script src="core/marks.js?v=b1a79fe9"></script>
