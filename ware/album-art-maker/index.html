@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="../shell/dropdown.css?v=3025ec48">
     <link rel="stylesheet" href="kit/magma-themes.css?v=e1af9c20">
     <link rel="stylesheet" href="kit/themes.css?v=38d89cb1">
-    <link rel="stylesheet" href="style.css?v=32cd7752">
+    <link rel="stylesheet" href="style.css?v=bf1e418b">
 
     <script src="kit/boot.js?v=3867389f"></script>
     <script src="kit/bridge-core.js?v=1a0ffb5c"></script>
@@ -48,6 +48,7 @@
                         <button data-action="project:save-as" title="Save the project under a new name">Save As&hellip;<i>Ctrl+Shift+S</i></button>
                         <hr>
                         <button data-action="file:import">Import Image&hellip;<i>Ctrl+I</i></button>
+                        <button data-action="file:load-font" title="A .ttf or .otf of your own. It is kept inside the project">Load Font&hellip;</button>
                         <button data-action="file:export">Export PNG&hellip;<i>Ctrl+E</i></button>
                         <button data-action="file:export-pdf" title="The cover at its print size with its bleed, trim and bleed boxes set, and crop and fold marks if they are on. Text is in the image at the document's dpi, so no font can go missing">Export PDF&hellip;</button>
                         <button data-action="file:export-sheet" title="The design at every sticker position on its label sheet, as one page to print at 100%">Export Label Sheet&hellip;</button>
@@ -438,6 +439,7 @@
                         <div class="dropdown-option" data-value="Arial" title="Not shipped with GATE//FOLD: it comes from this computer. A machine without it draws a fallback face, and an export made there comes out in it">Arial (SYSTEM)</div>
                     </div>
                 </div>
+                <button class="export-btn" id="loadFontBtn" type="button" title="A .ttf or .otf of your own, from FONT//LITHO or anywhere. It is kept inside the project, so it opens the same on another machine">LOAD FONT</button>
             </div>
 
             <div class="prop-group" id="fontSizeGroup" hidden>
@@ -663,6 +665,15 @@
         </div>
     </dialog>
 
+    <dialog class="modal-box" id="sheet-dialog">
+        <div class="modal-header">LABEL SHEET<button class="modal-close" title="Close">&times;</button></div>
+        <p class="modal-message">Which sheet are you printing on? Each is laid out from its maker's published figures.</p>
+        <div class="sheet-choices" id="sheet-choices"></div>
+        <div class="modal-btns">
+            <button class="action-btn" id="sheet-cancel">CANCEL</button>
+        </div>
+    </dialog>
+
     <dialog class="modal-box" id="confirm-dialog">
         <div class="modal-header">GATE//FOLD<button class="modal-close" title="Close">&times;</button></div>
         <p class="modal-message" id="confirm-message"></p>
@@ -689,29 +700,31 @@
     <script src="core/clipart.js?v=e2ffe43f"></script>
     <script src="core/keybindings.js?v=8bdfd29d"></script>
     <script src="core/artstore.js?v=3f878c18"></script>
-    <script src="core/formats.js?v=c1b2bb8b"></script>
+    <script src="core/formats.js?v=69500b25"></script>
     <script src="core/pngmeta.js?v=4f6af6e4"></script>
     <script src="core/pdf.js?v=e8ef5398"></script>
-    <script src="core/gatefold.js?v=917e4692"></script>
+    <script src="core/userfonts.js?v=3e03781e"></script>
+    <script src="core/gatefold.js?v=330efa3b"></script>
     <script src="platform.js?v=5716e9a7"></script>
     <script src="canvas.js?v=40d7e2b8"></script>
     <script src="images.js?v=dda9f723"></script>
     <script src="render.js?v=90a136d8"></script>
-    <script src="props.js?v=40f22176"></script>
+    <script src="props.js?v=f4c4f8a2"></script>
     <script src="tools.js?v=8254dc67"></script>
     <script src="reference.js?v=8000fd32"></script>
-    <script src="textmodal.js?v=fa54e85f"></script>
+    <script src="textmodal.js?v=40751467"></script>
     <script src="png.js?v=16e934e1"></script>
-    <script src="export.js?v=69d81831"></script>
+    <script src="export.js?v=4c533216"></script>
     <script src="import.js?v=7433e741"></script>
+    <script src="userfonts.js?v=fffff4e3"></script>
     <script src="layers.js?v=e387f1ad"></script>
     <script src="confirm.js?v=c7234a68"></script>
     <script src="theme.js?v=71e11d7c"></script>
     <script src="shapes-popup.js?v=91114ebf"></script>
     <script src="hint.js?v=d0bfa1ca"></script>
-    <script src="project-ui.js?v=b4925053"></script>
+    <script src="project-ui.js?v=d04f838d"></script>
     <script src="help-ui.js?v=7268519d"></script>
-    <script src="menu.js?v=099e75df"></script>
+    <script src="menu.js?v=04ab55bb"></script>
     <script src="session.js?v=77edd5e2"></script>
     <script src="sizes.js?v=9e97307c"></script>
     <script src="main.js?v=1dec16e2"></script>
