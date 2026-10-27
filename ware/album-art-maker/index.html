@@ -6,11 +6,11 @@
     <title>GATE//FOLD</title>
     <link rel="icon" type="image/png" href="favicon.png">
     <link rel="stylesheet" href="../shell/fonts.css?v=08818834">
-    <link rel="stylesheet" href="typefaces.css?v=04091e82">
+    <link rel="stylesheet" href="typefaces.css?v=4bf59c0c">
     <link rel="stylesheet" href="../shell/app-shell.css?v=12781ff7">
     <link rel="stylesheet" href="../shell/toast.css?v=2c51118f">
     <link rel="stylesheet" href="../shell/dropdown.css?v=3025ec48">
-    <link rel="stylesheet" href="kit/magma-themes.css?v=b064ae8f">
+    <link rel="stylesheet" href="kit/magma-themes.css?v=e1af9c20">
     <link rel="stylesheet" href="kit/themes.css?v=38d89cb1">
     <link rel="stylesheet" href="style.css?v=32cd7752">
 
@@ -24,8 +24,8 @@
     <script src="kit/artstore.js?v=c63f56dc"></script>
     <script src="kit/menu.js?v=21cff107"></script>
     <script src="kit/themes.js?v=4355e8bc"></script>
-    <script src="kit/magma-themes-index.js?v=11b68c95"></script>
-    <script src="bridge.js?v=f313e7c4"></script>
+    <script src="kit/magma-themes-index.js?v=c4d95048"></script>
+    <script src="bridge.js?v=4f9816f3"></script>
 </head>
 <body>
     <div class="mobile-notice">
@@ -49,7 +49,9 @@
                         <hr>
                         <button data-action="file:import">Import Image&hellip;<i>Ctrl+I</i></button>
                         <button data-action="file:export">Export PNG&hellip;<i>Ctrl+E</i></button>
+                        <button data-action="file:export-pdf" title="The cover at its print size with its bleed, trim and bleed boxes set, and crop and fold marks if they are on. Text is in the image at the document's dpi, so no font can go missing">Export PDF&hellip;</button>
                         <button data-action="file:export-sheet" title="The design at every sticker position on its label sheet, as one page to print at 100%">Export Label Sheet&hellip;</button>
+                        <button data-action="file:export-sheet-pdf" title="The label sheet as a PDF the size of the page">Export Label Sheet PDF&hellip;</button>
                         <button data-action="file:print-marks" title="Add crop and fold marks on paper outside the bleed. The exported image gets bigger; the card does not.">Crop &amp; Fold Marks</button>
                         <hr>
                         <button data-action="app:quit">Exit<i>Alt+F4</i></button>
@@ -245,6 +247,10 @@
                     <span class="tool-icon">&#9711;</span>
                     <span class="tool-name">R. RECT</span>
                 </button>
+                <button class="shape-btn" data-tool="ring" title="Ring: a circle with a hole, for a disc label">
+                    <span class="tool-icon">&#9678;</span>
+                    <span class="tool-name">RING</span>
+                </button>
             </div>
             <div class="popup-section-label">WAVES</div>
             <div class="shapes-popup-grid">
@@ -340,6 +346,14 @@
                 </div>
             </div>
 
+            <div class="prop-group" id="ringHoleGroup" hidden>
+                <label class="prop-label" title="The hole, as a percentage of the ring's width">HOLE</label>
+                <div class="range-row">
+                    <input type="range" id="ringHole" min="5" max="95" value="50" class="range-input">
+                    <span class="range-val" id="ringHoleVal">50%</span>
+                </div>
+            </div>
+
             <div class="prop-group" id="stepCountGroup" hidden>
                 <label class="prop-label">STEPS</label>
                 <div class="range-row">
@@ -418,10 +432,10 @@
                         <div class="dropdown-option" data-value="Oswald">Oswald</div>
                         <div class="dropdown-option" data-value="Playfair Display">Playfair Display</div>
                         <div class="dropdown-option" data-value="Inter">Inter</div>
-                        <div class="dropdown-option" data-value="Times New Roman">Times New Roman</div>
-                        <div class="dropdown-option" data-value="Georgia">Georgia</div>
-                        <div class="dropdown-option" data-value="Impact">Impact</div>
-                        <div class="dropdown-option" data-value="Arial">Arial</div>
+                        <div class="dropdown-option" data-value="Times New Roman" title="Not shipped with GATE//FOLD: it comes from this computer. A machine without it draws a fallback face, and an export made there comes out in it">Times New Roman (SYSTEM)</div>
+                        <div class="dropdown-option" data-value="Georgia" title="Not shipped with GATE//FOLD: it comes from this computer. A machine without it draws a fallback face, and an export made there comes out in it">Georgia (SYSTEM)</div>
+                        <div class="dropdown-option" data-value="Impact" title="Not shipped with GATE//FOLD: it comes from this computer. A machine without it draws a fallback face, and an export made there comes out in it">Impact (SYSTEM)</div>
+                        <div class="dropdown-option" data-value="Arial" title="Not shipped with GATE//FOLD: it comes from this computer. A machine without it draws a fallback face, and an export made there comes out in it">Arial (SYSTEM)</div>
                     </div>
                 </div>
             </div>
@@ -436,6 +450,27 @@
                 <div class="range-row">
                     <input type="range" id="textCurve" min="-340" max="340" value="0" step="1" class="range-input">
                     <span class="range-val" id="textCurveVal">0&deg;</span>
+                </div>
+                <label class="prop-label" title="Bold and italic, where the face has them. A face without one has the button greyed out rather than a faked style">STYLE</label>
+                <div class="action-btns">
+                    <button class="action-btn" id="boldBtn" type="button">BOLD</button>
+                    <button class="action-btn" id="italicBtn" type="button">ITALIC</button>
+                </div>
+                <label class="prop-label" title="Where each line sits inside the widest one. One line is its own widest, so this shows with two or more">ALIGN</label>
+                <div class="action-btns">
+                    <button class="action-btn active" id="alignLeftBtn" type="button">LEFT</button>
+                    <button class="action-btn" id="alignCenterBtn" type="button">CENTRE</button>
+                    <button class="action-btn" id="alignRightBtn" type="button">RIGHT</button>
+                </div>
+                <label class="prop-label" title="Space added between letters, in thousandths of the font size">LETTER SPACING</label>
+                <div class="range-row">
+                    <input type="range" id="textTracking" min="-200" max="1000" value="0" step="10" class="range-input">
+                    <span class="range-val" id="textTrackingVal">0</span>
+                </div>
+                <label class="prop-label" title="Line height, as a percentage of the font size">LINE SPACING</label>
+                <div class="range-row">
+                    <input type="range" id="textLeading" min="60" max="300" value="130" step="5" class="range-input">
+                    <span class="range-val" id="textLeadingVal">130%</span>
                 </div>
                 <button class="export-btn" id="fitDiscBtn" type="button" hidden title="Set this text round the disc's rim, just inside the safe ring, with its arc on the disc's centre. A smile goes round the bottom">FIT TO DISC</button>
             </div>
@@ -474,10 +509,10 @@
                     <div class="dropdown-option" data-value="Oswald">Oswald</div>
                     <div class="dropdown-option" data-value="Playfair Display">Playfair Display</div>
                     <div class="dropdown-option" data-value="Inter">Inter</div>
-                    <div class="dropdown-option" data-value="Times New Roman">Times New Roman</div>
-                    <div class="dropdown-option" data-value="Georgia">Georgia</div>
-                    <div class="dropdown-option" data-value="Impact">Impact</div>
-                    <div class="dropdown-option" data-value="Arial">Arial</div>
+                    <div class="dropdown-option" data-value="Times New Roman" title="Not shipped with GATE//FOLD: it comes from this computer. A machine without it draws a fallback face, and an export made there comes out in it">Times New Roman (SYSTEM)</div>
+                    <div class="dropdown-option" data-value="Georgia" title="Not shipped with GATE//FOLD: it comes from this computer. A machine without it draws a fallback face, and an export made there comes out in it">Georgia (SYSTEM)</div>
+                    <div class="dropdown-option" data-value="Impact" title="Not shipped with GATE//FOLD: it comes from this computer. A machine without it draws a fallback face, and an export made there comes out in it">Impact (SYSTEM)</div>
+                    <div class="dropdown-option" data-value="Arial" title="Not shipped with GATE//FOLD: it comes from this computer. A machine without it draws a fallback face, and an export made there comes out in it">Arial (SYSTEM)</div>
                 </div>
             </div>
         </div>
@@ -607,7 +642,11 @@
                 and Inter, all under the SIL Open Font License 1.1, whose text
                 ships beside the faces in <code>fonts/</code>. Self-hosted
                 rather than fetched, so a cover looks the same offline,
-                and so an export cannot come out in the fallback face.</p>
+                and so an export cannot come out in the fallback face.
+                The four marked SYSTEM in the picker, Times New Roman,
+                Georgia, Impact and Arial, are not shipped: they come from
+                the computer, and one without them draws, and exports, a
+                fallback.</p>
 
             <div class="sub-label">clip art</div>
             <p>The 27 icons are from <strong>Lucide</strong>, under the ISC
@@ -641,28 +680,29 @@
     <script src="../shell/dropdown.js?v=2aa77ebe"></script>
     <script src="core/tier.js?v=6b0c5f01"></script>
     <script src="core/palette.js?v=c5bd2864"></script>
-    <script src="core/element.js?v=3094e6b4"></script>
+    <script src="core/element.js?v=a17cab52"></script>
     <script src="core/waves.js?v=24613e92"></script>
-    <script src="core/geometry.js?v=7e60a51a"></script>
+    <script src="core/geometry.js?v=d5240450"></script>
     <script src="core/guides.js?v=0efe7804"></script>
-    <script src="core/panels.js?v=7fabedd6"></script>
+    <script src="core/panels.js?v=2b21081c"></script>
     <script src="core/marks.js?v=b1a79fe9"></script>
     <script src="core/clipart.js?v=e2ffe43f"></script>
     <script src="core/keybindings.js?v=8bdfd29d"></script>
     <script src="core/artstore.js?v=3f878c18"></script>
     <script src="core/formats.js?v=c1b2bb8b"></script>
     <script src="core/pngmeta.js?v=4f6af6e4"></script>
-    <script src="core/gatefold.js?v=b10ded67"></script>
+    <script src="core/pdf.js?v=e8ef5398"></script>
+    <script src="core/gatefold.js?v=917e4692"></script>
     <script src="platform.js?v=5716e9a7"></script>
-    <script src="canvas.js?v=b174de86"></script>
+    <script src="canvas.js?v=40d7e2b8"></script>
     <script src="images.js?v=dda9f723"></script>
-    <script src="render.js?v=a590af19"></script>
-    <script src="props.js?v=f7d639a1"></script>
+    <script src="render.js?v=90a136d8"></script>
+    <script src="props.js?v=40f22176"></script>
     <script src="tools.js?v=8254dc67"></script>
     <script src="reference.js?v=8000fd32"></script>
     <script src="textmodal.js?v=fa54e85f"></script>
     <script src="png.js?v=16e934e1"></script>
-    <script src="export.js?v=c892ae57"></script>
+    <script src="export.js?v=69d81831"></script>
     <script src="import.js?v=7433e741"></script>
     <script src="layers.js?v=e387f1ad"></script>
     <script src="confirm.js?v=c7234a68"></script>
@@ -671,7 +711,7 @@
     <script src="hint.js?v=d0bfa1ca"></script>
     <script src="project-ui.js?v=b4925053"></script>
     <script src="help-ui.js?v=7268519d"></script>
-    <script src="menu.js?v=d0f9a811"></script>
+    <script src="menu.js?v=099e75df"></script>
     <script src="session.js?v=77edd5e2"></script>
     <script src="sizes.js?v=9e97307c"></script>
     <script src="main.js?v=1dec16e2"></script>
