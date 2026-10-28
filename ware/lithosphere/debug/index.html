@@ -19,9 +19,15 @@
   <label>shape <input id="shape" type="text" size="12" placeholder="e.g. 90,110,140"></label>
   <label>scale <select id="scale"><option>1</option><option>2</option><option selected>3</option><option>4</option><option>6</option></select></label>
   <label>mode <select id="mode"><option value="0">justified</option><option value="1">ragged</option></select></label>
+  <label title="where a line that does not fill the measure sits">align <select id="align"><option value="0">left</option><option value="1">centre</option><option value="2">right</option></select></label>
+  <label title="the face \emph{...} sets its text in">emph <select id="emph">
+    <option value="">none</option>
+    <option value="litho-display.litho">Litho Display</option>
+    <option value="litho-mono.litho">Litho Mono</option>
+  </select></label>
   <label>tolerance <input id="tolerance" type="number" min="0" max="10000" value="200" style="width:6em"></label>
   <label><input type="checkbox" id="hyphenate" checked> hyphenate</label>
-  <label title="~ \- \mbox{...} \\, see the README"><input type="checkbox" id="markup"> markup</label>
+  <label title="~ \- \mbox{...} \\ \hfill \emph{...} \pause \speed \color, see the README"><input type="checkbox" id="markup"> markup</label>
   <span id="timing"></span>
 </header>
 <main>
@@ -37,13 +43,18 @@
       <option value="markup-mbox.txt">markup: \mbox</option>
       <option value="markup-break.txt">markup: \- break points</option>
       <option value="markup-newline.txt">markup: \\ line breaks</option>
+      <option value="markup-hfill.txt">markup: \hfill, a menu and a centred title</option>
+      <option value="markup-marks.txt">markup: \pause, \speed and \color marks</option>
+      <option value="markup-emph.txt">markup: \emph in a second face</option>
     </select></label>
     <textarea id="text" spellcheck="false"></textarea>
     <p>A character the face does not draw is a missing glyph, drawn as a box an em wide.
       A face with no hyphen glyph is never hyphenated; both faces here have one.
       With <b>markup</b> ticked the text is read as markup: <code>~</code> a space no line breaks at,
-      <code>\-</code> a break point, <code>\mbox{...}</code> kept on one line, <code>\\</code> a line break.
-      Anything else after a backslash is an error at its byte.</p>
+      <code>\-</code> a break point, <code>\mbox{...}</code> kept on one line, <code>\\</code> a line break,
+      <code>\hfill</code> space that takes a line's slack, <code>\emph{...}</code> set in the <b>emph</b> face,
+      and the game marks <code>\pause{N}</code>, <code>\speed{N}</code> and <code>\color{name}{...}</code>,
+      which change no break. Anything else after a backslash is an error at its byte.</p>
     <label>a game's exceptions, one word per line, breaks marked</label>
     <textarea id="exceptions" spellcheck="false" style="min-height:90px">gra-no-la
 roderick
@@ -56,13 +67,18 @@ har-ri-son</textarea>
       <span><i style="border-top:2px solid var(--stretch)"></i>stretch / shrink limits</span>
       <span><i style="background:var(--pen)"></i>penalty</span>
       <span><i style="background:var(--measure)"></i>measure</span>
+      <span><i style="background:var(--pen);width:6px"></i>pause</span>
+      <span><i style="background:var(--glue);width:6px"></i>speed</span>
     </div>
     <p>
       <label><input type="checkbox" id="showBoxes" checked> boxes</label>
       <label><input type="checkbox" id="showGlue" checked> glue</label>
       <label><input type="checkbox" id="showPen" checked> penalties</label>
       <label><input type="checkbox" id="showNums" checked> numbers</label>
+      <label><input type="checkbox" id="showMarks" checked> marks</label>
     </p>
+    <label>marks</label>
+    <pre id="marks" style="font:12px/1.4 ui-monospace,monospace;color:var(--muted);white-space:pre-wrap;margin:4px 0 0"></pre>
     <div id="error"></div>
   </div>
   <div>
@@ -73,6 +89,6 @@ har-ri-son</textarea>
 </main>
 <div id="tip"></div>
 <script src="lithosphere.js?v=469e41be"></script>
-<script src="app.js?v=2f76fd26"></script>
+<script src="app.js?v=7ed64c1d"></script>
 </body>
 </html>
