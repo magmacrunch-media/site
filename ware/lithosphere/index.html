@@ -44,7 +44,7 @@
 
   <div class="lead">
     <p>Line breaking for the words inside a game: dialogue boxes, signs, item descriptions. Instead of filling one line at a time, it looks at the whole paragraph before deciding where each line ends, so the spaces between words come out more even. It is made for pixel fonts, and it is quick enough to re-flow the text whenever a box changes size.</p>
-    <p>Very early: it started on 2026-10-22, and no game uses it yet.</p>
+    <p>Very early: it started on 2026-10-22. Its first user is the dialogue box in tunacan, our game engine, which the Grocery Harrison game in progress talks through.</p>
 
     <details class="tech">
     <summary>the technical version</summary>
@@ -56,7 +56,10 @@
     <p>A game can re-break a paragraph every time the box changes size. It is portable C99
       that never allocates, and the same code runs in a browser, on a desktop and on the Wii.</p>
     <p><strong>Very early.</strong> It started on 2026-10-22, and the four milestones done so
-      far are the engine, hyphenation, the web build and a Wii demo. No game uses it yet.</p>
+      far are the engine, hyphenation, the web build and a Wii demo. Since then it has learned
+      centred and right-aligned lines, marks a talk box can act on as it reveals the text (a
+      pause, a reading speed, a colour), and words set in a second font. tunacan's dialogue box
+      is the first thing built on it.</p>
     </details>
   </div>
 
