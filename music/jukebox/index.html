@@ -6,7 +6,7 @@
     <title>jukebox · magmacrunch media</title>
     <link rel="icon" type="image/x-icon" href="../../favicon.ico">
     <link rel="stylesheet" href="../../style.css?v=40c085d6">
-    <link rel="stylesheet" href="styles.css?v=42881c83">
+    <link rel="stylesheet" href="styles.css?v=5f914dd5">
     <link rel="stylesheet" href="../music-chrome.css?v=01907463">
 </head>
 <body class="music-chrome">
@@ -92,6 +92,12 @@
                     </div>
                 </div>
 
+                <div class="scope-row" id="scopeRow" hidden>
+                    <button class="vol-btn" id="scopeBtn" type="button" aria-pressed="false" aria-controls="jbScope" title="An oscilloscope on the music">SCOPE</button>
+                    <button class="vol-btn" id="scopePopBtn" type="button" aria-pressed="false" title="Put the scope in a window of its own, to move anywhere">POP OUT</button>
+                </div>
+                <ad-scope id="jbScope" hidden></ad-scope>
+
                 <div class="queue-display">
                     <div class="queue-label">UP NEXT</div>
                     <div class="queue-list" id="queueList">
@@ -127,10 +133,12 @@
     &copy; 2026 <span>magmacrunch media</span>
 </footer>
 
-<script src="../../nav.js?v=506b0530"></script>
+<script src="../../nav.js?v=efa9574d"></script>
 <script src="../distributed-music/releases.js?v=1b2521d0"></script>
-<script src="../../assets/jukebox.js?v=23ee3b84"></script>
-<script src="app.js?v=77ce9866"></script>
+<script src="../../assets/jukebox.js?v=0f21816f"></script>
+<script src="../../arcade/shared/adenosine-scope.js?v=72354867"></script>
+<script src="scope-window.js?v=0c7a236c"></script>
+<script src="app.js?v=4b1ad3d3"></script>
 
 </body>
 </html>
