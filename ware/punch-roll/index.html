@@ -7,8 +7,9 @@
     <link rel="stylesheet" href="../shell/fonts.css?v=08818834">
     <link rel="stylesheet" href="../shell/app-shell.css?v=12781ff7">
     <link rel="stylesheet" href="../shell/toast.css?v=2c51118f">
-    <link rel="stylesheet" href="kit/magma-themes.css?v=b064ae8f">
-    <link rel="stylesheet" href="style.css?v=a198ae4c">
+    <link rel="stylesheet" href="kit/magma-themes.css?v=e1af9c20">
+    <link rel="stylesheet" href="kit/themes.css?v=38d89cb1">
+    <link rel="stylesheet" href="style.css?v=0be846fb">
 </head>
 <body>
     <header class="app-header">
@@ -19,6 +20,7 @@
                 <button id="btn-play" class="primary icon" type="button" title="Play / pause (Shift+Space); Space plays and stops"><svg class="i-play" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 1.5v9L10.5 6z"/></svg><svg class="i-pause" viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 2h2.5v8H2.5zM7 2h2.5v8H7z"/></svg><span class="sr">Play</span></button>
                 <button id="btn-stop" class="icon" type="button" title="Stop, back to the start marker (Space)"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 2.5h7v7h-7z"/></svg><span class="sr">Stop</span></button>
             </span>
+            <output id="out-length" aria-label="Length" title="How long the song plays once through: its bars at its BPM, tempo changes included"></output>
             <label>BPM <input id="in-bpm" type="number" min="20" max="400" step="1"></label>
             <label>Bars <input id="in-bars" type="number" min="1" max="256" step="1"></label>
             <label>Grid <select id="in-grid" title="What notes snap to"></select></label>
@@ -30,6 +32,14 @@
             <span class="export-picker">
                 <button id="btn-export" type="button" aria-haspopup="menu" aria-expanded="false" aria-controls="export-menu" title="Render the song and export it as an audio file">Export</button>
                 <span id="export-menu" class="menu" role="menu" aria-label="Export format" hidden></span>
+            </span>
+            <span class="help-picker">
+                <button id="btn-help" type="button" aria-haspopup="menu" aria-expanded="false" aria-controls="help-menu" title="How to use, shortcuts and credits">Help</button>
+                <span id="help-menu" class="menu" role="menu" aria-label="Help" hidden>
+                    <button id="btn-guide" role="menuitem" type="button">How to use</button>
+                    <button id="btn-keys" role="menuitem" type="button" title="Keyboard shortcuts (? or F1)">Keyboard shortcuts<i>F1</i></button>
+                    <button id="btn-credits" role="menuitem" type="button">Credits</button>
+                </span>
             </span>
         </nav>
     </header>
@@ -58,10 +68,6 @@
                 <button id="btn-midi" type="button" title="Play the current track from a MIDI keyboard, and enter notes with Step entry">MIDI keyboard</button>
                 <select id="in-midi" aria-label="MIDI input" hidden></select>
             </div>
-            <div id="scope-row">
-                <button id="btn-scope" type="button" aria-pressed="false" aria-controls="scope" title="An oscilloscope on everything the song plays">Scope</button>
-            </div>
-            <ad-scope id="scope" hidden></ad-scope>
         </aside>
         <div id="tracks-resizer" role="separator" aria-orientation="vertical" aria-controls="tracks"
             aria-label="Track panel width" tabindex="0"
@@ -83,25 +89,22 @@
             </label>
         </div>
     </main>
+    <ad-scope id="scope" hidden></ad-scope>
 
     <footer class="app-footer">
         <span id="status">Click: add · drag: move · right-click: delete · Shift-drag: select</span>
         <span class="footer-end">
+            <span id="scope-row">
+                <button id="btn-scope" class="theme-mode" type="button" aria-pressed="false" aria-controls="scope" title="An oscilloscope on everything the song plays">Scope</button>
+                <button id="btn-scope-pop" class="theme-mode" type="button" title="Put the scope in a window of its own, to move anywhere" hidden>Pop out</button>
+            </span>
             <span class="theme"><span id="theme-label">Theme</span>
                 <span class="theme-picker">
-                    <button id="in-theme" type="button" aria-haspopup="listbox" aria-expanded="false" aria-controls="theme-list" aria-labelledby="theme-label in-theme" title="Colour theme, from magma-themes: hover or arrow through the list to preview"></button>
-                    <ul id="theme-list" role="listbox" aria-labelledby="theme-label" hidden></ul>
+                    <button id="in-theme" class="theme-pick" type="button" aria-haspopup="listbox" aria-expanded="false" aria-controls="theme-list" aria-labelledby="theme-label in-theme" title="Colour theme, from magma-themes: hover or arrow through the list to preview"></button>
+                    <ul id="theme-list" class="theme-list" role="listbox" aria-labelledby="theme-label" hidden></ul>
                 </span>
             </span>
-            <button id="btn-theme-mode" title="Light or dark themes">Dark</button>
-            <span class="help-picker">
-                <button id="btn-help" type="button" aria-haspopup="menu" aria-expanded="false" aria-controls="help-menu" title="How to use, shortcuts and credits">Help</button>
-                <span id="help-menu" class="menu" role="menu" aria-label="Help" hidden>
-                    <button id="btn-guide" role="menuitem" type="button">How to use</button>
-                    <button id="btn-keys" role="menuitem" type="button" title="Keyboard shortcuts (? or F1)">Keyboard shortcuts<i>F1</i></button>
-                    <button id="btn-credits" role="menuitem" type="button">Credits</button>
-                </span>
-            </span>
+            <button id="btn-theme-mode" class="theme-mode" title="Light or dark themes">Dark</button>
             <span id="app-version"></span>
         </span>
     </footer>
@@ -145,9 +148,10 @@
             </section>
             <section>
                 <h3>Pick a track</h3>
-                <p>The panel on the left holds the tracks: two pulse channels, a
-                    triangle and noise; Add track makes up to six. Click one, or press
-                    1 to 6, and new notes go onto it. M mutes the current track and S solos it. Click the
+                <p>The panel on the left holds the tracks: Lead, Harmony, Bass and
+                    Drums to start with, on two pulse waves, a triangle and noise; Add
+                    track makes up to six, and double-clicking a name renames it. Click
+                    one, or press 1 to 6, and new notes go onto it. M mutes the current track and S solos it. Click the
                     keyboard beside the roll to hear a pitch on that track.</p>
             </section>
             <section>
@@ -215,7 +219,7 @@
                 <dt>Type</dt>
                 <dd>Press Start 2P and Courier Prime, by their project authors, under the SIL Open Font License 1.1</dd>
             </dl>
-            <p class="doc-more">&copy; MAGMACRUNCH MEDIA</p>
+            <p class="doc-more">&copy; magmacrunch media, LLC</p>
         </div>
     </dialog>
 
@@ -229,29 +233,30 @@
     <script src="kit/modal.js?v=0549bda4"></script>
     <script src="kit/dom.js?v=1d063261"></script>
     <script src="kit/themes.js?v=4355e8bc"></script>
-    <script src="kit/magma-themes-index.js?v=11b68c95"></script>
+    <script src="kit/magma-themes-index.js?v=c4d95048"></script>
     <script src="../shell/toast.js?v=d87a2776"></script>
     <script src="vendor/adenosine-synth.js?v=92493d91"></script>
     <script src="vendor/adenosine-scope.js?v=f0f22ae8"></script>
     <script src="vendor/wasm-media-encoders.js?v=dd4e17ab"></script>
-    <script src="core/roll.js?v=19c112e2"></script>
-    <script src="core/keymap.js?v=f81a0236"></script>
+    <script src="core/roll.js?v=58714ee7"></script>
+    <script src="core/keymap.js?v=cb026863"></script>
     <script src="core/songfile.js?v=c1169965"></script>
     <script src="core/midi.js?v=b4db0caf"></script>
     <script src="core/flac.js?v=67c1a8ac"></script>
     <script src="core/steps.js?v=8e8792b4"></script>
     <script src="core/wavescope.js?v=bcc88085"></script>
     <script src="core/samples.js?v=ae2ef0d5"></script>
-    <script src="bridge.js?v=3bb5b1f9"></script>
+    <script src="bridge.js?v=a9f7bc38"></script>
     <script src="faust-voice.js?v=3275a6f2"></script>
     <script src="drum-voices.js?v=75a78121"></script>
     <script src="sample-voice.js?v=c14c1706"></script>
     <script src="export.js?v=4a6b1c2d"></script>
     <script src="theme.js?v=bf2baf47"></script>
     <script src="wave-glyph.js?v=f27c9f17"></script>
-    <script src="roll-view.js?v=fd42d36b"></script>
-    <script src="step-view.js?v=3c0a5157"></script>
+    <script src="roll-view.js?v=f48671ab"></script>
+    <script src="step-view.js?v=44cb112d"></script>
     <script src="midi.js?v=b33fdd11"></script>
-    <script src="main.js?v=03a0322f"></script>
+    <script src="scope-window.js?v=970263d0"></script>
+    <script src="main.js?v=169e0707"></script>
 </body>
 </html>
