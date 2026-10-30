@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="../shell/toast.css?v=2c51118f">
     <link rel="stylesheet" href="kit/magma-themes.css?v=e1af9c20">
     <link rel="stylesheet" href="kit/themes.css?v=38d89cb1">
-    <link rel="stylesheet" href="style.css?v=0be846fb">
+    <link rel="stylesheet" href="style.css?v=243e70f7">
 </head>
 <body>
     <header class="app-header">
@@ -26,12 +26,14 @@
             <label>Grid <select id="in-grid" title="What notes snap to"></select></label>
             <label class="check"><input id="in-loop" type="checkbox" checked> Loop</label>
             <span class="spacer"></span>
-            <button id="btn-new" title="New song">New</button>
-            <button id="btn-open" title="Open a song (Ctrl+O)">Open</button>
-            <button id="btn-save" title="Save the song (Ctrl+S)">Save</button>
-            <span class="export-picker">
-                <button id="btn-export" type="button" aria-haspopup="menu" aria-expanded="false" aria-controls="export-menu" title="Render the song and export it as an audio file">Export</button>
-                <span id="export-menu" class="menu" role="menu" aria-label="Export format" hidden></span>
+            <span class="file-picker">
+                <button id="btn-file" type="button" aria-haspopup="menu" aria-expanded="false" aria-controls="file-menu" title="New, open, save and export">File</button>
+                <span id="file-menu" class="menu" role="menu" aria-label="File" hidden>
+                    <button id="btn-new" role="menuitem" type="button" title="Start a new song">New</button>
+                    <button id="btn-open" role="menuitem" type="button" title="Open a song">Open&hellip;<i>Ctrl+O</i></button>
+                    <button id="btn-save" role="menuitem" type="button" title="Save the song">Save<i>Ctrl+S</i></button>
+                    <span class="menu-sep" role="separator"></span>
+                </span>
             </span>
             <span class="help-picker">
                 <button id="btn-help" type="button" aria-haspopup="menu" aria-expanded="false" aria-controls="help-menu" title="How to use, shortcuts and credits">Help</button>
@@ -151,7 +153,8 @@
                 <p>The panel on the left holds the tracks: Lead, Harmony, Bass and
                     Drums to start with, on two pulse waves, a triangle and noise; Add
                     track makes up to six, and double-clicking a name renames it. Click
-                    one, or press 1 to 6, and new notes go onto it. M mutes the current track and S solos it. Click the
+                    one, or press 1 to 6, and new notes go onto it; its card opens, with
+                    its picture, volume and ENV, and the others fold to a line each. M mutes the current track and S solos it. Click the
                     keyboard beside the roll to hear a pitch on that track.</p>
             </section>
             <section>
@@ -189,7 +192,8 @@
             </section>
             <section>
                 <h3>Keep it</h3>
-                <p>Save writes a <code>.punch</code> song file, and Open loads one back;
+                <p>The File menu holds New, Open, Save and Export. Save writes a
+                    <code>.punch</code> song file, and Open loads one back;
                     on the desktop, double-clicking a <code>.punch</code> file opens it too.
                     Export renders the song to an audio file: WAV or FLAC, which keep every
                     sample, or MP3 or Ogg Vorbis, which are far smaller. Ctrl+Z undoes almost
@@ -234,6 +238,7 @@
     <script src="kit/dom.js?v=1d063261"></script>
     <script src="kit/themes.js?v=4355e8bc"></script>
     <script src="kit/magma-themes-index.js?v=c4d95048"></script>
+    <script src="kit/scope-window.js?v=f47adede"></script>
     <script src="../shell/toast.js?v=d87a2776"></script>
     <script src="vendor/adenosine-synth.js?v=92493d91"></script>
     <script src="vendor/adenosine-scope.js?v=f0f22ae8"></script>
@@ -256,7 +261,6 @@
     <script src="roll-view.js?v=f48671ab"></script>
     <script src="step-view.js?v=44cb112d"></script>
     <script src="midi.js?v=b33fdd11"></script>
-    <script src="scope-window.js?v=970263d0"></script>
-    <script src="main.js?v=169e0707"></script>
+    <script src="main.js?v=7298a00c"></script>
 </body>
 </html>
