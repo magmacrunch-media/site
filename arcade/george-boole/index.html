@@ -43,7 +43,7 @@ document.documentElement.classList.add("font-loading");document.fonts.ready.then
     <link rel="stylesheet" href="css/modal-difficulty.css?v=578cb91d">
     <link rel="stylesheet" href="css/modal-scoreboard.css?v=45b5067d">
     <link rel="stylesheet" href="css/modal-settings.css?v=a1d1054d">
-    <link rel="stylesheet" href="css/modal-misc.css?v=7a442392">
+    <link rel="stylesheet" href="css/modal-misc.css?v=72b7ea17">
     <link rel="stylesheet" href="css/responsive.css?v=688c4c41">
     <link rel="stylesheet" href="css/gates.css?v=9b6320e3">
     <link rel="stylesheet" href="css/side-panels.css?v=7ce5fd95">
@@ -676,23 +676,25 @@ document.documentElement.classList.add("font-loading");document.fonts.ready.then
         <div class="credits-content">
             <h3><img class="credits-mark" src="img/mc-logo.png" alt="" width="26" height="32">credits</h3>
 
-            <p><strong>game by:</strong><br><a href="https://magmacrunch.com">magmacrunch media</a></p>
-            
-                <p><strong>music:</strong><br>"George Boole Has Entered the Chat" by <a href="https://linktr.ee/juanitothompson">Juanito Thompson</a></p>
+            <h4 class="credits-section" data-gate="xor">made by</h4>
+            <div class="credit-row"><span class="credit-role">game</span><span class="credit-name"><a href="https://magmacrunch.com">magmacrunch media</a></span></div>
+            <div class="credit-row"><span class="credit-role">music</span><span class="credit-name"><a href="https://linktr.ee/juanitothompson">Juanito Thompson</a></span></div>
+            <p class="credit-note">"George Boole Has Entered the Chat"</p>
+            <div class="credit-row"><span class="credit-role">sounds</span><span class="credit-name">a Moog Grandmother</span></div>
+            <p class="credit-note">every effect, played on the analog synth</p>
 
-                <p><strong>sound effects:</strong><br>Played on a Moog Grandmother, a semi-modular analog synthesizer.</p>
-            
-            <p><strong>original concept:</strong><br>Gabriele Cirulli's <em>2048</em> (2014), with Boolean logic in place of addition, so that two equal tiles keep their value rather than doubling it.</p>
-            
-            <p><strong>built with:</strong><br>HTML5, CSS3 and vanilla JavaScript &middot; Web Audio API &middot; Press Start 2P by CodeMan38 and VT323 by Peter Hull &middot; <a href="https://magmacrunch.com/ware/adenosine/">adenosine</a></p>
-            
-            <p><strong>named in honor of:</strong><br>George Boole (1815-1864), the mathematician whose algebra of logic became the arithmetic of every computer.</p>
-            
-            <p><strong>cheapness impact factor:</strong><br>2.4</p>
+            <h4 class="credits-section" data-gate="or">origins</h4>
+            <p class="credit-prose"><span class="credit-role">concept</span> Gabriele Cirulli's <em>2048</em> (2014), with Boolean logic in place of addition, so that two equal tiles keep their value rather than doubling it.</p>
+            <p class="credit-prose"><span class="credit-role">named for</span> George Boole (1815-1864), whose algebra of logic became the arithmetic of every computer.</p>
 
-            <p><strong>last updated:</strong><br>October 24, 2026</p>
-            
-            <div class="modal-btn-row" style="margin-top: 25px; display: flex; gap: 10px;">
+            <h4 class="credits-section" data-gate="and">built with</h4>
+            <p class="credits-built"><span>HTML5, CSS3, JS</span><span>Web Audio API</span><span class="wide">Press Start 2P by CodeMan38</span><span class="wide">VT323 by Peter Hull</span><span><a href="https://magmacrunch.com/ware/adenosine/">adenosine</a></span></p>
+
+            <div class="credit-row credit-row-aside"><span class="credit-role">cheapness impact factor</span><span class="credit-name">2.4</span></div>
+
+            <p class="credits-foot">last updated October 29, 2026</p>
+
+            <div class="modal-btn-row">
                 <button id="closeCredits">close</button>
             </div>
         </div>
