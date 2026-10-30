@@ -43,7 +43,7 @@ document.documentElement.classList.add("font-loading");document.fonts.ready.then
     <link rel="stylesheet" href="css/modal-difficulty.css?v=578cb91d">
     <link rel="stylesheet" href="css/modal-scoreboard.css?v=45b5067d">
     <link rel="stylesheet" href="css/modal-settings.css?v=a1d1054d">
-    <link rel="stylesheet" href="css/modal-misc.css?v=72b7ea17">
+    <link rel="stylesheet" href="css/modal-misc.css?v=9fe1541f">
     <link rel="stylesheet" href="css/responsive.css?v=688c4c41">
     <link rel="stylesheet" href="css/gates.css?v=9b6320e3">
     <link rel="stylesheet" href="css/side-panels.css?v=7ce5fd95">
@@ -399,10 +399,10 @@ document.documentElement.classList.add("font-loading");document.fonts.ready.then
 
     <div class="instructions-modal" id="instructionsModal">
         <div class="instructions-content">
-            <div class="instructions-topbar"><span class="rules-title">full rules</span></div>
+            <div class="instructions-topbar"><span class="rules-title">full rules</span><button class="rules-x" id="instructionsX" type="button" aria-label="close the rules">✕</button></div>
             <h3>full rules</h3>
 
-            <h4 data-chapter="basics">COUNTING IN BINARY</h4>
+            <h4 data-chapter="basics" data-tone="xor">COUNTING IN BINARY</h4>
             <div class="rules-box">
                 <p>You count with ten digits, 0 through 9, whereas a computer counts with only two, <strong>0</strong> and <strong>1</strong>. That is all that binary means.</p>
                 <p>Each of those digits is a <strong>bit</strong>. A tile holds four bits in a row, and each bit is worth twice the one to its right, so the columns are worth <strong>8, 4, 2 and 1</strong>. The number on a tile is the sum of the columns that hold a 1.</p>
@@ -421,7 +421,7 @@ document.documentElement.classList.add("font-loading");document.fonts.ready.then
 
             <div class="section-divider"></div>
 
-            <h4>A GATE IS A RULE FOR ONE BIT</h4>
+            <h4 data-tone="or">A GATE IS A RULE FOR ONE BIT</h4>
             <div class="rules-box">
                 <p>Before it touches a whole number, a gate is a rule about <strong>one bit against one bit</strong>: two bits in, one bit out. There are only four such rules, and each fits in four lines, read as "in, in, out".</p>
             </div>
@@ -454,7 +454,7 @@ document.documentElement.classList.add("font-loading");document.fonts.ready.then
 
             <div class="section-divider"></div>
 
-            <h4>NOW DO IT TO A WHOLE NUMBER</h4>
+            <h4 data-tone="and">NOW DO IT TO A WHOLE NUMBER</h4>
             <div class="rules-box">
                 <p>A gate does not know what 5 is. It lines up the two tiles' bits <strong>column by column</strong>, applies its one rule to each column, and reads the answer back as a number, so nothing carries the way it does in addition.</p>
                 <div class="bits">
@@ -494,7 +494,7 @@ document.documentElement.classList.add("font-loading");document.fonts.ready.then
                 <p>As in <em>2048</em>, you <strong>swipe</strong>, or use the arrow keys, to slide every tile on a 4 by 4 grid in one direction.</p>
             </div>
 
-            <h4>THE GOAL</h4>
+            <h4 data-tone="xor">THE GOAL</h4>
             <ul>
                 <li>Score points by combining tiles.</li>
                 <li>Last as long as you can, since the game ends only when the board is full and no move is left.</li>
@@ -503,7 +503,7 @@ document.documentElement.classList.add("font-loading");document.fonts.ready.then
 
             <div class="section-divider"></div>
 
-            <h4>EQUAL TILES MERGE</h4>
+            <h4 data-tone="or">EQUAL TILES MERGE</h4>
             <div class="rules-box">
                 <p>Two equal tiles merge into one tile of the <strong>same</strong> value rather than double it, because in Boolean logic A <span class="glyph">∨</span> A = A, a rule called idempotence. Each merge scores the tile's value.</p>
                 <ul>
@@ -518,7 +518,7 @@ document.documentElement.classList.add("font-loading");document.fonts.ready.then
 
             <div class="section-divider"></div>
 
-            <h4>THE FOUR GATES</h4>
+            <h4 data-tone="and">THE FOUR GATES</h4>
             <div class="gates-grid">
                 <div class="gate-card" data-gate="xor">
                     <div class="gate-glyph">⊕</div>
@@ -557,9 +557,9 @@ document.documentElement.classList.add("font-loading");document.fonts.ready.then
 
             <div class="section-divider"></div>
 
-            <h4>THE CEILING AND OVERFLOW</h4>
+            <h4 data-tone="xor">THE CEILING AND OVERFLOW</h4>
             <div class="rules-box">
-                <p>Each mode has a <strong>ceiling</strong>, the largest number its bits can hold, which for N bits is 2^N - 1.</p>
+                <p>Each mode has a <strong>ceiling</strong>, the largest number its bits can hold, which for N bits is 2<sup>N</sup> − 1.</p>
                 <div class="mode-grid">
                     <div>2-BIT <span>3</span></div>
                     <div>3-BIT <span>7</span></div>
@@ -578,7 +578,7 @@ document.documentElement.classList.add("font-loading");document.fonts.ready.then
 
             <div class="section-divider"></div>
 
-            <h4>GAUNTLET</h4>
+            <h4 data-tone="or">GAUNTLET</h4>
             <div class="rules-box">
                 <p>Gauntlet is the survival mode, in which the board gains a bit every time you build its ceiling.</p>
                 <ul>
@@ -593,7 +593,7 @@ document.documentElement.classList.add("font-loading");document.fonts.ready.then
 
             <div class="section-divider"></div>
 
-            <h4>SCORING</h4>
+            <h4 data-tone="and">SCORING</h4>
             <ul>
                 <li>A gate or a merge scores the value it produces.</li>
                 <li>The first time you build a value large enough to count, it also pays a height bonus of twice that value.</li>
@@ -713,9 +713,9 @@ const scoreClient=new AdScore.ScoreClient().auto(MC_SCORE_OPTS);
     <script src="js/game.js?v=3ff5544c"></script>
     <script src="js/math-overlay.js?v=28660bd3"></script>
     <script src="js/share-card.js?v=840e32d8"></script>
-    <script src="js/rules-pages.js?v=5c4e9278"></script>
+    <script src="js/rules-pages.js?v=e4eef81d"></script>
     <script src="js/looks.js?v=f2d88d37"></script>
-    <script src="js/main.js?v=3982ff06"></script>
+    <script src="js/main.js?v=6855ae40"></script>
 <script>
 if("serviceWorker"in navigator){navigator.serviceWorker.register("sw.js")}
 </script>
