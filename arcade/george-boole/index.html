@@ -513,7 +513,7 @@ document.documentElement.classList.add("font-loading");document.fonts.ready.then
                 </ul>
             </div>
             <div class="rules-box is-key">
-                <p>Two different numbers do not merge at all. Combining them is what the gates <span class="glyph" data-gate="xor">⊕</span> <span class="glyph" data-gate="or">∨</span> <span class="glyph" data-gate="and">∧</span> <span class="glyph" data-gate="not">¬</span> are for.</p>
+                <p>Two different numbers don't merge on their own. They can only be combined with a gate: <span class="glyph" data-gate="xor">⊕</span>, <span class="glyph" data-gate="or">∨</span> or <span class="glyph" data-gate="and">∧</span>.</p>
             </div>
 
             <div class="section-divider"></div>
@@ -572,7 +572,7 @@ document.documentElement.classList.add("font-loading");document.fonts.ready.then
                 </div>
             </div>
             <div class="rules-box is-key">
-                <p>No gate can take a tile past the ceiling. NOT of the ceiling, however, flips every bit to 0, and since no tile can hold 0, the tile clears and pays <strong>three times the ceiling</strong>. That is the only way to overflow.</p>
+                <p>No gate can take a tile past the ceiling. NOT of the ceiling, however, flips every bit to 0, and since no tile can hold 0, the tile clears and pays <strong>three times the ceiling</strong>. That's the only way to overflow.</p>
                 <p class="rules-aside">2-bit: <span class="glyph" data-gate="not">¬</span>11 = 00, an overflow worth +9<br>4-bit: <span class="glyph" data-gate="not">¬</span>1111 = 0000, worth +45</p>
             </div>
 
