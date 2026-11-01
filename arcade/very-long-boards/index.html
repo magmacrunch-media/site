@@ -18,7 +18,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../shared/arcade-base.css?v=de5e0d7b">
-    <link rel="stylesheet" href="css/style.css?v=da10e0d8">
+    <link rel="stylesheet" href="css/style.css?v=2246cd69">
 </head>
 <body>
     <a href="../action/" class="mc-back">action games</a>
@@ -34,6 +34,20 @@
                 <div class="title-carl">a carl spatski game</div>
             </div>
             <div class="insert-coin" id="startPrompt" data-keys="— PRESS ENTER TO START —" data-touch="— TAP TO START —"></div>
+            <button class="credits-btn" data-credits="open">CREDITS</button>
+        </div>
+
+        <div id="creditsScreen" class="overlay" role="dialog" aria-modal="true" aria-labelledby="creditsTitle">
+            <div class="cs-title" id="creditsTitle">CREDITS</div>
+            <dl class="credits-list">
+                <dt>made by</dt>
+                <dd>magmacrunch media</dd>
+                <dt>built with</dt>
+                <dd>HTML5, JavaScript<br>Babylon.js<br>Press Start 2P</dd>
+                <dt>cheapness impact factor</dt>
+                <dd>2.0</dd>
+            </dl>
+            <button class="credits-btn" data-credits="close">CLOSE</button>
         </div>
 
         <div id="charSelect" class="overlay">
@@ -137,10 +151,10 @@ const scoreClient=new AdScore.ScoreClient().auto(MC_SCORE_OPTS);
     <script src="js/course.js?v=c12f0baf"></script>
     <script src="js/statbars.js?v=ee25dafc"></script>
     <script src="js/hud.js?v=afc4d6fc"></script>
-    <script src="js/input.js?v=1cdb3a43"></script>
+    <script src="js/input.js?v=670aeb15"></script>
     <script src="js/audio.js?v=d2202f5a"></script>
     <script src="js/garage.js?v=8526920f"></script>
-    <script src="js/main.js?v=0910f995"></script>
+    <script src="js/main.js?v=18c3fbaf"></script>
 
 </body>
 </html>

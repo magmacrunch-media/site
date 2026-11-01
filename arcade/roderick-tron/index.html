@@ -24,7 +24,7 @@ html{touch-action:manipulation}
     <link rel="stylesheet" href="css/base.css?v=2c415a70">
     <link rel="stylesheet" href="css/start-screen.css?v=0e866c13">
     <link rel="stylesheet" href="css/game.css?v=0272f026">
-    <link rel="stylesheet" href="css/modals.css?v=7f2fec60">
+    <link rel="stylesheet" href="css/modals.css?v=a4802ad5">
 </head>
 <body>
 <a href="../action/" class="mc-back">action games</a>
@@ -40,6 +40,7 @@ html{touch-action:manipulation}
     </div>
     <div class="controls-note">roll off a ledge, then jump, to clear the long gaps</div>
     <div class="start-prompt">PRESS SPACE</div>
+    <button id="creditsBtn" class="credits-btn">CREDITS</button>
     <p class="copyright">&copy; 2026 MAGMACRUNCH MEDIA</p>
 </div>
 
@@ -72,6 +73,23 @@ html{touch-action:manipulation}
     </div>
 </div>
 
+<div id="creditsOverlay" class="game-over-overlay credits-overlay" role="dialog" aria-modal="true" aria-labelledby="creditsTitle">
+    <div class="game-over-box">
+        <h2 id="creditsTitle">CREDITS</h2>
+        <dl class="credits-list">
+            <dt>made by</dt>
+            <dd>magmacrunch media</dd>
+            <dt>music</dt>
+            <dd>Roderick Tron<br>by Jimmi</dd>
+            <dt>built with</dt>
+            <dd>HTML5 canvas, JavaScript<br>adenosine<br>Press Start 2P</dd>
+            <dt>cheapness impact factor</dt>
+            <dd>1.9</dd>
+        </dl>
+        <button id="creditsClose" class="credits-btn">CLOSE</button>
+    </div>
+</div>
+
 <script src="../shared/adenosine-audio.js?v=2b54f50b"></script>
 <script src="js/config.js?v=6adffa9b"></script>
 <script src="js/levels.js?v=66aa3123"></script>
@@ -82,6 +100,6 @@ html{touch-action:manipulation}
 <script src="js/player.js?v=f4b056ca"></script>
 <script src="js/entities.js?v=922f22fb"></script>
 <script src="js/world.js?v=c53b72a1"></script>
-<script src="js/main.js?v=bc085229"></script>
+<script src="js/main.js?v=584d406c"></script>
 </body>
 </html>

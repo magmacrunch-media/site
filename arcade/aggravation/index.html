@@ -23,7 +23,7 @@ document.documentElement.classList.add("font-loading");document.fonts.ready.then
 </script>
     <link rel="stylesheet" href="../shared/arcade-base.css?v=de5e0d7b">
     <link rel="stylesheet" href="css/base.css?v=be5af5e7">
-    <link rel="stylesheet" href="css/board.css?v=023475de">
+    <link rel="stylesheet" href="css/board.css?v=5958c55b">
     <link rel="stylesheet" href="css/lobby.css?v=bdb6cc68">
     <link rel="stylesheet" href="css/responsive.css?v=bcb9accc">
 </head>
@@ -58,6 +58,8 @@ document.documentElement.classList.add("font-loading");document.fonts.ready.then
         <button id="createBtn" class="ag-btn ag-btn-secondary">CREATE ROOM</button>
         <button id="spectateBtn" class="ag-btn ag-btn-secondary ag-btn-small">SPECTATE</button>
     </div>
+
+    <button id="creditsBtn" class="ag-btn ag-btn-secondary ag-btn-small" style="margin-top: 16px;">CREDITS</button>
 
     <div id="statusMsg" style="margin-top: 16px; font-size: 8px; color: var(--ag-text-dim);"></div>
 </div>
@@ -124,6 +126,19 @@ document.documentElement.classList.add("font-loading");document.fonts.ready.then
     </div>
 </div>
 
+<div id="creditsModal" class="modal-overlay">
+    <div class="modal-box credits-box">
+        <div class="modal-title">CREDITS</div>
+        <div class="credits-label">MADE BY</div>
+        <div class="credits-value">magmacrunch media</div>
+        <div class="credits-label">BUILT WITH</div>
+        <div class="credits-value">HTML, CSS &amp; JavaScript · adenosine race and multiplayer · Python WebSocket server · Press Start 2P font</div>
+        <div class="credits-label">CHEAPNESS IMPACT FACTOR</div>
+        <div class="credits-value credits-cif">6.8</div>
+        <button id="closeCredits" class="ag-btn ag-btn-small">CLOSE</button>
+    </div>
+</div>
+
 <script src="../shared/adenosine-race.js?v=0694f7e1"></script>
 <script src="js/board-config.js?v=007cf909"></script>
 <script src="js/game-state.js?v=a2dc7186"></script>
@@ -140,7 +155,7 @@ var MP_DEFAULT_SERVER=mpServerFor("aggravation",8774);
 const{MP}=AdMP;
 </script>
 <script src="js/network.js?v=d913c124"></script>
-<script src="js/ui.js?v=a0e5ba15"></script>
+<script src="js/ui.js?v=059517d2"></script>
 
 </body>
 </html>

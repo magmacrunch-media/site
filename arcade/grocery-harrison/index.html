@@ -24,7 +24,7 @@ html{touch-action:manipulation}
 <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 
 <link rel="stylesheet" href="../shared/arcade-base.css?v=de5e0d7b">
-<link rel="stylesheet" href="css/game.css?v=fdc76e34">
+<link rel="stylesheet" href="css/game.css?v=1a1551eb">
 </head>
 <body>
 <a href="../action/" class="mc-back">action games</a>
@@ -37,6 +37,22 @@ html{touch-action:manipulation}
     <p class="sub-title">the night shift</p>
     <button id="btnStart" class="start-prompt" aria-label="Start">PRESS ENTER</button>
     <p class="copyright">&copy; 2026 MAGMACRUNCH MEDIA</p>
+    <button id="btnCredits" class="btn-credits">CREDITS</button>
+  </div>
+
+  <div id="credits" class="credits" role="dialog" aria-modal="true" aria-labelledby="creditsTitle" hidden>
+    <div class="credits-box">
+      <h2 id="creditsTitle">CREDITS</h2>
+      <dl>
+        <dt>made by</dt>
+        <dd>magmacrunch media</dd>
+        <dt>built with</dt>
+        <dd>HTML5 canvas, JavaScript<br>adenosine<br>Press Start 2P</dd>
+        <dt>cheapness impact factor</dt>
+        <dd>2.0</dd>
+      </dl>
+      <button id="btnCreditsClose" class="btn">CLOSE</button>
+    </div>
   </div>
 
   <button id="btnPause" class="btn-pause" aria-label="Pause" hidden>II</button>
@@ -72,6 +88,6 @@ html{touch-action:manipulation}
 <script src="js/title.js?v=495b3cb6"></script>
 <script src="js/touch.js?v=54119210"></script>
 <script src="js/sound.js?v=b56625da"></script>
-<script src="js/main.js?v=8b8c5fd0"></script>
+<script src="js/main.js?v=558aae67"></script>
 </body>
 </html>

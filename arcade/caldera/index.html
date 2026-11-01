@@ -24,7 +24,7 @@ html{touch-action:manipulation}
 <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 
 <link rel="stylesheet" href="../shared/arcade-base.css?v=de5e0d7b">
-<link rel="stylesheet" href="css/game.css?v=ce81d70f">
+<link rel="stylesheet" href="css/game.css?v=28dbb663">
 </head>
 <body>
 <a href="../action/" class="mc-back">action games</a>
@@ -39,6 +39,7 @@ html{touch-action:manipulation}
       <span class="keys-only">PRESS ENTER</span><span class="touch-only">TAP TO CLIMB</span>
     </button>
     <button id="btnSound" class="sound-toggle" aria-pressed="false">SOUND: ON</button>
+    <button id="btnCredits" class="sound-toggle">CREDITS</button>
     <p class="copyright">&copy; 2026 MAGMACRUNCH MEDIA</p>
   </div>
 
@@ -62,6 +63,22 @@ html{touch-action:manipulation}
       <p id="charBlurb" class="char-blurb"></p>
       <button id="charDone" class="btn">DONE</button>
       <p class="char-keys keys-only">ARROWS: CHOOSE &middot; ENTER: DONE</p>
+    </div>
+  </div>
+
+  <div id="creditsModal" class="char-modal" role="dialog" aria-modal="true" aria-labelledby="creditsTitle" hidden>
+    <div class="char-modal-content credits-content">
+      <h2 id="creditsTitle">credits</h2>
+      <dl class="credits">
+        <dt>made by</dt>
+        <dd>magmacrunch media</dd>
+        <dt>built with</dt>
+        <dd>HTML5 canvas, JavaScript<br>adenosine<br>Press Start 2P</dd>
+        <dt>cheapness impact factor</dt>
+        <dd>2.6</dd>
+      </dl>
+      <button id="creditsClose" class="btn">CLOSE</button>
+      <p class="char-keys keys-only">ESC: CLOSE</p>
     </div>
   </div>
 
@@ -92,6 +109,6 @@ html{touch-action:manipulation}
 <script src="js/hints.js?v=712af356"></script>
 <script src="js/sfx.js?v=a752445e"></script>
 <script src="js/scores.js?v=46e26590"></script>
-<script src="js/main.js?v=39a025a1"></script>
+<script src="js/main.js?v=a2536c7c"></script>
 </body>
 </html>
