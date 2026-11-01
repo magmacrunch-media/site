@@ -41,6 +41,7 @@ html{touch-action:manipulation}
     <link rel="stylesheet" href="css/buttons-retro.css?v=b0bd7e17">
     <link rel="stylesheet" href="css/fonts-retro.css?v=26872b06">
     <link rel="stylesheet" href="css/modals-retro.css?v=90298948">
+    <link rel="stylesheet" href="css/night.css?v=26b76fcb">
     <style>
 :root{--mc-back-color: rgba(0, 212, 255, 0.5);--mc-back-glow: 0 0 8px rgba(0, 212, 255, 0.95)}body.game-active .mc-back,body.game-active #characterSelector{display:none!important}#titleOverlay{background:#000000!important;width:auto!important;max-width:90vw!important;padding:30px 40px!important;border:3px solid #00d4ff!important;box-shadow:0 0 30px rgba(0,212,255,0.6)!important}#asciiTitle{color:#00d4ff!important;text-shadow:0 0 10px rgba(0,212,255,0.8)!important;background:none!important;padding:0!important}#titleMessage{background:none!important;padding:0!important}#readyOverlay{background:rgba(0,0,0,0.85)!important;width:fit-content!important;max-width:90vw!important}#readyContent h2{color:#00d4ff!important;background:transparent!important;text-shadow:0 0 10px rgba(0,212,255,0.8)!important;box-shadow:none!important}#readyContent p{color:#ffffff!important}#readyMessage{color:#00d4ff!important}#gameOver{text-transform:none!important}#creditsModal .credits-content,#creditsModal .credits-content p,#creditsModal .credits-content strong{text-transform:none!important}@keyframes pulse{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.05);opacity:0.9}}#achievementMessage{text-align:center;margin-bottom:20px}#gameOverAchievement{text-align:center;margin:10px 0}#creditsBtn{background:#5a6988!important;color:#ffffff!important;border:none!important;padding:12px 20px!important;font-family:"Press Start 2P",monospace!important;font-size:10px!important;font-weight:normal!important;cursor:pointer!important;transition:none!important;border-radius:0!important;text-transform:lowercase!important;letter-spacing:0!important;position:relative!important;margin-top:0!important;box-shadow:0 6px 0 #2a3344,0 -4px 0 #7a89a8,-4px 0 0 #4a5968,4px 0 0 #4a5968,-4px -4px 0 #6a7988,4px -4px 0 #6a7988,-4px 6px 0 #1a2334,4px 6px 0 #1a2334!important}#creditsBtn:hover{background:#00d4ff!important;color:#000000!important;box-shadow:0 6px 0 #006a7f,0 -4px 0 #33e0ff,-4px 0 0 #00a0bf,4px 0 0 #00a0bf,-4px -4px 0 #00c4df,4px -4px 0 #00c4df,-4px 6px 0 #00505f,4px 6px 0 #00505f!important}#creditsBtn:active{transform:translateY(4px)!important;box-shadow:0 2px 0 #2a3344,0 -4px 0 #7a89a8,-4px 0 0 #4a5968,4px 0 0 #4a5968!important}@media(max-width:768px){#characterModal .modal-content{max-width:95vw!important;max-height:85vh!important}#characterGrid{max-height:60vh!important}#creditsBtn{font-size:8px!important;padding:10px 16px!important}}@media(max-width:480px){#creditsBtn{font-size:8px!important;padding:8px 12px!important}}
 </style>
@@ -99,8 +100,8 @@ html{touch-action:manipulation}
         </div>
         
         <div id="characterSelector" style="display: none;">
-            <button id="changeCharacterBtn">change pilot</button>
-            <button id="scoreboardBtn">best drifts</button>
+            <button id="changeCharacterBtn">pilot</button>
+            <button id="scoreboardBtn">scores</button>
             <button id="creditsBtn">credits</button>
             <button id="muteBtn">SFX ON</button>
         </div>
@@ -184,26 +185,23 @@ html{touch-action:manipulation}
 
     <div id="creditsModal" style="display: none;">
         <div class="modal-content">
-            <h2>credits</h2>
-            <div class="credits-content">
-                <p><strong>game design & development:</strong><br>Jake McCoy</p>
-                
-                <p><strong>music:</strong><br>"Moonlight Drift" by C.P. Rutledge</p>
-
-                <p><strong>original concept:</strong><br>This game is inspired by Simon Dorsey's <em>Jetman</em> (2007, Facebook), which was itself based on David McCandless's 2002 Flash game <em>Helicopter</em>. Similar gameplay also appears in <em>SFCave</em>, developed by Yohei Iwasaki in 1995.</p>
-                
-                <p><strong>technology & resources:</strong><br>
-                • Press Start 2P font by CodeMan38 (Google Fonts)<br>
-                • HTML5 Canvas API<br>
-                • <a href="../../ware/adenosine/" style="color:#ffd700">adenosine</a> audio &amp; score client<br>
-                • MAGMA//OPS dashboard (high score persistence)<br>
-                • pure vanilla JavaScript</p>
-
-                <p><strong>publisher:</strong><br><a href="https://magmacrunch.com" style="color:#ffd700">magmacrunch media</a></p>
-
-                <p><strong>cheapness impact factor:</strong><br>3.7</p>
-                
-                <p><strong>last updated:</strong><br>August 13, 2026</p>
+            <h2><img class="credits-mark" src="img/mc-logo.png" alt="" width="26" height="32">credits</h2>
+            <div class="credits-content credits-sheet">
+                <section class="credits-block c-gold">
+                    <h3 class="credits-head">made by</h3>
+                    <div class="credit-row"><span class="credit-role">game</span><span class="credit-name"><a href="https://magmacrunch.com">magmacrunch media</a></span></div>
+                    <div class="credit-row"><span class="credit-role">music</span><span class="credit-name">brother dynamo</span></div>
+                    <p class="credit-note"><strong>&ldquo;Moonlight Drift&rdquo;</strong></p>
+                </section>
+                <section class="credits-block c-cyan">
+                    <h3 class="credits-head">origins</h3>
+                    <p class="credit-prose">After Simon Dorsey&rsquo;s <em>Jetman</em> (2007), itself after David McCandless&rsquo;s <em>Helicopter</em> (2002); Yohei Iwasaki&rsquo;s <em>SFCave</em> (1995) flew it first.</p>
+                </section>
+                <section class="credits-block c-sub">
+                    <h3 class="credits-head">built with</h3>
+                    <p class="credits-built"><a href="../../ware/adenosine/">adenosine</a> &middot; Press Start 2P</p>
+                </section>
+                <div class="credit-row credit-row-aside"><span class="credit-role">cheapness impact factor</span><span class="credit-name">3.7</span></div>
             </div>
             <div class="modal-buttons">
                 <button id="closeCreditsModal">close</button>
@@ -242,7 +240,7 @@ const scoreClient=new AdScore.ScoreClient().auto(MC_SCORE_OPTS);
     <script src="js/player.js?v=c3be28d1"></script>
     <script src="js/obstacles.js?v=4cd5f432"></script>
     <script src="js/stars.js?v=1c116135"></script>
-    <script src="js/scoring.js?v=e4c44fe0"></script>
+    <script src="js/scoring.js?v=eabe716c"></script>
     <script src="js/renderer.js?v=eb09794e"></script>
     <script src="js/input.js?v=9e34502e"></script>
     <script src="js/unlocks.js?v=b8a4992a"></script>
@@ -251,7 +249,7 @@ const scoreClient=new AdScore.ScoreClient().auto(MC_SCORE_OPTS);
     <script src="js/moon.js?v=5f19ce7d"></script>
     <script src="js/beat.js?v=4653b6de"></script>
     <script src="js/touchdown.js?v=fb722bde"></script>
-    <script src="js/main.js?v=f310cffb"></script>
+    <script src="js/main.js?v=043c428d"></script>
     <script src="js/scoreboard-modal.js?v=07f0039a"></script>
 </body>
 </html>
