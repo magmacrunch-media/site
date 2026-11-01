@@ -23,9 +23,9 @@ html{touch-action:manipulation}
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../shared/arcade-base.css?v=de5e0d7b">
     <link rel="stylesheet" href="css/base.css?v=e320ca92">
-    <link rel="stylesheet" href="css/start-screen.css?v=efe73894">
+    <link rel="stylesheet" href="css/start-screen.css?v=beff378f">
     <link rel="stylesheet" href="css/game.css?v=e63f42da">
-    <link rel="stylesheet" href="css/modals.css?v=c0c39b41">
+    <link rel="stylesheet" href="css/modals.css?v=f1433ed5">
 </head>
 <body>
 <a href="../action/" class="mc-back">action games</a>
@@ -34,7 +34,10 @@ html{touch-action:manipulation}
     <h1>CAVE DIVING<br><span class="sub-title">(not even once)</span></h1>
     <div class="start-prompt">PRESS SPACE</div>
     <button id="btnStart" class="touch-start">DIVE</button>
-    <button id="btnSound" class="sound-toggle" aria-pressed="false">SOUND: ON</button>
+    <div class="title-row">
+        <button id="btnSound" class="sound-toggle" aria-pressed="false">SOUND: ON</button>
+        <button id="btnCredits" class="sound-toggle">CREDITS</button>
+    </div>
     <p id="audioWarning" class="audio-warning" hidden></p>
     <p class="copyright">&copy; 2026 MAGMACRUNCH MEDIA</p>
 </div>
@@ -71,10 +74,12 @@ html{touch-action:manipulation}
             ARROWS / WASD: swim &middot; Z / SPACE: stroke<br>
             M: sound &middot; P: pause &middot; Q: quit to title
         </div>
-        <div class="controls-hint touch-hint">
-            LEFT SIDE: drag to swim<br>
-            RIGHT SIDE: tap to stroke
+        <div class="controls-hint touch-hint" id="touchHint">
+            TAP: kick that way, and glide<br>
+            HOLD: swim toward your finger
         </div>
+        <div class="controls-hint touch-hint" id="tiltRead"></div>
+        <button id="btnTilt" class="btn btn-quiet touch-only">TILT TO STEER: OFF</button>
         <button id="btnResume" class="btn">RESUME</button>
         <button id="btnQuit" class="btn btn-quiet">QUIT TO TITLE</button>
     </div>
@@ -99,12 +104,13 @@ html{touch-action:manipulation}
 
         <div id="initialsPrompt" class="initials hidden">
             <label for="initialsInput">INITIALS</label>
-            <input id="initialsInput" maxlength="3" autocomplete="off" spellcheck="false" value="AAA">
+            <input id="initialsInput" autocomplete="off" autocorrect="off"
+                   autocapitalize="characters" spellcheck="false" enterkeyhint="done" placeholder="AAA">
             <button id="initialsSubmit" class="btn">SAVE</button>
         </div>
 
         <table class="scores">
-            <thead><tr><th>#</th><th>WHO</th><th>SCORE</th></tr></thead>
+            <thead><tr><th>#</th><th id="scoresWho">WHO</th><th>SCORE</th></tr></thead>
             <tbody id="scoresBody"><tr><td colspan="3">loading</td></tr></tbody>
         </table>
 
@@ -112,10 +118,32 @@ html{touch-action:manipulation}
             <button id="btnRetry" class="btn">DIVE AGAIN</button>
             <button id="btnTitle" class="btn btn-quiet">TITLE</button>
         </div>
-        <div class="credit">
-            music: <strong>cave diving (not even once)</strong> by
-            <a href="../../music/jukebox/">Juanito Thompson</a>,
-            from <em>Spooked</em> (2025)
+    </div>
+</div>
+
+<div id="creditsOverlay" class="overlay hidden">
+    <div class="slate">
+        <h2 class="slate-title">credits</h2>
+
+        <h3 class="slate-section" data-tone="water">made by</h3>
+        <div class="slate-row"><span class="slate-role">game</span><span class="slate-name"><a href="https://magmacrunch.com">magmacrunch media</a></span></div>
+        <div class="slate-row"><span class="slate-role">music</span><span class="slate-name"><a href="../../music/jukebox/">juanito thompson</a></span></div>
+        <p class="slate-note">"cave diving (not even once)"<br>from Spooked (2025)</p>
+        <div class="slate-row"><span class="slate-role">the diver</span><span class="slate-name">juanito thompson</span></div>
+        <p class="slate-note">in a wetsuit</p>
+
+        <h3 class="slate-section" data-tone="pearl">the score</h3>
+        <p class="slate-prose">The record itself, cut into loops that follow how much danger you are in, with its own ending when you get out.</p>
+
+        <h3 class="slate-section" data-tone="lamp">built with</h3>
+        <p class="slate-built"><span>HTML5, CSS3, JS</span><span>Web Audio API</span><span class="wide">Press Start 2P by CodeMan38</span><span><a href="https://magmacrunch.com/ware/adenosine/">adenosine</a></span></p>
+
+        <div class="slate-row slate-aside"><span class="slate-role">cheapness impact factor</span><span class="slate-name">2.0</span></div>
+
+        <p class="slate-foot">last updated October 31, 2026</p>
+
+        <div class="slate-back">
+            <button id="btnCreditsBack" type="button">back</button>
         </div>
     </div>
 </div>
@@ -128,11 +156,11 @@ html{touch-action:manipulation}
 <script>
 const scoreClient=new AdScore.ScoreClient().auto(MC_SCORE_OPTS);
 </script>
-<script src="js/config.js?v=72aea458"></script>
-<script src="js/pixels.js?v=3c7c6684"></script>
+<script src="js/config.js?v=28cbc015"></script>
+<script src="js/pixels.js?v=bc3a1938"></script>
 <script src="js/sfx.js?v=f7b39bd4"></script>
 <script src="js/music.js?v=0535e62e"></script>
-<script src="js/input.js?v=836025d2"></script>
+<script src="js/input.js?v=d160f627"></script>
 <script src="js/renderer.js?v=ec6fcb4c"></script>
 <script src="js/light.js?v=7e2e5051"></script>
 <script src="js/title.js?v=ab7e6c40"></script>
@@ -141,6 +169,6 @@ const scoreClient=new AdScore.ScoreClient().auto(MC_SCORE_OPTS);
 <script src="js/entities.js?v=2771541e"></script>
 <script src="js/guideline.js?v=985609dc"></script>
 <script src="js/creatures.js?v=fa1c7eba"></script>
-<script src="js/main.js?v=de409c39"></script>
+<script src="js/main.js?v=0d9d11e1"></script>
 </body>
 </html>
