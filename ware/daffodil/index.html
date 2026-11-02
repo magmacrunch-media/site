@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>daffodil · magmacrunch media</title>
-    <meta name="description" content="A C99 heightfield terrain engine that renders real-world georeferenced landscape at 1:1 from LiDAR elevation data.">
+    <meta name="description" content="An engine that draws real ground at 1:1: a survey of Block Island that you can walk on.">
     <meta property="og:title" content="daffodil · magmacrunch media">
-    <meta property="og:description" content="A C99 heightfield terrain engine: real-world landscape at 1:1, from LiDAR survey.">
-    <meta property="og:image" content="https://magmacrunch.com/og/ware.png?v=1">
+    <meta property="og:description" content="An engine that draws real ground at 1:1: a survey of Block Island that you can walk on.">
+    <meta property="og:image" content="https://magmacrunch.com/ware/daffodil/img/og.jpg">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
     <meta property="og:type" content="website">
@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="../../style.css?v=40c085d6">
     <link rel="stylesheet" href="../crumbs.css?v=e00af2c5">
     <style>
-:root{--daf-petal: #ffe27a;--daf-corona: #ffbe0b;--daf-deep: #e09200}body{background:#14141b;background-image:none;color:#e8e6f0;font-family:"Courier Prime",monospace}a{color:var(--daf-corona)}.hero{text-align:center;padding:3.5rem 1.5rem 2rem}.hero h1{font-family:"Press Start 2P",monospace;font-size:clamp(24px,4vw,48px);font-weight:400;letter-spacing:0.08em;margin-bottom:.75rem;color:var(--daf-corona);background:linear-gradient(100deg,#fff3bd 0%,var(--daf-petal) 28%,var(--daf-corona) 62%,var(--daf-deep) 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;filter:drop-shadow(3px 3px 0 #1c1b26)}.hero .tagline{font-size:13px;color:#9d99b5;margin-bottom:1.25rem}.badges{display:flex;flex-wrap:wrap;gap:.5rem;justify-content:center}.badge{font-family:"Press Start 2P",monospace;font-size:8px;color:#9d99b5;border:1px solid #33304a;border-radius:6px;padding:.4rem .6rem;letter-spacing:0.05em}.lead{max-width:600px;margin:0 auto 2.75rem;padding:0 1.5rem;font-size:13px;line-height:1.7;color:#b8b4cc}.lead p{margin-bottom:.6rem}.lead p:last-child{margin-bottom:0}.lead strong{color:#e8e6f0}.lead code{font-family:"Courier Prime",monospace;font-size:12px}.lead .about-links{margin:1.25rem 0 0}.gallery{max-width:900px;margin:0 auto 3rem;padding:0 1.5rem}.gallery h2,.features h2,.about h2{font-family:"Press Start 2P",monospace;font-size:11px;font-weight:400;color:var(--daf-corona);letter-spacing:0.05em;margin-bottom:.75rem}.gallery .lede{font-size:12px;line-height:1.7;color:#9d99b5;margin-bottom:1.5rem}.shots{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.25rem}.shot{border:1px solid #33304a;border-radius:8px;overflow:hidden;background:#1c1b26}.shot img{display:block;width:100%;height:auto;max-width:512px;margin:0 auto;image-rendering:auto;border-bottom:1px solid #33304a}.shot-body{padding:.85rem 1rem 1rem}.shot-body h3{font-family:"Press Start 2P",monospace;font-size:9px;font-weight:400;color:#e8e6f0;margin-bottom:.5rem;letter-spacing:0.05em}.shot-body p{font-size:12px;line-height:1.65;color:#9d99b5;margin:0}.shot-body .counts{display:block;margin-top:.5rem;font-size:11px;color:#6f6b86}.features{max-width:900px;margin:0 auto 3rem;padding:0 1.5rem}.feat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:.75rem}.feat-item{border:1px solid #33304a;border-radius:6px;padding:.7rem .85rem}.feat-item strong{display:block;font-family:"Press Start 2P",monospace;font-size:8px;font-weight:400;color:var(--daf-petal);margin-bottom:.4rem;letter-spacing:0.05em}.feat-item span{font-size:12px;line-height:1.6;color:#9d99b5}.about{max-width:600px;margin:0 auto 3rem;padding:0 1.5rem;font-size:12px;color:#9d99b5;line-height:1.6}.about h3{font-family:"Press Start 2P",monospace;font-size:8px;font-weight:400;color:#e8e6f0;margin:1.5rem 0 .5rem;letter-spacing:0.05em}.about p{margin-bottom:.5rem}.about pre{background:#1c1b26;border:1px solid #33304a;border-radius:6px;padding:.6rem .75rem;overflow-x:auto;margin-bottom:.5rem}.about code{font-family:"Courier Prime",monospace;font-size:11px;color:var(--daf-corona)}.about-label{color:#8a8a8a;font-size:11px;margin-bottom:.25rem}.about-license{color:#8a8a8a;font-size:11px;margin-top:1rem}.about-links{display:flex;flex-wrap:wrap;gap:1rem;margin:1.5rem 0 .75rem}.about-links a{color:var(--daf-corona);text-decoration:none;font-family:"Press Start 2P",monospace;font-size:8px;padding:.4rem .6rem;border:1px solid #33304a;border-radius:6px;transition:border-color .15s}.about-links a:hover{border-color:var(--daf-corona)}.src-note{max-width:600px;margin:0 auto 3rem;padding:0 1.5rem}.src-note-box{border:1px solid #33304a;border-left:3px solid var(--daf-corona);border-radius:6px;background:rgba(255,255,255,.02);padding:.9rem 1rem}.src-note-label{font-family:"Press Start 2P",monospace;font-size:8px;color:var(--daf-corona);letter-spacing:0.05em;margin-bottom:.6rem}.src-note p{margin:0;font-size:12px;line-height:1.7;color:#9d99b5}.src-note p+p{margin-top:.5rem}.src-note a{color:var(--daf-corona)}.petal-rule{max-width:900px;margin:0 auto 2.5rem;border:0;border-top:1px solid #33304a}footer{font-family:"Courier Prime",monospace;font-size:12px;border-top:1px solid #33304a}footer span{color:var(--daf-corona)}@media(max-width:480px){.shots{grid-template-columns:1fr}.feat-grid{grid-template-columns:1fr}.about-links{gap:.6rem}.about-links a{padding:.55rem .9rem;min-height:44px;display:inline-flex;align-items:center}}.tool-nav{margin-top:48px;padding:8px 24px;border-bottom:1px solid #33304a;background:#14141b}.tool-nav .breadcrumb{--crumb-accent: var(--daf-corona)}.lead,.features,.about,.src-note,.demo-wrap,.packages{max-width:680px}.lead{font-size:15px;line-height:1.75}.about,.section-blurb,.src-note p,.demo-note{font-size:14px;line-height:1.75}.feat-item{padding:.8rem .95rem}.feat-item strong{font-size:13px;margin-bottom:.3rem}.feat-item span{font-size:13.5px;line-height:1.6}.apps{font-size:14px}.about code,.about pre code{font-size:13px}.about table{font-size:13px}.about-label,.about-license{font-size:13px}.hero .tagline{font-size:15px}.features h2,.about h2,.demo-wrap h2,.packages h2{font-size:12px;margin-bottom:1rem}.about h3{font-size:10px}.about-links a{font-size:9px;padding:.55rem .8rem}.src-note-label{font-size:9px}.about p{font-size:14px}.lead,.features,.about{margin-left:auto;margin-right:auto}.lead{margin-bottom:2.75rem;padding:0 1.5rem}.lead p{margin-bottom:.6rem}.lead .about-links{margin:1.25rem 0 0}.section-blurb{margin-bottom:.75rem;opacity:.85}.apps{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:.25rem 1rem;padding:0}.apps-dense{grid-template-columns:repeat(3,1fr)}.apps li{padding:.25rem 0;border-top:1px solid rgba(255,255,255,.08);opacity:.9}.apps li strong{font-weight:400}.shot-body p,.oracle p,.sec p,.examples p,.gallery .lede{font-size:14px;line-height:1.7}.shot-body h3{font-size:10px}.ex-row span,.ms-row span,.tbl-row span,.pkg-row span,.pkg-row a,.pkg-row .pkg-name{font-size:13px}.counts{font-size:12.5px}.badge,.hero .badge{font-size:8px}.gallery>p.lede{font-size:14px;line-height:1.7}figcaption,.oracle figcaption,.examples figcaption{font-size:13px}.about-note{font-size:13px;color:#8f8a9e;margin-top:.25rem}pre{max-width:100%;overflow-x:auto}body>*{width:100%}@media(max-width:480px){.lead{font-size:14.5px}.feat-item span{font-size:13px}.apps,.apps-dense{grid-template-columns:1fr}}
+:root{--daf-petal: #ffe27a;--daf-corona: #ffbe0b;--daf-deep: #e09200}body{background:#14141b;background-image:none;color:#e8e6f0;font-family:"Courier Prime",monospace}a{color:var(--daf-corona)}.hero{text-align:center;padding:3.5rem 1.5rem 2rem}.hero h1{font-family:"Press Start 2P",monospace;font-size:clamp(24px,4vw,48px);font-weight:400;letter-spacing:0.08em;margin-bottom:.75rem;color:var(--daf-corona);background:linear-gradient(100deg,#fff3bd 0%,var(--daf-petal) 28%,var(--daf-corona) 62%,var(--daf-deep) 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;filter:drop-shadow(3px 3px 0 #1c1b26)}.hero .tagline{font-size:13px;color:#9d99b5;margin-bottom:1.25rem}.badges{display:flex;flex-wrap:wrap;gap:.5rem;justify-content:center}.badge{font-family:"Press Start 2P",monospace;font-size:8px;color:#9d99b5;border:1px solid #33304a;border-radius:6px;padding:.4rem .6rem;letter-spacing:0.05em}.lead{max-width:600px;margin:0 auto 2.75rem;padding:0 1.5rem;font-size:13px;line-height:1.7;color:#b8b4cc}.lead p{margin-bottom:.6rem}.lead p:last-child{margin-bottom:0}.lead strong{color:#e8e6f0}.lead code{font-family:"Courier Prime",monospace;font-size:12px}.lead .about-links{margin:1.25rem 0 0}.gallery{max-width:900px;margin:0 auto 3rem;padding:0 1.5rem}.gallery h2,.features h2,.about h2{font-family:"Press Start 2P",monospace;font-size:11px;font-weight:400;color:var(--daf-corona);letter-spacing:0.05em;margin-bottom:.75rem}.gallery .lede{font-size:12px;line-height:1.7;color:#9d99b5;margin-bottom:1.5rem}.shots{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:1.25rem}.shot{border:1px solid #33304a;border-radius:8px;overflow:hidden;background:#1c1b26}body.ware-page div.gallery{max-width:1000px}body.ware-page div.shots{grid-template-columns:repeat(auto-fit,minmax(min(400px,100%),1fr));gap:1.5rem}.shot{margin:0}.shot img{display:block;width:100%;height:auto;border-bottom:1px solid #33304a}.hero-shot{max-width:1000px;margin:0 auto 2.25rem;padding:0 1.5rem}.hero-shot img{display:block;width:100%;height:auto;border:1px solid #33304a;border-radius:8px}.zoom{display:block;cursor:zoom-in}.lightbox{margin:auto;padding:0;border:0;background:transparent;max-width:96vw;max-height:96vh;overflow:visible}.lightbox::backdrop{background:rgba(10,10,14,.92)}.lightbox img{display:block;max-width:96vw;max-height:88vh;width:auto;height:auto;border:2px solid var(--daf-deep);cursor:zoom-out}.lightbox p{margin-top:.6rem;text-align:center;font-size:13px;color:#b8b4cc}.lightbox button{position:fixed;top:50%;transform:translateY(-50%);font:20px "Courier Prime",monospace;color:#e8e6f0;background:rgba(20,20,27,.75);border:1px solid #33304a;border-radius:4px;padding:14px 12px;cursor:pointer}.lightbox .prev{left:12px}.lightbox .next{right:12px}.lightbox .close{top:12px;right:12px;transform:none}.shot-body{padding:.85rem 1rem 1rem}.shot-body h3{font-family:"Press Start 2P",monospace;font-size:9px;font-weight:400;color:#e8e6f0;margin-bottom:.5rem;letter-spacing:0.05em}.shot-body p{font-size:12px;line-height:1.65;color:#9d99b5;margin:0}.features{max-width:900px;margin:0 auto 3rem;padding:0 1.5rem}.feat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:.75rem}.feat-item{border:1px solid #33304a;border-radius:6px;padding:.7rem .85rem}.feat-item strong{display:block;font-family:"Press Start 2P",monospace;font-size:8px;font-weight:400;color:var(--daf-petal);margin-bottom:.4rem;letter-spacing:0.05em}.feat-item span{font-size:12px;line-height:1.6;color:#9d99b5}.about{max-width:600px;margin:0 auto 3rem;padding:0 1.5rem;font-size:12px;color:#9d99b5;line-height:1.6}.about h3{font-family:"Press Start 2P",monospace;font-size:8px;font-weight:400;color:#e8e6f0;margin:1.5rem 0 .5rem;letter-spacing:0.05em}.about p{margin-bottom:.5rem}.about pre{background:#1c1b26;border:1px solid #33304a;border-radius:6px;padding:.6rem .75rem;overflow-x:auto;margin-bottom:.5rem}.about code{font-family:"Courier Prime",monospace;font-size:11px;color:var(--daf-corona)}.about-label{color:#8a8a8a;font-size:11px;margin-bottom:.25rem}.about-license{color:#8a8a8a;font-size:11px;margin-top:1rem}.about-links{display:flex;flex-wrap:wrap;gap:1rem;margin:1.5rem 0 .75rem}.about-links a{color:var(--daf-corona);text-decoration:none;font-family:"Press Start 2P",monospace;font-size:8px;padding:.4rem .6rem;border:1px solid #33304a;border-radius:6px;transition:border-color .15s}.about-links a:hover{border-color:var(--daf-corona)}.src-note{max-width:600px;margin:0 auto 3rem;padding:0 1.5rem}.src-note-box{border:1px solid #33304a;border-left:3px solid var(--daf-corona);border-radius:6px;background:rgba(255,255,255,.02);padding:.9rem 1rem}.src-note-label{font-family:"Press Start 2P",monospace;font-size:8px;color:var(--daf-corona);letter-spacing:0.05em;margin-bottom:.6rem}.src-note p{margin:0;font-size:12px;line-height:1.7;color:#9d99b5}.src-note p+p{margin-top:.5rem}.src-note a{color:var(--daf-corona)}.petal-rule{max-width:900px;margin:0 auto 2.5rem;border:0;border-top:1px solid #33304a}footer{font-family:"Courier Prime",monospace;font-size:12px;border-top:1px solid #33304a}footer span{color:var(--daf-corona)}@media(max-width:480px){.shots{grid-template-columns:1fr}.feat-grid{grid-template-columns:1fr}.about-links{gap:.6rem}.about-links a{padding:.55rem .9rem;min-height:44px;display:inline-flex;align-items:center}}.tool-nav{margin-top:48px;padding:8px 24px;border-bottom:1px solid #33304a;background:#14141b}.tool-nav .breadcrumb{--crumb-accent: var(--daf-corona)}.lead,.features,.about,.src-note,.demo-wrap,.packages{max-width:680px}.lead{font-size:15px;line-height:1.75}.about,.section-blurb,.src-note p,.demo-note{font-size:14px;line-height:1.75}.feat-item{padding:.8rem .95rem}.feat-item strong{font-size:13px;margin-bottom:.3rem}.feat-item span{font-size:13.5px;line-height:1.6}.apps{font-size:14px}.about code,.about pre code{font-size:13px}.about table{font-size:13px}.about-label,.about-license{font-size:13px}.hero .tagline{font-size:15px}.features h2,.about h2,.demo-wrap h2,.packages h2{font-size:12px;margin-bottom:1rem}.about h3{font-size:10px}.about-links a{font-size:9px;padding:.55rem .8rem}.src-note-label{font-size:9px}.about p{font-size:14px}.lead,.features,.about{margin-left:auto;margin-right:auto}.lead{margin-bottom:2.75rem;padding:0 1.5rem}.lead p{margin-bottom:.6rem}.lead .about-links{margin:1.25rem 0 0}.section-blurb{margin-bottom:.75rem;opacity:.85}.apps{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:.25rem 1rem;padding:0}.apps-dense{grid-template-columns:repeat(3,1fr)}.apps li{padding:.25rem 0;border-top:1px solid rgba(255,255,255,.08);opacity:.9}.apps li strong{font-weight:400}.shot-body p,.oracle p,.sec p,.examples p,.gallery .lede{font-size:14px;line-height:1.7}.shot-body h3{font-size:10px}.ex-row span,.ms-row span,.tbl-row span,.pkg-row span,.pkg-row a,.pkg-row .pkg-name{font-size:13px}.counts{font-size:12.5px}.badge,.hero .badge{font-size:8px}.gallery>p.lede{font-size:14px;line-height:1.7}figcaption,.oracle figcaption,.examples figcaption{font-size:13px}.about-note{font-size:13px;color:#8f8a9e;margin-top:.25rem}pre{max-width:100%;overflow-x:auto}body>*{width:100%}@media(max-width:480px){.lead{font-size:14.5px}.feat-item span{font-size:13px}.apps,.apps-dense{grid-template-columns:1fr}}
 </style>
   <link rel="stylesheet" href="../ware-page.css?v=098c4c8a">
 </head>
@@ -44,6 +44,11 @@
       <span class="badge">PolyForm Noncommercial</span>
       <span class="badge">C99 + sokol</span>
     </div>
+  </div>
+
+  <div class="hero-shot">
+    <a class="zoom" href="img/island-1600.webp"><img src="img/island-1600.webp" width="1600" height="860"
+      alt="Block Island from the air: green hills, a large pond inland, roads and scattered houses, the airfield, and white beaches curving along the sea on the right"></a>
   </div>
 
   <div class="lead">
@@ -77,68 +82,78 @@
 
   <div class="gallery">
     <h2>what it draws</h2>
-    <p class="lede">Each picture below is also a test. The same eight views are drawn again on every change and compared, pixel for pixel, with the saved copy, so a change that alters the picture is caught.</p>
+    <p class="lede">Every picture here is straight out of the game, drawn for the date and hour it was given. A set of fixed views is drawn again on every push to the game and compared with saved copies, so a change that alters the picture gets caught.</p>
     <details class="tech">
     <summary>the technical version</summary>
-    <p>Every frame below is a regression baseline. Eight fixed views are photographed
-      headless under software GL and compared pixel for pixel with the committed copy, and what
-      each view drew is checked against a triangle budget, so any build can reproduce them. The
-      counts are that budget, read off the same frame. The flat shading is how the renderer
-      draws.</p>
+    <p>The game's <code>tools/shots.py</code> photographs fixed views headless under software GL,
+      each one a place something once went wrong. It compares them with committed baselines, within
+      a tolerance on the whole frame and on its worst 32 px square, and checks what each view drew
+      against a budget. The baselines are small and in the plain style; the pictures here are
+      the default toon style at 1600 wide, with the on-screen key hints cropped off.</p>
+    <p>Budgets from those baselines, terrain and paving triangles and trees drawn: Old Harbor
+      1,020,416 &middot; 601,796 &middot; 573. The marina view 1,048,832 &middot; 189,942 &middot; 645.
+      The town at night 963,328 &middot; 634,082 &middot; 489.</p>
+    <p>The ground is a chunked level of detail at 1:1, a tenfold triangle reduction overall: 1.87 M
+      in the worst measured view against 18.7 M with every tile at full resolution. 79,208 trees
+      stand where the survey measured them, drawn instanced and tinted onto the ground itself once
+      they are too far away to draw.</p>
     </details>
 
     <div class="shots">
 
-      <div class="shot">
-        <img src="img/island-lod.png" width="512" height="256" loading="lazy"
-             alt="Green rolling island seen from a height, scattered trees and a pond inland, the sea closing the horizon on both sides">
-        <div class="shot-body">
-          <h3>the island at range</h3>
-          <p>Chunked level of detail across the whole island at 1:1. 110,440 trees stand where the
-            lidar measured them, drawn instanced in a single draw call and tinted onto the ground
-            itself once they're too far away to draw. LOD is a tenfold triangle reduction overall:
-            1.87 M in the worst measured view against 18.7 M with every tile at full resolution.
-            <span class="counts">761,344 terrain triangles &middot; 1,395 trees &middot; 2,988 shrub clumps</span></p>
-        </div>
-      </div>
-
-      <div class="shot">
-        <img src="img/old-harbor.png" width="512" height="256" loading="lazy"
-             alt="Old Harbor from above: hotels along a street, a car park full of parked cars, green lawn and the beach curving away east">
-        <div class="shot-body">
+      <figure class="shot">
+        <a class="zoom" href="img/old-harbor-1600.webp"><img src="img/old-harbor.webp" width="800" height="430" loading="lazy"
+             alt="Old Harbor from above: hotels along the street, a car park full of parked cars, green lawn and the beach curving away east"></a>
+        <figcaption class="shot-body">
           <h3>Old Harbor</h3>
-          <p>The town as one paved sheet with streets cut through it. 612 buildings stand solid,
-            with real openings into their rooms, and the walker collides with them. Roads carry
-            their own paved surface.
-            <span class="counts">1,020,416 terrain triangles &middot; 602,418 paving &middot; 574 trees</span></p>
-        </div>
-      </div>
+          <p>The town as it stands, streets cut through one paved sheet. The buildings are solid, and you can walk into them.</p>
+        </figcaption>
+      </figure>
 
-      <div class="shot">
-        <img src="img/great-salt-pond.png" width="512" height="256" loading="lazy"
-             alt="A sheltered pond with a marina of finger docks reaching into it, sandy shore to the left, open sea beyond the far bank">
-        <div class="shot-body">
+      <figure class="shot">
+        <a class="zoom" href="img/salt-pond-1600.webp"><img src="img/salt-pond.webp" width="800" height="430" loading="lazy"
+             alt="A marina of finger docks and moored boats reaching into a sheltered pond, sandy shores around it and open water beyond"></a>
+        <figcaption class="shot-body">
           <h3>water, and where it meets land</h3>
-          <p>The sheltered shores, the marina and the sea's edge in one frame. Water depth, the
-            tide and the shoreline are the hardest thing in the engine to get right, which is why
-            this view is one of the eight: it's a place something once went wrong, and it's
-            photographed every build so it cannot go wrong again unnoticed.
-            <span class="counts">1,048,832 terrain triangles &middot; 190,194 paving &middot; 650 trees</span></p>
-        </div>
-      </div>
+          <p>The marina on Great Salt Pond. Water depth, the tide and the shoreline are the hardest things in the engine to get right.</p>
+        </figcaption>
+      </figure>
 
-      <div class="shot">
-        <img src="img/town-night.png" width="512" height="256" loading="lazy"
-             alt="The same town after dark, a line of lit windows and street lamps along the shore under a near-black sky with faint stars">
-        <div class="shot-body">
+      <figure class="shot">
+        <a class="zoom" href="img/evening-1600.webp"><img src="img/evening.webp" width="800" height="430" loading="lazy"
+             alt="Old Harbor at sundown from over the water: the low sun on the horizon, a long pier, a pink sky and the hotels along the shore"></a>
+        <figcaption class="shot-body">
+          <h3>19:50, 15 July</h3>
+          <p>The sun sets where it really sets for that date and hour, and the light goes with it.</p>
+        </figcaption>
+      </figure>
+
+      <figure class="shot">
+        <a class="zoom" href="img/town-night-1600.webp"><img src="img/town-night.webp" width="800" height="430" loading="lazy"
+             alt="The same view after dark: a few lamps and lit windows along the shore under a near-black sky"></a>
+        <figcaption class="shot-body">
           <h3>22:00, and properly dark</h3>
-          <p>Lit by the real sun for a given date and time, going properly dark after it sets, with
-            moonlight from the real moon and 8,404 stars from a real catalog in their actual places. Two
-            lighthouses flash their published characteristics; street lamps light the road under
-            them. Some windows are lit and some are not, and none of them flickers.
-            <span class="counts">963,328 terrain triangles &middot; 634,082 paving &middot; 489 trees</span></p>
-        </div>
-      </div>
+          <p>The same spot two hours later. The moon and 8,404 stars are in their real places, the two lighthouses flash their published patterns, and the lit windows hold steady.</p>
+        </figcaption>
+      </figure>
+
+      <figure class="shot">
+        <a class="zoom" href="img/house-inside-1600.webp"><img src="img/house-inside.webp" width="800" height="430" loading="lazy"
+             alt="Inside a house: a bed and a chair in a plain room, with windows looking out on trees and the pond outside"></a>
+        <figcaption class="shot-body">
+          <h3>inside</h3>
+          <p>Go through a door and the room is there, with furniture, and the real island out of the window.</p>
+        </figcaption>
+      </figure>
+
+      <figure class="shot">
+        <a class="zoom" href="img/mansion-1600.webp"><img src="img/mansion.webp" width="800" height="430" loading="lazy"
+             alt="Mansion Beach from over the shallows: a long pale beach, dune grass above it and houses and trees along the top"></a>
+        <figcaption class="shot-body">
+          <h3>Mansion Beach</h3>
+          <p>The beach, the grass above it and the houses behind, each where the survey found it.</p>
+        </figcaption>
+      </figure>
 
     </div>
   </div>
@@ -149,54 +164,48 @@
     <h2>what's in it</h2>
     <div class="feat-grid">
       <div class="feat-item">
-        <strong>terrain</strong>
-        <span>Chunked heightfield at 2 m posts, LOD by distance, with seams that are provably invisible</span>
-      </div>
-      <div class="feat-item">
-        <strong>solar &amp; lunar</strong>
-        <span>Real sun and moon positions for a date, time and place; the night is as dark as it actually is</span>
-      </div>
-      <div class="feat-item">
-        <strong>stars</strong>
-        <span>8,404 stars from a real catalog, drawn where they actually are for the hour on the clock</span>
-      </div>
-      <div class="feat-item">
-        <strong>shadows</strong>
-        <span>Cascaded shadow maps, with an atlas that defaults smaller on GLES3 than the floor allows</span>
-      </div>
-      <div class="feat-item">
-        <strong>structures</strong>
-        <span>Buildings with interiors you can enter, walls that stop you, doors that are openings</span>
-      </div>
-      <div class="feat-item">
-        <strong>vegetation</strong>
-        <span>Trees, shrub clumps and grass tufts from measured positions, instanced and impostored by range</span>
+        <strong>the ground</strong>
+        <span>Hills, bluffs and ponds from the survey, a height every 2 metres</span>
       </div>
       <div class="feat-item">
         <strong>water</strong>
-        <span>Sea and ponds, tide, current, shoreline and the swim transition at its edge</span>
+        <span>Sea and ponds with the tide, currents and a shore you can swim out from</span>
       </div>
       <div class="feat-item">
-        <strong>walker</strong>
+        <strong>sun, moon &amp; stars</strong>
+        <span>All in their real positions for the date, time and place; the night is as dark as it actually is</span>
+      </div>
+      <div class="feat-item">
+        <strong>weather &amp; life</strong>
+        <span>Sky, rain, birds, boats and the ferry working its real crossing</span>
+      </div>
+      <div class="feat-item">
+        <strong>buildings</strong>
+        <span>Rooms you can walk into, walls that stop you, and a lighthouse you can climb</span>
+      </div>
+      <div class="feat-item">
+        <strong>plants</strong>
+        <span>Trees, shrubs and grass where they were measured</span>
+      </div>
+      <div class="feat-item">
+        <strong>getting around</strong>
         <span>Walks, swims and rides; a bicycle and a moped, each with its own handling</span>
       </div>
       <div class="feat-item">
-        <strong>environment</strong>
-        <span>Sky, weather, rain, birds, boats and the ferry working its real crossing</span>
-      </div>
-      <div class="feat-item">
-        <strong>audio</strong>
-        <span>Mixer, sample bank, WAV loading and a small synth, all inside the engine</span>
-      </div>
-      <div class="feat-item">
-        <strong>capture</strong>
-        <span>Reads a frame back on every backend, which is what makes a visual claim checkable at all</span>
-      </div>
-      <div class="feat-item">
-        <strong>gles_budget</strong>
-        <span>Audits the whole scene against GLES3's guaranteed minimums, with no GPU and no display</span>
+        <strong>sound</strong>
+        <span>Its own mixer and a small synth, inside the engine</span>
       </div>
     </div>
+    <p class="section-blurb">Runs on Windows, Mac, Linux and Raspberry Pi 4 and 5.</p>
+    <details class="tech">
+    <summary>the technical version</summary>
+    <p><strong>terrain</strong> chunked heightfield at 2 m posts, LOD by distance, with seams that are provably invisible.
+      <strong>shadows</strong> cascaded shadow maps, with an atlas that defaults smaller on GLES3 than the floor allows.
+      <strong>vegetation</strong> instanced and impostored by range.
+      <strong>audio</strong> mixer, sample bank, WAV loading and a small synth.</p>
+    <p><strong>capture</strong> reads a frame back on every backend, which is what makes a visual claim checkable at all.
+      <strong>gles_budget</strong> audits the whole scene against GLES3's guaranteed minimums, with no GPU and no display.</p>
+    </details>
   </div>
 
   <div class="features">
@@ -204,7 +213,7 @@
     <p class="section-blurb">The game it was built for, and its own editor.</p>
     <ul class="apps">
       <li><strong><a href="../block-island-simulator/">block island simulator</a></strong> the real Block Island, at 1:1</li>
-      <li><strong>DAFFODIL WORKS</strong> the terrain editor, in daffodil&rsquo;s own repo</li>
+      <li><strong>DAFFODIL WORKS</strong> the editor for hand-made buildings, in daffodil&rsquo;s own repo</li>
     </ul>
   </div>
 
@@ -267,6 +276,16 @@ DAFFODIL_POST_METRES    2.0f</code></pre>
       &copy; 2026 <span>magmacrunch media</span>
   </footer>
 
+  <dialog class="lightbox" aria-label="larger picture">
+    <img alt="">
+    <p></p>
+    <button class="prev" type="button" aria-label="previous">&lsaquo;</button>
+    <button class="next" type="button" aria-label="next">&rsaquo;</button>
+    <button class="close" type="button" aria-label="close">&times;</button>
+  </dialog>
+  <script>
+(function(){var box=document.querySelector(".lightbox");if(!box||typeof box.showModal!=="function")return;var links=Array.prototype.slice.call(document.querySelectorAll("a.zoom"));var big=box.querySelector("img"),cap=box.querySelector("p"),at=0;function show(i){at=(i+links.length)%links.length;var a=links[at],small=a.querySelector("img"),fig=a.closest("figure");big.src=a.href;big.alt=small.alt;cap.textContent=fig?fig.querySelector("h3").textContent:"the island from the air"}links.forEach(function(a,i){a.addEventListener("click",function(e){e.preventDefault();show(i);box.showModal()})});box.querySelector(".prev").addEventListener("click",function(){show(at-1)});box.querySelector(".next").addEventListener("click",function(){show(at+1)});box.querySelector(".close").addEventListener("click",function(){box.close()});box.addEventListener("click",function(e){if(e.target===box||e.target===big)box.close()});box.addEventListener("keydown",function(e){if(e.key==="ArrowLeft")show(at-1);else if(e.key==="ArrowRight")show(at+1)})})();
+</script>
   <script src="../../nav.js?v=efa9574d"></script>
 </body>
 </html>
