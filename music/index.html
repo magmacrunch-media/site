@@ -17,8 +17,9 @@
     <link rel="preload" as="font" type="font/woff2" href="../fonts/PressStart2P-Regular.woff2" crossorigin>
     <link rel="preload" as="font" type="font/woff2" href="../fonts/CourierPrime-Regular.woff2" crossorigin>
     <link rel="stylesheet" href="../style.css?v=a59b9059">
-    <link rel="stylesheet" href="music.css?v=5b6f7436">
+    <link rel="stylesheet" href="music.css?v=0b67a59e">
     <link rel="stylesheet" href="music-chrome.css?v=18aa7c6d">
+    <link rel="stylesheet" href="../assets/section-cover.css?v=7208fa03">
 </head>
 <body class="dorfic music-chrome">
 
@@ -32,27 +33,33 @@
         <span class="current">music</span>
     </div>
 
-    <h1 class="page-title">magmacrunch music</h1>
-    <p class="page-subtitle">recordings from <a href="../archive/by-label/magmacrunch-media/">magmacrunch media</a> · songs published by <a href="../archive/by-label/magmacrunch-music/">magmacrunch music</a></p>
-
-    <section class="display" aria-label="latest release">
-        <div class="latest" id="latest" hidden>
-            <a class="latest-art" id="latestArtLink" href="distributed-music/">
-                <img id="latestArt" alt="" width="200" height="200">
-            </a>
-            <div class="latest-info">
-                <span class="display-label">latest release</span>
-                <h2 class="latest-title" id="latestTitle"></h2>
-                <a class="latest-artist" id="latestArtist" href="../archive/by-artist/"></a>
-                <p class="latest-desc" id="latestDesc"></p>
-                <div class="latest-actions">
-                    <a class="btn-play" id="latestPlay" href="jukebox/">▶ play the jukebox</a>
-                    <a class="btn-stream" id="latestStream" href="distributed-music/" target="_blank" rel="noopener">stream it ↗</a>
-                </div>
-            </div>
+    <div class="section-cover">
+        <div class="section-cover-text">
+            <h1 class="page-title">music</h1>
+            <p class="page-subtitle">recordings from <a href="../archive/by-label/magmacrunch-media/">magmacrunch media</a> · songs published by <a href="../archive/by-label/magmacrunch-music/">magmacrunch music</a></p>
         </div>
-        <canvas id="waveCanvas" width="600" height="48"></canvas>
-    </section>
+
+        <div class="section-cover-object">
+            <section class="display" aria-label="latest release">
+                <div class="latest" id="latest" hidden>
+                    <a class="latest-art" id="latestArtLink" href="distributed-music/">
+                        <img id="latestArt" alt="" width="200" height="200">
+                    </a>
+                    <div class="latest-info">
+                        <span class="display-label">latest release</span>
+                        <h2 class="latest-title" id="latestTitle"></h2>
+                        <a class="latest-artist" id="latestArtist" href="../archive/by-artist/"></a>
+                        <p class="latest-desc" id="latestDesc"></p>
+                        <div class="latest-actions">
+                            <a class="btn-play" id="latestPlay" href="jukebox/">▶ play the jukebox</a>
+                            <a class="btn-stream" id="latestStream" href="distributed-music/" target="_blank" rel="noopener">stream it ↗</a>
+                        </div>
+                    </div>
+                </div>
+                <canvas id="waveCanvas" width="600" height="48"></canvas>
+            </section>
+        </div>
+    </div>
 
     <section class="roster-wrap" id="rosterWrap" hidden>
         <h2 class="section-head">roster</h2>
