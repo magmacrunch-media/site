@@ -38,7 +38,7 @@
         .lyrics-link { font-family: 'Press Start 2P', monospace; font-size: 7px; background: var(--white); color: var(--black); padding: 2px 7px; margin-left: 8px; text-decoration: none; vertical-align: middle; letter-spacing: 0.05em; }
         .lyrics-link:hover { opacity: 0.7; }
         .error-msg { color: var(--rose); opacity: 0.7; }
-    `;document.head.appendChild(style);const tickerPhrases=[C.name,"works",...C.ticker||[]];const tickerEl=document.getElementById("ticker-content");if(tickerEl){tickerEl.innerHTML=[...tickerPhrases,...tickerPhrases].map(p=>`${p} <span class="sep">✦</span>`).join(" ")}const breadcrumbEl=document.querySelector(".breadcrumb");if(breadcrumbEl){breadcrumbEl.innerHTML=`
+    `;document.head.appendChild(style);const tickerPhrases=[C.name,"works",...C.ticker||[]];const tickerEl=document.getElementById("ticker-content");if(tickerEl){tickerEl.innerHTML=[...tickerPhrases,...tickerPhrases].map(p=>`${p} <span class="sep">·</span>`).join(" ")}const breadcrumbEl=document.querySelector(".breadcrumb");if(breadcrumbEl){breadcrumbEl.innerHTML=`
             <a href="${d}archive/">archive</a>
             <span class="sep">›</span>
             <a href="${d}archive/by-artist/">by artist</a>

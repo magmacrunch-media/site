@@ -18,7 +18,7 @@
         .badge-other    { background:#4a4a6a; color:var(--white); }
 
         .tag { display:inline-block; background:#1a1a2e; border:1px solid #2a2a4a; padding:2px 7px; margin:2px; font-family:'Courier Prime',monospace; font-size:11px; color:var(--dim); }
-    `;document.head.appendChild(style);const tickerPhrases=[C.name,"personnel",...C.ticker||[]];const tickerEl=document.getElementById("ticker-content");if(tickerEl){tickerEl.innerHTML=[...tickerPhrases,...tickerPhrases].map(p=>`${p} <span class="sep">✦</span>`).join(" ")}const breadcrumbEl=document.querySelector(".breadcrumb");if(breadcrumbEl){breadcrumbEl.innerHTML=`
+    `;document.head.appendChild(style);const tickerPhrases=[C.name,"personnel",...C.ticker||[]];const tickerEl=document.getElementById("ticker-content");if(tickerEl){tickerEl.innerHTML=[...tickerPhrases,...tickerPhrases].map(p=>`${p} <span class="sep">·</span>`).join(" ")}const breadcrumbEl=document.querySelector(".breadcrumb");if(breadcrumbEl){breadcrumbEl.innerHTML=`
             <a href="${d}archive/">archive</a>
             <span class="sep">›</span>
             <a href="${d}archive/by-place/">by place</a>

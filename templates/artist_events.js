@@ -30,7 +30,7 @@
         .error-msg { font-family: 'Courier Prime', monospace; font-size: 12px; color: var(--rose); opacity: 0.7; }
 
         @media (max-width: 500px) { .event-art { width: 72px; min-width: 72px; height: 72px; } }
-    `;document.head.appendChild(style);const tickerPhrases=[C.name,"events",...C.ticker||[]];const tickerEl=document.getElementById("ticker-content");if(tickerEl){tickerEl.innerHTML=[...tickerPhrases,...tickerPhrases].map(p=>`${p} <span class="sep">✦</span>`).join(" ")}const breadcrumbEl=document.querySelector(".breadcrumb");if(breadcrumbEl){breadcrumbEl.innerHTML=`
+    `;document.head.appendChild(style);const tickerPhrases=[C.name,"events",...C.ticker||[]];const tickerEl=document.getElementById("ticker-content");if(tickerEl){tickerEl.innerHTML=[...tickerPhrases,...tickerPhrases].map(p=>`${p} <span class="sep">·</span>`).join(" ")}const breadcrumbEl=document.querySelector(".breadcrumb");if(breadcrumbEl){breadcrumbEl.innerHTML=`
             <a href="${d}archive/">archive</a>
             <span class="sep">›</span>
             <a href="${d}archive/by-artist/">by artist</a>

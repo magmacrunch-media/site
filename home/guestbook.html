@@ -33,7 +33,7 @@
     </div>
 
     <h1 class="page-title">// guestbook //</h1>
-    <p class="page-subtitle">say hi ✦ leave a note ✦ you were here</p>
+    <p class="page-subtitle">say hi · leave a note · you were here</p>
 
     <pre class="ascii-art">
   __                                                                  
@@ -81,7 +81,7 @@ const SCRIPT_URL="https://script.google.com/macros/s/AKfycbzIKFyhLKbCR3VnOzl1vkK
                         <div class="entry-name">${escapeHtml(entry.name)}</div>
                         <div class="entry-message">${escapeHtml(entry.message)}</div>
                         <div class="entry-time">${new Date(entry.timestamp).toLocaleString()}</div>
-                    `;list.appendChild(div)})}).catch(()=>{document.getElementById("entries").innerHTML='<div class="loading-msg">error loading entries</div>'})}function submitEntry(){const name=document.getElementById("name").value.trim();const message=document.getElementById("message").value.trim();const status=document.getElementById("submitStatus");if(!name||!message){status.textContent="! please fill in both fields";status.className="submit-status error";return}status.textContent="sending...";status.className="submit-status";const formData=new FormData;formData.append("name",name);formData.append("message",message);fetch(SCRIPT_URL,{method:"POST",body:formData}).then(r=>r.json()).then(data=>{if(data.status==="success"){document.getElementById("name").value="";document.getElementById("message").value="";status.textContent="✦ message sent!";status.className="submit-status ok";loadEntries();setTimeout(()=>{status.textContent=""},4e3)}}).catch(()=>{status.textContent="! error sending, please try again";status.className="submit-status error"})}loadEntries();const gbPollId=setInterval(loadEntries,3e4);window.__pageCleanup=function(){clearInterval(gbPollId)};
+                    `;list.appendChild(div)})}).catch(()=>{document.getElementById("entries").innerHTML='<div class="loading-msg">error loading entries</div>'})}function submitEntry(){const name=document.getElementById("name").value.trim();const message=document.getElementById("message").value.trim();const status=document.getElementById("submitStatus");if(!name||!message){status.textContent="! please fill in both fields";status.className="submit-status error";return}status.textContent="sending...";status.className="submit-status";const formData=new FormData;formData.append("name",name);formData.append("message",message);fetch(SCRIPT_URL,{method:"POST",body:formData}).then(r=>r.json()).then(data=>{if(data.status==="success"){document.getElementById("name").value="";document.getElementById("message").value="";status.textContent="· message sent!";status.className="submit-status ok";loadEntries();setTimeout(()=>{status.textContent=""},4e3)}}).catch(()=>{status.textContent="! error sending, please try again";status.className="submit-status error"})}loadEntries();const gbPollId=setInterval(loadEntries,3e4);window.__pageCleanup=function(){clearInterval(gbPollId)};
 </script>
 
 </body>
