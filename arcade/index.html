@@ -315,7 +315,7 @@
 
 <script src="../nav.js?v=ac308f29"></script>
 <script src="../animations/server.js?v=7557c1d2"></script>
-<script src="catalogue.js?v=6aaafdf2"></script>
+<script src="catalogue.js?v=a6206981"></script>
 <script src="shared/mp-server.js?v=f66f285b"></script>
 <script>
 (function(){const statusDot=document.getElementById("mpServerStatus");const statusText=document.getElementById("mpServerStatusText");function checkStatus(){try{var probeUrl=window.location.protocol+"//"+mpServerFor("chess",8769);var controller=new AbortController;var timeout=setTimeout(function(){controller.abort()},5e3);fetch(probeUrl,{mode:"no-cors",signal:controller.signal}).then(function(){clearTimeout(timeout);statusDot.className="mp-status-dot online";statusText.textContent="MULTIPLAYER ONLINE"}).catch(function(){clearTimeout(timeout);statusDot.className="mp-status-dot offline";statusText.textContent="SERVERS OFFLINE"})}catch(e){statusDot.className="mp-status-dot offline";statusText.textContent="SERVERS OFFLINE"}}checkStatus();setInterval(checkStatus,3e4)})();
