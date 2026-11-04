@@ -4,9 +4,9 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>chess · magmacrunch media</title>
-  <meta name="description" content="neon chess for the browser and the terminal">
+  <meta name="description" content="chess on a black and white window system, for the browser and the terminal">
   <meta property="og:title" content="chess · magmacrunch media">
-  <meta property="og:description" content="neon chess for the browser and the terminal">
+  <meta property="og:description" content="chess on a black and white window system, for the browser and the terminal">
   <meta property="og:image" content="https://magmacrunch.com/og/arcade-chess.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
@@ -23,11 +23,11 @@
   <link rel="stylesheet" href="../magma-themes.css?v=cc6066a1">
   <link rel="stylesheet" href="../game-page.css?v=d8dc30f8">
   <style>
-body{--line: color-mix(in srgb, var(--mt-p-ch-text-dim) 35%, var(--mt-bg));--link: var(--mt-p-ch-gold);--radius: 0px;--head-glow: 0 0 10px color-mix(in srgb, var(--mt-p-ch-player) 70%, transparent), 0 0 24px color-mix(in srgb, var(--mt-p-ch-player) 35%, transparent);--btn-ink: var(--mt-bg);--btn-shadow: var(--mt-p-ch-ai);--frame: var(--mt-p-ch-player);--frame-glow: 0 0 22px color-mix(in srgb, var(--mt-p-ch-player) 40%, transparent);--panel-border: color-mix(in srgb, var(--mt-p-ch-player) 35%, var(--mt-surface));background:radial-gradient(ellipse 80% 45% at 50% 0%,color-mix(in srgb,var(--mt-p-ch-ai) 10%,transparent) 0%,transparent 100%),repeating-conic-gradient(color-mix(in srgb,var(--mt-p-ch-board-light) 45%,transparent) 0 25%,transparent 0 50%) 0 0 / 96px 96px fixed,var(--mt-bg)}.hero h1::before,.hero h1::after{color:var(--mt-p-ch-ai);font-size:.7em;vertical-align:.15em;text-shadow:none}.hero h1::before{content:"◂  "}.hero h1::after{content:"  ▸";color:var(--mt-p-ch-ai)}.hero .tagline{color:var(--mt-p-ch-text-dim);letter-spacing:.04em}.hero .tagline::after{content:"";display:block;width:220px;height:2px;margin:1.25rem auto 0;background:linear-gradient(90deg,transparent,var(--mt-p-ch-player),var(--mt-p-ch-ai),transparent)}.platform,.built a,.built div{background:color-mix(in srgb,var(--mt-surface) 85%,transparent)}.play-btn:hover,.play-btn:focus-visible{box-shadow:4px 4px 0 var(--btn-shadow),0 0 16px color-mix(in srgb,var(--mt-p-ch-player) 55%,transparent)}
+body{--line: #000;--link: #000;--radius: 0px;--btn-ink: #fff;--btn-shadow: #000;--frame: #000;--panel-border: #000;background:var(--mt-bg)}a{text-decoration:underline}.hero .tagline::after{content:"";display:block;width:220px;height:2px;margin:1.25rem auto 0;background:#000}.screen{box-shadow:4px 4px 0 #000}.hero .screen{width:min(100%,460px)}
 </style>
   <link rel="stylesheet" href="../ware-page.css?v=549bdc52">
 </head>
-<body class="ware-accent ware-page" data-magma-theme="chess" style="--ware-accent:#00f5ff">
+<body class="ware-accent ware-page" data-magma-theme="chess" style="--ware-accent:#ffffff">
 
 <nav id="auto-nav" data-depth="../../"></nav>
 
@@ -41,13 +41,13 @@ body{--line: color-mix(in srgb, var(--mt-p-ch-text-dim) 35%, var(--mt-bg));--lin
 </div>
 
 <div class="hero">
-  <img class="screen" src="img/open-file.webp" alt="Sixteen moves in: a cyan pawn selected with its squares marked in green, magenta knights close by" width="1100" height="1129">
+  <img class="screen" src="img/open-file.webp" alt="Early in a game, a white pawn selected with marching ants and its two squares marked" width="1034" height="1032">
   <h1>CHESS</h1>
-  <p class="tagline">neon edition &middot; three difficulty levels &middot; optional clock</p>
+  <p class="tagline">1-bit edition &middot; three difficulty levels &middot; optional clock</p>
 </div>
 
 <div class="section lead">
-  <p>Chess in the arcade's neon edition, cyan against magenta in pixel art under CRT scanlines.</p>
+  <p>Chess in the arcade's 1-bit edition, in pixel art on a black and white window system from the mid 1980s, where grey is a dither.</p>
   <p>Play the computer at easy, medium or hard, with no clock or a blitz, rapid or classical one, or play a friend online with chat. Moves are kept in algebraic notation.</p>
 </div>
 
@@ -55,11 +55,11 @@ body{--line: color-mix(in srgb, var(--mt-p-ch-text-dim) 35%, var(--mt-bg));--lin
   <h2>// at the board //</h2>
   <div class="shots">
     <figure>
-      <img class="screen" src="img/check.webp" alt="A red king square and the warning Check! Your king is in danger, with the move history beside the board" width="1100" height="757" loading="lazy">
+      <img class="screen" src="img/check.webp" alt="The white king in check on an inverted square, with the warning Check! Your king is in danger and the move history beside the board" width="1100" height="757" loading="lazy">
       <figcaption>check, and it matters</figcaption>
     </figure>
     <figure>
-      <img class="screen" src="img/rook.webp" alt="A cyan rook selected with the whole file open in green and two magenta pawns ringed as captures" width="1100" height="757" loading="lazy">
+      <img class="screen" src="img/rook.webp" alt="A white rook selected with marching ants, with the whole open file and its rank marked" width="1100" height="757" loading="lazy">
       <figcaption>a rook with the whole file open</figcaption>
     </figure>
   </div>

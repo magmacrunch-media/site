@@ -4,9 +4,9 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>chinese checkers · magmacrunch media</title>
-  <meta name="description" content="neon chinese checkers for two to six players, in the browser and the terminal">
+  <meta name="description" content="chinese checkers on an 8-bit screen, for two to six players, in the browser and the terminal">
   <meta property="og:title" content="chinese checkers · magmacrunch media">
-  <meta property="og:description" content="neon chinese checkers for two to six players, in the browser and the terminal">
+  <meta property="og:description" content="chinese checkers on an 8-bit screen, for two to six players, in the browser and the terminal">
   <meta property="og:image" content="https://magmacrunch.com/og/arcade-chinese-checkers.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
@@ -23,11 +23,11 @@
   <link rel="stylesheet" href="../magma-themes.css?v=cc6066a1">
   <link rel="stylesheet" href="../game-page.css?v=d8dc30f8">
   <style>
-body{--line: color-mix(in srgb, var(--mt-p-cc-text-dim) 35%, var(--mt-bg));--link: var(--mt-p-cc-gold);--radius: 0px;--head-glow: 0 0 10px color-mix(in srgb, var(--mt-p-cc-player) 70%, transparent), 0 0 24px color-mix(in srgb, var(--mt-p-cc-player) 35%, transparent);--btn-ink: var(--mt-bg);--btn-shadow: var(--mt-p-cc-magenta);--frame: var(--mt-p-cc-player);--frame-glow: 0 0 22px color-mix(in srgb, var(--mt-p-cc-player) 40%, transparent);--panel-border: color-mix(in srgb, var(--mt-p-cc-player) 35%, var(--mt-surface));background:radial-gradient(ellipse 80% 45% at 50% 0%,color-mix(in srgb,var(--mt-p-cc-magenta) 10%,transparent) 0%,transparent 100%),url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='97'%3E%3Cpath d='M28 0 L56 16 L56 48 L28 64 L0 48 L0 16Z M28 64 L28 97 M0 48 L0 81 L28 97 M56 48 L56 81 L28 97' fill='none' stroke='%233a2d5c' stroke-width='1.2' opacity='.55'/%3E%3C/svg%3E") 0 0 / 56px 97px fixed,var(--mt-bg)}.hero h1::before,.hero h1::after{color:var(--mt-p-cc-magenta);font-size:.7em;vertical-align:.15em;text-shadow:none}.hero h1::before{content:"◂  "}.hero h1::after{content:"  ▸";color:var(--mt-p-cc-magenta)}.hero .tagline{color:var(--mt-p-cc-text-dim);letter-spacing:.04em}.hero .tagline::after{content:"";display:block;width:220px;height:2px;margin:1.25rem auto 0;background:linear-gradient(90deg,transparent,var(--mt-p-cc-player),var(--mt-p-cc-magenta),transparent)}.platform,.built a,.built div{background:color-mix(in srgb,var(--mt-surface) 85%,transparent)}.play-btn:hover,.play-btn:focus-visible{box-shadow:4px 4px 0 var(--btn-shadow),0 0 16px color-mix(in srgb,var(--mt-p-cc-player) 55%,transparent)}.hero .screen{width:min(100%,540px)}
+body{--line: var(--mt-p-cc-border);--link: var(--mt-p-cc-player1);--radius: 0px;--btn-ink: var(--mt-bg);--btn-shadow: var(--mt-p-cc-border);--frame: var(--mt-p-cc-border);--panel-border: var(--mt-p-cc-border);background:var(--mt-bg)}a{text-decoration:underline}.hero .tagline::after{content:"";display:block;width:220px;height:2px;margin:1.25rem auto 0;background:var(--mt-p-cc-text)}.hero .screen{width:min(100%,460px)}
 </style>
   <link rel="stylesheet" href="../ware-page.css?v=549bdc52">
 </head>
-<body class="ware-accent ware-page" data-magma-theme="chinese-checkers" style="--ware-accent:#c45fff">
+<body class="ware-accent ware-page" data-magma-theme="chinese-checkers" style="--ware-accent:#b4b2f8">
 
 <nav id="auto-nav" data-depth="../../"></nav>
 
@@ -41,13 +41,13 @@ body{--line: color-mix(in srgb, var(--mt-p-cc-text-dim) 35%, var(--mt-bg));--lin
 </div>
 
 <div class="hero">
-  <img class="screen" src="img/six.webp" alt="A six-player start: yellow, cyan, purple, green, magenta and orange pieces filling the six points of the hexagonal star" width="760" height="800">
+  <img class="screen" src="img/six.webp" alt="A six-player start: white, red, green, yellow, cyan and grey marbles filling the six points of the star, drawn in blocks" width="1200" height="1354">
   <h1>CHINESE<br>CHECKERS</h1>
-  <p class="tagline">neon edition &middot; hexagonal star &middot; two to six players</p>
+  <p class="tagline">8-bit edition &middot; hexagonal star &middot; two to six players</p>
 </div>
 
 <div class="section lead">
-  <p>Chinese checkers in the arcade's neon edition, on a hexagonal star with ten marbles each.</p>
+  <p>Chinese checkers in the arcade's 8-bit edition, on a home computer's blue text screen, with a hexagonal star of blocks and ten marbles each.</p>
   <p>Play two, three, four or six players against the computer, or friends online with room codes and chat. Steps light up green, hops yellow, and hops chain.</p>
 </div>
 
@@ -55,7 +55,7 @@ body{--line: color-mix(in srgb, var(--mt-p-cc-text-dim) 35%, var(--mt-bg));--lin
   <h2>// at the board //</h2>
   <div class="shots">
     <figure>
-      <img class="screen" src="img/hopping.webp" alt="Two players' marbles crossing the star board, cyan heading for the far point" width="1100" height="756" loading="lazy">
+      <img class="screen" src="img/hopping.webp" alt="Two players' marbles crossing the star board, a white marble selected, its step marked with a green spot and its hop over a red marble with a yellow ring" width="1100" height="757" loading="lazy">
       <figcaption>hop across to the far point</figcaption>
     </figure>
   </div>
