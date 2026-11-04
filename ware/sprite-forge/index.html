@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="../shell/toast.css?v=2c51118f">
     <link rel="stylesheet" href="kit/magma-themes.css?v=e1af9c20">
     <link rel="stylesheet" href="kit/themes.css?v=38d89cb1">
-    <link rel="stylesheet" href="style.css?v=34910a50">
+    <link rel="stylesheet" href="style.css?v=33f68544">
     <script src="kit/boot.js?v=3867389f"></script>
     <script src="kit/bridge-core.js?v=1a0ffb5c"></script>
     <script src="kit/keys.js?v=a0ef34b7"></script>
@@ -133,6 +133,12 @@
                     <span class="sheet-label">animation</span>
                     <canvas id="anim-canvas"></canvas>
                 </div>
+                <div class="preview-block" id="facings-block" hidden>
+                    <span class="sheet-label facings-head">facings
+                        <select id="facings-ghost" title="Another facing, faintly under the one you are drawing"></select>
+                    </span>
+                    <div id="facings-cells" class="facings-cells"></div>
+                </div>
                 <div class="preview-block">
                     <span class="sheet-label">sheet; click a frame to edit it, drag to reorder</span>
                     <canvas id="sheet-canvas"></canvas>
@@ -187,10 +193,13 @@
                     <button id="sprite-add" title="Add a blank sprite at this size">ADD</button>
                     <button id="sprite-dup" title="Duplicate this sprite">DUP</button>
                     <button id="sprite-del" title="Delete this sprite">DEL</button>
+                    <button id="sprite-mirror-x" title="Add this sprite mirrored left to right, and kept in step with it">MIRROR</button>
+                    <button id="sprite-mirror-y" title="Add this sprite flipped top to bottom, and kept in step with it">FLIP</button>
                 </div>
                 <div class="hint">every sprite here shares one palette, so a
                     character's facings cannot drift onto different browns. each
-                    exports as its own sheet, named by the name above.</div>
+                    exports as its own sheet, named by the name above. a mirror
+                    follows the sprite it came from until you draw on it.</div>
             </details>
 
             <details class="side-section" data-section="targets" hidden>
@@ -208,8 +217,8 @@
                 <div class="hint">the sheet lands in the engine's own directory
                     under the folder you pick, and godot takes C# source
                     instead of a PNG, so nothing needs importing before the game
-                    will run. makemecookies edits its web/js/pixels.js in place,
-                    and IMPORT opens that file as a project. the list of folders is yours, not the project's,
+                    will run. makemecookies and cave diving edit their web/js/pixels.js
+                    in place, and IMPORT opens that file as a project. the list of folders is yours, not the project's,
                     and it never leaves this machine.</div>
             </details>
 
@@ -619,28 +628,30 @@
     <script src="core/select.js?v=4c3b5227"></script>
     <script src="core/frames.js?v=29545ce3"></script>
     <script src="core/transform.js?v=a27d6b54"></script>
+    <script src="core/facings.js?v=c4a1088c"></script>
     <script src="core/sheet.js?v=bd55b20b"></script>
     <script src="core/mesh.js?v=6ad51314"></script>
-    <script src="core/templates.js?v=a6bef97e"></script>
+    <script src="core/templates.js?v=bcf762b1"></script>
     <script src="core/reference.js?v=20ef83d8"></script>
-    <script src="core/project.js?v=99f06f3b"></script>
+    <script src="core/project.js?v=3db1a021"></script>
     <script src="core/targets/gamemaker.js?v=6f0a6c02"></script>
     <script src="core/targets/engines.js?v=7eaebb3c"></script>
     <script src="core/targets/godot.js?v=498ce3e1"></script>
-    <script src="core/targets/makemecookies.js?v=ed93c0f7"></script>
-    <script src="core/targets/store.js?v=2e5c8dac"></script>
+    <script src="core/targets/string-rows.js?v=b2e1fa17"></script>
+    <script src="core/targets/store.js?v=eaa4d332"></script>
     <script src="core/ops-themes.js?v=02273d65"></script>
     <script src="core/palettes.js?v=bf85f9ca"></script>
     <script src="core/keybindings.js?v=869fdada"></script>
     <script src="platform.js?v=93dbb0f4"></script>
     <script src="png.js?v=65978a7e"></script>
     <script src="theme.js?v=c202b412"></script>
-    <script src="editor.js?v=da1cac84"></script>
-    <script src="sprites-ui.js?v=b1d7d474"></script>
+    <script src="editor.js?v=38d4fb2f"></script>
+    <script src="sprites-ui.js?v=fad89253"></script>
+    <script src="facings-ui.js?v=645f6c47"></script>
     <script src="mesh-ui.js?v=15f34c7e"></script>
     <script src="reference-ui.js?v=0ed54a57"></script>
     <script src="project-ui.js?v=82dbbdee"></script>
-    <script src="targets-ui.js?v=757a09a6"></script>
+    <script src="targets-ui.js?v=e3238fdd"></script>
     <script src="help-ui.js?v=b17f8632"></script>
     <script src="menu.js?v=e49924de"></script>
 </body>
