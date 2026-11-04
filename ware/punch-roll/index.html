@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="../shell/toast.css?v=2c51118f">
     <link rel="stylesheet" href="kit/magma-themes.css?v=e1af9c20">
     <link rel="stylesheet" href="kit/themes.css?v=38d89cb1">
-    <link rel="stylesheet" href="style.css?v=243e70f7">
+    <link rel="stylesheet" href="style.css?v=8e3d4368">
 </head>
 <body>
     <header class="app-header">
@@ -21,8 +21,8 @@
                 <button id="btn-stop" class="icon" type="button" title="Stop, back to the start marker (Space)"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 2.5h7v7h-7z"/></svg><span class="sr">Stop</span></button>
             </span>
             <output id="out-length" aria-label="Length" title="How long the song plays once through: its bars at its BPM, tempo changes included"></output>
-            <label>BPM <input id="in-bpm" type="number" min="20" max="400" step="1"></label>
-            <label>Bars <input id="in-bars" type="number" min="1" max="256" step="1"></label>
+            <label>BPM <input id="in-bpm" type="number" inputmode="numeric" min="20" max="400" step="1"></label>
+            <label>Bars <input id="in-bars" type="number" inputmode="numeric" min="1" max="256" step="1"></label>
             <label>Grid <select id="in-grid" title="What notes snap to"></select></label>
             <label class="check"><input id="in-loop" type="checkbox" checked> Loop</label>
             <span class="spacer"></span>
@@ -32,6 +32,7 @@
                     <button id="btn-new" role="menuitem" type="button" title="Start a new song">New</button>
                     <button id="btn-open" role="menuitem" type="button" title="Open a song">Open&hellip;<i>Ctrl+O</i></button>
                     <button id="btn-save" role="menuitem" type="button" title="Save the song">Save<i>Ctrl+S</i></button>
+                    <button id="btn-save-as" role="menuitem" type="button" title="Save the song to a new file, leaving the old one as it was">Save As&hellip;<i>Ctrl+Shift+S</i></button>
                     <span class="menu-sep" role="separator"></span>
                 </span>
             </span>
@@ -117,7 +118,7 @@
             <button class="modal-close" title="Close (Esc)" aria-label="Close">×</button>
         </header>
         <form id="tempo-form" class="tempo-body">
-            <label>BPM <input id="in-tempo" type="number" min="20" max="400" step="1" required></label>
+            <label>BPM <input id="in-tempo" type="number" inputmode="numeric" min="20" max="400" step="1" required></label>
             <div class="tempo-actions">
                 <button type="button" id="btn-tempo-delete">Delete</button>
                 <span class="spacer"></span>
@@ -194,7 +195,8 @@
                 <h3>Keep it</h3>
                 <p>The File menu holds New, Open, Save and Export. Save writes a
                     <code>.punch</code> song file, and Open loads one back;
-                    on the desktop, double-clicking a <code>.punch</code> file opens it too.
+                    on the desktop, Save As writes a new file and leaves the old one
+                    as it was, and double-clicking a <code>.punch</code> file opens it too.
                     Export renders the song to an audio file: WAV or FLAC, which keep every
                     sample, or MP3 or Ogg Vorbis, which are far smaller. Ctrl+Z undoes almost
                     anything.</p>
@@ -240,11 +242,11 @@
     <script src="kit/magma-themes-index.js?v=c4d95048"></script>
     <script src="kit/scope-window.js?v=f47adede"></script>
     <script src="../shell/toast.js?v=d87a2776"></script>
-    <script src="vendor/adenosine-synth.js?v=92493d91"></script>
+    <script src="vendor/adenosine-synth.js?v=ace6f1b6"></script>
     <script src="vendor/adenosine-scope.js?v=f0f22ae8"></script>
     <script src="vendor/wasm-media-encoders.js?v=dd4e17ab"></script>
     <script src="core/roll.js?v=58714ee7"></script>
-    <script src="core/keymap.js?v=cb026863"></script>
+    <script src="core/keymap.js?v=cba6421e"></script>
     <script src="core/songfile.js?v=c1169965"></script>
     <script src="core/midi.js?v=b4db0caf"></script>
     <script src="core/flac.js?v=67c1a8ac"></script>
@@ -253,14 +255,14 @@
     <script src="core/samples.js?v=ae2ef0d5"></script>
     <script src="bridge.js?v=a9f7bc38"></script>
     <script src="faust-voice.js?v=3275a6f2"></script>
-    <script src="drum-voices.js?v=75a78121"></script>
-    <script src="sample-voice.js?v=c14c1706"></script>
+    <script src="drum-voices.js?v=340d8c93"></script>
+    <script src="sample-voice.js?v=f500bb71"></script>
     <script src="export.js?v=4a6b1c2d"></script>
     <script src="theme.js?v=bf2baf47"></script>
     <script src="wave-glyph.js?v=f27c9f17"></script>
     <script src="roll-view.js?v=f48671ab"></script>
     <script src="step-view.js?v=44cb112d"></script>
     <script src="midi.js?v=b33fdd11"></script>
-    <script src="main.js?v=7298a00c"></script>
+    <script src="main.js?v=d26b3fa6"></script>
 </body>
 </html>

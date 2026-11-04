@@ -84,7 +84,7 @@
             <div class="prop-group" id="seedGroup" hidden>
                 <label class="prop-label">SEED</label>
                 <div class="seed-row">
-                    <input type="number" id="genSeed" class="seed-input" value="0" min="0" step="1">
+                    <input type="number" inputmode="numeric" id="genSeed" class="seed-input" value="0" min="0" step="1">
                     <button class="seed-btn" id="rerollBtn">REROLL</button>
                 </div>
             </div>
@@ -107,9 +107,9 @@
             <div class="panel-label">WORK SIZE</div>
             <div class="size-row">
                 <span class="size-label">W</span>
-                <input type="number" id="sizeW" class="size-input" value="256" min="16" max="2048">
+                <input type="number" inputmode="numeric" id="sizeW" class="size-input" value="256" min="16" max="2048">
                 <span class="size-label">H</span>
-                <input type="number" id="sizeH" class="size-input" value="256" min="16" max="2048">
+                <input type="number" inputmode="numeric" id="sizeH" class="size-input" value="256" min="16" max="2048">
             </div>
             <div class="custom-dropdown" id="presetDropdown">
                 <div class="dropdown-selected">
@@ -167,7 +167,7 @@
             <div class="panel-label">CHAIN SEED</div>
             <p class="panel-hint">one number, a whole chain</p>
             <div class="seed-row">
-                <input type="number" id="chainSeed" class="seed-input" value="0" min="0" step="1">
+                <input type="number" inputmode="numeric" id="chainSeed" class="seed-input" value="0" min="0" step="1">
                 <button class="seed-btn" id="diceBtn">DICE</button>
             </div>
             <div class="lab-row" id="rollRow">
