@@ -1708,20 +1708,6 @@
     "b": ""
   },
   {
-    "t": "Very Long Boards",
-    "c": "arcade",
-    "u": "/arcade/very-long-boards/",
-    "d": "Action Game",
-    "b": ""
-  },
-  {
-    "t": "RODERICK TRON · magmacrunch media",
-    "c": "arcade",
-    "u": "/arcade/roderick-tron/",
-    "d": "Action Game",
-    "b": ""
-  },
-  {
     "t": "SORRY!",
     "c": "arcade",
     "u": "/arcade/SORRY/",
@@ -1736,13 +1722,6 @@
     "b": ""
   },
   {
-    "t": "THE JOVIAN HUMANITARIAN CONFLICT · magmacrunch media",
-    "c": "arcade",
-    "u": "/arcade/jovian-humanitarian-conflict/",
-    "d": "An on-rails shooter over the cloud decks of Jupiter. Aid convoys fly among the hostiles and squawk a transponder. Shoot one and it costs you the run. Built around Jimmi's The Jovian Humanitarian Conflict.",
-    "b": ""
-  },
-  {
     "t": "CAVE DIVING (NOT EVEN ONCE) · magmacrunch media",
     "c": "arcade",
     "u": "/arcade/cave-diving/",
@@ -1754,13 +1733,6 @@
     "c": "arcade",
     "u": "/arcade/caldera/",
     "d": "Climb a volcanic vent ahead of rising magma. Speed is height: run, rebound off the walls and skip floors to keep a CRUNCH chain alive.",
-    "b": ""
-  },
-  {
-    "t": "GROCERY HARRISON · magmacrunch media",
-    "c": "arcade",
-    "u": "/arcade/grocery-harrison/",
-    "d": "Grocery Harrison, shrunk to the size of a cornflake, puts a very big grocery store back in order, one aisle at a time.",
     "b": ""
   },
   {
@@ -1936,7 +1908,7 @@
     "c": "tool",
     "u": "/ware/games/",
     "d": "games for the browser, the terminal, the Wii and iPhone",
-    "b": "video games · ware · magmacrunch media home › ware › video games video games one page per game, with every way to play it. to play in your browser right now, the arcade has them all. browser play it now Wii on its way in development still being worked on // originals // games made here, from scratch George Boole Has Entered the Chat logic-gate puzzle browser terminal Wii iPhone & iPad ▶ Moonlight Drift cave flyer browser terminal Wii ▶ Texas Hold'Em Lava Dome solo poker browser terminal Wii ▶ The Jovian Humanitarian Conflict on-rails shooter browser terminal Wii ▶ makemecookies!x4 cookie facto..."
+    "b": "video games · ware · magmacrunch media home › ware › video games video games one page per game, with every way to play it. to play in your browser right now, the arcade has them all. browser play it now Wii on its way in development still being worked on // originals // games made here, from scratch George Boole Has Entered the Chat logic-gate puzzle browser terminal Wii iPhone & iPad ▶ Moonlight Drift cave flyer browser terminal Wii ▶ Texas Hold'Em Lava Dome solo poker browser terminal Wii ▶ The Jovian Humanitarian Conflict on-rails shooter in development browser terminal Wii ▶ makemecookies!..."
   },
   {
     "t": "george boole has entered the chat · magmacrunch media",
@@ -1957,7 +1929,7 @@
     "c": "tool",
     "u": "/ware/grocery-harrison/",
     "d": "a side-scroller about a night-shift folk musician shrunk to the size of a cornflake, in the browser",
-    "b": "grocery harrison · magmacrunch media home › ware › video games › grocery harrison GROCERY HARRISON side scroller edition · in development Grocery Harrison, a folk musician on the night shift, plays a strange chord in the walk-in cooler and shrinks to the size of a cornflake. Every aisle becomes a landscape to cross while you carry lost things home for the talking food. Strum your guitar to stun weevils, collect sugar crystals to spend at the checkout, and never see a game over. // on the night shift // the night shift break time in the walk-in cooler // where to play // BROWSER ▶ PLAY a free d..."
+    "b": "grocery harrison · magmacrunch media home › ware › video games › grocery harrison GROCERY HARRISON side scroller edition · in development Grocery Harrison, a folk musician on the night shift, plays a strange chord in the walk-in cooler and shrinks to the size of a cornflake. Every aisle becomes a landscape to cross while you carry lost things home for the talking food. Strum your guitar to stun weevils, collect sugar crystals to spend at the checkout, and never see a game over. // on the night shift // the night shift break time in the walk-in cooler // where to play // BROWSER in a web browse..."
   },
   {
     "t": "hologram · magmacrunch media",
@@ -1978,7 +1950,7 @@
     "c": "tool",
     "u": "/ware/jovian-humanitarian-conflict/",
     "d": "an on-rails shooter over Jupiter for the browser and the terminal, with a Wii version on the way",
-    "b": "the jovian humanitarian conflict · magmacrunch media home › ware › video games › the jovian humanitarian conflict THE JOVIAN HUMANITARIAN CONFLICT in development An on-rails shooter over the cloud decks of Jupiter. Aid convoys fly among the hostiles, blinking a double-flash transponder. Shoot the hostiles hunting them and never the convoys: three convoy kills and the run is over. Know what you are shooting at. // where to play // BROWSER ▶ PLAY free, in the arcade . Nothing to install. IN DEVELOPMENT TERMINAL A text-only version that runs in a terminal window. Install it with pipx install magm..."
+    "b": "the jovian humanitarian conflict · magmacrunch media home › ware › video games › the jovian humanitarian conflict THE JOVIAN HUMANITARIAN CONFLICT in development An on-rails shooter over the cloud decks of Jupiter. Aid convoys fly among the hostiles, blinking a double-flash transponder. Shoot the hostiles hunting them and never the convoys: three convoy kills and the run is over. Know what you are shooting at. // where to play // BROWSER in a web browser, not public right now while it is being worked on. IN DEVELOPMENT TERMINAL A text-only version that runs in a terminal window. Install it wit..."
   },
   {
     "t": "klotski · magmacrunch media",
@@ -2083,7 +2055,7 @@
     "c": "tool",
     "u": "/ware/roderick-tron/",
     "d": "a platformer about a robot composer, for the browser and the terminal",
-    "b": "roderick tron · magmacrunch media home › ware › video games › roderick tron RODERICK TRON in development A side-scrolling platformer about a robot composer on the rooftops of an 1810s Dutch city. Run, roll, stomp and fire musical notes, find the letters T-R-O-N, and reach the lit door. The levels are built by hand, with chimney draughts, bell cannons and coal trolleys in the way. // on the rooftops // the belfry // where to play // BROWSER ▶ PLAY free, in the arcade . Nothing to install. IN DEVELOPMENT TERMINAL A text-only version that runs in a terminal window. Install it with pipx install ma..."
+    "b": "roderick tron · magmacrunch media home › ware › video games › roderick tron RODERICK TRON in development A side-scrolling platformer about a robot composer on the rooftops of an 1810s Dutch city. Run, roll, stomp and fire musical notes, find the letters T-R-O-N, and reach the lit door. The levels are built by hand, with chimney draughts, bell cannons and coal trolleys in the way. // on the rooftops // the belfry // where to play // BROWSER in a web browser, not public right now while it is being worked on. IN DEVELOPMENT TERMINAL A text-only version that runs in a terminal window. Install it w..."
   },
   {
     "t": "sökö · magmacrunch media",
