@@ -23,7 +23,7 @@
   <link rel="stylesheet" href="../magma-themes.css?v=36fa3988">
   <link rel="stylesheet" href="../game-page.css?v=d8dc30f8">
   <style>
-body{--line: color-mix(in srgb, var(--mt-accent) 35%, var(--mt-bg));--link: var(--mt-text);--radius: 2px;--head-glow: 3px 3px 0 #000, 0 0 14px color-mix(in srgb, var(--mt-accent) 70%, transparent);--btn-bg: var(--mt-accent);--btn-ink: #fff;--btn-shadow: #000;--frame: var(--mt-accent);--frame-glow: 0 0 0 3px var(--mt-surface), 0 0 30px color-mix(in srgb, var(--mt-accent) 45%, transparent);--panel-border: color-mix(in srgb, var(--mt-accent) 45%, var(--mt-surface));background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='120' font-family='monospace' font-size='13' fill='%23e0e0ff' fill-opacity='.05'%3E%3Ctext x='8' y='22'%3E0001%3C/text%3E%3Ctext x='98' y='52'%3E1010%3C/text%3E%3Ctext x='30' y='88'%3E0110%3C/text%3E%3Ctext x='120' y='112'%3E1111%3C/text%3E%3C/svg%3E") 0 0 / 180px 120px fixed,linear-gradient(180deg,var(--mt-bg) 0%,var(--mt-surface) 55%,var(--mt-bg) 100%)}.hero h1{color:var(--mt-text);font-size:clamp(18px,4vw,34px)}.hero>img[src*=boole-pixel]{image-rendering:pixelated;margin-bottom:.5rem}.platform,.built a,.built div{background:color-mix(in srgb,var(--mt-surface) 80%,transparent)}
+body{--line: color-mix(in srgb, var(--mt-accent) 35%, var(--mt-bg));--link: var(--mt-text);--radius: 2px;--head-glow: 3px 3px 0 #000;--btn-bg: var(--mt-accent);--btn-ink: #fff;--btn-shadow: #000;--frame: var(--mt-accent);--frame-glow: none;--panel-border: color-mix(in srgb, var(--mt-accent) 45%, var(--mt-surface));background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='120' font-family='monospace' font-size='13' fill='%23e0e0ff' fill-opacity='.05'%3E%3Ctext x='8' y='22'%3E0001%3C/text%3E%3Ctext x='98' y='52'%3E1010%3C/text%3E%3Ctext x='30' y='88'%3E0110%3C/text%3E%3Ctext x='120' y='112'%3E1111%3C/text%3E%3C/svg%3E") 0 0 / 180px 120px fixed,linear-gradient(180deg,var(--mt-bg) 0%,var(--mt-surface) 55%,var(--mt-bg) 100%)}.hero h1{color:var(--mt-text);font-size:clamp(18px,4vw,34px)}.hero>img[src*=boole-pixel]{image-rendering:pixelated;margin-bottom:.5rem}.platform,.built a,.built div{background:color-mix(in srgb,var(--mt-surface) 80%,transparent)}body.ware-page .shots.modes{grid-template-columns:repeat(4,minmax(0,1fr));gap:1.25rem}.shots.modes .screen{aspect-ratio:auto;object-fit:fill;border:0;outline:0;box-shadow:none}@media(max-width:640px){body.ware-page .shots.modes{grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem}}
 </style>
   <link rel="stylesheet" href="../ware-page.css?v=549bdc52">
 </head>
@@ -58,14 +58,38 @@ body{--line: color-mix(in srgb, var(--mt-accent) 35%, var(--mt-bg));--link: var(
 
 <div class="section">
   <h2>// at the board //</h2>
-  <div class="shots">
+  <div class="shots modes">
     <figure>
-      <img class="screen" src="img/gold-14.webp" alt="A 4-bit board with a merged 14 in gold beside a 3 and an AND gate on the board" width="1100" height="756" loading="lazy">
-      <figcaption>a 14, in gold</figcaption>
+      <img class="screen" src="img/mode-2-bit.webp" alt="2-bit mode in dark green, with a rainbow 3 at the top of its range" width="612" height="727" loading="lazy">
+      <figcaption>2-bit crumb</figcaption>
     </figure>
     <figure>
-      <img class="screen" src="img/full-board.webp" alt="A full 4-bit board of purple and grey tiles, 14, 12s and 11 among them" width="1100" height="756" loading="lazy">
-      <figcaption>a full board, and not much room</figcaption>
+      <img class="screen" src="img/mode-3-bit.webp" alt="3-bit mode in navy with red and blue tiles and a rainbow 7" width="612" height="727" loading="lazy">
+      <figcaption>3-bit tribit</figcaption>
+    </figure>
+    <figure>
+      <img class="screen" src="img/mode-4-bit.webp" alt="4-bit mode in violet and cyan, with a card working 12 XOR 3 out to 15 in binary" width="612" height="727" loading="lazy">
+      <figcaption>4-bit nibble</figcaption>
+    </figure>
+    <figure>
+      <img class="screen" src="img/mode-5-bit.webp" alt="5-bit mode in deep blue and gold, with a merged 16 in gold" width="612" height="727" loading="lazy">
+      <figcaption>5-bit pentad</figcaption>
+    </figure>
+    <figure>
+      <img class="screen" src="img/mode-6-bit.webp" alt="6-bit mode in brown, red and orange, with a merged 27" width="612" height="727" loading="lazy">
+      <figcaption>6-bit hexad</figcaption>
+    </figure>
+    <figure>
+      <img class="screen" src="img/mode-7-bit.webp" alt="7-bit mode in hot pink, purple and cyan, with a merged 125 in gold" width="612" height="727" loading="lazy">
+      <figcaption>7-bit ascii</figcaption>
+    </figure>
+    <figure>
+      <img class="screen" src="img/mode-8-bit.webp" alt="8-bit mode in grey and gold, with a card working 96 XOR 12 out to 108 in binary" width="612" height="727" loading="lazy">
+      <figcaption>8-bit byte</figcaption>
+    </figure>
+    <figure>
+      <img class="screen" src="img/mode-gauntlet.webp" alt="Gauntlet mode in green on black, with a banner announcing the level up to 3-bit" width="612" height="727" loading="lazy">
+      <figcaption>gauntlet</figcaption>
     </figure>
   </div>
 </div>
