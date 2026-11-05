@@ -4,17 +4,17 @@
       "name": "magmacrunch arcade",
       "type": "Imprint",
       "begin": "2025-12",
-      "fetchedAt": "2026-07-04T05:19:06.981Z",
+      "fetchedAt": "2026-11-05T04:11:32.631Z",
       "releases": 0,
       "works": 0,
       "events": 0
     },
     "39446d03-fe9c-47d0-81a9-2b42d34fb400": {
       "name": "magmacrunch media",
-      "type": null,
+      "type": "Original Production",
       "begin": "2023",
-      "fetchedAt": "2026-07-04T05:05:21.559Z",
-      "releases": 97,
+      "fetchedAt": "2026-11-05T04:11:25.812Z",
+      "releases": 99,
       "works": 0,
       "events": 0
     },
@@ -22,7 +22,7 @@
       "name": "The Slop Collective",
       "type": "Creative Agency",
       "begin": "2025",
-      "fetchedAt": "2026-06-27T22:29:47.079Z",
+      "fetchedAt": "2026-11-05T04:11:16.259Z",
       "releases": 2,
       "works": 0,
       "events": 3
@@ -31,9 +31,9 @@
       "name": "magmacrunch music",
       "type": "Publisher",
       "begin": "2025-10-28",
-      "fetchedAt": "2026-07-04T05:05:50.636Z",
+      "fetchedAt": "2026-11-05T04:11:09.852Z",
       "releases": 0,
-      "works": 196,
+      "works": 218,
       "events": 0
     }
   }

@@ -1,159 +1,204 @@
 {
-  "fetchedAt": "2026-07-13T00:15:04.898Z",
+  "fetchedAt": "2026-11-05T04:11:51.232Z",
   "entityType": "work",
   "uuid": "b8717e83-8f30-4a37-b681-834a99f11110",
-  "name": "Gone By",
+  "name": "gone by",
   "data": {
-    "iswcs": [],
+    "tags": [],
+    "attributes": [
+      {
+        "value": "82514511",
+        "type": "BMI ID",
+        "type-id": "c8ac7e55-fd45-3002-9f89-e8b43911a479"
+      },
+      {
+        "value": "939102591",
+        "type": "ASCAP ID",
+        "type-id": "d833318c-6c6a-370e-8b16-9cb15873ba76"
+      }
+    ],
+    "aliases": [],
     "languages": [
       "eng"
     ],
-    "type": "Song",
-    "aliases": [],
-    "type-id": "f061270a-2fd6-32f1-a641-f0f8676d14e6",
     "language": "eng",
-    "disambiguation": "",
-    "id": "b8717e83-8f30-4a37-b681-834a99f11110",
     "title": "Gone By",
-    "attributes": [],
+    "type-id": "f061270a-2fd6-32f1-a641-f0f8676d14e6",
     "relations": [
       {
+        "artist": {
+          "id": "33c830f0-d5be-4baf-b8db-3dc754e74c16",
+          "type-id": "b6e035f4-3ce9-331c-97df-83397230b0df",
+          "sort-name": "McCoy, Jon",
+          "type": "Person",
+          "country": "US",
+          "disambiguation": "",
+          "name": "Jon McCoy"
+        },
+        "direction": "backward",
+        "type-id": "d59d99ea-23d4-4a80-b066-edca32ee158f",
+        "end": null,
+        "ended": false,
+        "attribute-values": {},
+        "target-credit": "JHM",
+        "type": "composer",
+        "source-credit": "",
         "begin": null,
         "target-type": "artist",
         "attribute-ids": {},
-        "type-id": "d59d99ea-23d4-4a80-b066-edca32ee158f",
-        "target-credit": "JHM",
-        "type": "composer",
-        "attribute-values": {},
-        "artist": {
-          "sort-name": "McCoy, Jon",
-          "country": "US",
-          "id": "33c830f0-d5be-4baf-b8db-3dc754e74c16",
-          "name": "Jon McCoy",
-          "disambiguation": "",
-          "type": "Person",
-          "type-id": "b6e035f4-3ce9-331c-97df-83397230b0df"
-        },
-        "source-credit": "",
-        "end": null,
-        "ended": false,
-        "direction": "backward",
         "attributes": []
       },
       {
+        "attributes": [],
         "artist": {
+          "type": "Person",
           "sort-name": "McCoy, Jon",
-          "id": "33c830f0-d5be-4baf-b8db-3dc754e74c16",
+          "disambiguation": "",
           "country": "US",
           "name": "Jon McCoy",
-          "disambiguation": "",
           "type-id": "b6e035f4-3ce9-331c-97df-83397230b0df",
-          "type": "Person"
+          "id": "33c830f0-d5be-4baf-b8db-3dc754e74c16"
         },
-        "ended": false,
+        "type-id": "3e48faba-ec01-47fd-8e89-30e81161661c",
         "end": null,
-        "source-credit": "",
-        "attributes": [],
         "direction": "backward",
+        "ended": false,
+        "attribute-values": {},
+        "target-credit": "JHM",
+        "type": "lyricist",
+        "source-credit": "",
         "begin": null,
         "target-type": "artist",
-        "attribute-values": {},
-        "type": "lyricist",
-        "type-id": "3e48faba-ec01-47fd-8e89-30e81161661c",
-        "attribute-ids": {},
-        "target-credit": "JHM"
+        "attribute-ids": {}
       },
       {
-        "artist": {
-          "type-id": "b6e035f4-3ce9-331c-97df-83397230b0df",
-          "type": "Person",
-          "disambiguation": "",
-          "id": "33c830f0-d5be-4baf-b8db-3dc754e74c16",
-          "country": "US",
-          "name": "Jon McCoy",
-          "sort-name": "McCoy, Jon"
-        },
-        "source-credit": "",
-        "ended": true,
-        "end": "2025-05-01",
-        "direction": "backward",
         "attributes": [],
+        "attribute-ids": {},
         "begin": "2025-05-01",
         "target-type": "artist",
-        "attribute-ids": {},
-        "type-id": "a442b140-830b-30b0-a4aa-2e36f098b6aa",
-        "target-credit": "",
         "type": "publishing",
-        "attribute-values": {}
+        "source-credit": "",
+        "target-credit": "",
+        "attribute-values": {},
+        "type-id": "a442b140-830b-30b0-a4aa-2e36f098b6aa",
+        "direction": "backward",
+        "end": "2025-05-01",
+        "ended": true,
+        "artist": {
+          "type-id": "b6e035f4-3ce9-331c-97df-83397230b0df",
+          "id": "33c830f0-d5be-4baf-b8db-3dc754e74c16",
+          "name": "Jon McCoy",
+          "disambiguation": "",
+          "country": "US",
+          "type": "Person",
+          "sort-name": "McCoy, Jon"
+        }
       },
       {
-        "begin": null,
-        "target-type": "recording",
-        "type": "performance",
-        "attribute-values": {},
         "recording": {
-          "length": 271000,
-          "video": false,
-          "title": "Gone By",
           "id": "3bba16ff-965d-4cbb-8529-69d0be48a65f",
-          "disambiguation": ""
+          "length": 271000,
+          "disambiguation": "",
+          "title": "Gone By",
+          "video": false
         },
-        "attribute-ids": {},
-        "target-credit": "",
-        "type-id": "a3005666-a872-32c3-ad06-98af558e99b0",
-        "end": null,
-        "ended": false,
-        "source-credit": "",
         "attributes": [],
-        "direction": "backward"
+        "ended": false,
+        "direction": "backward",
+        "end": null,
+        "type-id": "a3005666-a872-32c3-ad06-98af558e99b0",
+        "attribute-values": {},
+        "target-credit": "",
+        "type": "performance",
+        "source-credit": "",
+        "target-type": "recording",
+        "begin": null,
+        "attribute-ids": {}
       }
     ],
-    "tags": []
+    "id": "b8717e83-8f30-4a37-b681-834a99f11110",
+    "iswcs": [
+      "T-343.354.689-1"
+    ],
+    "disambiguation": "",
+    "type": "Song"
   },
   "recordings": {
     "3bba16ff-965d-4cbb-8529-69d0be48a65f": {
       "title": "Gone By",
+      "video": false,
+      "disambiguation": "",
       "releases": [
         {
-          "packaging": null,
-          "packaging-id": null,
-          "date": "2025-05-01",
-          "status-id": "4e304316-386d-3409-af2e-78857eec5cfe",
+          "quality": "normal",
           "id": "f658a043-c8a1-4627-8eac-7970ae80c1d2",
-          "country": "XW",
+          "barcode": "056870688022",
+          "date": "2025-05-01",
+          "status": "Official",
+          "packaging": null,
+          "title": "Long Way Home",
+          "packaging-id": null,
           "release-events": [
             {
+              "date": "2025-05-01",
               "area": {
-                "id": "525d4e18-3d00-31b9-a58b-a146a916de8f",
                 "name": "[Worldwide]",
-                "type": null,
-                "type-id": null,
                 "sort-name": "[Worldwide]",
+                "type": null,
                 "disambiguation": "",
+                "id": "525d4e18-3d00-31b9-a58b-a146a916de8f",
+                "type-id": null,
                 "iso-3166-1-codes": [
                   "XW"
                 ]
-              },
-              "date": "2025-05-01"
+              }
             }
           ],
-          "title": "Long Way Home",
-          "disambiguation": "",
-          "status": "Official",
+          "status-id": "4e304316-386d-3409-af2e-78857eec5cfe",
           "text-representation": {
             "script": null,
             "language": "eng"
           },
-          "barcode": "056870688022",
-          "quality": "normal"
+          "country": "XW",
+          "disambiguation": ""
         }
       ],
-      "length": 271000,
-      "disambiguation": "",
       "first-release-date": "2025-05-01",
+      "length": 271000,
       "id": "3bba16ff-965d-4cbb-8529-69d0be48a65f",
-      "relations": [],
-      "video": false
+      "relations": [
+        {
+          "target-credit": "",
+          "source-credit": "",
+          "type": "recorded at",
+          "target-type": "place",
+          "begin": null,
+          "attribute-ids": {},
+          "ended": false,
+          "direction": "backward",
+          "type-id": "ad462279-14b0-4180-9b58-571d0eef7c51",
+          "end": null,
+          "attribute-values": {},
+          "attributes": [],
+          "place": {
+            "id": "b5f56999-d7e5-43e0-87a1-2df9a7abfd4f",
+            "type-id": "05fa6a09-ff92-3d34-bdbb-5141d3c24f38",
+            "address": "",
+            "area": {
+              "type": "City",
+              "sort-name": "San Luis Obispo",
+              "disambiguation": "",
+              "name": "San Luis Obispo",
+              "type-id": "6fd8f29a-3d0a-32fc-980d-ea697b69da78",
+              "id": "eeab8640-d52e-440a-af1a-425a1754975a"
+            },
+            "coordinates": null,
+            "name": "The Toadstool",
+            "type": "Studio",
+            "disambiguation": ""
+          }
+        }
+      ]
     }
   }
 }
