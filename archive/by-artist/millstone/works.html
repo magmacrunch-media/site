@@ -9,8 +9,15 @@
     <link rel="preload" as="font" type="font/woff2" href="../../../fonts/CourierPrime-Regular.woff2" crossorigin>
     <link rel="stylesheet" href="../../../style.css?v=a59b9059">
     <link rel="stylesheet" href="../../../assets/archive.css?v=807043b8">
-    <link rel="stylesheet" href="ms-shared.css?v=7965915b">
-    <link rel="stylesheet" href="ms-pages.css?v=a52fc569">
+    <link rel="stylesheet" href="ms-shared.css?v=11bc9093">
+    <link rel="stylesheet" href="ms-pages.css?v=1880141f">
+    <link rel="stylesheet" href="../../../templates/artist-works.css?v=85ab34f9">
+    <style>
+body.ms-page .page-title{text-shadow:0 0 20px rgba(64,168,144,0.45)}
+</style>
+    <script>
+window.ARTIST_CONFIG={id:"807d1a47-53cb-4a14-a3ef-31c7eee0596a",name:"Millstone",abbr:"millstone",accent:"ms-accent",backColor:"c-back",siblings:["about","events","links","news","photography","works"],depth:"../../../"};
+</script>
 </head>
 <body class="ms-page ms-sub ms-works-page" style="--section-accent: var(--ms-accent);">
 
@@ -41,26 +48,47 @@
     <div class="divider"></div>
 
     <div class="body-wrap">
+        <div class="catalog-wrap">
+            <div id="status-bar">loading works…</div>
+            <div id="count-bar"></div>
+            <div id="works-list"></div>
+        </div>
         <section>
-            <div class="section-label">ORIGINAL SONGS</div>
-            <p class="muted">As numbered on the band's Songs page, 2004.</p>
+            <div class="section-label">FROM THE 2004 SITE</div>
+            <p class="muted">The original songs as the band numbered them on its Songs page, with what the news posts say about each.</p>
             <ol class="work-list">
-                <li><strong class="song">Stalemate</strong><span class="note">lyrics by Keith; practice take 2003-12-15</span></li>
-                <li><strong class="song">Can't Stand the Cold Shoulder</strong></li>
-                <li><strong class="song">Red Tear</strong></li>
-                <li><strong class="song">Nothing Even Matters</strong></li>
-                <li><strong class="song">Over the Treetops</strong></li>
-                <li><strong class="song">Fatal Wound</strong></li>
-                <li><strong class="song">A Nation Divided</strong></li>
-                <li><strong class="song">Blue Like Eternity</strong></li>
-                <li><strong class="song">A Night to Remember (Believe!)</strong></li>
-                <li><strong class="song">My Last Goodbye</strong></li>
-                <li><strong class="song">A New Hope</strong><span class="note">written 2003-11-03; vocals by Robinson</span></li>
-                <li><strong class="song">Nothing Society</strong><span class="note">by Dave Hayes; acoustic 4-track 2003-12-27</span></li>
+                <li><a href="https://musicbrainz.org/work/9ed59f8c-a23f-4732-986d-192429b22bfa"><strong class="song">Stalemate</strong></a><span class="note">lyrics by Keith; practice take 2003-12-15</span></li>
+                <li><a href="https://musicbrainz.org/work/defffd55-f36a-49e5-9a79-cc831a4c2b31"><strong class="song">Can't Stand the Cold Shoulder</strong></a></li>
+                <li><a href="https://musicbrainz.org/work/b85b1bac-21e6-424d-af20-cd74fc2a7cd7"><strong class="song">Red Tear</strong></a></li>
+                <li><a href="https://musicbrainz.org/work/6404ff8f-f048-4e86-9920-5cc918ed5b74"><strong class="song">Nothing Even Matters</strong></a></li>
+                <li><a href="https://musicbrainz.org/work/16e9420a-2562-41f3-ab45-30140a3fb948"><strong class="song">Over the Treetops</strong></a></li>
+                <li><a href="https://musicbrainz.org/work/e102d32c-cbd8-48ae-a9d1-74a3c2763598"><strong class="song">Fatal Wound</strong></a></li>
+                <li><a href="https://musicbrainz.org/work/031af361-0064-4640-8b28-af1ab85d03f1"><strong class="song">A Nation Divided</strong></a></li>
+                <li><a href="https://musicbrainz.org/work/6559fb2e-6aff-4bef-8910-20883f3edb05"><strong class="song">Blue Like Eternity</strong></a></li>
+                <li><a href="https://musicbrainz.org/work/f5d7e18b-d0bc-4255-a3d7-5f101c36279b"><strong class="song">A Night to Remember (Believe!)</strong></a></li>
+                <li><a href="https://musicbrainz.org/work/11f55e1f-f95f-45eb-b60c-eefa2388ede6"><strong class="song">My Last Goodbye</strong></a></li>
+                <li><a href="https://musicbrainz.org/work/0bb1ec37-dd2f-41ca-8ef5-c604207a7852"><strong class="song">A New Hope</strong></a><span class="note">written 2003-11-03; vocals by Robinson</span></li>
+                <li><a href="https://musicbrainz.org/work/7c5121bd-ecf3-4023-80a9-41aa6720e0fd"><strong class="song">Nothing Society</strong></a><span class="note">by Dave Hayes; acoustic 4-track 2003-12-27</span></li>
                 <li>New Song 1<span class="note">untitled, written by Christmas Eve 2003</span></li>
                 <li>New Song 2<span class="note">untitled</span></li>
                 <li>New Song 3<span class="note">untitled</span></li>
             </ol>
+        </section>
+
+        <section>
+            <div class="section-label">ABOUT THE BAND</div>
+            <ul class="work-list named">
+                <li><a href="../fruity-loops-debauchery-collective/works.html#work-30b20740-0912-4d2e-a012-32692d71ecde"><strong class="song">Kinda Reminiscent of Millstone</strong></a><span class="note">Fruity Loops Debauchery Bros.; quotes Stalemate</span></li>
+            </ul>
+        </section>
+
+        <section>
+            <div class="section-label">MILLSTONE THE STREET</div>
+            <p class="muted">The band was named for Millstone Road, where Frogwood Manor is. These later pieces are named for the street and the woods around it, not the band.</p>
+            <ul class="work-list named">
+                <li><a href="https://musicbrainz.org/work/43ff6340-28e8-4066-ba12-6d3f17652ed5"><strong class="song">Millstone Woods May 2018</strong></a><span class="note">Jake A. McCoy; published by Dag Henderson</span></li>
+                <li><a href="https://musicbrainz.org/work/188d9a75-4d7a-4a72-a376-456fff8d4191"><strong class="song">Millstone, 2063</strong></a><span class="note">Jake A. McCoy, Jon McCoy, Stephen McMillan, Judah Unmuth-Yockey; published by Texas Hold'Em Lava Dome</span></li>
+            </ul>
         </section>
     </div>
 </main>
@@ -68,5 +96,7 @@
 <footer>&copy; 2026 <span>magmacrunch media</span></footer>
 
 <script src="../../../nav.js?v=ac308f29"></script>
+<script src="../../../templates/entity-map.js?v=1208f395"></script>
+<script src="../../../templates/artist_works.js?v=306835f7"></script>
 </body>
 </html>

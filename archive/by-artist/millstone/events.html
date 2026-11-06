@@ -9,8 +9,15 @@
     <link rel="preload" as="font" type="font/woff2" href="../../../fonts/CourierPrime-Regular.woff2" crossorigin>
     <link rel="stylesheet" href="../../../style.css?v=a59b9059">
     <link rel="stylesheet" href="../../../assets/archive.css?v=807043b8">
-    <link rel="stylesheet" href="ms-shared.css?v=7965915b">
-    <link rel="stylesheet" href="ms-pages.css?v=a52fc569">
+    <link rel="stylesheet" href="ms-shared.css?v=11bc9093">
+    <link rel="stylesheet" href="ms-pages.css?v=1880141f">
+    <link rel="stylesheet" href="../../../templates/artist-events.css?v=1c620b66">
+    <style>
+body.ms-page .page-title{text-shadow:0 0 20px rgba(160,132,136,0.45)}
+</style>
+    <script>
+window.ARTIST_CONFIG={id:"807d1a47-53cb-4a14-a3ef-31c7eee0596a",name:"Millstone",abbr:"millstone",accent:"ms-warm",backColor:"c-back",siblings:["about","events","links","news","photography","works"],depth:"../../../"};
+</script>
 </head>
 <body class="ms-page ms-sub ms-events-page" style="--section-accent: var(--ms-warm);">
 
@@ -41,11 +48,17 @@
     <div class="divider"></div>
 
     <div class="body-wrap">
+        <div class="catalog-wrap">
+            <div id="status-bar">loading events…</div>
+            <div id="count-bar"></div>
+            <div id="events-list"></div>
+        </div>
         <section>
+            <div class="section-label">FROM THE NEWS POSTS</div>
             <div class="event">
                 <div class="event-date">2004-02</div>
-                <div class="event-place">Salem High School Battle of the Bands, SHS Auditorium</div>
-                <p>Entered by Hayes and Robinson on February 6; admission three dollars. Millstone did not make the prelims.</p>
+                <div class="event-place">Battle of the Bands 2004, Salem High School</div>
+                <p>Entered by Hayes and Robinson on February 6, for a battle the band's Shows page dates February 12; admission three dollars. Millstone did not make the prelims.</p>
             </div>
             <div class="event">
                 <div class="event-date">2004-01-22</div>
@@ -54,9 +67,18 @@
             </div>
             <div class="event">
                 <div class="event-date">2003-10-31</div>
-                <div class="event-place">Halloween show, Jake's house</div>
-                <p>6:00 to 9:30, no cover. The first show, for the whole neighborhood.</p>
+                <div class="event-place">Halloween 2003, <a href="../../by-place/frogwood-manor/">Frogwood Manor</a></div>
+                <p>6:00 to 9:30, no cover. The first show, at Jake's house, for the whole neighborhood.</p>
             </div>
+        </section>
+
+        <section>
+            <div class="section-label">FROM THE 2004 SITE</div>
+            <p class="muted">The band's Shows page, kept as it was written.</p>
+            <p><b>Upcoming Shows.</b> None scheduled for sure at this time, but we hope to play a show in January with For the Experience. We also entered for the SHS Battle of the Bands which is on February 12th. Hope to see you there.</p>
+            <p><b>Past Shows.</b> January 22, 2004. 7:00-9:30 at the Searles Castle in Windham. October 31st, 2003. 6:00-9:30 at Jakes house. No cover charge.</p>
+            <p>If you would like us to play, simply send an e-mail to us at: Millstoners@yahoo.com</p>
+            <p>Come to our shows!!</p>
         </section>
     </div>
 </main>
@@ -64,5 +86,7 @@
 <footer>&copy; 2026 <span>magmacrunch media</span></footer>
 
 <script src="../../../nav.js?v=ac308f29"></script>
+<script src="../../../templates/entity-map.js?v=1208f395"></script>
+<script src="../../../templates/artist_events.js?v=9e0b1fce"></script>
 </body>
 </html>
