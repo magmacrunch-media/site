@@ -690,7 +690,7 @@
     "c": "artist",
     "u": "/archive/by-artist/fruity-loops-debauchery-collective/ware.html",
     "d": "Fruity Loops Debauchery Collective — Ware",
-    "b": "Fruity Loops Debauchery Bros. · ware · magmacrunch media WARE ← back about links photography recordings releases videos works Games from magmacrunch with the Fruity Loops Debauchery Bros. in them: a Jimmi song running a cookie factory. MAKEME COOKIES!X4 MORE a cookie factory, five stations at once. a shift lasts one play of the song. game set to “makemecookies! x4” by Jimmi, from JIMMI"
+    "b": "Fruity Loops Debauchery Bros. · ware · magmacrunch media WARE ← back about links photography recordings releases videos works Games from magmacrunch with the Fruity Loops Debauchery Bros. in them: Carl Spatski on a skateboard, and Jimmi songs behind three more. VERY LONG BOARDS IN DEV downhill longboarding. three timed courses and an endless run. in development. game you ride as Carl Spatski MAKEME COOKIES!X4 MORE a cookie factory, five stations at once. a shift lasts one play of the song. game set to “makemecookies! x4” by Jimmi, from JIMMI RODERICK TRON MORE a platformer about a robot compos..."
   },
   {
     "t": "Fruity Loops Debauchery Bros. · works · magmacrunch media",
@@ -1089,7 +1089,7 @@
     "c": "artist",
     "u": "/archive/by-artist/thld/ware.html",
     "d": "Thld — Ware",
-    "b": "THLD · ware · magmacrunch media WARE ← back about events links lyrics photography recordings releases videos works Games and engines from magmacrunch, named after THLD songs, and one after the Tuna Can , where the band practised. TEXAS HOLD'EM LAVA DOME MORE poker solitaire. build hands. score big. don't get burned. game named after a THLD song RENDEZVOUS AT 44i BOO MORE a ramjet race to a real star 40.8 light-years away, against a ship that left first. in development. game named after the THLD song, on Pompous Fanfare for All Occasions ADENOSINE MORE lightweight web game engines. every packag..."
+    "b": "THLD · ware · magmacrunch media WARE ← back about events links lyrics photography recordings releases videos works Games and engines from magmacrunch, named after THLD songs, and one after the Tuna Can , where the band practised. TEXAS HOLD'EM LAVA DOME MORE poker solitaire. build hands. score big. don't get burned. game named after a THLD song RENDEZVOUS AT 44i BOO IN DEV a ramjet race to a real star 40.8 light-years away, against a ship that left first. in development. game named after the THLD song, on Pompous Fanfare for All Occasions ADENOSINE MORE lightweight web game engines. every pack..."
   },
   {
     "t": "THLD · works · magmacrunch media",
@@ -1981,13 +1981,6 @@
     "b": "gerridae · magmacrunch media home › ware › developer tools › gerridae gerridae draws the solid things in hologram's scenes, combined pixel by pixel v0.0.1 PolyForm Noncommercial C99 + HLSL early: m1 The other half of hologram. hologram draws the things light has to be exactly right on, like glass and mirrors; gerridae draws everything else, like rooms and furniture, and the two pictures are combined pixel by pixel. the technical version Meshes rasterized beside hologram ’s ray tracer and composited by depth. hologram traces what light has to be right on, glass, mirrors, gratings, polarizers an..."
   },
   {
-    "t": "grocery harrison · magmacrunch media",
-    "c": "tool",
-    "u": "/ware/grocery-harrison/",
-    "d": "a side-scroller about a night-shift folk musician shrunk to the size of a cornflake, in the browser",
-    "b": "grocery harrison · magmacrunch media home › ware › video games › grocery harrison GROCERY HARRISON side scroller edition · in development Grocery Harrison, a folk musician on the night shift, plays a strange chord in the walk-in cooler and shrinks to the size of a cornflake. Every aisle becomes a landscape to cross while you carry lost things home for the talking food. Strum your guitar to stun weevils, collect sugar crystals to spend at the checkout, and never see a game over. // on the night shift // the night shift break time in the walk-in cooler // where to play // BROWSER in a web browse..."
-  },
-  {
     "t": "hologram · magmacrunch media",
     "c": "tool",
     "u": "/ware/hologram/",
@@ -2100,13 +2093,6 @@
     "b": "PUNCH//ROLL PUNCH//ROLL Roll Steps Tuning Swing 0% Add track Step entry MIDI keyboard Drums only Tempo × BPM Delete Cancel OK Keyboard shortcuts × How to use PUNCH//ROLL × Write notes Each row of the roll is a pitch and each column a step of the grid. Click an empty square to add a note, drag it to move it, and drag its right edge to make it longer. Right-click a note to delete it. Shift-drag across empty grid to select several notes at once. Pick a track The panel on the left holds the tracks: Lead, Harmony, Bass and Drums to start with, on two pulse waves, a triangle and noise; Add track mak..."
   },
   {
-    "t": "rendezvous at 44i boo · magmacrunch media",
-    "c": "tool",
-    "u": "/ware/rendezvous-44i-boo/",
-    "d": "a ramjet race to a real star 40.8 light-years away, against a ship that left first. in development",
-    "b": "rendezvous at 44i boo · magmacrunch media home › ware › video games › rendezvous at 44i boo RENDEZVOUS AT 44i BOO a ramjet race to a real star · in development Two ships leave Sol for 44 Bootis, a real triple star 40.8 light-years away whose two inner stars orbit so close that they touch. The other one left first. Nothing overtakes near the speed of light, so the race is decided at the end: who gets there and slows to a stop first. Your drive is a Bussard ramjet, which scoops the gas between the stars for fuel. Dense gas is fuel while you are slow and dust and drag once you are fast, so the cl..."
-  },
-  {
     "t": "roderick tron · magmacrunch media",
     "c": "tool",
     "u": "/ware/roderick-tron/",
@@ -2174,7 +2160,7 @@
     "c": "tool",
     "u": "/ware/tunacan/",
     "d": "a pixel-art game engine in C, with its level editor built in",
-    "b": "tunacan · magmacrunch media home › ware › developer tools › tunacan tunacan a pixel-art game engine in C, with its level editor built in v0.0.1 PolyForm Noncommercial C99 + sokol early: m7 An engine for big pixel-art games that run in a web browser. The first game on it is Grocery Harrison. Its sprites are drawn in SPRITE//FORGE, and the engine reads those files directly, with no export step in between. the technical version A 2D engine in C99 on sokol, for large pixel-art games that run in a browser today. The first game on it is Grocery Harrison , whose cereal aisle is being rebuilt here fro..."
+    "b": "tunacan · magmacrunch media home › ware › developer tools › tunacan tunacan a pixel-art game engine in C, with its level editor built in v0.0.1 PolyForm Noncommercial C99 + sokol early: m7 An engine for big pixel-art games that run in a web browser. The first game on it is Grocery Harrison. Its sprites are drawn in SPRITE//FORGE, and the engine reads those files directly, with no export step in between. the technical version A 2D engine in C99 on sokol, for large pixel-art games that run in a browser today. The first game on it is Grocery Harrison, whose cereal aisle is being rebuilt here from..."
   },
   {
     "t": "2^n · magmacrunch media",
