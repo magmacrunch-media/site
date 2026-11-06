@@ -109,7 +109,7 @@
     "c": "page",
     "u": "/archive/by-artist/index.html",
     "d": "from the magmacrunch archive",
-    "b": "by artist · magmacrunch archive home › archive › by artist // by artist // the magmacrunch archive Audio Sound Paper, et al. Bottle Boys Collective Brother Dynamo Dag Henderson DDT LLC Dino Spumoni Four B's Fruity Loops Debauchery Bros. Jon McCoy Juanito Thompson Sex Van Floor Plan Texas Hold'Em Lava Dome, et al. Vinny Bobarino, et al. Woah. Alien Hunting coming soon The Evergreen Drive coming soon"
+    "b": "by artist · magmacrunch archive home › archive › by artist // by artist // the magmacrunch archive Audio Sound Paper, et al. Bottle Boys Collective Brother Dynamo Dag Henderson DDT LLC Dino Spumoni Four B's Fruity Loops Debauchery Bros. Jon McCoy Juanito Thompson Millstone Sex Van Floor Plan Texas Hold'Em Lava Dome, et al. Vinny Bobarino, et al. Woah. Alien Hunting coming soon The Evergreen Drive coming soon"
   },
   {
     "t": "by place · magmacrunch archive",
@@ -641,14 +641,14 @@
     "c": "artist",
     "u": "/archive/by-artist/fruity-loops-debauchery-collective/about.html",
     "d": "Fruity Loops Debauchery Collective — About",
-    "b": "Fruity Loops Debauchery Bros. · about · magmacrunch media archive › by artist › fldb // Fruity Loops Debauchery Bros. // ABOUT ← back links photography recordings releases videos works There's a very specific vibe that came from downloading a demo version of FL Studio in the mid-'00s, composing something via piano roll in one sitting, and then just rendering an mp3 file without being able to save your work. Inspired by high school classmates The Gaw & Whiteneck Exper1ment , Jake and Bobby started making computer music in 2005 using the name Anabolic Steroids & a Beaver Tranquilizer , in refere..."
+    "b": "Fruity Loops Debauchery Bros. · about · magmacrunch media archive › by artist › fldb // Fruity Loops Debauchery Bros. // ABOUT ← back links photography recordings releases videos ware works There's a very specific vibe that came from downloading a demo version of FL Studio in the mid-'00s, composing something via piano roll in one sitting, and then just rendering an mp3 file without being able to save your work. Inspired by high school classmates The Gaw & Whiteneck Exper1ment , Jake and Bobby started making computer music in 2005 using the name Anabolic Steroids & a Beaver Tranquilizer , in r..."
   },
   {
     "t": "Fruity Loops Debauchery Bros. · archive · magmacrunch media",
     "c": "artist",
     "u": "/archive/by-artist/fruity-loops-debauchery-collective/index.html",
     "d": "artist archive — recordings, works, events, releases",
-    "b": "Fruity Loops Debauchery Bros. · archive · magmacrunch media archive › by artist › fldb photo: Jon McCoy // artist archive // FRUITY LOOPS DEBAUCHERY BROS. Anabolic Steroids and a Beaver Tranquilizer | Jimmi | Carl Spatski about links photography recordings releases videos works"
+    "b": "Fruity Loops Debauchery Bros. · archive · magmacrunch media archive › by artist › fldb photo: Jon McCoy // artist archive // FRUITY LOOPS DEBAUCHERY BROS. Anabolic Steroids and a Beaver Tranquilizer | Jimmi | Carl Spatski about links photography recordings releases videos ware works"
   },
   {
     "t": "Fruity Loops Debauchery Bros. · links · magmacrunch media",
@@ -662,21 +662,21 @@
     "c": "artist",
     "u": "/archive/by-artist/fruity-loops-debauchery-collective/photography.html",
     "d": "Fruity Loops Debauchery Collective — Photography",
-    "b": "Fruity Loops Debauchery Bros. · photography · magmacrunch media archive › by artist › fldb // Fruity Loops Debauchery Bros. // PHOTOGRAPHY ← back about links recordings releases videos works // photos // scroll → [ close ] ← prev next →"
+    "b": "Fruity Loops Debauchery Bros. · photography · magmacrunch media archive › by artist › fldb // Fruity Loops Debauchery Bros. // PHOTOGRAPHY ← back about links recordings releases videos ware works // photos // scroll → [ close ] ← prev next →"
   },
   {
     "t": "Fruity Loops Debauchery Bros. · recordings · magmacrunch media",
     "c": "artist",
     "u": "/archive/by-artist/fruity-loops-debauchery-collective/recordings.html",
     "d": "Fruity Loops Debauchery Collective — Recordings",
-    "b": "Fruity Loops Debauchery Bros. · recordings · magmacrunch media RECORDINGS ← back about photography recordings releases videos works loading recordings…"
+    "b": "Fruity Loops Debauchery Bros. · recordings · magmacrunch media RECORDINGS ← back about photography recordings releases videos ware works loading recordings…"
   },
   {
     "t": "Fruity Loops Debauchery Bros. · releases · magmacrunch media",
     "c": "artist",
     "u": "/archive/by-artist/fruity-loops-debauchery-collective/releases.html",
     "d": "Fruity Loops Debauchery Collective — Releases",
-    "b": "Fruity Loops Debauchery Bros. · releases · magmacrunch media RELEASES ← back about photography recordings releases videos works loading releases…"
+    "b": "Fruity Loops Debauchery Bros. · releases · magmacrunch media RELEASES ← back about photography recordings releases videos ware works loading releases…"
   },
   {
     "t": "Fruity Loops Debauchery Bros. · videos · magmacrunch media",
@@ -686,11 +686,18 @@
     "b": "Fruity Loops Debauchery Bros. · videos · magmacrunch media VIDEOS"
   },
   {
+    "t": "Fruity Loops Debauchery Bros. · ware · magmacrunch media",
+    "c": "artist",
+    "u": "/archive/by-artist/fruity-loops-debauchery-collective/ware.html",
+    "d": "Fruity Loops Debauchery Collective — Ware",
+    "b": "Fruity Loops Debauchery Bros. · ware · magmacrunch media WARE ← back about links photography recordings releases videos works Games from magmacrunch with the Fruity Loops Debauchery Bros. in them: a Jimmi song running a cookie factory. MAKEME COOKIES!X4 MORE a cookie factory, five stations at once. a shift lasts one play of the song. game set to “makemecookies! x4” by Jimmi, from JIMMI"
+  },
+  {
     "t": "Fruity Loops Debauchery Bros. · works · magmacrunch media",
     "c": "artist",
     "u": "/archive/by-artist/fruity-loops-debauchery-collective/works.html",
     "d": "Fruity Loops Debauchery Collective — Works",
-    "b": "Fruity Loops Debauchery Bros. · works · magmacrunch media WORKS ← back about photography recordings releases videos works loading works…"
+    "b": "Fruity Loops Debauchery Bros. · works · magmacrunch media WORKS ← back about photography recordings releases videos ware works loading works…"
   },
   {
     "t": "Jon McCoy · about · magmacrunch media",
@@ -854,6 +861,55 @@
     "b": "juanito thompson · works · magmacrunch media WORKS ← back about links network photography recordings releases videos ware loading works…"
   },
   {
+    "t": "Millstone · about · magmacrunch media",
+    "c": "artist",
+    "u": "/archive/by-artist/millstone/about.html",
+    "d": "Millstone — About",
+    "b": "Millstone · about · magmacrunch media archive › by artist › millstone // millstone // ABOUT ← back events links news photography works Millstone was a rock band from Southern New Hampshire, together from the fall of 2003 to the spring of 2004: Dave Hayes and Dave Robinson on guitar and vocals, Jake McCoy on drums, and Keith Galvin on bass and vocals. Their own website described them in two words: \"Simply rock.\" It started when Jake and Dave got together on a whim to jam. The two Daves began playing together, then joined up with Jake and practiced at his house almost every day. They took the na..."
+  },
+  {
+    "t": "Millstone · events · magmacrunch media",
+    "c": "artist",
+    "u": "/archive/by-artist/millstone/events.html",
+    "d": "Millstone — Events",
+    "b": "Millstone · events · magmacrunch media archive › by artist › millstone // millstone // EVENTS ← back about links news photography works loading events… FROM THE NEWS POSTS 2004-02 Battle of the Bands 2004, Salem High School Entered by Hayes and Robinson on February 6, for a battle the band's Shows page dates February 12; admission three dollars. Millstone did not make the prelims. 2004-01-22 Searles Castle, Windham, NH 7:00 to 9:30, with (e)X-treme, Tear Method, Lucky Shot and For the Experience. \"Every band did great, and best of all no one was killed.\" 2003-10-31 Halloween 2003, Frogwood Man..."
+  },
+  {
+    "t": "Millstone · archive · magmacrunch media",
+    "c": "artist",
+    "u": "/archive/by-artist/millstone/index.html",
+    "d": "artist archive — recordings, works, events, releases",
+    "b": "Millstone · archive · magmacrunch media archive › by artist › millstone // artist archive // MILLSTONE SIMPLY ROCK. about events links news photography works"
+  },
+  {
+    "t": "Millstone · links · magmacrunch media",
+    "c": "artist",
+    "u": "/archive/by-artist/millstone/links.html",
+    "d": "Millstone — Links",
+    "b": "Millstone · links · magmacrunch media archive › by artist › millstone // millstone // LINKS ← back about events news photography works THE ORIGINAL SITE millstone.bappy.com built in 2003 on bappy.com's free site builder, still online in November 2026 MusicBrainz members, shows and works THE BAND'S FAVORITE LINKS, 2004 Kept as text: most of these addresses are long gone. soundclick.com/bands/6/yelloworanges.htm change-course.tk : Great kids and a great band fortheexperience.bappy.com svt.se/hogafflahage/hogafflaHage_site/Kor/hestekor.swf sadcafe.com : Good local venue savestheday.com : Great si..."
+  },
+  {
+    "t": "Millstone · news · magmacrunch media",
+    "c": "artist",
+    "u": "/archive/by-artist/millstone/news.html",
+    "d": "Millstone — News",
+    "b": "Millstone · news · magmacrunch media archive › by artist › millstone // millstone // NEWS ← back about events links photography works Every post from millstone.bappy.com, word for word, spelling and all. The site gave month and day only; the years are read from the order of the posts. 2004-04-24 It's been a long time since we've practiced. We hope to pick it back up again over the summer, but we're not sure. Hayes has got tennis and Kieths got everything under the sun, iuncluding Evenstar among other things. As for now we're just maxin' and relaxin'. . . kinda. Keep in touch 2004-02-25 Well, w..."
+  },
+  {
+    "t": "Millstone · photography · magmacrunch media",
+    "c": "artist",
+    "u": "/archive/by-artist/millstone/photography.html",
+    "d": "Millstone — Photography",
+    "b": "Millstone · photography · magmacrunch media archive › by artist › millstone // millstone // PHOTOGRAPHY ← back about events links news works Every photo from millstone.bappy.com, 2003 and 2004, saved at the size it was posted, with the captions the band gave them. Uncaptioned ones were page headers there. Early Millstone way back at Halloween Dave Hayes Jake McCoy Dave Robinson Hayes' Arsenal Jake on His Set Dave and Dave Bobby (the Roadie) and Jon (The Bouncer) Early Millstone Early Millstone Practice 1-7-04 Not another picture... (Dave H) Is it just me, or does Jake always seem to have his m..."
+  },
+  {
+    "t": "Millstone · works · magmacrunch media",
+    "c": "artist",
+    "u": "/archive/by-artist/millstone/works.html",
+    "d": "Millstone — Works",
+    "b": "Millstone · works · magmacrunch media archive › by artist › millstone // millstone // WORKS ← back about events links news photography loading works… FROM THE 2004 SITE The original songs as the band numbered them on its Songs page, with what the news posts say about each. Stalemate lyrics by Keith; practice take 2003-12-15 Can't Stand the Cold Shoulder Red Tear Nothing Even Matters Over the Treetops Fatal Wound A Nation Divided Blue Like Eternity A Night to Remember (Believe!) My Last Goodbye A New Hope written 2003-11-03; vocals by Robinson Nothing Society by Dave Hayes; acoustic 4-track 200..."
+  },
+  {
     "t": "SVFP · about · magmacrunch media",
     "c": "artist",
     "u": "/archive/by-artist/svfp/about.html",
@@ -977,7 +1033,7 @@
     "c": "artist",
     "u": "/archive/by-artist/thld/index.html",
     "d": "artist archive — recordings, works, events, releases",
-    "b": "THLD · archive · magmacrunch media archive › by artist › thld drawing: Sergio Pontillo // artist archive // TEXAS HOLD'EM LAVA DOME, ET AL. THLD | Tornado Massacre | Ocean, I Miss You about events links lyrics photography ware recordings releases videos works [ close ] ← prev next →"
+    "b": "THLD · archive · magmacrunch media archive › by artist › thld drawing: Sergio Pontillo // artist archive // TEXAS HOLD'EM LAVA DOME, ET AL. THLD | Tornado Massacre | Ocean, I Miss You about events links lyrics photography recordings releases videos ware works [ close ] ← prev next →"
   },
   {
     "t": "THLD · links · magmacrunch media",
@@ -1908,7 +1964,7 @@
     "c": "tool",
     "u": "/ware/games/",
     "d": "games for the browser, the terminal, the Wii and iPhone",
-    "b": "video games · ware · magmacrunch media home › ware › video games video games a page for each, with every way to play it browser play it now Wii on its way in development still being worked on // originals // George Boole Has Entered the Chat logic-gate puzzle browser terminal Wii iPhone & iPad ▶ Moonlight Drift cave flyer browser terminal Wii ▶ Texas Hold'Em Lava Dome solo poker browser terminal Wii ▶ The Jovian Humanitarian Conflict on-rails shooter in development browser terminal Wii ▶ makemecookies!x4 cookie factory browser Wii iPhone ▶ Very Long Boards downhill longboarding in development ..."
+    "b": "video games · ware · magmacrunch media home › ware › video games video games a page for each, with every way to play it browser play it now Wii on its way in development still being worked on // originals // George Boole Has Entered the Chat logic-gate puzzle browser terminal Wii iPhone & iPad ▶ Moonlight Drift cave flyer browser terminal Wii ▶ Texas Hold'Em Lava Dome solo poker browser terminal Wii ▶ The Jovian Humanitarian Conflict on-rails shooter in development browser terminal Wii ▶ makemecookies!x4 cookie factory browser Wii iPhone ▶ Caldera vertical climber browser terminal ▶ Roderick T..."
   },
   {
     "t": "george boole has entered the chat · magmacrunch media",
@@ -2126,12 +2182,5 @@
     "u": "/ware/two-to-the-n/",
     "d": "2048, generalised: pick your target from 4 to 65,536, in the browser",
     "b": "2^n · magmacrunch media home › ware › video games › 2^n 2^N 2048 with a target you choose · slide & merge 2048, generalised. Pick your target, from 2-bit mode at 4 up to 16-bit mode at 65,536, or play endless, with 2048 as the default. Slide and merge powers of two on a four-by-four board while the tiles heat from icy blue to white hot. // at the board // powers of two a 128, on the way to 2^11 // where to play // BROWSER ▶ PLAY free, in the arcade . Arrow keys or swipe. TERMINAL A text-only version that runs in a terminal window. Install it with pipx install magmacrunch-two-to-the-n then run ..."
-  },
-  {
-    "t": "very long boards · magmacrunch media",
-    "c": "tool",
-    "u": "/ware/very-long-boards/",
-    "d": "downhill longboarding: three timed courses and an endless run in the browser, and a desktop version in development",
-    "b": "very long boards · magmacrunch media home › ware › video games › very long boards VERY LONG BOARDS in development Downhill skateboarding as Carl Spatski, in one of three looks: the everyman, the maniac or the enigma, each riding differently. In the browser there are three timed courses with medal times, Frogwood, Block Island and Millstone, beside the original endless run: steer around obstacles, pull tricks for points and keep your stability up. Carving is how you go fast. The desktop version is a different, calmer game: timed runs down measured New Hampshire and Block Island roads. // down t..."
   }
 ]
