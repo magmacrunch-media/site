@@ -1,99 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>french tarot · magmacrunch media</title>
-  <meta name="description" content="four-player French Tarot against the computer, in the browser and the terminal">
-  <meta property="og:title" content="french tarot · magmacrunch media">
-  <meta property="og:description" content="four-player French Tarot against the computer, in the browser and the terminal">
-  <meta property="og:image" content="https://magmacrunch.com/og/arcade-tarot.png">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-  <meta property="og:type" content="website">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta property="og:site_name" content="magmacrunch media">
-  <meta property="og:locale" content="en_US">
-  <link rel="icon" type="image/x-icon" href="../../favicon.ico">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&family=Courier+Prime:wght@400;700&display=swap">
-  <link rel="stylesheet" href="../../style.css?v=a59b9059">
-  <link rel="stylesheet" href="../crumbs.css?v=e00af2c5">
-  <link rel="stylesheet" href="../magma-themes.css?v=36fa3988">
-  <link rel="stylesheet" href="../game-page.css?v=d8dc30f8">
-  <style>
-body{--line: var(--mt-p-ft-line);--link: var(--mt-p-ft-gold);--font-body: "VT323", monospace;--wp-copy: 22px;--body-size: 19px;line-height:1.3;--radius: 2px;--head-glow: 3px 3px 0 var(--mt-bg), 0 0 14px color-mix(in srgb, var(--mt-p-ft-cyan) 45%, transparent);--btn-shadow: transparent;--frame: var(--mt-p-ft-line);--frame-glow: 0 0 0 1px var(--mt-p-ft-dim), 0 0 30px color-mix(in srgb, var(--mt-p-ft-cyan) 18%, transparent);--panel-border: var(--mt-p-ft-line);background:linear-gradient(135deg,var(--mt-p-ft-bg-dark) 0%,var(--mt-p-ft-bg-mid) 100%) var(--mt-bg)}body::before{content:"";position:fixed;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,0.08) 2px,rgba(0,0,0,0.08) 4px);pointer-events:none;z-index:10000}.hero h1{font-size:clamp(20px,4.4vw,38px)}.hero .tagline{font-size:22px;color:var(--mt-p-ft-gold);text-shadow:0 0 10px color-mix(in srgb,var(--mt-p-ft-gold) 40%,transparent)}.hero .tagline::after{content:"";display:block;width:200px;height:2px;margin:1.25rem auto 0;background:linear-gradient(90deg,transparent,var(--mt-p-ft-cyan),transparent)}.platform .how,.built span,.credits p{font-size:17px}footer{font-size:16px}.built strong{font-size:18px}.platform code{font-size:17px}.play-btn{border:2px solid var(--mt-p-ft-cyan);text-transform:uppercase;transition:background .15s,box-shadow .15s}.play-btn:hover,.play-btn:focus-visible{transform:none;background:#fff;box-shadow:0 0 16px color-mix(in srgb,var(--mt-p-ft-cyan) 40%,transparent)}
-</style>
-  <link rel="stylesheet" href="../ware-page.css?v=549bdc52">
+<meta charset="UTF-8">
+<title>French Tarot · magmacrunch media</title>
+<meta name="robots" content="noindex">
+<link rel="canonical" href="https://magmacrunch.com/ware/card-table/#tarot">
+<meta http-equiv="refresh" content="0; url=../card-table/#tarot">
+<script>
+location.replace("../card-table/"+location.search+"#tarot");
+</script>
 </head>
-<body class="ware-accent ware-page" data-magma-theme="french-tarot" style="--ware-accent:#ffd700">
-
-<nav id="auto-nav" data-depth="../../"></nav>
-
-<div class="tool-nav">
-  <div class="breadcrumb">
-    <a href="../../">home</a> <span class="sep">›</span>
-    <a href="../">ware</a> <span class="sep">›</span>
-    <a href="../games/">video games</a> <span class="sep">›</span>
-    <span class="current">french tarot</span>
-  </div>
-</div>
-
-<div class="hero">
-  <img class="screen" src="img/table.webp" alt="A hand of French Tarot at the bidding: three opponents' vaporwave card backs around the table, and your eighteen cards, trumps and suits, along the bottom" width="944" height="700">
-  <h1>FRENCH<br>TAROT</h1>
-  <p class="tagline">78-card deck &middot; bidding &middot; four players</p>
-</div>
-
-<div class="section lead">
-  <p>French Tarot for four, you against three computer players, on a custom 78-card magmacrunch deck with a vaporwave card back.</p>
-  <p>The bids keep their French names, Passe, Prise, Garde, Garde Sans and Garde Contre, beside English labels, and a hand runs through the bidding, the dog and eighteen tricks.</p>
-</div>
-
-<div class="section">
-  <h2>// where to play //</h2>
-  <div class="platforms">
-
-    <div class="platform">
-      <div class="name">BROWSER</div>
-      <div class="how">
-        <a class="play-btn" href="../../arcade/tarot/">&#9654; PLAY</a>
-        free, in the <a href="../../arcade/#genre=card">arcade</a>. Nothing to install.
-      </div>
-    </div>
-
-    <div class="platform">
-      <div class="name">TERMINAL</div>
-      <div class="how">
-        A text-only version that runs in a terminal window. Install it with
-        <code>pipx install magmacrunch-tarot</code><br>
-        then run <strong>tarot</strong>. Also in the <a href="https://pypi.org/project/magmacrunch/">magmacrunch</a> terminal arcade.
-        New to this? The <a href="../../arcade/terminal.html">terminal arcade page</a> walks through installing it.
-      </div>
-    </div>
-
-  </div>
-</div>
-
-<div class="section">
-  <h2>// built with //</h2>
-  <div class="built">
-    <a href="../adenosine/"><strong>adenosine</strong><span>browser &middot; scores</span></a>
-    <a href="https://pypi.org/project/magmacrunch/"><strong>magmacrunch.engine</strong><span>terminal &middot; Python</span></a>
-  </div>
-</div>
-
-<div class="section credits">
-  <h2>// credits //</h2>
-  <p><strong>version by</strong> magmacrunch media</p>
-  <p><strong>cheapness impact factor</strong> 3.0</p>
-</div>
-
-<footer>
-  &copy; 2026 <span>magmacrunch media</span>
-</footer>
-
-<script src="../../nav.js?v=ac308f29"></script>
+<body>
+<p>French Tarot is on the <a href="../card-table/#tarot">card table</a> page now.</p>
 </body>
 </html>

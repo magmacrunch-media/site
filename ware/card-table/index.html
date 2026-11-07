@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>card table · magmacrunch media</title>
+  <meta name="description" content="four card games in the browser and the terminal: cribbage, Scandinavian stud, French tarot and Klondike solitaire">
+  <meta property="og:title" content="card table · magmacrunch media">
+  <meta property="og:description" content="four card games in the browser and the terminal: cribbage, Scandinavian stud, French tarot and Klondike solitaire">
+  <meta property="og:image" content="https://magmacrunch.com/og/arcade-cribbage.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta property="og:site_name" content="magmacrunch media">
+  <meta property="og:locale" content="en_US">
+  <link rel="icon" type="image/x-icon" href="../../favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=VT323&family=Press+Start+2P&family=Courier+Prime:wght@400;700&display=swap">
+  <link rel="stylesheet" href="../../style.css?v=a59b9059">
+  <link rel="stylesheet" href="../crumbs.css?v=e00af2c5">
+  <link rel="stylesheet" href="../magma-themes.css?v=36fa3988">
+  <link rel="stylesheet" href="../game-page.css?v=d8dc30f8">
+  <style>
+body{--line: var(--mt-p-cr-bg-light);--link: var(--mt-p-cr-gold);--font-body: "VT323", monospace;--wp-copy: 22px;--body-size: 19px;line-height:1.3;--radius: 4px;--head-glow: 3px 3px 0 var(--mt-p-cr-wood), 5px 5px 0 var(--mt-p-cr-bg-light);background:repeating-linear-gradient(90deg,rgba(255,255,255,.012) 0 3px,transparent 3px 11px),linear-gradient(160deg,var(--mt-p-cr-bg-mid) 0%,var(--mt-bg) 60%) var(--mt-bg)}body::before{content:"";position:fixed;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,0.1) 2px,rgba(0,0,0,0.1) 4px);pointer-events:none;z-index:10000}.hero h1{font-size:clamp(20px,4.6vw,40px)}.hero .tagline{font-size:22px;color:var(--mt-p-cr-cream)}.built span,.credits p,.section p{font-size:17px}.built strong{font-size:18px}footer{font-size:16px}.section code{font:17px var(--font-body);color:var(--accent);background:var(--bg);border:1px solid var(--line);border-radius:4px;padding:0 .4rem}.game{--bg: var(--mt-bg);--panel: var(--mt-surface);--text: var(--mt-text);--dim: var(--mt-muted);--accent: var(--mt-accent);--accent2: var(--mt-accent2);max-width:980px;margin:0 auto 2.25rem;padding:1.5rem;display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:1.75rem;align-items:start;color:var(--text);border:1px solid var(--line);border-radius:var(--radius);scroll-margin-top:64px}.game .screen{width:100%}.game h2{font:400 clamp(16px,2.4vw,22px)/1.5 var(--font-head);color:var(--accent);text-shadow:var(--head-glow);letter-spacing:.06em;margin-bottom:.35rem}.game .tagline{font-size:20px;color:var(--link);margin-bottom:.8rem}.game p{margin-bottom:.6rem}.game .play{margin:1rem 0 .8rem;font-size:17px;color:var(--dim);line-height:1.5}.game .play-btn{margin-bottom:.4rem}.game .online{display:inline-block;font:9px/1 var(--font-head);color:var(--accent);border:1px solid currentColor;border-radius:3px;padding:.35rem .45rem;vertical-align:middle}.game code{font:17px var(--font-body);color:var(--accent);background:color-mix(in srgb,var(--bg) 80%,#000);border:1px solid var(--line);border-radius:4px;padding:0 .4rem;overflow-wrap:anywhere}.game .credit{font-size:16px;color:var(--dim);border-top:1px solid var(--line);padding-top:.6rem;margin:0}.game .credit strong{color:var(--text)}.game[data-magma-theme=cribbage]{--line: var(--mt-p-cr-bg-light);--link: var(--mt-p-cr-cream);--head-glow: 3px 3px 0 var(--mt-p-cr-wood), 5px 5px 0 var(--mt-p-cr-bg-light);--btn-bg: var(--mt-accent);--btn-ink: var(--mt-bg);--btn-shadow: var(--mt-p-cr-wood);--frame: var(--mt-p-cr-wood);--frame-glow: 0 0 0 4px var(--mt-p-cr-bg-mid), 0 12px 32px rgba(0,0,0,.55);background:linear-gradient(160deg,var(--mt-p-cr-felt) 0%,var(--mt-bg) 75%);border-color:var(--mt-p-cr-felt-light)}.game[data-magma-theme=scandinavian-stud]{--line: var(--mt-p-ss-mid);--link: var(--mt-p-ss-gold);--head-glow: 0 0 10px var(--mt-p-ss-cyan), 0 0 26px color-mix(in srgb, var(--mt-p-ss-cyan) 45%, transparent);--btn-bg: var(--mt-accent);--btn-ink: var(--mt-p-ss-darker);--btn-shadow: var(--mt-p-ss-cyan-dim);--frame: var(--mt-p-ss-cyan-dim);--frame-glow: 0 0 28px color-mix(in srgb, var(--mt-p-ss-cyan) 22%, transparent);--radius: 6px;background:radial-gradient(ellipse 90% 60% at 50% 0%,var(--mt-p-ss-mid) 0%,var(--mt-p-ss-dark) 55%,var(--mt-p-ss-darker) 100%);border-color:color-mix(in srgb,var(--mt-p-ss-cyan) 30%,var(--mt-p-ss-mid))}.game[data-magma-theme=french-tarot]{--line: var(--mt-p-ft-line);--link: var(--mt-p-ft-gold);--head-glow: 3px 3px 0 var(--mt-bg), 0 0 14px color-mix(in srgb, var(--mt-p-ft-cyan) 45%, transparent);--btn-bg: transparent;--btn-ink: var(--mt-accent);--btn-shadow: transparent;--frame: var(--mt-p-ft-line);--frame-glow: 0 0 0 1px var(--mt-p-ft-dim), 0 0 30px color-mix(in srgb, var(--mt-p-ft-cyan) 18%, transparent);--radius: 2px;background:linear-gradient(135deg,var(--mt-p-ft-bg-dark) 0%,var(--mt-p-ft-bg-mid) 100%)}.game[data-magma-theme=french-tarot] .play-btn{border:2px solid var(--mt-p-ft-cyan)}.game[data-magma-theme=french-tarot] .tagline{text-shadow:0 0 10px color-mix(in srgb,var(--mt-p-ft-gold) 40%,transparent)}.game[data-magma-theme=solitaire]{--line: var(--mt-p-sol-desktop-hi);--link: var(--mt-p-sol-gold);--head-glow: 0 0 10px color-mix(in srgb, var(--mt-p-sol-pink) 55%, transparent);--btn-bg: var(--mt-p-sol-chrome);--btn-ink: #000;--btn-shadow: var(--mt-p-sol-chrome-shade);--frame: var(--mt-p-sol-chrome);--frame-glow: inset 0 0 0 1px var(--mt-p-sol-chrome-light), 6px 6px 0 rgba(0,0,0,.45);--radius: 0px;background:radial-gradient(ellipse 90% 70% at 50% 30%,var(--mt-p-sol-desktop-hi) 0%,var(--mt-p-sol-desktop) 45%,var(--mt-p-sol-desktop-lo) 100%)}.game[data-magma-theme=solitaire] h2{font-family:"Orbitron",sans-serif;font-weight:900;font-size:clamp(20px,3vw,28px);letter-spacing:.04em}.game[data-magma-theme=solitaire] .screen{border-top-color:var(--mt-p-sol-title-left);border-top-width:6px}.game[data-magma-theme=solitaire] .play-btn{border:2px outset var(--mt-p-sol-chrome-light)}.game[data-magma-theme=solitaire] .play-btn:hover,.game[data-magma-theme=solitaire] .play-btn:focus-visible{transform:none;border-style:inset;box-shadow:2px 2px 0 var(--btn-shadow)}.game[data-magma-theme=solitaire] .credit{color:var(--text)}@media(max-width:720px){.game{grid-template-columns:1fr;margin:0 1rem 1.75rem;padding:1.1rem;gap:1.1rem}}
+</style>
+  <link rel="stylesheet" href="../ware-page.css?v=549bdc52">
+</head>
+<body class="ware-accent ware-page" data-magma-theme="cribbage" style="--ware-accent:#ffd700">
+
+<nav id="auto-nav" data-depth="../../"></nav>
+
+<div class="tool-nav">
+  <div class="breadcrumb">
+    <a href="../../">home</a> <span class="sep">›</span>
+    <a href="../">ware</a> <span class="sep">›</span>
+    <a href="../games/">video games</a> <span class="sep">›</span>
+    <span class="current">card table</span>
+  </div>
+</div>
+
+<div class="hero">
+  <h1>CARD TABLE</h1>
+  <p class="tagline">four card games &middot; browser &amp; terminal</p>
+</div>
+
+<div class="section lead">
+  <p>Cribbage, Scandinavian stud, French tarot and Klondike solitaire, each at a table of its own. All four play free in the <a href="../../arcade/#genre=card">arcade</a> with nothing to install, cribbage and stud online against friends too, and all four run in a terminal.</p>
+</div>
+
+<section class="game" id="cribbage" data-magma-theme="cribbage">
+  <img class="screen" src="../cribbage/img/pegging.webp" alt="A solo hand of cribbage in the pegging: you have pegged 5 on the walnut board, the 2 of spades is the starter, the jack of clubs is on the table for a count of 10, and the crib holds four cards" width="1016" height="740" loading="lazy">
+  <div>
+    <h2>CRIBBAGE</h2>
+    <p class="tagline">first to 121 &middot; pegging, hands and the crib</p>
+    <p>Two-player cribbage against the computer or a friend, on a walnut peg board on green felt. A rules screen walks through the deal, the crib, the starter, pegging and scoring, and solo wins go on the arcade's high-score board.</p>
+    <div class="play">
+      <a class="play-btn" href="../../arcade/cribbage/">&#9654; PLAY</a> <span class="online">ONLINE</span><br>
+      terminal: <code>pipx install magmacrunch-cribbage</code>, then run <strong>cribbage</strong>
+    </div>
+    <p class="credit"><strong>cheapness impact factor</strong> 3.6</p>
+  </div>
+</section>
+
+<section class="game" id="scandinavian-stud" data-magma-theme="scandinavian-stud">
+  <img class="screen" src="../scandinavian-stud/img/table.webp" alt="Third up in a solo game: Lars, Karin and Nils each show three cards over one face down, and your four cards make one pair, with 100 in the pot" width="1280" height="720" loading="lazy">
+  <div>
+    <h2>SCANDINAVIAN STUD</h2>
+    <p class="tagline">skandinavisk stud &middot; five-card stud poker</p>
+    <p>Five-card stud with one hole card, four face-up cards and four rounds of betting. The four-card flush and the four-card straight both beat a pair. Three computer opponents or friends, at a table written in Swedish with English glosses.</p>
+    <div class="play">
+      <a class="play-btn" href="../../arcade/scandinavian-stud/">&#9654; PLAY</a> <span class="online">ONLINE</span><br>
+      terminal: <code>pipx install magmacrunch-scandinavian-stud</code>, then run <strong>scandinavian-stud</strong>
+    </div>
+    <p class="credit"><strong>cheapness impact factor</strong> 3.4</p>
+  </div>
+</section>
+
+<section class="game" id="tarot" data-magma-theme="french-tarot">
+  <img class="screen" src="../tarot/img/table.webp" alt="A hand of French Tarot at the bidding: three opponents' vaporwave card backs around the table, and your eighteen cards, trumps and suits, along the bottom" width="944" height="700" loading="lazy">
+  <div>
+    <h2>FRENCH TAROT</h2>
+    <p class="tagline">78-card deck &middot; bidding &middot; four players</p>
+    <p>You against three computer players, on a custom 78-card magmacrunch deck with a vaporwave card back. The bids keep their French names, Passe, Prise, Garde, Garde Sans and Garde Contre, beside English labels, and a hand runs through the bidding, the dog and eighteen tricks.</p>
+    <div class="play">
+      <a class="play-btn" href="../../arcade/tarot/">&#9654; PLAY</a><br>
+      terminal: <code>pipx install magmacrunch-tarot</code>, then run <strong>tarot</strong>
+    </div>
+    <p class="credit"><strong>cheapness impact factor</strong> 3.0</p>
+  </div>
+</section>
+
+<section class="game" id="solitaire" data-magma-theme="solitaire">
+  <img class="screen" src="../solitaire/img/deal.webp" alt="A fresh deal of Klondike in a Windows 3.1 style window: the stock with its magmacrunch card back, empty foundations, and seven tableau columns on green felt" width="1210" height="640" loading="lazy">
+  <div>
+    <h2>KLONDIKE SOLITAIRE</h2>
+    <p class="tagline">draw 3 &middot; timed scoring &middot; top ten scores</p>
+    <p>Klondike, draw three, with timed scoring and a bonus that grows the faster you win. It is drawn like Windows 3.1 shareware in vaporwave colours: a silver chrome window on a teal desktop, neon pink and cyan on green felt, and a Miami sunset when you win.</p>
+    <div class="play">
+      <a class="play-btn" href="../../arcade/solitaire/">&#9654; PLAY</a><br>
+      terminal: <code>pipx install magmacrunch-solitaire</code>, then run <strong>solitaire</strong>
+    </div>
+    <p class="credit"><strong>original game</strong> Klondike, popular since the late 1800s. Inspired in part by Windows Solitaire (Wes Cherry, 1988; card art by Susan Kare), and not affiliated with Microsoft. &middot; <strong>cheapness impact factor</strong> 1.6</p>
+  </div>
+</section>
+
+<div class="section">
+  <h2>// terminal //</h2>
+  <p>New to <code>pipx</code>? The <a href="../../arcade/terminal.html">terminal arcade page</a> walks through installing it. All four terminal versions are also in the <a href="https://pypi.org/project/magmacrunch/">magmacrunch</a> terminal arcade.</p>
+</div>
+
+<div class="section">
+  <h2>// built with //</h2>
+  <div class="built">
+    <a href="../adenosine/"><strong>adenosine</strong><span>browser &middot; JavaScript</span></a>
+    <a href="https://pypi.org/project/magmacrunch/"><strong>magmacrunch.engine</strong><span>terminal &middot; Python</span></a>
+  </div>
+</div>
+
+<div class="section credits">
+  <h2>// credits //</h2>
+  <p><strong>versions by</strong> magmacrunch media</p>
+</div>
+
+<footer>
+  &copy; 2026 <span>magmacrunch media</span>
+</footer>
+
+<script src="../../nav.js?v=ac308f29"></script>
+</body>
+</html>

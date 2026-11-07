@@ -1887,7 +1887,7 @@
     "c": "tool",
     "u": "/ware/backgammon/",
     "d": "backgammon on a blue screen desktop, for the browser and the terminal",
-    "b": "backgammon · magmacrunch media home › ware › video games › backgammon BACKGAMMON blue screen edition · vs the computer or a friend · doubling cube Backgammon in the arcade's blue screen edition: a home computer's desktop in blue, white, black and orange, with raised buttons and staircase points. Play the computer or a friend online with chat, with hitting, the bar, bearing off and a doubling cube. The terminal version plays the same computer opponent. // at the board // one on the bar the race home // where to play // BROWSER ▶ PLAY free, in the arcade , with online play against friends. TERMI..."
+    "b": "backgammon · magmacrunch media home › ware › video games › backgammon BACKGAMMON blue screen edition · vs the computer or a friend · doubling cube Backgammon in the arcade's blue screen edition: a home computer's desktop in blue, white, black and orange, with raised buttons and staircase points. Play the computer or a friend online with chat, with hitting, the bar, bearing off and a doubling cube. The terminal version plays the same computer opponent. // where to play // BROWSER ▶ PLAY free, in the arcade , with online play against friends. TERMINAL A text-only version that runs in a terminal ..."
   },
   {
     "t": "block island simulator · magmacrunch media",
@@ -1904,6 +1904,13 @@
     "b": "caldera · magmacrunch media home › ware › video games › caldera CALDERA climb the vent · outrun the magma · speed is height Run, jump and bounce off the walls to climb a volcanic vent while the magma rises under you. Speed turns into height, and jumps that clear several floors chain into a CRUNCH combo. Crumbling crust and gas vents change the climb. Pick from nine climbers, most of them pilots from Moonlight Drift . // where to play // BROWSER ▶ PLAY free, in the arcade . Keyboard or phone. TERMINAL A text-only version that runs in a terminal window. Install it with pipx install magmacrunch-c..."
   },
   {
+    "t": "card table · magmacrunch media",
+    "c": "tool",
+    "u": "/ware/card-table/",
+    "d": "four card games in the browser and the terminal: cribbage, Scandinavian stud, French tarot and Klondike solitaire",
+    "b": "card table · magmacrunch media home › ware › video games › card table CARD TABLE four card games · browser & terminal Cribbage, Scandinavian stud, French tarot and Klondike solitaire, each at a table of its own. All four play free in the arcade with nothing to install, cribbage and stud online against friends too, and all four run in a terminal. CRIBBAGE first to 121 · pegging, hands and the crib Two-player cribbage against the computer or a friend, on a walnut peg board on green felt. A rules screen walks through the deal, the crib, the starter, pegging and scoring, and solo wins go on the ar..."
+  },
+  {
     "t": "cave diving (not even once) · magmacrunch media",
     "c": "tool",
     "u": "/ware/cave-diving/",
@@ -1915,28 +1922,21 @@
     "c": "tool",
     "u": "/ware/checkers/",
     "d": "checkers on a green terminal, for the browser and the terminal",
-    "b": "checkers · magmacrunch media home › ware › video games › checkers CHECKERS phosphor edition · mandatory jumps · king promotion Checkers in the arcade's phosphor edition, on a green monochrome terminal: solid pieces against hollow ones, with moves marked by shape. Play the computer or a friend online with chat, with mandatory jumps, multi-jump chains and king promotion. The terminal version plays the same computer opponent. // at the board // seven against eleven three left, and two kings against you // where to play // BROWSER ▶ PLAY free, in the arcade , with online play against friends. TERM..."
+    "b": "checkers · magmacrunch media home › ware › video games › checkers CHECKERS phosphor edition · mandatory jumps · king promotion Checkers in the arcade's phosphor edition, on a green monochrome terminal: solid pieces against hollow ones, with moves marked by shape. Play the computer or a friend online with chat, with mandatory jumps, multi-jump chains and king promotion. The terminal version plays the same computer opponent. // where to play // BROWSER ▶ PLAY free, in the arcade , with online play against friends. TERMINAL A text-only version that runs in a terminal window. Install it with pipx ..."
   },
   {
     "t": "chess · magmacrunch media",
     "c": "tool",
     "u": "/ware/chess/",
     "d": "chess on a cream soda window system, for the browser and the terminal",
-    "b": "chess · magmacrunch media home › ware › video games › chess CHESS cream soda edition · three difficulty levels · optional clock Chess in the arcade's cream soda edition, in pixel art on a two-colour window system from the mid 1980s, vanilla and dark caramel, where a mid tone is a dither. Play the computer at easy, medium or hard, with no clock or a blitz, rapid or classical one, or play a friend online with chat. Moves are kept in algebraic notation. // at the board // check, and it matters a rook with the whole file open // where to play // BROWSER ▶ PLAY free, in the arcade , with online pla..."
+    "b": "chess · magmacrunch media home › ware › video games › chess CHESS cream soda edition · three difficulty levels · optional clock Chess in the arcade's cream soda edition, in pixel art on a two-colour window system from the mid 1980s, vanilla and dark caramel, where a mid tone is a dither. Play the computer at easy, medium or hard, with no clock or a blitz, rapid or classical one, or play a friend online with chat. Moves are kept in algebraic notation. // where to play // BROWSER ▶ PLAY free, in the arcade , with online play against friends. TERMINAL A text-only version that runs in a terminal w..."
   },
   {
     "t": "chinese checkers · magmacrunch media",
     "c": "tool",
     "u": "/ware/chinese-checkers/",
     "d": "chinese checkers on an 8-bit screen, for two to six players, in the browser and the terminal",
-    "b": "chinese checkers · magmacrunch media home › ware › video games › chinese checkers CHINESE CHECKERS 8-bit edition · hexagonal star · two to six players Chinese checkers in the arcade's 8-bit edition, on a home computer's blue text screen, with a hexagonal star of blocks and ten marbles each. Play two, three, four or six players against the computer, or friends online with room codes and chat. Steps light up green, hops yellow, and hops chain. // at the board // hop across to the far point // where to play // BROWSER ▶ PLAY free, in the arcade , with online rooms for up to six. TERMINAL A text-o..."
-  },
-  {
-    "t": "cribbage · magmacrunch media",
-    "c": "tool",
-    "u": "/ware/cribbage/",
-    "d": "two-player cribbage for the browser and the terminal",
-    "b": "cribbage · magmacrunch media home › ware › video games › cribbage CRIBBAGE first to 121 · pegging, hands and the crib Two-player cribbage, first to 121, against the computer or a friend online with room codes and lobby chat. A walnut peg board on green felt, a rules screen that walks through the deal, the crib, the starter, pegging and scoring, a choice of deck designs, and solo wins on the arcade's high-score board. // at the board // two cards to the crib // where to play // BROWSER ▶ PLAY free, in the arcade , with online play against friends. TERMINAL A text-only version that runs in a ter..."
+    "b": "chinese checkers · magmacrunch media home › ware › video games › chinese checkers CHINESE CHECKERS 8-bit edition · hexagonal star · two to six players Chinese checkers in the arcade's 8-bit edition, on a home computer's blue text screen, with a hexagonal star of blocks and ten marbles each. Play two, three, four or six players against the computer, or friends online with room codes and chat. Steps light up green, hops yellow, and hops chain. // where to play // BROWSER ▶ PLAY free, in the arcade , with online rooms for up to six. TERMINAL A text-only version that runs in a terminal window. Ins..."
   },
   {
     "t": "crunch-c · magmacrunch media",
@@ -2062,7 +2062,7 @@
     "c": "tool",
     "u": "/ware/parchisi/",
     "d": "Parchís, the Spanish board game, online for two to four players in the browser",
-    "b": "parchís · magmacrunch media home › ware › video games › parchís PARCHÍS el clásico juego español · 2 to 4 players online Parchís, the Spanish descendant of pachisi, for two to four players online, with room codes, spectating and chat. Roll two dice, capture your rivals and bring your pieces up the home run, on a board drawn as Spanish azulejo tiles in red and gold. The game is in Spanish, with a switch to English. // at the board // two dice and the room chat // where to play // BROWSER ▶ PLAY free, in the arcade . Online play, two to four players. // built with // adenosine browser · JavaScri..."
+    "b": "parchís · magmacrunch media home › ware › video games › parchís PARCHÍS el clásico juego español · 2 to 4 players online Parchís, the Spanish descendant of pachisi, for two to four players online, with room codes, spectating and chat. Roll two dice, capture your rivals and bring your pieces up the home run, on a board drawn as Spanish azulejo tiles in red and gold. The game is in Spanish, with a switch to English. // where to play // BROWSER ▶ PLAY free, in the arcade . Online play, two to four players. // built with // adenosine browser · JavaScript // credits // version by magmacrunch media ..."
   },
   {
     "t": "crunchscope · magmacrunch media",
@@ -2093,32 +2093,11 @@
     "b": "roderick tron · magmacrunch media home › ware › video games › roderick tron RODERICK TRON in development A side-scrolling platformer about a robot composer on the rooftops of an 1810s Dutch city. Run, roll, stomp and fire musical notes, find the letters T-R-O-N, and reach the lit door. The levels are built by hand, with chimney draughts, bell cannons and coal trolleys in the way. // in a terminal // the title screen // where to play // BROWSER in a web browser, not public right now while it is being worked on. IN DEVELOPMENT TERMINAL A text-only version that runs in a terminal window. Install ..."
   },
   {
-    "t": "scandinavian stud · magmacrunch media",
-    "c": "tool",
-    "u": "/ware/scandinavian-stud/",
-    "d": "Scandinavian stud, five-card stud poker, against the computer or online, in the browser",
-    "b": "scandinavian stud · magmacrunch media home › ware › video games › scandinavian stud SCANDINAVIAN STUD skandinavisk stud · five-card stud poker Five-card stud with one hole card, four face-up cards and four rounds of betting. Two hands set it apart, the four-card flush and the four-card straight, and both beat a pair. Play three computer opponents or friends online, at a table written in Swedish with English glosses. // at the table // two pair takes the pot every hand face up // where to play // BROWSER ▶ PLAY free, in the arcade , with online play against friends. TERMINAL A text-only version..."
-  },
-  {
-    "t": "klondike solitaire · magmacrunch media",
-    "c": "tool",
-    "u": "/ware/solitaire/",
-    "d": "Klondike solitaire, draw three, with timed scoring, in the browser",
-    "b": "klondike solitaire · magmacrunch media home › ware › video games › klondike solitaire KLONDIKE SOLITAIRE draw 3 · timed scoring · top ten scores Klondike, draw three, with timed scoring and a bonus that grows the faster you win. It is drawn like Windows 3.1 shareware in vaporwave colours: a silver chrome window on a teal desktop, neon pink and cyan on green felt, and a Miami sunset when you win. Pick a deck design. The ten best scores are kept. // where to play // BROWSER ▶ PLAY free, in the arcade . Nothing to install. TERMINAL A text-only version that runs in a terminal window. Install it wi..."
-  },
-  {
     "t": "sprite forge · magmacrunch media",
     "c": "tool",
     "u": "/ware/sprite-forge/",
     "d": "game sprite editor · animation, onion skin, PNG sheets",
     "b": "sprite forge · magmacrunch media This tool is best experienced on a desktop or laptop. Please visit on a wider screen for the full workspace. SPRITE//FORGE Dark 32×32 1 FRAME − 16× + ⇲ FIT ▦ GRID ⇋ MIRROR ◎ ONION 1 ◫ PREVIEW 32 × 32 animation facings sheet; click a frame to edit it, drag to reorder surface ◀ ▶ EXPORT OUTPUT COPY COLOR #000000 + ADD RAMP SPRITES ADD DUP DEL MIRROR FLIP every sprite here shares one palette, so a character's facings cannot drift onto different browns. each exports as its own sheet, named by the name above. a mirror follows the sprite it came from until you draw o..."
-  },
-  {
-    "t": "french tarot · magmacrunch media",
-    "c": "tool",
-    "u": "/ware/tarot/",
-    "d": "four-player French Tarot against the computer, in the browser and the terminal",
-    "b": "french tarot · magmacrunch media home › ware › video games › french tarot FRENCH TAROT 78-card deck · bidding · four players French Tarot for four, you against three computer players, on a custom 78-card magmacrunch deck with a vaporwave card back. The bids keep their French names, Passe, Prise, Garde, Garde Sans and Garde Contre, beside English labels, and a hand runs through the bidding, the dog and eighteen tricks. // where to play // BROWSER ▶ PLAY free, in the arcade . Nothing to install. TERMINAL A text-only version that runs in a terminal window. Install it with pipx install magmacrunch..."
   },
   {
     "t": "texas hold'em lava dome · magmacrunch media",

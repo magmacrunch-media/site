@@ -1,100 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>klondike solitaire · magmacrunch media</title>
-  <meta name="description" content="Klondike solitaire, draw three, with timed scoring, in the browser">
-  <meta property="og:title" content="klondike solitaire · magmacrunch media">
-  <meta property="og:description" content="Klondike solitaire, draw three, with timed scoring, in the browser">
-  <meta property="og:image" content="https://magmacrunch.com/og/arcade-solitaire.png">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-  <meta property="og:type" content="website">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta property="og:site_name" content="magmacrunch media">
-  <meta property="og:locale" content="en_US">
-  <link rel="icon" type="image/x-icon" href="../../favicon.ico">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=VT323&family=Press+Start+2P&family=Courier+Prime:wght@400;700&display=swap">
-  <link rel="stylesheet" href="../../style.css?v=a59b9059">
-  <link rel="stylesheet" href="../crumbs.css?v=e00af2c5">
-  <link rel="stylesheet" href="../magma-themes.css?v=36fa3988">
-  <link rel="stylesheet" href="../game-page.css?v=d8dc30f8">
-  <style>
-body{--line: var(--mt-p-sol-desktop-hi);--link: var(--mt-p-sol-gold);--font-body: "VT323", monospace;--wp-copy: 22px;--body-size: 19px;line-height:1.3;--radius: 0px;--head-glow: 0 0 10px color-mix(in srgb, var(--mt-p-sol-pink) 55%, transparent);--btn-bg: var(--mt-p-sol-chrome);--btn-ink: #000;--btn-shadow: var(--mt-p-sol-chrome-shade);--frame: var(--mt-p-sol-chrome);--frame-glow: inset 0 0 0 1px var(--mt-p-sol-chrome-light), 6px 6px 0 rgba(0,0,0,.45);--panel-border: var(--mt-p-sol-desktop-hi);background:radial-gradient(ellipse 90% 70% at 50% 30%,var(--mt-p-sol-desktop-hi) 0%,var(--mt-p-sol-desktop) 45%,var(--mt-p-sol-desktop-lo) 100%) var(--mt-bg)}.hero h1{font-family:"Orbitron",sans-serif;font-weight:900;font-size:clamp(26px,5vw,46px);letter-spacing:.04em}.hero .tagline{font-size:22px;color:var(--mt-p-sol-gold)}.hero .tagline::after{content:"";display:block;width:260px;max-width:80%;height:2px;margin:1.25rem auto 0;background:linear-gradient(90deg,transparent,var(--mt-p-sol-pink),var(--mt-p-sol-cyan),transparent)}.screen{border-top-color:var(--mt-p-sol-title-left);border-top-width:6px}.platform,.built a,.built div{background:color-mix(in srgb,var(--mt-p-sol-desktop-lo) 85%,transparent)}.play-btn{border:2px outset var(--mt-p-sol-chrome-light);font-family:"Press Start 2P",monospace}.play-btn:hover,.play-btn:focus-visible{transform:none;border-style:inset;box-shadow:2px 2px 0 var(--btn-shadow)}.platform .how,.built span,.credits p,.shots figcaption{font-size:17px}footer{font-size:16px}.built strong{font-size:18px}.platform code{font-size:17px}
-</style>
-  <link rel="stylesheet" href="../ware-page.css?v=549bdc52">
+<meta charset="UTF-8">
+<title>Klondike Solitaire · magmacrunch media</title>
+<meta name="robots" content="noindex">
+<link rel="canonical" href="https://magmacrunch.com/ware/card-table/#solitaire">
+<meta http-equiv="refresh" content="0; url=../card-table/#solitaire">
+<script>
+location.replace("../card-table/"+location.search+"#solitaire");
+</script>
 </head>
-<body class="ware-accent ware-page" data-magma-theme="solitaire" style="--ware-accent:#00f0ff">
-
-<nav id="auto-nav" data-depth="../../"></nav>
-
-<div class="tool-nav">
-  <div class="breadcrumb">
-    <a href="../../">home</a> <span class="sep">›</span>
-    <a href="../">ware</a> <span class="sep">›</span>
-    <a href="../games/">video games</a> <span class="sep">›</span>
-    <span class="current">klondike solitaire</span>
-  </div>
-</div>
-
-<div class="hero">
-  <img class="screen" src="img/deal.webp" alt="A fresh deal of Klondike in a Windows 3.1 style window: the stock with its magmacrunch card back, empty foundations, and seven tableau columns on green felt" width="1210" height="640">
-  <h1>KLONDIKE<br>SOLITAIRE</h1>
-  <p class="tagline">draw 3 &middot; timed scoring &middot; top ten scores</p>
-</div>
-
-<div class="section lead">
-  <p>Klondike, draw three, with timed scoring and a bonus that grows the faster you win.</p>
-  <p>It is drawn like Windows 3.1 shareware in vaporwave colours: a silver chrome window on a teal desktop, neon pink and cyan on green felt, and a Miami sunset when you win. Pick a deck design. The ten best scores are kept.</p>
-</div>
-
-<div class="section">
-  <h2>// where to play //</h2>
-  <div class="platforms">
-
-    <div class="platform">
-      <div class="name">BROWSER</div>
-      <div class="how">
-        <a class="play-btn" href="../../arcade/solitaire/">&#9654; PLAY</a>
-        free, in the <a href="../../arcade/#genre=card">arcade</a>. Nothing to install.
-      </div>
-    </div>
-
-    <div class="platform">
-      <div class="name">TERMINAL</div>
-      <div class="how">
-        A text-only version that runs in a terminal window. Install it with
-        <code>pipx install magmacrunch-solitaire</code><br>
-        then run <strong>solitaire</strong>. Also in the <a href="https://pypi.org/project/magmacrunch/">magmacrunch</a> terminal arcade.
-        New to this? The <a href="../../arcade/terminal.html">terminal arcade page</a> walks through installing it.
-      </div>
-    </div>
-
-  </div>
-</div>
-
-<div class="section">
-  <h2>// built with //</h2>
-  <div class="built">
-    <a href="../adenosine/"><strong>adenosine</strong><span>browser &middot; JavaScript</span></a>
-    <a href="https://pypi.org/project/magmacrunch/"><strong>magmacrunch.engine</strong><span>terminal &middot; Python</span></a>
-  </div>
-</div>
-
-<div class="section credits">
-  <h2>// credits //</h2>
-  <p><strong>version by</strong> magmacrunch media</p>
-  <p><strong>original game</strong> Klondike, popular since the late 1800s. Inspired in part by Windows Solitaire (Wes Cherry, 1988; card art by Susan Kare), and not affiliated with Microsoft.</p>
-  <p><strong>cheapness impact factor</strong> 1.6</p>
-</div>
-
-<footer>
-  &copy; 2026 <span>magmacrunch media</span>
-</footer>
-
-<script src="../../nav.js?v=ac308f29"></script>
+<body>
+<p>Klondike Solitaire is on the <a href="../card-table/#solitaire">card table</a> page now.</p>
 </body>
 </html>

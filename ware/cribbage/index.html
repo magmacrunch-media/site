@@ -1,109 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>cribbage · magmacrunch media</title>
-  <meta name="description" content="two-player cribbage for the browser and the terminal">
-  <meta property="og:title" content="cribbage · magmacrunch media">
-  <meta property="og:description" content="two-player cribbage for the browser and the terminal">
-  <meta property="og:image" content="https://magmacrunch.com/og/arcade-cribbage.png">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-  <meta property="og:type" content="website">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta property="og:site_name" content="magmacrunch media">
-  <meta property="og:locale" content="en_US">
-  <link rel="icon" type="image/x-icon" href="../../favicon.ico">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&family=Courier+Prime:wght@400;700&display=swap">
-  <link rel="stylesheet" href="../../style.css?v=a59b9059">
-  <link rel="stylesheet" href="../crumbs.css?v=e00af2c5">
-  <link rel="stylesheet" href="../magma-themes.css?v=36fa3988">
-  <link rel="stylesheet" href="../game-page.css?v=d8dc30f8">
-  <style>
-body{--line: var(--mt-p-cr-bg-light);--link: var(--mt-p-cr-gold);--font-body: "VT323", monospace;--wp-copy: 22px;--body-size: 19px;line-height:1.3;--radius: 4px;--head-glow: 3px 3px 0 var(--mt-p-cr-wood), 5px 5px 0 var(--mt-p-cr-bg-light);--btn-shadow: var(--mt-p-cr-wood);--frame: var(--mt-p-cr-wood);--frame-glow: 0 0 0 4px var(--mt-p-cr-bg-mid), 0 12px 32px rgba(0,0,0,.55);--panel-border: var(--mt-p-cr-bg-light);background:repeating-linear-gradient(90deg,rgba(255,255,255,.012) 0 3px,transparent 3px 11px),linear-gradient(160deg,var(--mt-p-cr-bg-mid) 0%,var(--mt-bg) 60%) var(--mt-bg)}body::before{content:"";position:fixed;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,0.1) 2px,rgba(0,0,0,0.1) 4px);pointer-events:none;z-index:10000}.hero h1{font-size:clamp(20px,4.6vw,40px)}.hero .tagline{font-size:22px;color:var(--mt-p-cr-cream)}.hero .tagline::after{content:"";display:block;width:200px;height:2px;margin:1.25rem auto 0;background:linear-gradient(90deg,transparent,var(--mt-p-cr-gold),transparent)}.platform .how,.built span,.credits p,.shots figcaption{font-size:17px}footer{font-size:16px}.built strong{font-size:18px}.platform code{font-size:17px}.built a,.built div{background:var(--mt-p-cr-felt);border-color:var(--mt-p-cr-felt-light)}.built a:hover{border-color:var(--mt-p-cr-gold)}
-</style>
-  <link rel="stylesheet" href="../ware-page.css?v=549bdc52">
+<meta charset="UTF-8">
+<title>Cribbage · magmacrunch media</title>
+<meta name="robots" content="noindex">
+<link rel="canonical" href="https://magmacrunch.com/ware/card-table/#cribbage">
+<meta http-equiv="refresh" content="0; url=../card-table/#cribbage">
+<script>
+location.replace("../card-table/"+location.search+"#cribbage");
+</script>
 </head>
-<body class="ware-accent ware-page" data-magma-theme="cribbage" style="--ware-accent:#ffd700">
-
-<nav id="auto-nav" data-depth="../../"></nav>
-
-<div class="tool-nav">
-  <div class="breadcrumb">
-    <a href="../../">home</a> <span class="sep">›</span>
-    <a href="../">ware</a> <span class="sep">›</span>
-    <a href="../games/">video games</a> <span class="sep">›</span>
-    <span class="current">cribbage</span>
-  </div>
-</div>
-
-<div class="hero">
-  <img class="screen" src="img/pegging.webp" alt="A solo hand of cribbage in the pegging: you have pegged 5 on the walnut board, the 2 of spades is the starter, the jack of clubs is on the table for a count of 10, and the crib holds four cards" width="1016" height="740">
-  <h1>CRIBBAGE</h1>
-  <p class="tagline">first to 121 &middot; pegging, hands and the crib</p>
-</div>
-
-<div class="section lead">
-  <p>Two-player cribbage, first to 121, against the computer or a friend online with room codes and lobby chat.</p>
-  <p>A walnut peg board on green felt, a rules screen that walks through the deal, the crib, the starter, pegging and scoring, a choice of deck designs, and solo wins on the arcade's high-score board.</p>
-</div>
-
-<div class="section">
-  <h2>// at the board //</h2>
-  <div class="shots">
-    <figure>
-      <img class="screen" src="img/discard.webp" alt="The deal: six cards in your hand, six backs in the opponent's, and the crib empty, waiting for two cards from each" width="1016" height="740" loading="lazy">
-      <figcaption>two cards to the crib</figcaption>
-    </figure>
-  </div>
-</div>
-
-<div class="section">
-  <h2>// where to play //</h2>
-  <div class="platforms">
-
-    <div class="platform">
-      <div class="name">BROWSER</div>
-      <div class="how">
-        <a class="play-btn" href="../../arcade/cribbage/">&#9654; PLAY</a>
-        free, in the <a href="../../arcade/#genre=card">arcade</a>, with online play against friends.
-      </div>
-    </div>
-
-    <div class="platform">
-      <div class="name">TERMINAL</div>
-      <div class="how">
-        A text-only version that runs in a terminal window. Install it with
-        <code>pipx install magmacrunch-cribbage</code><br>
-        then run <strong>cribbage</strong>. Also in the <a href="https://pypi.org/project/magmacrunch/">magmacrunch</a> terminal arcade.
-        New to this? The <a href="../../arcade/terminal.html">terminal arcade page</a> walks through installing it.
-      </div>
-    </div>
-
-  </div>
-</div>
-
-<div class="section">
-  <h2>// built with //</h2>
-  <div class="built">
-    <a href="../adenosine/"><strong>adenosine</strong><span>browser &middot; JavaScript</span></a>
-    <a href="https://pypi.org/project/magmacrunch/"><strong>magmacrunch.engine</strong><span>terminal &middot; Python</span></a>
-  </div>
-</div>
-
-<div class="section credits">
-  <h2>// credits //</h2>
-  <p><strong>version by</strong> magmacrunch media</p>
-  <p><strong>cheapness impact factor</strong> 3.6</p>
-</div>
-
-<footer>
-  &copy; 2026 <span>magmacrunch media</span>
-</footer>
-
-<script src="../../nav.js?v=ac308f29"></script>
+<body>
+<p>Cribbage is on the <a href="../card-table/#cribbage">card table</a> page now.</p>
 </body>
 </html>
