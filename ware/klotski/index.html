@@ -1,103 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>klotski · magmacrunch media</title>
-  <meta name="description" content="Klotski, the Chinese sliding block puzzle, in the browser">
-  <meta property="og:title" content="klotski · magmacrunch media">
-  <meta property="og:description" content="Klotski, the Chinese sliding block puzzle, in the browser">
-  <meta property="og:image" content="https://magmacrunch.com/og/arcade-klotski.png">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-  <meta property="og:type" content="website">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta property="og:site_name" content="magmacrunch media">
-  <meta property="og:locale" content="en_US">
-  <link rel="icon" type="image/x-icon" href="../../favicon.ico">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Courier+Prime:wght@400;700&display=swap">
-  <link rel="stylesheet" href="../../style.css?v=a59b9059">
-  <link rel="stylesheet" href="../crumbs.css?v=e00af2c5">
-  <link rel="stylesheet" href="../magma-themes.css?v=36fa3988">
-  <link rel="stylesheet" href="../game-page.css?v=d8dc30f8">
-  <style>
-body{--line: color-mix(in srgb, var(--mt-p-kl-dim) 30%, var(--mt-bg));--link: var(--mt-accent2);--radius: 4px;--head-glow: 0 0 15px color-mix(in srgb, var(--mt-p-kl-red) 60%, transparent);--btn-bg: transparent;--btn-ink: var(--mt-p-kl-red);--btn-shadow: transparent;--frame: var(--mt-p-kl-red);--frame-glow: 0 0 24px color-mix(in srgb, var(--mt-p-kl-red) 35%, transparent);--panel-border: color-mix(in srgb, var(--mt-p-kl-red) 25%, var(--mt-p-kl-panel));background:radial-gradient(ellipse 70% 40% at 50% 0%,color-mix(in srgb,var(--mt-p-kl-red) 10%,transparent),transparent),url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='300'%3E%3Crect x='8' y='8' width='52' height='112' rx='6' fill='%2300cc88' opacity='.07'/%3E%3Crect x='68' y='8' width='112' height='112' rx='6' fill='%23ffd700' opacity='.07'/%3E%3Crect x='188' y='8' width='52' height='112' rx='6' fill='%2300cc88' opacity='.07'/%3E%3Crect x='8' y='128' width='112' height='52' rx='6' fill='%2300cc88' opacity='.07'/%3E%3Crect x='128' y='128' width='52' height='52' rx='6' fill='%2300f5ff' opacity='.06'/%3E%3Crect x='188' y='188' width='52' height='112' rx='6' fill='%2300cc88' opacity='.07'/%3E%3Crect x='68' y='188' width='52' height='52' rx='6' fill='%2300f5ff' opacity='.06'/%3E%3C/svg%3E") 0 0 / 240px 300px fixed,var(--mt-bg)}.hero h1{font-size:clamp(22px,5vw,44px)}.hero .tagline{font-size:13px;letter-spacing:.25em;text-transform:uppercase}.hero .screen{width:min(100%,480px)}.platform,.built a,.built div{background:color-mix(in srgb,var(--mt-surface) 80%,transparent)}.play-btn{border:1px solid currentColor}.play-btn:hover,.play-btn:focus-visible{transform:none;background:color-mix(in srgb,var(--mt-p-kl-red) 15%,transparent);box-shadow:0 0 14px color-mix(in srgb,var(--mt-p-kl-red) 45%,transparent)}.hero .tagline{color:var(--mt-p-kl-gold)}
-</style>
-  <link rel="stylesheet" href="../ware-page.css?v=549bdc52">
+<meta charset="UTF-8">
+<title>Klotski · magmacrunch media</title>
+<meta name="robots" content="noindex">
+<link rel="canonical" href="https://magmacrunch.com/ware/puzzles/#klotski">
+<meta http-equiv="refresh" content="0; url=../puzzles/#klotski">
+<script>
+location.replace("../puzzles/"+location.search+"#klotski");
+</script>
 </head>
-<body class="ware-accent ware-page" data-magma-theme="klotski" style="--ware-accent:#ff2d4a">
-
-<nav id="auto-nav" data-depth="../../"></nav>
-
-<div class="tool-nav">
-  <div class="breadcrumb">
-    <a href="../../">home</a> <span class="sep">›</span>
-    <a href="../">ware</a> <span class="sep">›</span>
-    <a href="../games/">video games</a> <span class="sep">›</span>
-    <span class="current">klotski</span>
-  </div>
-</div>
-
-<div class="hero">
-  <img class="screen" src="img/partway.webp" alt="Partway through: Cao Cao in gold on the right, jade generals stacked left, Guan Yu lying along the bottom" width="705" height="849">
-  <h1>KLOTSKI</h1>
-  <p class="tagline">横刀立马 &middot; slide the general to the exit</p>
-</div>
-
-<div class="section lead">
-  <p>横刀立马: slide Cao Cao, the gold two-by-two block, past his generals and soldiers and out of the four-by-five board. Pieces only slide, never jump.</p>
-  <p>The text is in Chinese, English or both.</p>
-</div>
-
-<div class="section">
-  <h2>// at the board //</h2>
-  <div class="shots">
-    <figure>
-      <img class="screen" src="img/early.webp" alt="Early on: Cao Cao in gold in the top corner with generals and soldiers packed around him" width="1100" height="756" loading="lazy">
-      <figcaption>Cao Cao, shoved to one side</figcaption>
-    </figure>
-    <figure>
-      <img class="screen" src="img/almost.webp" alt="Near the end: Cao Cao in gold at the bottom of the board, a few moves from the way out" width="1100" height="756" loading="lazy">
-      <figcaption>a few moves from the way out</figcaption>
-    </figure>
-  </div>
-</div>
-
-<div class="section">
-  <h2>// where to play //</h2>
-  <div class="platforms">
-
-    <div class="platform">
-      <div class="name">BROWSER</div>
-      <div class="how">
-        <a class="play-btn" href="../../arcade/klotski/">&#9654; PLAY</a>
-        free, in the <a href="../../arcade/#genre=puzzle">arcade</a>. Arrow keys or swipe.
-      </div>
-    </div>
-
-  </div>
-</div>
-
-<div class="section">
-  <h2>// built with //</h2>
-  <div class="built">
-    <a href="../adenosine/"><strong>adenosine</strong><span>browser &middot; JavaScript</span></a>
-  </div>
-</div>
-
-<div class="section credits">
-  <h2>// credits //</h2>
-  <p><strong>version by</strong> magmacrunch media</p>
-  <p><strong>original game</strong> Klotski (横刀立马), a traditional Chinese sliding block puzzle from the early twentieth century</p>
-  <p><strong>cheapness impact factor</strong> 1.0</p>
-</div>
-
-<footer>
-  &copy; 2026 <span>magmacrunch media</span>
-</footer>
-
-<script src="../../nav.js?v=ac308f29"></script>
+<body>
+<p>Klotski is on the <a href="../puzzles/#klotski">puzzles</a> page now.</p>
 </body>
 </html>

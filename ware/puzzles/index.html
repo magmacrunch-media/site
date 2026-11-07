@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>puzzles · magmacrunch media</title>
+  <meta name="description" content="four sliding puzzles in the browser and the terminal: the 15 puzzle, 2^N, Threes and Klotski">
+  <meta property="og:title" content="puzzles · magmacrunch media">
+  <meta property="og:description" content="four sliding puzzles in the browser and the terminal: the 15 puzzle, 2^N, Threes and Klotski">
+  <meta property="og:image" content="https://magmacrunch.com/og/arcade-fifteen-puzzle.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta property="og:site_name" content="magmacrunch media">
+  <meta property="og:locale" content="en_US">
+  <link rel="icon" type="image/x-icon" href="../../favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Courier+Prime:wght@400;700&display=swap">
+  <link rel="stylesheet" href="../../style.css?v=a59b9059">
+  <link rel="stylesheet" href="../crumbs.css?v=e00af2c5">
+  <link rel="stylesheet" href="../magma-themes.css?v=36fa3988">
+  <link rel="stylesheet" href="../game-page.css?v=d8dc30f8">
+  <style>
+body{--line: color-mix(in srgb, var(--mt-muted) 30%, var(--mt-bg));--radius: 4px;--btn-bg: transparent;--btn-shadow: transparent;--head-glow: 0 0 15px color-mix(in srgb, var(--mt-accent) 60%, transparent)}.hero h1{font-size:clamp(22px,5vw,44px)}.hero .tagline{font-size:13px;letter-spacing:.25em;text-transform:uppercase}.puzzle{--bg: var(--mt-bg);--panel: var(--mt-surface);--text: var(--mt-text);--dim: var(--mt-muted);--accent: var(--mt-accent);--accent2: var(--mt-accent2);--link: var(--mt-accent2);--line: color-mix(in srgb, var(--mt-muted) 30%, var(--mt-bg));--btn-ink: var(--mt-accent);--frame: var(--mt-accent);--frame-glow: 0 0 24px color-mix(in srgb, var(--mt-accent) 35%, transparent);--head-glow: 0 0 15px color-mix(in srgb, var(--mt-accent) 60%, transparent);max-width:880px;margin:0 auto 2.25rem;padding:1.5rem;display:grid;grid-template-columns:minmax(0,300px) 1fr;gap:1.75rem;align-items:start;color:var(--text);background:color-mix(in srgb,var(--mt-surface) 55%,transparent);border:1px solid color-mix(in srgb,var(--mt-accent) 25%,var(--mt-surface));border-radius:var(--radius);scroll-margin-top:64px}.puzzle .screen{width:100%}.puzzle h2{font:400 clamp(16px,2.6vw,22px)/1.5 var(--font-head);color:var(--accent);text-shadow:var(--head-glow);letter-spacing:.06em;margin-bottom:.35rem}.puzzle .tagline{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--dim);margin-bottom:1rem}.puzzle p{margin-bottom:.7rem}.puzzle .play{margin:1.1rem 0 .9rem;font-size:14px;color:var(--dim);line-height:1.7}.puzzle .play-btn{border:1px solid currentColor;margin-bottom:.4rem}.puzzle .play-btn:hover,.puzzle .play-btn:focus-visible{transform:none;background:color-mix(in srgb,var(--accent) 15%,transparent);box-shadow:0 0 14px color-mix(in srgb,var(--accent) 45%,transparent)}.puzzle code{font:13px var(--font-body);color:var(--accent);background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:.15rem .45rem;overflow-wrap:anywhere}.puzzle .credit{font-size:13px;color:var(--dim);border-top:1px solid var(--line);padding-top:.7rem;margin:0}.puzzle .credit strong{color:var(--text)}.puzzle[data-magma-theme=two-to-the-n]{--btn-ink: var(--mt-p-tn-blue);background:linear-gradient(180deg,var(--mt-p-tn-wine),var(--mt-p-tn-ember) 60%,var(--mt-p-tn-night));border-color:color-mix(in srgb,var(--mt-p-tn-pink) 45%,var(--mt-p-tn-plum))}.puzzle[data-magma-theme=two-to-the-n] .tagline{color:var(--mt-p-tn-gold)}@media(max-width:640px){.puzzle{grid-template-columns:1fr;margin:0 1rem 1.75rem;padding:1.1rem;gap:1.1rem}.puzzle .screen{max-width:320px;margin:0 auto}}
+</style>
+  <link rel="stylesheet" href="../ware-page.css?v=549bdc52">
+</head>
+<body class="ware-accent ware-page" data-magma-theme="fifteen-puzzle" style="--ware-accent:#00f5ff">
+
+<nav id="auto-nav" data-depth="../../"></nav>
+
+<div class="tool-nav">
+  <div class="breadcrumb">
+    <a href="../../">home</a> <span class="sep">›</span>
+    <a href="../">ware</a> <span class="sep">›</span>
+    <a href="../games/">video games</a> <span class="sep">›</span>
+    <span class="current">puzzles</span>
+  </div>
+</div>
+
+<div class="hero">
+  <h1>PUZZLES</h1>
+  <p class="tagline">four sliding puzzles &middot; browser &amp; terminal</p>
+</div>
+
+<div class="section lead">
+  <p>Small puzzles, each a classic or close to one: slide the tiles into order, merge them up, or work a block out of a tray. All four play free in the <a href="../../arcade/#genre=puzzle">arcade</a> with arrow keys or swipe, and three of them run in a terminal too.</p>
+</div>
+
+<section class="puzzle" id="fifteen-puzzle" data-magma-theme="fifteen-puzzle">
+  <img class="screen" src="../fifteen-puzzle/img/four-by-four.webp" alt="The 4×4 board: fifteen coloured tiles, shuffled" width="849" height="840" loading="lazy">
+  <div>
+    <h2>15 PUZZLE</h2>
+    <p class="tagline">fewer moves is better</p>
+    <p>The classic sliding tile puzzle: slide the numbered tiles back into order. Boards run from the 8 puzzle on three by three up to six by six, with four by four as the default. Your score is your move count.</p>
+    <div class="play">
+      <a class="play-btn" href="../../arcade/fifteen-puzzle/">&#9654; PLAY</a><br>
+      terminal: <code>pipx install magmacrunch-fifteen-puzzle</code>, then run <strong>fifteen-puzzle</strong>
+    </div>
+    <p class="credit"><strong>original concept</strong> the 15 Puzzle, attributed to Noyes Chapman (1870s) &middot; <strong>cheapness impact factor</strong> 1.1</p>
+  </div>
+</section>
+
+<section class="puzzle" id="two-to-the-n" data-magma-theme="two-to-the-n">
+  <img class="screen" src="../two-to-the-n/img/board-256.webp" alt="2^N: a gold 256 in the corner with 64 and 32 stacked beside it" width="1100" height="1100" loading="lazy">
+  <div>
+    <h2>2^N</h2>
+    <p class="tagline">2048 with a target you choose</p>
+    <p>2048, generalised. Pick your target, from 2-bit mode at 4 up to 16-bit mode at 65,536, or play endless, with 2048 as the default. Slide and merge powers of two while the tiles heat from icy blue to white hot.</p>
+    <div class="play">
+      <a class="play-btn" href="../../arcade/2^N/">&#9654; PLAY</a><br>
+      terminal: <code>pipx install magmacrunch-two-to-the-n</code>, then run <strong>two-to-the-n</strong>
+    </div>
+    <p class="credit"><strong>original concept</strong> <em>2048</em> by Gabriele Cirulli (2014). An unofficial take, not affiliated with or endorsed by its author. &middot; <strong>related</strong> <a href="../george-boole/">George Boole Has Entered The Chat</a>, the same idea in Boolean logic &middot; <strong>cheapness impact factor</strong> 2.2</p>
+  </div>
+</section>
+
+<section class="puzzle" id="threes" data-magma-theme="threes">
+  <img class="screen" src="../threes/img/later.webp" alt="Threes late on: a 96 tile in purple and a 48 in red on a nearly full board, the top tile counter reading 96" width="919" height="1254" loading="lazy">
+  <div>
+    <h2>THREES</h2>
+    <p class="tagline">ones and twos make three</p>
+    <p>Slide every tile at once. 1 and 2 make 3, and from there only matching tiles merge. New tiles come in from the edge you slid away from, and your score is the sum of every merge. Most new tiles are 1s, so a run lasts a few dozen moves.</p>
+    <div class="play">
+      <a class="play-btn" href="../../arcade/threes/">&#9654; PLAY</a><br>
+      terminal: <code>pipx install magmacrunch-threes</code>, then run <strong>threes</strong>
+    </div>
+    <p class="credit"><strong>original concept</strong> <em>Threes!</em> by Sirvo (Asher Vollmer, Greg Wohlwend and Jimmy Hinson). An unofficial take, not affiliated with or endorsed by Sirvo. &middot; <strong>cheapness impact factor</strong> 2.1</p>
+  </div>
+</section>
+
+<section class="puzzle" id="klotski" data-magma-theme="klotski">
+  <img class="screen" src="../klotski/img/partway.webp" alt="Partway through: Cao Cao in gold on the right, jade generals stacked left, Guan Yu lying along the bottom" width="705" height="849" loading="lazy">
+  <div>
+    <h2>KLOTSKI</h2>
+    <p class="tagline">横刀立马 &middot; slide the general to the exit</p>
+    <p>Slide Cao Cao, the gold two-by-two block, past his generals and soldiers and out of the four-by-five board. Pieces only slide, never jump. The text is in Chinese, English or both.</p>
+    <div class="play">
+      <a class="play-btn" href="../../arcade/klotski/">&#9654; PLAY</a><br>
+      browser only, for now
+    </div>
+    <p class="credit"><strong>original game</strong> Klotski (横刀立马), a traditional Chinese sliding block puzzle from the early twentieth century &middot; <strong>cheapness impact factor</strong> 1.0</p>
+  </div>
+</section>
+
+<div class="section">
+  <h2>// terminal //</h2>
+  <p>New to <code>pipx</code>? The <a href="../../arcade/terminal.html">terminal arcade page</a> walks through installing it. The three terminal versions are also in the <a href="https://pypi.org/project/magmacrunch/">magmacrunch</a> terminal arcade.</p>
+</div>
+
+<div class="section">
+  <h2>// built with //</h2>
+  <div class="built">
+    <a href="../adenosine/"><strong>adenosine</strong><span>browser &middot; JavaScript</span></a>
+    <a href="https://pypi.org/project/magmacrunch/"><strong>magmacrunch.engine</strong><span>terminal &middot; Python</span></a>
+  </div>
+</div>
+
+<div class="section credits">
+  <h2>// credits //</h2>
+  <p><strong>versions by</strong> magmacrunch media</p>
+</div>
+
+<footer>
+  &copy; 2026 <span>magmacrunch media</span>
+</footer>
+
+<script src="../../nav.js?v=ac308f29"></script>
+</body>
+</html>

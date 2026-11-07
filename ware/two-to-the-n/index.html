@@ -1,114 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>2^n · magmacrunch media</title>
-  <meta name="description" content="2048, generalised: pick your target from 4 to 65,536, in the browser">
-  <meta property="og:title" content="2^n · magmacrunch media">
-  <meta property="og:description" content="2048, generalised: pick your target from 4 to 65,536, in the browser">
-  <meta property="og:image" content="https://magmacrunch.com/og/arcade-2^N.png">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-  <meta property="og:type" content="website">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta property="og:site_name" content="magmacrunch media">
-  <meta property="og:locale" content="en_US">
-  <link rel="icon" type="image/x-icon" href="../../favicon.ico">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Courier+Prime:wght@400;700&display=swap">
-  <link rel="stylesheet" href="../../style.css?v=a59b9059">
-  <link rel="stylesheet" href="../crumbs.css?v=e00af2c5">
-  <link rel="stylesheet" href="../magma-themes.css?v=36fa3988">
-  <link rel="stylesheet" href="../game-page.css?v=d8dc30f8">
-  <style>
-body{--line: var(--mt-p-tn-plum);--link: var(--mt-p-tn-gold);--radius: 4px;--head-glow: 0 0 12px color-mix(in srgb, var(--mt-p-tn-blue) 55%, transparent);--btn-bg: var(--mt-p-tn-pink);--btn-ink: var(--mt-p-tn-white);--btn-shadow: var(--mt-p-tn-plum);--frame: var(--mt-p-tn-blue);--frame-glow: 0 0 0 3px var(--mt-p-tn-pink), 0 0 30px color-mix(in srgb, var(--mt-p-tn-pink) 45%, transparent);--panel-border: color-mix(in srgb, var(--mt-p-tn-pink) 45%, var(--mt-p-tn-plum));background:linear-gradient(180deg,var(--mt-p-tn-wine) 0%,var(--mt-p-tn-ember) 40%,#1a0510 70%,var(--mt-p-tn-night) 100%) var(--mt-bg)}body::before{content:"";position:fixed;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,0.12) 2px,rgba(0,0,0,0.12) 4px);pointer-events:none;z-index:10000}.hero h1{font-size:clamp(26px,6vw,48px)}.hero .tagline{color:var(--mt-p-tn-gold)}.hero .screen{width:min(100%,480px)}.platform,.built a,.built div{background:color-mix(in srgb,var(--mt-p-tn-plum) 55%,transparent)}.play-btn{border:2px solid var(--mt-p-tn-blue)}
-</style>
-  <link rel="stylesheet" href="../ware-page.css?v=549bdc52">
+<meta charset="UTF-8">
+<title>2^N · magmacrunch media</title>
+<meta name="robots" content="noindex">
+<link rel="canonical" href="https://magmacrunch.com/ware/puzzles/#two-to-the-n">
+<meta http-equiv="refresh" content="0; url=../puzzles/#two-to-the-n">
+<script>
+location.replace("../puzzles/"+location.search+"#two-to-the-n");
+</script>
 </head>
-<body class="ware-accent ware-page" data-magma-theme="two-to-the-n" style="--ware-accent:#00f0ff">
-
-<nav id="auto-nav" data-depth="../../"></nav>
-
-<div class="tool-nav">
-  <div class="breadcrumb">
-    <a href="../../">home</a> <span class="sep">›</span>
-    <a href="../">ware</a> <span class="sep">›</span>
-    <a href="../games/">video games</a> <span class="sep">›</span>
-    <span class="current">2^n</span>
-  </div>
-</div>
-
-<div class="hero">
-  <img class="screen" src="img/board-256.webp" alt="2^N: a gold 256 in the corner with 64 and 32 stacked beside it" width="1100" height="1100">
-  <h1>2^N</h1>
-  <p class="tagline">2048 with a target you choose &middot; slide &amp; merge</p>
-</div>
-
-<div class="section lead">
-  <p>2048, generalised. Pick your target, from 2-bit mode at 4 up to 16-bit mode at 65,536, or play endless, with 2048 as the default.</p>
-  <p>Slide and merge powers of two on a four-by-four board while the tiles heat from icy blue to white hot.</p>
-</div>
-
-<div class="section">
-  <h2>// at the board //</h2>
-  <div class="shots">
-    <figure>
-      <img class="screen" src="img/board-64.webp" alt="2^N early on: a pink 64 in the corner with 32 and 8 above it" width="1100" height="757" loading="lazy">
-      <figcaption>powers of two</figcaption>
-    </figure>
-    <figure>
-      <img class="screen" src="img/board-128.webp" alt="2^N: a 128 in the corner, with a row of 32, 16 and 8 beside it" width="1100" height="757" loading="lazy">
-      <figcaption>a 128, on the way to 2^11</figcaption>
-    </figure>
-  </div>
-</div>
-
-<div class="section">
-  <h2>// where to play //</h2>
-  <div class="platforms">
-
-    <div class="platform">
-      <div class="name">BROWSER</div>
-      <div class="how">
-        <a class="play-btn" href="../../arcade/2^N/">&#9654; PLAY</a>
-        free, in the <a href="../../arcade/#genre=puzzle">arcade</a>. Arrow keys or swipe.
-      </div>
-    </div>
-
-    <div class="platform">
-      <div class="name">TERMINAL</div>
-      <div class="how">
-        A text-only version that runs in a terminal window. Install it with
-        <code>pipx install magmacrunch-two-to-the-n</code><br>
-        then run <strong>two-to-the-n</strong>. Also in the <a href="https://pypi.org/project/magmacrunch/">magmacrunch</a> terminal arcade.
-        New to this? The <a href="../../arcade/terminal.html">terminal arcade page</a> walks through installing it.
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="section">
-  <h2>// built with //</h2>
-  <div class="built">
-    <a href="../adenosine/"><strong>adenosine</strong><span>browser &middot; JavaScript</span></a>
-    <a href="https://pypi.org/project/magmacrunch/"><strong>magmacrunch.engine</strong><span>terminal &middot; Python</span></a>
-  </div>
-</div>
-
-<div class="section credits">
-  <h2>// credits //</h2>
-  <p><strong>version by</strong> magmacrunch media</p>
-  <p><strong>original concept</strong> <em>2048</em> by Gabriele Cirulli (2014). An unofficial take, not affiliated with or endorsed by its author.</p>
-  <p><strong>related</strong> <a href="../george-boole/">George Boole Has Entered The Chat</a>, the same idea in Boolean logic</p>
-  <p><strong>cheapness impact factor</strong> 2.2</p>
-</div>
-
-<footer>
-  &copy; 2026 <span>magmacrunch media</span>
-</footer>
-
-<script src="../../nav.js?v=ac308f29"></script>
+<body>
+<p>2^N is on the <a href="../puzzles/#two-to-the-n">puzzles</a> page now.</p>
 </body>
 </html>
