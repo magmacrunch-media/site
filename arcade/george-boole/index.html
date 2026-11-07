@@ -40,7 +40,7 @@ document.documentElement.classList.add("font-loading");document.fonts.ready.then
     <link rel="stylesheet" href="css/game.css?v=52dae1db">
     <link rel="stylesheet" href="css/modal-title.css?v=a537cbe3">
     <link rel="stylesheet" href="css/modal-lore.css?v=10c1795c">
-    <link rel="stylesheet" href="css/modal-difficulty.css?v=578cb91d">
+    <link rel="stylesheet" href="css/modal-difficulty.css?v=c3961ef6">
     <link rel="stylesheet" href="css/modal-scoreboard.css?v=329aa32e">
     <link rel="stylesheet" href="css/modal-settings.css?v=d5f8b57f">
     <link rel="stylesheet" href="css/modal-misc.css?v=9fe1541f">
@@ -327,11 +327,13 @@ document.documentElement.classList.add("font-loading");document.fonts.ready.then
 
             <button class="mode-start" id="modeStart" type="button">START 4-BIT</button>
 
+            <div class="mode-others">
 
             <button class="difficulty-btn endless" data-difficulty="endless" data-target="999999" data-theme="matrix">
                 <span class="diff-label">GAUNTLET</span>
                 <span class="diff-subtitle">progressive</span>
             </button>
+            </div>
 
             <button class="difficulty-back-btn" id="difficultyBack" type="button"><span class="ui-arrow">&larr;</span> BACK</button>
         </div>
@@ -710,13 +712,13 @@ const scoreClient=new AdScore.ScoreClient().auto(MC_SCORE_OPTS);
     <script src="js/arrow-label.js?v=8f6e64ed"></script>
     <script src="js/config.js?v=fdc4d4d3"></script>
     <script src="js/scoring.js?v=92ff87d7"></script>
-    <script src="js/game.js?v=b5445a64"></script>
+    <script src="js/game.js?v=f9047c56"></script>
     <script src="js/math-overlay.js?v=fef4ae45"></script>
     <script src="js/share-card.js?v=840e32d8"></script>
     <script src="js/gate-shapes.js?v=d63e0dfb"></script>
     <script src="js/rules-pages.js?v=e4eef81d"></script>
     <script src="js/looks.js?v=f2d88d37"></script>
-    <script src="js/main.js?v=ad1f37b1"></script>
+    <script src="js/main.js?v=7e17c448"></script>
 <script>
 if("serviceWorker"in navigator){navigator.serviceWorker.register("sw.js")}
 </script>
