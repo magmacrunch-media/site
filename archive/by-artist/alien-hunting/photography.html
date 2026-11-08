@@ -131,6 +131,25 @@
         </div>
     </div>
 
+    <div class="divider"></div>
+
+    <div class="photo-strip-section">
+        <div class="section-label">// from the band's facebook //</div>
+        <div class="photo-strip-wrap">
+            <div class="photo-strip" id="ahFbStrip">
+                <div class="photo-item square" data-index="0">
+                    <img src="../../../assets/photos/alien-hunting/facebook/frogwood-practice-room.jpg" alt="Drums, guitars and a keyboard in the practice room at Frogwood Manor" loading="lazy">
+                    <div class="photo-caption">practice room, Frogwood Manor</div>
+                </div>
+                <div class="photo-item wide" data-index="1">
+                    <img src="../../../assets/photos/alien-hunting/facebook/foggy-woods-title.jpg" alt="alien hunting. written over foggy snowy woods" loading="lazy">
+                    <div class="photo-caption">alien hunting</div>
+                </div>
+            </div>
+            <div class="strip-scroll-hint">← drag to scroll →</div>
+        </div>
+    </div>
+
     <div class="photo-lightbox" id="ahLightbox">
         <button class="lb-close" id="ahLbClose">[ close ]</button>
         <div class="lb-img-wrap"><img id="ahLbImg" src="" alt=""></div>
@@ -147,7 +166,7 @@
 
 <script src="../../../nav.js?v=ac308f29"></script>
 <script>
-(function(){document.querySelectorAll(".photo-strip").forEach(strip=>{const wrap=strip.closest(".photo-strip-wrap");let isDown=false,startX,scrollLeft;strip.addEventListener("mousedown",e=>{isDown=true;strip.classList.add("dragging");startX=e.pageX-strip.offsetLeft;scrollLeft=strip.scrollLeft});strip.addEventListener("mouseleave",()=>{isDown=false;strip.classList.remove("dragging")});strip.addEventListener("mouseup",()=>{isDown=false;strip.classList.remove("dragging")});strip.addEventListener("mousemove",e=>{if(!isDown)return;e.preventDefault();strip.scrollLeft=scrollLeft-(e.pageX-strip.offsetLeft-startX)*1.2});strip.addEventListener("scroll",()=>{if(strip.scrollLeft>30)wrap.classList.add("scrolled")},{passive:true})})})();(function(){const items=document.querySelectorAll("#ahGvStrip .photo-item, #ahStrip .photo-item");const lb=document.getElementById("ahLightbox");const lbImg=document.getElementById("ahLbImg");const lbCap=document.getElementById("ahLbCap");const lbCount=document.getElementById("ahLbCounter");const photos=Array.from(items).map(item=>({src:item.querySelector("img").src,alt:item.querySelector("img").alt,caption:item.querySelector(".photo-caption").textContent.trim()}));let current=0;function open(index){current=index;show();lb.classList.add("open");document.body.style.overflow="hidden"}function close(){lb.classList.remove("open");document.body.style.overflow=""}function show(){lbImg.src=photos[current].src;lbImg.alt=photos[current].alt;lbCap.textContent=photos[current].caption;lbCount.textContent=`${current+1} / ${photos.length}`}function nav(dir){current=(current+dir+photos.length)%photos.length;show()}items.forEach((item,i)=>{item.addEventListener("click",()=>{if(!item.closest(".photo-strip").classList.contains("dragging"))open(i)})});document.getElementById("ahLbClose").addEventListener("click",close);document.getElementById("ahLbPrev").addEventListener("click",()=>nav(-1));document.getElementById("ahLbNext").addEventListener("click",()=>nav(1));lb.addEventListener("click",e=>{if(e.target===lb)close()});document.addEventListener("keydown",e=>{if(!lb.classList.contains("open"))return;if(e.key==="Escape")close();if(e.key==="ArrowLeft")nav(-1);if(e.key==="ArrowRight")nav(1)})})();
+(function(){document.querySelectorAll(".photo-strip").forEach(strip=>{const wrap=strip.closest(".photo-strip-wrap");let isDown=false,startX,scrollLeft;strip.addEventListener("mousedown",e=>{isDown=true;strip.classList.add("dragging");startX=e.pageX-strip.offsetLeft;scrollLeft=strip.scrollLeft});strip.addEventListener("mouseleave",()=>{isDown=false;strip.classList.remove("dragging")});strip.addEventListener("mouseup",()=>{isDown=false;strip.classList.remove("dragging")});strip.addEventListener("mousemove",e=>{if(!isDown)return;e.preventDefault();strip.scrollLeft=scrollLeft-(e.pageX-strip.offsetLeft-startX)*1.2});strip.addEventListener("scroll",()=>{if(strip.scrollLeft>30)wrap.classList.add("scrolled")},{passive:true})})})();(function(){const items=document.querySelectorAll("#ahGvStrip .photo-item, #ahStrip .photo-item, #ahFbStrip .photo-item");const lb=document.getElementById("ahLightbox");const lbImg=document.getElementById("ahLbImg");const lbCap=document.getElementById("ahLbCap");const lbCount=document.getElementById("ahLbCounter");const photos=Array.from(items).map(item=>({src:item.querySelector("img").src,alt:item.querySelector("img").alt,caption:item.querySelector(".photo-caption").textContent.trim()}));let current=0;function open(index){current=index;show();lb.classList.add("open");document.body.style.overflow="hidden"}function close(){lb.classList.remove("open");document.body.style.overflow=""}function show(){lbImg.src=photos[current].src;lbImg.alt=photos[current].alt;lbCap.textContent=photos[current].caption;lbCount.textContent=`${current+1} / ${photos.length}`}function nav(dir){current=(current+dir+photos.length)%photos.length;show()}items.forEach((item,i)=>{item.addEventListener("click",()=>{if(!item.closest(".photo-strip").classList.contains("dragging"))open(i)})});document.getElementById("ahLbClose").addEventListener("click",close);document.getElementById("ahLbPrev").addEventListener("click",()=>nav(-1));document.getElementById("ahLbNext").addEventListener("click",()=>nav(1));lb.addEventListener("click",e=>{if(e.target===lb)close()});document.addEventListener("keydown",e=>{if(!lb.classList.contains("open"))return;if(e.key==="Escape")close();if(e.key==="ArrowLeft")nav(-1);if(e.key==="ArrowRight")nav(1)})})();
 </script>
 </body>
 </html>
