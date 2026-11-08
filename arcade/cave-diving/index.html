@@ -25,7 +25,7 @@ html{touch-action:manipulation}
     <link rel="stylesheet" href="css/base.css?v=e320ca92">
     <link rel="stylesheet" href="css/start-screen.css?v=b4a3a129">
     <link rel="stylesheet" href="css/game.css?v=e63f42da">
-    <link rel="stylesheet" href="css/modals.css?v=4f160a4a">
+    <link rel="stylesheet" href="css/modals.css?v=1ef231af">
 </head>
 <body>
 <a href="../action/" class="mc-back">action games</a>
@@ -125,14 +125,11 @@ html{touch-action:manipulation}
 </div>
 
 <div id="creditsOverlay" class="overlay hidden">
-    <div class="insert">
-    <section class="sleeve" aria-label="the single">
-        <div class="sleeve-face">
+    <section class="sleeve" aria-label="the single and its credits">
+        <div class="sleeve-front">
             <canvas id="sleeveArt" class="sleeve-art" width="60" height="36" aria-hidden="true"></canvas>
             <h2 class="sleeve-title">cave diving<span>(not even once)</span></h2>
             <p class="sleeve-artist">juanito thompson</p>
-        </div>
-        <div class="sleeve-notes">
             <h3 class="sleeve-head">side a</h3>
             <div class="sleeve-row"><span class="sleeve-role">cave diving (not even once)</span><span class="sleeve-name">2:41</span></div>
             <h3 class="sleeve-head">the single</h3>
@@ -144,37 +141,32 @@ html{touch-action:manipulation}
             <p class="sleeve-note">December 2013</p>
             <div class="sleeve-row"><span class="sleeve-role">also on</span><span class="sleeve-name"><em>Spooked</em></span></div>
             <p class="sleeve-note">2025, MCR039, track 3</p>
+        </div>
+        <div class="sleeve-credits">
+            <h3 class="sleeve-head">made by</h3>
+            <div class="sleeve-row"><span class="sleeve-role">game</span><span class="sleeve-name"><a href="https://magmacrunch.com">magmacrunch media</a></span></div>
+            <div class="sleeve-row"><span class="sleeve-role">music</span><span class="sleeve-name"><a href="../../music/jukebox/">juanito thompson</a></span></div>
+            <div class="sleeve-row"><span class="sleeve-role">the diver</span><span class="sleeve-name">juanito thompson</span></div>
+            <p class="sleeve-note">in a wetsuit</p>
+
+            <h3 class="sleeve-head">the score</h3>
+            <p class="sleeve-prose">The record itself, cut into loops that follow how much danger you are in, with its own ending when you get out.</p>
+
+            <h3 class="sleeve-head">built with</h3>
+            <p class="sleeve-built"><span>HTML5, CSS3, JS</span><span>Web Audio API</span><span class="wide">Press Start 2P by CodeMan38</span><span><a href="https://magmacrunch.com/ware/adenosine/">adenosine</a></span></p>
+
+            <div class="sleeve-row sleeve-aside"><span class="sleeve-role">cheapness impact factor</span><span class="sleeve-name">2.0</span></div>
+
             <div class="sleeve-corner"><img class="sleeve-mark" src="img/mc-logo.png" alt="magmacrunch media" width="26" height="32"><p class="sleeve-catno">MCA003</p></div>
             <p class="sleeve-note">(P) 2025 magmacrunch media</p>
             <p class="sleeve-note">(C) 2026 magmacrunch media</p>
-            <a class="sleeve-cue" href="#creditsSlate">the slate &#9660;</a>
+
+            <p class="sleeve-foot">last updated November 8, 2026</p>
         </div>
-    </section>
-    <div class="slate" id="creditsSlate">
-        <h2 class="slate-title">credits</h2>
-
-        <h3 class="slate-section" data-tone="water">made by</h3>
-        <div class="slate-row"><span class="slate-role">game</span><span class="slate-name"><a href="https://magmacrunch.com">magmacrunch media</a></span></div>
-        <div class="slate-row"><span class="slate-role">music</span><span class="slate-name"><a href="../../music/jukebox/">juanito thompson</a></span></div>
-        <p class="slate-note">"cave diving (not even once)"<br>from Spooked (2025)</p>
-        <div class="slate-row"><span class="slate-role">the diver</span><span class="slate-name">juanito thompson</span></div>
-        <p class="slate-note">in a wetsuit</p>
-
-        <h3 class="slate-section" data-tone="pearl">the score</h3>
-        <p class="slate-prose">The record itself, cut into loops that follow how much danger you are in, with its own ending when you get out.</p>
-
-        <h3 class="slate-section" data-tone="lamp">built with</h3>
-        <p class="slate-built"><span>HTML5, CSS3, JS</span><span>Web Audio API</span><span class="wide">Press Start 2P by CodeMan38</span><span><a href="https://magmacrunch.com/ware/adenosine/">adenosine</a></span></p>
-
-        <div class="slate-row slate-aside"><span class="slate-role">cheapness impact factor</span><span class="slate-name">2.0</span></div>
-
-        <p class="slate-foot">last updated October 31, 2026</p>
-
-        <div class="slate-back">
+        <div class="sleeve-exit">
             <button id="btnCreditsBack" type="button">back</button>
         </div>
-    </div>
-    </div>
+    </section>
 </div>
 
 <div class="scanlines"></div>
