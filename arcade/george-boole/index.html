@@ -43,13 +43,13 @@ document.documentElement.classList.add("font-loading");document.fonts.ready.then
     <link rel="stylesheet" href="css/modal-difficulty.css?v=c3961ef6">
     <link rel="stylesheet" href="css/modal-scoreboard.css?v=329aa32e">
     <link rel="stylesheet" href="css/modal-settings.css?v=d5f8b57f">
-    <link rel="stylesheet" href="css/modal-rules.css?v=5aa6370e">
+    <link rel="stylesheet" href="css/modal-rules.css?v=cca8506f">
     <link rel="stylesheet" href="css/modal-rules-pages.css?v=ad48d331">
-    <link rel="stylesheet" href="css/modal-credits.css?v=2ab278ef">
     <link rel="stylesheet" href="css/modal-game-over.css?v=359d12c8">
     <link rel="stylesheet" href="css/notification.css?v=420c1399">
-    <link rel="stylesheet" href="css/panel-details.css?v=f0581cb6">
+    <link rel="stylesheet" href="css/panel-details.css?v=a85400ba">
     <link rel="stylesheet" href="css/responsive.css?v=b18ed18f">
+    <link rel="stylesheet" href="css/insert.css?v=74616b23">
     <link rel="stylesheet" href="css/gates.css?v=4c34351d">
     <link rel="stylesheet" href="css/side-panels.css?v=e5f8cf64">
     <link rel="stylesheet" href="css/math-overlay.css?v=722032a5">
@@ -208,10 +208,12 @@ document.documentElement.classList.add("font-loading");document.fonts.ready.then
     </div>
     
     <div class="title-screen active" id="titleScreen">
+        <section class="insert-cover">
         <div class="title-screen-content">
             <div class="title-main">
                 <h1 class="title-large">GEORGE BOOLE</h1>
                 <h2 class="title-subtitle">HAS ENTERED THE CHAT</h2>
+                <p class="title-artist">juanito thompson</p>
             </div>
             
             <button class="start-button" id="startButton">
@@ -225,6 +227,41 @@ document.documentElement.classList.add("font-loading");document.fonts.ready.then
                 <span>magmacrunch media</span>
             </a>
         </div>
+        <a class="insert-cue" id="insertCueDown" href="#insertBack" aria-label="the insert">insert &#9660;</a>
+        </section>
+
+        <section class="insert-back" id="insertBack">
+            <h4 class="insert-head" data-gate="not">the single</h4>
+            <p class="insert-prose">"George Boole has entered the chat", the soundtrack version, 3:52. An instrumental, written, performed, recorded and mastered by juanito thompson.</p>
+            <div class="insert-row"><span class="insert-role">label</span><span class="insert-name">magmacrunch arcade</span></div>
+            <div class="insert-row"><span class="insert-role">released</span><span class="insert-name">March 17, 2026</span></div>
+            <div class="insert-row"><span class="insert-role">publisher</span><span class="insert-name">magmacrunch music</span></div>
+            <p class="insert-note">ASCAP</p>
+            <p class="insert-prose"><span class="insert-role">recorded</span> at Twin Maples, Block Island. Edited and mastered at Irvin House, State College, Pennsylvania.</p>
+            <p class="insert-prose"><span class="insert-role">also on</span> <em>Sitting on a Dock in New Shoreham</em> (2023, MCR024), track 3, a 0:57 cut.</p>
+
+            <h4 class="insert-head" data-gate="xor">made by</h4>
+            <div class="insert-row"><span class="insert-role">game</span><span class="insert-name"><a href="https://magmacrunch.com">magmacrunch media</a></span></div>
+            <div class="insert-row"><span class="insert-role">music</span><span class="insert-name"><a href="https://linktr.ee/juanitothompson">juanito thompson</a></span></div>
+            <div class="insert-row"><span class="insert-role">sounds</span><span class="insert-name">a Moog Grandmother</span></div>
+            <p class="insert-note">every effect, played on the analog synth</p>
+
+            <h4 class="insert-head" data-gate="or">origins</h4>
+            <p class="insert-prose"><span class="insert-role">concept</span> Gabriele Cirulli's <em>2048</em> (2014), with Boolean logic in place of addition, so that two equal tiles keep their value rather than doubling it.</p>
+            <p class="insert-prose"><span class="insert-role">named for</span> George Boole (1815-1864), whose algebra of logic became the arithmetic of every computer.</p>
+
+            <h4 class="insert-head" data-gate="and">built with</h4>
+            <p class="insert-prose">HTML5, CSS3, JS, the Web Audio API, Press Start 2P by CodeMan38, VT323 by Peter Hull, and <a href="https://magmacrunch.com/ware/adenosine/">adenosine</a>.</p>
+            <div class="insert-row"><span class="insert-role">cheapness impact factor</span><span class="insert-name">2.4</span></div>
+
+            <div class="insert-corner"><img class="insert-mark" src="img/mc-logo.png" alt="magmacrunch media" width="26" height="32"><span class="insert-catno">MCA002<br>MCS045</span><svg class="insert-barcode" viewBox="0 0 113 46" role="img" aria-label="barcode 991043243991" shape-rendering="crispEdges"><rect x="9" y="0" width="1" height="39"/><rect x="11" y="0" width="1" height="39"/><rect x="15" y="0" width="1" height="39"/><rect x="17" y="0" width="2" height="39"/><rect x="22" y="0" width="1" height="34"/><rect x="24" y="0" width="2" height="34"/><rect x="28" y="0" width="2" height="34"/><rect x="32" y="0" width="1" height="34"/><rect x="36" y="0" width="2" height="34"/><rect x="39" y="0" width="1" height="34"/><rect x="41" y="0" width="1" height="34"/><rect x="45" y="0" width="2" height="34"/><rect x="48" y="0" width="4" height="34"/><rect x="53" y="0" width="1" height="34"/><rect x="55" y="0" width="1" height="39"/><rect x="57" y="0" width="1" height="39"/><rect x="59" y="0" width="2" height="34"/><rect x="62" y="0" width="2" height="34"/><rect x="66" y="0" width="1" height="34"/><rect x="68" y="0" width="3" height="34"/><rect x="73" y="0" width="1" height="34"/><rect x="78" y="0" width="1" height="34"/><rect x="80" y="0" width="3" height="34"/><rect x="84" y="0" width="1" height="34"/><rect x="87" y="0" width="3" height="34"/><rect x="91" y="0" width="1" height="34"/><rect x="94" y="0" width="2" height="39"/><rect x="98" y="0" width="2" height="39"/><rect x="101" y="0" width="1" height="39"/><rect x="103" y="0" width="1" height="39"/><text x="7" y="45" text-anchor="end">9</text><text x="37" y="45" text-anchor="middle">91043</text><text x="76" y="45" text-anchor="middle">24399</text><text x="106" y="45" text-anchor="start">1</text></svg></div>
+            <p class="insert-note">&#8471; 2026 magmacrunch media</p>
+            <p class="insert-note">&copy; 2026 magmacrunch media</p>
+            <p class="insert-note">portrait after a 19th-century engraving of George Boole, in the public domain</p>
+            <p class="insert-foot">last updated November 8, 2026</p>
+            <a class="insert-cue insert-cue-up" id="insertCueUp" href="#titleScreen" aria-label="back to the cover">&#9650; cover</a>
+            <button class="insert-close" id="insertClose" type="button">close</button>
+        </section>
     </div>
     
     <div class="lore-screen" id="loreScreen">
@@ -679,47 +716,6 @@ document.documentElement.classList.add("font-loading");document.fonts.ready.then
         </div>
     </div>
 
-    <div class="credits-modal" id="creditsModal">
-        <div class="credits-content">
-            <h3><a href="https://magmacrunch.com" class="credits-mark-link" aria-label="magmacrunch.com"><img class="credits-mark" src="img/mc-logo.png" alt="" width="26" height="32"></a>credits</h3>
-
-            <h4 class="credits-section" data-gate="xor">made by</h4>
-            <div class="credit-row"><span class="credit-role">game</span><span class="credit-name"><a href="https://magmacrunch.com">magmacrunch media</a></span></div>
-            <div class="credit-row"><span class="credit-role">music</span><span class="credit-name"><a href="https://linktr.ee/juanitothompson">juanito thompson</a></span></div>
-            <p class="credit-note">"George Boole has entered the chat"</p>
-            <div class="credit-row"><span class="credit-role">sounds</span><span class="credit-name">a Moog Grandmother</span></div>
-            <p class="credit-note">every effect, played on the analog synth</p>
-
-            <h4 class="credits-section" data-gate="not">the single</h4>
-            <p class="credit-prose">"George Boole has entered the chat", the soundtrack version, 3:52. An instrumental, written, performed, recorded and mastered by juanito thompson.</p>
-            <div class="credit-row"><span class="credit-role">label</span><span class="credit-name">magmacrunch arcade</span></div>
-            <div class="credit-row"><span class="credit-role">released</span><span class="credit-name">March 17, 2026</span></div>
-            <div class="credit-row"><span class="credit-role">publisher</span><span class="credit-name">magmacrunch music</span></div>
-            <p class="credit-note">ASCAP</p>
-            <p class="credit-prose"><span class="credit-role">recorded</span> at Twin Maples, Block Island. Edited and mastered at Irvin House, State College, Pennsylvania.</p>
-            <p class="credit-prose"><span class="credit-role">also on</span> <em>Sitting on a Dock in New Shoreham</em> (2023, MCR024), track 3, a 0:57 cut.</p>
-            <div class="credits-sleeve-foot"><img class="credits-sleeve-mark" src="img/mc-logo.png" alt="magmacrunch media" width="26" height="32"><span class="credits-catno">MCA002<br>MCS045</span><svg class="credits-barcode" viewBox="0 0 113 46" role="img" aria-label="barcode 991043243991" shape-rendering="crispEdges"><rect x="9" y="0" width="1" height="39"/><rect x="11" y="0" width="1" height="39"/><rect x="15" y="0" width="1" height="39"/><rect x="17" y="0" width="2" height="39"/><rect x="22" y="0" width="1" height="34"/><rect x="24" y="0" width="2" height="34"/><rect x="28" y="0" width="2" height="34"/><rect x="32" y="0" width="1" height="34"/><rect x="36" y="0" width="2" height="34"/><rect x="39" y="0" width="1" height="34"/><rect x="41" y="0" width="1" height="34"/><rect x="45" y="0" width="2" height="34"/><rect x="48" y="0" width="4" height="34"/><rect x="53" y="0" width="1" height="34"/><rect x="55" y="0" width="1" height="39"/><rect x="57" y="0" width="1" height="39"/><rect x="59" y="0" width="2" height="34"/><rect x="62" y="0" width="2" height="34"/><rect x="66" y="0" width="1" height="34"/><rect x="68" y="0" width="3" height="34"/><rect x="73" y="0" width="1" height="34"/><rect x="78" y="0" width="1" height="34"/><rect x="80" y="0" width="3" height="34"/><rect x="84" y="0" width="1" height="34"/><rect x="87" y="0" width="3" height="34"/><rect x="91" y="0" width="1" height="34"/><rect x="94" y="0" width="2" height="39"/><rect x="98" y="0" width="2" height="39"/><rect x="101" y="0" width="1" height="39"/><rect x="103" y="0" width="1" height="39"/><text x="7" y="45" text-anchor="end">9</text><text x="37" y="45" text-anchor="middle">91043</text><text x="76" y="45" text-anchor="middle">24399</text><text x="106" y="45" text-anchor="start">1</text></svg></div>
-            <p class="credit-note">&#8471; 2026 magmacrunch media</p>
-            <p class="credit-note">&copy; 2026 magmacrunch media</p>
-            <p class="credit-note">portrait after a 19th-century engraving of George Boole, in the public domain</p>
-
-            <h4 class="credits-section" data-gate="or">origins</h4>
-            <p class="credit-prose"><span class="credit-role">concept</span> Gabriele Cirulli's <em>2048</em> (2014), with Boolean logic in place of addition, so that two equal tiles keep their value rather than doubling it.</p>
-            <p class="credit-prose"><span class="credit-role">named for</span> George Boole (1815-1864), whose algebra of logic became the arithmetic of every computer.</p>
-
-            <h4 class="credits-section" data-gate="and">built with</h4>
-            <p class="credits-built"><span>HTML5, CSS3, JS</span><span>Web Audio API</span><span class="wide">Press Start 2P by CodeMan38</span><span class="wide">VT323 by Peter Hull</span><span><a href="https://magmacrunch.com/ware/adenosine/">adenosine</a></span></p>
-
-            <div class="credit-row credit-row-aside"><span class="credit-role">cheapness impact factor</span><span class="credit-name">2.4</span></div>
-
-            <p class="credits-foot">last updated November 8, 2026</p>
-
-            <div class="modal-btn-row">
-                <button id="closeCredits">close</button>
-            </div>
-        </div>
-    </div>
-
 <script src="../shared/adenosine-score-client.js?v=7ecef8fd"></script>
 <script src="../shared/score-server.js?v=9acd988c"></script>
 <script>
@@ -730,16 +726,16 @@ const scoreClient=new AdScore.ScoreClient().auto(MC_SCORE_OPTS);
     <script src="js/arrow-label.js?v=8f6e64ed"></script>
     <script src="js/config.js?v=fdc4d4d3"></script>
     <script src="js/scoring.js?v=92ff87d7"></script>
-    <script src="js/game.js?v=de42529d"></script>
+    <script src="js/game.js?v=5dacc3b4"></script>
     <script src="js/game-rules.js?v=1454fd82"></script>
     <script src="js/game-motion.js?v=4bc917b0"></script>
     <script src="js/game-screens.js?v=c0cc65e1"></script>
-    <script src="js/math-overlay.js?v=fef4ae45"></script>
+    <script src="js/math-overlay.js?v=f3a3f915"></script>
     <script src="js/share-card.js?v=840e32d8"></script>
     <script src="js/gate-shapes.js?v=d63e0dfb"></script>
     <script src="js/rules-pages.js?v=e4eef81d"></script>
     <script src="js/looks.js?v=f2d88d37"></script>
-    <script src="js/main.js?v=7e17c448"></script>
+    <script src="js/main.js?v=d5d022c0"></script>
 <script>
 if("serviceWorker"in navigator){navigator.serviceWorker.register("sw.js")}
 </script>
