@@ -25,7 +25,7 @@ html{touch-action:manipulation}
     <link rel="stylesheet" href="css/base.css?v=e320ca92">
     <link rel="stylesheet" href="css/start-screen.css?v=b4a3a129">
     <link rel="stylesheet" href="css/game.css?v=e63f42da">
-    <link rel="stylesheet" href="css/modals.css?v=a2e9ead7">
+    <link rel="stylesheet" href="css/modals.css?v=4f160a4a">
 </head>
 <body>
 <a href="../action/" class="mc-back">action games</a>
@@ -125,7 +125,32 @@ html{touch-action:manipulation}
 </div>
 
 <div id="creditsOverlay" class="overlay hidden">
-    <div class="slate">
+    <div class="insert">
+    <section class="sleeve" aria-label="the single">
+        <div class="sleeve-face">
+            <canvas id="sleeveArt" class="sleeve-art" width="120" height="60" aria-hidden="true"></canvas>
+            <h2 class="sleeve-title">cave diving<span>(not even once)</span></h2>
+            <p class="sleeve-artist">juanito thompson</p>
+        </div>
+        <div class="sleeve-notes">
+            <h3 class="sleeve-head">side a</h3>
+            <div class="sleeve-row"><span class="sleeve-role">cave diving (not even once)</span><span class="sleeve-name">2:41</span></div>
+            <h3 class="sleeve-head">the single</h3>
+            <div class="sleeve-row"><span class="sleeve-role">label</span><span class="sleeve-name">magmacrunch arcade</span></div>
+            <div class="sleeve-row"><span class="sleeve-role">released</span><span class="sleeve-name">November 8, 2026</span></div>
+            <div class="sleeve-row"><span class="sleeve-role">publisher</span><span class="sleeve-name">magmacrunch music</span></div>
+            <p class="sleeve-note">ASCAP</p>
+            <div class="sleeve-row"><span class="sleeve-role">recorded</span><span class="sleeve-name">Frogwood Manor</span></div>
+            <p class="sleeve-note">December 2013</p>
+            <div class="sleeve-row"><span class="sleeve-role">also on</span><span class="sleeve-name"><em>Spooked</em></span></div>
+            <p class="sleeve-note">2025, MCR039, track 3</p>
+            <div class="sleeve-corner"><img class="sleeve-mark" src="img/mc-logo.png" alt="magmacrunch media" width="26" height="32"><p class="sleeve-catno">MCA003</p></div>
+            <p class="sleeve-note">(P) 2025 magmacrunch media</p>
+            <p class="sleeve-note">(C) 2026 magmacrunch media</p>
+            <a class="sleeve-cue" href="#creditsSlate">the slate &#9660;</a>
+        </div>
+    </section>
+    <div class="slate" id="creditsSlate">
         <h2 class="slate-title">credits</h2>
 
         <h3 class="slate-section" data-tone="water">made by</h3>
@@ -148,6 +173,7 @@ html{touch-action:manipulation}
         <div class="slate-back">
             <button id="btnCreditsBack" type="button">back</button>
         </div>
+    </div>
     </div>
 </div>
 
@@ -172,6 +198,6 @@ const scoreClient=new AdScore.ScoreClient().auto(MC_SCORE_OPTS);
 <script src="js/entities.js?v=2771541e"></script>
 <script src="js/guideline.js?v=985609dc"></script>
 <script src="js/creatures.js?v=fa1c7eba"></script>
-<script src="js/main.js?v=0d9d11e1"></script>
+<script src="js/main.js?v=c1e9bf02"></script>
 </body>
 </html>
