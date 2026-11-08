@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="../shell/fonts.css?v=08818834">
     <link rel="stylesheet" href="../shell/app-shell.css?v=12781ff7">
     <link rel="stylesheet" href="../shell/toast.css?v=2c51118f">
-    <link rel="stylesheet" href="css/style.css?v=d99c7f79">
+    <link rel="stylesheet" href="css/style.css?v=71c5e3d5">
 </head>
 <body>
     <div class="title-screen" id="titleScreen">
@@ -132,6 +132,10 @@
                 <label class="prop-label">FILE NAME</label>
                 <input type="text" id="fileName" class="file-input" value="crunchscope">
             </div>
+            <div class="prop-group" id="exportSizeGroup" hidden>
+                <label class="prop-label">EXPORT SIZE</label>
+                <button type="button" class="effect-btn" id="exportSizeBtn" aria-pressed="true"></button>
+            </div>
             <button class="export-btn" id="exportBtn">EXPORT PNG</button>
         </aside>
 
@@ -142,6 +146,10 @@
                         title="Show or hide the graticule">GRID</button>
                 <div class="drop-overlay" id="dropOverlay">
                     <span>DROP IMAGE</span>
+                </div>
+                <div class="export-overlay" id="exportOverlay" role="status">
+                    <span class="export-stage" id="exportStage"></span>
+                    <button type="button" class="action-btn" id="exportCancel">CANCEL</button>
                 </div>
             </div>
             <section class="meter" id="meter" aria-label="signal monitor">
@@ -231,19 +239,19 @@
 
     <script src="../shell/toast.js?v=d87a2776"></script>
     <script src="../shell/dropdown.js?v=2aa77ebe"></script>
-    <script src="js/canvas.js?v=f999ce51"></script>
-    <script src="js/chain.js?v=5b362bdc"></script>
+    <script src="js/canvas.js?v=9757da97"></script>
+    <script src="js/chain.js?v=cdb1c618"></script>
     <script src="js/generators.js?v=f2e49cb8"></script>
     <script src="js/effects/channels.js?v=6ad998ab"></script>
     <script src="js/effects/sort.js?v=fd949ab6"></script>
     <script src="js/effects/displace.js?v=b372d3ac"></script>
-    <script src="js/effects/corrupt.js?v=987639f6"></script>
-    <script src="js/effects/fft.js?v=3194a438"></script>
+    <script src="js/effects/corrupt.js?v=cf4e1c44"></script>
+    <script src="js/effects/fft.js?v=42fd476e"></script>
     <script src="js/effects/feedback.js?v=2210a612"></script>
     <script src="js/meter.js?v=e5fed789"></script>
     <script src="js/ui.js?v=6a9cd34e"></script>
-    <script src="js/app.js?v=16f4d115"></script>
-    <script src="js/render.js?v=1147d332"></script>
+    <script src="js/app.js?v=209c40f5"></script>
+    <script src="js/render.js?v=410e46cf"></script>
     <script src="js/preset.js?v=dc5c3382"></script>
     <script src="js/lab.js?v=183a049b"></script>
     <script src="js/title.js?v=ded209c5"></script>
