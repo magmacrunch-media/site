@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="../shell/fonts.css?v=08818834">
     <link rel="stylesheet" href="../shell/app-shell.css?v=12781ff7">
     <link rel="stylesheet" href="../shell/toast.css?v=2c51118f">
-    <link rel="stylesheet" href="css/style.css?v=71c5e3d5">
+    <link rel="stylesheet" href="css/style.css?v=7c3a14cb">
 </head>
 <body>
     <div class="title-screen" id="titleScreen">
@@ -44,7 +44,12 @@
         <a href="../" class="back-link">ware</a> › <a href="../utilities/" class="back-link">creative utilities</a> › <span aria-current="page" style="color: var(--backlink-hover);">crunch//scope</span>
     </nav>
 
-    <div class="workspace">
+    <div class="workspace" data-tab="chain">
+        <div class="phone-tabs" id="phoneTabs" role="group" aria-label="panels">
+            <button type="button" data-tab="chain" aria-pressed="true">CHAIN</button>
+            <button type="button" data-tab="setup" aria-pressed="false">SETUP</button>
+        </div>
+
         <aside class="panel input-panel">
             <div class="panel-label">INPUT</div>
 
@@ -185,9 +190,10 @@
 
             <div class="panel-label">PRESET</div>
             <p class="panel-hint">the whole chain, as text</p>
-            <div class="lab-row">
+            <div class="lab-row lab-row-3">
                 <button class="lab-btn" id="copyBtn">COPY</button>
                 <button class="lab-btn" id="pasteBtn">PASTE</button>
+                <button class="lab-btn" id="clearBtn">CLEAR</button>
             </div>
 
             <div class="panel-divider"></div>
@@ -249,12 +255,12 @@
     <script src="js/effects/fft.js?v=42fd476e"></script>
     <script src="js/effects/feedback.js?v=2210a612"></script>
     <script src="js/meter.js?v=e5fed789"></script>
-    <script src="js/ui.js?v=6a9cd34e"></script>
-    <script src="js/app.js?v=209c40f5"></script>
+    <script src="js/ui.js?v=c799568d"></script>
+    <script src="js/app.js?v=f8b21eaa"></script>
     <script src="js/render.js?v=410e46cf"></script>
     <script src="js/preset.js?v=dc5c3382"></script>
-    <script src="js/lab.js?v=183a049b"></script>
-    <script src="js/title.js?v=ded209c5"></script>
+    <script src="js/lab.js?v=bdafec06"></script>
+    <script src="js/title.js?v=f181b756"></script>
     <script>
 if("serviceWorker"in navigator){navigator.serviceWorker.register("sw.js")}
 </script>
