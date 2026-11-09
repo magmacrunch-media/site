@@ -23,7 +23,7 @@ html{touch-action:manipulation}
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../shared/arcade-base.css?v=de5e0d7b">
     <link rel="stylesheet" href="css/base.css?v=728c52fb">
-    <link rel="stylesheet" href="css/start-screen.css?v=e6e88caa">
+    <link rel="stylesheet" href="css/start-screen.css?v=1642db37">
     <link rel="stylesheet" href="css/game.css?v=3f58be1c">
     <link rel="stylesheet" href="css/modals.css?v=35a14a1f">
 </head>
@@ -36,11 +36,9 @@ html{touch-action:manipulation}
         <p class="title-artist">juanito thompson</p>
         <div class="start-prompt">PRESS SPACE</div>
         <button id="btnStart" class="touch-start">START</button>
-        <div class="title-row">
-            <button id="btnSound" class="sound-toggle" aria-pressed="false">SOUND: ON</button>
-            <a class="insert-cue" id="insertCueDown" href="#insertBack" aria-label="the insert">insert &#9660;</a>
-        </div>
+        <button id="btnSound" class="sound-toggle" aria-pressed="false">sound on</button>
         <p id="audioWarning" class="audio-warning" hidden></p>
+        <a class="insert-cue" id="insertCueDown" href="#insertBack" aria-label="the insert">insert &#9660;</a>
         <a class="title-publisher" href="https://magmacrunch.com">
             <img class="title-publisher-mark" src="img/mc-logo.png" alt="" width="26" height="32">
             <span class="title-house">magmacrunch media</span>
@@ -189,6 +187,6 @@ const scoreClient=new AdScore.ScoreClient().auto(MC_SCORE_OPTS);
 <script src="js/guideline.js?v=8a5f371d"></script>
 <script src="js/creatures.js?v=fa1c7eba"></script>
 <script src="js/sleeve.js?v=fa683fe1"></script>
-<script src="js/main.js?v=dcf7425c"></script>
+<script src="js/main.js?v=93429d99"></script>
 </body>
 </html>
