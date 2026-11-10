@@ -26,6 +26,7 @@ html{touch-action:manipulation}
     <link rel="stylesheet" href="css/start-screen.css?v=892299ce">
     <link rel="stylesheet" href="css/game.css?v=94f6eac9">
     <link rel="stylesheet" href="css/modals.css?v=cd3dd873">
+    <link rel="stylesheet" href="css/credits.css?v=5f4dfe17">
 </head>
 <body>
 <a href="../action/" class="mc-back">action games</a>
@@ -36,53 +37,13 @@ html{touch-action:manipulation}
         <div class="start-prompt">PRESS SPACE</div>
         <button id="btnStart" class="touch-start">START</button>
         <button id="btnSound" class="sound-toggle" aria-pressed="false">sound on</button>
+        <button id="btnCredits" class="sound-toggle" type="button">credits</button>
         <p id="audioWarning" class="audio-warning" hidden></p>
-        <a class="insert-cue" id="insertCueDown" href="#insertBack" aria-label="the insert">insert &#9660;</a>
         <a class="title-publisher" href="https://magmacrunch.com">
             <img class="title-publisher-mark" src="img/mc-logo.png" alt="" width="26" height="32">
             <span class="title-house">magmacrunch media</span>
         </a>
     </section>
-    <div class="insert-back" id="insertBack">
-    <section class="sleeve" aria-label="the single and its credits">
-        <div class="sleeve-front">
-            <canvas id="sleeveArt" class="sleeve-art" width="60" height="36" aria-hidden="true"></canvas>
-            <h3 class="sleeve-head">made by</h3>
-            <div class="sleeve-row"><span class="sleeve-role">game</span><span class="sleeve-name"><a href="https://magmacrunch.com">magmacrunch media</a></span></div>
-            <div class="sleeve-row"><span class="sleeve-role">music</span><span class="sleeve-name"><a href="../../music/jukebox/">juanito thompson</a></span></div>
-            <div class="sleeve-row"><span class="sleeve-role">the diver</span><span class="sleeve-name">juanito thompson</span></div>
-            <p class="sleeve-note">in a wetsuit</p>
-        </div>
-        <div class="sleeve-record">
-            <h3 class="sleeve-head">track</h3>
-            <div class="sleeve-row"><span class="sleeve-role">cave diving (not even once)</span><span class="sleeve-name">2:41</span></div>
-            <h3 class="sleeve-head">the single</h3>
-            <div class="sleeve-row"><span class="sleeve-role">label</span><span class="sleeve-name">magmacrunch arcade</span></div>
-            <div class="sleeve-row"><span class="sleeve-role">released</span><span class="sleeve-name">November 8, 2026</span></div>
-            <div class="sleeve-row"><span class="sleeve-role">publisher</span><span class="sleeve-name">magmacrunch music</span></div>
-            <p class="sleeve-note">ASCAP</p>
-            <div class="sleeve-row"><span class="sleeve-role">recorded</span><span class="sleeve-name">Frogwood Manor</span></div>
-            <p class="sleeve-note">December 2013</p>
-            <div class="sleeve-row"><span class="sleeve-role">every sound</span><span class="sleeve-name">electric bass</span></div>
-            <p class="sleeve-note">distorted, played with a violin bow</p>
-            <div class="sleeve-row"><span class="sleeve-role">also on</span><span class="sleeve-name"><em>Spooked</em></span></div>
-            <p class="sleeve-note">2025, MCR039, track 3</p>
-        </div>
-        <div class="sleeve-credits">
-            <h3 class="sleeve-head">built with</h3>
-            <p class="sleeve-built"><span>HTML5, CSS3, JS</span><span>Web Audio API</span><span class="wide">Press Start 2P by CodeMan38</span><span><a href="https://magmacrunch.com/ware/adenosine/">adenosine</a></span></p>
-
-            <div class="sleeve-row sleeve-aside"><span class="sleeve-role">cheapness impact factor</span><span class="sleeve-name">2.0</span></div>
-
-            <div class="sleeve-corner"><img class="sleeve-mark" src="img/mc-logo.png" alt="magmacrunch media" width="26" height="32"><p class="sleeve-catno">MCA003<br>MCS048</p><svg class="sleeve-barcode" viewBox="0 0 121 46" role="img" aria-label="barcode MCA003" shape-rendering="crispEdges"><rect x="10" y="0" width="2" height="37"/><rect x="13" y="0" width="1" height="37"/><rect x="16" y="0" width="1" height="37"/><rect x="21" y="0" width="1" height="37"/><rect x="23" y="0" width="3" height="37"/><rect x="27" y="0" width="2" height="37"/><rect x="32" y="0" width="1" height="37"/><rect x="36" y="0" width="1" height="37"/><rect x="40" y="0" width="2" height="37"/><rect x="43" y="0" width="1" height="37"/><rect x="45" y="0" width="1" height="37"/><rect x="49" y="0" width="2" height="37"/><rect x="54" y="0" width="1" height="37"/><rect x="57" y="0" width="3" height="37"/><rect x="61" y="0" width="2" height="37"/><rect x="65" y="0" width="1" height="37"/><rect x="68" y="0" width="3" height="37"/><rect x="72" y="0" width="2" height="37"/><rect x="76" y="0" width="2" height="37"/><rect x="80" y="0" width="1" height="37"/><rect x="82" y="0" width="3" height="37"/><rect x="87" y="0" width="2" height="37"/><rect x="91" y="0" width="1" height="37"/><rect x="96" y="0" width="1" height="37"/><rect x="98" y="0" width="2" height="37"/><rect x="103" y="0" width="3" height="37"/><rect x="107" y="0" width="1" height="37"/><rect x="109" y="0" width="2" height="37"/><text x="60.5" y="45" text-anchor="middle">MCA003</text></svg></div>
-            <p class="sleeve-note">&#8471; 2025 magmacrunch media</p>
-            <p class="sleeve-note">&copy; 2026 magmacrunch media</p>
-
-            <p class="sleeve-foot">last updated November 8, 2026</p>
-        </div>
-        <a class="insert-cue insert-cue-up" id="insertCueUp" href="#titleScreen" aria-label="back to the cover">&#9650; cover</a>
-    </section>
-    </div>
 </div>
 
 <div id="gameContainer" class="game-container">
@@ -164,6 +125,33 @@ html{touch-action:manipulation}
     </div>
 </div>
 
+<div id="creditsOverlay" class="overlay hidden">
+    <div class="slate">
+        <h2 class="slate-title">credits</h2>
+
+        <h3 class="slate-section" data-tone="water">made by</h3>
+        <div class="slate-row"><span class="slate-role">game</span><span class="slate-name"><a href="https://magmacrunch.com">magmacrunch media</a></span></div>
+        <div class="slate-row"><span class="slate-role">music</span><span class="slate-name"><a href="../../music/jukebox/">juanito thompson</a></span></div>
+        <p class="slate-note">"cave diving (not even once)"<br>from Spooked (2025)</p>
+        <div class="slate-row"><span class="slate-role">the diver</span><span class="slate-name">juanito thompson</span></div>
+        <p class="slate-note">in a wetsuit</p>
+
+        <h3 class="slate-section" data-tone="pearl">the score</h3>
+        <p class="slate-prose">The record itself, cut into loops that follow how much danger you are in, with its own ending when you get out.</p>
+
+        <h3 class="slate-section" data-tone="lamp">built with</h3>
+        <p class="slate-built"><span>HTML5, CSS3, JS</span><span>Web Audio API</span><span class="wide">Press Start 2P by CodeMan38</span><span><a href="https://magmacrunch.com/ware/adenosine/">adenosine</a></span></p>
+
+        <div class="slate-row slate-aside"><span class="slate-role">cheapness impact factor</span><span class="slate-name">2.0</span></div>
+
+        <p class="slate-foot">last updated November 9, 2026</p>
+
+        <div class="slate-back">
+            <button id="btnCreditsBack" type="button">back</button>
+        </div>
+    </div>
+</div>
+
 <div class="scanlines"></div>
 
 <script src="../shared/adenosine-rpg.js?v=ffe9a960"></script>
@@ -186,6 +174,6 @@ const scoreClient=new AdScore.ScoreClient().auto(MC_SCORE_OPTS);
 <script src="js/guideline.js?v=8a5f371d"></script>
 <script src="js/creatures.js?v=fa1c7eba"></script>
 <script src="js/sleeve.js?v=fa683fe1"></script>
-<script src="js/main.js?v=93429d99"></script>
+<script src="js/main.js?v=705ee495"></script>
 </body>
 </html>
