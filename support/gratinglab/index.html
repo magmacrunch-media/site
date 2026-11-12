@@ -54,7 +54,7 @@
         <dl>
             <dt>how do i enter a grating i already have?</dt>
             <dd>Tap any number beside a control and type the value. The period
-            takes nanometres or grooves per millimetre, whichever you have; both
+            takes nanometers or grooves per millimeter, whichever you have; both
             are shown on its row. A value outside a control's range is brought
             to the nearest end of it, and anything that is not a number is
             refused, with the field left open.</dd>
@@ -81,11 +81,12 @@
             are drawn so you can see where they go, dashed and at a fixed width
             so their thickness cannot be read as an efficiency.</dd>
 
-            <dt>what coatings does it know?</dt>
-            <dd>Gold, from tabulated optical constants, or a bare grating. The
-            three reflectivity models, local, average and facet, are reported
-            side by side, so you can see how much each approximation
-            matters.</dd>
+            <dt>why are the efficiencies relative?</dt>
+            <dd>The app carries no material data, so it models no coating.
+            Every efficiency is what a perfectly reflecting groove of this
+            shape would send into that order, which is how the blaze shares
+            the light out. For absolute numbers with a real coating, use the
+            Python package, which takes the coating's optical constants.</dd>
 
             <dt>how do i get the numbers out?</dt>
             <dd>The Orders tab lists every order, with evanescent ones shown
