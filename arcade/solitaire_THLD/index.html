@@ -28,7 +28,7 @@ html{touch-action:manipulation}
     <link rel="stylesheet" href="../shared/chips/chip-animation.css?v=b73f8241">
     <link rel="stylesheet" href="css/modals.css?v=e3977bb3">
     <link rel="stylesheet" href="css/responsive.css?v=16e9a25c">
-    <link rel="stylesheet" href="css/insert.css?v=1ed6518f">
+    <link rel="stylesheet" href="css/credits.css?v=61a21622">
     <link rel="stylesheet" href="css/phone.css?v=004e06e4">
 </head>
 <body>
@@ -52,57 +52,9 @@ html{touch-action:manipulation}
                 <div class="start-footer">
                     <p>fifteen depths, one song each. hold your cards close.</p>
                 </div>
-                <div class="start-foot">
-                    <a class="insert-cue" href="#insertBack" aria-label="the insert">insert &#9660;</a>
-                    <p class="start-publisher"><img src="img/mc-logo.png" alt="" width="26" height="32"><span>magmacrunch media</span></p>
-                </div>
+                <p class="start-copyright">&copy; 2024 MAGMACRUNCH MEDIA &middot; ALL RIGHTS RESERVED</p>
             </div>
 
-            <div class="insert-back" id="insertBack">
-                <section class="sleeve" aria-label="the soundtrack and the game's credits">
-                    <h3 class="sleeve-head">made by</h3>
-                    <div class="sleeve-row"><span class="sleeve-role">game</span><span class="sleeve-name">magmacrunch media</span></div>
-                    <div class="sleeve-row"><span class="sleeve-role">music</span><span class="sleeve-name"><a href="../../archive/by-artist/thld/">Texas Hold'Em Lava Dome</a></span></div>
-
-                    <h3 class="sleeve-head">the dome, top to bottom</h3>
-                    <ol class="sleeve-tracks">
-                        <li><span>I keep my cards close to my heart</span><em>MLGO</em></li>
-                        <li><span>Eager for second chances</span><em>MLGO</em></li>
-                        <li><span>Contemplate the Plate Tectonic</span><em>MLGO</em></li>
-                        <li><span>Lithosphere</span><em>MLGO</em></li>
-                        <li><span>Ocean of Storms</span><em>PFAO</em></li>
-                        <li><span>Haunter</span><em>HMAA</em></li>
-                        <li><span>Pendant Stop</span><em>MLGO</em></li>
-                        <li><span>Penultimate Drop</span><em>MLGO</em></li>
-                        <li><span>A pine tree caught electrical fire</span><em>MLGO</em></li>
-                        <li><span>List of birds by flight height</span><em>MLGO</em></li>
-                        <li><span>Friendship 7 4 fun</span><em>MLGO</em></li>
-                        <li><span>Adenosine</span><em>MLGO</em></li>
-                        <li><span>I Would Go Up to the Hot Lava</span><em>HMAA</em></li>
-                        <li><span>Millstone, 2063</span><em>MLGO</em></li>
-                        <li><span>All All &amp; All</span><em>MLGO</em></li>
-                    </ol>
-                    <p class="sleeve-note">originally on</p>
-                    <div class="sleeve-row"><span class="sleeve-role">MLGO</span><span class="sleeve-name"><em>Martial Law in Garrison Oaks</em>, 2024, MCR029</span></div>
-                    <div class="sleeve-row"><span class="sleeve-role">HMAA</span><span class="sleeve-name"><em>Hazardous Metals in Ambient Air</em>, 2023, MCR030</span></div>
-                    <div class="sleeve-row"><span class="sleeve-role">PFAO</span><span class="sleeve-name"><em>Pompous Fanfare for All Occasions</em>, 2024, MCR031</span></div>
-
-                    <h3 class="sleeve-head">the compilation</h3>
-                    <div class="sleeve-row"><span class="sleeve-role">label</span><span class="sleeve-name">magmacrunch arcade</span></div>
-
-                    <h3 class="sleeve-head">built with</h3>
-                    <p class="sleeve-built"><a href="https://magmacrunch.com/ware/adenosine/">adenosine</a> &middot; Press Start 2P &middot; VT323</p>
-                    <div class="sleeve-row"><span class="sleeve-role">cheapness impact factor</span><span class="sleeve-name">3.3</span></div>
-
-                    <div class="sleeve-back">
-                        <img class="sleeve-mark" src="img/mc-logo.png" alt="magmacrunch media" width="26" height="32">
-                        <p class="sleeve-note">&#8471; 2023&ndash;2024 magmacrunch media</p>
-                        <p class="sleeve-note">&copy; 2026 magmacrunch media</p>
-                        <p class="sleeve-foot">last updated November 11, 2026</p>
-                    </div>
-                    <a class="insert-cue" href="#startScreen" aria-label="back to the cover">&#9650; cover</a>
-                </section>
-            </div>
         </div>
 
         <div id="gameScreen" style="display: none;"></div>
@@ -111,8 +63,6 @@ html{touch-action:manipulation}
     <div class="instructions-modal" id="instructionsModal">
         <div class="instructions-content">
             <h3>How to Play</h3>
-
-            <p>A solo card game after <em>Texas hold'em</em> and <em>Poker Squares</em>, named for the band <a href="../../archive/by-artist/thld/" target="_blank" style="color: var(--orange-glow);"><em>Texas Hold'Em Lava Dome</em></a>, whose songs play at each depth.</p>
 
             <h4>The Goal</h4>
             <p>Survive as long as possible inside the dome. Build your bank before it claims you.</p>
@@ -179,7 +129,34 @@ html{touch-action:manipulation}
     </div>
 
     <div class="instructions-modal" id="creditsModal">
-        <div class="instructions-content insert-modal">
+        <div class="instructions-content">
+            <h3>credits</h3>
+
+            <h4>Texas Hold'Em Lava Dome</h4>
+            <p>A solo card game inspired by <em>Texas hold'em</em> poker, <em>Poker Squares</em>, and the band <a href="../../archive/by-artist/thld/" target="_blank" style="color: var(--orange-glow);"><em>Texas Hold'Em Lava Dome</em></a>. </p>
+
+            <h4>Game Design & Development</h4>
+            <p>Jake A. McCoy</p>
+
+            <h4>technology & resources</h4>
+            <p>
+            • Press Start 2P font by CodeMan38 (Google Fonts)<br>
+            • HTML5 Canvas API<br>
+            • MAGMA//OPS backend (high score persistence)<br>
+            • pure vanilla JavaScript
+            </p>
+
+            <h4>Publisher</h4>
+            <p>magmacrunch media</p>
+
+            <h4>Cheapness Impact Factor</h4>
+            <p>3.3</p>
+
+            <h4>Last Updated</h4>
+            <p>May 3, 2026</p>
+
+            <p class="credits-footer">&copy; 2026 MAGMACRUNCH MEDIA &middot; ALL RIGHTS RESERVED</p>
+
             <button id="closeCredits">Close</button>
         </div>
     </div>
@@ -198,7 +175,7 @@ const scoreClient=new AdScore.ScoreClient().auto(MC_SCORE_OPTS);
     <script src="js/betting.js?v=cf7ababc"></script>
     <script src="js/scoring.js?v=359f7a58"></script>
     <script src="js/music.js?v=9cdd5585"></script>
-    <script src="js/ui.js?v=168e10d7"></script>
+    <script src="js/ui.js?v=94f6926f"></script>
     <script src="js/main.js?v=40f77146"></script>
 
 </body>
