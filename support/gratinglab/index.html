@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>support · gratinglab · magmacrunch media</title>
+    <meta name="description" content="Help for gratinglab, the magmacrunch media diffraction calculator for iPhone and iPad: entering a grating, reading the orders, what the solver does and does not cover, and how to get in touch.">
+    <meta property="og:title" content="support · gratinglab · magmacrunch media">
+    <meta property="og:description" content="Help and answers for gratinglab on iPhone and iPad.">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="magmacrunch media">
+    <meta property="og:locale" content="en_US">
+    <link rel="icon" type="image/x-icon" href="../../favicon.ico">
+    <link rel="preload" as="font" type="font/woff2" href="../../fonts/PressStart2P-Regular.woff2" crossorigin>
+    <link rel="preload" as="font" type="font/woff2" href="../../fonts/CourierPrime-Regular.woff2" crossorigin>
+    <link rel="stylesheet" href="../../style.css?v=a59b9059">
+    <link rel="stylesheet" href="../../assets/app-pages.css?v=96f799e2">
+</head>
+<body>
+
+<nav id="auto-nav" data-depth="../../"></nav>
+
+<main>
+
+    <div class="breadcrumb">
+        <a href="../../">home</a>
+        <span class="sep">›</span>
+        <a href="../">support</a>
+        <span class="sep">›</span>
+        <span class="current">gratinglab</span>
+    </div>
+
+    <h1 class="page-title">// support //</h1>
+    <p class="page-sub">gratinglab for iphone and ipad</p>
+
+    <article class="app-doc">
+
+        <p>gratinglab draws diffraction from a grating in the extreme off-plane,
+        or conical, mount at grazing incidence, the geometry soft X-ray
+        reflection-grating spectrometers use. It shows the cone of diffraction
+        in three dimensions and computes the direction and efficiency of every
+        order.</p>
+
+        <h2>get in touch</h2>
+        <p>For help, feedback or a bug report, email:</p>
+        <a class="contact" href="mailto:info@magmacrunch.com?subject=gratinglab%20for%20iOS">info@magmacrunch.com</a>
+        <p>For a bug, it helps to include your device (for example, iPhone 16),
+        its iOS version, and what you did just before it went wrong. For a
+        number you think is wrong, press COPY and paste the result into the
+        email: it carries the whole geometry and the table of orders, so it
+        reproduces exactly what you were looking at.</p>
+
+        <h2>questions</h2>
+        <dl>
+            <dt>how do i enter a grating i already have?</dt>
+            <dd>Tap any number beside a control and type the value. The period
+            takes nanometres or grooves per millimetre, whichever you have; both
+            are shown on its row. A value outside a control's range is brought
+            to the nearest end of it, and anything that is not a number is
+            refused, with the field left open.</dd>
+
+            <dt>which angles does it use?</dt>
+            <dd>Either the cone angles, γ and α, that the diffraction is written
+            in, or the pitch η and yaw φ a stage is actually set to. Roll adds
+            to α. Pick whichever pair you have; the app converts between
+            them.</dd>
+
+            <dt>what does the Zoom slider do?</dt>
+            <dd>It closes in on the rim of the cone. At grazing incidence the
+            cone is a needle in one direction and a wide fan in the other, and
+            zooming in on the rim opens the fan up. The zoom is uniform, so no
+            angle is exaggerated. Pinching zooms the camera as usual.</dd>
+
+            <dt>why don't the efficiencies add up to one?</dt>
+            <dd>Because they are never forced to. The solver is a scalar
+            (Kirchhoff) model, and the sum over orders is shown as it comes out;
+            how far it is from one is the model's own measure of its error.</dd>
+
+            <dt>why do transmitted orders have no efficiency?</dt>
+            <dd>The solver is a reflection-grating model. Transmitted orders
+            are drawn so you can see where they go, dashed and at a fixed width
+            so their thickness cannot be read as an efficiency.</dd>
+
+            <dt>what coatings does it know?</dt>
+            <dd>Gold, from tabulated optical constants, or a bare grating. The
+            three reflectivity models, local, average and facet, are reported
+            side by side, so you can see how much each approximation
+            matters.</dd>
+
+            <dt>how do i get the numbers out?</dt>
+            <dd>The Orders tab lists every order, with evanescent ones shown
+            passing off rather than left out. COPY puts the geometry and the
+            whole table on your clipboard as plain text.</dd>
+
+            <dt>where does the physics come from?</dt>
+            <dd>The solver is a port of the scalar solver in
+            <a href="https://github.com/jamccoy/gratinglab">gratinglab</a>, an
+            open-source Python package, which remains the reference
+            implementation. The app is checked against that package's results
+            order by order. For rigorous methods, or efficiency in
+            transmission, use the package.</dd>
+
+            <dt>does it need the internet?</dt>
+            <dd>No. The app works entirely offline and makes no network
+            connections at all.</dd>
+        </dl>
+
+        <h2>privacy</h2>
+        <p>The app collects no data. The full policy is on the
+        <a href="../../privacy/gratinglab/">privacy page</a>.</p>
+
+    </article>
+
+</main>
+
+<footer>
+    &copy; 2026 <span>magmacrunch media</span>
+</footer>
+
+<script src="../../nav.js?v=ac308f29"></script>
+
+</body>
+</html>
