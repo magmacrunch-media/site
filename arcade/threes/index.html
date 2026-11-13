@@ -16,7 +16,7 @@
     <link rel="icon" href="../../favicon.ico" type="image/x-icon">
 
     <style>
-.font-loading body{visibility:hidden}:root{--mc-back-color: rgba(255, 140, 0, 0.6);--mc-back-glow: 0 0 8px rgba(255, 200, 80, 0.95)}
+.font-loading body{visibility:hidden}:root{--mc-back-color: #6e695e;--mc-back-glow: none}
 </style>
     <script>
 document.documentElement.classList.add("font-loading");document.fonts.ready.then(()=>{document.documentElement.classList.remove("font-loading")});
@@ -32,7 +32,7 @@ document.documentElement.classList.add("font-loading");document.fonts.ready.then
     <link rel="stylesheet" href="../shared/puzzle/puzzle-modals.css?v=957f8655">
     <link rel="stylesheet" href="../shared/puzzle/puzzle-responsive.css?v=d5ee441f">
 
-    <link rel="stylesheet" href="css/game.css?v=5c3ae1fd">
+    <link rel="stylesheet" href="css/game.css?v=a097e713">
 </head>
 <body>
     <a href="../puzzles/" class="mc-back">puzzles</a>
@@ -84,7 +84,7 @@ document.documentElement.classList.add("font-loading");document.fonts.ready.then
     <div class="title-screen active" id="titleScreen">
         <div class="title-screen-content">
             <div class="title-main">
-                <h1 class="title-large">THREES</h1>
+                <h1 class="title-large"><span class="lcd-ghost" aria-hidden="true">888888</span><span>THREES</span></h1>
                 <h2 class="title-subtitle">SLIDE MERGE SURVIVE</h2>
             </div>
 
@@ -128,9 +128,10 @@ document.documentElement.classList.add("font-loading");document.fonts.ready.then
             <h3>how to play</h3>
             <p><strong>Use arrow keys or swipe</strong> to slide all tiles in a direction.</p>
             <p><strong>Merging rules:</strong></p>
-            <p>&bull; <strong style="color: #5ba3f5">1</strong> + <strong style="color: #6ec8ff">2</strong> = <strong style="color: #00f5ff">3</strong> (or 2 + 1 = 3)</p>
-            <p>&bull; <strong style="color: #00f5ff">3</strong> + <strong style="color: #00f5ff">3</strong> = <strong style="color: #39ff6e">6</strong>, then 6+6=12, 12+12=24, and so on</p>
-            <p>&bull; <strong style="color: #ff3d6e">1+1 and 2+2 do NOT merge</strong></p>
+            <p>&bull; <strong>1</strong> + <strong>2</strong> = <strong>3</strong> (or 2 + 1 = 3)</p>
+            <p>&bull; <strong>3</strong> + <strong>3</strong> = <strong>6</strong>, then 6+6=12, 12+12=24, and so on</p>
+            <p>&bull; <strong>1+1 and 2+2 do NOT merge</strong></p>
+            <p>On the screen a 1 is a plain frame, a 2 a dashed one, and 3 and up are solid.</p>
             <p>After each move, a new tile (1, 2, or 3, dealt from a shuffled bag of four of each) appears on the <strong>edge opposite</strong> to the direction you swiped, at the end of a row or column that moved.</p>
             <p>The game ends when the board is full and <strong>no merges are possible</strong>.</p>
             <p>Your score is the <strong>sum of all merged values</strong>. How high can you go?</p>
@@ -145,7 +146,7 @@ document.documentElement.classList.add("font-loading");document.fonts.ready.then
             <p><strong>original concept:</strong> based on <em>Threes!</em> by Sirvo (Asher Vollmer, Greg Wohlwend, Jimmy Hinson)</p>
             <p><strong>technology & resources:</strong><br>
             &bull; HTML5, CSS3, and pure vanilla JavaScript<br>
-            &bull; <a href="../../ware/adenosine/" style="color:#00f5ff">adenosine</a> puzzle framework<br>
+            &bull; <a href="../../ware/adenosine/">adenosine</a> puzzle framework<br>
             &bull; Press Start 2P font by CodeMan38 (Google Fonts)</p>
             <p><strong>published by:</strong> magmacrunch media</p>
             <p><strong>cheapness impact factor:</strong> 2.1</p>

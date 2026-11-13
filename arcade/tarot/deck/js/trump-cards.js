@@ -21,7 +21,7 @@ const TarotTrumps={ICONS:{1:c=>`
             <rect x="8" y="14" width="18" height="2" fill="${c}"/>`},getDefaultIcon(number,color){const fontSize=number>=10?24:30;return`
             <text x="16" y="17" font-family="'Press Start 2P', monospace"
                   font-size="${fontSize}" fill="${color}" text-anchor="middle"
-                  dominant-baseline="central">${number}</text>`},getTrumpHTML(number){const isOudler=number===1||number===21;const color=isOudler?"var(--t-trump-gold)":"var(--t-trump-cyan)";const corners=`
+                  dominant-baseline="central">${number}</text>`},getTrumpHTML(number){const isOudler=number===1||number===21;const color=isOudler?"var(--t-trump-gold)":"var(--t-trump-ink)";const corners=`
             <div class="t-card-corner top-left">
                 <div class="corner-rank" style="color:${color}">${number}</div>
                 <div class="corner-suit" style="color:${color};font-size:6px;">T</div>
@@ -37,7 +37,6 @@ const TarotTrumps={ICONS:{1:c=>`
                 <div style="font-family:'Press Start 2P',monospace;
                             font-size:${number>=10?"28px":"36px"};
                             color:${color};
-                            text-shadow:0 0 10px ${isOudler?"var(--t-oudler-glow)":"rgba(0,229,255,0.3)"};
                             line-height:1;">
                     ${number}
                 </div>`}return`

@@ -48,7 +48,6 @@ const TarotExcuse={getExcuseHTML(){const color="var(--t-excuse-pink)";const corn
                     ${jesterSVG}
                     <div style="font-family:'Press Start 2P',monospace;
                                 font-size:7px;color:${color};
-                                text-shadow:0 0 8px rgba(255,45,120,0.5);
                                 margin-top:6px;letter-spacing:0.1em;">
                         EXCUSE
                     </div>
