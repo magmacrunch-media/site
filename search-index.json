@@ -1929,14 +1929,14 @@
     "c": "tool",
     "u": "/ware/backgammon/",
     "d": "backgammon on a blue screen desktop, for the browser and the terminal",
-    "b": "backgammon · magmacrunch media home › ware › video games › backgammon BACKGAMMON blue screen edition · vs the computer or a friend · doubling cube Backgammon in the arcade's blue screen edition: a home computer's desktop in blue, white, black and orange, with raised buttons and staircase points. Play the computer or a friend online with chat, with hitting, the bar, bearing off and a doubling cube. The terminal version plays the same computer opponent. // where to play // BROWSER ▶ PLAY free, in the arcade , with online play against friends. TERMINAL A text-only version that runs in a terminal ..."
+    "b": "backgammon · magmacrunch media home › ware › video games › backgammon BACKGAMMON blue screen edition · vs the computer or a friend · doubling cube Backgammon in the arcade's blue screen edition. Play the computer or a friend online with chat, with hitting, the bar, bearing off and a doubling cube. // where to play // BROWSER ▶ PLAY free, in the arcade , with online play against friends. TERMINAL A text-only version that runs in a terminal window. Install it with pipx install magmacrunch-backgammon then run backgammon . Also in the magmacrunch terminal arcade. New to this? The terminal arcade p..."
   },
   {
     "t": "block island simulator · magmacrunch media",
     "c": "tool",
     "u": "/ware/block-island-simulator/",
     "d": "the real Block Island at 1:1, built from lidar, to walk, sail and drive. in development",
-    "b": "block island simulator · magmacrunch media home › ware › video games › block island simulator BLOCK ISLAND SIMULATOR the real island, at 1:1 · in development Block Island, Rhode Island, measured rather than designed. The ground comes from a laser survey of the island by the US Geological Survey, measured every metre, so every hill, bluff and pond is where it is, and it is a real 9.6 km on foot from Sandy Point to the Mohegan Bluffs. All 3,240 buildings stand where buildings stand, their footprints, heights and roofs read from the same survey. Both lighthouses light. The sun, the tide and the w..."
+    "b": "block island simulator · magmacrunch media home › ware › video games › block island simulator BLOCK ISLAND SIMULATOR the real island 1:1 · in development Block Island, Rhode Island, simulated at a 1:1 scale from lindar data from the US Geological Survey. The island is 10 km², with 3,240 buildings, two lighthouses, 16 km of roads and 9.6 km of trails. Online multiplayer lets you explore the island cooperatively and play mini games within the simulation. // on the island // Twin Maples, above Trims Pond Southeast Light, on the Mohegan Bluffs Old Harbor at sundown the marina on Great Salt Pond Ma..."
   },
   {
     "t": "caldera · magmacrunch media",
@@ -1957,28 +1957,28 @@
     "c": "tool",
     "u": "/ware/cave-diving/",
     "d": "a one-song dive into a flooded cave, in the browser",
-    "b": "cave diving (not even once) · magmacrunch media home › ware › video games › cave diving CAVE DIVING (not even once) MAYBE JUST ONCE Explore a flooded cave system, collect pearls, and find a way out before you run out of air. The deeper the way out, the more your pearls are worth. // in the caves // your lamp is the only light // where to play // BROWSER ▶ PLAY free, in the arcade . Keyboard or touch. IPHONE & IPAD ▶ APP STORE with Game Center, offline play and haptics. // built with // adenosine browser · JavaScript // credits // game by magmacrunch media music \"cave diving (not even once)\" by..."
+    "b": "cave diving (not even once) · magmacrunch media home › ware › video games › cave diving CAVE DIVING (not even once) featuring Juanito Thompson MAYBE JUST ONCE Explore a flooded cave system, collect pearls, and find a way out before you run out of air. The deeper the way out, the more your pearls are worth. // in the caves // your lamp is the only light // where to play // BROWSER ▶ PLAY free, in the arcade . Keyboard or touch. IPHONE & IPAD ▶ APP STORE with Game Center, offline play and haptics. // built with // adenosine browser · JavaScript // credits // game by magmacrunch media music \"cave..."
   },
   {
     "t": "checkers · magmacrunch media",
     "c": "tool",
     "u": "/ware/checkers/",
     "d": "checkers on a green terminal, for the browser and the terminal",
-    "b": "checkers · magmacrunch media home › ware › video games › checkers CHECKERS phosphor edition · mandatory jumps · king promotion Checkers in the arcade's phosphor edition, on a green monochrome terminal: solid pieces against hollow ones, with moves marked by shape. Play the computer or a friend online with chat, with mandatory jumps, multi-jump chains and king promotion. The terminal version plays the same computer opponent. // where to play // BROWSER ▶ PLAY free, in the arcade , with online play against friends. TERMINAL A text-only version that runs in a terminal window. Install it with pipx ..."
+    "b": "checkers · magmacrunch media home › ware › video games › checkers CHECKERS phosphor edition · mandatory jumps · king promotion Checkers in the arcade's phosphor edition, on a green monochrome terminal. Play the computer or a friend online with chat, with mandatory jumps, multi-jump chains and king promotion. // where to play // BROWSER ▶ PLAY free, in the arcade , with online play against friends. TERMINAL A text-only version that runs in a terminal window. Install it with pipx install magmacrunch-checkers then run checkers . Also in the magmacrunch terminal arcade. New to this? The terminal a..."
   },
   {
     "t": "chess · magmacrunch media",
     "c": "tool",
     "u": "/ware/chess/",
     "d": "chess on a cream soda window system, for the browser and the terminal",
-    "b": "chess · magmacrunch media home › ware › video games › chess CHESS cream soda edition · three difficulty levels · optional clock Chess in the arcade's cream soda edition, in pixel art on a two-colour window system from the mid 1980s, vanilla and dark caramel, where a mid tone is a dither. Play the computer at easy, medium or hard, with no clock or a blitz, rapid or classical one, or play a friend online with chat. Moves are kept in algebraic notation. // where to play // BROWSER ▶ PLAY free, in the arcade , with online play against friends. TERMINAL A text-only version that runs in a terminal w..."
+    "b": "chess · magmacrunch media home › ware › video games › chess CHESS cream soda edition · three difficulty levels · optional clock Chess in the arcade's cream soda edition. Play the computer at easy, medium or hard, or play a friend online with chat. Moves are kept in algebraic notation. // where to play // BROWSER ▶ PLAY free, in the arcade , with online play against friends. TERMINAL A text-only version that runs in a terminal window. Install it with pipx install magmacrunch-chess then run chess . Also in the magmacrunch terminal arcade. New to this? The terminal arcade page walks through insta..."
   },
   {
     "t": "chinese checkers · magmacrunch media",
     "c": "tool",
     "u": "/ware/chinese-checkers/",
     "d": "chinese checkers on an 8-bit screen, for two to six players, in the browser and the terminal",
-    "b": "chinese checkers · magmacrunch media home › ware › video games › chinese checkers CHINESE CHECKERS 8-bit edition · hexagonal star · two to six players Chinese checkers in the arcade's 8-bit edition, on a home computer's blue text screen, with a hexagonal star of blocks and ten marbles each. Play two, three, four or six players against the computer, or friends online with room codes and chat. Steps light up green, hops yellow, and hops chain. // where to play // BROWSER ▶ PLAY free, in the arcade , with online rooms for up to six. TERMINAL A text-only version that runs in a terminal window. Ins..."
+    "b": "chinese checkers · magmacrunch media home › ware › video games › chinese checkers CHINESE CHECKERS 8-bit edition · hexagonal star · two to six players Chinese checkers in the arcade's cobalt edition. Play two, three, four or six players against the computer, or friends online with room codes and chat. // where to play // BROWSER ▶ PLAY free, in the arcade , with online rooms for up to six. TERMINAL A text-only version that runs in a terminal window. Install it with pipx install magmacrunch-chinese-checkers then run chinese-checkers . Also in the magmacrunch terminal arcade. New to this? The te..."
   },
   {
     "t": "crunch-c · magmacrunch media",
@@ -2006,7 +2006,7 @@
     "c": "tool",
     "u": "/ware/george-boole/",
     "d": "a logic-gate puzzle game for the browser, the terminal, iPhone and iPad, with a Wii version on the way",
-    "b": "george boole has entered the chat · magmacrunch media home › ware › video games › george boole GEORGE BOOLE HAS ENTERED THE CHAT a logic-gate puzzle game inspired by 2048 & the work of George Boole George Boole is a sliding-tile puzzle about the four logic gates that every computer is built from. Push two numbers together across an XOR tile and they combine bit by bit. Push them through OR, AND or NOT and you get something else. Points come from what the gates compute, so the way to score is to understand what they do, and you learn that by playing rather than by reading a manual. // game mode..."
+    "b": "george boole has entered the chat · magmacrunch media home › ware › video games › george boole GEORGE BOOLE HAS ENTERED THE CHAT featuring Juanito Thompson A 2048-inspired puzzle game dedicated to the mathematician and philosopher George Boole (1815-1864). Merge binary numbers through logic gates and watch them combine bit by bit. Score what you can before the board fills up. // game modes // 2-bit crumb 3-bit tribit 4-bit nibble 5-bit pentad 6-bit hexad 7-bit ascii 8-bit byte gauntlet // where to play // BROWSER ▶ PLAY in the arcade . Every game mode, nothing to install. TERMINAL A text-only ..."
   },
   {
     "t": "gerridae · magmacrunch media",
@@ -2076,7 +2076,7 @@
     "c": "tool",
     "u": "/ware/makemecookies/",
     "d": "a cookie factory game for the browser, iPhone and iPad, with a Wii version on the way",
-    "b": "makemecookies! · magmacrunch media home › ware › video games › makemecookies! MAKEME COOKIES! one song, one shift · five stations · ship cookies A quick shift in a frantic cookie-making factory, with a very specific vibe. Run a kitsch cookie factory, five stations at once: flour into the hopper, dough out of the mixer, along the belt, golden out of the oven, boxed and shipped. A shift lasts exactly one play of the song. There is no losing, only how much you shipped and how much mess you left, and make too much mess and the health inspector stops the line. // on shift // a perfect bake, and a f..."
+    "b": "makemecookies! · magmacrunch media home › ware › video games › makemecookies! MAKEME COOKIES! a mini simulator inspired by Overcooked A quick shift in a frantic cookie-making factory, with a very specific vibe. Run five stations at once to make as many as you can in a minute.Try not to catch things on fire or cause a health violation. // on shift // a perfect bake, and a full tray to ship // where to play // BROWSER ▶ PLAY free, in the arcade . Keys 1 to 5, or tap on a phone. WII a version for a Wii set up to run homebrew games, built on magnolia . It plays a full shift in Dolphin, a Wii emula..."
   },
   {
     "t": "media//search · magmacrunch media",
