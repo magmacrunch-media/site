@@ -1,735 +1,92 @@
 <!DOCTYPE html>
-<html lang="en" data-app="Gatefold" data-magma-theme="gatefold">
+<html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>GATE//FOLD</title>
-    <link rel="icon" type="image/png" href="favicon.png">
-    <link rel="stylesheet" href="../shell/fonts.css?v=08818834">
-    <link rel="stylesheet" href="typefaces.css?v=0763823d">
-    <link rel="stylesheet" href="../shell/app-shell.css?v=12781ff7">
-    <link rel="stylesheet" href="../shell/toast.css?v=2c51118f">
-    <link rel="stylesheet" href="../shell/dropdown.css?v=3025ec48">
-    <link rel="stylesheet" href="kit/magma-themes.css?v=36fa3988">
-    <link rel="stylesheet" href="kit/themes.css?v=38d89cb1">
-    <link rel="stylesheet" href="style.css?v=bf1e418b">
-
-    <script src="kit/boot.js?v=3867389f"></script>
-    <script src="kit/bridge-core.js?v=1a0ffb5c"></script>
-    <script src="kit/keys.js?v=a0ef34b7"></script>
-    <script src="kit/history.js?v=0a47fcb3"></script>
-    <script src="kit/docfile.js?v=d5f7c54d"></script>
-    <script src="kit/prefs.js?v=27328242"></script>
-    <script src="kit/modal.js?v=0549bda4"></script>
-    <script src="kit/dom.js?v=1d063261"></script>
-    <script src="kit/artstore.js?v=c63f56dc"></script>
-    <script src="kit/menu.js?v=21cff107"></script>
-    <script src="kit/themes.js?v=4355e8bc"></script>
-    <script src="kit/magma-themes-index.js?v=4c714fb1"></script>
-    <script src="bridge.js?v=4703062f"></script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>GATE//FOLD · magmacrunch media</title>
+  <meta property="og:title" content="GATE//FOLD · magmacrunch media">
+  <meta property="og:description" content="an album cover editor, from the square up to the vinyl jacket">
+  <meta property="og:image" content="https://magmacrunch.com/og/ware.png?v=1">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta property="og:site_name" content="magmacrunch media">
+  <meta property="og:locale" content="en_US">
+  <link rel="icon" type="image/x-icon" href="../../favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Courier+Prime:wght@400;700&display=swap">
+  <link rel="stylesheet" href="../../style.css?v=a59b9059">
+  <link rel="stylesheet" href="../crumbs.css?v=e00af2c5">
+  <style>
+:root{color-scheme:dark;--pr-accent: #f0a030;--pr-dim: #9a9db5;--pr-line: #34304a}*{box-sizing:border-box;margin:0;padding:0}body{font:15px/1.7 "Courier Prime",ui-monospace,SFMono-Regular,Menlo,monospace;background:#13141b;background-image:none;color:#e6e8f0;min-height:100vh;display:flex;flex-direction:column}body>*{width:100%}a{color:var(--pr-accent)}.tool-nav{margin-top:48px;padding:8px 24px;border-bottom:1px solid var(--pr-line);background:#13141b;flex-shrink:0}.tool-nav .breadcrumb{--crumb-accent: var(--pr-accent)}.hero h1{font-family:"Press Start 2P",monospace;font-weight:400;color:var(--pr-accent);text-shadow:3px 3px 0 #4a2e0a,6px 6px 0 #1f1405;letter-spacing:0.04em;margin-bottom:.9rem}.hero .tagline{font-size:15px;color:var(--pr-dim);margin-bottom:1.5rem}.open{display:inline-block;font-family:"Press Start 2P",monospace;font-size:11px;color:#13141b;background:var(--pr-accent);border:1px solid var(--pr-accent);padding:.8rem 1.1rem;text-decoration:none}.open:hover,.open:focus-visible{background:#f8e0c0;outline:none}.open-note{font-size:13px;color:var(--pr-dim);margin-top:.75rem}.sec h2{font-family:"Press Start 2P",monospace;font-size:12px;font-weight:400;color:var(--pr-accent);margin-bottom:1rem}.sec p+p,.sec p+ul,.sec ul+p{margin-top:.75rem}.sec ul{padding-left:1.25rem}.sec li+li{margin-top:.35rem}.sec li::marker{color:var(--pr-accent)}.about-links{display:flex;flex-wrap:wrap;gap:1rem;margin-top:1.25rem}.about-links a{text-decoration:none;font-family:"Press Start 2P",monospace;font-size:9px;padding:.55rem .8rem;border:1px solid var(--pr-line)}.about-links a:hover{border-color:var(--pr-accent)}footer{margin-top:auto;padding:1.5rem;text-align:center;font-size:12px;color:var(--pr-dim);border-top:1px solid var(--pr-line)}footer span{color:var(--pr-accent)}@media(max-width:480px){.about-links a{min-height:44px;display:inline-flex;align-items:center}}
+</style>
+  <link rel="stylesheet" href="../ware-page.css?v=549bdc52">
 </head>
-<body>
-    <div class="mobile-notice">
-        This tool is best experienced on a desktop or laptop.<br>
-        Please visit on a wider screen for the full workspace.
+<body class="ware-accent ware-page" style="--ware-accent:#f0a030">
+
+<nav id="auto-nav" data-depth="../../"></nav>
+
+<div class="tool-nav">
+  <div class="breadcrumb">
+    <a href="../../">home</a> <span class="sep">›</span>
+    <a href="../">ware</a> <span class="sep">›</span>
+    <a href="../utilities/">creative utilities</a> <span class="sep">›</span>
+    <span class="current">gate//fold</span>
+  </div>
+</div>
+
+<main>
+
+  <div class="hero">
+    <h1>GATE//FOLD</h1>
+    <p class="tagline">an album cover editor, from the square up to the vinyl jacket</p>
+    <a href="app/" class="open">&#9654; Open GATE//FOLD lite</a>
+    <p class="open-note">Runs in your browser. Nothing to install.</p>
+  </div>
+
+  <section class="sec">
+    <h2>What it does</h2>
+    <p>Build a cover out of shapes, waveforms, clip art, text and your own
+      photos. Text can run straight or round a curve. Photos come in by
+      button, by dragging them onto the page or by pasting, and the
+      eyedropper can pick colours straight off a reference image you keep
+      beside the cover.</p>
+    <p>The cover can be 512, 1024, 2048 or 4096 pixels square, and it
+      exports as a PNG.</p>
+  </section>
+
+  <section class="sec">
+    <h2>Lite</h2>
+    <p>The browser version makes square covers and nothing else. It can't
+      save a project to come back to, so finish a cover in one sitting and
+      export it.</p>
+    <p>The desktop version adds the print side: templates with bleed, folds
+      and crop marks for cassette J-cards, O-cards and shell labels, CD
+      booklets, tray cards and disc labels, vinyl jackets, and floppy and SD
+      card labels, with PDF export and sticker sheets you can print at home.
+      It also has a layers panel, and projects you can save and open
+      again.</p>
+  </section>
+
+  <section class="sec">
+    <h2>Built on</h2>
+    <p><a href="../magma-kit/">magma-kit</a>. The desktop version isn't out
+      yet.</p>
+    <div class="about-links">
+      <a href="app/">open lite</a>
+      <a href="../utilities/">more utilities</a>
+      <a href="mailto:info@magmacrunch.com?subject=GATE%2F%2FFOLD">contact</a>
     </div>
+  </section>
 
-    <header>
-        <div class="header-left">
-            <h1 class="glitch" data-text="GATE//FOLD">GATE//FOLD</h1>
+</main>
 
-            <nav class="menubar" id="menubar" aria-label="Main menu">
-                <div class="menu">
-                    <button class="menu-title" data-menu="file">FILE</button>
-                    <div class="menu-drop" role="menu">
-                        <button data-action="project:new" title="Start an empty cover">New<i>Ctrl+N</i></button>
-                        <button data-action="project:open" title="Open a .gatefold project">Open&hellip;<i>Ctrl+O</i></button>
-                        <hr>
-                        <button data-action="project:save" title="An .gatefold file holds every element, the canvas and the imported art. A PNG holds only pixels.">Save<i>Ctrl+S</i></button>
-                        <button data-action="project:save-as" title="Save the project under a new name">Save As&hellip;<i>Ctrl+Shift+S</i></button>
-                        <hr>
-                        <button data-action="file:import">Import Image&hellip;<i>Ctrl+I</i></button>
-                        <button data-action="file:load-font" title="A .ttf or .otf of your own. It is kept inside the project">Load Font&hellip;</button>
-                        <button data-action="file:export">Export PNG&hellip;<i>Ctrl+E</i></button>
-                        <button data-action="file:export-pdf" title="The cover at its print size with its bleed, trim and bleed boxes set, and crop and fold marks if they are on. Text is in the image at the document's dpi, so no font can go missing">Export PDF&hellip;</button>
-                        <button data-action="file:export-sheet" title="The design at every sticker position on its label sheet, as one page to print at 100%">Export Label Sheet&hellip;</button>
-                        <button data-action="file:export-sheet-pdf" title="The label sheet as a PDF the size of the page">Export Label Sheet PDF&hellip;</button>
-                        <button data-action="file:print-marks" title="Add crop and fold marks on paper outside the bleed. The exported image gets bigger; the card does not.">Crop &amp; Fold Marks</button>
-                        <hr>
-                        <button data-action="app:quit">Exit<i>Alt+F4</i></button>
-                    </div>
-                </div>
-                <div class="menu">
-                    <button class="menu-title" data-menu="edit">EDIT</button>
-                    <div class="menu-drop" role="menu">
-                        <button data-action="edit:undo">Undo<i>Ctrl+Z</i></button>
-                        <button data-action="edit:redo">Redo<i>Ctrl+Shift+Z</i></button>
-                        <hr>
-                        <button data-action="edit:copy">Copy<i>Ctrl+C</i></button>
-                        <button data-action="edit:paste">Paste<i>Ctrl+V</i></button>
-                        <button data-action="edit:delete">Delete<i>Del</i></button>
-                        <hr>
-                        <button data-action="edit:clear">Clear All</button>
-                        <hr>
-                        <button data-action="edit:lock" title="Fix the selected element in place">Lock Selected<i>Ctrl+L</i></button>
-                        <button data-action="edit:unlock-all" title="Release everything that was locked">Unlock All<i>Ctrl+Shift+L</i></button>
-                    </div>
-                </div>
-                <div class="menu">
-                    <button class="menu-title" data-menu="view">VIEW</button>
-                    <div class="menu-drop" role="menu">
-                        <button data-action="view:layers" data-toggles="layersToggle">Layers<i>F7</i></button>
-                        <button data-action="view:reference" data-toggles="refToggle">Reference Panel</button>
-                        <hr>
-                        <button data-action="view:print-guides" title="Fold lines and the safe margin. Never exported.">Fold &amp; Safe Guides</button>
-                    </div>
-                </div>
-                <div class="menu">
-                    <button class="menu-title" data-menu="help">HELP</button>
-                    <div class="menu-drop" role="menu">
-                        <button data-action="help:reference">Reference&hellip;<i>F1</i></button>
-                        <button data-action="help:credits">Credits&hellip;</button>
-                    </div>
-                </div>
-            </nav>
+<footer>
+  &copy; 2026 <span>magmacrunch media</span>
+</footer>
 
-            <span class="doc-name" id="doc-name"></span>
-        </div>
-        <div class="header-right">
-            <span class="theme-picker">
-                <button class="theme-pick" id="themeBtn" type="button" aria-haspopup="listbox"
-                        aria-expanded="false" aria-controls="theme-list"
-                        title="Colour theme: hover or arrow through the list to preview, click or Enter to keep"></button>
-                <ul class="theme-list" id="theme-list" role="listbox" hidden></ul>
-            </span>
-            <button class="theme-mode" id="themeModeBtn" type="button" title="Dark, light or follow the system">Dark</button>
-            <span class="sys-stat" id="canvasSizeStat">1024&times;1024</span>
-            <span class="sys-stat" id="elementCountStat">0 ELEMENTS</span>
-            <button class="sys-stat warn-stat" id="printWarnStat" type="button" hidden></button>
-        </div>
-    </header>
-
-    <nav class="tool-nav" aria-label="breadcrumb" style="font-family: 'Press Start 2P', monospace; font-size: 8px; letter-spacing: 0.1em; color: var(--backlink-color);">
-        <a href="../" class="back-link">ware</a> › <a href="../utilities/" class="back-link">creative utilities</a> › <span aria-current="page" style="color: var(--backlink-hover);">album//art</span>
-    </nav>
-
-    <div class="workspace">
-        <aside class="panel tools-panel">
-            <div class="action-btns">
-                <button class="action-btn" id="undoBtn" title="Undo (Ctrl+Z)">UNDO</button>
-                <button class="action-btn" id="redoBtn" title="Redo (Ctrl+Shift+Z)">REDO</button>
-            </div>
-            <div class="action-btns">
-                <button class="action-btn danger" id="deleteBtn" title="Delete selected (Del)">DELETE</button>
-                <button class="action-btn" id="clearBtn">CLEAR ALL</button>
-            </div>
-
-            <div class="panel-divider"></div>
-
-            <div class="prop-group">
-                <div class="canvas-bg-row">
-                    <div class="canvas-bg-item">
-                        <label class="prop-label">CANVAS</label>
-                        <div class="custom-dropdown" id="canvasSizeDropdown">
-                            <div class="dropdown-selected">
-                                <span>1024</span>
-                                <span class="dropdown-arrow">&#9662;</span>
-                            </div>
-                            <div class="dropdown-options"></div>
-                        </div>
-                    </div>
-                    <div class="canvas-bg-item">
-                        <label class="prop-label">BG</label>
-                        <div class="color-row">
-                            <input type="color" id="bgColor" value="#ffffff" class="color-input">
-                            <input type="text" id="bgHex" class="color-hex-input" value="#ffffff" maxlength="7">
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="panel-divider"></div>
-
-            <div class="tool-grid">
-                <button class="tool-btn active" data-tool="select" title="Select / Move (V) - Esc or click outside to deselect">
-                    <span class="tool-icon">&#9658;</span>
-                    <span class="tool-name">SELECT</span>
-                </button>
-                <button class="tool-btn" data-tool="text" title="Text (T)">
-                    <span class="tool-icon">T</span>
-                    <span class="tool-name">TEXT</span>
-                </button>
-                <button class="tool-btn" id="imageBtn" title="Import Image (Ctrl+I) - or drop one on the canvas">
-                    <span class="tool-icon">&#9634;</span>
-                    <span class="tool-name">IMAGE</span>
-                </button>
-            </div>
-            <input type="file" id="imageFileInput" accept="image/*" hidden>
-
-            <div class="panel-divider"></div>
-
-            <button class="shapes-btn" id="shapesBtn" title="Choose a shape">
-                <span class="shapes-btn-label" id="shapesBtnLabel">RECT</span>
-                <span class="shapes-btn-arrow">&#9662;</span>
-            </button>
-
-            <div class="prop-group" id="waveProps" hidden>
-                <label class="prop-label">FREQUENCY</label>
-                <div class="range-row">
-                    <input type="range" id="wavelength" min="1" max="20" value="5" class="range-input">
-                    <span class="range-val" id="wavelengthVal">5</span>
-                </div>
-            </div>
-
-            <div class="prop-group" id="waveModeGroup" hidden>
-                <label class="prop-label">WAVE MODE</label>
-                <div class="action-btns">
-                    <button class="action-btn" id="waveFilledBtn">FILLED</button>
-                    <button class="action-btn" id="waveOpenBtn">OPEN</button>
-                </div>
-            </div>
-
-            <div class="panel-divider"></div>
-
-            <div class="panel-label">
-                REFERENCE
-                <button class="section-toggle active" id="refToggle" title="Show the reference panel">&#9662;</button>
-            </div>
-            <div class="ref-section" id="refSection">
-                <button class="ref-upload-btn" id="refUploadBtn">UPLOAD IMAGE</button>
-                <input type="file" id="refFileInput" accept="image/*" hidden>
-                <div class="ref-preview-wrap" id="refPreviewWrap">
-                    <canvas id="refCanvas" class="ref-canvas"></canvas>
-                    <button class="ref-clear-btn" id="refClearBtn" title="Remove reference">&times;</button>
-                </div>
-                <p class="ref-hint">click to sample color</p>
-            </div>
-        </aside>
-
-        <div class="shapes-popup" id="shapesPopup">
-            <div class="popup-section-label">BASIC</div>
-            <div class="shapes-popup-grid">
-                <button class="shape-btn" data-tool="rect" title="Rectangle (R)">
-                    <span class="tool-icon">&#9645;</span>
-                    <span class="tool-name">RECT</span>
-                </button>
-                <button class="shape-btn" data-tool="circle" title="Circle (C)">
-                    <span class="tool-icon">&#9675;</span>
-                    <span class="tool-name">CIRCLE</span>
-                </button>
-                <button class="shape-btn" data-tool="line" title="Line (L)">
-                    <span class="tool-icon">&#9585;</span>
-                    <span class="tool-name">LINE</span>
-                </button>
-                <button class="shape-btn" data-tool="triangle" title="Triangle">
-                    <span class="tool-icon">&#9653;</span>
-                    <span class="tool-name">TRI</span>
-                </button>
-                <button class="shape-btn" data-tool="pentagon" title="Pentagon">
-                    <span class="tool-icon">&#11043;</span>
-                    <span class="tool-name">PENTA</span>
-                </button>
-                <button class="shape-btn" data-tool="hexagon" title="Hexagon">
-                    <span class="tool-icon">&#11044;</span>
-                    <span class="tool-name">HEXA</span>
-                </button>
-                <button class="shape-btn" data-tool="diamond" title="Diamond">
-                    <span class="tool-icon">&#9671;</span>
-                    <span class="tool-name">DIAMOND</span>
-                </button>
-                <button class="shape-btn" data-tool="star" title="Star">
-                    <span class="tool-icon">&#9733;</span>
-                    <span class="tool-name">STAR</span>
-                </button>
-                <button class="shape-btn" data-tool="arrow" title="Arrow">
-                    <span class="tool-icon">&#10148;</span>
-                    <span class="tool-name">ARROW</span>
-                </button>
-                <button class="shape-btn" data-tool="roundrect" title="Rounded Rect">
-                    <span class="tool-icon">&#9711;</span>
-                    <span class="tool-name">R. RECT</span>
-                </button>
-                <button class="shape-btn" data-tool="ring" title="Ring: a circle with a hole, for a disc label">
-                    <span class="tool-icon">&#9678;</span>
-                    <span class="tool-name">RING</span>
-                </button>
-            </div>
-            <div class="popup-section-label">WAVES</div>
-            <div class="shapes-popup-grid">
-                <button class="shape-btn" data-tool="sine" title="Sine Wave">
-                    <span class="tool-icon">&#8767;</span>
-                    <span class="tool-name">SINE</span>
-                </button>
-                <button class="shape-btn" data-tool="squarewave" title="Square Wave">
-                    <span class="tool-icon">&#8861;</span>
-                    <span class="tool-name">SQUARE</span>
-                </button>
-                <button class="shape-btn" data-tool="sawtooth" title="Sawtooth Wave">
-                    <span class="tool-icon">&#8894;</span>
-                    <span class="tool-name">SAWTOOTH</span>
-                </button>
-                <button class="shape-btn" data-tool="trianglewave" title="Triangle Wave">
-                    <span class="tool-icon">&#8895;</span>
-                    <span class="tool-name">TRI WAVE</span>
-                </button>
-                <button class="shape-btn" data-tool="step" title="Step Function">
-                    <span class="tool-icon">&#8726;</span>
-                    <span class="tool-name">STEP</span>
-                </button>
-                <button class="shape-btn" data-tool="pulse" title="Pulse Train">
-                    <span class="tool-icon">&#8863;</span>
-                    <span class="tool-name">PULSE</span>
-                </button>
-            </div>
-            <div class="popup-section-label">CLIP ART</div>
-            <div class="shapes-popup-grid" id="clipartGrid">
-            </div>
-        </div>
-
-        <div class="center-area">
-            <div class="canvas-wrap" id="canvasWrap">
-                <canvas id="mainCanvas" width="1024" height="1024"></canvas>
-            </div>
-            <div class="canvas-hint" id="canvasHint" aria-live="polite">
-                <span class="canvas-hint-title">EMPTY COVER</span>
-                <span class="canvas-hint-text" id="canvasHintText">PICK A SHAPE OR TEXT, THEN DRAG ON THE CANVAS</span>
-                <span class="canvas-hint-keys">R RECT &middot; T TEXT &middot; CTRL+I IMAGE &middot; OR DROP ONE HERE</span>
-            </div>
-        </div>
-
-        <aside class="panel props-panel">
-            <div class="layers-section" id="layersSection">
-                <div class="panel-label">
-                    LAYERS
-                    <button class="section-toggle active" id="layersToggle" title="Show the layer list (F7)">&#9662;</button>
-                </div>
-                <div class="layers-list" id="layersList">
-                </div>
-                <div class="panel-divider"></div>
-            </div>
-
-            <div class="panel-label">PROPERTIES</div>
-
-            <div class="prop-group">
-                <label class="prop-label">FILL</label>
-                <div class="color-row">
-                    <input type="color" id="fillColor" value="#ffffff" class="color-input">
-                    <input type="text" id="fillHex" class="color-hex-input" value="#ffffff" maxlength="7">
-                    <button class="no-fill-btn" id="noFillBtn" title="No fill">&#8210;</button>
-                </div>
-            </div>
-
-            <div class="prop-group">
-                <label class="prop-label">STROKE</label>
-                <div class="color-row">
-                    <input type="color" id="strokeColor" value="#000000" class="color-input">
-                    <input type="text" id="strokeHex" class="color-hex-input" value="#000000" maxlength="7">
-                    <button class="no-fill-btn" id="noStrokeBtn" title="No stroke">&#8210;</button>
-                </div>
-            </div>
-
-            <div class="prop-group">
-                <label class="prop-label">STROKE WIDTH</label>
-                <div class="range-row">
-                    <input type="range" id="strokeWidth" min="1" max="40" value="4" class="range-input">
-                    <span class="range-val" id="strokeWidthVal">4</span>
-                </div>
-            </div>
-
-            <div class="panel-divider"></div>
-
-            <div class="prop-group" id="rotationGroup" hidden>
-                <label class="prop-label">ROTATION</label>
-                <div class="range-row">
-                    <button class="rot-btn" id="rotMinus" title="Rotate -5 degrees">&#8722;</button>
-                    <input type="range" id="rotation" min="0" max="360" value="0" class="range-input">
-                    <button class="rot-btn" id="rotPlus" title="Rotate +5 degrees">+</button>
-                    <span class="range-val" id="rotationVal">0&deg;</span>
-                </div>
-            </div>
-
-            <div class="prop-group" id="ringHoleGroup" hidden>
-                <label class="prop-label" title="The hole, as a percentage of the ring's width">HOLE</label>
-                <div class="range-row">
-                    <input type="range" id="ringHole" min="5" max="95" value="50" class="range-input">
-                    <span class="range-val" id="ringHoleVal">50%</span>
-                </div>
-            </div>
-
-            <div class="prop-group" id="stepCountGroup" hidden>
-                <label class="prop-label">STEPS</label>
-                <div class="range-row">
-                    <input type="range" id="stepCount" min="2" max="20" value="5" class="range-input">
-                    <span class="range-val" id="stepCountVal">5</span>
-                </div>
-            </div>
-
-            <div class="prop-group" id="dutyGroup" hidden>
-                <label class="prop-label">DUTY CYCLE</label>
-                <div class="range-row">
-                    <input type="range" id="dutyCycle" min="5" max="95" value="20" class="range-input">
-                    <span class="range-val" id="dutyCycleVal">20%</span>
-                </div>
-            </div>
-
-            <div class="prop-group" id="opacityGroup" hidden>
-                <label class="prop-label">OPACITY</label>
-                <div class="range-row">
-                    <input type="range" id="opacity" min="0" max="100" value="100" class="range-input">
-                    <span class="range-val" id="opacityVal">100%</span>
-                </div>
-            </div>
-
-            <div class="prop-group" id="imageScaleGroup" hidden>
-                <label class="prop-label">FIT TO CANVAS</label>
-                <div class="action-btns">
-                    <button class="action-btn" id="imageCoverBtn" title="Fill the whole canvas, cropping the overflow">&#9632; COVER</button>
-                    <button class="action-btn" id="imageContainBtn" title="Fit the whole image inside the canvas">&#9633; FIT</button>
-                </div>
-
-                <label class="prop-label">SCALE</label>
-                <div class="range-row">
-                    <input type="range" id="imageScale" min="10" max="500" value="100" class="range-input">
-                    <span class="range-val" id="imageScaleVal">100%</span>
-                </div>
-                <div class="prop-group" id="imageDimsGroup">
-                    <label class="prop-label">SIZE</label>
-                    <div class="range-row">
-                        <span class="range-val" id="imageDims">&mdash;</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="prop-group" id="lockGroup" hidden>
-                <label class="prop-label">POSITION</label>
-                <div class="action-btns">
-                    <button class="action-btn" id="lockBtn" title="Fix this element in place (Ctrl+L)">LOCK</button>
-                </div>
-            </div>
-
-            <div class="prop-group" id="zorderGroup" hidden>
-                <label class="prop-label">LAYER ORDER</label>
-                <div class="action-btns">
-                    <button class="action-btn" id="bringForwardBtn" title="Bring Forward">&#9650; FWD</button>
-                    <button class="action-btn" id="sendBackBtn" title="Send Backward">&#9660; BACK</button>
-                </div>
-            </div>
-
-            <div class="prop-group" id="textProps" hidden>
-                <label class="prop-label">FONT</label>
-                <div class="custom-dropdown" id="fontSelectDropdown">
-                    <div class="dropdown-selected">
-                        <span>Press Start 2P</span>
-                        <span class="dropdown-arrow">&#9662;</span>
-                    </div>
-                    <div class="dropdown-options">
-                        <div class="dropdown-option active" data-value="Press Start 2P">Press Start 2P</div>
-                        <div class="dropdown-option" data-value="VT323">VT323</div>
-                        <div class="dropdown-option" data-value="Silkscreen">Silkscreen</div>
-                        <div class="dropdown-option" data-value="DotGothic16">DotGothic16</div>
-                        <div class="dropdown-option" data-value="Pixelify Sans">Pixelify Sans</div>
-                        <div class="dropdown-option" data-value="Courier Prime">Courier Prime</div>
-                        <div class="dropdown-option" data-value="Space Mono">Space Mono</div>
-                        <div class="dropdown-option" data-value="Bebas Neue">Bebas Neue</div>
-                        <div class="dropdown-option" data-value="Oswald">Oswald</div>
-                        <div class="dropdown-option" data-value="Playfair Display">Playfair Display</div>
-                        <div class="dropdown-option" data-value="Inter">Inter</div>
-                        <div class="dropdown-option" data-value="Times New Roman" title="This computer's Times New Roman where it has one; otherwise Liberation Serif, shipped with the app, which has the same letter widths, so a cover lays out the same">Times New Roman</div>
-                        <div class="dropdown-option" data-value="Georgia" title="This computer's Georgia where it has one; otherwise Gelasio, shipped with the app, which has the same letter widths, so a cover lays out the same">Georgia</div>
-                        <div class="dropdown-option" data-value="Impact" title="Not shipped with GATE//FOLD: it comes from this computer. A machine without it draws a fallback face, and an export made there comes out in it">Impact (SYSTEM)</div>
-                        <div class="dropdown-option" data-value="Arial" title="This computer's Arial where it has one; otherwise Liberation Sans, shipped with the app, which has the same letter widths, so a cover lays out the same">Arial</div>
-                    </div>
-                </div>
-                <button class="export-btn" id="loadFontBtn" type="button" title="A .ttf or .otf of your own, from FONT//LITHO or anywhere. It is kept inside the project, so it opens the same on another machine">LOAD FONT</button>
-            </div>
-
-            <div class="prop-group" id="fontSizeGroup" hidden>
-                <label class="prop-label">FONT SIZE</label>
-                <div class="range-row">
-                    <input type="range" id="fontSize" min="8" max="200" value="48" class="range-input">
-                    <span class="range-val" id="fontSizeVal">48</span>
-                </div>
-                <label class="prop-label" title="Bend the text round a circle, in degrees of arc: up for an arch, down for a smile. A curve sets one line">CURVE</label>
-                <div class="range-row">
-                    <input type="range" id="textCurve" min="-340" max="340" value="0" step="1" class="range-input">
-                    <span class="range-val" id="textCurveVal">0&deg;</span>
-                </div>
-                <label class="prop-label" title="Bold and italic, where the face has them. A face without one has the button greyed out rather than a faked style">STYLE</label>
-                <div class="action-btns">
-                    <button class="action-btn" id="boldBtn" type="button">BOLD</button>
-                    <button class="action-btn" id="italicBtn" type="button">ITALIC</button>
-                </div>
-                <label class="prop-label" title="Where each line sits inside the widest one. One line is its own widest, so this shows with two or more">ALIGN</label>
-                <div class="action-btns">
-                    <button class="action-btn active" id="alignLeftBtn" type="button">LEFT</button>
-                    <button class="action-btn" id="alignCenterBtn" type="button">CENTRE</button>
-                    <button class="action-btn" id="alignRightBtn" type="button">RIGHT</button>
-                </div>
-                <label class="prop-label" title="Space added between letters, in thousandths of the font size">LETTER SPACING</label>
-                <div class="range-row">
-                    <input type="range" id="textTracking" min="-200" max="1000" value="0" step="10" class="range-input">
-                    <span class="range-val" id="textTrackingVal">0</span>
-                </div>
-                <label class="prop-label" title="Line height, as a percentage of the font size">LINE SPACING</label>
-                <div class="range-row">
-                    <input type="range" id="textLeading" min="60" max="300" value="130" step="5" class="range-input">
-                    <span class="range-val" id="textLeadingVal">130%</span>
-                </div>
-                <button class="export-btn" id="fitDiscBtn" type="button" hidden title="Set this text round the disc's rim, just inside the safe ring, with its arc on the disc's centre. A smile goes round the bottom">FIT TO DISC</button>
-            </div>
-
-            <button class="export-btn" id="editTextBtn" hidden>EDIT TEXT</button>
-
-            <div class="panel-divider"></div>
-
-            <div class="prop-group">
-                <label class="prop-label">FILE NAME</label>
-                <input type="text" id="fileName" class="file-input" value="cover">
-            </div>
-            <button class="export-btn" id="exportBtn">EXPORT PNG</button>
-        </aside>
-    </div>
-
-    <dialog class="modal-box" id="textModal">
-        <div class="modal-header">ADD TEXT<button class="modal-close" title="Close">&times;</button></div>
-        <textarea id="modalTextInput" class="modal-textarea" placeholder="Type here..." rows="3"></textarea>
-        <div class="modal-row">
-            <label class="prop-label">FONT</label>
-            <div class="custom-dropdown" id="modalFontSelectDropdown">
-                <div class="dropdown-selected">
-                    <span>Press Start 2P</span>
-                    <span class="dropdown-arrow">&#9662;</span>
-                </div>
-                <div class="dropdown-options">
-                    <div class="dropdown-option active" data-value="Press Start 2P">Press Start 2P</div>
-                    <div class="dropdown-option" data-value="VT323">VT323</div>
-                    <div class="dropdown-option" data-value="Silkscreen">Silkscreen</div>
-                    <div class="dropdown-option" data-value="DotGothic16">DotGothic16</div>
-                    <div class="dropdown-option" data-value="Pixelify Sans">Pixelify Sans</div>
-                    <div class="dropdown-option" data-value="Courier Prime">Courier Prime</div>
-                    <div class="dropdown-option" data-value="Space Mono">Space Mono</div>
-                    <div class="dropdown-option" data-value="Bebas Neue">Bebas Neue</div>
-                    <div class="dropdown-option" data-value="Oswald">Oswald</div>
-                    <div class="dropdown-option" data-value="Playfair Display">Playfair Display</div>
-                    <div class="dropdown-option" data-value="Inter">Inter</div>
-                    <div class="dropdown-option" data-value="Times New Roman" title="This computer's Times New Roman where it has one; otherwise Liberation Serif, shipped with the app, which has the same letter widths, so a cover lays out the same">Times New Roman</div>
-                    <div class="dropdown-option" data-value="Georgia" title="This computer's Georgia where it has one; otherwise Gelasio, shipped with the app, which has the same letter widths, so a cover lays out the same">Georgia</div>
-                    <div class="dropdown-option" data-value="Impact" title="Not shipped with GATE//FOLD: it comes from this computer. A machine without it draws a fallback face, and an export made there comes out in it">Impact (SYSTEM)</div>
-                    <div class="dropdown-option" data-value="Arial" title="This computer's Arial where it has one; otherwise Liberation Sans, shipped with the app, which has the same letter widths, so a cover lays out the same">Arial</div>
-                </div>
-            </div>
-        </div>
-        <div class="modal-row">
-            <label class="prop-label">SIZE</label>
-            <input type="range" id="modalFontSize" min="8" max="200" value="48" class="range-input">
-            <span class="range-val" id="modalFontSizeVal">48</span>
-        </div>
-        <div class="modal-row">
-            <label class="prop-label">FILL</label>
-            <div class="color-row">
-                <input type="color" id="modalFillColor" value="#ffffff" class="color-input">
-                <input type="text" id="modalFillHex" class="color-hex-input" value="#ffffff" maxlength="7">
-                <button class="no-fill-btn" id="modalNoFillBtn" title="No fill">&#8210;</button>
-            </div>
-        </div>
-        <div class="modal-row">
-            <label class="prop-label">STROKE</label>
-            <div class="color-row">
-                <input type="color" id="modalStrokeColor" value="#000000" class="color-input">
-                <input type="text" id="modalStrokeHex" class="color-hex-input" value="#000000" maxlength="7">
-                <button class="no-fill-btn" id="modalNoStrokeBtn" title="No stroke">&#8210;</button>
-            </div>
-        </div>
-        <div class="modal-btns">
-            <button class="action-btn" id="modalCancel">CANCEL</button>
-            <button class="export-btn" id="modalAdd">ADD TEXT</button>
-        </div>
-    </dialog>
-
-    <dialog class="modal-box doc-modal" id="referenceModal">
-        <div class="modal-header">REFERENCE<button class="modal-close" title="Close">&times;</button></div>
-        <div class="modal-body">
-            <div class="sub-label">tools</div>
-            <dl class="ref-grid">
-                <dt><kbd>V</kbd></dt><dd>Select and move</dd>
-                <dt><kbd>T</kbd></dt><dd>Text</dd>
-                <dt><kbd>R</kbd> <kbd>C</kbd> <kbd>L</kbd></dt><dd>Rectangle, circle, line</dd>
-            </dl>
-
-            <div class="sub-label">the selection</div>
-            <dl class="ref-grid">
-                <dt><kbd>&larr;&uarr;&darr;&rarr;</kbd></dt><dd>Nudge a pixel. Hold <kbd>Shift</kbd> for ten</dd>
-                <dt><kbd>Esc</kbd></dt><dd>Deselect. The way out once art covers the canvas</dd>
-                <dt><kbd>Del</kbd></dt><dd>Delete the selected element</dd>
-                <dt><kbd>Ctrl+C</kbd> <kbd>Ctrl+V</kbd></dt><dd>Copy and paste it</dd>
-                <dt><kbd>Ctrl+L</kbd></dt><dd>Lock it in place</dd>
-                <dt><kbd>Ctrl+Shift+L</kbd></dt><dd>Unlock everything</dd>
-            </dl>
-
-            <div class="sub-label">project</div>
-            <dl class="ref-grid">
-                <dt><kbd>Ctrl+N</kbd> <kbd>Ctrl+O</kbd></dt><dd>New, and open a .gatefold project</dd>
-                <dt><kbd>Ctrl+S</kbd></dt><dd>Save. Add <kbd>Shift</kbd> for Save As</dd>
-                <dt><kbd>Ctrl+I</kbd> <kbd>Ctrl+E</kbd></dt><dd>Import an image, export a PNG</dd>
-                <dt><kbd>Ctrl+Z</kbd></dt><dd>Undo. Add <kbd>Shift</kbd> to redo</dd>
-                <dt><kbd>F7</kbd> <kbd>F1</kbd></dt><dd>Layers, and this card</dd>
-            </dl>
-
-            <div class="sub-label">things that are not keys</div>
-            <p>Drag the handle above a selection to rotate it. Drop an image on
-                the canvas, or paste one. Click the reference image to sample a
-                colour off it.</p>
-
-            <div class="sub-label">centring</div>
-            <p>Drag an element toward the middle and it snaps to the centre of
-                the cover, with a line showing which axis caught. Each axis is
-                separate, so a title can be centred across the cover while
-                staying high on it.</p>
-
-            <div class="sub-label">locking</div>
-            <p>A photo fitted with COVER fills the canvas, so every click that
-                misses the text on top of it lands on the photo. Lock it and
-                clicks pass straight through. Lock it from the panel, the layers
-                list, or <kbd>Ctrl+L</kbd>.</p>
-
-            <div class="ref-print">
-                <div class="sub-label">print</div>
-                <p>CANVAS in the side panel picks the format: a square cover,
-                    or a print template for a cassette, a CD, a record, a floppy
-                    disk or an SD card. A template is drawn at its real size,
-                    with guides that never export: the TRIM line, where the
-                    knife goes, with the bleed past it, which background and
-                    photos should run into so the cut leaves no white sliver;
-                    the SAFE line inside it, which text should stay within; and
-                    the FOLDS, with each panel named. Turn them on and off with
-                    View, Fold &amp; Safe Guides.</p>
-                <p>Hatched areas are parts of the card or the case a die cuts
-                    away, such as a cassette label's window or an SD card's cut
-                    corner. Art over them is lost, so keep anything that matters
-                    off them.</p>
-                <p>File, Crop &amp; Fold Marks adds the marks a printer trims
-                    and folds by, on paper outside the bleed. The exported image
-                    gets bigger; the card does not.</p>
-                <p>For a sticker sold on a sheet, such as the CD and mini CD
-                    labels, File, Export Label Sheet puts the design at every
-                    sticker on one page. Print it at 100%, never fit to page,
-                    or the stickers miss their cuts.</p>
-            </div>
-
-            <div class="sub-label">the two files</div>
-            <p>A <strong>.gatefold</strong> file is the whole cover: every
-                element, the canvas, and the imported art itself. A
-                <strong>PNG</strong> is only pixels. Exporting is not saving.</p>
-        </div>
-        <div class="modal-btns">
-            <button class="export-btn" id="referenceClose">CLOSE</button>
-        </div>
-    </dialog>
-
-    <dialog class="modal-box doc-modal" id="creditsModal">
-        <div class="modal-header">CREDITS<button class="modal-close" title="Close">&times;</button></div>
-        <div class="modal-body">
-            <p class="credits-lede">GATE//FOLD <span id="creditsVersion"></span><br>
-                An album-art editor by <strong>magmacrunch media</strong>. The
-                desktop app adds print templates, from cassette J-cards to SD
-                card labels.</p>
-
-            <div class="sub-label">licence</div>
-            <p>PolyForm Noncommercial 1.0.0. Copyright 2026 magmacrunch media,
-                magmacrunch.com. Free to use for anything that is not a
-                commercial purpose; the full text ships beside the app.</p>
-
-            <div class="sub-label">typefaces</div>
-            <p>Press Start 2P, Courier Prime, VT323, Silkscreen, DotGothic16,
-                Pixelify Sans, Space Mono, Bebas Neue, Oswald, Playfair Display
-                and Inter, all under the SIL Open Font License 1.1, whose text
-                ships beside the faces in <code>fonts/</code>. Self-hosted
-                rather than fetched, so a cover looks the same offline,
-                and so an export cannot come out in the fallback face.
-                Times New Roman, Georgia and Arial are the computer's where it
-                has them; where it does not, Liberation Serif, Gelasio and
-                Liberation Sans stand in, also under the SIL Open Font
-                License, with the same letter widths, so a cover lays out the
-                same. Impact, marked SYSTEM in the picker, has no open
-                equivalent and is the computer's alone.</p>
-
-            <div class="sub-label">clip art</div>
-            <p>The 27 icons are from <strong>Lucide</strong>, under the ISC
-                licence. They are drawn as canvas paths rather than embedded as
-                images, so they take the fill and stroke of the element.</p>
-
-            <div class="sub-label">built on</div>
-            <p><strong>magma-kit</strong>: the shared shell, undo stack,
-                dialogs and art store behind this app and the other magmacrunch
-                desktop apps. <strong>Tauri</strong> wraps the desktop build.</p>
-        </div>
-        <div class="modal-btns">
-            <button class="export-btn" id="creditsClose">CLOSE</button>
-        </div>
-    </dialog>
-
-    <dialog class="modal-box" id="sheet-dialog">
-        <div class="modal-header">LABEL SHEET<button class="modal-close" title="Close">&times;</button></div>
-        <p class="modal-message">Which sheet are you printing on? Each is laid out from its maker's published figures.</p>
-        <div class="sheet-choices" id="sheet-choices"></div>
-        <div class="modal-btns">
-            <button class="action-btn" id="sheet-cancel">CANCEL</button>
-        </div>
-    </dialog>
-
-    <dialog class="modal-box" id="confirm-dialog">
-        <div class="modal-header">GATE//FOLD<button class="modal-close" title="Close">&times;</button></div>
-        <p class="modal-message" id="confirm-message"></p>
-        <div class="modal-btns">
-            <button class="action-btn" id="confirm-cancel">CANCEL</button>
-            <button class="export-btn" id="confirm-ok">OK</button>
-        </div>
-    </dialog>
-
-    <footer>
-        <button class="footer-text" id="credits-link">GATE//FOLD <span id="app-version">v1.18.0</span> &middot; <span>MAGMACRUNCH MEDIA</span></button>
-    </footer>
-
-    <script src="../shell/toast.js?v=d87a2776"></script>
-    <script src="../shell/dropdown.js?v=2aa77ebe"></script>
-    <script src="core/tier.js?v=6b0c5f01"></script>
-    <script src="core/palette.js?v=c5bd2864"></script>
-    <script src="core/element.js?v=a17cab52"></script>
-    <script src="core/waves.js?v=24613e92"></script>
-    <script src="core/geometry.js?v=eb44f129"></script>
-    <script src="core/guides.js?v=0efe7804"></script>
-    <script src="core/panels.js?v=2b21081c"></script>
-    <script src="core/marks.js?v=b1a79fe9"></script>
-    <script src="core/clipart.js?v=e2ffe43f"></script>
-    <script src="core/keybindings.js?v=8bdfd29d"></script>
-    <script src="core/artstore.js?v=3f878c18"></script>
-    <script src="core/formats.js?v=69500b25"></script>
-    <script src="core/pngmeta.js?v=4f6af6e4"></script>
-    <script src="core/pdf.js?v=e8ef5398"></script>
-    <script src="core/userfonts.js?v=3e03781e"></script>
-    <script src="core/gatefold.js?v=330efa3b"></script>
-    <script src="platform.js?v=5716e9a7"></script>
-    <script src="canvas.js?v=40d7e2b8"></script>
-    <script src="images.js?v=dda9f723"></script>
-    <script src="render.js?v=90a136d8"></script>
-    <script src="props.js?v=f4c4f8a2"></script>
-    <script src="tools.js?v=8254dc67"></script>
-    <script src="reference.js?v=8000fd32"></script>
-    <script src="textmodal.js?v=40751467"></script>
-    <script src="png.js?v=16e934e1"></script>
-    <script src="export.js?v=4c533216"></script>
-    <script src="import.js?v=7433e741"></script>
-    <script src="userfonts.js?v=fffff4e3"></script>
-    <script src="layers.js?v=e387f1ad"></script>
-    <script src="confirm.js?v=06da8883"></script>
-    <script src="theme.js?v=71e11d7c"></script>
-    <script src="shapes-popup.js?v=91114ebf"></script>
-    <script src="hint.js?v=d0bfa1ca"></script>
-    <script src="project-ui.js?v=58e94906"></script>
-    <script src="help-ui.js?v=7268519d"></script>
-    <script src="menu.js?v=483067ff"></script>
-    <script src="session.js?v=c0de8f9c"></script>
-    <script src="sizes.js?v=9e97307c"></script>
-    <script src="main.js?v=1dec16e2"></script>
+<script src="../../nav.js?v=dcff84a5"></script>
 </body>
 </html>
