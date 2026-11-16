@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="../../shell/toast.css?v=2c51118f">
     <link rel="stylesheet" href="kit/magma-themes.css?v=36fa3988">
     <link rel="stylesheet" href="kit/themes.css?v=38d89cb1">
-    <link rel="stylesheet" href="style.css?v=8e3d4368">
+    <link rel="stylesheet" href="style.css?v=3bb29f4b">
 </head>
 <body>
     <header class="app-header">
@@ -26,11 +26,13 @@
             <label>Grid <select id="in-grid" title="What notes snap to"></select></label>
             <label class="check"><input id="in-loop" type="checkbox" checked> Loop</label>
             <span class="spacer"></span>
+            <button id="btn-scope" type="button" aria-pressed="false" title="An oscilloscope on everything the song plays">Scope</button>
             <span class="file-picker">
                 <button id="btn-file" type="button" aria-haspopup="menu" aria-expanded="false" aria-controls="file-menu" title="New, open, save and export">File</button>
                 <span id="file-menu" class="menu" role="menu" aria-label="File" hidden>
                     <button id="btn-new" role="menuitem" type="button" title="Start a new song">New</button>
                     <button id="btn-open" role="menuitem" type="button" title="Open a song">Open&hellip;<i>Ctrl+O</i></button>
+                    <button id="btn-append" role="menuitem" type="button" title="Play another song after this one, as many times as you like">Append&hellip;</button>
                     <button id="btn-save" role="menuitem" type="button" title="Save the song">Save<i>Ctrl+S</i></button>
                     <button id="btn-save-as" role="menuitem" type="button" title="Save the song to a new file, leaving the old one as it was">Save As&hellip;<i>Ctrl+Shift+S</i></button>
                     <span class="menu-sep" role="separator"></span>
@@ -98,7 +100,6 @@
         <span id="status">Click: add · drag: move · right-click: delete · Shift-drag: select</span>
         <span class="footer-end">
             <span id="scope-row">
-                <button id="btn-scope" class="theme-mode" type="button" aria-pressed="false" aria-controls="scope" title="An oscilloscope on everything the song plays">Scope</button>
                 <button id="btn-scope-pop" class="theme-mode" type="button" title="Put the scope in a window of its own, to move anywhere" hidden>Pop out</button>
             </span>
             <span class="theme"><span id="theme-label">Theme</span>
@@ -124,6 +125,21 @@
                 <span class="spacer"></span>
                 <button type="button" id="btn-tempo-cancel">Cancel</button>
                 <button type="submit" class="primary">OK</button>
+            </div>
+        </form>
+    </dialog>
+
+    <dialog id="dlg-append" class="keys tempo" aria-labelledby="append-title">
+        <header>
+            <h2 id="append-title">Append</h2>
+            <button class="modal-close" title="Close (Esc)" aria-label="Close">×</button>
+        </header>
+        <form id="append-form" class="tempo-body">
+            <label>Times <input id="in-append-times" type="number" inputmode="numeric" min="1" max="64" step="1" required></label>
+            <div class="tempo-actions">
+                <span class="spacer"></span>
+                <button type="button" id="btn-append-cancel">Cancel</button>
+                <button type="submit" class="primary">Append</button>
             </div>
         </form>
     </dialog>
@@ -193,10 +209,12 @@
             </section>
             <section>
                 <h3>Keep it</h3>
-                <p>The File menu holds New, Open, Save and Export. Save writes a
+                <p>The File menu holds New, Open, Append, Save and Export. Save writes a
                     <code>.punch</code> song file, and Open loads one back;
                     on the desktop, Save As writes a new file and leaves the old one
                     as it was, and double-clicking a <code>.punch</code> file opens it too.
+                    Append plays another song after this one, as many times as you ask:
+                    its tracks join yours where they sound the same, and its tempo comes with it.
                     Export renders the song to an audio file: WAV or FLAC, which keep every
                     sample, or MP3 or Ogg Vorbis, which are far smaller. Ctrl+Z undoes almost
                     anything.</p>
@@ -230,6 +248,7 @@
     </dialog>
 
     <input id="file-open" type="file" accept=".punch,.json,application/json" hidden>
+    <input id="file-append" type="file" accept=".punch,.json,application/json" hidden>
 
     <script src="kit/boot.js?v=3867389f"></script>
     <script src="kit/bridge-core.js?v=1a0ffb5c"></script>
@@ -247,19 +266,20 @@
     <script src="vendor/adenosine-scope.js?v=f0f22ae8"></script>
     <script src="vendor/wasm-media-encoders.js?v=dd4e17ab"></script>
     <script src="core/roll.js?v=81842fcd"></script>
-    <script src="core/keymap.js?v=cba6421e"></script>
+    <script src="core/keymap.js?v=45943023"></script>
     <script src="core/songfile.js?v=a3fe7b56"></script>
     <script src="core/midi.js?v=b4db0caf"></script>
     <script src="core/flac.js?v=67c1a8ac"></script>
     <script src="core/steps.js?v=03817b1e"></script>
     <script src="core/wavescope.js?v=bcc88085"></script>
     <script src="core/samples.js?v=ae2ef0d5"></script>
+    <script src="core/join.js?v=4e36c532"></script>
     <script src="bridge.js?v=689158de"></script>
     <script src="faust-voice.js?v=3275a6f2"></script>
     <script src="drum-voices.js?v=b076ba1f"></script>
     <script src="sample-voice.js?v=f500bb71"></script>
     <script src="sample-panel.js?v=4bbfeed8"></script>
-    <script src="scope-panel.js?v=e59c8992"></script>
+    <script src="scope-panel.js?v=2b528997"></script>
     <script src="track-panel.js?v=f11db656"></script>
     <script src="selection-edits.js?v=dc3328ae"></script>
     <script src="step-entry.js?v=3f7e2a5b"></script>
@@ -271,6 +291,7 @@
     <script src="midi.js?v=b33fdd11"></script>
     <script src="dialogs.js?v=9e098128"></script>
     <script src="timing.js?v=554ac023"></script>
-    <script src="main.js?v=a7a3d474"></script>
+    <script src="append.js?v=f55b8004"></script>
+    <script src="main.js?v=e72a7eef"></script>
 </body>
 </html>
