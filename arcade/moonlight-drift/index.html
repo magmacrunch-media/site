@@ -32,18 +32,18 @@ html{touch-action:manipulation}
     <link rel="stylesheet" href="css/loading.css?v=b27ac097">
     <link rel="stylesheet" href="css/stars.css?v=2b9dbc9d">
     <link rel="stylesheet" href="css/game-container.css?v=2987a5c5">
-    <link rel="stylesheet" href="css/overlays.css?v=b0d923b2">
+    <link rel="stylesheet" href="css/overlays.css?v=2c1bc8f7">
     <link rel="stylesheet" href="css/animations.css?v=16db2c0c">
-    <link rel="stylesheet" href="css/scoreboard.css?v=636feb35">
-    <link rel="stylesheet" href="css/mobile.css?v=df248831">
+    <link rel="stylesheet" href="css/scoreboard.css?v=05fec111">
+    <link rel="stylesheet" href="css/mobile.css?v=e2e98b4f">
     <link rel="stylesheet" href="css/character-selector.css?v=8b1c3509">
-    <link rel="stylesheet" href="css/credits.css?v=3c430b1e">
-    <link rel="stylesheet" href="css/buttons-retro.css?v=b0bd7e17">
-    <link rel="stylesheet" href="css/fonts-retro.css?v=26872b06">
-    <link rel="stylesheet" href="css/modals-retro.css?v=90298948">
-    <link rel="stylesheet" href="css/night.css?v=58eadb2f">
+    <link rel="stylesheet" href="css/buttons-retro.css?v=7c8ff69c">
+    <link rel="stylesheet" href="css/fonts-retro.css?v=e4cf103e">
+    <link rel="stylesheet" href="css/modals-retro.css?v=6ddd7d6e">
+    <link rel="stylesheet" href="css/night.css?v=590e193a">
+    <link rel="stylesheet" href="css/insert.css?v=56b50b12">
     <style>
-:root{--mc-back-color: rgba(0, 212, 255, 0.5);--mc-back-glow: 0 0 8px rgba(0, 212, 255, 0.95)}body.game-active .mc-back,body.game-active #characterSelector{display:none!important}#titleOverlay{background:#000000!important;width:auto!important;max-width:90vw!important;padding:30px 40px!important;border:3px solid #00d4ff!important;box-shadow:0 0 30px rgba(0,212,255,0.6)!important}#asciiTitle{color:#00d4ff!important;text-shadow:0 0 10px rgba(0,212,255,0.8)!important;background:none!important;padding:0!important}#titleMessage{background:none!important;padding:0!important}#readyOverlay{background:rgba(0,0,0,0.85)!important;width:fit-content!important;max-width:90vw!important}#readyContent h2{color:#00d4ff!important;background:transparent!important;text-shadow:0 0 10px rgba(0,212,255,0.8)!important;box-shadow:none!important}#readyContent p{color:#ffffff!important}#readyMessage{color:#00d4ff!important}#gameOver{text-transform:none!important}#creditsModal .credits-content,#creditsModal .credits-content p,#creditsModal .credits-content strong{text-transform:none!important}@keyframes pulse{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.05);opacity:0.9}}#achievementMessage{text-align:center;margin-bottom:20px}#gameOverAchievement{text-align:center;margin:10px 0}@media(max-width:768px){#characterModal .modal-content{max-width:95vw!important;max-height:85vh!important}#characterGrid{max-height:60vh!important}}
+:root{--mc-back-color: rgba(0, 212, 255, 0.5);--mc-back-glow: 0 0 8px rgba(0, 212, 255, 0.95)}body.game-active .mc-back,body.game-active #characterSelector{display:none!important}#titleOverlay{background:#000000!important;width:auto!important;max-width:90vw!important;padding:30px 40px!important;border:3px solid #00d4ff!important;box-shadow:0 0 30px rgba(0,212,255,0.6)!important}#asciiTitle{color:#00d4ff!important;text-shadow:0 0 10px rgba(0,212,255,0.8)!important;background:none!important;padding:0!important}#titleMessage{background:none!important;padding:0!important}#readyOverlay{background:rgba(0,0,0,0.85)!important;width:fit-content!important;max-width:90vw!important}#readyContent h2{color:#00d4ff!important;background:transparent!important;text-shadow:0 0 10px rgba(0,212,255,0.8)!important;box-shadow:none!important}#readyContent p{color:#ffffff!important}#readyMessage{color:#00d4ff!important}#gameOver{text-transform:none!important}@keyframes pulse{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.05);opacity:0.9}}#achievementMessage{text-align:center;margin-bottom:20px}#gameOverAchievement{text-align:center;margin:10px 0}@media(max-width:768px){#characterModal .modal-content{max-width:95vw!important;max-height:85vh!important}#characterGrid{max-height:60vh!important}}
 </style>
 </head>
 <body>
@@ -102,7 +102,7 @@ html{touch-action:manipulation}
         <div id="characterSelector" style="display: none;">
             <button id="changeCharacterBtn">pilot</button>
             <button id="scoreboardBtn">scores</button>
-            <button id="creditsBtn">credits</button>
+            <button id="titleBtn">title</button>
             <button id="muteBtn">SFX ON</button>
         </div>
         
@@ -113,13 +113,15 @@ html{touch-action:manipulation}
             <span id="gameOverTitle" style="font-size: 1.5em; font-weight: bold;">DRIFT OVER!</span>
             <div id="gameOverAchievement"></div>
             <div id="unlockMessage"></div>
-            <span style="display: block; font-size: 1.3em; margin: 10px 0; color: #00d4ff; text-shadow: 0 0 10px rgba(0, 212, 255, 0.8);">drifted: <span id="finalScore">0</span></span>
+            <span style="display: block; font-size: 1.3em; margin: 10px 0; color: #00d4ff; text-shadow: 0 0 10px rgba(0, 212, 255, 0.8);"><span id="finalScoreLabel">drifted</span>: <span id="finalScore">0</span></span>
             <span style="display: block; font-style: italic; opacity: 0.8; margin-top: 10px;">too cheap for ya?!</span>
             <span class="on-touch">tap to drift again</span><span class="on-pointer">press [space] or click to drift again</span>
         </div>
-        
+
+        <div id="titleCard">
+        <section class="title-cover">
         <div id="titleOverlay">
-            <pre id="asciiTitle">   
+            <pre id="asciiTitle">
  _____ ______   ________  ________  ________   ___       ___  ________  ___  ___  _________   
 |\   _ \  _   \|\   __  \|\   __  \|\   ___  \|\  \     |\  \|\   ____\|\  \|\  \|\___   ___\ 
 \ \  \\\__\ \  \ \  \|\  \ \  \|\  \ \  \\ \  \ \  \    \ \  \ \  \___|\ \  \\\  \|___ \  \_| 
@@ -140,14 +142,64 @@ html{touch-action:manipulation}
                 <img class="title-publisher-mark" src="img/mc-logo.png" alt="" width="26" height="32">
                 <span>magmacrunch media</span>
             </div>
+            <a class="insert-cue" id="insertCueDown" href="#insertBack" aria-label="the insert">insert &#9660;</a>
+        </div>
+        </section>
+
+        <div class="insert-back" id="insertBack">
+            <section class="sleeve" aria-label="the single and its credits">
+                <div class="sleeve-front">
+                    <h3 class="sleeve-head c-gold">made by</h3>
+                    <div class="sleeve-row"><span class="sleeve-role">game</span><span class="sleeve-name"><a href="https://magmacrunch.com">magmacrunch media</a></span></div>
+                    <div class="sleeve-row"><span class="sleeve-role">music</span><span class="sleeve-name">brother dynamo</span></div>
+                    <h3 class="sleeve-head c-sub">origins</h3>
+                    <p class="sleeve-prose">After Simon Dorsey&rsquo;s <em>Jetman</em> (2007), itself after David McCandless&rsquo;s <em>Helicopter</em> (2002); Yohei Iwasaki&rsquo;s <em>SFCave</em> (1995) flew it first.</p>
+                </div>
+                <div class="sleeve-record">
+                    <h3 class="sleeve-head c-gold">track</h3>
+                    <div class="sleeve-row sleeve-title"><span class="sleeve-role">Moonlight Drift</span><span class="sleeve-name">3:41</span></div>
+                    <p class="sleeve-note">the game plays an 11-second loop of it</p>
+                    <h3 class="sleeve-head c-cyan">the single</h3>
+                    <div class="sleeve-row"><span class="sleeve-role">label</span><span class="sleeve-name">magmacrunch arcade</span></div>
+                    <div class="sleeve-row"><span class="sleeve-role">released</span><span class="sleeve-name">March 14, 2026</span></div>
+                    <div class="sleeve-row"><span class="sleeve-role">recorded</span><span class="sleeve-name">Spirit Castle</span></div>
+                    <p class="sleeve-note">electric guitar, December 2017</p>
+                    <div class="sleeve-row"><span class="sleeve-role">first released</span><span class="sleeve-name">December 25, 2017</span></div>
+                    <p class="sleeve-note">as a single</p>
+                </div>
+                <div class="sleeve-credits">
+                    <div class="sleeve-tools">
+                        <h3 class="sleeve-head c-sub">built with</h3>
+                        <p class="sleeve-built"><a href="../../ware/adenosine/">adenosine</a> &middot; Press Start 2P</p>
+                        <div class="sleeve-row sleeve-aside"><span class="sleeve-role">cheapness impact factor</span><span class="sleeve-name">3.7</span></div>
+                    </div>
+                    <div class="sleeve-back"><img class="sleeve-mark" src="img/mc-logo.png" alt="magmacrunch media" width="26" height="32"><p class="sleeve-catno">MCA001<br>MCS044</p><svg class="sleeve-barcode" viewBox="0 0 121 46" role="img" aria-label="barcode MCA001" shape-rendering="crispEdges"><rect x="10" y="0" width="2" height="37"/><rect x="13" y="0" width="1" height="37"/><rect x="16" y="0" width="1" height="37"/><rect x="21" y="0" width="1" height="37"/><rect x="23" y="0" width="3" height="37"/><rect x="27" y="0" width="2" height="37"/><rect x="32" y="0" width="1" height="37"/><rect x="36" y="0" width="1" height="37"/><rect x="40" y="0" width="2" height="37"/><rect x="43" y="0" width="1" height="37"/><rect x="45" y="0" width="1" height="37"/><rect x="49" y="0" width="2" height="37"/><rect x="54" y="0" width="1" height="37"/><rect x="57" y="0" width="3" height="37"/><rect x="61" y="0" width="2" height="37"/><rect x="65" y="0" width="1" height="37"/><rect x="68" y="0" width="3" height="37"/><rect x="72" y="0" width="2" height="37"/><rect x="76" y="0" width="1" height="37"/><rect x="79" y="0" width="3" height="37"/><rect x="84" y="0" width="2" height="37"/><rect x="87" y="0" width="2" height="37"/><rect x="90" y="0" width="1" height="37"/><rect x="94" y="0" width="3" height="37"/><rect x="98" y="0" width="2" height="37"/><rect x="103" y="0" width="3" height="37"/><rect x="107" y="0" width="1" height="37"/><rect x="109" y="0" width="2" height="37"/><text x="60.5" y="45" text-anchor="middle">MCA001</text></svg>
+                        <p class="sleeve-note sleeve-phono">&#8471; 2017 brother dynamo</p>
+                        <p class="sleeve-note sleeve-copy">&copy; 2026 magmacrunch media</p>
+                        <p class="sleeve-foot">last updated November 10, 2026</p>
+                    </div>
+                </div>
+                <a class="insert-cue insert-cue-up" id="insertCueUp" href="#titleCard" aria-label="back to the cover">&#9650; cover</a>
+            </section>
+        </div>
         </div>
         
         <div id="readyOverlay" style="display: none;">
             <div id="readyContent">
                 <h2>flight plan</h2>
-                <p><strong><span class="on-touch">hold</span><span class="on-pointer">hold [space] or click</span></strong> to rise</p>
-                <p><strong>let go</strong> to fall</p>
-                <p>dodge the pillars and the edges!</p>
+                <div class="plan-setup">
+                    <div id="planPilot">
+                        <canvas id="planPilotArt" width="72" height="56" aria-hidden="true"></canvas>
+                        <span id="planPilotName"></span>
+                        <button id="planPilotBtn">change</button>
+                    </div>
+                </div>
+                <div class="mode-briefs">
+                <div class="mode-brief shown" id="briefEndless" data-brief="endless">
+                    <p><strong><span class="on-touch">hold</span><span class="on-pointer">hold [space] or click</span></strong> to rise, <strong>let go</strong> to fall</p>
+                    <p>dodge the pillars and the edges!</p>
+                </div>
+                </div>
                 <p class="mode-note" id="moonTonight"></p>
                 <div id="readyMessage"><span class="on-touch">tap to drift</span><span class="on-pointer">press [space] or click to drift</span></div>
             </div>
@@ -156,7 +208,7 @@ html{touch-action:manipulation}
         <div id="initialsPrompt">
             <div id="achievementMessage"></div>
             <h3 id="initialsTitle">sign the logbook:</h3>
-            <input type="text" id="initialsInput" maxlength="3" placeholder="ABC">
+            <input type="text" id="initialsInput" maxlength="3" placeholder="ABC" autocomplete="off" autocorrect="off" autocapitalize="characters" spellcheck="false" enterkeyhint="done">
             <button id="submitInitials">sign</button>
         </div>
 
@@ -168,7 +220,7 @@ html{touch-action:manipulation}
             <div id="characterGrid"></div>
             <div class="modal-buttons">
                 <button id="modalMuteBtn">SFX ON</button>
-                <button id="closeModal">launch</button>
+                <button id="closeModal">done</button>
             </div>
         </div>
     </div>
@@ -182,32 +234,6 @@ html{touch-action:manipulation}
             <button id="closeScoreboardModal">close</button>
         </div>
     </div>   
-
-    <div id="creditsModal" style="display: none;">
-        <div class="modal-content">
-            <h2><img class="credits-mark" src="img/mc-logo.png" alt="" width="26" height="32">credits</h2>
-            <div class="credits-content credits-sheet">
-                <section class="credits-block c-gold">
-                    <h3 class="credits-head">made by</h3>
-                    <div class="credit-row"><span class="credit-role">game</span><span class="credit-name"><a href="https://magmacrunch.com">magmacrunch media</a></span></div>
-                    <div class="credit-row"><span class="credit-role">music</span><span class="credit-name">brother dynamo</span></div>
-                    <p class="credit-note"><strong>&ldquo;Moonlight Drift&rdquo;</strong></p>
-                </section>
-                <section class="credits-block c-cyan">
-                    <h3 class="credits-head">origins</h3>
-                    <p class="credit-prose">After Simon Dorsey&rsquo;s <em>Jetman</em> (2007), itself after David McCandless&rsquo;s <em>Helicopter</em> (2002); Yohei Iwasaki&rsquo;s <em>SFCave</em> (1995) flew it first.</p>
-                </section>
-                <section class="credits-block c-sub">
-                    <h3 class="credits-head">built with</h3>
-                    <p class="credits-built"><a href="../../ware/adenosine/">adenosine</a> &middot; Press Start 2P</p>
-                </section>
-                <div class="credit-row credit-row-aside"><span class="credit-role">cheapness impact factor</span><span class="credit-name">3.7</span></div>
-            </div>
-            <div class="modal-buttons">
-                <button id="closeCreditsModal">close</button>
-            </div>
-        </div>
-    </div>
 
     <script src="../shared/adenosine-audio.js?v=f02a8224"></script>
     <script src="../shared/adenosine-score-client.js?v=7ecef8fd"></script>
@@ -233,6 +259,7 @@ const scoreClient=new AdScore.ScoreClient().auto(MC_SCORE_OPTS);
     <script src="js/characters/dag-henderson.js?v=674c80b0"></script>
     <script src="js/characters/fire-toad.js?v=27fa07b4"></script>
     <script src="js/characters/backpack-man.js?v=9d916997"></script>
+    <script src="js/characters/dog-martin.js?v=95f715e9"></script>
     <script src="js/characters/tollbooth-lady.js?v=fb1428cb"></script>
     <script src="js/characters/svfp-van.js?v=5ddc739c"></script>
     <script src="js/characters/tardigrade.js?v=e3264238"></script>
@@ -240,16 +267,16 @@ const scoreClient=new AdScore.ScoreClient().auto(MC_SCORE_OPTS);
     <script src="js/player.js?v=c3be28d1"></script>
     <script src="js/obstacles.js?v=4cd5f432"></script>
     <script src="js/stars.js?v=1c116135"></script>
-    <script src="js/scoring.js?v=eabe716c"></script>
+    <script src="js/scoring.js?v=6a872892"></script>
     <script src="js/renderer.js?v=eb09794e"></script>
-    <script src="js/input.js?v=9e34502e"></script>
-    <script src="js/unlocks.js?v=b8a4992a"></script>
-    <script src="js/character-balance.js?v=62f83a68"></script>
+    <script src="js/input.js?v=42b8f248"></script>
+    <script src="js/unlocks.js?v=d92bfe7e"></script>
+    <script src="js/character-balance.js?v=941f8beb"></script>
     <script src="js/character-selector-modal.js?v=64504bbe"></script>
     <script src="js/moon.js?v=5f19ce7d"></script>
     <script src="js/beat.js?v=4653b6de"></script>
-    <script src="js/touchdown.js?v=fb722bde"></script>
-    <script src="js/main.js?v=043c428d"></script>
+    <script src="js/touchdown.js?v=88ab1ce8"></script>
+    <script src="js/main.js?v=531ff7e4"></script>
     <script src="js/scoreboard-modal.js?v=07f0039a"></script>
 </body>
 </html>
