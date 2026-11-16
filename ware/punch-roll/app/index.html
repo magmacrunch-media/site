@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en" data-app="PunchRoll" data-magma-theme="global-palette">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>PUNCH//ROLL</title>
+    <link rel="stylesheet" href="../../shell/fonts.css?v=08818834">
+    <link rel="stylesheet" href="../../shell/app-shell.css?v=12781ff7">
+    <link rel="stylesheet" href="../../shell/toast.css?v=2c51118f">
+    <link rel="stylesheet" href="kit/magma-themes.css?v=36fa3988">
+    <link rel="stylesheet" href="kit/themes.css?v=38d89cb1">
+    <link rel="stylesheet" href="style.css?v=8e3d4368">
+</head>
+<body>
+    <header class="app-header">
+        <h1>PUNCH//ROLL</h1>
+        <nav class="toolbar" aria-label="Song">
+            <span class="transport" role="group" aria-label="Transport">
+                <button id="btn-rewind" class="icon" type="button" title="To start: the start marker goes to the start of the song, or of the loop"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2 2h1.6v8H2zM10.5 2v8L4.2 6z"/></svg><span class="sr">To start</span></button>
+                <button id="btn-play" class="primary icon" type="button" title="Play / pause (Shift+Space); Space plays and stops"><svg class="i-play" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 1.5v9L10.5 6z"/></svg><svg class="i-pause" viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 2h2.5v8H2.5zM7 2h2.5v8H7z"/></svg><span class="sr">Play</span></button>
+                <button id="btn-stop" class="icon" type="button" title="Stop, back to the start marker (Space)"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 2.5h7v7h-7z"/></svg><span class="sr">Stop</span></button>
+            </span>
+            <output id="out-length" aria-label="Length" title="How long the song plays once through: its bars at its BPM, tempo changes included"></output>
+            <label>BPM <input id="in-bpm" type="number" inputmode="numeric" min="20" max="400" step="1"></label>
+            <label>Bars <input id="in-bars" type="number" inputmode="numeric" min="1" max="256" step="1"></label>
+            <label>Grid <select id="in-grid" title="What notes snap to"></select></label>
+            <label class="check"><input id="in-loop" type="checkbox" checked> Loop</label>
+            <span class="spacer"></span>
+            <span class="file-picker">
+                <button id="btn-file" type="button" aria-haspopup="menu" aria-expanded="false" aria-controls="file-menu" title="New, open, save and export">File</button>
+                <span id="file-menu" class="menu" role="menu" aria-label="File" hidden>
+                    <button id="btn-new" role="menuitem" type="button" title="Start a new song">New</button>
+                    <button id="btn-open" role="menuitem" type="button" title="Open a song">Open&hellip;<i>Ctrl+O</i></button>
+                    <button id="btn-save" role="menuitem" type="button" title="Save the song">Save<i>Ctrl+S</i></button>
+                    <button id="btn-save-as" role="menuitem" type="button" title="Save the song to a new file, leaving the old one as it was">Save As&hellip;<i>Ctrl+Shift+S</i></button>
+                    <span class="menu-sep" role="separator"></span>
+                </span>
+            </span>
+            <span class="help-picker">
+                <button id="btn-help" type="button" aria-haspopup="menu" aria-expanded="false" aria-controls="help-menu" title="How to use, shortcuts and credits">Help</button>
+                <span id="help-menu" class="menu" role="menu" aria-label="Help" hidden>
+                    <button id="btn-guide" role="menuitem" type="button">How to use</button>
+                    <button id="btn-keys" role="menuitem" type="button" title="Keyboard shortcuts (? or F1)">Keyboard shortcuts<i>F1</i></button>
+                    <button id="btn-credits" role="menuitem" type="button">Credits</button>
+                </span>
+            </span>
+        </nav>
+    </header>
+
+    <nav class="tool-nav" aria-label="breadcrumb" style="font-family: 'Press Start 2P', monospace; font-size: 8px; letter-spacing: 0.1em; color: var(--backlink-color);">
+        <a href="../../" class="back-link">ware</a> › <a href="../../utilities/" class="back-link">creative utilities</a> › <a href="../" class="back-link">punch//roll</a>
+    </nav>
+
+    <main id="stage">
+        <aside id="tracks" aria-label="Tracks">
+            <div id="view-row" class="view-switch" role="group" aria-label="View">
+                <button id="btn-view-roll" type="button" aria-pressed="true" title="The piano roll (G switches)">Roll</button>
+                <button id="btn-view-steps" type="button" aria-pressed="false" title="The step sequencer: a row per track, a column per step (G switches)">Steps</button>
+            </div>
+            <label id="tuning-row" title="Tuning: equal steps to the octave">Tuning <select id="in-tuning"></select></label>
+            <label id="swing-row" title="Swing: how late every second sixteenth plays, up to a full triplet shuffle">
+                <span>Swing <output id="out-swing" for="in-swing">0%</output></span>
+                <input id="in-swing" type="range" min="0" max="100" step="5" value="0">
+            </label>
+            <div id="add-track-row"><button id="btn-add-track" type="button" title="Add a track, up to six">Add track</button></div>
+            <div id="step-row">
+                <button id="btn-step" type="button" aria-pressed="false" aria-controls="step-help" title="Step entry (R): type notes from the computer keyboard, one grid step at a time from the start marker">Step entry</button>
+                <div id="step-help" hidden></div>
+            </div>
+            <div id="midi-row" hidden>
+                <button id="btn-midi" type="button" title="Play the current track from a MIDI keyboard, and enter notes with Step entry">MIDI keyboard</button>
+                <select id="in-midi" aria-label="MIDI input" hidden></select>
+            </div>
+        </aside>
+        <div id="tracks-resizer" role="separator" aria-orientation="vertical" aria-controls="tracks"
+            aria-label="Track panel width" tabindex="0"
+            title="Drag to widen or narrow the track panel; double-click to reset"></div>
+        <div id="roll-frame">
+            <section id="roll" aria-label="Piano roll">
+                <div id="roll-extent"></div>
+                <canvas id="roll-canvas"></canvas>
+            </section>
+            <select id="in-meter" aria-label="Meter" title="Meter: the time signature, where the bars fall"></select>
+        </div>
+        <div id="steps-frame" hidden>
+            <section id="steps" aria-label="Step sequencer">
+                <div id="steps-extent"></div>
+                <canvas id="steps-canvas"></canvas>
+            </section>
+            <label id="steps-drums" title="Show only the drum tracks: the drum sounds and Noise">
+                <input id="in-steps-drums" type="checkbox"> Drums only
+            </label>
+        </div>
+    </main>
+    <ad-scope id="scope" hidden></ad-scope>
+
+    <footer class="app-footer">
+        <span id="status">Click: add · drag: move · right-click: delete · Shift-drag: select</span>
+        <span class="footer-end">
+            <span id="scope-row">
+                <button id="btn-scope" class="theme-mode" type="button" aria-pressed="false" aria-controls="scope" title="An oscilloscope on everything the song plays">Scope</button>
+                <button id="btn-scope-pop" class="theme-mode" type="button" title="Put the scope in a window of its own, to move anywhere" hidden>Pop out</button>
+            </span>
+            <span class="theme"><span id="theme-label">Theme</span>
+                <span class="theme-picker">
+                    <button id="in-theme" class="theme-pick" type="button" aria-haspopup="listbox" aria-expanded="false" aria-controls="theme-list" aria-labelledby="theme-label in-theme" title="Colour theme, from magma-themes: hover or arrow through the list to preview"></button>
+                    <ul id="theme-list" class="theme-list" role="listbox" aria-labelledby="theme-label" hidden></ul>
+                </span>
+            </span>
+            <button id="btn-theme-mode" class="theme-mode" title="Light or dark themes">Dark</button>
+            <span id="app-version"></span>
+        </span>
+    </footer>
+
+    <dialog id="dlg-tempo" class="keys tempo" aria-labelledby="tempo-title">
+        <header>
+            <h2 id="tempo-title">Tempo</h2>
+            <button class="modal-close" title="Close (Esc)" aria-label="Close">×</button>
+        </header>
+        <form id="tempo-form" class="tempo-body">
+            <label>BPM <input id="in-tempo" type="number" inputmode="numeric" min="20" max="400" step="1" required></label>
+            <div class="tempo-actions">
+                <button type="button" id="btn-tempo-delete">Delete</button>
+                <span class="spacer"></span>
+                <button type="button" id="btn-tempo-cancel">Cancel</button>
+                <button type="submit" class="primary">OK</button>
+            </div>
+        </form>
+    </dialog>
+
+    <dialog id="dlg-keys" class="keys" aria-labelledby="keys-title">
+        <header>
+            <h2 id="keys-title">Keyboard shortcuts</h2>
+            <button class="modal-close" title="Close (Esc)" aria-label="Close">×</button>
+        </header>
+        <div id="keys-body"></div>
+    </dialog>
+
+    <dialog id="dlg-guide" class="keys guide" aria-labelledby="guide-title">
+        <header>
+            <h2 id="guide-title">How to use PUNCH//ROLL</h2>
+            <button class="modal-close" title="Close (Esc)" aria-label="Close">×</button>
+        </header>
+        <div class="doc-body">
+            <section>
+                <h3>Write notes</h3>
+                <p>Each row of the roll is a pitch and each column a step of the grid.
+                    Click an empty square to add a note, drag it to move it, and drag its
+                    right edge to make it longer. Right-click a note to delete it.
+                    Shift-drag across empty grid to select several notes at once.</p>
+            </section>
+            <section>
+                <h3>Pick a track</h3>
+                <p>The panel on the left holds the tracks: Lead, Harmony, Bass and
+                    Drums to start with, on two pulse waves, a triangle and noise; Add
+                    track makes up to six, and double-clicking a name renames it. Click
+                    one, or press 1 to 6, and new notes go onto it; its card opens, with
+                    its picture, volume and ENV, and the others fold to a line each. M mutes the current track and S solos it. Click the
+                    keyboard beside the roll to hear a pitch on that track.</p>
+            </section>
+            <section>
+                <h3>Make a beat</h3>
+                <p>Steps, at the top of the panel, swaps the roll for a step
+                    sequencer: a row for each track and a column for each step of the
+                    grid. Set some tracks to the drums (Kick, Snare, the hi-hats), then
+                    click squares to add hits and click them again to take them away;
+                    drag along a row to paint several. It is the same song, so the hits
+                    are notes in the roll too. G switches between the two. Tick Drums
+                    only, in the grid's corner, to see just the drum tracks.</p>
+                <p>Swing, at the top of the track panel under Tuning, makes every second sixteenth play a little
+                    late, for a shuffle; at 100% it is a full triplet swing. The notes
+                    stay where you put them, and only the playing changes.</p>
+            </section>
+            <section>
+                <h3>Play it</h3>
+                <p>Press Space or Play. The play button pauses (Shift+Space), and
+                    playing again goes on from there; the square stops and goes back
+                    to where playback starts, and the button before them takes that
+                    back to the start. Click the ruler along the top to choose where
+                    playback starts, and untick Loop to play through once.
+                    BPM, Bars and Grid in the toolbar set the speed, the length and how
+                    finely notes snap. Double-click the ruler to add a tempo change.</p>
+            </section>
+            <section>
+                <h3>Shape the sound</h3>
+                <p>Click or drag in the VEL lane under the roll to make notes louder or
+                    softer. The meter menu at the top left sets the time signature, and
+                    the Tuning menu swaps the usual twelve semitones for 19, 24 (quarter
+                    tones) or 31 equal steps to the octave. Each note can also be detuned by a few cents.</p>
+                <p>Each track shows its sound: one cycle of the wave and its harmonics
+                    (a drum shows one hit), and ENV draws the envelope as a curve. Hover
+                    a key to read its pitch in hertz.</p>
+            </section>
+            <section>
+                <h3>Keep it</h3>
+                <p>The File menu holds New, Open, Save and Export. Save writes a
+                    <code>.punch</code> song file, and Open loads one back;
+                    on the desktop, Save As writes a new file and leaves the old one
+                    as it was, and double-clicking a <code>.punch</code> file opens it too.
+                    Export renders the song to an audio file: WAV or FLAC, which keep every
+                    sample, or MP3 or Ogg Vorbis, which are far smaller. Ctrl+Z undoes almost
+                    anything.</p>
+            </section>
+            <p class="doc-more">Every key is listed under Help, Keyboard shortcuts (or press F1).</p>
+        </div>
+    </dialog>
+
+    <dialog id="dlg-credits" class="keys credits" aria-labelledby="credits-title">
+        <header>
+            <h2 id="credits-title">Credits</h2>
+            <button class="modal-close" title="Close (Esc)" aria-label="Close">×</button>
+        </header>
+        <div class="doc-body">
+            <p class="credits-title">PUNCH//ROLL <span id="credits-version"></span></p>
+            <p>A piano roll for chiptune music, by MAGMACRUNCH MEDIA.</p>
+            <dl>
+                <dt>Sound</dt>
+                <dd>adenosine-synth, the MAGMACRUNCH chip synth: pulse, triangle, saw and noise voices</dd>
+                <dt>Export</dt>
+                <dd>MP3 by LAME (LGPL) and Ogg Vorbis by libvorbis (BSD), compiled to WebAssembly by wasm-media-encoders (MIT); FLAC by this app</dd>
+                <dt>Look</dt>
+                <dd>magma-themes colour palettes</dd>
+                <dt>Shell</dt>
+                <dd>magma-kit, on Tauri</dd>
+                <dt>Type</dt>
+                <dd>Press Start 2P and Courier Prime, by their project authors, under the SIL Open Font License 1.1</dd>
+            </dl>
+            <p class="doc-more">&copy; magmacrunch media, LLC</p>
+        </div>
+    </dialog>
+
+    <input id="file-open" type="file" accept=".punch,.json,application/json" hidden>
+
+    <script src="kit/boot.js?v=3867389f"></script>
+    <script src="kit/bridge-core.js?v=1a0ffb5c"></script>
+    <script src="kit/keys.js?v=a0ef34b7"></script>
+    <script src="kit/history.js?v=0a47fcb3"></script>
+    <script src="kit/docfile.js?v=d5f7c54d"></script>
+    <script src="kit/prefs.js?v=27328242"></script>
+    <script src="kit/modal.js?v=0549bda4"></script>
+    <script src="kit/dom.js?v=1d063261"></script>
+    <script src="kit/themes.js?v=4355e8bc"></script>
+    <script src="kit/magma-themes-index.js?v=4c714fb1"></script>
+    <script src="kit/scope-window.js?v=f47adede"></script>
+    <script src="../../shell/toast.js?v=d87a2776"></script>
+    <script src="vendor/adenosine-synth.js?v=2c9e98cf"></script>
+    <script src="vendor/adenosine-scope.js?v=f0f22ae8"></script>
+    <script src="vendor/wasm-media-encoders.js?v=dd4e17ab"></script>
+    <script src="core/roll.js?v=81842fcd"></script>
+    <script src="core/keymap.js?v=cba6421e"></script>
+    <script src="core/songfile.js?v=a3fe7b56"></script>
+    <script src="core/midi.js?v=b4db0caf"></script>
+    <script src="core/flac.js?v=67c1a8ac"></script>
+    <script src="core/steps.js?v=03817b1e"></script>
+    <script src="core/wavescope.js?v=bcc88085"></script>
+    <script src="core/samples.js?v=ae2ef0d5"></script>
+    <script src="bridge.js?v=689158de"></script>
+    <script src="faust-voice.js?v=3275a6f2"></script>
+    <script src="drum-voices.js?v=b076ba1f"></script>
+    <script src="sample-voice.js?v=f500bb71"></script>
+    <script src="sample-panel.js?v=4bbfeed8"></script>
+    <script src="scope-panel.js?v=e59c8992"></script>
+    <script src="track-panel.js?v=f11db656"></script>
+    <script src="selection-edits.js?v=dc3328ae"></script>
+    <script src="step-entry.js?v=3f7e2a5b"></script>
+    <script src="export.js?v=4a6b1c2d"></script>
+    <script src="theme.js?v=bf2baf47"></script>
+    <script src="wave-glyph.js?v=f27c9f17"></script>
+    <script src="roll-view.js?v=ad0d4afc"></script>
+    <script src="step-view.js?v=7dd5a17e"></script>
+    <script src="midi.js?v=b33fdd11"></script>
+    <script src="dialogs.js?v=9e098128"></script>
+    <script src="timing.js?v=554ac023"></script>
+    <script src="main.js?v=a7a3d474"></script>
+</body>
+</html>
