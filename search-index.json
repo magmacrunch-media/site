@@ -1918,11 +1918,11 @@
     "b": "adenosine · magmacrunch media home › ware › developer tools › adenosine adenosine a collection of lightweight game engines for web browsers The building blocks behind the games in the web arcade, as separate packages: card games, sliding puzzles, role-playing games, music and sound effects, high scores, chat, and playing online with other people. Anyone can load them into a web page, free for noncommercial use. the technical version A collection of lightweight web game engines by magmacrunch media. TypeScript and JavaScript, zero runtime dependencies, built for browsers. Used by the magmacrunc..."
   },
   {
-    "t": "GATE//FOLD",
+    "t": "GATE//FOLD · magmacrunch media",
     "c": "tool",
     "u": "/ware/album-art-maker/",
-    "d": "square album-cover editor · text, shapes, images",
-    "b": "GATE//FOLD This tool is best experienced on a desktop or laptop. Please visit on a wider screen for the full workspace. GATE//FOLD Dark 1024×1024 0 ELEMENTS UNDO REDO DELETE CLEAR ALL CANVAS 1024 ▾ BG ► SELECT T TEXT ▢ IMAGE RECT ▾ FREQUENCY 5 WAVE MODE FILLED OPEN REFERENCE ▾ UPLOAD IMAGE × click to sample color BASIC ▭ RECT ○ CIRCLE ╱ LINE ▵ TRI ⬣ PENTA ⬤ HEXA ◇ DIAMOND ★ STAR ➤ ARROW ◯ R. RECT ◎ RING WAVES ∿ SINE ⊝ SQUARE ⊾ SAWTOOTH ⊿ TRI WAVE ∖ STEP ⊟ PULSE CLIP ART EMPTY COVER PICK A SHAPE OR TEXT, THEN DRAG ON THE CANVAS R RECT · T TEXT · CTRL+I IMAGE · OR DROP ONE HERE LAYERS ▾ PROPERTI..."
+    "d": "an album cover editor, from the square up to the vinyl jacket",
+    "b": "GATE//FOLD · magmacrunch media home › ware › creative utilities › gate//fold GATE//FOLD an album cover editor, from the square up to the vinyl jacket ▶ Open GATE//FOLD lite Runs in your browser. Nothing to install. What it does Build a cover out of shapes, waveforms, clip art, text and your own photos. Text can run straight or round a curve. Photos come in by button, by dragging them onto the page or by pasting, and the eyedropper can pick colours straight off a reference image you keep beside the cover. The cover can be 512, 1024, 2048 or 4096 pixels square, and it exports as a PNG. Lite The ..."
   },
   {
     "t": "backgammon · magmacrunch media",
@@ -2090,7 +2090,7 @@
     "c": "tool",
     "u": "/ware/moonlight-drift/",
     "d": "a cave flyer for the browser and the terminal, with a Wii version on the way",
-    "b": "moonlight drift · magmacrunch media home › ware › video games › moonlight drift MOONLIGHT DRIFT one-button arcade game inspired by the music of Brother Dynamo HOW FAR CAN YOU DRIFT? Hold to rise. Let go to fall. Dodge the obstacles. Enjoy the vibe. A throwback to the HELICOPTERs and JETMANs of the 2000's, MOONLIGHT DRIFT is a game of simplicity, vibe, and cheapness. // screens // twenty pilots, each with their own handling the dspum balloon a tardigrade, and a new colour every ten pillars the terminal version the title card too cheap for ya?! // where to play // BROWSER ▶ PLAY free demo in the..."
+    "b": "moonlight drift · magmacrunch media home › ware › video games › moonlight drift MOONLIGHT DRIFT one-button arcade game inspired by the music of Brother Dynamo HOW FAR CAN YOU DRIFT? Hold to rise. Let go to fall. Dodge the obstacles. Enjoy the vibe. A throwback to the HELICOPTERs and JETMANs of the 2000's, MOONLIGHT DRIFT is a game of simplicity, vibe, and cheapness. // screens // twenty-one pilots, each with their own handling the dspum balloon a tardigrade, and a new colour every ten pillars the terminal version the title card too cheap for ya?! // where to play // BROWSER ▶ PLAY free demo in..."
   },
   {
     "t": "nelikko · magmacrunch media",
@@ -2114,11 +2114,11 @@
     "b": "crunchscope · magmacrunch media a signal chain for images ENTER or press any key magmacrunch media CRUNCH//SCOPE 256×256 0 EFFECTS CHAIN SETUP INPUT UPLOAD IMAGE SOURCES generators replace the input image SELECT ▾ WHITE NOISE PERLIN NOISE H GRADIENT V GRADIENT RADIAL GRADIENT COLOR BARS CHECKERBOARD SOLID COLOR COLOR SEED REROLL COLOR A COLOR B WORK SIZE W H PRESETS ▾ 128 × 128 256 × 256 512 × 512 640 × 480 800 × 600 1024 × 768 FILE NAME EXPORT SIZE EXPORT PNG GRID DROP IMAGE CANCEL MON LEVELS SPECTRUM drag & drop · ctrl+v paste · upload image · add effects → SIGNAL CHAIN effects process the s..."
   },
   {
-    "t": "PUNCH//ROLL",
+    "t": "PUNCH//ROLL · magmacrunch media",
     "c": "tool",
     "u": "/ware/punch-roll/",
-    "d": "chiptune piano roll · pulse, triangle, noise, WAV export",
-    "b": "PUNCH//ROLL PUNCH//ROLL Roll Steps Tuning Swing 0% Add track Step entry MIDI keyboard Drums only Tempo × BPM Delete Cancel OK Keyboard shortcuts × How to use PUNCH//ROLL × Write notes Each row of the roll is a pitch and each column a step of the grid. Click an empty square to add a note, drag it to move it, and drag its right edge to make it longer. Right-click a note to delete it. Shift-drag across empty grid to select several notes at once. Pick a track The panel on the left holds the tracks: Lead, Harmony, Bass and Drums to start with, on two pulse waves, a triangle and noise; Add track mak..."
+    "d": "a chiptune piano roll, in the spirit of the old versions of FL Studio",
+    "b": "PUNCH//ROLL · magmacrunch media home › ware › creative utilities › punch//roll PUNCH//ROLL a chiptune piano roll, in the spirit of the old versions of FL Studio ▶ Open PUNCH//ROLL lite Runs in your browser. Nothing to install. What it does Each row of the grid is a pitch. Click to put a note down, drag it to move it or stretch it. The sounds are the ones an old game console had: two pulse waves, a triangle and noise. You get up to six tracks, a step sequencer for the drums, and you can load a sample of your own onto any track. It also does swing, tempo changes in the middle of a song, and tuni..."
   },
   {
     "t": "puzzles · magmacrunch media",
@@ -2135,11 +2135,11 @@
     "b": "roderick tron · magmacrunch media home › ware › video games › roderick tron RODERICK TRON in development A side-scrolling platformer about a robot composer on the rooftops of an 1810s Dutch city. Run, roll, stomp and fire musical notes, find the letters T-R-O-N, and reach the lit door. The levels are built by hand, with chimney draughts, bell cannons and coal trolleys in the way. // in a terminal // the title screen // where to play // BROWSER in a web browser, not public right now while it is being worked on. IN DEVELOPMENT TERMINAL A text-only version that runs in a terminal window. Install ..."
   },
   {
-    "t": "sprite forge · magmacrunch media",
+    "t": "SPRITE//FORGE · magmacrunch media",
     "c": "tool",
     "u": "/ware/sprite-forge/",
-    "d": "game sprite editor · animation, onion skin, PNG sheets",
-    "b": "sprite forge · magmacrunch media This tool is best experienced on a desktop or laptop. Please visit on a wider screen for the full workspace. SPRITE//FORGE Dark 32×32 1 FRAME − 16× + ⇲ FIT ▦ GRID ⇋ MIRROR ◎ ONION 1 ◫ PREVIEW 32 × 32 animation facings sheet; click a frame to edit it, drag to reorder surface ◀ ▶ EXPORT OUTPUT COPY COLOR #000000 + ADD RAMP SPRITES ADD DUP DEL MIRROR FLIP every sprite here shares one palette, so a character's facings cannot drift onto different browns. each exports as its own sheet, named by the name above. a mirror follows the sprite it came from until you draw o..."
+    "d": "a pixel-art sprite and animation editor, for the sprites in our games",
+    "b": "SPRITE//FORGE · magmacrunch media home › ware › creative utilities › sprite//forge SPRITE//FORGE a pixel-art sprite and animation editor, for the sprites in our games ▶ Open SPRITE//FORGE lite Runs in your browser. Nothing to install. What it does Draw a sprite a frame at a time and watch it move. Onion skin shows up to four frames either side, a frame can hold for several beats, and the surface preview wraps the frame round a sphere, a cylinder or a billboard to see how it sits in a 3D scene. A character's views sit side by side, and a mirrored view follows its source until you draw on it. Co..."
   },
   {
     "t": "texas hold'em lava dome · magmacrunch media",
