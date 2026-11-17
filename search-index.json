@@ -179,7 +179,7 @@
     "c": "page",
     "u": "/ware/utilities/index.html",
     "d": "browser-based tools for art, media & image processing",
-    "b": "creative utilities · ware · magmacrunch media home › ware › creative utilities creative utilities browser-based tools for art, media & image processing // music // instruments and sequencers that run in a browser tab punch roll chiptune piano roll pulse triangle noise WAV export ▶ tone grating an FM synth you play through a diffraction grating keys MIDI ▶ // art & image // pixel editors and an image signal chain gatefold square album-cover editor text shapes images ▶ sprite forge game sprite editor animation onion skin PNG sheets ▶ crunchscope an image signal chain you play like an instrument ..."
+    "b": "creative utilities · ware · magmacrunch media home › ware › creative utilities creative utilities browser-based tools for art, media & image processing // music // instruments and sequencers that run in a browser tab punch roll chiptune piano roll pulse triangle noise WAV export ▶ // art & image // pixel editors and an image signal chain gatefold square album-cover editor text shapes images ▶ sprite forge game sprite editor animation onion skin PNG sheets ▶ crunchscope an image signal chain you play like an instrument pixel sort FFT filter feedback ▶ // media // finding things you are allowed ..."
   },
   {
     "t": "developer tools · ware · magmacrunch media",
@@ -2154,13 +2154,6 @@
     "u": "/ware/texastoast/",
     "d": "Python RPG engine with I2C hardware abstraction for magmacrunch game systems",
     "b": "texastoast · magmacrunch media home › ware › developer tools › texastoast texastoast Python RPG engine with I2C hardware abstraction for magmacrunch game systems v0.12.1 PolyForm Noncommercial 1.0.0 Python 3.10+ A Python engine for small role-playing games, the same kind adenosine makes for the web. You can play four examples in your browser in the playground. It is finished and kept working, rather than used for new games: magmacrunch's newer games are built on its C engines, such as magnolia and daffodil. the technical version A tkinter-based 2D game engine by magmacrunch media, inspired by ..."
-  },
-  {
-    "t": "tone grating, magmacrunch media",
-    "c": "tool",
-    "u": "/ware/tone-grating/",
-    "d": "an FM synth you play through a diffraction grating · keys, MIDI",
-    "b": "tone grating, magmacrunch media This instrument wants two panels and a keyboard side by side. Please visit on a wider screen. TONE//GRATING A4 440 Hz φ 2.405 rad CARRIER NULL PATCH NULL ORGAN BRASS REED BELL CHIME GRIT SHIFTER CHOPPER TREMOLO THE GRATING one period of it is the oscillator: the light diffracts off it, and the note is played through it PHASE SINE BLAZED LAMELLAR AMPLITUDE SINE RONCHI DRAWN PHASE AMPLITUDE COPY SMOOTH FLIP PHASE DEPTH φ 2.405 WAVELENGTH λ 500 nm depth this light sees 2.405 rad INCIDENCE &theta; i 0° TIME DOMAIN STRIKE δβ +0.0 STRIKE DECAY 0.30 s RATIO f m /f c 0...."
   },
   {
     "t": "tunacan · magmacrunch media",
