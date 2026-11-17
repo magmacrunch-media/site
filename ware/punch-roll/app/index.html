@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="../../shell/toast.css?v=2c51118f">
     <link rel="stylesheet" href="kit/magma-themes.css?v=36fa3988">
     <link rel="stylesheet" href="kit/themes.css?v=38d89cb1">
-    <link rel="stylesheet" href="style.css?v=dcb3559b">
+    <link rel="stylesheet" href="style.css?v=37566f2d">
 </head>
 <body>
     <header class="app-header">
@@ -71,6 +71,13 @@
                 <button id="btn-view-steps" type="button" aria-pressed="false" title="The step sequencer: a row per track, a column per step (G switches)">Steps</button>
             </div>
             <label id="tuning-row" title="Tuning: equal steps to the octave">Tuning <select id="in-tuning"></select></label>
+            <div id="key-row" role="group" aria-label="Key" title="Key: the roll shades the rows outside this scale. It changes nothing you hear.">
+                <span>Key</span>
+                <span class="key-picks">
+                    <select id="in-key-root" aria-label="Tonic"></select>
+                    <select id="in-key-scale" aria-label="Scale"></select>
+                </span>
+            </div>
             <label id="swing-row" title="Swing: how late every second sixteenth plays, up to a full triplet shuffle">
                 <span>Swing <output id="out-swing" for="in-swing">0%</output></span>
                 <input id="in-swing" type="range" min="0" max="100" step="5" value="0">
@@ -237,7 +244,9 @@
                 <p>Click or drag in the VEL lane under the roll to make notes louder or
                     softer. The meter menu at the top left sets the time signature, and
                     the Tuning menu swaps the usual twelve semitones for 19, 24 (quarter
-                    tones) or 31 equal steps to the octave. Each note can also be detuned by a few cents.</p>
+                    tones) or 31 equal steps to the octave. Each note can also be detuned by a few cents.
+                    Key, under Tuning, picks a scale and its tonic: the rows outside it go dark and
+                    the tonic's rows are tinted, so the notes of the key are easy to find.</p>
                 <p>Each track shows its sound: one cycle of the wave and its harmonics
                     (a drum shows one hit), and ENV draws the envelope as a curve. Hover
                     a key to read its pitch in hertz.</p>
@@ -304,7 +313,7 @@
     <script src="vendor/adenosine-synth.js?v=2c9e98cf"></script>
     <script src="vendor/adenosine-scope.js?v=f0f22ae8"></script>
     <script src="vendor/wasm-media-encoders.js?v=dd4e17ab"></script>
-    <script src="core/roll.js?v=b1546fab"></script>
+    <script src="core/roll.js?v=b3dcc52c"></script>
     <script src="core/keymap.js?v=e3c72c32"></script>
     <script src="core/songfile.js?v=a3fe7b56"></script>
     <script src="core/midi.js?v=b4db0caf"></script>
@@ -328,13 +337,13 @@
     <script src="export.js?v=4a6b1c2d"></script>
     <script src="theme.js?v=bf2baf47"></script>
     <script src="wave-glyph.js?v=f27c9f17"></script>
-    <script src="roll-view.js?v=bb15a0c7"></script>
+    <script src="roll-view.js?v=00bc0cf1"></script>
     <script src="step-view.js?v=7dd5a17e"></script>
     <script src="midi.js?v=b33fdd11"></script>
     <script src="dialogs.js?v=9e098128"></script>
     <script src="timing.js?v=554ac023"></script>
     <script src="append.js?v=6ea3efe1"></script>
     <script src="chain.js?v=c3b820f5"></script>
-    <script src="main.js?v=dbd6ee1f"></script>
+    <script src="main.js?v=8f3c42c1"></script>
 </body>
 </html>
