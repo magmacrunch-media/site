@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="../../shell/toast.css?v=2c51118f">
     <link rel="stylesheet" href="kit/magma-themes.css?v=36fa3988">
     <link rel="stylesheet" href="kit/themes.css?v=38d89cb1">
-    <link rel="stylesheet" href="style.css?v=3bb29f4b">
+    <link rel="stylesheet" href="style.css?v=dcb3559b">
 </head>
 <body>
     <header class="app-header">
@@ -25,6 +25,16 @@
             <label>Bars <input id="in-bars" type="number" inputmode="numeric" min="1" max="256" step="1"></label>
             <label>Grid <select id="in-grid" title="What notes snap to"></select></label>
             <label class="check"><input id="in-loop" type="checkbox" checked> Loop</label>
+            <span class="section-picker">
+                <button id="btn-section" type="button" aria-haspopup="menu" aria-expanded="false" aria-controls="section-menu" aria-label="Section" title="Section: copy, paste and repeat the loop region's bars on every track">&#9662;</button>
+                <span id="section-menu" class="menu" role="menu" aria-label="Section" hidden>
+                    <button id="btn-section-copy" role="menuitem" type="button" title="Copy the loop region's bars on every track, tempo changes included">Copy<i>Ctrl+Shift+C</i></button>
+                    <button id="btn-section-cut" role="menuitem" type="button" title="Copy the loop region's bars, then leave them empty">Cut<i>Ctrl+Shift+X</i></button>
+                    <button id="btn-section-paste" role="menuitem" type="button" title="Paste the section over the bars at the start marker">Paste over</button>
+                    <button id="btn-section-insert" role="menuitem" type="button" title="Insert the section at the start marker, pushing the bars after it along">Insert</button>
+                    <button id="btn-section-duplicate" role="menuitem" type="button" title="Insert a copy straight after the section, and loop the copy">Duplicate<i>Ctrl+Shift+D</i></button>
+                </span>
+            </span>
             <span class="spacer"></span>
             <button id="btn-scope" type="button" aria-pressed="false" title="An oscilloscope on everything the song plays">Scope</button>
             <span class="file-picker">
@@ -33,6 +43,7 @@
                     <button id="btn-new" role="menuitem" type="button" title="Start a new song">New</button>
                     <button id="btn-open" role="menuitem" type="button" title="Open a song">Open&hellip;<i>Ctrl+O</i></button>
                     <button id="btn-append" role="menuitem" type="button" title="Play another song after this one, as many times as you like">Append&hellip;</button>
+                    <button id="btn-chain" role="menuitem" type="button" title="Songs played one after another, each as many times as you like, saved as a .chain.punch file">Chain&hellip;</button>
                     <button id="btn-save" role="menuitem" type="button" title="Save the song">Save<i>Ctrl+S</i></button>
                     <button id="btn-save-as" role="menuitem" type="button" title="Save the song to a new file, leaving the old one as it was">Save As&hellip;<i>Ctrl+Shift+S</i></button>
                     <span class="menu-sep" role="separator"></span>
@@ -102,6 +113,12 @@
             <span id="scope-row">
                 <button id="btn-scope-pop" class="theme-mode" type="button" title="Put the scope in a window of its own, to move anywhere" hidden>Pop out</button>
             </span>
+            <span id="zoom-row" role="group" aria-label="Zoom">
+                <button id="btn-follow" class="theme-mode" type="button" aria-pressed="true" title="Follow (F): page the view along with the playhead while the song plays">Follow</button>
+                <button id="btn-zoom-out" class="theme-mode" type="button" aria-label="Zoom out" title="Zoom out (Ctrl+-)">-</button>
+                <output id="out-zoom" aria-label="Zoom" title="The roll's zoom across; double-click for 100% (Ctrl+0). Ctrl+wheel zooms about the pointer, with Shift the rows. Shift+F fits the song.">100%</output>
+                <button id="btn-zoom-in" class="theme-mode" type="button" aria-label="Zoom in" title="Zoom in (Ctrl+=)">+</button>
+            </span>
             <span class="theme"><span id="theme-label">Theme</span>
                 <span class="theme-picker">
                     <button id="in-theme" class="theme-pick" type="button" aria-haspopup="listbox" aria-expanded="false" aria-controls="theme-list" aria-labelledby="theme-label in-theme" title="Colour theme, from magma-themes: hover or arrow through the list to preview"></button>
@@ -142,6 +159,24 @@
                 <button type="submit" class="primary">Append</button>
             </div>
         </form>
+    </dialog>
+
+    <dialog id="dlg-chain" class="keys tempo chain" aria-labelledby="chain-title">
+        <header>
+            <h2 id="chain-title">Chain</h2>
+            <button class="modal-close" title="Close (Esc)" aria-label="Close">×</button>
+        </header>
+        <div class="tempo-body">
+            <ol id="chain-parts"></ol>
+            <p id="chain-note" class="chain-note" role="status"></p>
+            <div class="tempo-actions">
+                <button type="button" id="btn-chain-add">Add song&hellip;</button>
+                <button type="button" id="btn-chain-save">Save chain&hellip;</button>
+                <span class="spacer"></span>
+                <button type="button" id="btn-chain-close">Close</button>
+                <button type="button" id="btn-chain-join" class="primary" title="Lay the songs end to end in the roll, as a new song">Join</button>
+            </div>
+        </div>
     </dialog>
 
     <dialog id="dlg-keys" class="keys" aria-labelledby="keys-title">
@@ -209,12 +244,16 @@
             </section>
             <section>
                 <h3>Keep it</h3>
-                <p>The File menu holds New, Open, Append, Save and Export. Save writes a
+                <p>The File menu holds New, Open, Append, Chain, Save and Export. Save writes a
                     <code>.punch</code> song file, and Open loads one back;
                     on the desktop, Save As writes a new file and leaves the old one
                     as it was, and double-clicking a <code>.punch</code> file opens it too.
                     Append plays another song after this one, as many times as you ask:
                     its tracks join yours where they sound the same, and its tempo comes with it.
+                    Chain, on the desktop, lists several song files and how many times each
+                    plays, saves the list as a <code>.chain.punch</code> file, and Join lays
+                    them end to end as a new song. A chain holds no music of its own, so a
+                    song changed since is heard as it is now.
                     Export renders the song to an audio file: WAV or FLAC, which keep every
                     sample, or MP3 or Ogg Vorbis, which are far smaller. Ctrl+Z undoes almost
                     anything.</p>
@@ -265,8 +304,8 @@
     <script src="vendor/adenosine-synth.js?v=2c9e98cf"></script>
     <script src="vendor/adenosine-scope.js?v=f0f22ae8"></script>
     <script src="vendor/wasm-media-encoders.js?v=dd4e17ab"></script>
-    <script src="core/roll.js?v=81842fcd"></script>
-    <script src="core/keymap.js?v=45943023"></script>
+    <script src="core/roll.js?v=b1546fab"></script>
+    <script src="core/keymap.js?v=e3c72c32"></script>
     <script src="core/songfile.js?v=a3fe7b56"></script>
     <script src="core/midi.js?v=b4db0caf"></script>
     <script src="core/flac.js?v=67c1a8ac"></script>
@@ -274,6 +313,8 @@
     <script src="core/wavescope.js?v=bcc88085"></script>
     <script src="core/samples.js?v=ae2ef0d5"></script>
     <script src="core/join.js?v=4e36c532"></script>
+    <script src="core/section.js?v=a7d7fec6"></script>
+    <script src="core/chainfile.js?v=e8a12c21"></script>
     <script src="bridge.js?v=610c9e51"></script>
     <script src="faust-voice.js?v=3275a6f2"></script>
     <script src="drum-voices.js?v=b076ba1f"></script>
@@ -281,17 +322,19 @@
     <script src="sample-panel.js?v=4bbfeed8"></script>
     <script src="scope-panel.js?v=2b528997"></script>
     <script src="track-panel.js?v=f11db656"></script>
-    <script src="selection-edits.js?v=dc3328ae"></script>
+    <script src="selection-edits.js?v=393891a4"></script>
+    <script src="section-edits.js?v=2641b75f"></script>
     <script src="step-entry.js?v=3f7e2a5b"></script>
     <script src="export.js?v=4a6b1c2d"></script>
     <script src="theme.js?v=bf2baf47"></script>
     <script src="wave-glyph.js?v=f27c9f17"></script>
-    <script src="roll-view.js?v=ad0d4afc"></script>
+    <script src="roll-view.js?v=bb15a0c7"></script>
     <script src="step-view.js?v=7dd5a17e"></script>
     <script src="midi.js?v=b33fdd11"></script>
     <script src="dialogs.js?v=9e098128"></script>
     <script src="timing.js?v=554ac023"></script>
     <script src="append.js?v=6ea3efe1"></script>
-    <script src="main.js?v=dbf56a0a"></script>
+    <script src="chain.js?v=c3b820f5"></script>
+    <script src="main.js?v=dbd6ee1f"></script>
 </body>
 </html>
