@@ -3,13 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MAKEMECOOKIES!X4</title>
-<meta name="description" content="One song, one shift. Tend five stations of a cookie factory line (hopper, mixer, conveyor, oven, packing) for the 51 seconds of Jimmi's makemecookies! x4.">
+<title>MAKEMECOOKIES!</title>
+<meta name="description" content="The shift ends when the song does. Tend five stations of a cookie factory line (hopper, mixer, conveyor, oven, packing) for the 51 seconds of Jimmi's makemecookies! x4.">
 <meta name="theme-color" content="#FF2E9C">
 <link rel="manifest" href="manifest.json">
 
-<meta property="og:title" content="MAKEMECOOKIES!X4 · magmacrunch media">
-<meta property="og:description" content="One song, one shift. Tend five stations of a cookie factory line for the 51 seconds of Jimmi's makemecookies! x4.">
+<meta property="og:title" content="MAKEMECOOKIES! · magmacrunch media">
+<meta property="og:description" content="The shift ends when the song does. Tend five stations of a cookie factory line for the 51 seconds of Jimmi's makemecookies! x4.">
 <meta property="og:image" content="https://magmacrunch.com/og/arcade-makemecookies.png?v=1">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -31,9 +31,10 @@
 @font-face{font-family:"Press Start 2P";src:url(../../fonts/PressStart2P-Regular.woff2) format("woff2"),url(../../fonts/PressStart2P-Regular.ttf) format("truetype");font-display:swap}@font-face{font-family:"Share Tech Mono";src:url(../../fonts/ShareTechMono-Regular.woff2) format("woff2");font-display:swap}
 </style>
 <link rel="stylesheet" href="css/base.css?v=3f829d3e">
-<link rel="stylesheet" href="css/layout.css?v=ddd9a692">
-<link rel="stylesheet" href="css/modals.css?v=3a9e55da">
-<link rel="stylesheet" href="css/title.css?v=ee7b949a">
+<link rel="stylesheet" href="css/layout.css?v=79064189">
+<link rel="stylesheet" href="css/modals.css?v=2dd110d3">
+<link rel="stylesheet" href="css/title.css?v=7fd535da">
+<link rel="stylesheet" href="css/insert.css?v=0d500536">
 
 </head>
 <body>
@@ -48,8 +49,7 @@
 
 <div id="app">
   <header>
-    <h1>MAKEMECOOKIES!<span style="color:var(--butter);text-shadow:var(--glow-butter)">X4</span></h1>
-    <div class="byline">one song · one shift · five stations</div>
+    <h1>MAKEMECOOKIES!</h1>
   </header>
   <div class="neon-stripe"></div>
 
@@ -103,10 +103,11 @@
 </div>
 
 <div id="title-overlay">
+  <section class="title-cover">
   <canvas class="title-cookie" id="title-cookie" aria-hidden="true"></canvas>
 
   <div class="title-stack">
-    <div class="title-main" aria-label="makemecookies x4">
+    <div class="title-main" aria-label="makemecookies">
       <span class="echo e1" aria-hidden="true">MAKEMECOOKIES!</span>
       <span class="echo e2" aria-hidden="true">MAKEMECOOKIES!</span>
       <span class="echo e3" aria-hidden="true">MAKEMECOOKIES!</span>
@@ -119,21 +120,63 @@
   <div class="title-buttons">
     <button class="btn" id="btn-start-title">CLOCK IN</button>
     <button class="btn mint" id="btn-how-to-play">HOW TO PLAY</button>
-    <button class="btn gold" id="btn-credits-title">CREDITS</button>
     <button class="btn" id="btn-music-title" data-music-toggle aria-pressed="true">MUSIC <span class="music-state">ON</span></button>
   </div>
+  <a class="insert-cue" id="insertCueDown" href="#insertBack" aria-label="the insert">insert &#9660;</a>
   <div class="title-publisher">
     <a class="title-publisher-link" href="https://magmacrunch.com">
       <img class="title-publisher-mark" src="img/mc-logo.png" alt="" width="26" height="32">
       <span>magmacrunch media</span>
     </a>
   </div>
+  </section>
+
+  <div class="insert-back" id="insertBack">
+    <section class="sleeve" aria-label="the single and its credits">
+      <div class="sleeve-front">
+        <h3 class="sleeve-head c-sprinkle">made by</h3>
+        <div class="sleeve-row"><span class="sleeve-role">game</span><span class="sleeve-name"><a href="https://magmacrunch.com">magmacrunch media</a></span></div>
+        <div class="sleeve-row"><span class="sleeve-role">music</span><span class="sleeve-name">Jimmi</span></div>
+        <p class="sleeve-note">of the Fruity Loops Debauchery Bros.</p>
+      </div>
+      <div class="sleeve-record">
+        <h3 class="sleeve-head c-butter">track</h3>
+        <div class="sleeve-row"><span class="sleeve-role">makemecookies! x4</span><span class="sleeve-name">0:51</span></div>
+        <h3 class="sleeve-head c-neon">the single</h3>
+        <div class="sleeve-row"><span class="sleeve-role">label</span><span class="sleeve-name">magmacrunch arcade</span></div>
+        <div class="sleeve-row"><span class="sleeve-role">released</span><span class="sleeve-name">November 9, 2026</span></div>
+        <div class="sleeve-row"><span class="sleeve-role">recorded</span><span class="sleeve-name">Frogwood Manor</span></div>
+        <p class="sleeve-note">programmed there in 2008</p>
+        <div class="sleeve-row"><span class="sleeve-role">also on</span><span class="sleeve-name"><em>JIMMI</em></span></div>
+        <p class="sleeve-note">2023, MCR013, track 7</p>
+      </div>
+      <div class="sleeve-credits">
+        <div class="sleeve-tools">
+        <h3 class="sleeve-head c-frosting">built with</h3>
+        <p class="sleeve-built">
+          <a href="https://magmacrunch.com/ware/adenosine/">adenosine</a>
+          &middot; Press Start 2P &middot; Share Tech Mono
+        </p>
+
+        <div class="sleeve-row sleeve-aside"><span class="sleeve-role">cheapness impact factor</span><span class="sleeve-name">2.2</span></div>
+        </div>
+
+        <div class="sleeve-back"><img class="sleeve-mark" src="img/mc-logo.png" alt="magmacrunch media" width="26" height="32"><p class="sleeve-catno">MCA004<br>MCS049</p><svg class="sleeve-barcode" viewBox="0 0 121 46" role="img" aria-label="barcode MCA004" shape-rendering="crispEdges"><rect x="10" y="0" width="2" height="37"/><rect x="13" y="0" width="1" height="37"/><rect x="16" y="0" width="1" height="37"/><rect x="21" y="0" width="1" height="37"/><rect x="23" y="0" width="3" height="37"/><rect x="27" y="0" width="2" height="37"/><rect x="32" y="0" width="1" height="37"/><rect x="36" y="0" width="1" height="37"/><rect x="40" y="0" width="2" height="37"/><rect x="43" y="0" width="1" height="37"/><rect x="45" y="0" width="1" height="37"/><rect x="49" y="0" width="2" height="37"/><rect x="54" y="0" width="1" height="37"/><rect x="57" y="0" width="3" height="37"/><rect x="61" y="0" width="2" height="37"/><rect x="65" y="0" width="1" height="37"/><rect x="68" y="0" width="3" height="37"/><rect x="72" y="0" width="2" height="37"/><rect x="76" y="0" width="2" height="37"/><rect x="80" y="0" width="1" height="37"/><rect x="83" y="0" width="3" height="37"/><rect x="87" y="0" width="1" height="37"/><rect x="92" y="0" width="1" height="37"/><rect x="94" y="0" width="2" height="37"/><rect x="98" y="0" width="2" height="37"/><rect x="103" y="0" width="3" height="37"/><rect x="107" y="0" width="1" height="37"/><rect x="109" y="0" width="2" height="37"/><text x="60.5" y="45" text-anchor="middle">MCA004</text></svg>
+        <p class="sleeve-note sleeve-phono">&#8471; 2023 magmacrunch media</p>
+        <p class="sleeve-note sleeve-copy">&copy; 2026 magmacrunch media</p>
+        <p class="sleeve-foot">last updated November 9, 2026</p>
+        </div>
+      </div>
+      <a class="insert-cue insert-cue-up" id="insertCueUp" href="#title-overlay" aria-label="back to the cover">&#9650; cover</a>
+      <div class="insert-close"><button class="btn gold" id="btn-close-insert">CLOSE</button></div>
+    </section>
+  </div>
 </div>
 
 <div class="modal-overlay hidden" id="modal-rules">
   <div class="modal">
     <h2>HOW TO PLAY</h2>
-    <div class="modal-sub">one song, one shift</div>
+    <div class="modal-sub">the shift ends when the song does</div>
 
     <div class="rules-body">
       <p class="rules-lead">Five machines, and none of them will wait. Tap a
@@ -220,47 +263,19 @@
   </div>
 </div>
 
-<div class="modal-overlay hidden" id="modal-credits">
-  <div class="modal modal-credits">
-    <div class="modal-titlebar">
-      <h2><a href="https://magmacrunch.com" class="credits-mark-link" aria-label="magmacrunch.com"><img class="credits-mark" src="img/mc-logo.png" alt="" width="26" height="32"></a>CREDITS</h2>
-    </div>
-
-    <div class="modal-body credits-sheet">
-      <section class="credits-block c-neon">
-        <h3 class="credits-head">made by</h3>
-        <div class="credit-row"><span class="credit-role">game</span><span class="credit-name"><a href="https://magmacrunch.com">magmacrunch media</a></span></div>
-        <div class="credit-row"><span class="credit-role">music</span><span class="credit-name">Jimmi</span></div>
-        <p class="credit-note"><strong>&ldquo;makemecookies! x4&rdquo;</strong>, from the album <em>JIMMI</em></p>
-      </section>
-      <section class="credits-block c-sprinkle">
-        <h3 class="credits-head">built with</h3>
-        <p class="credits-built">
-          <a href="https://magmacrunch.com/ware/adenosine/">adenosine</a>
-          &middot; Press Start 2P &middot; Share Tech Mono
-        </p>
-      </section>
-      <div class="credit-row credit-row-aside"><span class="credit-role">cheapness impact factor</span><span class="credit-name">2.2</span></div>
-    </div>
-    <div class="modal-footer">
-      <button class="btn gold" id="btn-close-credits">CLOSE</button>
-    </div>
-  </div>
-</div>
-
 <script src="../shared/adenosine-rpg.js?v=ffe9a960"></script>
 <script src="../shared/adenosine-score-client.js?v=7ecef8fd"></script>
 <script src="../shared/score-server.js?v=9acd988c"></script>
 <script>
 const scoreClient=new AdScore.ScoreClient().auto(MC_SCORE_OPTS);
 </script>
-<script src="js/config.js?v=855bb4bc"></script>
+<script src="js/config.js?v=0c86de57"></script>
 <script src="js/pixels.js?v=c8a1708d"></script>
-<script src="js/stations.js?v=b71ba448"></script>
-<script src="js/render.js?v=06ff03bb"></script>
+<script src="js/stations.js?v=80d23b28"></script>
+<script src="js/render.js?v=5b159ee2"></script>
 <script src="js/themes.js?v=69aaf70d"></script>
 <script src="js/moments.js?v=e78359c7"></script>
-<script src="js/main.js?v=5d25cf14"></script>
+<script src="js/main.js?v=fb900883"></script>
 <script>
 if("serviceWorker"in navigator){navigator.serviceWorker.register("sw.js")}
 </script>

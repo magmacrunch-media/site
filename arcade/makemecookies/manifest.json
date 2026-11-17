@@ -1,7 +1,7 @@
 {
-  "name": "MAKEMECOOKIES!X4",
+  "name": "MAKEMECOOKIES!",
   "short_name": "cookies",
-  "description": "One song, one shift. Tend five stations of a cookie factory line.",
+  "description": "The shift ends when the song does. Tend five stations of a cookie factory line.",
   "start_url": "./index.html",
   "display": "standalone",
   "background_color": "#1a0a14",
