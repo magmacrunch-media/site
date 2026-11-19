@@ -22,7 +22,7 @@ html{touch-action:manipulation}
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=VT323&family=Press+Start+2P&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../shared/arcade-base.css?v=de5e0d7b">
     <link rel="stylesheet" href="css/base.css?v=624ec1d2">
-    <link rel="stylesheet" href="css/start-screen.css?v=406a0a9a">
+    <link rel="stylesheet" href="css/start-screen.css?v=4b830d91">
     <link rel="stylesheet" href="css/game-layout.css?v=57f18734">
     <link rel="stylesheet" href="../shared/cards/cards.css?v=143409ef">
     <link rel="stylesheet" href="css/modals.css?v=28bc3d15">
@@ -49,6 +49,7 @@ html{touch-action:manipulation}
             <span id="menuOptions">Scores</span>
             <span id="menuHelp">Help</span>
             <span id="menuCredits">Credits</span>
+            <span id="menuDeck" hidden>Deck</span>
         </div>
 
         <div class="neon-stripe"></div>
@@ -202,6 +203,23 @@ html{touch-action:manipulation}
         </div>
     </div>
 
+    <div class="instructions-modal" id="deckModal">
+        <div class="instructions-content">
+            <div class="modal-titlebar"><span>DECK</span></div>
+            <div class="modal-body">
+                <h3>Choose a deck</h3>
+                <p>The cards on the table change at once. The game carries on.</p>
+                <div class="start-deck deck-pick">
+                    <label for="deck-choice-game">DECK</label>
+                    <select id="deck-choice-game"></select>
+                </div>
+                <div class="modal-footer">
+                    <button id="closeDeck">OK</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="instructions-modal" id="creditsModal">
         <div class="instructions-content">
             <div class="modal-titlebar"><span>CREDITS</span></div>
@@ -270,9 +288,9 @@ html{touch-action:manipulation}
 const scoreClient=new AdScore.ScoreClient().auto(MC_SCORE_OPTS);
 </script>
     <script src="../shared/adenosine-cards.js?v=2bf803bc"></script>
-    <script src="../shared/cards/deck-choice.js?v=7bfe22eb"></script>
-    <script src="js/card-back.js?v=014e355f"></script>
-    <script src="js/game.js?v=e14a4ded"></script>
+    <script src="../shared/cards/deck-choice.js?v=ec97442c"></script>
+    <script src="js/card-back.js?v=a7f02e76"></script>
+    <script src="js/game.js?v=4007848d"></script>
     <script src="js/main.js?v=380b172e"></script>
 
 </body>
