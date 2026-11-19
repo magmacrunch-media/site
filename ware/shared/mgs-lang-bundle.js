@@ -900,6 +900,142 @@ class Environment:
         if self.parent is not None:
             names.extend(self.parent._collect_names())
         return names
+`,"fmt.py":`"""Format MagmaScript source: pretty.py's layout with the source's comments kept.
+
+format_source(text) returns the formatted text or raises FormatError. Called
+by \`magmascript fmt\` (_cli/scripts.py). It reads nothing and writes nothing.
+
+The parser drops comments, so the lexer records them on the side and
+pretty.trivia() puts each one back: an own-line comment before the
+statement that followed it, a trailing one after the code it followed, at
+its old column. The author's blank lines are kept too. Before anything is returned the result
+is checked twice: it must parse to the same tree as the input, and carry the
+same comments in the same order. A file that fails either is refused rather
+than formatted, because the alternative is quietly losing part of it.
+"""
+
+from __future__ import annotations
+
+import dataclasses
+from typing import Any
+
+from magmascript.lang import ast_nodes as ast
+from magmascript.lang import pretty
+from magmascript.lang.lexer import Lexer
+from magmascript.lang.parser import Parser
+
+
+class FormatError(Exception):
+    """The source cannot be formatted without changing or losing something."""
+
+
+def format_source(source: str, filename: str = "<source>") -> str:
+    source = source.replace("\\r\\n", "\\n")
+    lexer = Lexer(source, filename)
+    tree = Parser(lexer.tokenize(), source=source, filename=filename).parse()
+
+    lines = source.split("\\n")
+    own_comment_lines = {line for line, _, _, own_line in lexer.comments if own_line}
+    verbatim = _split_statements(tree, lines, own_comment_lines)
+    kept_raw = {n for start, text in verbatim.items() for n in range(start, start + text.count("\\n") + 1)}
+
+    # What a verbatim statement holds is printed with it, so it is left out here.
+    items = [(line, text) for line, _, text, own_line in lexer.comments
+             if own_line and line not in kept_raw]
+    items += [(n, "") for n, text in enumerate(lines, start=1) if not text.strip() and n not in kept_raw]
+    trailing = {line: (column, text) for line, column, text, own_line in lexer.comments
+                if not own_line and line not in kept_raw}
+    with pretty.trivia(items, trailing, verbatim):
+        formatted = pretty.unparse(tree) + "\\n"
+
+    _check(source, tree, lexer.comments, formatted, filename)
+    return formatted
+
+
+def _split_statements(tree: ast.Program, lines: list[str], comment_lines: set[int]) -> dict[int, str]:
+    """Statements the author spread over several lines, by start line, as written.
+
+    The printer has no line breaking, so it would join a tile map laid out
+    as a grid into one line. A statement whose lines of code run on past its
+    first line, outside the lines its own blocks span, was split on purpose
+    and is kept as it is: a dict laid out one entry a line stays that way
+    even when its entries hold one-line functions. A statement whose extra
+    lines are all its blocks' is formatted, and so are classes and
+    floorplans, whose bodies the printer lays out line by line already.
+    """
+    found: dict[int, str] = {}
+
+    def code(n: int) -> bool:
+        return bool(lines[n - 1].strip()) and n not in comment_lines
+
+    def block_lines(stmt: Any) -> set[int] | None:
+        """Every line inside the statement's blocks, or None if a span is unknown."""
+        covered: set[int] = set()
+        for block, _ in _blocks_in(stmt):
+            start, end = getattr(block, "start_line", None), getattr(block, "end_line", None)
+            if start is None or end is None:
+                return None  # the ':' form records no lines, so it is formatted
+            covered.update(range(start, end + 1))
+        return covered
+
+    def visit(body: list, end: int) -> None:
+        for i, stmt in enumerate(body):
+            stop = body[i + 1].line if i + 1 < len(body) else end
+            more = [n for n in range(stmt.line + 1, stop) if code(n)]
+            covered = block_lines(stmt)
+            structural = isinstance(stmt, (ast.ClassDef, ast.FloorplanDef))
+            if more and covered is not None and not structural and any(n not in covered for n in more):
+                span = lines[stmt.line - 1:max(more)]
+                found[stmt.line] = "\\n".join([span[0].lstrip()] + span[1:])
+            else:
+                for block, block_end in _blocks_in(stmt):
+                    visit(block.body, block_end)
+
+    visit(tree.body, len(lines) + 1)
+    return found
+
+
+def _blocks_in(node: Any) -> Any:
+    """Every block directly or deeply inside \`node\`, with the line it closes on."""
+    if isinstance(node, ast.Block):
+        yield node, getattr(node, "end_line", None) or (node.body[-1].line + 1 if node.body else 0)
+        return
+    if dataclasses.is_dataclass(node):
+        for f in dataclasses.fields(node):
+            yield from _blocks_in(getattr(node, f.name))
+    elif isinstance(node, list):
+        for item in node:
+            yield from _blocks_in(item)
+
+
+def _check(source: str, tree: Any, comments: list, formatted: str, filename: str) -> None:
+    """Refuse a result that differs from the source in anything but layout."""
+    out_lexer = Lexer(formatted, filename)
+    out_tree = Parser(out_lexer.tokenize(), source=formatted, filename=filename).parse()
+    if _shape(out_tree) != _shape(tree):
+        raise FormatError(f"{filename}: formatting would change the program; left alone")
+    # Text and own-line-ness, in order: a trailing comment that could not be
+    # placed after its code would otherwise come back as an own-line one.
+    def kept(found: list) -> list:
+        return [(text, own_line) for _, _, text, own_line in found]
+
+    if kept(out_lexer.comments) != kept(comments):
+        raise FormatError(f"{filename}: formatting would move or lose a comment; left alone")
+
+
+def _shape(node: Any) -> Any:
+    """A tree as plain data, without line and column, for comparing two parses."""
+    if dataclasses.is_dataclass(node):
+        return (
+            type(node).__name__,
+            {f.name: _shape(getattr(node, f.name))
+             for f in dataclasses.fields(node) if f.name not in ("line", "column")},
+        )
+    if isinstance(node, (list, tuple)):
+        return [_shape(item) for item in node]
+    if isinstance(node, dict):
+        return {key: _shape(value) for key, value in node.items()}
+    return node
 `,"hypnagogia.py":'"""hypnagogia - the pass that runs at the threshold, just before execution.\n\nThe state between waking and sleep. Nothing has run yet; the program is walked\nonce and asked what it is about to do wrong.\n\nMagmaScript is dynamic, so this pass is deliberately timid. It reports only\nwhat cannot be explained away by control flow:\n\n* A name that is never bound *anywhere* in an enclosing scope. Order is\n  ignored on purpose - ``if c { x = 1 }`` followed by ``print(x)`` is legal\n  when ``c`` holds, and flagging it would be a false alarm. A name bound\n  nowhere at all, though, is a typo.\n* Statements sitting after a ``return``, ``break``, or ``continue`` in the same\n  block, which can never run.\n\nFindings are warnings, not errors: a program that has always worked keeps\nworking. Floorplan and width faults stay where they are, raised for real when\nthe declaration is executed.\n\nCustom rules can be registered via ``register_rule()``.\n"""\n\nfrom __future__ import annotations\n\nfrom dataclasses import dataclass, field\n\nfrom magmascript.lang import ast_nodes as ast\nfrom magmascript.lang.util import suggest\nfrom magmascript.lang.visitor import Visitor, children\n\n\n@dataclass\nclass Finding:\n    line: int\n    column: int\n    message: str\n\n    def render(self, filename: str | None = None) -> str:\n        where = f"{filename}:{self.line}" if filename else f"line {self.line}"\n        return f"hypnagogia at {where}: {self.message}"\n\n\nTERMINATORS = (ast.ReturnStatement, ast.BreakStatement, ast.ContinueStatement)\n\n\n# -- custom rule registry ------------------------------------------------\n\n_rules: list[tuple[str, callable]] = []\n\n\ndef register_rule(name: str, checker: callable) -> None:\n    """Register a custom hypnagogia rule.\n\n    The checker receives (program, findings) and appends to findings.\n    """\n    _rules.append((name, checker))\n\n\ndef list_rules() -> list[str]:\n    """Return names of all registered rules."""\n    return [name for name, _ in _rules]\n\n\n# -- the main pass -------------------------------------------------------\n\nclass Hypnagogia(Visitor):\n    def __init__(self, global_names: set[str] | None = None) -> None:\n        super().__init__()\n        self.findings: list[Finding] = []\n        self.globals: set[str] = set(global_names or ())\n        self._scopes: list[set[str]] = []\n\n    # -- entry ----------------------------------------------------------\n\n    def inspect(self, program: ast.Program) -> list[Finding]:\n        bound = set(self.globals) | self._bindings(program.body)\n        self._scopes = [bound]\n        self._check_unreachable(program.body)\n        for stmt in program.body:\n            self.visit(stmt)\n\n        # Run custom rules\n        for name, checker in _rules:\n            checker(program, self.findings)\n\n        self.findings.sort(key=lambda f: (f.line, f.column))\n        return self.findings\n\n    # -- binding collection ---------------------------------------------\n\n    def _bindings(self, nodes: list[ast.ASTNode]) -> set[str]:\n        """Every name bound anywhere beneath `nodes`, at this function level.\n\n        Nested function bodies are not descended into: their inner names are\n        not visible out here.\n        """\n        found: set[str] = set()\n        for node in nodes:\n            self._collect(node, found)\n        return found\n\n    def _collect(self, node: ast.ASTNode, found: set[str]) -> None:\n        if node is None:\n            return\n\n        if isinstance(node, ast.Assignment):\n            found.add(node.name)\n        elif isinstance(node, ast.MultiAssignment):\n            found.update(node.targets)\n        elif isinstance(node, ast.FunctionDef):\n            found.add(node.name)\n            return  # body belongs to its own scope\n        elif isinstance(node, ast.ArrowFunction):\n            return\n        elif isinstance(node, ast.ClassDef):\n            found.add(node.name)\n            return\n        elif isinstance(node, ast.FloorplanDef):\n            found.add(node.name)\n            return\n        elif isinstance(node, ast.ForLoop):\n            found.add(node.variable)\n        elif isinstance(node, ast.ListComprehension):\n            found.add(node.variable)\n        elif isinstance(node, ast.TryCatch):\n            if node.catch_param:\n                found.add(node.catch_param)\n        elif isinstance(node, ast.ImportStatement):\n            if node.alias:\n                found.add(node.alias)\n            for name in node.names:\n                found.add(name)\n            if not node.alias and not node.names:\n                found.add(node.module.replace("/", ".").split(".")[-1])\n\n        for child in children(node):\n            self._collect(child, found)\n\n    # -- visitor methods ------------------------------------------------\n\n    def visit_Identifier(self, node: ast.Identifier) -> None:\n        if not any(node.name in scope for scope in self._scopes):\n            known = set().union(*self._scopes) if self._scopes else set()\n            hint = suggest(node.name, sorted(known)) if known else None\n            message = f"\'{node.name}\' is never given a value"\n            if hint:\n                message += f" - did you mean \'{hint}\'?"\n            self.findings.append(Finding(node.line, node.column, message))\n\n    def visit_FunctionDef(self, node: ast.FunctionDef) -> None:\n        inner = set(node.params)\n        body = node.body\n        inner |= self._bindings(getattr(body, "body", [body]))\n        for default in node.defaults.values():\n            self.visit(default)\n        self._scopes.append(inner)\n        self.visit(body)\n        self._scopes.pop()\n\n    def visit_ArrowFunction(self, node: ast.ArrowFunction) -> None:\n        inner = set(node.params)\n        body = node.body\n        inner |= self._bindings(getattr(body, "body", [body]))\n        for default in node.defaults.values():\n            self.visit(default)\n        self._scopes.append(inner)\n        self.visit(body)\n        self._scopes.pop()\n\n    def visit_ClassDef(self, node: ast.ClassDef) -> None:\n        for method in node.methods:\n            inner = set(method.params) | {"self"}\n            body = method.body\n            inner |= self._bindings(getattr(body, "body", [body]))\n            self._scopes.append(inner)\n            self.visit(body)\n            self._scopes.pop()\n\n    def visit_FloorplanDef(self, node: ast.FloorplanDef) -> None:\n        pass  # field types are checked when the declaration runs\n\n    def visit_PropertyAccess(self, node: ast.PropertyAccess) -> None:\n        self.visit(node.object)\n        # the property name is not a variable\n\n    def visit_PropertyAssignment(self, node: ast.PropertyAssignment) -> None:\n        self.visit(node.object)\n        self.visit(node.value)\n\n    def visit_MethodCall(self, node: ast.MethodCall) -> None:\n        self.visit(node.object)\n        for arg in node.arguments:\n            self.visit(arg)\n\n    def visit_Block(self, node: ast.Block) -> None:\n        self._check_unreachable(node.body)\n        for child in children(node):\n            self.visit(child)\n\n    # -- unreachable code -----------------------------------------------\n\n    def _check_unreachable(self, body: list[ast.ASTNode]) -> None:\n        for index, stmt in enumerate(body):\n            if isinstance(stmt, TERMINATORS) and index + 1 < len(body):\n                nxt = body[index + 1]\n                word = type(stmt).__name__.replace("Statement", "").lower()\n                self.findings.append(\n                    Finding(\n                        getattr(nxt, "line", 0),\n                        getattr(nxt, "column", 0),\n                        f"this can never run - the {word} above always leaves first",\n                    )\n                )\n                return\n\n\ndef inspect(program: ast.Program, global_names: set[str] | None = None) -> list[Finding]:\n    return Hypnagogia(global_names).inspect(program)\n',"interpreter.py":`from __future__ import annotations
 
 import sys
@@ -1928,7 +2064,10 @@ class Interpreter:
                 "line": e.line,
                 "file": e.filename,
                 "prefix": e.prefix,
-                "format": lambda: e.format(),
+                # The bound method, not a lambda over \`e\`: Python unbinds
+                # \`e\` when this block ends, and a script may call format()
+                # on an error it kept.
+                "format": e.format,
             })
             return self.execute(node.catch_block, catch_env)
 
@@ -2162,6 +2301,19 @@ class Lexer:
         self.tokens: list[Token] = []
         self.indent_stack: list[int] = [0]
         self.paren_depth = 0
+        # Comments never become tokens, so the parser and the interpreter
+        # cannot see them. They are kept here, as (line, column, text,
+        # own_line), for the formatter, which has to put them back.
+        self.comments: list[tuple[int, int, str, bool]] = []
+
+    def _skip_to_line_end(self) -> None:
+        """Skip a comment, from its first character to the newline, and note it."""
+        start, line, column = self.pos, self.line, self.column
+        while self.pos < len(self.source) and self.source[self.pos] != "\\n":
+            self.advance()
+        line_start = self.source.rfind("\\n", 0, start) + 1
+        own_line = self.source[line_start:start].strip() == ""
+        self.comments.append((line, column, self.source[start:self.pos].rstrip(), own_line))
 
     def error(self, message: str) -> LexerError:
         source_line = self._get_source_line(self.line)
@@ -2205,8 +2357,7 @@ class Lexer:
 
     def skip_comment(self) -> bool:
         if self.pos + 1 < len(self.source) and self.source[self.pos:self.pos + 2] == "//":
-            while self.pos < len(self.source) and self.source[self.pos] != "\\n":
-                self.advance()
+            self._skip_to_line_end()
             return True
         return False
 
@@ -2263,9 +2414,11 @@ class Lexer:
         self.advance()
         value = "".join(parts)
 
-        if has_interpolation:
-            return Token(TokenType.STRING, ("interpolated", value), line, col)
-        return Token(TokenType.STRING, ("plain", value), line, col)
+        kind = "interpolated" if has_interpolation else "plain"
+        token = Token(TokenType.STRING, (kind, value), line, col)
+        # Which quote opened it, for the formatter; not part of the value.
+        token.quote = quote
+        return token
 
     def read_number(self) -> Token:
         line, col = self.line, self.column
@@ -2358,8 +2511,7 @@ class Lexer:
                 continue
 
             if ch == "#":
-                while self.pos < len(self.source) and self.source[self.pos] != "\\n":
-                    self.advance()
+                self._skip_to_line_end()
                 continue
 
             if self.skip_comment():
@@ -2374,7 +2526,9 @@ class Lexer:
                 if token.value == "f" and self.peek() in ('"', "'"):
                     string_token = self.read_string(allow_interpolation=True)
                     kind, value = string_token.value
-                    self.tokens.append(Token(TokenType.STRING, ("interpolated", value), token.line, token.column))
+                    f_token = Token(TokenType.STRING, ("interpolated", value), token.line, token.column)
+                    f_token.quote = string_token.quote
+                    self.tokens.append(f_token)
                 else:
                     self.tokens.append(token)
             elif ch == "(":
@@ -2644,7 +2798,8 @@ class Parser:
         return statements
 
     def parse_block(self) -> ast.Block:
-        if self.match(TokenType.LBRACE):
+        opening = self.match(TokenType.LBRACE)
+        if opening:
             self.skip_newlines()
             body = []
             while not self.check(TokenType.RBRACE) and not self.check(TokenType.EOF):
@@ -2652,8 +2807,14 @@ class Parser:
                 if stmt:
                     body.append(stmt)
                 self.skip_newlines()
-            self.expect(TokenType.RBRACE)
-            return ast.Block(body=body)
+            closing = self.expect(TokenType.RBRACE)
+            block = ast.Block(body=body)
+            # Plain attributes, not dataclass fields, so they take no part in
+            # comparing trees. The formatter reads them to keep a one-line
+            # block on one line and a closing comment inside its block.
+            block.start_line = opening.line
+            block.end_line = closing.line
+            return block
 
         self.expect(TokenType.COLON)
         self.skip_newlines()
@@ -2712,7 +2873,11 @@ class Parser:
         self.skip_newlines()
         if self.check(TokenType.ELSE):
             self.advance()
-            else_block = self.parse_block()
+            # \`else if\` chains: the else branch is the next if, whole.
+            if self.check(TokenType.IF):
+                else_block = self.parse_if()
+            else:
+                else_block = self.parse_block()
 
         return ast.IfExpression(
             condition=condition,
@@ -2943,19 +3108,23 @@ class Parser:
             fields.append(self.parse_floorplan_field())
             self.match(TokenType.COMMA)
             self.skip_newlines()
-        self.expect(closer)
+        closing = self.expect(closer)
 
         if not fields:
             raise self.error(
                 f"floorplan {name_token.value} declares no fields", token
             )
 
-        return ast.FloorplanDef(
+        plan = ast.FloorplanDef(
             name=name_token.value,
             fields=fields,
             line=token.line,
             column=token.column,
         )
+        # For the formatter, as in parse_block. A DEDENT's line is the next
+        # statement's, not this body's end, so the ':' form records none.
+        plan.end_line = closing.line if closer == TokenType.RBRACE else None
+        return plan
 
     def parse_floorplan_field(self) -> ast.FloorplanField:
         name_token = self.expect(TokenType.IDENTIFIER)
@@ -3008,8 +3177,9 @@ class Parser:
                 else:
                     raise self.error("Expected method definition (fn) inside class", self.peek())
                 self.skip_newlines()
-            self.expect(TokenType.RBRACE)
+            class_end_line = self.expect(TokenType.RBRACE).line
         else:
+            class_end_line = None
             self.expect(TokenType.COLON)
             self.skip_newlines()
             self.expect(TokenType.INDENT)
@@ -3023,12 +3193,14 @@ class Parser:
                 self.skip_newlines()
             self.expect(TokenType.DEDENT)
         
-        return ast.ClassDef(
+        cls = ast.ClassDef(
             name=name_token.value,
             methods=methods,
             line=token.line,
             column=token.column,
         )
+        cls.end_line = class_end_line  # for the formatter, as in parse_block
+        return cls
 
     def parse_expression_statement(self) -> ast.ASTNode:
         expr = self.parse_expression()
@@ -3355,8 +3527,13 @@ class Parser:
             kind, value = token.value
             if kind == "interpolated":
                 parts = self.parse_interpolation(value)
-                return ast.InterpolatedString(parts=parts, line=token.line, column=token.column)
-            return ast.StringLiteral(value=value, line=token.line, column=token.column)
+                node = ast.InterpolatedString(parts=parts, line=token.line, column=token.column)
+            else:
+                node = ast.StringLiteral(value=value, line=token.line, column=token.column)
+            # A plain attribute, as for block lines: the formatter keeps the
+            # author's quote, and comparing trees ignores it.
+            node.quote = getattr(token, "quote", '"')
+            return node
 
         if self.match(TokenType.TRUE):
             return ast.BoolLiteral(value=True, line=token.line, column=token.column)
@@ -3525,266 +3702,4 @@ def parse(source: str) -> ast.Program:
     tokens = tokenize(source)
     parser = Parser(tokens)
     return parser.parse()
-`,"pretty.py":`"""AST pretty-printer. Unparses AST nodes back to .mgs source code.
-
-Usage::
-
-    from magmascript.lang.pretty import unparse
-    source = unparse(program)
-"""
-
-from __future__ import annotations
-
-from magmascript.lang import ast_nodes as ast
-
-
-def unparse(node: ast.ASTNode, indent: int = 0) -> str:
-    """Convert an AST node back to .mgs source code."""
-    method = getattr(_Unparser, f"_unparse_{type(node).__name__}", None)
-    if method:
-        return method(node, indent)
-    return f"/* unknown: {type(node).__name__} */"
-
-
-class _Unparser:
-    @staticmethod
-    def _unparse_Program(node: ast.Program, indent: int) -> str:
-        return "\\n\\n".join(unparse(stmt, indent) for stmt in node.body)
-
-    @staticmethod
-    def _unparse_Block(node: ast.Block, indent: int) -> str:
-        if not node.body:
-            return "{ }"
-        inner = "\\n".join(unparse(stmt, indent + 1) for stmt in node.body)
-        return "{\\n" + _indent(inner, indent + 1) + "\\n" + _indent("}", indent)
-
-    @staticmethod
-    def _unparse_NumberLiteral(node: ast.NumberLiteral, indent: int) -> str:
-        if isinstance(node.value, float):
-            s = str(node.value)
-            if "." not in s and "e" not in s.lower():
-                s += ".0"
-            return s
-        return str(node.value)
-
-    @staticmethod
-    def _unparse_StringLiteral(node: ast.StringLiteral, indent: int) -> str:
-        if node.interpolated:
-            return f'f"{node.value}"'
-        return f'"{node.value}"'
-
-    @staticmethod
-    def _unparse_BoolLiteral(node: ast.BoolLiteral, indent: int) -> str:
-        return "true" if node.value else "false"
-
-    @staticmethod
-    def _unparse_NoneLiteral(node: ast.NoneLiteral, indent: int) -> str:
-        return "none"
-
-    @staticmethod
-    def _unparse_Identifier(node: ast.Identifier, indent: int) -> str:
-        return node.name
-
-    @staticmethod
-    def _unparse_BinaryOp(node: ast.BinaryOp, indent: int) -> str:
-        return f"{unparse(node.left, indent)} {node.op} {unparse(node.right, indent)}"
-
-    @staticmethod
-    def _unparse_UnaryOp(node: ast.UnaryOp, indent: int) -> str:
-        return f"{node.op}{unparse(node.operand, indent)}"
-
-    @staticmethod
-    def _unparse_FunctionCall(node: ast.FunctionCall, indent: int) -> str:
-        args = ", ".join(unparse(a, indent) for a in node.arguments)
-        return f"{unparse(node.callee, indent)}({args})"
-
-    @staticmethod
-    def _unparse_MethodCall(node: ast.MethodCall, indent: int) -> str:
-        args = ", ".join(unparse(a, indent) for a in node.arguments)
-        return f"{unparse(node.object, indent)}.{node.method}({args})"
-
-    @staticmethod
-    def _unparse_PropertyAccess(node: ast.PropertyAccess, indent: int) -> str:
-        return f"{unparse(node.object, indent)}.{node.property}"
-
-    @staticmethod
-    def _unparse_IndexAccess(node: ast.IndexAccess, indent: int) -> str:
-        if isinstance(node.index, ast.Slice):
-            s = _unparse_slice(node.index)
-            return f"{unparse(node.object, indent)}[{s}]"
-        return f"{unparse(node.object, indent)}[{unparse(node.index, indent)}]"
-
-    @staticmethod
-    def _unparse_ListLiteral(node: ast.ListLiteral, indent: int) -> str:
-        elems = ", ".join(unparse(e, indent) for e in node.elements)
-        return f"[{elems}]"
-
-    @staticmethod
-    def _unparse_DictLiteral(node: ast.DictLiteral, indent: int) -> str:
-        pairs = []
-        for k, v in zip(node.keys, node.values):
-            pairs.append(f"{unparse(k, indent)}: {unparse(v, indent)}")
-        return "{" + ", ".join(pairs) + "}"
-
-    @staticmethod
-    def _unparse_ListComprehension(node: ast.ListComprehension, indent: int) -> str:
-        parts = [f"{unparse(node.element, indent)} for {node.variable} in {unparse(node.iterable, indent)}"]
-        if node.condition:
-            parts.append(f" if {unparse(node.condition, indent)}")
-        return "[" + "".join(parts) + "]"
-
-    @staticmethod
-    def _unparse_Assignment(node: ast.Assignment, indent: int) -> str:
-        if node.op == "=":
-            return f"{node.name} = {unparse(node.value, indent)}"
-        return f"{node.name} {node.op} {unparse(node.value, indent)}"
-
-    @staticmethod
-    def _unparse_MultiAssignment(node: ast.MultiAssignment, indent: int) -> str:
-        targets = ", ".join(node.targets)
-        values = ", ".join(unparse(v, indent) for v in node.values)
-        if node.op == "=":
-            return f"{targets} = {values}"
-        return f"{targets} {node.op} {values}"
-
-    @staticmethod
-    def _unparse_PropertyAssignment(node: ast.PropertyAssignment, indent: int) -> str:
-        obj = unparse(node.object, indent)
-        val = unparse(node.value, indent)
-        if node.op == "=":
-            return f"{obj}.{node.property} = {val}"
-        return f"{obj}.{node.property} {node.op} {val}"
-
-    @staticmethod
-    def _unparse_IndexAssignment(node: ast.IndexAssignment, indent: int) -> str:
-        obj = unparse(node.object, indent)
-        idx = unparse(node.index, indent)
-        val = unparse(node.value, indent)
-        if node.op == "=":
-            return f"{obj}[{idx}] = {val}"
-        return f"{obj}[{idx}] {node.op} {val}"
-
-    @staticmethod
-    def _unparse_ExprStatement(node: ast.ExprStatement, indent: int) -> str:
-        return unparse(node.expr, indent)
-
-    @staticmethod
-    def _unparse_PrintStatement(node: ast.PrintStatement, indent: int) -> str:
-        args = ", ".join(unparse(a, indent) for a in node.arguments)
-        return f"print({args})"
-
-    @staticmethod
-    def _unparse_SpookedStatement(node: ast.SpookedStatement, indent: int) -> str:
-        return f"spooked({unparse(node.message, indent)})"
-
-    @staticmethod
-    def _unparse_ReturnStatement(node: ast.ReturnStatement, indent: int) -> str:
-        if node.value:
-            return f"return {unparse(node.value, indent)}"
-        return "return"
-
-    @staticmethod
-    def _unparse_BreakStatement(node: ast.BreakStatement, indent: int) -> str:
-        return "break"
-
-    @staticmethod
-    def _unparse_ContinueStatement(node: ast.ContinueStatement, indent: int) -> str:
-        return "continue"
-
-    @staticmethod
-    def _unparse_IfExpression(node: ast.IfExpression, indent: int) -> str:
-        parts = [f"if {unparse(node.condition, indent)} {unparse(node.then_block, indent)}"]
-        if node.else_block:
-            if isinstance(node.else_block, ast.IfExpression):
-                parts.append(f"else {unparse(node.else_block, indent)}")
-            else:
-                parts.append(f"else {unparse(node.else_block, indent)}")
-        return " ".join(parts)
-
-    @staticmethod
-    def _unparse_ForLoop(node: ast.ForLoop, indent: int) -> str:
-        return f"for {node.variable} in {unparse(node.iterable, indent)} {unparse(node.body, indent)}"
-
-    @staticmethod
-    def _unparse_WhileLoop(node: ast.WhileLoop, indent: int) -> str:
-        return f"while {unparse(node.condition, indent)} {unparse(node.body, indent)}"
-
-    @staticmethod
-    def _unparse_FunctionDef(node: ast.FunctionDef, indent: int) -> str:
-        params = _format_params(node.params, node.defaults)
-        return f"fn {node.name}({params}) {unparse(node.body, indent)}"
-
-    @staticmethod
-    def _unparse_ArrowFunction(node: ast.ArrowFunction, indent: int) -> str:
-        params = _format_params(node.params, node.defaults)
-        if isinstance(node.body, ast.Block):
-            return f"fn({params}) {unparse(node.body, indent)}"
-        return f"fn({params}) -> {unparse(node.body, indent)}"
-
-    @staticmethod
-    def _unparse_ClassDef(node: ast.ClassDef, indent: int) -> str:
-        methods = "\\n".join(unparse(m, indent + 1) for m in node.methods)
-        return f"class {node.name} {{\\n{_indent(methods, indent + 1)}\\n{_indent('}', indent)}}"
-
-    @staticmethod
-    def _unparse_FloorplanDef(node: ast.FloorplanDef, indent: int) -> str:
-        fields = []
-        for f in node.fields:
-            if f.count:
-                fields.append(f"{f.name}: {f.type_name}[{f.count}]")
-            elif f.points_to:
-                fields.append(f"{f.name}: pine[{f.points_to}]")
-            else:
-                fields.append(f"{f.name}: {f.type_name}")
-        body = "\\n".join(_indent(f, indent + 1) for f in fields)
-        return f"floorplan {node.name} {{\\n{body}\\n{_indent('}', indent)}}"
-
-    @staticmethod
-    def _unparse_TryCatch(node: ast.TryCatch, indent: int) -> str:
-        body = unparse(node.try_block, indent)
-        catch = unparse(node.catch_block, indent)
-        param = f"({node.catch_param})" if node.catch_param else ""
-        return f"try {body} haunter{param} {catch}"
-
-    @staticmethod
-    def _unparse_ThrowStatement(node: ast.ThrowStatement, indent: int) -> str:
-        msg = unparse(node.message, indent)
-        if node.error_type == "fire toad":
-            return f"throw fire toad({msg})"
-        return f"throw {node.error_type}({msg})"
-
-    @staticmethod
-    def _unparse_ImportStatement(node: ast.ImportStatement, indent: int) -> str:
-        if node.from_import:
-            names = ", ".join(node.names)
-            if node.alias:
-                return f"intent {{ {names} }} from \\"{node.module}\\" as {node.alias}"
-            return f"intent {{ {names} }} from \\"{node.module}\\""
-        if node.alias:
-            return f"intent \\"{node.module}\\" as {node.alias}"
-        return f"intent \\"{node.module}\\""
-
-
-def _indent(text: str, level: int) -> str:
-    prefix = "    " * level
-    return "\\n".join(prefix + line if line.strip() else "" for line in text.split("\\n"))
-
-
-def _format_params(params: list[str], defaults: dict[str, ast.ASTNode]) -> str:
-    parts = []
-    for p in params:
-        if p in defaults:
-            parts.append(f"{p} = {unparse(defaults[p])}")
-        else:
-            parts.append(p)
-    return ", ".join(parts)
-
-
-def _unparse_slice(node: ast.Slice) -> str:
-    parts = []
-    parts.append(unparse(node.start) if node.start else "")
-    parts.append(unparse(node.stop) if node.stop else "")
-    if node.step:
-        parts.append(unparse(node.step))
-    return ":".join(parts)
-`,"tokens.py":'from __future__ import annotations\n\nfrom enum import Enum, auto\nfrom dataclasses import dataclass\nfrom typing import Any\n\n\nclass TokenType(Enum):\n    # Literals\n    NUMBER = auto()\n    STRING = auto()\n    IDENTIFIER = auto()\n    TRUE = auto()\n    FALSE = auto()\n    NONE = auto()\n\n    # Operators\n    PLUS = auto()\n    MINUS = auto()\n    STAR = auto()\n    SLASH = auto()\n    PERCENT = auto()\n    EQ = auto()\n    EQEQ = auto()\n    NEQ = auto()\n    LT = auto()\n    GT = auto()\n    LTE = auto()\n    GTE = auto()\n    AND = auto()\n    OR = auto()\n    NOT = auto()\n    DOT = auto()\n    ARROW = auto()\n    PLUS_EQ = auto()\n    MINUS_EQ = auto()\n    NOT_IN = auto()\n\n    # Delimiters\n    LPAREN = auto()\n    RPAREN = auto()\n    LBRACE = auto()\n    RBRACE = auto()\n    LBRACKET = auto()\n    RBRACKET = auto()\n    COMMA = auto()\n    COLON = auto()\n    SEMICOLON = auto()\n\n    # Keywords\n    IF = auto()\n    ELSE = auto()\n    FOR = auto()\n    IN = auto()\n    WHILE = auto()\n    FN = auto()\n    RETURN = auto()\n    BREAK = auto()\n    CONTINUE = auto()\n    PRINT = auto()\n    SPOOKED = auto()\n    INTENT = auto()\n    FROM = auto()\n    AS = auto()\n    TRY = auto()\n    HAUNTER = auto()\n    THROW = auto()\n    CLASS = auto()\n    SELF = auto()\n    FLOORPLAN = auto()\n\n    # Special\n    NEWLINE = auto()\n    INDENT = auto()\n    DEDENT = auto()\n    EOF = auto()\n\n\nKEYWORDS: dict[str, TokenType] = {\n    "true": TokenType.TRUE,\n    "false": TokenType.FALSE,\n    "none": TokenType.NONE,\n    "if": TokenType.IF,\n    "else": TokenType.ELSE,\n    "for": TokenType.FOR,\n    "in": TokenType.IN,\n    "while": TokenType.WHILE,\n    "fn": TokenType.FN,\n    "return": TokenType.RETURN,\n    "break": TokenType.BREAK,\n    "continue": TokenType.CONTINUE,\n    "and": TokenType.AND,\n    "or": TokenType.OR,\n    "not": TokenType.NOT,\n    "print": TokenType.PRINT,\n    "spooked": TokenType.SPOOKED,\n    "intent": TokenType.INTENT,\n    "from": TokenType.FROM,\n    "as": TokenType.AS,\n    "try": TokenType.TRY,\n    "haunter": TokenType.HAUNTER,\n    "throw": TokenType.THROW,\n    "class": TokenType.CLASS,\n    "self": TokenType.SELF,\n    "floorplan": TokenType.FLOORPLAN,\n}\n\n\n@dataclass\nclass Token:\n    type: TokenType\n    value: Any\n    line: int\n    column: int\n\n    def __repr__(self) -> str:\n        return f"Token({self.type.name}, {self.value!r}, line={self.line})"\n',"util.py":"from __future__ import annotations\n\n\ndef levenshtein(a: str, b: str) -> int:\n    if a == b:\n        return 0\n    if not a:\n        return len(b)\n    if not b:\n        return len(a)\n\n    a_len, b_len = len(a), len(b)\n    matrix = [[0] * (b_len + 1) for _ in range(a_len + 1)]\n\n    for i in range(a_len + 1):\n        matrix[i][0] = i\n    for j in range(b_len + 1):\n        matrix[0][j] = j\n\n    for i in range(1, a_len + 1):\n        for j in range(1, b_len + 1):\n            cost = 0 if a[i - 1] == b[j - 1] else 1\n            matrix[i][j] = min(\n                matrix[i - 1][j] + 1,\n                matrix[i][j - 1] + 1,\n                matrix[i - 1][j - 1] + cost,\n            )\n\n    return matrix[a_len][b_len]\n\n\ndef suggest(name: str, candidates: list[str], max_distance: int = 2) -> str | None:\n    best: str | None = None\n    best_distance = max_distance + 1\n\n    for candidate in candidates:\n        d = levenshtein(name.lower(), candidate.lower())\n        if d < best_distance:\n            best_distance = d\n            best = candidate\n\n    if best_distance <= max_distance:\n        return best\n    return None\n","visitor.py":'"""AST visitor and transformer base classes.\n\nProvides a generic traversal framework for the MagmaScript AST.\nSubclass Visitor for read-only passes, Transformer for AST rewrites.\n\nUsage::\n\n    from magmascript.lang.visitor import Visitor\n\n    class MyChecker(Visitor):\n        def visit_Identifier(self, node):\n            if node.name == "bad":\n                self.report(node)\n\n        def visit_FunctionDef(self, node):\n            # Custom handling, then recurse into body\n            self.visit(node.body)\n\n    checker = MyChecker()\n    checker.visit(program)\n"""\n\nfrom __future__ import annotations\n\nfrom magmascript.lang import ast_nodes as ast\n\n\ndef children(node: ast.ASTNode) -> list[ast.ASTNode]:\n    """Extract all ASTNode children from a node.\n\n    Handles dataclass fields, lists, and dicts (used by FunctionDef.defaults).\n    """\n    out: list[ast.ASTNode] = []\n    for value in vars(node).values():\n        if isinstance(value, ast.ASTNode):\n            out.append(value)\n        elif isinstance(value, list):\n            out.extend(v for v in value if isinstance(v, ast.ASTNode))\n        elif isinstance(value, dict):\n            out.extend(v for v in value.values() if isinstance(v, ast.ASTNode))\n    return out\n\n\nclass Visitor:\n    """Read-only AST visitor. Subclass and override visit_<NodeType> methods.\n\n    The default visit() method recurses into children automatically.\n    Override a visit method to customize traversal for that node type.\n    """\n\n    def visit(self, node: ast.ASTNode | None) -> None:\n        if node is None:\n            return\n        method = getattr(self, f"visit_{type(node).__name__}", None)\n        if method is not None:\n            method(node)\n        else:\n            self._default_visit(node)\n\n    def _default_visit(self, node: ast.ASTNode) -> None:\n        for child in children(node):\n            self.visit(child)\n\n\nclass Transformer:\n    """AST transformer. Subclass and override visit_<NodeType> methods.\n\n    Each visit method should return a (possibly modified) node.\n    The default transform() recurses into children and returns the original node.\n    """\n\n    def transform(self, node: ast.ASTNode | None) -> ast.ASTNode | None:\n        if node is None:\n            return None\n        method = getattr(self, f"visit_{type(node).__name__}", None)\n        if method is not None:\n            return method(node)\n        return self._default_transform(node)\n\n    def _default_transform(self, node: ast.ASTNode) -> ast.ASTNode:\n        for field_name, value in vars(node).items():\n            if isinstance(value, ast.ASTNode):\n                setattr(node, field_name, self.transform(value))\n            elif isinstance(value, list):\n                new_list = []\n                for item in value:\n                    if isinstance(item, ast.ASTNode):\n                        new_list.append(self.transform(item))\n                    else:\n                        new_list.append(item)\n                setattr(node, field_name, new_list)\n            elif isinstance(value, dict):\n                new_dict = {}\n                for k, v in value.items():\n                    if isinstance(v, ast.ASTNode):\n                        new_dict[k] = self.transform(v)\n                    else:\n                        new_dict[k] = v\n                setattr(node, field_name, new_dict)\n        return node\n'};
+`,"pretty.py":'"""AST pretty-printer. Unparses AST nodes back to .mgs source code.\n\nUsage::\n\n    from magmascript.lang.pretty import unparse\n    source = unparse(program)\n\nThe tree holds no comments or blank lines, so plain unparse prints none.\nlang/fmt.py hands them over through `trivia()`, and the statement lists\nhere put each one back before the first statement that followed it.\n"""\n\nfrom __future__ import annotations\n\nimport contextlib\nfrom collections.abc import Callable, Iterator\n\nfrom magmascript.lang import ast_nodes as ast\n\n\nclass _Trivia:\n    """Comments and blank lines from the source, as (line, text) in line order.\n\n    text is "" for a blank line. Statement lists take what lies before each\n    statement as they print it, so a nested block takes its own before the\n    statement after it can.\n    """\n\n    def __init__(\n        self,\n        items: list[tuple[int, str]],\n        trailing: dict[int, tuple[int, str]],\n        verbatim: dict[int, str],\n    ) -> None:\n        self._items = sorted(items, key=lambda item: item[0])\n        self._next = 0\n        # Comments after code, by line: (column, text). Each goes on the\n        # first line of the statement starting on that line.\n        self.trailing = trailing\n        # Statements to print exactly as written, by start line.\n        self.verbatim = verbatim\n\n    def take_before(self, line: float) -> list[str]:\n        taken = []\n        while self._next < len(self._items) and self._items[self._next][0] < line:\n            taken.append(self._items[self._next][1])\n            self._next += 1\n        return taken\n\n\n_TRIVIA: _Trivia | None = None\n\n\n@contextlib.contextmanager\ndef trivia(\n    items: list[tuple[int, str]],\n    trailing: dict[int, tuple[int, str]] | None = None,\n    verbatim: dict[int, str] | None = None,\n) -> Iterator[None]:\n    """Print the source\'s comments and blank lines for the duration.\n\n    items are own-line comments and blank lines as (line, text), text ""\n    for a blank. trailing maps a line to the (column, text) of a comment\n    after code on it. verbatim maps a statement\'s start line to its source\n    text, for a statement printed as written rather than re-laid out.\n    """\n    global _TRIVIA\n    _TRIVIA = _Trivia(items, trailing or {}, verbatim or {})\n    try:\n        yield\n    finally:\n        _TRIVIA = None\n\n\ndef _lines(entries: list[tuple[int, Callable[[], str]]], level: int, end_line: float | None) -> list[str]:\n    """Render a body\'s entries at `level`, with the source\'s trivia between them.\n\n    Each entry is (line, render), rendered only after the trivia before its\n    line is taken, so its own nested trivia comes out in order. end_line is\n    the body\'s closing line, so a comment before the `}` stays inside.\n    Blank lines are kept one at a time, and never first or last.\n    """\n    out: list[str] = []\n\n    def add_trivia(before: float) -> None:\n        if _TRIVIA is None:\n            return\n        for text in _TRIVIA.take_before(before):\n            if text:\n                out.append(_lead(level) + text)\n            elif out and out[-1] != "":\n                out.append("")\n\n    for line, render in entries:\n        add_trivia(line)\n        out.append(_with_trailing(line, _lead(level) + render()))\n    if end_line is not None:\n        add_trivia(end_line)\n    while out and out[-1] == "":\n        out.pop()\n    return out\n\n\ndef _with_trailing(line: int, text: str) -> str:\n    """Put back the comment that followed the code on `line`, if there was one.\n\n    It keeps the author\'s column, so aligned comments stay aligned, unless\n    the code now reaches it; then it sits one space after the code.\n    """\n    if _TRIVIA is None or line not in _TRIVIA.trailing:\n        return text\n    column, comment = _TRIVIA.trailing.pop(line)\n    first, newline, rest = text.partition("\\n")\n    first = first.ljust(max(len(first) + 1, column - 1)) + comment\n    return first + newline + rest\n\n\ndef _statements(body: list[ast.ASTNode], level: int, end_line: float | None) -> list[str]:\n    def render(stmt: ast.ASTNode) -> str:\n        if _TRIVIA is not None and stmt.line in _TRIVIA.verbatim:\n            return _TRIVIA.verbatim[stmt.line]\n        return unparse(stmt, level)\n\n    return _lines([(s.line, lambda s=s: render(s)) for s in body], level, end_line)\n\n\ndef unparse(node: ast.ASTNode, indent: int = 0) -> str:\n    """Convert an AST node back to .mgs source code."""\n    method = getattr(_Unparser, f"_unparse_{type(node).__name__}", None)\n    if method:\n        return method(node, indent)\n    return f"/* unknown: {type(node).__name__} */"\n\n\nclass _Unparser:\n    @staticmethod\n    def _unparse_Program(node: ast.Program, indent: int) -> str:\n        if _TRIVIA is None:\n            return "\\n\\n".join(unparse(stmt, indent) for stmt in node.body)\n        # With the source\'s blank lines to go on, its own spacing is kept.\n        return "\\n".join(_statements(node.body, indent, float("inf")))\n\n    @staticmethod\n    def _unparse_Block(node: ast.Block, indent: int) -> str:\n        # A one-statement block written on one line stays on one line.\n        one_line = getattr(node, "start_line", None) == getattr(node, "end_line", 0)\n        if one_line and len(node.body) == 1:\n            return "{ " + unparse(node.body[0], indent) + " }"\n        inner = _statements(node.body, indent + 1, getattr(node, "end_line", None))\n        if not inner:\n            return "{ }"\n        return "{\\n" + "\\n".join(inner) + "\\n" + _lead(indent) + "}"\n\n    @staticmethod\n    def _unparse_NumberLiteral(node: ast.NumberLiteral, indent: int) -> str:\n        if isinstance(node.value, float):\n            s = str(node.value)\n            if "." not in s and "e" not in s.lower():\n                s += ".0"\n            return s\n        return str(node.value)\n\n    @staticmethod\n    def _unparse_StringLiteral(node: ast.StringLiteral, indent: int) -> str:\n        q = getattr(node, "quote", \'"\')\n        prefix = "f" if node.interpolated else ""\n        return f"{prefix}{q}{_escape(node.value, q)}{q}"\n\n    @staticmethod\n    def _unparse_InterpolatedString(node: ast.InterpolatedString, indent: int) -> str:\n        # Text parts were decoded by the lexer, so they are escaped again.\n        # An expression part is printed raw inside its braces: the lexer\n        # copies brace contents without decoding and lexes them on their\n        # own, so a string inside one carries its own escaping.\n        q = getattr(node, "quote", \'"\')\n        out = []\n        for part in node.parts:\n            if isinstance(part, ast.StringLiteral):\n                out.append(_escape(part.value, q))\n            else:\n                out.append("{" + unparse(part, indent) + "}")\n        return "f" + q + "".join(out) + q\n\n    @staticmethod\n    def _unparse_BoolLiteral(node: ast.BoolLiteral, indent: int) -> str:\n        return "true" if node.value else "false"\n\n    @staticmethod\n    def _unparse_NoneLiteral(node: ast.NoneLiteral, indent: int) -> str:\n        return "none"\n\n    @staticmethod\n    def _unparse_Identifier(node: ast.Identifier, indent: int) -> str:\n        return node.name\n\n    @staticmethod\n    def _unparse_BinaryOp(node: ast.BinaryOp, indent: int) -> str:\n        # Every binary level is left-associative, so the right operand needs\n        # parentheses at equal precedence too: a - (b - c), not a - b - c.\n        prec = _PRECEDENCE.get(node.op, 0)\n        left = _operand(node.left, prec, indent)\n        right = _operand(node.right, prec + 1, indent)\n        return f"{left} {node.op} {right}"\n\n    @staticmethod\n    def _unparse_UnaryOp(node: ast.UnaryOp, indent: int) -> str:\n        sep = " " if node.op == "not" else ""\n        return f"{node.op}{sep}{_operand(node.operand, _UNARY, indent)}"\n\n    @staticmethod\n    def _unparse_FunctionCall(node: ast.FunctionCall, indent: int) -> str:\n        args = ", ".join(unparse(a, indent) for a in node.arguments)\n        return f"{_operand(node.callee, _POSTFIX, indent)}({args})"\n\n    @staticmethod\n    def _unparse_MethodCall(node: ast.MethodCall, indent: int) -> str:\n        args = ", ".join(unparse(a, indent) for a in node.arguments)\n        return f"{_operand(node.object, _POSTFIX, indent)}.{node.method}({args})"\n\n    @staticmethod\n    def _unparse_PropertyAccess(node: ast.PropertyAccess, indent: int) -> str:\n        return f"{_operand(node.object, _POSTFIX, indent)}.{node.property}"\n\n    @staticmethod\n    def _unparse_IndexAccess(node: ast.IndexAccess, indent: int) -> str:\n        obj = _operand(node.object, _POSTFIX, indent)\n        if isinstance(node.index, ast.Slice):\n            return f"{obj}[{_unparse_slice(node.index)}]"\n        return f"{obj}[{unparse(node.index, indent)}]"\n\n    @staticmethod\n    def _unparse_ListLiteral(node: ast.ListLiteral, indent: int) -> str:\n        elems = ", ".join(unparse(e, indent) for e in node.elements)\n        return f"[{elems}]"\n\n    @staticmethod\n    def _unparse_DictLiteral(node: ast.DictLiteral, indent: int) -> str:\n        pairs = []\n        for k, v in zip(node.keys, node.values):\n            pairs.append(f"{unparse(k, indent)}: {unparse(v, indent)}")\n        return "{" + ", ".join(pairs) + "}"\n\n    @staticmethod\n    def _unparse_ListComprehension(node: ast.ListComprehension, indent: int) -> str:\n        parts = [f"{unparse(node.element, indent)} for {node.variable} in {unparse(node.iterable, indent)}"]\n        if node.condition:\n            parts.append(f" if {unparse(node.condition, indent)}")\n        return "[" + "".join(parts) + "]"\n\n    @staticmethod\n    def _unparse_Assignment(node: ast.Assignment, indent: int) -> str:\n        if node.op == "=":\n            return f"{node.name} = {unparse(node.value, indent)}"\n        return f"{node.name} {node.op} {unparse(node.value, indent)}"\n\n    @staticmethod\n    def _unparse_MultiAssignment(node: ast.MultiAssignment, indent: int) -> str:\n        targets = ", ".join(node.targets)\n        values = ", ".join(unparse(v, indent) for v in node.values)\n        if node.op == "=":\n            return f"{targets} = {values}"\n        return f"{targets} {node.op} {values}"\n\n    @staticmethod\n    def _unparse_PropertyAssignment(node: ast.PropertyAssignment, indent: int) -> str:\n        obj = unparse(node.object, indent)\n        val = unparse(node.value, indent)\n        if node.op == "=":\n            return f"{obj}.{node.property} = {val}"\n        return f"{obj}.{node.property} {node.op} {val}"\n\n    @staticmethod\n    def _unparse_IndexAssignment(node: ast.IndexAssignment, indent: int) -> str:\n        obj = unparse(node.object, indent)\n        idx = unparse(node.index, indent)\n        val = unparse(node.value, indent)\n        if node.op == "=":\n            return f"{obj}[{idx}] = {val}"\n        return f"{obj}[{idx}] {node.op} {val}"\n\n    @staticmethod\n    def _unparse_ExprStatement(node: ast.ExprStatement, indent: int) -> str:\n        return unparse(node.expr, indent)\n\n    @staticmethod\n    def _unparse_PrintStatement(node: ast.PrintStatement, indent: int) -> str:\n        args = ", ".join(unparse(a, indent) for a in node.arguments)\n        return f"print({args})"\n\n    @staticmethod\n    def _unparse_SpookedStatement(node: ast.SpookedStatement, indent: int) -> str:\n        return f"spooked({unparse(node.message, indent)})"\n\n    @staticmethod\n    def _unparse_ReturnStatement(node: ast.ReturnStatement, indent: int) -> str:\n        if node.value:\n            return f"return {unparse(node.value, indent)}"\n        return "return"\n\n    @staticmethod\n    def _unparse_BreakStatement(node: ast.BreakStatement, indent: int) -> str:\n        return "break"\n\n    @staticmethod\n    def _unparse_ContinueStatement(node: ast.ContinueStatement, indent: int) -> str:\n        return "continue"\n\n    @staticmethod\n    def _unparse_IfExpression(node: ast.IfExpression, indent: int) -> str:\n        parts = [f"if {unparse(node.condition, indent)} {unparse(node.then_block, indent)}"]\n        if node.else_block:\n            if isinstance(node.else_block, ast.IfExpression):\n                parts.append(f"else {unparse(node.else_block, indent)}")\n            else:\n                parts.append(f"else {unparse(node.else_block, indent)}")\n        return " ".join(parts)\n\n    @staticmethod\n    def _unparse_ForLoop(node: ast.ForLoop, indent: int) -> str:\n        return f"for {node.variable} in {unparse(node.iterable, indent)} {unparse(node.body, indent)}"\n\n    @staticmethod\n    def _unparse_WhileLoop(node: ast.WhileLoop, indent: int) -> str:\n        return f"while {unparse(node.condition, indent)} {unparse(node.body, indent)}"\n\n    @staticmethod\n    def _unparse_FunctionDef(node: ast.FunctionDef, indent: int) -> str:\n        params = _format_params(node.params, node.defaults)\n        # An anonymous `fn(x) { ... }` parses to a FunctionDef named "".\n        head = f"fn {node.name}" if node.name else "fn"\n        return f"{head}({params}) {unparse(node.body, indent)}"\n\n    @staticmethod\n    def _unparse_ArrowFunction(node: ast.ArrowFunction, indent: int) -> str:\n        params = _format_params(node.params, node.defaults)\n        if isinstance(node.body, ast.Block):\n            return f"fn({params}) {unparse(node.body, indent)}"\n        if len(node.params) == 1 and not node.defaults:\n            return f"{node.params[0]} -> {unparse(node.body, indent)}"\n        return f"fn({params}) -> {unparse(node.body, indent)}"\n\n    @staticmethod\n    def _unparse_ClassDef(node: ast.ClassDef, indent: int) -> str:\n        entries = [(m.line, lambda m=m: unparse(m, indent + 1)) for m in node.methods]\n        methods = "\\n".join(_lines(entries, indent + 1, getattr(node, "end_line", None)))\n        return f"class {node.name} {{\\n{methods}\\n{_lead(indent)}}}"\n\n    @staticmethod\n    def _unparse_FloorplanDef(node: ast.FloorplanDef, indent: int) -> str:\n        # points_to first: a pine field also carries count 1, and printing\n        # that would drop what it points at. count 1 is the parser\'s value\n        # for a plain field, so `x: f32[1]` prints as `x: f32`.\n        def field(f: ast.FloorplanField) -> str:\n            if f.points_to:\n                return f"{f.name}: pine[{f.points_to}]"\n            if f.count > 1:\n                return f"{f.name}: {f.type_name}[{f.count}]"\n            return f"{f.name}: {f.type_name}"\n\n        entries = [(f.line, lambda f=f: field(f)) for f in node.fields]\n        body = "\\n".join(_lines(entries, indent + 1, getattr(node, "end_line", None)))\n        return f"floorplan {node.name} {{\\n{body}\\n{_lead(indent)}}}"\n\n    @staticmethod\n    def _unparse_TryCatch(node: ast.TryCatch, indent: int) -> str:\n        body = unparse(node.try_block, indent)\n        catch = unparse(node.catch_block, indent)\n        param = f" ({node.catch_param})" if node.catch_param else ""\n        return f"try {body} haunter{param} {catch}"\n\n    @staticmethod\n    def _unparse_ThrowStatement(node: ast.ThrowStatement, indent: int) -> str:\n        msg = unparse(node.message, indent)\n        if node.error_type == "fire toad":\n            return f"throw fire toad({msg})"\n        return f"throw {node.error_type}({msg})"\n\n    @staticmethod\n    def _unparse_ImportStatement(node: ast.ImportStatement, indent: int) -> str:\n        if node.from_import:\n            names = ", ".join(node.names)\n            if node.alias:\n                return f"intent {{ {names} }} from \\"{node.module}\\" as {node.alias}"\n            return f"intent {{ {names} }} from \\"{node.module}\\""\n        if node.alias:\n            return f"intent \\"{node.module}\\" as {node.alias}"\n        return f"intent \\"{node.module}\\""\n\n\n# Binding strength, loosest first, matching the parser\'s descent from\n# parse_or down to parse_multiplication. Unary operators bind tighter than\n# any binary one, and postfix (call, .name, [index]) tighter still.\n_PRECEDENCE = {\n    "or": 1,\n    "and": 2,\n    "==": 3, "!=": 3,\n    "<": 4, ">": 4, "<=": 4, ">=": 4,\n    "in": 5, "not in": 5,\n    "+": 6, "-": 6,\n    "*": 7, "/": 7, "%": 7,\n}\n_UNARY = 8\n_POSTFIX = 9\n\n\ndef _operand(node: ast.ASTNode, needs: int, indent: int) -> str:\n    """Unparse `node`, in parentheses if it binds looser than `needs`."""\n    if isinstance(node, ast.BinaryOp):\n        binds = _PRECEDENCE.get(node.op, 0)\n    elif isinstance(node, ast.UnaryOp):\n        binds = _UNARY\n    else:\n        binds = _POSTFIX + 1\n    text = unparse(node, indent)\n    return f"({text})" if binds < needs else text\n\n\ndef _escape(text: str, quote: str = \'"\') -> str:\n    """Escape a decoded string value for a literal opened with `quote`.\n\n    The parser records the author\'s quote on each string it builds, so a\n    `\'it said "no"\'` prints back as written; only that quote is escaped.\n\n    The reverse of the lexer\'s read_string. Backslash goes first, so the\n    backslashes the other escapes add are not doubled. An escape the lexer\n    does not know, such as `\\\\r`, is kept in the value as two characters,\n    which is also what `\\\\\\\\r` decodes to; it prints as the second, which\n    reads back to the same value.\n    """\n    return (\n        text.replace("\\\\", "\\\\\\\\")\n        .replace(quote, "\\\\" + quote)\n        .replace("\\n", "\\\\n")\n        .replace("\\t", "\\\\t")\n    )\n\n\ndef _lead(level: int) -> str:\n    """The prefix for a line at `level`.\n\n    unparse(node, level) leaves its first line for the caller to place and\n    writes every later line at its absolute depth already, so a parent adds\n    this to each child\'s FIRST line only. Re-indenting a whole child would\n    push its nested lines in twice.\n    """\n    return "    " * level\n\n\ndef _format_params(params: list[str], defaults: dict[str, ast.ASTNode]) -> str:\n    parts = []\n    for p in params:\n        if p in defaults:\n            parts.append(f"{p}={unparse(defaults[p])}")\n        else:\n            parts.append(p)\n    return ", ".join(parts)\n\n\ndef _unparse_slice(node: ast.Slice) -> str:\n    parts = []\n    parts.append(unparse(node.start) if node.start else "")\n    parts.append(unparse(node.stop) if node.stop else "")\n    if node.step:\n        parts.append(unparse(node.step))\n    return ":".join(parts)\n',"tokens.py":'from __future__ import annotations\n\nfrom enum import Enum, auto\nfrom dataclasses import dataclass\nfrom typing import Any\n\n\nclass TokenType(Enum):\n    # Literals\n    NUMBER = auto()\n    STRING = auto()\n    IDENTIFIER = auto()\n    TRUE = auto()\n    FALSE = auto()\n    NONE = auto()\n\n    # Operators\n    PLUS = auto()\n    MINUS = auto()\n    STAR = auto()\n    SLASH = auto()\n    PERCENT = auto()\n    EQ = auto()\n    EQEQ = auto()\n    NEQ = auto()\n    LT = auto()\n    GT = auto()\n    LTE = auto()\n    GTE = auto()\n    AND = auto()\n    OR = auto()\n    NOT = auto()\n    DOT = auto()\n    ARROW = auto()\n    PLUS_EQ = auto()\n    MINUS_EQ = auto()\n    NOT_IN = auto()\n\n    # Delimiters\n    LPAREN = auto()\n    RPAREN = auto()\n    LBRACE = auto()\n    RBRACE = auto()\n    LBRACKET = auto()\n    RBRACKET = auto()\n    COMMA = auto()\n    COLON = auto()\n    SEMICOLON = auto()\n\n    # Keywords\n    IF = auto()\n    ELSE = auto()\n    FOR = auto()\n    IN = auto()\n    WHILE = auto()\n    FN = auto()\n    RETURN = auto()\n    BREAK = auto()\n    CONTINUE = auto()\n    PRINT = auto()\n    SPOOKED = auto()\n    INTENT = auto()\n    FROM = auto()\n    AS = auto()\n    TRY = auto()\n    HAUNTER = auto()\n    THROW = auto()\n    CLASS = auto()\n    SELF = auto()\n    FLOORPLAN = auto()\n\n    # Special\n    NEWLINE = auto()\n    INDENT = auto()\n    DEDENT = auto()\n    EOF = auto()\n\n\nKEYWORDS: dict[str, TokenType] = {\n    "true": TokenType.TRUE,\n    "false": TokenType.FALSE,\n    "none": TokenType.NONE,\n    "if": TokenType.IF,\n    "else": TokenType.ELSE,\n    "for": TokenType.FOR,\n    "in": TokenType.IN,\n    "while": TokenType.WHILE,\n    "fn": TokenType.FN,\n    "return": TokenType.RETURN,\n    "break": TokenType.BREAK,\n    "continue": TokenType.CONTINUE,\n    "and": TokenType.AND,\n    "or": TokenType.OR,\n    "not": TokenType.NOT,\n    "print": TokenType.PRINT,\n    "spooked": TokenType.SPOOKED,\n    "intent": TokenType.INTENT,\n    "from": TokenType.FROM,\n    "as": TokenType.AS,\n    "try": TokenType.TRY,\n    "haunter": TokenType.HAUNTER,\n    "throw": TokenType.THROW,\n    "class": TokenType.CLASS,\n    "self": TokenType.SELF,\n    "floorplan": TokenType.FLOORPLAN,\n}\n\n\n@dataclass\nclass Token:\n    type: TokenType\n    value: Any\n    line: int\n    column: int\n\n    def __repr__(self) -> str:\n        return f"Token({self.type.name}, {self.value!r}, line={self.line})"\n',"util.py":"from __future__ import annotations\n\n\ndef levenshtein(a: str, b: str) -> int:\n    if a == b:\n        return 0\n    if not a:\n        return len(b)\n    if not b:\n        return len(a)\n\n    a_len, b_len = len(a), len(b)\n    matrix = [[0] * (b_len + 1) for _ in range(a_len + 1)]\n\n    for i in range(a_len + 1):\n        matrix[i][0] = i\n    for j in range(b_len + 1):\n        matrix[0][j] = j\n\n    for i in range(1, a_len + 1):\n        for j in range(1, b_len + 1):\n            cost = 0 if a[i - 1] == b[j - 1] else 1\n            matrix[i][j] = min(\n                matrix[i - 1][j] + 1,\n                matrix[i][j - 1] + 1,\n                matrix[i - 1][j - 1] + cost,\n            )\n\n    return matrix[a_len][b_len]\n\n\ndef suggest(name: str, candidates: list[str], max_distance: int = 2) -> str | None:\n    best: str | None = None\n    best_distance = max_distance + 1\n\n    for candidate in candidates:\n        d = levenshtein(name.lower(), candidate.lower())\n        if d < best_distance:\n            best_distance = d\n            best = candidate\n\n    if best_distance <= max_distance:\n        return best\n    return None\n","visitor.py":'"""AST visitor and transformer base classes.\n\nProvides a generic traversal framework for the MagmaScript AST.\nSubclass Visitor for read-only passes, Transformer for AST rewrites.\n\nUsage::\n\n    from magmascript.lang.visitor import Visitor\n\n    class MyChecker(Visitor):\n        def visit_Identifier(self, node):\n            if node.name == "bad":\n                self.report(node)\n\n        def visit_FunctionDef(self, node):\n            # Custom handling, then recurse into body\n            self.visit(node.body)\n\n    checker = MyChecker()\n    checker.visit(program)\n"""\n\nfrom __future__ import annotations\n\nfrom magmascript.lang import ast_nodes as ast\n\n\ndef children(node: ast.ASTNode) -> list[ast.ASTNode]:\n    """Extract all ASTNode children from a node.\n\n    Handles dataclass fields, lists, and dicts (used by FunctionDef.defaults).\n    """\n    out: list[ast.ASTNode] = []\n    for value in vars(node).values():\n        if isinstance(value, ast.ASTNode):\n            out.append(value)\n        elif isinstance(value, list):\n            out.extend(v for v in value if isinstance(v, ast.ASTNode))\n        elif isinstance(value, dict):\n            out.extend(v for v in value.values() if isinstance(v, ast.ASTNode))\n    return out\n\n\nclass Visitor:\n    """Read-only AST visitor. Subclass and override visit_<NodeType> methods.\n\n    The default visit() method recurses into children automatically.\n    Override a visit method to customize traversal for that node type.\n    """\n\n    def visit(self, node: ast.ASTNode | None) -> None:\n        if node is None:\n            return\n        method = getattr(self, f"visit_{type(node).__name__}", None)\n        if method is not None:\n            method(node)\n        else:\n            self._default_visit(node)\n\n    def _default_visit(self, node: ast.ASTNode) -> None:\n        for child in children(node):\n            self.visit(child)\n\n\nclass Transformer:\n    """AST transformer. Subclass and override visit_<NodeType> methods.\n\n    Each visit method should return a (possibly modified) node.\n    The default transform() recurses into children and returns the original node.\n    """\n\n    def transform(self, node: ast.ASTNode | None) -> ast.ASTNode | None:\n        if node is None:\n            return None\n        method = getattr(self, f"visit_{type(node).__name__}", None)\n        if method is not None:\n            return method(node)\n        return self._default_transform(node)\n\n    def _default_transform(self, node: ast.ASTNode) -> ast.ASTNode:\n        for field_name, value in vars(node).items():\n            if isinstance(value, ast.ASTNode):\n                setattr(node, field_name, self.transform(value))\n            elif isinstance(value, list):\n                new_list = []\n                for item in value:\n                    if isinstance(item, ast.ASTNode):\n                        new_list.append(self.transform(item))\n                    else:\n                        new_list.append(item)\n                setattr(node, field_name, new_list)\n            elif isinstance(value, dict):\n                new_dict = {}\n                for k, v in value.items():\n                    if isinstance(v, ast.ASTNode):\n                        new_dict[k] = self.transform(v)\n                    else:\n                        new_dict[k] = v\n                setattr(node, field_name, new_dict)\n        return node\n'};
