@@ -4,7 +4,7 @@
     "c": "page",
     "u": "/index.html",
     "d": "An independent record label and creative collective. Music, film, video games, web tools, writing, and an archive of the people who made them.",
-    "b": "magmacrunch media magmacrunch media est. 2023 sometimes it's quite melodious; other times it's noise magmacrunch media is an independent record label and creative collective, founded in 2023 across Pennsylvania, California and New Hampshire. We release our own music, films, video games, web tools and writing, and we keep an archive of the people who made them. More about us . music releases & jukebox visual film & collage archive who played what arcade play in your browser press writing & research ware games, apps & engines about who we are guestbook say hi join the email list and we will tell..."
+    "b": "magmacrunch media magmacrunch media est. 2023 sometimes it's quite melodious; other times it's noise magmacrunch media is an independent record label and creative collective, founded in 2023. We release our own music, films, video games, web tools and writing, and we keep an archive of the people who made them. More about us . music releases & jukebox visual film & collage archive who played what arcade play in your browser press writing & research ware games, apps & engines about who we are guestbook say hi join the email list and we will tell you when a record, a game or a film comes out."
   },
   {
     "t": "about · magmacrunch media",
@@ -179,14 +179,14 @@
     "c": "page",
     "u": "/ware/utilities/index.html",
     "d": "browser-based tools for art, media & image processing",
-    "b": "creative utilities · ware · magmacrunch media home › ware › creative utilities creative utilities browser-based tools for art, media & image processing // music // instruments and sequencers that run in a browser tab punch roll chiptune piano roll pulse triangle noise WAV export ▶ // art & image // pixel editors and an image signal chain gatefold square album-cover editor text shapes images ▶ sprite forge game sprite editor animation onion skin PNG sheets ▶ crunchscope an image signal chain you play like an instrument pixel sort FFT filter feedback ▶ // media // finding things you are allowed ..."
+    "b": "creative utilities · ware · magmacrunch media home › ware › creative utilities creative utilities browser-based tools for art, media & image processing // music // punch roll chiptune piano roll pulse triangle noise WAV export ▶ // art & image // gatefold square album-cover editor text shapes images ▶ sprite forge game sprite editor animation onion skin PNG sheets ▶ // media // media search free media aggregator for CC-licensed work images video audio ▶"
   },
   {
     "t": "developer tools · ware · magmacrunch media",
     "c": "page",
     "u": "/ware/dev/index.html",
     "d": "game engines, scripting language, & memory course",
-    "b": "developer tools · ware · magmacrunch media home › ware › developer tools developer tools game engines, scripting language, & educational tools // game engines // the engines under the arcade, the wii games & the 3D work adenosine game engine collection for the magmacrunch web arcade JavaScript npm ▶ daffodil heightfield terrain engine: real-world landscape at 1:1 C ▶ hologram optics-first 3D engine with a spectral ray tracer C ▶ gerridae draws the solid things in hologram's scenes C new ▶ tunacan pixel-art game engine with its level editor built in C browser new ▶ lithosphere typesetting engin..."
+    "b": "developer tools · ware · magmacrunch media home › ware › developer tools developer tools game engines, scripting language, & educational tools // game engines // adenosine game engine collection for the magmacrunch web arcade JavaScript npm ▶ daffodil heightfield terrain engine: real-world landscape at 1:1 C ▶ hologram optics-first 3D engine with a spectral ray tracer C ▶ gerridae draws the solid things in hologram's scenes C new ▶ tunacan pixel-art game engine with its level editor built in C browser new ▶ lithosphere typesetting engine: justified, hyphenated game text that reflows live C bro..."
   },
   {
     "t": "Coruscating Dissonance",
@@ -1981,13 +1981,6 @@
     "b": "chinese checkers · magmacrunch media home › ware › video games › chinese checkers CHINESE CHECKERS 8-bit edition · hexagonal star · two to six players Chinese checkers in the arcade's cobalt edition. Play two, three, four or six players against the computer, or friends online with room codes and chat. // where to play // BROWSER ▶ PLAY free, in the arcade , with online rooms for up to six. TERMINAL A text-only version that runs in a terminal window. Install it with pipx install magmacrunch-chinese-checkers then run chinese-checkers . Also in the magmacrunch terminal arcade. New to this? The te..."
   },
   {
-    "t": "crunch-c · magmacrunch media",
-    "c": "tool",
-    "u": "/ware/crunch-c/",
-    "d": "a course in C memory management, in the browser",
-    "b": "crunch-c · magmacrunch media home › ware › developer tools › crunch-c crunch-c a course in C memory management, in the browser Every memory error is caught and explained, where real C would crash or behave unpredictably. ▶ Start the course What you'll learn Loading modules… How it works In C, memory mistakes cause segfaults, crashes and security vulnerabilities. Here the same mistakes are caught and named: quicksand at line 5, column 9 | 5 | val = p.peek(i32) | ^ this ground was scorched at line 4 (garrisoned at line 1) You learn what C does and why it is dangerous. The lessons run in your bro..."
-  },
-  {
     "t": "daffodil · magmacrunch media",
     "c": "tool",
     "u": "/ware/daffodil/",
@@ -2105,13 +2098,6 @@
     "u": "/ware/parchisi/",
     "d": "Parchís, the Spanish board game, online for two to four players in the browser",
     "b": "parchís · magmacrunch media home › ware › video games › parchís PARCHÍS el clásico juego español · 2 to 4 players online Parchís, the Spanish descendant of pachisi, for two to four players online, with room codes, spectating and chat. Roll two dice, capture your rivals and bring your pieces up the home run, on a board drawn as Spanish azulejo tiles and printed like a 1980s dot-matrix printout on green-bar paper. The game is in Spanish, with a switch to English. // where to play // BROWSER ▶ PLAY free, in the arcade . Online play, two to four players. // built with // adenosine browser · JavaSc..."
-  },
-  {
-    "t": "crunchscope · magmacrunch media",
-    "c": "tool",
-    "u": "/ware/pixel-process/",
-    "d": "an image signal chain you play like an instrument · pixel sort, FFT filter, feedback",
-    "b": "crunchscope · magmacrunch media a signal chain for images ENTER or press any key magmacrunch media CRUNCH//SCOPE 256×256 0 EFFECTS CHAIN SETUP INPUT UPLOAD IMAGE SOURCES generators replace the input image SELECT ▾ WHITE NOISE PERLIN NOISE H GRADIENT V GRADIENT RADIAL GRADIENT COLOR BARS CHECKERBOARD SOLID COLOR COLOR SEED REROLL COLOR A COLOR B WORK SIZE W H PRESETS ▾ 128 × 128 256 × 256 512 × 512 640 × 480 800 × 600 1024 × 768 FILE NAME EXPORT SIZE EXPORT PNG GRID DROP IMAGE CANCEL MON LEVELS SPECTRUM drag & drop · ctrl+v paste · upload image · add effects → SIGNAL CHAIN effects process the s..."
   },
   {
     "t": "PUNCH//ROLL · magmacrunch media",

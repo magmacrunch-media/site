@@ -1,126 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>crunch-c · magmacrunch media</title>
-  <link rel="canonical" href="https://magmacrunch.com/ware/crunch-c/">
-  <meta property="og:title" content="crunch-c · magmacrunch media">
-  <meta name="description" content="a course in C memory management, in the browser">
-  <meta property="og:description" content="a course in C memory management, in the browser">
-  <meta property="og:image" content="https://magmacrunch.com/og/ware.png?v=1">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-  <meta property="og:type" content="website">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta property="og:site_name" content="magmacrunch media">
-  <meta property="og:locale" content="en_US">
-  <link rel="icon" type="image/x-icon" href="../../favicon.ico">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Courier+Prime:wght@400;700&display=swap">
-  <link rel="stylesheet" href="../../style.css?v=a59b9059">
-  <link rel="stylesheet" href="landing.css?v=052f5254">
-  <link rel="stylesheet" href="../crumbs.css?v=e00af2c5">
-  <link rel="stylesheet" href="../ware-page.css?v=549bdc52">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex">
+    <title>crunch-c · magmacrunch media</title>
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <style>
+@font-face{font-family:"Press Start 2P";src:url(/fonts/PressStart2P-Regular.woff2) format("woff2");font-display:swap}:root{--bg: #120a10;--ink: #f0ead8;--dim: #9a8a9a;--hot: #ff5a3c}body{margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px 16px;box-sizing:border-box;background:var(--bg);color:var(--ink);font-family:"Courier New",monospace;text-align:center}body::after{content:"";position:fixed;inset:0;pointer-events:none;background:repeating-linear-gradient(0deg,transparent 0 3px,rgba(0,0,0,0.18) 3px 4px)}main{max-width:520px}h1{font-family:"Press Start 2P",monospace;font-size:clamp(14px,4vw,20px);color:var(--hot);letter-spacing:2px;margin:0 0 18px}p{line-height:1.7;margin:0 0 14px}.note{color:var(--dim);font-size:14px}a{color:var(--ink)}nav{margin-top:26px;font-family:"Press Start 2P",monospace;font-size:10px}nav a{margin:0 10px}
+</style>
 </head>
-<body class="ware-accent ware-page" style="--ware-accent:#7cc7ff">
-
-<nav id="auto-nav" data-depth="../../"></nav>
-
-<div class="tool-nav">
-  <div class="breadcrumb">
-    <a href="../../">home</a> <span class="sep">›</span>
-    <a href="../">ware</a> <span class="sep">›</span>
-    <a href="../dev/">developer tools</a> <span class="sep">›</span>
-    <span class="current">crunch-c</span>
-  </div>
-</div>
-
-<main>
-
-  <div class="hero">
-    <h1>crunch-c</h1>
-    <p class="tagline">a course in C memory management, in the browser</p>
-    <p class="blurb">
-      Every memory error is caught and explained, where real C would crash
-      or behave unpredictably.
-    </p>
-    <a href="lesson.html" class="cta">&#9654; Start the course</a>
-  </div>
-
-  <section class="section">
-    <h2>What you'll learn</h2>
-    <div class="modules" id="module-grid">
-      <p class="loading">Loading modules&hellip;</p>
-    </div>
-  </section>
-
-  <section class="section">
-    <h2>How it works</h2>
-    <p>
-      In C, memory mistakes cause segfaults, crashes and security
-      vulnerabilities. Here the same mistakes are caught and named:
-    </p>
-    <pre class="sample"><span class="s-err">quicksand at line 5, column 9</span>
-    |
-  5 | val = p.peek(i32)
-    |         ^
-this ground was scorched at line 4 (garrisoned at line 1)</pre>
-    <p>
-      You learn what C does and why it is dangerous. The
-      lessons run in your browser: the real interpreter, compiled to
-      WebAssembly, with nothing to install.
-    </p>
-  </section>
-
-  <section class="section">
-    <h2>The Heap Mine</h2>
-    <p>
-      The course always catches the fault, so it can only tell you what C
-      would have done. The Heap Mine shows you. It is a text adventure for
-      modules 02 and 03: the heap is a mine gallery shared with other
-      diggers, and the foreman calls down orders you solve with dig, walk,
-      poke and scorch. Carry the surveyor's lamp and every fault is caught
-      and named. Leave it on its hook and the use after free lands in
-      somebody else's chamber.
-    </p>
-    <p>It is a prototype, written in Inform 7, and it runs in your browser.</p>
-    <div class="links">
-      <a href="mine/">&#9654; Play The Heap Mine</a>
-    </div>
-  </section>
-
-  <section class="section">
-    <h2>Run it locally</h2>
-    <p>The lessons above are the whole course and need nothing installed. It also exists
-      as a directory of <code>.mgs</code> files to work through in your own editor. Those
-      sources are not publicly distributed, so email for a copy; the interpreter that runs
-      them is public:</p>
-    <pre class="sample">pip install magmascript
-magmascript 01-types/01-widths.mgs</pre>
-    <p>
-      Every exercise has a worked answer under <code>solutions/</code>. The
-      ones that teach a fault end by triggering it, so they exit non-zero on
-      purpose.
-    </p>
-    <div class="links">
-      <a href="mailto:info@magmacrunch.com?subject=crunch-c">info@magmacrunch.com</a>
-      <a href="../magmascript/">magmascript</a>
-      <a href="../magmascript/reference.html">language reference</a>
-    </div>
-  </section>
-
-</main>
-
-<footer>
-  &copy; 2026 <span>magmacrunch media</span> &middot; Apache-2.0
-</footer>
-
-<script type="module">
-import{MODULES}from"./lessons.js";const grid=document.getElementById("module-grid");grid.textContent="";for(const module of MODULES){const card=document.createElement("a");card.className="module-card";card.href=`lesson.html?m=${encodeURIComponent(module.slug)}`;const num=document.createElement("span");num.className="m-num";num.textContent=module.number;const title=document.createElement("span");title.className="m-title";title.textContent=module.title.replace(/^Module\s+\d+:\s*/i,"");const count=document.createElement("span");count.className="m-count";count.textContent=`${module.count} ${module.count===1?"exercise":"exercises"}`;card.append(num,title,count);grid.appendChild(card)}
-</script>
-
-<script src="../../nav.js?v=dcff84a5"></script>
+<body>
+    <main>
+        <h1>crunch-c</h1>
+        <p>The course in C memory management that lived here is being reworked.</p>
+        <p class="note">It will be back here when it is ready.</p>
+        <nav><a href="/ware/">&larr; ware</a><a href="/">home</a></nav>
+    </main>
 </body>
 </html>
