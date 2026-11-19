@@ -16,7 +16,7 @@
     <link rel="icon" href="../../favicon.ico" type="image/x-icon">
 
     <style>
-.font-loading body{visibility:hidden}:root{--mc-back-color: rgba(255, 140, 0, 0.6);--mc-back-glow: 0 0 8px rgba(255, 200, 80, 0.95)}
+.font-loading body{visibility:hidden}:root{--mc-back-color: rgba(214, 176, 102, 0.75);--mc-back-glow: none}
 </style>
     <script>
 document.documentElement.classList.add("font-loading");document.fonts.ready.then(()=>{document.documentElement.classList.remove("font-loading")});
@@ -31,7 +31,7 @@ document.documentElement.classList.add("font-loading");document.fonts.ready.then
     <link rel="stylesheet" href="../shared/puzzle/puzzle-modals.css?v=957f8655">
     <link rel="stylesheet" href="../shared/puzzle/puzzle-responsive.css?v=d5ee441f">
 
-    <link rel="stylesheet" href="css/game.css?v=c48ea4d8">
+    <link rel="stylesheet" href="css/game.css?v=ee62d915">
 </head>
 <body>
     <a href="../puzzles/" class="mc-back">puzzles</a>
@@ -141,9 +141,9 @@ document.documentElement.classList.add("font-loading");document.fonts.ready.then
     <div class="instructions-modal" id="instructionsModal">
         <div class="instructions-content">
             <h3>how to play</h3>
-            <p><strong>Klotski</strong> (横刀立马) is a classic Chinese sliding block puzzle. The goal is to slide the large <strong style="color: #ffd700">2×2 block</strong> (曹操) to the exit at the bottom center.</p>
+            <p><strong>Klotski</strong> (横刀立马) is a classic Chinese sliding block puzzle. The goal is to slide the large <strong class="kl-gilt">2×2 block</strong> (曹操) to the exit at the bottom center.</p>
             <p><strong>Click or tap a block</strong> to pick it, then <strong>use the arrow keys or swipe</strong> to slide it one space. Tab picks the next block. Blocks only slide, so they cannot jump over other blocks.</p>
-            <p>The <strong style="color: #ffd700">gold block</strong> is 曹操 (Cao Cao). The <strong style="color: #00cc88">jade blocks</strong> are his generals. The <strong style="color: #00f5ff">cyan blocks</strong> are soldiers.</p>
+            <p>The <strong class="kl-gilt">bronze block</strong> is 曹操 (Cao Cao). The <strong class="kl-jade">pale jade blocks</strong> are his generals. The <strong class="kl-jade-deep">small dark jade blocks</strong> are soldiers.</p>
             <p>Your score is your <strong>move count</strong>: fewer moves is better!</p>
             <button id="closeInstructions">close</button>
         </div>
@@ -156,7 +156,7 @@ document.documentElement.classList.add("font-loading");document.fonts.ready.then
             <p><strong>original concept:</strong> Klotski (横刀立马), a traditional Chinese sliding block puzzle from the early 20th century</p>
             <p><strong>technology & resources:</strong><br>
             &bull; HTML5, CSS3, and pure vanilla JavaScript<br>
-            &bull; <a href="../../ware/adenosine/" style="color:#ffd700">adenosine</a> puzzle framework<br>
+            &bull; <a href="../../ware/adenosine/">adenosine</a> puzzle framework<br>
             &bull; Press Start 2P font by CodeMan38 (Google Fonts)</p>
             <p><strong>published by:</strong> magmacrunch media</p>
             <p><strong>cheapness impact factor:</strong> 1.0</p>
