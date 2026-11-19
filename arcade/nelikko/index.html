@@ -132,14 +132,20 @@
             <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><rect x="1" y="4" width="6" height="6" rx="1" stroke="#C88A2E" stroke-width="1.5" fill="none"/><polygon points="9,7 14,4 14,10" fill="#C88A2E"/><rect x="10" y="5" width="5" height="4" rx="1" fill="#C88A2E" opacity="0.45"/></svg>
             <span class="ctrl-fi">PIDÄ<br><span class="ctrl-en">hold</span></span>
           </li>
-          <li class="ctrl-row" style="margin-bottom:0;">
+          <li class="ctrl-row">
             <span class="ctrl-key">P</span>
             <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><rect x="3" y="3" width="3.5" height="10" rx="1" fill="#C88A2E"/><rect x="9.5" y="3" width="3.5" height="10" rx="1" fill="#C88A2E"/></svg>
             <span class="ctrl-fi">TAUKO<br><span class="ctrl-en">pause</span></span>
           </li>
+          <li class="ctrl-row" style="margin-bottom:0;">
+            <span class="ctrl-key">M</span>
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><rect x="10" y="2" width="1.8" height="9.5" fill="#C88A2E"/><ellipse cx="7.5" cy="11.8" rx="3.2" ry="2.4" fill="#C88A2E"/><path d="M11.8 2 Q15 3.5 13.5 6.5" stroke="#C88A2E" stroke-width="1.5" fill="none"/></svg>
+            <span class="ctrl-fi">HILJAA<br><span class="ctrl-en">mute</span></span>
+          </li>
         </ul>
         <button class="btn cyan" id="btn-new" style="margin-top:12px;">UUSI PELI / new game</button>
         <button class="btn" id="btn-pause" style="display:none;">TAUKO / pause</button>
+        <button class="btn" id="btn-music" aria-pressed="true">HILJAA / mute</button>
       </div>
     </div>
 
@@ -344,7 +350,9 @@
 <script>
 const scoreClient=new AdScore.ScoreClient().auto(MC_SCORE_OPTS);
 </script>
-<script src="game.js?v=3b84be7d"></script>
+<script src="../shared/adenosine-synth.js?v=498086e5"></script>
+<script src="music.js?v=6b91cd23"></script>
+<script src="game.js?v=4bb22a15"></script>
 <script src="cathedral.js?v=e52fb6d7"></script>
 
 </body>
