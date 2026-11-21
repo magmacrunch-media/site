@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-11-21T05:50:39.239Z",
+  "fetchedAt": "2026-11-21T07:07:28.310Z",
   "entityType": "artist",
   "uuid": "807d1a47-53cb-4a14-a3ef-31c7eee0596a",
   "name": "Millstone",
@@ -9,334 +9,426 @@
         "event-count": 3,
         "events": [
           {
-            "disambiguation": "",
-            "type": "Competition",
-            "type-id": "42656500-7573-4b56-8934-af6fa2a305ec",
-            "id": "2ce6366b-336d-4c49-a0f0-63735a678747",
             "life-span": {
               "ended": true,
               "end": "2004-02",
               "begin": "2004-02"
             },
-            "time": "",
-            "name": "Battle of the Bands 2004",
             "cancelled": false,
-            "setlist": ""
+            "type-id": "42656500-7573-4b56-8934-af6fa2a305ec",
+            "id": "2ce6366b-336d-4c49-a0f0-63735a678747",
+            "type": "Competition",
+            "setlist": "",
+            "disambiguation": "",
+            "name": "Battle of the Bands 2004",
+            "time": ""
           },
           {
-            "disambiguation": "",
-            "setlist": "",
+            "life-span": {
+              "end": "2004-01-22",
+              "begin": "2004-01-22",
+              "ended": true
+            },
+            "type": "Concert",
+            "type-id": "ef55e8d7-3d00-394a-8012-f5506a29ff0b",
             "cancelled": false,
             "id": "336cbebb-51b4-4ca7-be3e-6ab8344eedce",
-            "life-span": {
-              "ended": true,
-              "begin": "2004-01-22",
-              "end": "2004-01-22"
-            },
-            "time": "19:00",
+            "setlist": "",
             "name": "Searles Castle show",
-            "type-id": "ef55e8d7-3d00-394a-8012-f5506a29ff0b",
-            "type": "Concert"
+            "disambiguation": "",
+            "time": "19:00"
           },
           {
-            "setlist": "",
+            "id": "b3fbc420-bab9-4034-85b5-1c7565cf902e",
+            "type-id": "ef55e8d7-3d00-394a-8012-f5506a29ff0b",
             "cancelled": false,
-            "time": "",
+            "type": "Concert",
             "life-span": {
               "ended": true,
               "begin": "2003-10-31",
               "end": "2003-10-31"
             },
-            "id": "b3fbc420-bab9-4034-85b5-1c7565cf902e",
+            "disambiguation": "",
             "name": "Halloween 2003",
-            "type-id": "ef55e8d7-3d00-394a-8012-f5506a29ff0b",
-            "type": "Concert",
-            "disambiguation": ""
+            "time": "18:00",
+            "setlist": ""
           }
         ]
       },
       "details": {
         "2ce6366b-336d-4c49-a0f0-63735a678747": {
-          "setlist": "",
-          "relations": [
-            {
-              "source-credit": "",
-              "end": null,
-              "target-type": "artist",
-              "ended": false,
-              "artist": {
-                "id": "99059e6d-09f9-4d6b-9610-8477650d67cb",
-                "type-id": "e431f5f6-b5d2-343d-8b36-72607fffb74b",
-                "type": "Group",
-                "sort-name": "Evenstar",
-                "disambiguation": "New Hampshire",
-                "country": "US",
-                "name": "Evenstar"
-              },
-              "attribute-ids": {},
-              "begin": null,
-              "attributes": [],
-              "type": "participant",
-              "attribute-values": {},
-              "type-id": "74c225de-aaf5-41c0-bfc5-05a8f56bab5d",
-              "direction": "backward",
-              "target-credit": ""
-            },
-            {
-              "target-credit": "",
-              "type": "participant",
-              "attribute-values": {},
-              "type-id": "74c225de-aaf5-41c0-bfc5-05a8f56bab5d",
-              "direction": "backward",
-              "target-type": "artist",
-              "ended": false,
-              "artist": {
-                "type": "Group",
-                "type-id": "e431f5f6-b5d2-343d-8b36-72607fffb74b",
-                "id": "807d1a47-53cb-4a14-a3ef-31c7eee0596a",
-                "sort-name": "Millstone",
-                "name": "Millstone",
-                "country": "US",
-                "disambiguation": "New Hampshire"
-              },
-              "attribute-ids": {},
-              "begin": null,
-              "attributes": [],
-              "source-credit": "",
-              "end": null
-            },
-            {
-              "ended": false,
-              "target-type": "artist",
-              "attribute-ids": {},
-              "artist": {
-                "type": "Group",
-                "type-id": "e431f5f6-b5d2-343d-8b36-72607fffb74b",
-                "id": "0c19587a-8483-4409-a0cc-6a9b0bdda672",
-                "name": "Neverfall",
-                "disambiguation": "US metalcore band, New Hampshire",
-                "country": "US",
-                "sort-name": "Neverfall"
-              },
-              "begin": null,
-              "attributes": [],
-              "source-credit": "",
-              "end": null,
-              "target-credit": "",
-              "attribute-values": {},
-              "type": "participant",
-              "type-id": "74c225de-aaf5-41c0-bfc5-05a8f56bab5d",
-              "direction": "backward"
-            },
-            {
-              "source-credit": "",
-              "end": null,
-              "artist": {
-                "sort-name": "River Bottom",
-                "name": "River Bottom",
-                "country": "US",
-                "disambiguation": "",
-                "type": "Group",
-                "id": "1a1d9678-96f9-4014-8fcc-6b84e121bf3c",
-                "type-id": "e431f5f6-b5d2-343d-8b36-72607fffb74b"
-              },
-              "attribute-ids": {},
-              "ended": false,
-              "target-type": "artist",
-              "attributes": [],
-              "begin": null,
-              "type-id": "74c225de-aaf5-41c0-bfc5-05a8f56bab5d",
-              "type": "participant",
-              "attribute-values": {},
-              "direction": "backward",
-              "target-credit": ""
-            },
-            {
-              "target-credit": "",
-              "direction": "forward",
-              "attribute-values": {},
-              "type": "held at",
-              "type-id": "e2c6f697-07dc-38b1-be0b-83d740165532",
-              "begin": null,
-              "attributes": [],
-              "target-type": "place",
-              "ended": false,
-              "attribute-ids": {},
-              "place": {
-                "disambiguation": "",
-                "address": "",
-                "name": "Salem High School",
-                "type-id": "882d46c9-625c-4061-891c-22dd412744db",
-                "id": "4514a409-7046-412d-b328-579c5d040cb7",
-                "type": "Educational institution",
-                "coordinates": null,
-                "area": {
-                  "type-id": "6fd8f29a-3d0a-32fc-980d-ea697b69da78",
-                  "id": "e0ed19d4-09bc-4f9a-9da8-be90315878d4",
-                  "type": "City",
-                  "disambiguation": "",
-                  "name": "Salem",
-                  "sort-name": "Salem"
-                }
-              },
-              "end": null,
-              "source-credit": ""
-            }
-          ],
           "disambiguation": "",
-          "name": "Battle of the Bands 2004",
-          "time": "",
+          "type-id": "42656500-7573-4b56-8934-af6fa2a305ec",
+          "id": "2ce6366b-336d-4c49-a0f0-63735a678747",
           "life-span": {
             "begin": "2004-02",
             "end": "2004-02",
             "ended": true
           },
-          "type-id": "42656500-7573-4b56-8934-af6fa2a305ec",
-          "cancelled": false,
-          "id": "2ce6366b-336d-4c49-a0f0-63735a678747",
-          "type": "Competition"
-        },
-        "336cbebb-51b4-4ca7-be3e-6ab8344eedce": {
-          "type": "Concert",
-          "life-span": {
-            "end": "2004-01-22",
-            "ended": true,
-            "begin": "2004-01-22"
-          },
-          "id": "336cbebb-51b4-4ca7-be3e-6ab8344eedce",
-          "cancelled": false,
+          "name": "Battle of the Bands 2004",
+          "time": "",
+          "type": "Competition",
+          "setlist": "",
           "relations": [
             {
-              "type-id": "936c7c95-3156-3889-a062-8a0cd57f8946",
               "source-credit": "",
-              "attribute-values": {},
-              "end": null,
-              "direction": "backward",
-              "target-type": "artist",
               "artist": {
-                "id": "807d1a47-53cb-4a14-a3ef-31c7eee0596a",
-                "sort-name": "Millstone",
-                "type": "Group",
                 "country": "US",
-                "disambiguation": "New Hampshire",
-                "name": "Millstone",
-                "type-id": "e431f5f6-b5d2-343d-8b36-72607fffb74b"
+                "type": "Group",
+                "sort-name": "Evenstar",
+                "type-id": "e431f5f6-b5d2-343d-8b36-72607fffb74b",
+                "id": "99059e6d-09f9-4d6b-9610-8477650d67cb",
+                "name": "Evenstar",
+                "disambiguation": "New Hampshire"
               },
-              "attributes": [],
-              "begin": null,
-              "target-credit": "",
-              "type": "main performer",
+              "type": "participant",
+              "direction": "backward",
               "attribute-ids": {},
-              "ended": false
+              "type-id": "74c225de-aaf5-41c0-bfc5-05a8f56bab5d",
+              "attributes": [],
+              "attribute-values": {},
+              "target-credit": "",
+              "ended": false,
+              "end": null,
+              "target-type": "artist",
+              "begin": null
             },
             {
-              "direction": "forward",
-              "target-type": "place",
+              "begin": null,
               "end": null,
-              "attribute-values": {},
-              "source-credit": "",
-              "type-id": "e2c6f697-07dc-38b1-be0b-83d740165532",
-              "attribute-ids": {},
+              "target-type": "artist",
               "ended": false,
-              "type": "held at",
+              "target-credit": "",
+              "attribute-values": {},
+              "attributes": [],
+              "direction": "backward",
+              "attribute-ids": {},
+              "type-id": "74c225de-aaf5-41c0-bfc5-05a8f56bab5d",
+              "artist": {
+                "country": "US",
+                "id": "807d1a47-53cb-4a14-a3ef-31c7eee0596a",
+                "name": "Millstone",
+                "sort-name": "Millstone",
+                "type-id": "e431f5f6-b5d2-343d-8b36-72607fffb74b",
+                "type": "Group",
+                "disambiguation": "New Hampshire"
+              },
+              "type": "participant",
+              "source-credit": ""
+            },
+            {
+              "begin": null,
+              "end": null,
+              "target-type": "artist",
+              "target-credit": "",
+              "ended": false,
+              "attribute-values": {},
+              "attributes": [],
+              "artist": {
+                "country": "US",
+                "type-id": "e431f5f6-b5d2-343d-8b36-72607fffb74b",
+                "sort-name": "Neverfall",
+                "id": "0c19587a-8483-4409-a0cc-6a9b0bdda672",
+                "name": "Neverfall",
+                "type": "Group",
+                "disambiguation": "US metalcore band, New Hampshire"
+              },
+              "type": "participant",
+              "direction": "backward",
+              "attribute-ids": {},
+              "type-id": "74c225de-aaf5-41c0-bfc5-05a8f56bab5d",
+              "source-credit": ""
+            },
+            {
+              "ended": false,
+              "target-credit": "",
+              "target-type": "artist",
+              "end": null,
+              "begin": null,
+              "source-credit": "",
+              "type-id": "74c225de-aaf5-41c0-bfc5-05a8f56bab5d",
+              "direction": "backward",
+              "attribute-ids": {},
+              "type": "participant",
+              "artist": {
+                "country": "US",
+                "type": "Group",
+                "sort-name": "River Bottom",
+                "type-id": "e431f5f6-b5d2-343d-8b36-72607fffb74b",
+                "id": "1a1d9678-96f9-4014-8fcc-6b84e121bf3c",
+                "name": "River Bottom",
+                "disambiguation": ""
+              },
+              "attributes": [],
+              "attribute-values": {}
+            },
+            {
+              "attributes": [],
               "place": {
+                "area": {
+                  "type": "City",
+                  "sort-name": "Salem",
+                  "type-id": "6fd8f29a-3d0a-32fc-980d-ea697b69da78",
+                  "id": "e0ed19d4-09bc-4f9a-9da8-be90315878d4",
+                  "name": "Salem",
+                  "disambiguation": ""
+                },
                 "disambiguation": "",
                 "address": "",
-                "name": "Searles Castle",
-                "type-id": "a0df5ead-0bd6-33d8-8444-855a9f3e9970",
-                "area": {
-                  "type-id": "bcecec27-8bdb-3e00-8254-d948dda502fa",
-                  "name": "Rockingham County",
-                  "disambiguation": "",
-                  "type": "County",
-                  "id": "99f0937c-69b7-455c-9b13-fe708da6943e",
-                  "sort-name": "Rockingham County"
-                },
-                "id": "7cd6a081-3e5d-4a3f-9a42-78ac0e58b579",
+                "name": "Salem High School",
+                "id": "4514a409-7046-412d-b328-579c5d040cb7",
+                "type-id": "882d46c9-625c-4061-891c-22dd412744db",
                 "coordinates": null,
-                "type": "Other"
+                "type": "Educational institution"
               },
+              "attribute-values": {},
               "begin": null,
+              "ended": false,
               "target-credit": "",
-              "attributes": []
+              "source-credit": "",
+              "direction": "forward",
+              "attribute-ids": {},
+              "type-id": "e2c6f697-07dc-38b1-be0b-83d740165532",
+              "end": null,
+              "target-type": "place",
+              "type": "held at"
             }
           ],
-          "time": "19:00",
-          "type-id": "ef55e8d7-3d00-394a-8012-f5506a29ff0b",
-          "setlist": "",
-          "disambiguation": "",
-          "name": "Searles Castle show"
+          "cancelled": false
         },
-        "b3fbc420-bab9-4034-85b5-1c7565cf902e": {
+        "336cbebb-51b4-4ca7-be3e-6ab8344eedce": {
           "disambiguation": "",
-          "setlist": "",
-          "id": "b3fbc420-bab9-4034-85b5-1c7565cf902e",
-          "type-id": "ef55e8d7-3d00-394a-8012-f5506a29ff0b",
-          "name": "Halloween 2003",
-          "type": "Concert",
-          "time": "",
-          "cancelled": false,
-          "life-span": {
-            "begin": "2003-10-31",
-            "ended": true,
-            "end": "2003-10-31"
-          },
           "relations": [
             {
+              "attributes": [],
+              "attribute-values": {},
+              "source-credit": "",
+              "artist": {
+                "disambiguation": "",
+                "country": "US",
+                "type": "Group",
+                "id": "7fac0134-65b7-4e55-9645-7d1c31ae82a0",
+                "name": "For the Experience",
+                "type-id": "e431f5f6-b5d2-343d-8b36-72607fffb74b",
+                "sort-name": "For the Experience"
+              },
+              "type": "main performer",
+              "direction": "backward",
+              "attribute-ids": {},
+              "type-id": "936c7c95-3156-3889-a062-8a0cd57f8946",
+              "begin": null,
               "target-credit": "",
               "ended": false,
-              "begin": null,
-              "source-credit": "",
-              "target-type": "artist",
-              "type": "main performer",
               "end": null,
+              "target-type": "artist"
+            },
+            {
+              "begin": null,
+              "ended": false,
+              "target-credit": "",
+              "target-type": "artist",
+              "end": null,
+              "attributes": [],
               "attribute-values": {},
+              "source-credit": "",
               "type-id": "936c7c95-3156-3889-a062-8a0cd57f8946",
+              "direction": "backward",
+              "attribute-ids": {},
+              "type": "main performer",
+              "artist": {
+                "disambiguation": "New Hampshire",
+                "country": "US",
+                "type": "Group",
+                "id": "5a97cecf-b0e6-4427-ba99-18d3a499a924",
+                "name": "Lucky Shot",
+                "type-id": "e431f5f6-b5d2-343d-8b36-72607fffb74b",
+                "sort-name": "Lucky Shot"
+              }
+            },
+            {
+              "attribute-values": {},
+              "attributes": [],
+              "type": "main performer",
               "artist": {
                 "type": "Group",
                 "type-id": "e431f5f6-b5d2-343d-8b36-72607fffb74b",
-                "country": "US",
-                "disambiguation": "New Hampshire",
-                "id": "807d1a47-53cb-4a14-a3ef-31c7eee0596a",
                 "sort-name": "Millstone",
-                "name": "Millstone"
+                "id": "807d1a47-53cb-4a14-a3ef-31c7eee0596a",
+                "name": "Millstone",
+                "country": "US",
+                "disambiguation": "New Hampshire"
               },
+              "type-id": "936c7c95-3156-3889-a062-8a0cd57f8946",
               "direction": "backward",
               "attribute-ids": {},
-              "attributes": []
-            },
-            {
-              "end": null,
-              "attribute-values": {},
-              "type-id": "e2c6f697-07dc-38b1-be0b-83d740165532",
-              "attribute-ids": {},
-              "direction": "forward",
-              "attributes": [],
-              "target-credit": "Frogwood Manor Garage",
-              "place": {
-                "coordinates": null,
-                "type": null,
-                "area": {
-                  "name": "Rockingham County",
-                  "type": "County",
-                  "id": "99f0937c-69b7-455c-9b13-fe708da6943e",
-                  "sort-name": "Rockingham County",
-                  "disambiguation": "",
-                  "type-id": "bcecec27-8bdb-3e00-8254-d948dda502fa"
-                },
-                "address": "",
-                "name": "Frogwood Manor",
-                "type-id": null,
-                "id": "362e9df6-ce39-4805-841e-c113e4e2a7c9",
-                "disambiguation": ""
-              },
               "source-credit": "",
               "begin": null,
+              "target-type": "artist",
+              "end": null,
+              "target-credit": "",
+              "ended": false
+            },
+            {
+              "attributes": [],
+              "attribute-values": {},
+              "source-credit": "",
+              "type": "main performer",
+              "artist": {
+                "type": "Group",
+                "type-id": "e431f5f6-b5d2-343d-8b36-72607fffb74b",
+                "sort-name": "Tear Method",
+                "id": "e1dc183c-5468-499f-bc41-117020c07fa0",
+                "name": "Tear Method",
+                "country": "US",
+                "disambiguation": ""
+              },
+              "type-id": "936c7c95-3156-3889-a062-8a0cd57f8946",
+              "attribute-ids": {},
+              "direction": "backward",
+              "begin": null,
+              "target-credit": "",
               "ended": false,
+              "target-type": "artist",
+              "end": null
+            },
+            {
+              "target-credit": "(e)X-treme",
+              "ended": false,
+              "end": null,
+              "target-type": "artist",
+              "begin": null,
+              "source-credit": "",
+              "artist": {
+                "disambiguation": "New Hampshire",
+                "country": "US",
+                "name": "X-TREME",
+                "id": "93f1a458-08f3-438c-ac6d-fb392754dd3d",
+                "sort-name": "X-TREME",
+                "type-id": "e431f5f6-b5d2-343d-8b36-72607fffb74b",
+                "type": "Group"
+              },
+              "type": "main performer",
+              "attribute-ids": {},
+              "direction": "backward",
+              "type-id": "936c7c95-3156-3889-a062-8a0cd57f8946",
+              "attributes": [],
+              "attribute-values": {}
+            },
+            {
+              "ended": false,
+              "target-credit": "",
+              "source-credit": "",
+              "attribute-ids": {},
+              "direction": "forward",
+              "type-id": "e2c6f697-07dc-38b1-be0b-83d740165532",
+              "end": null,
               "type": "held at",
-              "target-type": "place"
+              "target-type": "place",
+              "attributes": [],
+              "place": {
+                "area": {
+                  "disambiguation": "",
+                  "id": "99f0937c-69b7-455c-9b13-fe708da6943e",
+                  "name": "Rockingham County",
+                  "type-id": "bcecec27-8bdb-3e00-8254-d948dda502fa",
+                  "sort-name": "Rockingham County",
+                  "type": "County"
+                },
+                "disambiguation": "",
+                "address": "",
+                "type-id": "a0df5ead-0bd6-33d8-8444-855a9f3e9970",
+                "name": "Searles Castle",
+                "id": "7cd6a081-3e5d-4a3f-9a42-78ac0e58b579",
+                "type": "Other",
+                "coordinates": null
+              },
+              "attribute-values": {},
+              "begin": null
             }
-          ]
+          ],
+          "cancelled": false,
+          "setlist": "",
+          "type": "Concert",
+          "type-id": "ef55e8d7-3d00-394a-8012-f5506a29ff0b",
+          "life-span": {
+            "ended": true,
+            "begin": "2004-01-22",
+            "end": "2004-01-22"
+          },
+          "id": "336cbebb-51b4-4ca7-be3e-6ab8344eedce",
+          "time": "19:00",
+          "name": "Searles Castle show"
+        },
+        "b3fbc420-bab9-4034-85b5-1c7565cf902e": {
+          "type": "Concert",
+          "type-id": "ef55e8d7-3d00-394a-8012-f5506a29ff0b",
+          "id": "b3fbc420-bab9-4034-85b5-1c7565cf902e",
+          "cancelled": false,
+          "life-span": {
+            "ended": true,
+            "end": "2003-10-31",
+            "begin": "2003-10-31"
+          },
+          "name": "Halloween 2003",
+          "disambiguation": "",
+          "time": "18:00",
+          "relations": [
+            {
+              "target-credit": "",
+              "direction": "backward",
+              "type": "main performer",
+              "attribute-values": {},
+              "type-id": "936c7c95-3156-3889-a062-8a0cd57f8946",
+              "begin": null,
+              "attributes": [],
+              "ended": false,
+              "target-type": "artist",
+              "artist": {
+                "name": "Millstone",
+                "disambiguation": "New Hampshire",
+                "country": "US",
+                "sort-name": "Millstone",
+                "type": "Group",
+                "type-id": "e431f5f6-b5d2-343d-8b36-72607fffb74b",
+                "id": "807d1a47-53cb-4a14-a3ef-31c7eee0596a"
+              },
+              "attribute-ids": {},
+              "end": null,
+              "source-credit": ""
+            },
+            {
+              "target-credit": "Frogwood Manor Garage",
+              "attribute-values": {},
+              "type": "held at",
+              "type-id": "e2c6f697-07dc-38b1-be0b-83d740165532",
+              "direction": "forward",
+              "ended": false,
+              "target-type": "place",
+              "attribute-ids": {},
+              "begin": null,
+              "attributes": [],
+              "source-credit": "",
+              "place": {
+                "coordinates": null,
+                "area": {
+                  "sort-name": "Rockingham County",
+                  "name": "Rockingham County",
+                  "disambiguation": "",
+                  "type": "County",
+                  "id": "99f0937c-69b7-455c-9b13-fe708da6943e",
+                  "type-id": "bcecec27-8bdb-3e00-8254-d948dda502fa"
+                },
+                "type": null,
+                "id": "362e9df6-ce39-4805-841e-c113e4e2a7c9",
+                "type-id": null,
+                "address": "",
+                "name": "Frogwood Manor",
+                "disambiguation": ""
+              },
+              "end": null
+            }
+          ],
+          "setlist": ""
         }
       },
       "areaChains": {
@@ -356,195 +448,231 @@
       "list": {
         "recordings": [
           {
-            "video": false,
-            "id": "527fb9fb-9044-47dd-896c-8a64d84b2566",
             "disambiguation": "",
             "length": 159000,
-            "title": "A New Hope"
+            "title": "A New Hope",
+            "video": false,
+            "id": "527fb9fb-9044-47dd-896c-8a64d84b2566"
           },
           {
             "disambiguation": "",
             "id": "59f3dc08-f0cb-4d0f-83cb-68237e878c8f",
             "video": false,
-            "length": 258000,
-            "title": "Stalemate"
+            "title": "Stalemate",
+            "length": 258000
           }
         ]
       },
       "details": {
         "527fb9fb-9044-47dd-896c-8a64d84b2566": {
-          "disambiguation": "",
-          "isrcs": [],
-          "aliases": [],
-          "length": 159000,
-          "video": false,
+          "title": "A New Hope",
+          "tags": [],
           "artist-credit": [
             {
+              "name": "Millstone",
+              "joinphrase": "",
               "artist": {
                 "name": "Millstone",
                 "disambiguation": "New Hampshire",
-                "country": "US",
-                "aliases": [],
-                "sort-name": "Millstone",
-                "tags": [],
-                "type": "Group",
                 "type-id": "e431f5f6-b5d2-343d-8b36-72607fffb74b",
-                "id": "807d1a47-53cb-4a14-a3ef-31c7eee0596a"
-              },
-              "name": "Millstone",
-              "joinphrase": ""
+                "sort-name": "Millstone",
+                "id": "807d1a47-53cb-4a14-a3ef-31c7eee0596a",
+                "aliases": [],
+                "type": "Group",
+                "country": "US",
+                "tags": []
+              }
             }
           ],
           "relations": [
             {
-              "attribute-values": {},
-              "type": "recorded at",
-              "type-id": "ad462279-14b0-4180-9b58-571d0eef7c51",
               "direction": "backward",
-              "target-credit": "",
+              "target-type": "place",
+              "end": "2003-12-15",
+              "attribute-values": {},
               "source-credit": "",
+              "type-id": "ad462279-14b0-4180-9b58-571d0eef7c51",
+              "attribute-ids": {},
+              "ended": true,
+              "type": "recorded at",
+              "begin": "2003-12-15",
               "place": {
-                "disambiguation": "",
-                "address": "",
                 "name": "Frogwood Manor",
-                "coordinates": null,
+                "address": "",
+                "disambiguation": "",
+                "type-id": null,
+                "id": "362e9df6-ce39-4805-841e-c113e4e2a7c9",
                 "area": {
                   "disambiguation": "",
                   "name": "Rockingham County",
-                  "sort-name": "Rockingham County",
                   "type-id": "bcecec27-8bdb-3e00-8254-d948dda502fa",
                   "id": "99f0937c-69b7-455c-9b13-fe708da6943e",
+                  "sort-name": "Rockingham County",
                   "type": "County"
                 },
-                "id": "362e9df6-ce39-4805-841e-c113e4e2a7c9",
-                "type-id": null,
-                "type": null
+                "type": null,
+                "coordinates": null
               },
-              "end": "2003-12-15",
-              "target-type": "place",
-              "ended": true,
+              "target-credit": "",
+              "attributes": []
+            },
+            {
+              "target-type": "url",
+              "direction": "forward",
+              "end": null,
+              "attribute-values": {},
+              "source-credit": "",
+              "type-id": "7e41ef12-a124-4324-afdb-fdbae687a89c",
+              "ended": false,
               "attribute-ids": {},
-              "begin": "2003-12-15",
+              "type": "free streaming",
+              "target-credit": "",
+              "url": {
+                "id": "e1529f92-4a10-4da5-b288-336dd1aac5ac",
+                "resource": "https://www.youtube.com/watch?v=1LNdXD7Mzws"
+              },
+              "begin": null,
               "attributes": []
             },
             {
               "target-credit": "",
-              "direction": "forward",
-              "type-id": "a3005666-a872-32c3-ad06-98af558e99b0",
+              "begin": "2003-12-15",
+              "attributes": [],
+              "ended": true,
+              "attribute-ids": {},
               "type": "performance",
               "attribute-values": {},
-              "attributes": [],
-              "begin": "2003-12-15",
+              "source-credit": "",
+              "type-id": "a3005666-a872-32c3-ad06-98af558e99b0",
               "work": {
-                "title": "A New Hope",
                 "languages": [
                   "eng"
                 ],
-                "language": "eng",
-                "type": "Song",
+                "disambiguation": "",
                 "type-id": "f061270a-2fd6-32f1-a641-f0f8676d14e6",
-                "iswcs": [],
-                "id": "0bb1ec37-dd2f-41ca-8ef5-c604207a7852",
                 "attributes": [],
-                "disambiguation": ""
+                "iswcs": [],
+                "language": "eng",
+                "id": "0bb1ec37-dd2f-41ca-8ef5-c604207a7852",
+                "type": "Song",
+                "title": "A New Hope"
               },
-              "attribute-ids": {},
               "target-type": "work",
-              "ended": true,
-              "end": "2003-12-15",
-              "source-credit": ""
+              "direction": "forward",
+              "end": "2003-12-15"
             }
           ],
-          "tags": [],
+          "isrcs": [],
+          "aliases": [],
           "id": "527fb9fb-9044-47dd-896c-8a64d84b2566",
-          "title": "A New Hope",
+          "video": false,
+          "length": 159000,
+          "disambiguation": "",
           "releases": []
         },
         "59f3dc08-f0cb-4d0f-83cb-68237e878c8f": {
           "isrcs": [],
-          "artist-credit": [
-            {
-              "artist": {
-                "sort-name": "Millstone",
-                "disambiguation": "New Hampshire",
-                "type": "Group",
-                "tags": [],
-                "aliases": [],
-                "country": "US",
-                "id": "807d1a47-53cb-4a14-a3ef-31c7eee0596a",
-                "type-id": "e431f5f6-b5d2-343d-8b36-72607fffb74b",
-                "name": "Millstone"
-              },
-              "name": "Millstone",
-              "joinphrase": ""
-            }
-          ],
-          "aliases": [],
-          "length": 258000,
-          "title": "Stalemate",
-          "tags": [],
-          "video": false,
-          "id": "59f3dc08-f0cb-4d0f-83cb-68237e878c8f",
-          "releases": [],
           "disambiguation": "",
+          "tags": [],
           "relations": [
             {
-              "direction": "backward",
-              "type-id": "ad462279-14b0-4180-9b58-571d0eef7c51",
-              "begin": "2003-12-15",
-              "attribute-values": {},
-              "target-credit": "",
-              "type": "recorded at",
-              "ended": true,
-              "end": "2003-12-15",
-              "source-credit": "",
-              "target-type": "place",
               "attributes": [],
               "attribute-ids": {},
+              "direction": "backward",
+              "type-id": "ad462279-14b0-4180-9b58-571d0eef7c51",
+              "attribute-values": {},
+              "end": "2003-12-15",
+              "type": "recorded at",
+              "target-type": "place",
+              "source-credit": "",
+              "begin": "2003-12-15",
+              "ended": true,
+              "target-credit": "",
               "place": {
-                "id": "362e9df6-ce39-4805-841e-c113e4e2a7c9",
-                "name": "Frogwood Manor",
-                "type-id": null,
-                "coordinates": null,
                 "area": {
-                  "id": "99f0937c-69b7-455c-9b13-fe708da6943e",
                   "type-id": "bcecec27-8bdb-3e00-8254-d948dda502fa",
-                  "name": "Rockingham County",
-                  "sort-name": "Rockingham County",
                   "type": "County",
-                  "disambiguation": ""
+                  "id": "99f0937c-69b7-455c-9b13-fe708da6943e",
+                  "disambiguation": "",
+                  "sort-name": "Rockingham County",
+                  "name": "Rockingham County"
                 },
-                "address": "",
+                "type": null,
+                "coordinates": null,
+                "type-id": null,
                 "disambiguation": "",
-                "type": null
+                "id": "362e9df6-ce39-4805-841e-c113e4e2a7c9",
+                "address": "",
+                "name": "Frogwood Manor"
               }
             },
             {
-              "type-id": "a3005666-a872-32c3-ad06-98af558e99b0",
-              "direction": "forward",
-              "target-credit": "",
-              "type": "performance",
-              "begin": "2003-12-15",
-              "attribute-values": {},
-              "target-type": "work",
               "attributes": [],
-              "ended": true,
+              "direction": "forward",
+              "attribute-ids": {},
+              "attribute-values": {},
+              "type-id": "7e41ef12-a124-4324-afdb-fdbae687a89c",
+              "end": null,
+              "type": "free streaming",
+              "target-type": "url",
+              "begin": null,
               "source-credit": "",
-              "end": "2003-12-15",
+              "ended": false,
+              "target-credit": "",
+              "url": {
+                "resource": "https://www.youtube.com/watch?v=80CqpORXsPk",
+                "id": "cf02aaa9-ca17-4174-837e-c49bb914ecf4"
+              }
+            },
+            {
+              "target-credit": "",
+              "target-type": "work",
               "work": {
+                "iswcs": [],
+                "type": "Song",
+                "attributes": [],
+                "title": "Stalemate",
+                "disambiguation": "",
+                "id": "9ed59f8c-a23f-4732-986d-192429b22bfa",
                 "languages": [
                   "eng"
                 ],
-                "type": "Song",
-                "disambiguation": "",
-                "iswcs": [],
-                "attributes": [],
                 "type-id": "f061270a-2fd6-32f1-a641-f0f8676d14e6",
-                "title": "Stalemate",
-                "id": "9ed59f8c-a23f-4732-986d-192429b22bfa",
                 "language": "eng"
               },
-              "attribute-ids": {}
+              "type": "performance",
+              "ended": true,
+              "source-credit": "",
+              "begin": "2003-12-15",
+              "type-id": "a3005666-a872-32c3-ad06-98af558e99b0",
+              "attribute-values": {},
+              "end": "2003-12-15",
+              "attributes": [],
+              "attribute-ids": {},
+              "direction": "forward"
+            }
+          ],
+          "releases": [],
+          "video": false,
+          "id": "59f3dc08-f0cb-4d0f-83cb-68237e878c8f",
+          "length": 258000,
+          "aliases": [],
+          "title": "Stalemate",
+          "artist-credit": [
+            {
+              "name": "Millstone",
+              "joinphrase": "",
+              "artist": {
+                "type": "Group",
+                "name": "Millstone",
+                "aliases": [],
+                "type-id": "e431f5f6-b5d2-343d-8b36-72607fffb74b",
+                "tags": [],
+                "sort-name": "Millstone",
+                "country": "US",
+                "id": "807d1a47-53cb-4a14-a3ef-31c7eee0596a",
+                "disambiguation": "New Hampshire"
+              }
             }
           ]
         }
@@ -552,1267 +680,922 @@
     },
     "works": {
       "artistWorkRels": {
+        "end-area": null,
         "ipis": [],
+        "isnis": [],
+        "gender-id": null,
         "life-span": {
           "end": "2004",
           "begin": "2003",
           "ended": true
         },
-        "begin-area": null,
         "id": "807d1a47-53cb-4a14-a3ef-31c7eee0596a",
+        "begin-area": null,
         "disambiguation": "New Hampshire",
+        "area": {
+          "disambiguation": "",
+          "sort-name": "Rockingham County",
+          "type-id": null,
+          "id": "99f0937c-69b7-455c-9b13-fe708da6943e",
+          "name": "Rockingham County",
+          "type": null
+        },
+        "country": "US",
         "relations": [
           {
-            "attribute-ids": {},
-            "end": null,
-            "source-credit": "",
+            "begin": null,
             "work": {
-              "type-id": "f061270a-2fd6-32f1-a641-f0f8676d14e6",
               "attributes": [],
-              "title": "Kinda Reminiscent of Millstone",
+              "disambiguation": "",
+              "type-id": "f061270a-2fd6-32f1-a641-f0f8676d14e6",
               "id": "30b20740-0912-4d2e-a012-32692d71ecde",
-              "language": null,
-              "languages": [],
-              "iswcs": [],
+              "title": "Kinda Reminiscent of Millstone",
               "type": "Song",
+              "language": null,
+              "iswcs": [],
+              "languages": []
+            },
+            "ended": false,
+            "target-credit": "",
+            "end": null,
+            "target-type": "work",
+            "attributes": [],
+            "attribute-values": {},
+            "source-credit": "",
+            "direction": "forward",
+            "attribute-ids": {},
+            "type-id": "26131498-00e8-4136-b937-22a4be01a63d",
+            "type": "dedication"
+          },
+          {
+            "attributes": [],
+            "attribute-values": {},
+            "source-credit": "",
+            "type": "named after artist",
+            "direction": "forward",
+            "attribute-ids": {},
+            "type-id": "e9823163-51a2-4ce8-95e9-4257dec92ee2",
+            "work": {
+              "id": "30b20740-0912-4d2e-a012-32692d71ecde",
+              "type-id": "f061270a-2fd6-32f1-a641-f0f8676d14e6",
+              "language": null,
+              "type": "Song",
+              "title": "Kinda Reminiscent of Millstone",
+              "iswcs": [],
+              "languages": [],
+              "attributes": [],
               "disambiguation": ""
             },
+            "begin": null,
+            "target-credit": "",
             "ended": false,
-            "attributes": [],
-            "target-type": "work",
-            "begin": null,
-            "attribute-values": {},
-            "target-credit": "",
-            "type": "dedication",
-            "direction": "forward",
-            "type-id": "26131498-00e8-4136-b937-22a4be01a63d"
+            "end": null,
+            "target-type": "work"
           },
           {
-            "target-credit": "",
-            "type": "named after artist",
-            "begin": null,
-            "attribute-values": {},
-            "type-id": "e9823163-51a2-4ce8-95e9-4257dec92ee2",
-            "direction": "forward",
-            "attribute-ids": {},
-            "attributes": [],
-            "target-type": "work",
-            "source-credit": "",
-            "end": null,
             "work": {
               "languages": [],
-              "iswcs": [],
-              "type": "Song",
-              "disambiguation": "",
-              "id": "30b20740-0912-4d2e-a012-32692d71ecde",
-              "language": null,
-              "type-id": "f061270a-2fd6-32f1-a641-f0f8676d14e6",
-              "attributes": [],
-              "title": "Kinda Reminiscent of Millstone"
-            },
-            "ended": false
-          },
-          {
-            "attributes": [],
-            "target-type": "work",
-            "source-credit": "",
-            "end": null,
-            "work": {
-              "type-id": "f061270a-2fd6-32f1-a641-f0f8676d14e6",
-              "attributes": [],
-              "title": "Millstone Woods May 2018",
-              "language": null,
-              "id": "43ff6340-28e8-4066-ba12-6d3f17652ed5",
-              "languages": [],
-              "type": "Song",
-              "disambiguation": "",
               "iswcs": [
                 "T-337.061.513-3"
-              ]
+              ],
+              "language": null,
+              "title": "Millstone Woods May 2018",
+              "type": "Song",
+              "id": "43ff6340-28e8-4066-ba12-6d3f17652ed5",
+              "type-id": "f061270a-2fd6-32f1-a641-f0f8676d14e6",
+              "disambiguation": "",
+              "attributes": []
             },
+            "begin": null,
+            "target-credit": "",
             "ended": false,
-            "attribute-ids": {},
+            "target-type": "work",
+            "end": null,
+            "attributes": [],
+            "attribute-values": {},
+            "source-credit": "",
+            "type": "named after artist",
             "type-id": "e9823163-51a2-4ce8-95e9-4257dec92ee2",
             "direction": "forward",
-            "target-credit": "",
-            "type": "named after artist",
-            "attribute-values": {},
-            "begin": null
+            "attribute-ids": {}
           },
           {
-            "attribute-ids": {},
-            "target-type": "work",
-            "attributes": [],
             "ended": false,
+            "target-credit": "",
+            "target-type": "work",
             "end": null,
-            "source-credit": "",
             "work": {
-              "title": "Millstone, 2063",
-              "attributes": [],
-              "type-id": "f061270a-2fd6-32f1-a641-f0f8676d14e6",
-              "language": null,
-              "id": "188d9a75-4d7a-4a72-a376-456fff8d4191",
               "type": "Song",
+              "title": "Millstone, 2063",
+              "language": null,
+              "type-id": "f061270a-2fd6-32f1-a641-f0f8676d14e6",
+              "id": "188d9a75-4d7a-4a72-a376-456fff8d4191",
+              "languages": [],
               "iswcs": [
                 "T-337.058.288-6"
               ],
               "disambiguation": "",
-              "languages": []
+              "attributes": []
             },
-            "target-credit": "",
-            "type": "named after artist",
-            "attribute-values": {},
             "begin": null,
+            "source-credit": "",
             "type-id": "e9823163-51a2-4ce8-95e9-4257dec92ee2",
-            "direction": "forward"
+            "direction": "forward",
+            "attribute-ids": {},
+            "type": "named after artist",
+            "attributes": [],
+            "attribute-values": {}
           },
           {
-            "attribute-ids": {},
+            "attributes": [],
+            "attribute-values": {},
             "source-credit": "",
-            "end": null,
+            "direction": "forward",
+            "attribute-ids": {},
+            "type-id": "a255bca1-b157-4518-9108-7b147dc3fc68",
+            "type": "writer",
+            "begin": null,
             "work": {
+              "type": "Song",
               "title": "A Nation Divided",
-              "attributes": [],
+              "language": null,
               "type-id": "f061270a-2fd6-32f1-a641-f0f8676d14e6",
               "id": "031af361-0064-4640-8b28-af1ab85d03f1",
-              "language": null,
-              "type": "Song",
-              "disambiguation": "",
-              "iswcs": [],
-              "languages": []
-            },
-            "ended": false,
-            "attributes": [],
-            "target-type": "work",
-            "attribute-values": {},
-            "begin": null,
-            "target-credit": "",
-            "type": "writer",
-            "direction": "forward",
-            "type-id": "a255bca1-b157-4518-9108-7b147dc3fc68"
-          },
-          {
-            "attribute-ids": {},
-            "ended": false,
-            "source-credit": "",
-            "end": null,
-            "work": {
-              "type-id": "f061270a-2fd6-32f1-a641-f0f8676d14e6",
-              "attributes": [],
-              "title": "A New Hope",
-              "id": "0bb1ec37-dd2f-41ca-8ef5-c604207a7852",
-              "language": "eng",
-              "languages": [
-                "eng"
-              ],
-              "type": "Song",
-              "disambiguation": "",
-              "iswcs": []
-            },
-            "target-type": "work",
-            "attributes": [],
-            "attribute-values": {},
-            "begin": null,
-            "target-credit": "",
-            "type": "writer",
-            "direction": "forward",
-            "type-id": "a255bca1-b157-4518-9108-7b147dc3fc68"
-          },
-          {
-            "direction": "forward",
-            "type-id": "a255bca1-b157-4518-9108-7b147dc3fc68",
-            "attribute-values": {},
-            "begin": null,
-            "target-credit": "",
-            "type": "writer",
-            "ended": false,
-            "source-credit": "",
-            "end": null,
-            "work": {
               "languages": [],
-              "type": "Song",
               "iswcs": [],
               "disambiguation": "",
-              "language": null,
-              "id": "f5d7e18b-d0bc-4255-a3d7-5f101c36279b",
-              "type-id": "f061270a-2fd6-32f1-a641-f0f8676d14e6",
-              "attributes": [],
-              "title": "A Night to Remember (Believe!)"
-            },
-            "target-type": "work",
-            "attributes": [],
-            "attribute-ids": {}
-          },
-          {
-            "work": {
-              "languages": [],
-              "type": "Song",
-              "iswcs": [],
-              "disambiguation": "",
-              "type-id": "f061270a-2fd6-32f1-a641-f0f8676d14e6",
-              "attributes": [],
-              "title": "Blue Like Eternity",
-              "id": "6559fb2e-6aff-4bef-8910-20883f3edb05",
-              "language": null
-            },
-            "end": null,
-            "source-credit": "",
-            "ended": false,
-            "attributes": [],
-            "target-type": "work",
-            "attribute-ids": {},
-            "direction": "forward",
-            "type-id": "a255bca1-b157-4518-9108-7b147dc3fc68",
-            "begin": null,
-            "attribute-values": {},
-            "type": "writer",
-            "target-credit": ""
-          },
-          {
-            "type-id": "a255bca1-b157-4518-9108-7b147dc3fc68",
-            "direction": "forward",
-            "target-credit": "",
-            "type": "writer",
-            "begin": null,
-            "attribute-values": {},
-            "attributes": [],
-            "target-type": "work",
-            "end": null,
-            "source-credit": "",
-            "work": {
-              "type": "Song",
-              "iswcs": [],
-              "disambiguation": "",
-              "languages": [],
-              "id": "defffd55-f36a-49e5-9a79-cc831a4c2b31",
-              "language": null,
-              "title": "Can't Stand the Cold Shoulder",
-              "type-id": "f061270a-2fd6-32f1-a641-f0f8676d14e6",
               "attributes": []
             },
             "ended": false,
-            "attribute-ids": {}
+            "target-credit": "",
+            "end": null,
+            "target-type": "work"
           },
           {
-            "source-credit": "",
-            "end": null,
+            "begin": null,
             "work": {
-              "languages": [],
+              "title": "A New Hope",
               "type": "Song",
-              "disambiguation": "",
-              "iswcs": [],
-              "language": null,
-              "id": "e102d32c-cbd8-48ae-a9d1-74a3c2763598",
+              "language": "eng",
               "type-id": "f061270a-2fd6-32f1-a641-f0f8676d14e6",
-              "attributes": [],
-              "title": "Fatal Wound"
+              "id": "0bb1ec37-dd2f-41ca-8ef5-c604207a7852",
+              "languages": [
+                "eng"
+              ],
+              "iswcs": [],
+              "disambiguation": "",
+              "attributes": []
             },
             "ended": false,
-            "attributes": [],
+            "target-credit": "",
+            "end": null,
             "target-type": "work",
+            "attributes": [],
+            "attribute-values": {},
+            "source-credit": "",
             "attribute-ids": {},
             "direction": "forward",
             "type-id": "a255bca1-b157-4518-9108-7b147dc3fc68",
-            "begin": null,
+            "type": "writer"
+          },
+          {
+            "source-credit": "",
+            "type": "writer",
+            "direction": "forward",
+            "attribute-ids": {},
+            "type-id": "a255bca1-b157-4518-9108-7b147dc3fc68",
+            "attributes": [],
             "attribute-values": {},
             "target-credit": "",
+            "ended": false,
+            "end": null,
+            "target-type": "work",
+            "begin": null,
+            "work": {
+              "disambiguation": "",
+              "attributes": [],
+              "type": "Song",
+              "title": "A Night to Remember (Believe!)",
+              "language": null,
+              "type-id": "f061270a-2fd6-32f1-a641-f0f8676d14e6",
+              "id": "f5d7e18b-d0bc-4255-a3d7-5f101c36279b",
+              "languages": [],
+              "iswcs": []
+            }
+          },
+          {
+            "end": null,
+            "target-type": "work",
+            "ended": false,
+            "target-credit": "",
+            "begin": null,
+            "work": {
+              "disambiguation": "",
+              "attributes": [],
+              "languages": [],
+              "iswcs": [],
+              "language": null,
+              "title": "Blue Like Eternity",
+              "type": "Song",
+              "id": "6559fb2e-6aff-4bef-8910-20883f3edb05",
+              "type-id": "f061270a-2fd6-32f1-a641-f0f8676d14e6"
+            },
+            "direction": "forward",
+            "attribute-ids": {},
+            "type-id": "a255bca1-b157-4518-9108-7b147dc3fc68",
+            "type": "writer",
+            "source-credit": "",
+            "attribute-values": {},
+            "attributes": []
+          },
+          {
+            "begin": null,
+            "work": {
+              "disambiguation": "",
+              "attributes": [],
+              "title": "Can't Stand the Cold Shoulder",
+              "type": "Song",
+              "language": null,
+              "type-id": "f061270a-2fd6-32f1-a641-f0f8676d14e6",
+              "id": "defffd55-f36a-49e5-9a79-cc831a4c2b31",
+              "languages": [],
+              "iswcs": []
+            },
+            "ended": false,
+            "target-credit": "",
+            "end": null,
+            "target-type": "work",
+            "attributes": [],
+            "attribute-values": {},
+            "source-credit": "",
+            "direction": "forward",
+            "attribute-ids": {},
+            "type-id": "a255bca1-b157-4518-9108-7b147dc3fc68",
+            "type": "writer"
+          },
+          {
+            "begin": null,
+            "work": {
+              "attributes": [],
+              "disambiguation": "",
+              "iswcs": [],
+              "languages": [],
+              "type-id": "f061270a-2fd6-32f1-a641-f0f8676d14e6",
+              "id": "e102d32c-cbd8-48ae-a9d1-74a3c2763598",
+              "title": "Fatal Wound",
+              "type": "Song",
+              "language": null
+            },
+            "ended": false,
+            "target-credit": "",
+            "target-type": "work",
+            "end": null,
+            "attributes": [],
+            "attribute-values": {},
+            "source-credit": "",
+            "type-id": "a255bca1-b157-4518-9108-7b147dc3fc68",
+            "attribute-ids": {},
+            "direction": "forward",
             "type": "writer"
           },
           {
             "attribute-values": {},
-            "begin": null,
+            "attributes": [],
             "type": "writer",
-            "target-credit": "",
-            "direction": "forward",
             "type-id": "a255bca1-b157-4518-9108-7b147dc3fc68",
+            "direction": "forward",
             "attribute-ids": {},
+            "source-credit": "",
+            "begin": null,
             "work": {
-              "languages": [],
+              "attributes": [],
+              "disambiguation": "",
+              "id": "11f55e1f-f95f-45eb-b60c-eefa2388ede6",
+              "type-id": "f061270a-2fd6-32f1-a641-f0f8676d14e6",
+              "language": null,
+              "title": "My Last Goodbye",
               "type": "Song",
+              "iswcs": [],
+              "languages": []
+            },
+            "target-type": "work",
+            "end": null,
+            "target-credit": "",
+            "ended": false
+          },
+          {
+            "end": null,
+            "target-type": "work",
+            "target-credit": "",
+            "ended": false,
+            "work": {
+              "attributes": [],
               "disambiguation": "",
               "iswcs": [],
-              "id": "11f55e1f-f95f-45eb-b60c-eefa2388ede6",
-              "language": null,
-              "attributes": [],
-              "type-id": "f061270a-2fd6-32f1-a641-f0f8676d14e6",
-              "title": "My Last Goodbye"
-            },
-            "end": null,
-            "source-credit": "",
-            "ended": false,
-            "attributes": [],
-            "target-type": "work"
-          },
-          {
-            "attribute-ids": {},
-            "attributes": [],
-            "target-type": "work",
-            "work": {
-              "id": "6404ff8f-f048-4e86-9920-5cc918ed5b74",
-              "language": null,
-              "attributes": [],
-              "type-id": "f061270a-2fd6-32f1-a641-f0f8676d14e6",
-              "title": "Nothing Even Matters",
               "languages": [],
-              "type": "Song",
-              "disambiguation": "",
-              "iswcs": []
+              "id": "6404ff8f-f048-4e86-9920-5cc918ed5b74",
+              "type-id": "f061270a-2fd6-32f1-a641-f0f8676d14e6",
+              "language": null,
+              "title": "Nothing Even Matters",
+              "type": "Song"
             },
-            "source-credit": "",
-            "end": null,
-            "ended": false,
-            "type": "writer",
-            "target-credit": "",
             "begin": null,
-            "attribute-values": {},
+            "type": "writer",
+            "direction": "forward",
+            "attribute-ids": {},
             "type-id": "a255bca1-b157-4518-9108-7b147dc3fc68",
-            "direction": "forward"
+            "source-credit": "",
+            "attribute-values": {},
+            "attributes": []
           },
           {
-            "attribute-ids": {},
-            "attributes": [],
+            "target-credit": "",
+            "ended": false,
             "target-type": "work",
             "end": null,
-            "source-credit": "",
+            "begin": null,
             "work": {
-              "disambiguation": "",
-              "type": "Song",
               "iswcs": [],
               "languages": [],
               "id": "7c5121bd-ecf3-4023-80a9-41aa6720e0fd",
+              "type-id": "f061270a-2fd6-32f1-a641-f0f8676d14e6",
               "language": null,
+              "type": "Song",
               "title": "Nothing Society",
               "attributes": [],
-              "type-id": "f061270a-2fd6-32f1-a641-f0f8676d14e6"
-            },
-            "ended": false,
-            "target-credit": "",
-            "type": "writer",
-            "begin": null,
-            "attribute-values": {},
-            "type-id": "a255bca1-b157-4518-9108-7b147dc3fc68",
-            "direction": "forward"
-          },
-          {
-            "attribute-ids": {},
-            "source-credit": "",
-            "end": null,
-            "work": {
-              "title": "Over the Treetops",
-              "type-id": "f061270a-2fd6-32f1-a641-f0f8676d14e6",
-              "attributes": [],
-              "language": null,
-              "id": "16e9420a-2562-41f3-ab45-30140a3fb948",
-              "type": "Song",
-              "disambiguation": "",
-              "iswcs": [],
-              "languages": []
-            },
-            "ended": false,
-            "attributes": [],
-            "target-type": "work",
-            "begin": null,
-            "attribute-values": {},
-            "target-credit": "",
-            "type": "writer",
-            "direction": "forward",
-            "type-id": "a255bca1-b157-4518-9108-7b147dc3fc68"
-          },
-          {
-            "direction": "forward",
-            "type-id": "a255bca1-b157-4518-9108-7b147dc3fc68",
-            "attribute-values": {},
-            "begin": null,
-            "target-credit": "",
-            "type": "writer",
-            "end": null,
-            "source-credit": "",
-            "work": {
-              "id": "b85b1bac-21e6-424d-af20-cd74fc2a7cd7",
-              "language": null,
-              "title": "Red Tear",
-              "attributes": [],
-              "type-id": "f061270a-2fd6-32f1-a641-f0f8676d14e6",
-              "iswcs": [],
-              "type": "Song",
-              "disambiguation": "",
-              "languages": []
-            },
-            "ended": false,
-            "attributes": [],
-            "target-type": "work",
-            "attribute-ids": {}
-          },
-          {
-            "direction": "forward",
-            "type-id": "a255bca1-b157-4518-9108-7b147dc3fc68",
-            "begin": null,
-            "attribute-values": {},
-            "type": "writer",
-            "target-credit": "",
-            "ended": false,
-            "work": {
-              "type-id": "f061270a-2fd6-32f1-a641-f0f8676d14e6",
-              "attributes": [],
-              "title": "Stalemate",
-              "id": "9ed59f8c-a23f-4732-986d-192429b22bfa",
-              "language": "eng",
-              "languages": [
-                "eng"
-              ],
-              "type": "Song",
-              "iswcs": [],
               "disambiguation": ""
             },
             "source-credit": "",
+            "type": "writer",
+            "type-id": "a255bca1-b157-4518-9108-7b147dc3fc68",
+            "direction": "forward",
+            "attribute-ids": {},
+            "attributes": [],
+            "attribute-values": {}
+          },
+          {
+            "target-type": "work",
+            "end": null,
+            "target-credit": "",
+            "ended": false,
+            "begin": null,
+            "work": {
+              "attributes": [],
+              "disambiguation": "",
+              "type-id": "f061270a-2fd6-32f1-a641-f0f8676d14e6",
+              "id": "16e9420a-2562-41f3-ab45-30140a3fb948",
+              "type": "Song",
+              "title": "Over the Treetops",
+              "language": null,
+              "iswcs": [],
+              "languages": []
+            },
+            "type": "writer",
+            "type-id": "a255bca1-b157-4518-9108-7b147dc3fc68",
+            "direction": "forward",
+            "attribute-ids": {},
+            "source-credit": "",
+            "attribute-values": {},
+            "attributes": []
+          },
+          {
+            "begin": null,
+            "work": {
+              "attributes": [],
+              "disambiguation": "",
+              "iswcs": [],
+              "languages": [],
+              "type-id": "f061270a-2fd6-32f1-a641-f0f8676d14e6",
+              "id": "b85b1bac-21e6-424d-af20-cd74fc2a7cd7",
+              "title": "Red Tear",
+              "type": "Song",
+              "language": null
+            },
+            "target-credit": "",
+            "ended": false,
             "end": null,
             "target-type": "work",
             "attributes": [],
-            "attribute-ids": {}
+            "attribute-values": {},
+            "source-credit": "",
+            "type": "writer",
+            "direction": "forward",
+            "attribute-ids": {},
+            "type-id": "a255bca1-b157-4518-9108-7b147dc3fc68"
+          },
+          {
+            "begin": null,
+            "work": {
+              "attributes": [],
+              "disambiguation": "",
+              "iswcs": [],
+              "languages": [
+                "eng"
+              ],
+              "type-id": "f061270a-2fd6-32f1-a641-f0f8676d14e6",
+              "id": "9ed59f8c-a23f-4732-986d-192429b22bfa",
+              "type": "Song",
+              "title": "Stalemate",
+              "language": "eng"
+            },
+            "end": null,
+            "target-type": "work",
+            "ended": false,
+            "target-credit": "",
+            "attribute-values": {},
+            "attributes": [],
+            "attribute-ids": {},
+            "direction": "forward",
+            "type-id": "a255bca1-b157-4518-9108-7b147dc3fc68",
+            "type": "writer",
+            "source-credit": ""
           }
         ],
-        "type-id": "e431f5f6-b5d2-343d-8b36-72607fffb74b",
-        "name": "Millstone",
-        "gender-id": null,
-        "country": "US",
-        "end-area": null,
-        "area": {
-          "sort-name": "Rockingham County",
-          "type": null,
-          "disambiguation": "",
-          "id": "99f0937c-69b7-455c-9b13-fe708da6943e",
-          "type-id": null,
-          "name": "Rockingham County"
-        },
+        "gender": null,
         "type": "Group",
-        "isnis": [],
-        "sort-name": "Millstone",
-        "gender": null
+        "name": "Millstone",
+        "type-id": "e431f5f6-b5d2-343d-8b36-72607fffb74b",
+        "sort-name": "Millstone"
       },
       "details": {
         "30b20740-0912-4d2e-a012-32692d71ecde": {
-          "iswcs": [],
-          "type-id": "f061270a-2fd6-32f1-a641-f0f8676d14e6",
-          "type": "Song",
-          "language": null,
-          "languages": [],
-          "aliases": [],
-          "disambiguation": "",
-          "id": "30b20740-0912-4d2e-a012-32692d71ecde",
           "tags": [],
-          "title": "Kinda Reminiscent of Millstone",
+          "type": "Song",
           "attributes": [],
+          "aliases": [],
+          "id": "30b20740-0912-4d2e-a012-32692d71ecde",
+          "language": null,
           "relations": [
             {
+              "attribute-values": {},
               "source-credit": "",
-              "end": null,
-              "ended": false,
+              "type-id": "d59d99ea-23d4-4a80-b066-edca32ee158f",
               "target-type": "artist",
-              "attribute-ids": {},
+              "direction": "backward",
+              "end": null,
+              "target-credit": "",
+              "begin": null,
+              "attributes": [],
               "artist": {
+                "disambiguation": "",
+                "name": "Anabolic Steroids and a Beaver Tranquilizer",
                 "type-id": "5c1375b0-f18d-3db7-a164-a49d7a63773f",
                 "id": "b7846e25-306e-4ca9-8db1-0391ab159a36",
-                "type": "Character",
                 "sort-name": "Anabolic Steroids and a Beaver Tranquilizer III",
-                "disambiguation": "",
-                "country": null,
-                "name": "Anabolic Steroids and a Beaver Tranquilizer"
+                "type": "Character",
+                "country": null
               },
-              "begin": null,
-              "attributes": [],
-              "type": "composer",
-              "attribute-values": {},
-              "type-id": "d59d99ea-23d4-4a80-b066-edca32ee158f",
-              "direction": "backward",
-              "target-credit": ""
-            },
-            {
-              "attributes": [],
-              "begin": null,
+              "ended": false,
               "attribute-ids": {},
-              "artist": {
-                "sort-name": "Millstone",
-                "disambiguation": "New Hampshire",
-                "country": "US",
-                "name": "Millstone",
-                "type-id": "e431f5f6-b5d2-343d-8b36-72607fffb74b",
-                "id": "807d1a47-53cb-4a14-a3ef-31c7eee0596a",
-                "type": "Group"
-              },
-              "target-type": "artist",
-              "ended": false,
-              "end": null,
-              "source-credit": "",
-              "target-credit": "",
-              "direction": "backward",
-              "type-id": "26131498-00e8-4136-b937-22a4be01a63d",
-              "attribute-values": {},
-              "type": "dedication"
+              "type": "composer"
             },
             {
-              "target-credit": "",
-              "direction": "backward",
-              "type": "named after artist",
-              "attribute-values": {},
-              "type-id": "e9823163-51a2-4ce8-95e9-4257dec92ee2",
-              "begin": null,
-              "attributes": [],
-              "target-type": "artist",
+              "attribute-ids": {},
               "ended": false,
+              "type": "dedication",
+              "begin": null,
+              "target-credit": "",
               "artist": {
                 "type-id": "e431f5f6-b5d2-343d-8b36-72607fffb74b",
-                "id": "807d1a47-53cb-4a14-a3ef-31c7eee0596a",
+                "disambiguation": "New Hampshire",
+                "name": "Millstone",
                 "type": "Group",
-                "disambiguation": "New Hampshire",
                 "country": "US",
-                "name": "Millstone",
-                "sort-name": "Millstone"
+                "sort-name": "Millstone",
+                "id": "807d1a47-53cb-4a14-a3ef-31c7eee0596a"
               },
-              "attribute-ids": {},
+              "attributes": [],
+              "direction": "backward",
+              "target-type": "artist",
               "end": null,
-              "source-credit": ""
+              "attribute-values": {},
+              "source-credit": "",
+              "type-id": "26131498-00e8-4136-b937-22a4be01a63d"
             },
             {
+              "type-id": "e9823163-51a2-4ce8-95e9-4257dec92ee2",
               "source-credit": "",
-              "end": "2006",
-              "attribute-ids": {},
-              "target-type": "label",
-              "ended": true,
-              "attributes": [],
-              "begin": "2006",
-              "type-id": "05ee6f18-4517-342d-afdf-5897f64276e3",
               "attribute-values": {},
-              "type": "publishing",
+              "end": null,
               "direction": "backward",
+              "target-type": "artist",
+              "artist": {
+                "id": "807d1a47-53cb-4a14-a3ef-31c7eee0596a",
+                "sort-name": "Millstone",
+                "country": "US",
+                "type": "Group",
+                "name": "Millstone",
+                "disambiguation": "New Hampshire",
+                "type-id": "e431f5f6-b5d2-343d-8b36-72607fffb74b"
+              },
+              "attributes": [],
+              "begin": null,
               "target-credit": "",
+              "type": "named after artist",
+              "attribute-ids": {},
+              "ended": false
+            },
+            {
+              "ended": true,
               "label": {
-                "label-code": null,
-                "type-id": "e9ad53b0-e3d0-3885-a10b-8193d501338c",
-                "id": "c78b5612-2300-4ee1-8663-299ddcf9ce25",
                 "type": "Publisher",
                 "sort-name": "magmacrunch music",
+                "id": "c78b5612-2300-4ee1-8663-299ddcf9ce25",
+                "type-id": "e9ad53b0-e3d0-3885-a10b-8193d501338c",
+                "label-code": null,
                 "disambiguation": "",
                 "name": "magmacrunch music"
-              }
+              },
+              "attribute-ids": {},
+              "type": "publishing",
+              "target-credit": "",
+              "begin": "2006",
+              "attributes": [],
+              "target-type": "label",
+              "direction": "backward",
+              "end": "2006",
+              "attribute-values": {},
+              "source-credit": "",
+              "type-id": "05ee6f18-4517-342d-afdf-5897f64276e3"
             },
             {
-              "place": {
-                "disambiguation": "",
-                "address": "",
-                "name": "Frogwood Manor",
-                "id": "362e9df6-ce39-4805-841e-c113e4e2a7c9",
-                "type-id": null,
-                "type": null,
-                "area": {
-                  "sort-name": "Rockingham County",
-                  "disambiguation": "",
-                  "name": "Rockingham County",
-                  "type-id": "bcecec27-8bdb-3e00-8254-d948dda502fa",
-                  "id": "99f0937c-69b7-455c-9b13-fe708da6943e",
-                  "type": "County"
-                },
-                "coordinates": null
-              },
               "end": "2005",
-              "source-credit": "",
-              "begin": "2005",
-              "attributes": [],
-              "ended": true,
-              "target-type": "place",
-              "attribute-ids": {},
               "direction": "backward",
-              "type": "composed at",
-              "attribute-values": {},
+              "target-type": "place",
               "type-id": "beaff7ea-771d-4f0d-aeb7-633bdddfa196",
+              "attribute-values": {},
+              "source-credit": "",
+              "type": "composed at",
+              "attribute-ids": {},
+              "ended": true,
+              "attributes": [],
+              "place": {
+                "name": "Frogwood Manor",
+                "address": "",
+                "disambiguation": "",
+                "type-id": null,
+                "id": "362e9df6-ce39-4805-841e-c113e4e2a7c9",
+                "area": {
+                  "type-id": "bcecec27-8bdb-3e00-8254-d948dda502fa",
+                  "name": "Rockingham County",
+                  "disambiguation": "",
+                  "type": "County",
+                  "sort-name": "Rockingham County",
+                  "id": "99f0937c-69b7-455c-9b13-fe708da6943e"
+                },
+                "coordinates": null,
+                "type": null
+              },
+              "begin": "2005",
               "target-credit": ""
             },
             {
-              "target-credit": "",
-              "type": "musical quotation",
-              "attribute-values": {},
-              "type-id": "c5decae0-535c-4730-aa5f-ab78eadd98ba",
-              "direction": "forward",
               "target-type": "work",
-              "ended": false,
-              "attribute-ids": {},
               "work": {
+                "id": "9ed59f8c-a23f-4732-986d-192429b22bfa",
                 "language": "eng",
                 "type": "Song",
-                "iswcs": [],
-                "type-id": "f061270a-2fd6-32f1-a641-f0f8676d14e6",
-                "id": "9ed59f8c-a23f-4732-986d-192429b22bfa",
                 "title": "Stalemate",
+                "disambiguation": "",
                 "languages": [
                   "eng"
                 ],
-                "disambiguation": "",
-                "attributes": []
+                "iswcs": [],
+                "attributes": [],
+                "type-id": "f061270a-2fd6-32f1-a641-f0f8676d14e6"
               },
-              "begin": null,
-              "attributes": [],
+              "direction": "forward",
+              "end": null,
+              "attribute-values": {},
               "source-credit": "",
-              "end": null
+              "type-id": "c5decae0-535c-4730-aa5f-ab78eadd98ba",
+              "ended": false,
+              "attribute-ids": {},
+              "type": "musical quotation",
+              "target-credit": "",
+              "begin": null,
+              "attributes": []
             }
-          ]
+          ],
+          "title": "Kinda Reminiscent of Millstone",
+          "disambiguation": "",
+          "languages": [],
+          "iswcs": [],
+          "type-id": "f061270a-2fd6-32f1-a641-f0f8676d14e6"
         },
         "43ff6340-28e8-4066-ba12-6d3f17652ed5": {
-          "languages": [],
-          "language": null,
           "type": "Song",
-          "type-id": "f061270a-2fd6-32f1-a641-f0f8676d14e6",
-          "iswcs": [
-            "T-337.061.513-3"
-          ],
-          "disambiguation": "",
-          "aliases": [],
-          "title": "Millstone Woods May 2018",
-          "tags": [
-            {
-              "count": 1,
-              "name": "ambient"
-            },
-            {
-              "count": 1,
-              "name": "free improvisation"
-            },
-            {
-              "count": 1,
-              "name": "instrumental"
-            }
-          ],
-          "id": "43ff6340-28e8-4066-ba12-6d3f17652ed5",
           "relations": [
             {
-              "source-credit": "",
-              "end": "2022-02-12",
-              "attribute-ids": {},
-              "artist": {
-                "sort-name": "McCoy, Jake A.",
-                "disambiguation": "",
-                "country": "US",
-                "name": "Jake A. McCoy",
-                "type-id": "b6e035f4-3ce9-331c-97df-83397230b0df",
-                "id": "32bc1ac7-efd0-44f2-8645-8fecf6a40edb",
-                "type": "Person"
-              },
+              "target-credit": "",
               "target-type": "artist",
+              "type": "composer",
               "ended": true,
-              "attributes": [],
+              "source-credit": "",
               "begin": "2022-02-12",
               "type-id": "d59d99ea-23d4-4a80-b066-edca32ee158f",
               "attribute-values": {},
-              "type": "composer",
-              "direction": "backward",
-              "target-credit": ""
-            },
-            {
-              "attribute-ids": {},
               "artist": {
-                "type-id": "e431f5f6-b5d2-343d-8b36-72607fffb74b",
-                "id": "807d1a47-53cb-4a14-a3ef-31c7eee0596a",
-                "type": "Group",
-                "sort-name": "Millstone",
+                "id": "32bc1ac7-efd0-44f2-8645-8fecf6a40edb",
+                "disambiguation": "",
+                "sort-name": "McCoy, Jake A.",
                 "country": "US",
-                "disambiguation": "New Hampshire",
-                "name": "Millstone"
+                "type-id": "b6e035f4-3ce9-331c-97df-83397230b0df",
+                "name": "Jake A. McCoy",
+                "type": "Person"
               },
-              "target-type": "artist",
-              "ended": false,
+              "end": "2022-02-12",
               "attributes": [],
-              "begin": null,
-              "source-credit": "",
-              "end": null,
-              "target-credit": "",
-              "type-id": "e9823163-51a2-4ce8-95e9-4257dec92ee2",
-              "type": "named after artist",
-              "attribute-values": {},
+              "attribute-ids": {},
               "direction": "backward"
             },
             {
-              "end": "2023-02-24",
-              "source-credit": "",
               "attributes": [],
+              "attribute-ids": {},
+              "direction": "backward",
+              "artist": {
+                "type": "Group",
+                "name": "Millstone",
+                "type-id": "e431f5f6-b5d2-343d-8b36-72607fffb74b",
+                "id": "807d1a47-53cb-4a14-a3ef-31c7eee0596a",
+                "disambiguation": "New Hampshire",
+                "country": "US",
+                "sort-name": "Millstone"
+              },
+              "type-id": "e9823163-51a2-4ce8-95e9-4257dec92ee2",
+              "attribute-values": {},
+              "end": null,
+              "type": "named after artist",
+              "target-type": "artist",
+              "source-credit": "",
+              "begin": null,
+              "ended": false,
+              "target-credit": ""
+            },
+            {
+              "type": "publishing",
+              "target-type": "artist",
               "begin": "2023-02-24",
+              "source-credit": "",
+              "ended": true,
+              "target-credit": "",
+              "attributes": [],
+              "direction": "backward",
               "attribute-ids": {},
               "artist": {
-                "id": "605cc914-2aff-4e2b-9657-524c7009cb18",
                 "type-id": "5c1375b0-f18d-3db7-a164-a49d7a63773f",
-                "type": "Character",
-                "sort-name": "Henderson, Dag",
+                "id": "605cc914-2aff-4e2b-9657-524c7009cb18",
                 "disambiguation": "",
+                "sort-name": "Henderson, Dag",
                 "country": "US",
-                "name": "Dag Henderson"
+                "name": "Dag Henderson",
+                "type": "Character"
               },
-              "ended": true,
-              "target-type": "artist",
-              "direction": "backward",
               "type-id": "a442b140-830b-30b0-a4aa-2e36f098b6aa",
-              "type": "publishing",
               "attribute-values": {},
-              "target-credit": ""
+              "end": "2023-02-24"
             },
             {
-              "attributes": [],
               "begin": "2023-02-24",
-              "attribute-ids": {},
-              "ended": true,
-              "target-type": "label",
-              "end": "2023-02-24",
               "source-credit": "",
-              "label": {
-                "type-id": "e9ad53b0-e3d0-3885-a10b-8193d501338c",
-                "id": "c78b5612-2300-4ee1-8663-299ddcf9ce25",
-                "type": "Publisher",
-                "label-code": null,
-                "disambiguation": "",
-                "name": "magmacrunch music",
-                "sort-name": "magmacrunch music"
-              },
+              "ended": true,
+              "type": "publishing",
+              "target-type": "label",
               "target-credit": "",
               "direction": "backward",
-              "type-id": "05ee6f18-4517-342d-afdf-5897f64276e3",
-              "type": "publishing",
-              "attribute-values": {}
+              "attribute-ids": {},
+              "attributes": [],
+              "end": "2023-02-24",
+              "label": {
+                "name": "magmacrunch music",
+                "type-id": "e9ad53b0-e3d0-3885-a10b-8193d501338c",
+                "disambiguation": "",
+                "id": "c78b5612-2300-4ee1-8663-299ddcf9ce25",
+                "sort-name": "magmacrunch music",
+                "label-code": null,
+                "type": "Publisher"
+              },
+              "attribute-values": {},
+              "type-id": "05ee6f18-4517-342d-afdf-5897f64276e3"
             },
             {
-              "place": {
-                "coordinates": null,
-                "area": {
-                  "sort-name": "State College",
-                  "disambiguation": "",
-                  "name": "State College",
-                  "id": "b1ea26d4-2993-4edb-8a66-a0f58fe39496",
-                  "type-id": "6fd8f29a-3d0a-32fc-980d-ea697b69da78",
-                  "type": "City"
-                },
-                "type-id": "05fa6a09-ff92-3d34-bdbb-5141d3c24f38",
-                "id": "26cbb244-48c7-49e5-863c-5dde5388dde1",
-                "type": "Studio",
-                "disambiguation": "",
-                "address": "",
-                "name": "Irvin House"
-              },
               "end": "2022-02-12",
-              "source-credit": "",
-              "begin": "2022-02-12",
-              "attributes": [],
-              "ended": true,
-              "target-type": "place",
+              "type-id": "beaff7ea-771d-4f0d-aeb7-633bdddfa196",
+              "attribute-values": {},
               "attribute-ids": {},
               "direction": "backward",
-              "attribute-values": {},
+              "attributes": [],
+              "target-credit": "",
+              "place": {
+                "name": "Irvin House",
+                "address": "",
+                "disambiguation": "",
+                "id": "26cbb244-48c7-49e5-863c-5dde5388dde1",
+                "type-id": "05fa6a09-ff92-3d34-bdbb-5141d3c24f38",
+                "coordinates": null,
+                "area": {
+                  "name": "State College",
+                  "type": "City",
+                  "disambiguation": "",
+                  "id": "b1ea26d4-2993-4edb-8a66-a0f58fe39496",
+                  "sort-name": "State College",
+                  "type-id": "6fd8f29a-3d0a-32fc-980d-ea697b69da78"
+                },
+                "type": "Studio"
+              },
+              "source-credit": "",
+              "begin": "2022-02-12",
+              "ended": true,
               "type": "composed at",
-              "type-id": "beaff7ea-771d-4f0d-aeb7-633bdddfa196",
-              "target-credit": ""
+              "target-type": "place"
             },
             {
-              "source-credit": "",
+              "attribute-values": {},
+              "type-id": "4121e462-a6bd-4e33-8fe7-0f9aee69f5e9",
               "end": null,
+              "attributes": [],
+              "attribute-ids": {},
+              "direction": "backward",
               "place": {
-                "disambiguation": "",
-                "name": "Foster's Pond Natural Area",
-                "address": "Nashua Rd, Windham, NH 03087",
                 "coordinates": {
                   "longitude": -71.332276,
                   "latitude": 42.827348
                 },
+                "type": "Park",
                 "area": {
-                  "disambiguation": "",
                   "name": "Rockingham County",
+                  "type": "County",
                   "sort-name": "Rockingham County",
-                  "type-id": "bcecec27-8bdb-3e00-8254-d948dda502fa",
                   "id": "99f0937c-69b7-455c-9b13-fe708da6943e",
-                  "type": "County"
+                  "disambiguation": "",
+                  "type-id": "bcecec27-8bdb-3e00-8254-d948dda502fa"
                 },
+                "address": "Nashua Rd, Windham, NH 03087",
+                "name": "Foster's Pond Natural Area",
                 "type-id": "9c482e19-7975-4d38-bfca-ef00ba919c92",
-                "id": "238d5c9c-afbf-4978-a670-3f844ba5aa1a",
-                "type": "Park"
+                "disambiguation": "",
+                "id": "238d5c9c-afbf-4978-a670-3f844ba5aa1a"
               },
-              "attribute-ids": {},
+              "target-credit": "",
               "target-type": "place",
-              "ended": false,
-              "attributes": [],
-              "begin": null,
-              "type-id": "4121e462-a6bd-4e33-8fe7-0f9aee69f5e9",
               "type": "dedication",
-              "attribute-values": {},
-              "direction": "backward",
-              "target-credit": ""
+              "ended": false,
+              "source-credit": "",
+              "begin": null
             },
             {
+              "begin": null,
               "source-credit": "",
+              "ended": false,
+              "type": "dedication",
+              "target-type": "place",
+              "target-credit": "",
               "place": {
-                "id": "362e9df6-ce39-4805-841e-c113e4e2a7c9",
-                "type-id": null,
-                "type": null,
                 "coordinates": null,
                 "area": {
-                  "sort-name": "Rockingham County",
-                  "disambiguation": "",
-                  "name": "Rockingham County",
                   "type-id": "bcecec27-8bdb-3e00-8254-d948dda502fa",
+                  "type": "County",
+                  "disambiguation": "",
                   "id": "99f0937c-69b7-455c-9b13-fe708da6943e",
-                  "type": "County"
+                  "sort-name": "Rockingham County",
+                  "name": "Rockingham County"
                 },
-                "disambiguation": "",
+                "type": null,
+                "name": "Frogwood Manor",
                 "address": "",
-                "name": "Frogwood Manor"
+                "disambiguation": "",
+                "id": "362e9df6-ce39-4805-841e-c113e4e2a7c9",
+                "type-id": null
               },
-              "end": null,
-              "target-type": "place",
-              "ended": false,
+              "direction": "backward",
               "attribute-ids": {},
-              "begin": null,
               "attributes": [],
-              "attribute-values": {},
-              "type": "dedication",
+              "end": null,
               "type-id": "4121e462-a6bd-4e33-8fe7-0f9aee69f5e9",
-              "direction": "backward",
-              "target-credit": ""
-            },
-            {
-              "direction": "backward",
-              "attribute-values": {},
-              "type": "performance",
-              "type-id": "a3005666-a872-32c3-ad06-98af558e99b0",
-              "target-credit": "",
-              "end": "2022-02-12",
-              "recording": {
-                "id": "6d25e6b5-932e-4a93-a294-e31b0d4daa3f",
-                "video": false,
-                "disambiguation": "2023 single version",
-                "length": 217000,
-                "title": "Millstone Woods May 2018"
-              },
-              "source-credit": "",
-              "begin": "2022-02-12",
-              "attributes": [],
-              "target-type": "recording",
-              "ended": true,
-              "attribute-ids": {}
-            },
-            {
-              "target-credit": "",
-              "type-id": "a3005666-a872-32c3-ad06-98af558e99b0",
-              "type": "performance",
-              "attribute-values": {},
-              "direction": "backward",
-              "attribute-ids": {},
-              "ended": true,
-              "target-type": "recording",
-              "attributes": [],
-              "begin": "2022-02-12",
-              "recording": {
-                "id": "abec8a1d-1490-4981-8d50-b7e1779709b3",
-                "disambiguation": "album version",
-                "video": false,
-                "length": 190000,
-                "title": "Millstone Woods May 2018"
-              },
-              "source-credit": "",
-              "end": "2022-02-12"
-            },
-            {
-              "recording": {
-                "video": true,
-                "disambiguation": "",
-                "id": "5cf57cd4-c6cb-44ed-8c71-544abe0bd834",
-                "title": "Millstone Woods May 2018",
-                "length": 218000
-              },
-              "source-credit": "",
-              "end": "2022-02-12",
-              "target-type": "recording",
-              "ended": true,
-              "attribute-ids": {},
-              "begin": "2022-02-12",
-              "attributes": [],
-              "type": "performance",
-              "attribute-values": {},
-              "type-id": "a3005666-a872-32c3-ad06-98af558e99b0",
-              "direction": "backward",
-              "target-credit": ""
-            },
-            {
-              "recording": {
-                "title": "Millstone Woods May 2018",
-                "length": 218000,
-                "disambiguation": "2024 single version",
-                "video": false,
-                "id": "2eb4f3aa-55d1-4afe-a529-7ec201665241"
-              },
-              "source-credit": "",
-              "end": null,
-              "attribute-ids": {},
-              "target-type": "recording",
-              "ended": false,
-              "attributes": [],
-              "begin": null,
-              "type-id": "a3005666-a872-32c3-ad06-98af558e99b0",
-              "type": "performance",
-              "attribute-values": {},
-              "direction": "backward",
-              "target-credit": ""
-            },
-            {
-              "type": "parts",
-              "attribute-values": {},
-              "type-id": "ca8d3642-ce5f-49f8-91f2-125d72524e6a",
-              "direction": "backward",
-              "target-credit": "",
-              "source-credit": "",
-              "end": null,
-              "target-type": "work",
-              "ended": false,
-              "attribute-ids": {},
-              "ordering-key": 8,
-              "work": {
-                "languages": [],
-                "title": "Juanito Thompson's Transatlantic Colleague",
-                "type": "Song-cycle",
-                "type-id": "0f24ce27-96cc-3746-a16c-e6617d7a80f3",
-                "id": "6c5bca29-106e-475d-a3ed-c24b0feb42f5",
-                "iswcs": [
-                  "T-337.077.171-0"
-                ],
-                "language": null,
-                "attributes": [],
-                "disambiguation": ""
-              },
-              "begin": null,
-              "attributes": []
-            }
-          ],
-          "attributes": [
-            {
-              "type-id": "d833318c-6c6a-370e-8b16-9cb15873ba76",
-              "value": "933489970",
-              "type": "ASCAP ID"
-            }
-          ]
-        },
-        "188d9a75-4d7a-4a72-a376-456fff8d4191": {
-          "languages": [],
-          "disambiguation": "",
-          "iswcs": [
-            "T-337.058.288-6"
-          ],
-          "type-id": "f061270a-2fd6-32f1-a641-f0f8676d14e6",
-          "aliases": [],
-          "id": "188d9a75-4d7a-4a72-a376-456fff8d4191",
-          "language": null,
-          "relations": [
-            {
-              "begin": "2016",
-              "target-credit": "",
-              "artist": {
-                "disambiguation": "",
-                "name": "Jake A. McCoy",
-                "type-id": "b6e035f4-3ce9-331c-97df-83397230b0df",
-                "sort-name": "McCoy, Jake A.",
-                "id": "32bc1ac7-efd0-44f2-8645-8fecf6a40edb",
-                "type": "Person",
-                "country": "US"
-              },
-              "attributes": [],
-              "attribute-ids": {},
-              "ended": true,
-              "type": "composer",
-              "attribute-values": {},
-              "source-credit": "",
-              "type-id": "d59d99ea-23d4-4a80-b066-edca32ee158f",
-              "direction": "backward",
-              "target-type": "artist",
-              "end": "2016"
-            },
-            {
-              "attribute-values": {},
-              "source-credit": "",
-              "type-id": "d59d99ea-23d4-4a80-b066-edca32ee158f",
-              "direction": "backward",
-              "target-type": "artist",
-              "end": "2016",
-              "begin": "2016",
-              "target-credit": "",
-              "artist": {
-                "sort-name": "McCoy, Jon",
-                "id": "33c830f0-d5be-4baf-b8db-3dc754e74c16",
-                "country": "US",
-                "type": "Person",
-                "disambiguation": "",
-                "name": "Jon McCoy",
-                "type-id": "b6e035f4-3ce9-331c-97df-83397230b0df"
-              },
-              "attributes": [],
-              "attribute-ids": {},
-              "ended": true,
-              "type": "composer"
-            },
-            {
-              "target-credit": "",
-              "begin": "2016",
-              "attributes": [],
-              "artist": {
-                "name": "Stephen McMillan",
-                "disambiguation": "",
-                "type-id": "b6e035f4-3ce9-331c-97df-83397230b0df",
-                "sort-name": "McMillan, Stephen",
-                "id": "205acdc4-99a4-4f91-bf6d-43a7f1f8028e",
-                "type": "Person",
-                "country": "ES"
-              },
-              "ended": true,
-              "attribute-ids": {},
-              "type": "composer",
-              "source-credit": "",
-              "attribute-values": {},
-              "type-id": "d59d99ea-23d4-4a80-b066-edca32ee158f",
-              "target-type": "artist",
-              "direction": "backward",
-              "end": "2016"
-            },
-            {
-              "begin": "2016",
-              "target-credit": "",
-              "artist": {
-                "type-id": "b6e035f4-3ce9-331c-97df-83397230b0df",
-                "name": "Judah Unmuth-Yockey",
-                "disambiguation": "",
-                "country": "US",
-                "type": "Person",
-                "id": "054fd43c-d028-42d6-8857-20f7d2d0bd0a",
-                "sort-name": "Unmuth-Yockey, Judah"
-              },
-              "attributes": [],
-              "attribute-ids": {},
-              "ended": true,
-              "type": "composer",
-              "attribute-values": {},
-              "source-credit": "",
-              "type-id": "d59d99ea-23d4-4a80-b066-edca32ee158f",
-              "direction": "backward",
-              "target-type": "artist",
-              "end": "2016"
-            },
-            {
-              "artist": {
-                "type-id": "e431f5f6-b5d2-343d-8b36-72607fffb74b",
-                "name": "Millstone",
-                "disambiguation": "New Hampshire",
-                "country": "US",
-                "type": "Group",
-                "id": "807d1a47-53cb-4a14-a3ef-31c7eee0596a",
-                "sort-name": "Millstone"
-              },
-              "attributes": [],
-              "begin": null,
-              "target-credit": "",
-              "type": "named after artist",
-              "attribute-ids": {},
-              "ended": false,
-              "type-id": "e9823163-51a2-4ce8-95e9-4257dec92ee2",
-              "attribute-values": {},
-              "source-credit": "",
-              "end": null,
-              "direction": "backward",
-              "target-type": "artist"
-            },
-            {
-              "type": "publishing",
-              "attribute-ids": {},
-              "ended": true,
-              "artist": {
-                "country": "US",
-                "type": "Group",
-                "sort-name": "Texas Hold'Em Lava Dome",
-                "id": "4d945923-9deb-4cd0-a477-6e1474cb306c",
-                "type-id": "e431f5f6-b5d2-343d-8b36-72607fffb74b",
-                "disambiguation": "",
-                "name": "Texas Hold'Em Lava Dome"
-              },
-              "attributes": [],
-              "begin": "2018-02-01",
-              "target-credit": "",
-              "end": "2018-02-01",
-              "direction": "backward",
-              "target-type": "artist",
-              "type-id": "a442b140-830b-30b0-a4aa-2e36f098b6aa",
-              "attribute-values": {},
-              "source-credit": ""
-            },
-            {
-              "type": "publishing",
-              "label": {
-                "type-id": "e9ad53b0-e3d0-3885-a10b-8193d501338c",
-                "label-code": null,
-                "disambiguation": "",
-                "name": "magmacrunch music",
-                "type": "Publisher",
-                "sort-name": "magmacrunch music",
-                "id": "c78b5612-2300-4ee1-8663-299ddcf9ce25"
-              },
-              "attribute-ids": {},
-              "ended": true,
-              "attributes": [],
-              "begin": "2018-02-01",
-              "target-credit": "",
-              "end": "2018-02-01",
-              "direction": "backward",
-              "target-type": "label",
-              "type-id": "05ee6f18-4517-342d-afdf-5897f64276e3",
-              "source-credit": "",
               "attribute-values": {}
             },
             {
-              "source-credit": "",
               "attribute-values": {},
-              "type-id": "beaff7ea-771d-4f0d-aeb7-633bdddfa196",
-              "direction": "backward",
-              "target-type": "place",
-              "end": "2016",
-              "place": {
-                "type-id": "05fa6a09-ff92-3d34-bdbb-5141d3c24f38",
-                "address": "",
-                "disambiguation": "",
-                "name": "The Tuna Can",
-                "type": "Studio",
-                "coordinates": null,
-                "area": {
-                  "type": "City",
-                  "id": "3fc3b364-665e-4875-a9ff-3699cd716152",
-                  "sort-name": "Iowa City",
-                  "type-id": "6fd8f29a-3d0a-32fc-980d-ea697b69da78",
-                  "disambiguation": "",
-                  "name": "Iowa City"
-                },
-                "id": "3ecebfcc-6824-46a9-9e1a-ecc26f69a4a2"
-              },
-              "begin": "2016",
-              "target-credit": "",
+              "type-id": "a3005666-a872-32c3-ad06-98af558e99b0",
+              "end": "2022-02-12",
               "attributes": [],
-              "attribute-ids": {},
-              "ended": true,
-              "type": "composed at"
-            },
-            {
-              "target-type": "place",
               "direction": "backward",
-              "end": null,
-              "attribute-values": {},
-              "source-credit": "",
-              "type-id": "4121e462-a6bd-4e33-8fe7-0f9aee69f5e9",
-              "ended": false,
               "attribute-ids": {},
-              "type": "dedication",
-              "target-credit": "",
-              "place": {
-                "disambiguation": "",
-                "address": "",
-                "name": "Frogwood Manor",
-                "type-id": null,
-                "area": {
-                  "disambiguation": "",
-                  "name": "Rockingham County",
-                  "type-id": "bcecec27-8bdb-3e00-8254-d948dda502fa",
-                  "id": "99f0937c-69b7-455c-9b13-fe708da6943e",
-                  "sort-name": "Rockingham County",
-                  "type": "County"
-                },
-                "id": "362e9df6-ce39-4805-841e-c113e4e2a7c9",
-                "coordinates": null,
-                "type": null
-              },
-              "begin": null,
-              "attributes": []
-            },
-            {
-              "attributes": [],
-              "begin": "2016",
               "target-credit": "",
               "type": "performance",
-              "attribute-ids": {},
+              "recording": {
+                "length": 217000,
+                "video": false,
+                "disambiguation": "2023 single version",
+                "id": "6d25e6b5-932e-4a93-a294-e31b0d4daa3f",
+                "title": "Millstone Woods May 2018"
+              },
+              "target-type": "recording",
+              "begin": "2022-02-12",
+              "source-credit": "",
+              "ended": true
+            },
+            {
+              "target-type": "recording",
+              "recording": {
+                "title": "Millstone Woods May 2018",
+                "length": 190000,
+                "video": false,
+                "disambiguation": "album version",
+                "id": "abec8a1d-1490-4981-8d50-b7e1779709b3"
+              },
+              "type": "performance",
               "ended": true,
+              "source-credit": "",
+              "begin": "2022-02-12",
+              "target-credit": "",
+              "attributes": [],
+              "attribute-ids": {},
+              "direction": "backward",
               "type-id": "a3005666-a872-32c3-ad06-98af558e99b0",
               "attribute-values": {},
-              "source-credit": "",
-              "recording": {
-                "length": 273000,
-                "title": "Millstone, 2063",
-                "video": false,
-                "id": "a2832a23-61e3-446b-b62e-619041d6fd7e",
-                "disambiguation": ""
-              },
-              "end": "2017",
-              "direction": "backward",
-              "target-type": "recording"
+              "end": "2022-02-12"
             },
             {
+              "end": "2022-02-12",
+              "attribute-values": {},
+              "type-id": "a3005666-a872-32c3-ad06-98af558e99b0",
+              "attribute-ids": {},
+              "direction": "backward",
               "attributes": [],
               "target-credit": "",
-              "begin": null,
-              "type": "based on",
-              "ended": false,
-              "attribute-ids": {},
-              "type-id": "6bb1df6b-57f3-434d-8a39-5dc363d2eb78",
+              "ended": true,
               "source-credit": "",
-              "attribute-values": {},
-              "end": null,
-              "work": {
-                "languages": [],
+              "begin": "2022-02-12",
+              "target-type": "recording",
+              "recording": {
+                "length": 218000,
+                "video": true,
                 "disambiguation": "",
-                "type-id": "0f24ce27-96cc-3746-a16c-e6617d7a80f3",
-                "iswcs": [],
-                "attributes": [],
-                "language": null,
-                "id": "56830050-7db9-4b55-a71b-43a0a0ad32ba",
-                "type": "Song-cycle",
-                "title": "Texas Toast"
+                "id": "5cf57cd4-c6cb-44ed-8c71-544abe0bd834",
+                "title": "Millstone Woods May 2018"
               },
-              "target-type": "work",
-              "direction": "backward"
+              "type": "performance"
             },
             {
-              "direction": "backward",
-              "target-type": "work",
-              "work": {
-                "iswcs": [
-                  "T-337.058.170-3"
-                ],
-                "attributes": [],
-                "type-id": "0f24ce27-96cc-3746-a16c-e6617d7a80f3",
-                "disambiguation": "",
-                "languages": [
-                  "eng"
-                ],
-                "title": "Martial Law in Garrison Oaks",
-                "type": "Song-cycle",
-                "id": "6b402bbb-1ac0-4300-8448-db026abefd23",
-                "language": "eng"
+              "type": "performance",
+              "recording": {
+                "video": false,
+                "disambiguation": "2024 single version",
+                "id": "2eb4f3aa-55d1-4afe-a529-7ec201665241",
+                "length": 218000,
+                "title": "Millstone Woods May 2018"
               },
+              "target-type": "recording",
+              "begin": null,
+              "source-credit": "",
+              "ended": false,
+              "target-credit": "",
+              "attributes": [],
+              "direction": "backward",
+              "attribute-ids": {},
+              "attribute-values": {},
+              "type-id": "a3005666-a872-32c3-ad06-98af558e99b0",
+              "end": null
+            },
+            {
+              "target-credit": "",
+              "source-credit": "",
+              "begin": null,
+              "ended": false,
+              "work": {
+                "id": "6c5bca29-106e-475d-a3ed-c24b0feb42f5",
+                "disambiguation": "",
+                "type-id": "0f24ce27-96cc-3746-a16c-e6617d7a80f3",
+                "languages": [],
+                "language": null,
+                "iswcs": [
+                  "T-337.077.171-0"
+                ],
+                "type": "Song-cycle",
+                "attributes": [],
+                "title": "Juanito Thompson's Transatlantic Colleague"
+              },
+              "type": "parts",
+              "target-type": "work",
+              "ordering-key": 8,
               "end": null,
               "attribute-values": {},
-              "source-credit": "",
               "type-id": "ca8d3642-ce5f-49f8-91f2-125d72524e6a",
               "attribute-ids": {},
-              "ended": false,
-              "type": "parts",
-              "begin": null,
-              "target-credit": "",
-              "ordering-key": 12,
+              "direction": "backward",
               "attributes": []
             }
           ],
-          "title": "Millstone, 2063",
-          "attributes": [
-            {
-              "type-id": "d833318c-6c6a-370e-8b16-9cb15873ba76",
-              "type": "ASCAP ID",
-              "value": "933623775"
-            }
-          ],
+          "disambiguation": "",
+          "languages": [],
           "tags": [
             {
-              "name": "experimental",
+              "name": "ambient",
+              "count": 1
+            },
+            {
+              "name": "free improvisation",
               "count": 1
             },
             {
@@ -1820,184 +1603,567 @@
               "name": "instrumental"
             }
           ],
-          "type": "Song"
-        },
-        "031af361-0064-4640-8b28-af1ab85d03f1": {
-          "type": "Song",
-          "tags": [],
-          "attributes": [],
-          "title": "A Nation Divided",
-          "relations": [
+          "language": null,
+          "attributes": [
             {
-              "target-type": "artist",
-              "direction": "backward",
-              "end": null,
-              "source-credit": "",
-              "attribute-values": {},
-              "type-id": "a255bca1-b157-4518-9108-7b147dc3fc68",
-              "ended": false,
-              "attribute-ids": {},
-              "type": "writer",
-              "target-credit": "",
-              "begin": null,
-              "attributes": [],
-              "artist": {
-                "type-id": "e431f5f6-b5d2-343d-8b36-72607fffb74b",
-                "name": "Millstone",
-                "disambiguation": "New Hampshire",
-                "type": "Group",
-                "country": "US",
-                "sort-name": "Millstone",
-                "id": "807d1a47-53cb-4a14-a3ef-31c7eee0596a"
-              }
+              "type": "ASCAP ID",
+              "type-id": "d833318c-6c6a-370e-8b16-9cb15873ba76",
+              "value": "933489970"
             }
           ],
-          "language": null,
+          "iswcs": [
+            "T-337.061.513-3"
+          ],
+          "title": "Millstone Woods May 2018",
+          "id": "43ff6340-28e8-4066-ba12-6d3f17652ed5",
           "aliases": [],
-          "id": "031af361-0064-4640-8b28-af1ab85d03f1",
-          "type-id": "f061270a-2fd6-32f1-a641-f0f8676d14e6",
-          "iswcs": [],
-          "disambiguation": "",
-          "languages": []
+          "type-id": "f061270a-2fd6-32f1-a641-f0f8676d14e6"
         },
-        "0bb1ec37-dd2f-41ca-8ef5-c604207a7852": {
-          "type": "Song",
-          "tags": [],
-          "attributes": [],
-          "title": "A New Hope",
+        "188d9a75-4d7a-4a72-a376-456fff8d4191": {
+          "attributes": [
+            {
+              "type-id": "d833318c-6c6a-370e-8b16-9cb15873ba76",
+              "type": "ASCAP ID",
+              "value": "933623775"
+            }
+          ],
           "relations": [
             {
-              "target-type": "artist",
-              "direction": "backward",
-              "end": null,
-              "attribute-values": {},
-              "source-credit": "",
-              "type-id": "a255bca1-b157-4518-9108-7b147dc3fc68",
-              "ended": false,
-              "attribute-ids": {},
-              "type": "writer",
               "target-credit": "",
-              "begin": null,
-              "attributes": [],
+              "type-id": "d59d99ea-23d4-4a80-b066-edca32ee158f",
+              "type": "composer",
+              "attribute-values": {},
+              "direction": "backward",
+              "attribute-ids": {},
               "artist": {
+                "name": "Jake A. McCoy",
                 "country": "US",
-                "type": "Group",
-                "sort-name": "Millstone",
-                "id": "807d1a47-53cb-4a14-a3ef-31c7eee0596a",
-                "type-id": "e431f5f6-b5d2-343d-8b36-72607fffb74b",
-                "disambiguation": "New Hampshire",
-                "name": "Millstone"
-              }
+                "disambiguation": "",
+                "sort-name": "McCoy, Jake A.",
+                "type": "Person",
+                "type-id": "b6e035f4-3ce9-331c-97df-83397230b0df",
+                "id": "32bc1ac7-efd0-44f2-8645-8fecf6a40edb"
+              },
+              "target-type": "artist",
+              "ended": true,
+              "attributes": [],
+              "begin": "2016",
+              "source-credit": "",
+              "end": "2016"
             },
             {
-              "target-type": "recording",
-              "direction": "backward",
-              "end": "2003-12-15",
-              "recording": {
-                "title": "A New Hope",
-                "video": false,
-                "length": 159000,
+              "attributes": [],
+              "begin": "2016",
+              "attribute-ids": {},
+              "artist": {
+                "type": "Person",
+                "id": "33c830f0-d5be-4baf-b8db-3dc754e74c16",
+                "type-id": "b6e035f4-3ce9-331c-97df-83397230b0df",
+                "name": "Jon McCoy",
                 "disambiguation": "",
-                "id": "527fb9fb-9044-47dd-896c-8a64d84b2566"
+                "country": "US",
+                "sort-name": "McCoy, Jon"
               },
+              "target-type": "artist",
+              "ended": true,
+              "end": "2016",
               "source-credit": "",
-              "attribute-values": {},
-              "type-id": "a3005666-a872-32c3-ad06-98af558e99b0",
+              "target-credit": "",
+              "direction": "backward",
+              "type-id": "d59d99ea-23d4-4a80-b066-edca32ee158f",
+              "type": "composer",
+              "attribute-values": {}
+            },
+            {
+              "begin": "2016",
+              "attributes": [],
+              "target-type": "artist",
               "ended": true,
               "attribute-ids": {},
-              "type": "performance",
-              "target-credit": "",
-              "begin": "2003-12-15",
-              "attributes": []
-            }
-          ],
-          "language": "eng",
-          "id": "0bb1ec37-dd2f-41ca-8ef5-c604207a7852",
-          "aliases": [],
-          "type-id": "f061270a-2fd6-32f1-a641-f0f8676d14e6",
-          "iswcs": [],
-          "languages": [
-            "eng"
-          ],
-          "disambiguation": ""
-        },
-        "f5d7e18b-d0bc-4255-a3d7-5f101c36279b": {
-          "id": "f5d7e18b-d0bc-4255-a3d7-5f101c36279b",
-          "aliases": [],
-          "type-id": "f061270a-2fd6-32f1-a641-f0f8676d14e6",
-          "title": "A Night to Remember (Believe!)",
-          "attributes": [],
-          "iswcs": [],
-          "language": null,
-          "disambiguation": "",
-          "languages": [],
-          "tags": [],
-          "relations": [
-            {
-              "target-credit": "",
-              "begin": null,
-              "source-credit": "",
-              "ended": false,
-              "type": "writer",
-              "target-type": "artist",
-              "end": null,
               "artist": {
+                "type-id": "b6e035f4-3ce9-331c-97df-83397230b0df",
+                "id": "205acdc4-99a4-4f91-bf6d-43a7f1f8028e",
+                "type": "Person",
+                "disambiguation": "",
+                "country": "ES",
+                "name": "Stephen McMillan",
+                "sort-name": "McMillan, Stephen"
+              },
+              "end": "2016",
+              "source-credit": "",
+              "target-credit": "",
+              "direction": "backward",
+              "attribute-values": {},
+              "type": "composer",
+              "type-id": "d59d99ea-23d4-4a80-b066-edca32ee158f"
+            },
+            {
+              "source-credit": "",
+              "end": "2016",
+              "ended": true,
+              "target-type": "artist",
+              "attribute-ids": {},
+              "artist": {
+                "name": "Judah Unmuth-Yockey",
+                "country": "US",
+                "disambiguation": "",
+                "sort-name": "Unmuth-Yockey, Judah",
+                "type": "Person",
+                "type-id": "b6e035f4-3ce9-331c-97df-83397230b0df",
+                "id": "054fd43c-d028-42d6-8857-20f7d2d0bd0a"
+              },
+              "begin": "2016",
+              "attributes": [],
+              "attribute-values": {},
+              "type": "composer",
+              "type-id": "d59d99ea-23d4-4a80-b066-edca32ee158f",
+              "direction": "backward",
+              "target-credit": ""
+            },
+            {
+              "end": null,
+              "source-credit": "",
+              "begin": null,
+              "attributes": [],
+              "ended": false,
+              "target-type": "artist",
+              "attribute-ids": {},
+              "artist": {
+                "sort-name": "Millstone",
+                "country": "US",
+                "disambiguation": "New Hampshire",
                 "name": "Millstone",
                 "type-id": "e431f5f6-b5d2-343d-8b36-72607fffb74b",
-                "disambiguation": "New Hampshire",
-                "sort-name": "Millstone",
                 "id": "807d1a47-53cb-4a14-a3ef-31c7eee0596a",
-                "country": "US",
                 "type": "Group"
               },
-              "type-id": "a255bca1-b157-4518-9108-7b147dc3fc68",
+              "direction": "backward",
+              "type": "named after artist",
               "attribute-values": {},
+              "type-id": "e9823163-51a2-4ce8-95e9-4257dec92ee2",
+              "target-credit": ""
+            },
+            {
+              "source-credit": "",
+              "end": "2018-02-01",
+              "artist": {
+                "sort-name": "Texas Hold'Em Lava Dome",
+                "country": "US",
+                "disambiguation": "",
+                "name": "Texas Hold'Em Lava Dome",
+                "id": "4d945923-9deb-4cd0-a477-6e1474cb306c",
+                "type-id": "e431f5f6-b5d2-343d-8b36-72607fffb74b",
+                "type": "Group"
+              },
+              "attribute-ids": {},
+              "ended": true,
+              "target-type": "artist",
+              "attributes": [],
+              "begin": "2018-02-01",
+              "type-id": "a442b140-830b-30b0-a4aa-2e36f098b6aa",
+              "attribute-values": {},
+              "type": "publishing",
+              "direction": "backward",
+              "target-credit": ""
+            },
+            {
+              "target-credit": "",
+              "label": {
+                "disambiguation": "",
+                "name": "magmacrunch music",
+                "sort-name": "magmacrunch music",
+                "id": "c78b5612-2300-4ee1-8663-299ddcf9ce25",
+                "type-id": "e9ad53b0-e3d0-3885-a10b-8193d501338c",
+                "type": "Publisher",
+                "label-code": null
+              },
+              "type-id": "05ee6f18-4517-342d-afdf-5897f64276e3",
+              "attribute-values": {},
+              "type": "publishing",
               "direction": "backward",
               "attribute-ids": {},
+              "ended": true,
+              "target-type": "label",
+              "attributes": [],
+              "begin": "2018-02-01",
+              "source-credit": "",
+              "end": "2018-02-01"
+            },
+            {
+              "end": "2016",
+              "place": {
+                "disambiguation": "",
+                "address": "",
+                "name": "The Tuna Can",
+                "coordinates": null,
+                "area": {
+                  "disambiguation": "",
+                  "name": "Iowa City",
+                  "sort-name": "Iowa City",
+                  "type-id": "6fd8f29a-3d0a-32fc-980d-ea697b69da78",
+                  "id": "3fc3b364-665e-4875-a9ff-3699cd716152",
+                  "type": "City"
+                },
+                "type-id": "05fa6a09-ff92-3d34-bdbb-5141d3c24f38",
+                "id": "3ecebfcc-6824-46a9-9e1a-ecc26f69a4a2",
+                "type": "Studio"
+              },
+              "source-credit": "",
+              "attributes": [],
+              "begin": "2016",
+              "attribute-ids": {},
+              "ended": true,
+              "target-type": "place",
+              "direction": "backward",
+              "type-id": "beaff7ea-771d-4f0d-aeb7-633bdddfa196",
+              "type": "composed at",
+              "attribute-values": {},
+              "target-credit": ""
+            },
+            {
+              "target-credit": "",
+              "attribute-values": {},
+              "type": "dedication",
+              "type-id": "4121e462-a6bd-4e33-8fe7-0f9aee69f5e9",
+              "direction": "backward",
+              "target-type": "place",
+              "ended": false,
+              "attribute-ids": {},
+              "begin": null,
+              "attributes": [],
+              "source-credit": "",
+              "place": {
+                "area": {
+                  "sort-name": "Rockingham County",
+                  "name": "Rockingham County",
+                  "disambiguation": "",
+                  "type": "County",
+                  "type-id": "bcecec27-8bdb-3e00-8254-d948dda502fa",
+                  "id": "99f0937c-69b7-455c-9b13-fe708da6943e"
+                },
+                "coordinates": null,
+                "type-id": null,
+                "id": "362e9df6-ce39-4805-841e-c113e4e2a7c9",
+                "type": null,
+                "disambiguation": "",
+                "name": "Frogwood Manor",
+                "address": ""
+              },
+              "end": null
+            },
+            {
+              "attribute-values": {},
+              "type": "performance",
+              "type-id": "a3005666-a872-32c3-ad06-98af558e99b0",
+              "direction": "backward",
+              "target-credit": "",
+              "recording": {
+                "video": false,
+                "disambiguation": "",
+                "id": "a2832a23-61e3-446b-b62e-619041d6fd7e",
+                "title": "Millstone, 2063",
+                "length": 273000
+              },
+              "source-credit": "",
+              "end": "2017",
+              "ended": true,
+              "target-type": "recording",
+              "attribute-ids": {},
+              "begin": "2016",
               "attributes": []
+            },
+            {
+              "target-type": "work",
+              "ended": false,
+              "attribute-ids": {},
+              "begin": null,
+              "attributes": [],
+              "work": {
+                "title": "Texas Toast",
+                "languages": [],
+                "language": null,
+                "id": "56830050-7db9-4b55-a71b-43a0a0ad32ba",
+                "type-id": "0f24ce27-96cc-3746-a16c-e6617d7a80f3",
+                "iswcs": [],
+                "type": "Song-cycle",
+                "attributes": [],
+                "disambiguation": ""
+              },
+              "source-credit": "",
+              "end": null,
+              "target-credit": "",
+              "attribute-values": {},
+              "type": "based on",
+              "type-id": "6bb1df6b-57f3-434d-8a39-5dc363d2eb78",
+              "direction": "backward"
+            },
+            {
+              "type-id": "ca8d3642-ce5f-49f8-91f2-125d72524e6a",
+              "type": "parts",
+              "attribute-values": {},
+              "direction": "backward",
+              "target-credit": "",
+              "source-credit": "",
+              "end": null,
+              "attribute-ids": {},
+              "ended": false,
+              "target-type": "work",
+              "attributes": [],
+              "begin": null,
+              "work": {
+                "title": "Martial Law in Garrison Oaks",
+                "languages": [
+                  "eng"
+                ],
+                "language": "eng",
+                "type-id": "0f24ce27-96cc-3746-a16c-e6617d7a80f3",
+                "id": "6b402bbb-1ac0-4300-8448-db026abefd23",
+                "iswcs": [
+                  "T-337.058.170-3"
+                ],
+                "type": "Song-cycle",
+                "attributes": [],
+                "disambiguation": ""
+              },
+              "ordering-key": 12
             }
           ],
-          "type": "Song"
+          "id": "188d9a75-4d7a-4a72-a376-456fff8d4191",
+          "tags": [
+            {
+              "name": "experimental",
+              "count": 1
+            },
+            {
+              "name": "instrumental",
+              "count": 1
+            }
+          ],
+          "title": "Millstone, 2063",
+          "aliases": [],
+          "disambiguation": "",
+          "type": "Song",
+          "type-id": "f061270a-2fd6-32f1-a641-f0f8676d14e6",
+          "iswcs": [
+            "T-337.058.288-6"
+          ],
+          "language": null,
+          "languages": []
         },
-        "6559fb2e-6aff-4bef-8910-20883f3edb05": {
+        "031af361-0064-4640-8b28-af1ab85d03f1": {
+          "tags": [],
+          "id": "031af361-0064-4640-8b28-af1ab85d03f1",
+          "iswcs": [],
+          "title": "A Nation Divided",
           "aliases": [],
           "language": null,
+          "disambiguation": "",
+          "relations": [
+            {
+              "type": "writer",
+              "attribute-values": {},
+              "target-type": "artist",
+              "direction": "backward",
+              "begin": null,
+              "attributes": [],
+              "type-id": "a255bca1-b157-4518-9108-7b147dc3fc68",
+              "attribute-ids": {},
+              "target-credit": "",
+              "artist": {
+                "name": "Millstone",
+                "type": "Group",
+                "country": "US",
+                "type-id": "e431f5f6-b5d2-343d-8b36-72607fffb74b",
+                "disambiguation": "New Hampshire",
+                "sort-name": "Millstone",
+                "id": "807d1a47-53cb-4a14-a3ef-31c7eee0596a"
+              },
+              "end": null,
+              "ended": false,
+              "source-credit": ""
+            }
+          ],
+          "type-id": "f061270a-2fd6-32f1-a641-f0f8676d14e6",
+          "attributes": [],
+          "languages": [],
+          "type": "Song"
+        },
+        "0bb1ec37-dd2f-41ca-8ef5-c604207a7852": {
+          "attributes": [],
+          "tags": [],
+          "disambiguation": "",
+          "aliases": [],
+          "language": "eng",
+          "iswcs": [],
           "type-id": "f061270a-2fd6-32f1-a641-f0f8676d14e6",
           "type": "Song",
-          "iswcs": [],
+          "id": "0bb1ec37-dd2f-41ca-8ef5-c604207a7852",
+          "relations": [
+            {
+              "target-type": "artist",
+              "source-credit": "",
+              "attribute-values": {},
+              "artist": {
+                "name": "Millstone",
+                "country": "US",
+                "id": "807d1a47-53cb-4a14-a3ef-31c7eee0596a",
+                "type": "Group",
+                "type-id": "e431f5f6-b5d2-343d-8b36-72607fffb74b",
+                "sort-name": "Millstone",
+                "disambiguation": "New Hampshire"
+              },
+              "ended": false,
+              "target-credit": "",
+              "attributes": [],
+              "direction": "backward",
+              "type-id": "a255bca1-b157-4518-9108-7b147dc3fc68",
+              "attribute-ids": {},
+              "end": null,
+              "type": "writer",
+              "begin": null
+            },
+            {
+              "attribute-values": {},
+              "source-credit": "",
+              "target-type": "recording",
+              "begin": "2003-12-15",
+              "type": "performance",
+              "recording": {
+                "length": 159000,
+                "id": "527fb9fb-9044-47dd-896c-8a64d84b2566",
+                "disambiguation": "",
+                "video": false,
+                "title": "A New Hope"
+              },
+              "end": "2003-12-15",
+              "attribute-ids": {},
+              "type-id": "a3005666-a872-32c3-ad06-98af558e99b0",
+              "direction": "backward",
+              "attributes": [],
+              "target-credit": "",
+              "ended": true
+            }
+          ],
+          "title": "A New Hope",
+          "languages": [
+            "eng"
+          ]
+        },
+        "f5d7e18b-d0bc-4255-a3d7-5f101c36279b": {
           "tags": [],
-          "id": "6559fb2e-6aff-4bef-8910-20883f3edb05",
-          "attributes": [],
-          "title": "Blue Like Eternity",
+          "id": "f5d7e18b-d0bc-4255-a3d7-5f101c36279b",
+          "title": "A Night to Remember (Believe!)",
           "relations": [
             {
               "direction": "backward",
               "type-id": "a255bca1-b157-4518-9108-7b147dc3fc68",
-              "begin": null,
+              "type": "writer",
               "attribute-values": {},
               "target-credit": "",
-              "type": "writer",
-              "source-credit": "",
               "end": null,
-              "ended": false,
+              "source-credit": "",
+              "attributes": [],
+              "begin": null,
               "artist": {
-                "country": "US",
+                "type": "Group",
                 "id": "807d1a47-53cb-4a14-a3ef-31c7eee0596a",
+                "type-id": "e431f5f6-b5d2-343d-8b36-72607fffb74b",
+                "name": "Millstone",
+                "disambiguation": "New Hampshire",
+                "country": "US",
+                "sort-name": "Millstone"
+              },
+              "attribute-ids": {},
+              "target-type": "artist",
+              "ended": false
+            }
+          ],
+          "attributes": [],
+          "language": null,
+          "iswcs": [],
+          "type-id": "f061270a-2fd6-32f1-a641-f0f8676d14e6",
+          "type": "Song",
+          "languages": [],
+          "disambiguation": "",
+          "aliases": []
+        },
+        "6559fb2e-6aff-4bef-8910-20883f3edb05": {
+          "type": "Song",
+          "relations": [
+            {
+              "end": null,
+              "artist": {
+                "type": "Group",
                 "name": "Millstone",
                 "type-id": "e431f5f6-b5d2-343d-8b36-72607fffb74b",
+                "country": "US",
+                "sort-name": "Millstone",
+                "disambiguation": "New Hampshire",
+                "id": "807d1a47-53cb-4a14-a3ef-31c7eee0596a"
+              },
+              "type-id": "a255bca1-b157-4518-9108-7b147dc3fc68",
+              "attribute-values": {},
+              "attribute-ids": {},
+              "direction": "backward",
+              "attributes": [],
+              "target-credit": "",
+              "source-credit": "",
+              "begin": null,
+              "ended": false,
+              "type": "writer",
+              "target-type": "artist"
+            }
+          ],
+          "disambiguation": "",
+          "tags": [],
+          "languages": [],
+          "language": null,
+          "iswcs": [],
+          "attributes": [],
+          "title": "Blue Like Eternity",
+          "id": "6559fb2e-6aff-4bef-8910-20883f3edb05",
+          "aliases": [],
+          "type-id": "f061270a-2fd6-32f1-a641-f0f8676d14e6"
+        },
+        "defffd55-f36a-49e5-9a79-cc831a4c2b31": {
+          "title": "Can't Stand the Cold Shoulder",
+          "id": "defffd55-f36a-49e5-9a79-cc831a4c2b31",
+          "tags": [],
+          "attributes": [],
+          "relations": [
+            {
+              "source-credit": "",
+              "end": null,
+              "target-type": "artist",
+              "ended": false,
+              "artist": {
+                "name": "Millstone",
+                "country": "US",
+                "disambiguation": "New Hampshire",
                 "sort-name": "Millstone",
                 "type": "Group",
-                "disambiguation": "New Hampshire"
+                "id": "807d1a47-53cb-4a14-a3ef-31c7eee0596a",
+                "type-id": "e431f5f6-b5d2-343d-8b36-72607fffb74b"
               },
+              "attribute-ids": {},
+              "begin": null,
               "attributes": [],
-              "target-type": "artist",
-              "attribute-ids": {}
+              "attribute-values": {},
+              "type": "writer",
+              "type-id": "a255bca1-b157-4518-9108-7b147dc3fc68",
+              "direction": "backward",
+              "target-credit": ""
             }
           ],
           "languages": [],
+          "iswcs": [],
+          "type-id": "f061270a-2fd6-32f1-a641-f0f8676d14e6",
+          "type": "Song",
+          "language": null,
+          "aliases": [],
           "disambiguation": ""
         },
-        "defffd55-f36a-49e5-9a79-cc831a4c2b31": {
+        "e102d32c-cbd8-48ae-a9d1-74a3c2763598": {
           "languages": [],
           "language": null,
           "iswcs": [],
@@ -2005,349 +2171,311 @@
           "type": "Song",
           "disambiguation": "",
           "aliases": [],
-          "title": "Can't Stand the Cold Shoulder",
+          "title": "Fatal Wound",
           "tags": [],
-          "id": "defffd55-f36a-49e5-9a79-cc831a4c2b31",
+          "id": "e102d32c-cbd8-48ae-a9d1-74a3c2763598",
           "relations": [
             {
-              "begin": null,
+              "end": null,
+              "source-credit": "",
               "attributes": [],
-              "target-type": "artist",
-              "ended": false,
+              "begin": null,
               "attribute-ids": {},
               "artist": {
                 "id": "807d1a47-53cb-4a14-a3ef-31c7eee0596a",
                 "type-id": "e431f5f6-b5d2-343d-8b36-72607fffb74b",
                 "type": "Group",
-                "sort-name": "Millstone",
                 "country": "US",
                 "disambiguation": "New Hampshire",
-                "name": "Millstone"
+                "name": "Millstone",
+                "sort-name": "Millstone"
               },
-              "end": null,
-              "source-credit": "",
-              "target-credit": "",
+              "target-type": "artist",
+              "ended": false,
               "direction": "backward",
+              "type-id": "a255bca1-b157-4518-9108-7b147dc3fc68",
               "type": "writer",
               "attribute-values": {},
-              "type-id": "a255bca1-b157-4518-9108-7b147dc3fc68"
+              "target-credit": ""
             }
           ],
           "attributes": []
         },
-        "e102d32c-cbd8-48ae-a9d1-74a3c2763598": {
+        "11f55e1f-f95f-45eb-b60c-eefa2388ede6": {
+          "attributes": [],
+          "disambiguation": "",
+          "type-id": "f061270a-2fd6-32f1-a641-f0f8676d14e6",
+          "aliases": [],
+          "tags": [],
+          "type": "Song",
+          "iswcs": [],
+          "languages": [],
           "relations": [
             {
-              "source-credit": "",
               "ended": false,
+              "target-credit": "",
+              "target-type": "artist",
               "end": null,
+              "begin": null,
+              "source-credit": "",
+              "type-id": "a255bca1-b157-4518-9108-7b147dc3fc68",
+              "attribute-ids": {},
+              "direction": "backward",
+              "type": "writer",
               "artist": {
                 "disambiguation": "New Hampshire",
-                "sort-name": "Millstone",
-                "id": "807d1a47-53cb-4a14-a3ef-31c7eee0596a",
-                "type": "Group",
-                "name": "Millstone",
                 "country": "US",
-                "type-id": "e431f5f6-b5d2-343d-8b36-72607fffb74b"
+                "id": "807d1a47-53cb-4a14-a3ef-31c7eee0596a",
+                "name": "Millstone",
+                "sort-name": "Millstone",
+                "type-id": "e431f5f6-b5d2-343d-8b36-72607fffb74b",
+                "type": "Group"
               },
+              "attributes": [],
+              "attribute-values": {}
+            }
+          ],
+          "id": "11f55e1f-f95f-45eb-b60c-eefa2388ede6",
+          "title": "My Last Goodbye",
+          "language": null
+        },
+        "6404ff8f-f048-4e86-9920-5cc918ed5b74": {
+          "type": "Song",
+          "id": "6404ff8f-f048-4e86-9920-5cc918ed5b74",
+          "relations": [
+            {
+              "type-id": "a255bca1-b157-4518-9108-7b147dc3fc68",
+              "attribute-ids": {},
+              "end": null,
+              "ended": false,
+              "target-credit": "",
+              "attributes": [],
+              "direction": "backward",
+              "begin": null,
+              "type": "writer",
+              "source-credit": "",
+              "target-type": "artist",
+              "artist": {
+                "type-id": "e431f5f6-b5d2-343d-8b36-72607fffb74b",
+                "disambiguation": "New Hampshire",
+                "sort-name": "Millstone",
+                "type": "Group",
+                "country": "US",
+                "id": "807d1a47-53cb-4a14-a3ef-31c7eee0596a",
+                "name": "Millstone"
+              },
+              "attribute-values": {}
+            }
+          ],
+          "title": "Nothing Even Matters",
+          "languages": [],
+          "disambiguation": "",
+          "aliases": [],
+          "attributes": [],
+          "tags": [],
+          "iswcs": [],
+          "language": null,
+          "type-id": "f061270a-2fd6-32f1-a641-f0f8676d14e6"
+        },
+        "7c5121bd-ecf3-4023-80a9-41aa6720e0fd": {
+          "languages": [],
+          "type": "Song",
+          "type-id": "f061270a-2fd6-32f1-a641-f0f8676d14e6",
+          "relations": [
+            {
+              "target-credit": "",
+              "attribute-ids": {},
+              "type-id": "a255bca1-b157-4518-9108-7b147dc3fc68",
+              "attributes": [],
               "direction": "backward",
               "begin": null,
               "target-type": "artist",
               "attribute-values": {},
               "type": "writer",
-              "target-credit": "",
-              "attribute-ids": {},
+              "source-credit": "",
+              "ended": false,
+              "end": null,
+              "artist": {
+                "disambiguation": "New Hampshire",
+                "id": "807d1a47-53cb-4a14-a3ef-31c7eee0596a",
+                "sort-name": "Millstone",
+                "type": "Group",
+                "name": "Millstone",
+                "type-id": "e431f5f6-b5d2-343d-8b36-72607fffb74b",
+                "country": "US"
+              }
+            }
+          ],
+          "attributes": [],
+          "title": "Nothing Society",
+          "language": null,
+          "disambiguation": "",
+          "aliases": [],
+          "id": "7c5121bd-ecf3-4023-80a9-41aa6720e0fd",
+          "tags": [],
+          "iswcs": []
+        },
+        "16e9420a-2562-41f3-ab45-30140a3fb948": {
+          "type": "Song",
+          "tags": [],
+          "attributes": [],
+          "title": "Over the Treetops",
+          "language": null,
+          "relations": [
+            {
               "type-id": "a255bca1-b157-4518-9108-7b147dc3fc68",
+              "source-credit": "",
+              "attribute-values": {},
+              "end": null,
+              "target-type": "artist",
+              "direction": "backward",
+              "attributes": [],
+              "artist": {
+                "disambiguation": "New Hampshire",
+                "name": "Millstone",
+                "type-id": "e431f5f6-b5d2-343d-8b36-72607fffb74b",
+                "id": "807d1a47-53cb-4a14-a3ef-31c7eee0596a",
+                "sort-name": "Millstone",
+                "country": "US",
+                "type": "Group"
+              },
+              "target-credit": "",
+              "begin": null,
+              "type": "writer",
+              "ended": false,
+              "attribute-ids": {}
+            }
+          ],
+          "aliases": [],
+          "id": "16e9420a-2562-41f3-ab45-30140a3fb948",
+          "type-id": "f061270a-2fd6-32f1-a641-f0f8676d14e6",
+          "iswcs": [],
+          "languages": [],
+          "disambiguation": ""
+        },
+        "b85b1bac-21e6-424d-af20-cd74fc2a7cd7": {
+          "language": null,
+          "disambiguation": "",
+          "languages": [],
+          "tags": [],
+          "relations": [
+            {
+              "artist": {
+                "type": "Group",
+                "name": "Millstone",
+                "type-id": "e431f5f6-b5d2-343d-8b36-72607fffb74b",
+                "country": "US",
+                "sort-name": "Millstone",
+                "id": "807d1a47-53cb-4a14-a3ef-31c7eee0596a",
+                "disambiguation": "New Hampshire"
+              },
+              "attribute-values": {},
+              "type-id": "a255bca1-b157-4518-9108-7b147dc3fc68",
+              "end": null,
+              "attributes": [],
+              "attribute-ids": {},
+              "direction": "backward",
+              "target-credit": "",
+              "type": "writer",
+              "target-type": "artist",
+              "source-credit": "",
+              "begin": null,
+              "ended": false
+            }
+          ],
+          "type": "Song",
+          "id": "b85b1bac-21e6-424d-af20-cd74fc2a7cd7",
+          "aliases": [],
+          "type-id": "f061270a-2fd6-32f1-a641-f0f8676d14e6",
+          "title": "Red Tear",
+          "attributes": [],
+          "iswcs": []
+        },
+        "9ed59f8c-a23f-4732-986d-192429b22bfa": {
+          "tags": [],
+          "type": "Song",
+          "attributes": [],
+          "id": "9ed59f8c-a23f-4732-986d-192429b22bfa",
+          "aliases": [],
+          "language": "eng",
+          "relations": [
+            {
+              "end": null,
+              "direction": "backward",
+              "target-type": "artist",
+              "type-id": "a255bca1-b157-4518-9108-7b147dc3fc68",
+              "attribute-values": {},
+              "source-credit": "",
+              "type": "writer",
+              "attribute-ids": {},
+              "ended": false,
+              "artist": {
+                "type-id": "e431f5f6-b5d2-343d-8b36-72607fffb74b",
+                "name": "Millstone",
+                "disambiguation": "New Hampshire",
+                "country": "US",
+                "type": "Group",
+                "id": "807d1a47-53cb-4a14-a3ef-31c7eee0596a",
+                "sort-name": "Millstone"
+              },
+              "attributes": [],
+              "begin": null,
+              "target-credit": ""
+            },
+            {
+              "ended": true,
+              "attribute-ids": {},
+              "type": "performance",
+              "target-credit": "",
+              "begin": "2003-12-15",
+              "attributes": [],
+              "target-type": "recording",
+              "direction": "backward",
+              "end": "2003-12-15",
+              "recording": {
+                "title": "Stalemate",
+                "video": false,
+                "length": 258000,
+                "disambiguation": "",
+                "id": "59f3dc08-f0cb-4d0f-83cb-68237e878c8f"
+              },
+              "attribute-values": {},
+              "source-credit": "",
+              "type-id": "a3005666-a872-32c3-ad06-98af558e99b0"
+            },
+            {
+              "target-type": "work",
+              "work": {
+                "language": null,
+                "id": "30b20740-0912-4d2e-a012-32692d71ecde",
+                "type": "Song",
+                "title": "Kinda Reminiscent of Millstone",
+                "disambiguation": "",
+                "languages": [],
+                "type-id": "f061270a-2fd6-32f1-a641-f0f8676d14e6",
+                "iswcs": [],
+                "attributes": []
+              },
+              "direction": "backward",
+              "end": null,
+              "source-credit": "",
+              "attribute-values": {},
+              "type-id": "c5decae0-535c-4730-aa5f-ab78eadd98ba",
+              "ended": false,
+              "attribute-ids": {},
+              "type": "musical quotation",
+              "target-credit": "",
+              "begin": null,
               "attributes": []
             }
           ],
-          "type-id": "f061270a-2fd6-32f1-a641-f0f8676d14e6",
-          "attributes": [],
-          "languages": [],
-          "type": "Song",
-          "id": "e102d32c-cbd8-48ae-a9d1-74a3c2763598",
-          "tags": [],
-          "iswcs": [],
-          "title": "Fatal Wound",
-          "aliases": [],
-          "language": null,
-          "disambiguation": ""
-        },
-        "11f55e1f-f95f-45eb-b60c-eefa2388ede6": {
-          "relations": [
-            {
-              "direction": "backward",
-              "type-id": "a255bca1-b157-4518-9108-7b147dc3fc68",
-              "attribute-values": {},
-              "begin": null,
-              "type": "writer",
-              "target-credit": "",
-              "ended": false,
-              "end": null,
-              "source-credit": "",
-              "target-type": "artist",
-              "attributes": [],
-              "artist": {
-                "country": "US",
-                "id": "807d1a47-53cb-4a14-a3ef-31c7eee0596a",
-                "type-id": "e431f5f6-b5d2-343d-8b36-72607fffb74b",
-                "name": "Millstone",
-                "sort-name": "Millstone",
-                "disambiguation": "New Hampshire",
-                "type": "Group"
-              },
-              "attribute-ids": {}
-            }
-          ],
+          "title": "Stalemate",
           "disambiguation": "",
-          "languages": [],
-          "id": "11f55e1f-f95f-45eb-b60c-eefa2388ede6",
-          "tags": [],
-          "title": "My Last Goodbye",
-          "attributes": [],
-          "type": "Song",
-          "iswcs": [],
-          "language": null,
-          "aliases": [],
-          "type-id": "f061270a-2fd6-32f1-a641-f0f8676d14e6"
-        },
-        "6404ff8f-f048-4e86-9920-5cc918ed5b74": {
-          "attributes": [],
-          "disambiguation": "",
-          "iswcs": [],
-          "relations": [
-            {
-              "attributes": [],
-              "attribute-values": {},
-              "source-credit": "",
-              "direction": "backward",
-              "attribute-ids": {},
-              "type-id": "a255bca1-b157-4518-9108-7b147dc3fc68",
-              "artist": {
-                "disambiguation": "New Hampshire",
-                "type": "Group",
-                "name": "Millstone",
-                "id": "807d1a47-53cb-4a14-a3ef-31c7eee0596a",
-                "type-id": "e431f5f6-b5d2-343d-8b36-72607fffb74b",
-                "sort-name": "Millstone",
-                "country": "US"
-              },
-              "type": "writer",
-              "begin": null,
-              "ended": false,
-              "target-credit": "",
-              "end": null,
-              "target-type": "artist"
-            }
-          ],
-          "languages": [],
-          "tags": [],
-          "aliases": [],
-          "type-id": "f061270a-2fd6-32f1-a641-f0f8676d14e6",
-          "type": "Song",
-          "id": "6404ff8f-f048-4e86-9920-5cc918ed5b74",
-          "language": null,
-          "title": "Nothing Even Matters"
-        },
-        "7c5121bd-ecf3-4023-80a9-41aa6720e0fd": {
-          "disambiguation": "",
-          "languages": [],
-          "relations": [
-            {
-              "target-credit": "",
-              "type": "writer",
-              "attribute-values": {},
-              "begin": null,
-              "type-id": "a255bca1-b157-4518-9108-7b147dc3fc68",
-              "direction": "backward",
-              "attribute-ids": {},
-              "target-type": "artist",
-              "artist": {
-                "type": "Group",
-                "disambiguation": "New Hampshire",
-                "sort-name": "Millstone",
-                "name": "Millstone",
-                "type-id": "e431f5f6-b5d2-343d-8b36-72607fffb74b",
-                "id": "807d1a47-53cb-4a14-a3ef-31c7eee0596a",
-                "country": "US"
-              },
-              "attributes": [],
-              "ended": false,
-              "source-credit": "",
-              "end": null
-            }
-          ],
-          "title": "Nothing Society",
-          "attributes": [],
-          "id": "7c5121bd-ecf3-4023-80a9-41aa6720e0fd",
-          "tags": [],
-          "type": "Song",
-          "iswcs": [],
-          "type-id": "f061270a-2fd6-32f1-a641-f0f8676d14e6",
-          "language": null,
-          "aliases": []
-        },
-        "16e9420a-2562-41f3-ab45-30140a3fb948": {
-          "attributes": [],
-          "tags": [],
-          "type": "Song",
-          "iswcs": [],
-          "type-id": "f061270a-2fd6-32f1-a641-f0f8676d14e6",
-          "languages": [],
-          "disambiguation": "",
-          "title": "Over the Treetops",
-          "id": "16e9420a-2562-41f3-ab45-30140a3fb948",
-          "aliases": [],
-          "relations": [
-            {
-              "end": null,
-              "target-type": "artist",
-              "direction": "backward",
-              "type-id": "a255bca1-b157-4518-9108-7b147dc3fc68",
-              "attribute-values": {},
-              "source-credit": "",
-              "type": "writer",
-              "ended": false,
-              "attribute-ids": {},
-              "attributes": [],
-              "artist": {
-                "type": "Group",
-                "country": "US",
-                "sort-name": "Millstone",
-                "id": "807d1a47-53cb-4a14-a3ef-31c7eee0596a",
-                "type-id": "e431f5f6-b5d2-343d-8b36-72607fffb74b",
-                "name": "Millstone",
-                "disambiguation": "New Hampshire"
-              },
-              "target-credit": "",
-              "begin": null
-            }
-          ],
-          "language": null
-        },
-        "b85b1bac-21e6-424d-af20-cd74fc2a7cd7": {
-          "type": "Song",
-          "relations": [
-            {
-              "attribute-values": {},
-              "artist": {
-                "type-id": "e431f5f6-b5d2-343d-8b36-72607fffb74b",
-                "sort-name": "Millstone",
-                "disambiguation": "New Hampshire",
-                "id": "807d1a47-53cb-4a14-a3ef-31c7eee0596a",
-                "country": "US",
-                "type": "Group",
-                "name": "Millstone"
-              },
-              "target-type": "artist",
-              "source-credit": "",
-              "type": "writer",
-              "begin": null,
-              "target-credit": "",
-              "ended": false,
-              "attributes": [],
-              "direction": "backward",
-              "type-id": "a255bca1-b157-4518-9108-7b147dc3fc68",
-              "attribute-ids": {},
-              "end": null
-            }
-          ],
-          "id": "b85b1bac-21e6-424d-af20-cd74fc2a7cd7",
-          "title": "Red Tear",
-          "languages": [],
-          "attributes": [],
-          "tags": [],
-          "disambiguation": "",
-          "aliases": [],
-          "iswcs": [],
-          "language": null,
-          "type-id": "f061270a-2fd6-32f1-a641-f0f8676d14e6"
-        },
-        "9ed59f8c-a23f-4732-986d-192429b22bfa": {
-          "id": "9ed59f8c-a23f-4732-986d-192429b22bfa",
-          "relations": [
-            {
-              "target-type": "artist",
-              "source-credit": "",
-              "attribute-values": {},
-              "artist": {
-                "disambiguation": "New Hampshire",
-                "sort-name": "Millstone",
-                "type-id": "e431f5f6-b5d2-343d-8b36-72607fffb74b",
-                "name": "Millstone",
-                "type": "Group",
-                "country": "US",
-                "id": "807d1a47-53cb-4a14-a3ef-31c7eee0596a"
-              },
-              "direction": "backward",
-              "attributes": [],
-              "ended": false,
-              "target-credit": "",
-              "end": null,
-              "attribute-ids": {},
-              "type-id": "a255bca1-b157-4518-9108-7b147dc3fc68",
-              "type": "writer",
-              "begin": null
-            },
-            {
-              "attribute-values": {},
-              "target-type": "recording",
-              "source-credit": "",
-              "type": "performance",
-              "recording": {
-                "length": 258000,
-                "id": "59f3dc08-f0cb-4d0f-83cb-68237e878c8f",
-                "disambiguation": "",
-                "video": false,
-                "title": "Stalemate"
-              },
-              "begin": "2003-12-15",
-              "target-credit": "",
-              "ended": true,
-              "direction": "backward",
-              "attributes": [],
-              "type-id": "a3005666-a872-32c3-ad06-98af558e99b0",
-              "end": "2003-12-15",
-              "attribute-ids": {}
-            },
-            {
-              "source-credit": "",
-              "target-type": "work",
-              "attribute-values": {},
-              "attribute-ids": {},
-              "end": null,
-              "type-id": "c5decae0-535c-4730-aa5f-ab78eadd98ba",
-              "attributes": [],
-              "direction": "backward",
-              "target-credit": "",
-              "ended": false,
-              "begin": null,
-              "work": {
-                "languages": [],
-                "title": "Kinda Reminiscent of Millstone",
-                "id": "30b20740-0912-4d2e-a012-32692d71ecde",
-                "type": "Song",
-                "type-id": "f061270a-2fd6-32f1-a641-f0f8676d14e6",
-                "language": null,
-                "iswcs": [],
-                "attributes": [],
-                "disambiguation": ""
-              },
-              "type": "musical quotation"
-            }
-          ],
-          "type": "Song",
           "languages": [
             "eng"
           ],
-          "title": "Stalemate",
-          "aliases": [],
-          "disambiguation": "",
-          "tags": [],
-          "attributes": [],
-          "type-id": "f061270a-2fd6-32f1-a641-f0f8676d14e6",
           "iswcs": [],
-          "language": "eng"
+          "type-id": "f061270a-2fd6-32f1-a641-f0f8676d14e6"
         }
       },
       "recordingFlags": {
@@ -2383,344 +2511,344 @@
     },
     "members": {
       "main": {
-        "gender-id": null,
-        "type-id": "e431f5f6-b5d2-343d-8b36-72607fffb74b",
-        "name": "Millstone",
-        "country": "US",
+        "id": "807d1a47-53cb-4a14-a3ef-31c7eee0596a",
         "end-area": null,
         "area": {
-          "sort-name": "Rockingham County",
-          "type": null,
           "disambiguation": "",
-          "id": "99f0937c-69b7-455c-9b13-fe708da6943e",
           "name": "Rockingham County",
-          "type-id": null
+          "sort-name": "Rockingham County",
+          "type-id": null,
+          "id": "99f0937c-69b7-455c-9b13-fe708da6943e",
+          "type": null
         },
-        "type": "Group",
-        "isnis": [],
-        "sort-name": "Millstone",
-        "gender": null,
         "ipis": [],
-        "life-span": {
-          "ended": true,
-          "end": "2004",
-          "begin": "2003"
-        },
-        "begin-area": null,
-        "id": "807d1a47-53cb-4a14-a3ef-31c7eee0596a",
-        "disambiguation": "New Hampshire",
+        "name": "Millstone",
+        "gender": null,
         "relations": [
           {
-            "attribute-ids": {},
-            "ended": false,
-            "source-credit": "",
-            "end": null,
-            "target-type": "artist",
-            "attributes": [],
-            "artist": {
-              "type": "Person",
-              "disambiguation": "Vinny Bobarino",
-              "sort-name": "Hayes, David",
-              "type-id": "b6e035f4-3ce9-331c-97df-83397230b0df",
-              "name": "David Hayes",
-              "id": "94a0d47c-5c34-4552-838d-c006b2a0d83b",
-              "country": "US"
-            },
-            "attribute-values": {},
-            "begin": null,
-            "type": "founder",
-            "target-credit": "",
             "direction": "backward",
-            "type-id": "6ed4bfc4-0a0d-44c0-b025-b7fc4d900b67"
+            "type-id": "6ed4bfc4-0a0d-44c0-b025-b7fc4d900b67",
+            "type": "founder",
+            "attribute-values": {},
+            "target-credit": "",
+            "end": null,
+            "source-credit": "",
+            "attributes": [],
+            "begin": null,
+            "artist": {
+              "sort-name": "Hayes, David",
+              "name": "David Hayes",
+              "disambiguation": "Vinny Bobarino",
+              "country": "US",
+              "type": "Person",
+              "type-id": "b6e035f4-3ce9-331c-97df-83397230b0df",
+              "id": "94a0d47c-5c34-4552-838d-c006b2a0d83b"
+            },
+            "attribute-ids": {},
+            "target-type": "artist",
+            "ended": false
           },
           {
-            "attribute-ids": {},
-            "end": null,
-            "source-credit": "",
-            "ended": false,
+            "target-credit": "",
+            "direction": "backward",
+            "type-id": "6ed4bfc4-0a0d-44c0-b025-b7fc4d900b67",
+            "attribute-values": {},
+            "type": "founder",
             "attributes": [],
+            "begin": null,
             "artist": {
-              "name": "D-Rob Robinson",
-              "type-id": "b6e035f4-3ce9-331c-97df-83397230b0df",
-              "id": "8b0a17a4-fb29-49b4-82e2-2e50e0be50fd",
-              "country": "US",
-              "disambiguation": "The Four B's",
               "type": "Person",
+              "id": "8b0a17a4-fb29-49b4-82e2-2e50e0be50fd",
+              "type-id": "b6e035f4-3ce9-331c-97df-83397230b0df",
+              "name": "D-Rob Robinson",
+              "disambiguation": "The Four B's",
+              "country": "US",
               "sort-name": "Robinson, D-Rob"
             },
+            "attribute-ids": {},
+            "ended": false,
             "target-type": "artist",
-            "begin": null,
-            "attribute-values": {},
-            "type": "founder",
-            "target-credit": "",
-            "direction": "backward",
-            "type-id": "6ed4bfc4-0a0d-44c0-b025-b7fc4d900b67"
+            "end": null,
+            "source-credit": ""
           },
           {
-            "target-credit": "",
-            "type": "member of band",
-            "begin": "2003",
-            "attribute-values": {},
-            "type-id": "5be4c609-9afa-4ea0-910b-12ffb71e3821",
             "direction": "backward",
+            "type-id": "5be4c609-9afa-4ea0-910b-12ffb71e3821",
+            "type": "member of band",
+            "attribute-values": {},
+            "target-credit": "",
             "attribute-credits": {},
+            "end": "2004",
+            "source-credit": "",
+            "attributes": [
+              "background vocals",
+              "original"
+            ],
+            "begin": "2003",
+            "artist": {
+              "disambiguation": "Vinny Bobarino",
+              "country": "US",
+              "name": "David Hayes",
+              "sort-name": "Hayes, David",
+              "type-id": "b6e035f4-3ce9-331c-97df-83397230b0df",
+              "id": "94a0d47c-5c34-4552-838d-c006b2a0d83b",
+              "type": "Person"
+            },
             "attribute-ids": {
               "original": "4fd3b255-a7d7-4424-9a63-40fa543b601c",
               "background vocals": "75052401-7340-4e5b-a71d-ea024a128849"
             },
-            "target-type": "artist",
-            "artist": {
-              "name": "David Hayes",
-              "type-id": "b6e035f4-3ce9-331c-97df-83397230b0df",
-              "id": "94a0d47c-5c34-4552-838d-c006b2a0d83b",
-              "country": "US",
-              "type": "Person",
-              "disambiguation": "Vinny Bobarino",
-              "sort-name": "Hayes, David"
-            },
-            "attributes": [
-              "background vocals",
-              "original"
-            ],
             "ended": true,
-            "source-credit": "",
-            "end": "2004"
+            "target-type": "artist"
           },
           {
-            "type-id": "5be4c609-9afa-4ea0-910b-12ffb71e3821",
-            "attribute-credits": {},
-            "direction": "backward",
-            "type": "member of band",
-            "target-credit": "",
-            "attribute-values": {},
-            "begin": "2003",
             "attributes": [
               "electric guitar",
               "original"
             ],
-            "artist": {
-              "name": "David Hayes",
-              "type-id": "b6e035f4-3ce9-331c-97df-83397230b0df",
-              "country": "US",
-              "id": "94a0d47c-5c34-4552-838d-c006b2a0d83b",
-              "disambiguation": "Vinny Bobarino",
-              "type": "Person",
-              "sort-name": "Hayes, David"
-            },
-            "target-type": "artist",
-            "source-credit": "",
-            "end": "2004",
-            "ended": true,
-            "attribute-ids": {
-              "original": "4fd3b255-a7d7-4424-9a63-40fa543b601c",
-              "electric guitar": "7ee8ebf5-3aed-4fc8-8004-49f4a8c45a87"
-            }
-          },
-          {
-            "attribute-credits": {},
-            "direction": "backward",
-            "type-id": "5be4c609-9afa-4ea0-910b-12ffb71e3821",
             "begin": "2003",
-            "attribute-values": {},
-            "type": "member of band",
-            "target-credit": "",
-            "end": "2004",
-            "source-credit": "",
-            "ended": true,
-            "attributes": [
-              "drums (drum set)",
-              "original"
-            ],
-            "artist": {
-              "id": "32bc1ac7-efd0-44f2-8645-8fecf6a40edb",
-              "country": "US",
-              "type-id": "b6e035f4-3ce9-331c-97df-83397230b0df",
-              "name": "Jake A. McCoy",
-              "sort-name": "McCoy, Jake A.",
-              "type": "Person",
-              "disambiguation": ""
-            },
-            "target-type": "artist",
-            "attribute-ids": {
-              "drums (drum set)": "12092505-6ee1-46af-a15a-b5b468b6b155",
-              "original": "4fd3b255-a7d7-4424-9a63-40fa543b601c"
-            }
-          },
-          {
-            "ended": true,
-            "source-credit": "",
-            "end": "2004",
-            "target-type": "artist",
-            "artist": {
-              "country": "US",
-              "id": "8b0a17a4-fb29-49b4-82e2-2e50e0be50fd",
-              "name": "D-Rob Robinson",
-              "type-id": "b6e035f4-3ce9-331c-97df-83397230b0df",
-              "sort-name": "Robinson, D-Rob",
-              "type": "Person",
-              "disambiguation": "The Four B's"
-            },
-            "attributes": [
-              "lead vocals",
-              "original"
-            ],
-            "attribute-ids": {
-              "original": "4fd3b255-a7d7-4424-9a63-40fa543b601c",
-              "lead vocals": "8e2a3255-87c2-4809-a174-98cb3704f1a5"
-            },
-            "direction": "backward",
-            "attribute-credits": {},
-            "type-id": "5be4c609-9afa-4ea0-910b-12ffb71e3821",
-            "begin": "2003",
-            "attribute-values": {},
-            "target-credit": "",
-            "type": "member of band"
-          },
-          {
-            "begin": "2003",
-            "attribute-values": {},
-            "target-credit": "",
-            "type": "member of band",
-            "attribute-credits": {},
-            "direction": "backward",
-            "type-id": "5be4c609-9afa-4ea0-910b-12ffb71e3821",
-            "attribute-ids": {
-              "background vocals": "75052401-7340-4e5b-a71d-ea024a128849",
-              "original": "4fd3b255-a7d7-4424-9a63-40fa543b601c"
-            },
-            "end": "2004",
-            "source-credit": "",
-            "ended": true,
-            "artist": {
-              "sort-name": "Robinson, D-Rob",
-              "type": "Person",
-              "disambiguation": "The Four B's",
-              "id": "8b0a17a4-fb29-49b4-82e2-2e50e0be50fd",
-              "country": "US",
-              "type-id": "b6e035f4-3ce9-331c-97df-83397230b0df",
-              "name": "D-Rob Robinson"
-            },
-            "attributes": [
-              "background vocals",
-              "original"
-            ],
-            "target-type": "artist"
-          },
-          {
             "attribute-ids": {
               "electric guitar": "7ee8ebf5-3aed-4fc8-8004-49f4a8c45a87",
               "original": "4fd3b255-a7d7-4424-9a63-40fa543b601c"
             },
-            "attributes": [
-              "electric guitar",
-              "original"
-            ],
             "artist": {
-              "name": "D-Rob Robinson",
+              "id": "94a0d47c-5c34-4552-838d-c006b2a0d83b",
               "type-id": "b6e035f4-3ce9-331c-97df-83397230b0df",
-              "country": "US",
-              "id": "8b0a17a4-fb29-49b4-82e2-2e50e0be50fd",
-              "disambiguation": "The Four B's",
               "type": "Person",
-              "sort-name": "Robinson, D-Rob"
+              "sort-name": "Hayes, David",
+              "disambiguation": "Vinny Bobarino",
+              "country": "US",
+              "name": "David Hayes"
             },
             "target-type": "artist",
+            "ended": true,
             "end": "2004",
             "source-credit": "",
-            "ended": true,
-            "type": "member of band",
             "target-credit": "",
-            "attribute-values": {},
-            "begin": "2003",
-            "type-id": "5be4c609-9afa-4ea0-910b-12ffb71e3821",
             "attribute-credits": {},
-            "direction": "backward"
+            "direction": "backward",
+            "type-id": "5be4c609-9afa-4ea0-910b-12ffb71e3821",
+            "type": "member of band",
+            "attribute-values": {}
           },
           {
+            "target-credit": "",
+            "attribute-credits": {},
+            "direction": "backward",
+            "type-id": "5be4c609-9afa-4ea0-910b-12ffb71e3821",
+            "type": "member of band",
+            "attribute-values": {},
+            "attributes": [
+              "drums (drum set)",
+              "original"
+            ],
+            "begin": "2003",
             "attribute-ids": {
+              "drums (drum set)": "12092505-6ee1-46af-a15a-b5b468b6b155",
+              "original": "4fd3b255-a7d7-4424-9a63-40fa543b601c"
+            },
+            "artist": {
+              "country": "US",
+              "disambiguation": "",
+              "name": "Jake A. McCoy",
+              "sort-name": "McCoy, Jake A.",
+              "id": "32bc1ac7-efd0-44f2-8645-8fecf6a40edb",
+              "type-id": "b6e035f4-3ce9-331c-97df-83397230b0df",
+              "type": "Person"
+            },
+            "target-type": "artist",
+            "ended": true,
+            "end": "2004",
+            "source-credit": ""
+          },
+          {
+            "target-credit": "",
+            "attribute-credits": {},
+            "direction": "backward",
+            "type-id": "5be4c609-9afa-4ea0-910b-12ffb71e3821",
+            "type": "member of band",
+            "attribute-values": {},
+            "attributes": [
+              "lead vocals",
+              "original"
+            ],
+            "begin": "2003",
+            "artist": {
+              "sort-name": "Robinson, D-Rob",
+              "name": "D-Rob Robinson",
+              "disambiguation": "The Four B's",
+              "country": "US",
+              "type": "Person",
+              "type-id": "b6e035f4-3ce9-331c-97df-83397230b0df",
+              "id": "8b0a17a4-fb29-49b4-82e2-2e50e0be50fd"
+            },
+            "attribute-ids": {
+              "original": "4fd3b255-a7d7-4424-9a63-40fa543b601c",
               "lead vocals": "8e2a3255-87c2-4809-a174-98cb3704f1a5"
             },
             "target-type": "artist",
-            "artist": {
-              "id": "46f21c9b-f452-48a7-8472-cf39e13f0e6f",
-              "country": null,
-              "name": "Keith Galvin",
-              "type-id": "b6e035f4-3ce9-331c-97df-83397230b0df",
-              "sort-name": "Galvin, Keith",
-              "type": "Person",
-              "disambiguation": ""
-            },
-            "attributes": [
-              "lead vocals"
-            ],
             "ended": true,
             "end": "2004",
+            "source-credit": ""
+          },
+          {
+            "end": "2004",
             "source-credit": "",
-            "target-credit": "",
+            "attributes": [
+              "background vocals",
+              "original"
+            ],
+            "begin": "2003",
+            "attribute-ids": {
+              "background vocals": "75052401-7340-4e5b-a71d-ea024a128849",
+              "original": "4fd3b255-a7d7-4424-9a63-40fa543b601c"
+            },
+            "artist": {
+              "type": "Person",
+              "type-id": "b6e035f4-3ce9-331c-97df-83397230b0df",
+              "id": "8b0a17a4-fb29-49b4-82e2-2e50e0be50fd",
+              "sort-name": "Robinson, D-Rob",
+              "name": "D-Rob Robinson",
+              "country": "US",
+              "disambiguation": "The Four B's"
+            },
+            "ended": true,
+            "target-type": "artist",
+            "direction": "backward",
+            "type-id": "5be4c609-9afa-4ea0-910b-12ffb71e3821",
             "type": "member of band",
             "attribute-values": {},
-            "begin": "2004",
-            "type-id": "5be4c609-9afa-4ea0-910b-12ffb71e3821",
-            "direction": "backward",
+            "target-credit": "",
             "attribute-credits": {}
           },
           {
-            "attribute-ids": {
-              "background vocals": "75052401-7340-4e5b-a71d-ea024a128849"
-            },
-            "ended": true,
+            "attribute-values": {},
+            "type": "member of band",
+            "type-id": "5be4c609-9afa-4ea0-910b-12ffb71e3821",
+            "direction": "backward",
+            "attribute-credits": {},
+            "target-credit": "",
             "source-credit": "",
             "end": "2004",
             "target-type": "artist",
+            "ended": true,
             "artist": {
-              "id": "46f21c9b-f452-48a7-8472-cf39e13f0e6f",
+              "country": "US",
+              "disambiguation": "The Four B's",
+              "name": "D-Rob Robinson",
+              "sort-name": "Robinson, D-Rob",
+              "type-id": "b6e035f4-3ce9-331c-97df-83397230b0df",
+              "id": "8b0a17a4-fb29-49b4-82e2-2e50e0be50fd",
+              "type": "Person"
+            },
+            "attribute-ids": {
+              "original": "4fd3b255-a7d7-4424-9a63-40fa543b601c",
+              "electric guitar": "7ee8ebf5-3aed-4fc8-8004-49f4a8c45a87"
+            },
+            "begin": "2003",
+            "attributes": [
+              "electric guitar",
+              "original"
+            ]
+          },
+          {
+            "attribute-credits": {},
+            "target-credit": "",
+            "type": "member of band",
+            "attribute-values": {},
+            "type-id": "5be4c609-9afa-4ea0-910b-12ffb71e3821",
+            "direction": "backward",
+            "target-type": "artist",
+            "ended": true,
+            "attribute-ids": {
+              "lead vocals": "8e2a3255-87c2-4809-a174-98cb3704f1a5"
+            },
+            "artist": {
+              "sort-name": "Galvin, Keith",
+              "disambiguation": "",
               "country": null,
               "name": "Keith Galvin",
               "type-id": "b6e035f4-3ce9-331c-97df-83397230b0df",
-              "sort-name": "Galvin, Keith",
-              "disambiguation": "",
+              "id": "46f21c9b-f452-48a7-8472-cf39e13f0e6f",
               "type": "Person"
             },
+            "begin": "2004",
+            "attributes": [
+              "lead vocals"
+            ],
+            "source-credit": "",
+            "end": "2004"
+          },
+          {
+            "source-credit": "",
+            "end": "2004",
+            "ended": true,
+            "target-type": "artist",
+            "attribute-ids": {
+              "background vocals": "75052401-7340-4e5b-a71d-ea024a128849"
+            },
+            "artist": {
+              "id": "46f21c9b-f452-48a7-8472-cf39e13f0e6f",
+              "type-id": "b6e035f4-3ce9-331c-97df-83397230b0df",
+              "type": "Person",
+              "sort-name": "Galvin, Keith",
+              "country": null,
+              "disambiguation": "",
+              "name": "Keith Galvin"
+            },
+            "begin": "2004",
             "attributes": [
               "background vocals"
             ],
             "attribute-values": {},
-            "begin": "2004",
-            "target-credit": "",
             "type": "member of band",
+            "type-id": "5be4c609-9afa-4ea0-910b-12ffb71e3821",
             "direction": "backward",
             "attribute-credits": {},
-            "type-id": "5be4c609-9afa-4ea0-910b-12ffb71e3821"
+            "target-credit": ""
           },
           {
-            "attribute-credits": {},
-            "direction": "backward",
-            "type-id": "5be4c609-9afa-4ea0-910b-12ffb71e3821",
-            "attribute-values": {},
-            "begin": "2004",
-            "target-credit": "",
-            "type": "member of band",
             "end": "2004",
             "source-credit": "",
-            "ended": true,
-            "artist": {
-              "id": "46f21c9b-f452-48a7-8472-cf39e13f0e6f",
-              "country": null,
-              "type-id": "b6e035f4-3ce9-331c-97df-83397230b0df",
-              "name": "Keith Galvin",
-              "sort-name": "Galvin, Keith",
-              "disambiguation": "",
-              "type": "Person"
-            },
+            "begin": "2004",
             "attributes": [
               "electric bass guitar"
             ],
             "target-type": "artist",
+            "ended": true,
             "attribute-ids": {
               "electric bass guitar": "0b9d87fa-93fa-4956-8b6a-a419566cc915"
-            }
+            },
+            "artist": {
+              "type": "Person",
+              "id": "46f21c9b-f452-48a7-8472-cf39e13f0e6f",
+              "type-id": "b6e035f4-3ce9-331c-97df-83397230b0df",
+              "sort-name": "Galvin, Keith",
+              "name": "Keith Galvin",
+              "country": null,
+              "disambiguation": ""
+            },
+            "direction": "backward",
+            "attribute-values": {},
+            "type": "member of band",
+            "type-id": "5be4c609-9afa-4ea0-910b-12ffb71e3821",
+            "target-credit": "",
+            "attribute-credits": {}
           }
-        ]
+        ],
+        "sort-name": "Millstone",
+        "isnis": [],
+        "type": "Group",
+        "type-id": "e431f5f6-b5d2-343d-8b36-72607fffb74b",
+        "life-span": {
+          "begin": "2003",
+          "end": "2004",
+          "ended": true
+        },
+        "disambiguation": "New Hampshire",
+        "country": "US",
+        "gender-id": null,
+        "begin-area": null
       },
       "subgroups": {}
     }

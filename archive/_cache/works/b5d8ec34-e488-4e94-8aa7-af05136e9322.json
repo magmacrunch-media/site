@@ -1,427 +1,427 @@
 {
-  "fetchedAt": "2026-11-05T04:11:42.386Z",
+  "fetchedAt": "2026-11-21T07:53:47.456Z",
   "entityType": "work",
   "uuid": "b5d8ec34-e488-4e94-8aa7-af05136e9322",
   "name": "pay2play",
   "data": {
-    "type": "Song",
-    "title": "pay2play",
-    "attributes": [],
     "languages": [
       "eng"
     ],
-    "id": "b5d8ec34-e488-4e94-8aa7-af05136e9322",
+    "type": "Song",
+    "type-id": "f061270a-2fd6-32f1-a641-f0f8676d14e6",
     "relations": [
       {
-        "attribute-ids": {},
-        "target-type": "artist",
-        "type-id": "d59d99ea-23d4-4a80-b066-edca32ee158f",
-        "attribute-values": {},
-        "source-credit": "",
-        "direction": "backward",
-        "artist": {
-          "type": "Person",
-          "sort-name": "Grey, Ellis",
-          "id": "aa5ccc77-a82e-465e-a9d5-79cf4098a926",
-          "country": "US",
-          "name": "Ellis Grey",
-          "disambiguation": "",
-          "type-id": "b6e035f4-3ce9-331c-97df-83397230b0df"
-        },
-        "begin": "2024-11",
         "ended": true,
-        "type": "composer",
-        "attributes": [],
-        "end": "2024-12",
-        "target-credit": ""
-      },
-      {
-        "attribute-ids": {},
-        "target-type": "artist",
-        "attribute-values": {},
-        "type-id": "3e48faba-ec01-47fd-8e89-30e81161661c",
-        "type": "lyricist",
-        "attributes": [],
-        "end": "2024-12",
-        "target-credit": "",
         "source-credit": "",
-        "direction": "backward",
-        "begin": "2024-11",
         "artist": {
           "sort-name": "Grey, Ellis",
-          "type": "Person",
           "id": "aa5ccc77-a82e-465e-a9d5-79cf4098a926",
-          "name": "Ellis Grey",
+          "disambiguation": "",
           "country": "US",
           "type-id": "b6e035f4-3ce9-331c-97df-83397230b0df",
+          "name": "Ellis Grey",
+          "type": "Person"
+        },
+        "end": "2024-12",
+        "target-type": "artist",
+        "begin": "2024-11",
+        "direction": "backward",
+        "type": "composer",
+        "attribute-values": {},
+        "type-id": "d59d99ea-23d4-4a80-b066-edca32ee158f",
+        "attribute-ids": {},
+        "target-credit": "",
+        "attributes": []
+      },
+      {
+        "attribute-values": {},
+        "type": "lyricist",
+        "begin": "2024-11",
+        "direction": "backward",
+        "target-type": "artist",
+        "attributes": [],
+        "target-credit": "",
+        "attribute-ids": {},
+        "type-id": "3e48faba-ec01-47fd-8e89-30e81161661c",
+        "end": "2024-12",
+        "artist": {
+          "country": "US",
+          "type-id": "b6e035f4-3ce9-331c-97df-83397230b0df",
+          "type": "Person",
+          "name": "Ellis Grey",
+          "sort-name": "Grey, Ellis",
+          "id": "aa5ccc77-a82e-465e-a9d5-79cf4098a926",
           "disambiguation": ""
         },
+        "source-credit": "",
         "ended": true
       },
       {
-        "type-id": "a442b140-830b-30b0-a4aa-2e36f098b6aa",
-        "attribute-values": {},
-        "target-type": "artist",
-        "attribute-ids": {},
-        "ended": false,
-        "begin": null,
+        "end": null,
         "artist": {
           "id": "260e4953-a937-4355-8389-d1baaf24eca5",
-          "type": "Group",
           "sort-name": "Sex Van Floor Plan",
           "disambiguation": "",
           "type-id": "e431f5f6-b5d2-343d-8b36-72607fffb74b",
           "country": "US",
-          "name": "Sex Van Floor Plan"
+          "name": "Sex Van Floor Plan",
+          "type": "Group"
         },
-        "direction": "backward",
         "source-credit": "",
-        "target-credit": "",
-        "end": null,
+        "ended": false,
+        "attribute-values": {},
+        "type": "publishing",
+        "begin": null,
+        "direction": "backward",
+        "target-type": "artist",
         "attributes": [],
-        "type": "publishing"
+        "target-credit": "",
+        "attribute-ids": {},
+        "type-id": "a442b140-830b-30b0-a4aa-2e36f098b6aa"
       },
       {
+        "source-credit": "",
+        "ended": true,
+        "direction": "backward",
+        "begin": "2025-07",
         "attribute-values": {},
-        "type-id": "a3005666-a872-32c3-ad06-98af558e99b0",
-        "target-type": "recording",
-        "attribute-ids": {
-          "demo": "47bfd345-2acc-444b-ae3b-82781c7c40ca"
-        },
         "recording": {
           "video": false,
+          "disambiguation": "",
           "title": "pay2play",
           "id": "7f496b0d-d52e-441d-afea-af07d8a90ff1",
-          "disambiguation": "",
           "length": 92000
         },
-        "ended": true,
-        "begin": "2025-07",
-        "direction": "backward",
-        "source-credit": "",
-        "target-credit": "",
-        "end": "2025-07",
+        "type-id": "a3005666-a872-32c3-ad06-98af558e99b0",
         "attributes": [
           "demo"
         ],
-        "type": "performance"
+        "end": "2025-07",
+        "target-type": "recording",
+        "type": "performance",
+        "target-credit": "",
+        "attribute-ids": {
+          "demo": "47bfd345-2acc-444b-ae3b-82781c7c40ca"
+        }
       },
       {
+        "target-type": "recording",
+        "type": "performance",
+        "target-credit": "",
+        "attribute-ids": {},
+        "end": "2026",
+        "direction": "backward",
+        "begin": "2026",
         "attribute-values": {},
-        "type-id": "a3005666-a872-32c3-ad06-98af558e99b0",
         "recording": {
           "id": "f681bd3a-f123-4d19-a99c-02d4527af56e",
-          "disambiguation": "",
           "length": 88000,
           "video": false,
+          "disambiguation": "",
           "title": "pay2play"
         },
-        "attribute-ids": {},
-        "target-type": "recording",
+        "type-id": "a3005666-a872-32c3-ad06-98af558e99b0",
         "attributes": [],
-        "end": "2026",
-        "target-credit": "",
-        "type": "performance",
-        "begin": "2026",
-        "ended": true,
         "source-credit": "",
-        "direction": "backward"
+        "ended": true
       }
     ],
-    "aliases": [],
+    "attributes": [],
+    "title": "pay2play",
     "language": "eng",
-    "iswcs": [],
+    "disambiguation": "",
+    "aliases": [],
     "tags": [
       {
         "name": "riot grrrl",
         "count": 1
       }
     ],
-    "type-id": "f061270a-2fd6-32f1-a641-f0f8676d14e6",
-    "disambiguation": ""
+    "id": "b5d8ec34-e488-4e94-8aa7-af05136e9322",
+    "iswcs": []
   },
   "recordings": {
     "7f496b0d-d52e-441d-afea-af07d8a90ff1": {
-      "relations": [
-        {
-          "type": "recorded at",
-          "end": "2025-07-16",
-          "attributes": [],
-          "target-credit": "",
-          "attribute-ids": {},
-          "source-credit": "",
-          "target-type": "place",
-          "direction": "backward",
-          "begin": "2025-07-16",
-          "place": {
-            "address": "",
-            "name": "Irvin House",
-            "disambiguation": "",
-            "type-id": "05fa6a09-ff92-3d34-bdbb-5141d3c24f38",
-            "area": {
-              "name": "State College",
-              "disambiguation": "",
-              "type-id": "6fd8f29a-3d0a-32fc-980d-ea697b69da78",
-              "type": "City",
-              "sort-name": "State College",
-              "id": "b1ea26d4-2993-4edb-8a66-a0f58fe39496"
-            },
-            "type": "Studio",
-            "coordinates": null,
-            "id": "26cbb244-48c7-49e5-863c-5dde5388dde1"
-          },
-          "attribute-values": {},
-          "type-id": "ad462279-14b0-4180-9b58-571d0eef7c51",
-          "ended": true
-        }
-      ],
-      "disambiguation": "",
       "releases": [
         {
-          "status-id": "4e304316-386d-3409-af2e-78857eec5cfe",
           "packaging-id": null,
-          "packaging": null,
+          "date": "2025-07-18",
           "title": "pay2play",
-          "barcode": "057829025783",
-          "disambiguation": "",
-          "country": "XW",
+          "packaging": null,
+          "id": "b2d580ea-a056-499a-ae5f-ae3d5e54fede",
+          "release-events": [
+            {
+              "date": "2025-07-18",
+              "area": {
+                "disambiguation": "",
+                "sort-name": "[Worldwide]",
+                "type-id": null,
+                "name": "[Worldwide]",
+                "id": "525d4e18-3d00-31b9-a58b-a146a916de8f",
+                "type": null,
+                "iso-3166-1-codes": [
+                  "XW"
+                ]
+              }
+            }
+          ],
           "quality": "normal",
           "text-representation": {
             "language": "eng",
             "script": null
           },
-          "id": "b2d580ea-a056-499a-ae5f-ae3d5e54fede",
           "status": "Official",
-          "date": "2025-07-18",
-          "release-events": [
-            {
-              "area": {
-                "type": null,
-                "sort-name": "[Worldwide]",
-                "id": "525d4e18-3d00-31b9-a58b-a146a916de8f",
-                "name": "[Worldwide]",
-                "type-id": null,
-                "iso-3166-1-codes": [
-                  "XW"
-                ],
-                "disambiguation": ""
-              },
-              "date": "2025-07-18"
-            }
-          ]
+          "country": "XW",
+          "barcode": "057829025783",
+          "disambiguation": "",
+          "status-id": "4e304316-386d-3409-af2e-78857eec5cfe"
         },
         {
-          "title": "pay2play",
           "status-id": "4e304316-386d-3409-af2e-78857eec5cfe",
-          "packaging-id": null,
-          "packaging": null,
-          "id": "c235b965-e1ff-448f-9487-2567e4eec9a9",
+          "disambiguation": "",
+          "barcode": "",
+          "country": "US",
           "status": "Official",
+          "quality": "normal",
           "text-representation": {
-            "script": null,
-            "language": "eng"
+            "language": "eng",
+            "script": null
           },
+          "title": "pay2play",
+          "id": "c235b965-e1ff-448f-9487-2567e4eec9a9",
           "release-events": [
             {
               "area": {
                 "sort-name": "United States",
-                "type": null,
+                "type-id": null,
                 "id": "489ce91b-6658-3307-9877-795b68554c98",
                 "name": "United States",
                 "iso-3166-1-codes": [
                   "US"
                 ],
-                "type-id": null,
+                "type": null,
                 "disambiguation": ""
               },
               "date": "2025-07-19"
             }
           ],
-          "date": "2025-07-19",
-          "disambiguation": "",
-          "barcode": "",
-          "quality": "normal",
-          "country": "US"
+          "packaging": null,
+          "packaging-id": null,
+          "date": "2025-07-19"
         }
       ],
-      "first-release-date": "2025-07-18",
+      "disambiguation": "",
+      "video": false,
+      "title": "pay2play",
       "length": 92000,
       "id": "7f496b0d-d52e-441d-afea-af07d8a90ff1",
-      "video": false,
-      "title": "pay2play"
+      "first-release-date": "2025-07-18",
+      "relations": [
+        {
+          "place": {
+            "type-id": "05fa6a09-ff92-3d34-bdbb-5141d3c24f38",
+            "name": "Irvin House",
+            "id": "26cbb244-48c7-49e5-863c-5dde5388dde1",
+            "coordinates": null,
+            "type": "Studio",
+            "address": "",
+            "area": {
+              "type": "City",
+              "name": "State College",
+              "id": "b1ea26d4-2993-4edb-8a66-a0f58fe39496",
+              "sort-name": "State College",
+              "type-id": "6fd8f29a-3d0a-32fc-980d-ea697b69da78",
+              "disambiguation": ""
+            },
+            "disambiguation": ""
+          },
+          "attributes": [],
+          "begin": "2025-07-16",
+          "attribute-values": {},
+          "source-credit": "",
+          "target-credit": "",
+          "ended": true,
+          "type": "recorded at",
+          "target-type": "place",
+          "end": "2025-07-16",
+          "type-id": "ad462279-14b0-4180-9b58-571d0eef7c51",
+          "attribute-ids": {},
+          "direction": "backward"
+        }
+      ]
     },
     "f681bd3a-f123-4d19-a99c-02d4527af56e": {
+      "length": 88000,
+      "video": false,
       "disambiguation": "",
+      "id": "f681bd3a-f123-4d19-a99c-02d4527af56e",
       "releases": [
         {
-          "date": "2026-06-26",
-          "id": "d5e8fd0c-34e3-44f1-8880-35e7c86dc2d4",
-          "quality": "normal",
-          "packaging-id": null,
-          "status-id": "4e304316-386d-3409-af2e-78857eec5cfe",
-          "barcode": "",
-          "disambiguation": "",
-          "status": "Official",
-          "text-representation": {
-            "language": "eng",
-            "script": null
-          },
-          "title": "Sex Van Floor Plan",
           "release-events": [
             {
               "area": {
-                "name": "United States",
-                "id": "489ce91b-6658-3307-9877-795b68554c98",
-                "disambiguation": "",
-                "type-id": null,
                 "iso-3166-1-codes": [
                   "US"
                 ],
+                "type": null,
+                "name": "United States",
+                "type-id": null,
+                "disambiguation": "",
                 "sort-name": "United States",
-                "type": null
+                "id": "489ce91b-6658-3307-9877-795b68554c98"
               },
               "date": "2026-06-26"
             }
           ],
+          "date": "2026-06-26",
+          "id": "d5e8fd0c-34e3-44f1-8880-35e7c86dc2d4",
+          "packaging": null,
+          "packaging-id": null,
+          "barcode": "",
+          "status": "Official",
+          "title": "Sex Van Floor Plan",
+          "quality": "normal",
+          "disambiguation": "",
           "country": "US",
+          "text-representation": {
+            "language": "eng",
+            "script": null
+          },
+          "status-id": "4e304316-386d-3409-af2e-78857eec5cfe"
+        },
+        {
+          "status-id": "4e304316-386d-3409-af2e-78857eec5cfe",
+          "quality": "normal",
+          "disambiguation": "",
+          "country": "XW",
+          "text-representation": {
+            "language": "eng",
+            "script": null
+          },
+          "packaging-id": null,
+          "barcode": "991048269965",
+          "status": "Official",
+          "title": "Sex Van Floor Plan",
+          "date": "2026-07-17",
+          "release-events": [
+            {
+              "area": {
+                "id": "525d4e18-3d00-31b9-a58b-a146a916de8f",
+                "disambiguation": "",
+                "sort-name": "[Worldwide]",
+                "type-id": null,
+                "name": "[Worldwide]",
+                "type": null,
+                "iso-3166-1-codes": [
+                  "XW"
+                ]
+              },
+              "date": "2026-07-17"
+            }
+          ],
+          "id": "f60bb928-58f0-4779-bd86-28d57484a6d6",
           "packaging": null
         },
         {
-          "date": "2026-07-17",
-          "id": "f60bb928-58f0-4779-bd86-28d57484a6d6",
-          "quality": "normal",
-          "packaging-id": null,
+          "title": "Benefit Compilation for the LGBT Center of Great Reading",
           "status": "Official",
-          "status-id": "4e304316-386d-3409-af2e-78857eec5cfe",
-          "barcode": "991048269965",
-          "disambiguation": "",
-          "text-representation": {
-            "language": "eng",
-            "script": null
-          },
-          "title": "Sex Van Floor Plan",
-          "country": "XW",
+          "barcode": null,
+          "packaging-id": null,
           "packaging": null,
+          "id": "9743d495-8aff-49b9-80b1-26c315ebd438",
+          "date": "2026-08-25",
           "release-events": [
             {
-              "date": "2026-07-17",
               "area": {
                 "name": "[Worldwide]",
+                "type-id": null,
                 "id": "525d4e18-3d00-31b9-a58b-a146a916de8f",
                 "disambiguation": "",
-                "type-id": null,
+                "sort-name": "[Worldwide]",
                 "iso-3166-1-codes": [
                   "XW"
                 ],
-                "sort-name": "[Worldwide]",
                 "type": null
-              }
-            }
-          ]
-        },
-        {
-          "title": "Benefit Compilation for the LGBT Center of Great Reading",
-          "release-events": [
-            {
-              "date": "2026-08-25",
-              "area": {
-                "sort-name": "[Worldwide]",
-                "iso-3166-1-codes": [
-                  "XW"
-                ],
-                "type": null,
-                "disambiguation": "",
-                "type-id": null,
-                "name": "[Worldwide]",
-                "id": "525d4e18-3d00-31b9-a58b-a146a916de8f"
-              }
+              },
+              "date": "2026-08-25"
             }
           ],
-          "country": "XW",
-          "packaging": null,
+          "status-id": "4e304316-386d-3409-af2e-78857eec5cfe",
           "text-representation": {
             "language": "eng",
             "script": null
           },
-          "packaging-id": null,
-          "status-id": "4e304316-386d-3409-af2e-78857eec5cfe",
-          "barcode": null,
-          "disambiguation": "",
-          "status": "Official",
-          "date": "2026-08-25",
-          "id": "9743d495-8aff-49b9-80b1-26c315ebd438",
-          "quality": "normal"
+          "country": "XW",
+          "quality": "normal",
+          "disambiguation": ""
         }
       ],
-      "length": 88000,
+      "first-release-date": "2026-06-26",
       "relations": [
         {
+          "end": "2026",
+          "attribute-values": {},
+          "type-id": "11d74801-1493-4a5d-bc0f-4ddc537acddb",
+          "attribute-ids": {},
+          "direction": "backward",
+          "attributes": [],
           "place": {
             "coordinates": null,
+            "type": null,
             "area": {
-              "id": "b1ea26d4-2993-4edb-8a66-a0f58fe39496",
-              "name": "State College",
-              "type-id": "6fd8f29a-3d0a-32fc-980d-ea697b69da78",
               "disambiguation": "",
               "type": "City",
-              "sort-name": "State College"
+              "id": "b1ea26d4-2993-4edb-8a66-a0f58fe39496",
+              "sort-name": "State College",
+              "type-id": "6fd8f29a-3d0a-32fc-980d-ea697b69da78",
+              "name": "State College"
             },
-            "disambiguation": "",
-            "type-id": null,
+            "name": "The Slop House",
             "address": "",
             "id": "bc25ba1c-77e3-4288-b33f-dbf821c4625a",
-            "name": "The Slop House",
-            "type": null
-          },
-          "type": "mixed at",
-          "type-id": "11d74801-1493-4a5d-bc0f-4ddc537acddb",
-          "source-credit": "",
-          "ended": true,
-          "begin": "2026",
-          "attribute-values": {},
-          "target-type": "place",
-          "attributes": [],
-          "attribute-ids": {},
-          "end": "2026",
-          "direction": "backward",
-          "target-credit": ""
-        },
-        {
-          "type-id": "ad462279-14b0-4180-9b58-571d0eef7c51",
-          "source-credit": "",
-          "place": {
-            "type-id": "05fa6a09-ff92-3d34-bdbb-5141d3c24f38",
-            "address": "",
-            "id": "26cbb244-48c7-49e5-863c-5dde5388dde1",
-            "name": "Irvin House",
-            "type": "Studio",
-            "coordinates": null,
             "disambiguation": "",
-            "area": {
-              "sort-name": "State College",
-              "type": "City",
-              "name": "State College",
-              "id": "b1ea26d4-2993-4edb-8a66-a0f58fe39496",
-              "disambiguation": "",
-              "type-id": "6fd8f29a-3d0a-32fc-980d-ea697b69da78"
-            }
+            "type-id": null
           },
-          "type": "recorded at",
-          "direction": "backward",
           "target-credit": "",
           "ended": true,
+          "source-credit": "",
           "begin": "2026",
-          "attribute-values": {},
           "target-type": "place",
-          "attributes": [],
+          "type": "mixed at"
+        },
+        {
+          "place": {
+            "area": {
+              "name": "State College",
+              "type-id": "6fd8f29a-3d0a-32fc-980d-ea697b69da78",
+              "type": "City",
+              "disambiguation": "",
+              "id": "b1ea26d4-2993-4edb-8a66-a0f58fe39496",
+              "sort-name": "State College"
+            },
+            "type": "Studio",
+            "coordinates": null,
+            "type-id": "05fa6a09-ff92-3d34-bdbb-5141d3c24f38",
+            "disambiguation": "",
+            "id": "26cbb244-48c7-49e5-863c-5dde5388dde1",
+            "address": "",
+            "name": "Irvin House"
+          },
+          "target-credit": "",
+          "ended": true,
+          "source-credit": "",
+          "begin": "2026",
+          "target-type": "place",
+          "type": "recorded at",
+          "end": "2026",
+          "attribute-values": {},
+          "type-id": "ad462279-14b0-4180-9b58-571d0eef7c51",
           "attribute-ids": {},
-          "end": "2026"
+          "direction": "backward",
+          "attributes": []
         }
       ],
-      "title": "pay2play",
-      "video": false,
-      "id": "f681bd3a-f123-4d19-a99c-02d4527af56e",
-      "first-release-date": "2026-06-26"
+      "title": "pay2play"
     }
   }
 }

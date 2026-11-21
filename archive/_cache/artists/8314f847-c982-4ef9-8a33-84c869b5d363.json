@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-11-21T05:50:15.183Z",
+  "fetchedAt": "2026-11-21T07:06:55.569Z",
   "entityType": "artist",
   "uuid": "8314f847-c982-4ef9-8a33-84c869b5d363",
   "name": "Alien Hunting",
@@ -24,306 +24,318 @@
       "list": {
         "recordings": [
           {
-            "title": "Jam",
+            "id": "47542963-4e65-43fb-ae43-5090cab0ec36",
             "disambiguation": "",
             "video": false,
             "length": 350000,
-            "id": "47542963-4e65-43fb-ae43-5090cab0ec36"
+            "title": "Jam"
           },
           {
-            "id": "93986470-0a12-4fd9-b7d9-41d60e8fc121",
+            "title": "jam 4-14-13",
             "length": 439000,
             "video": false,
             "disambiguation": "",
-            "title": "jam 4-14-13"
+            "id": "93986470-0a12-4fd9-b7d9-41d60e8fc121"
           },
           {
-            "length": 279000,
+            "video": false,
+            "disambiguation": "",
             "id": "c21f8e05-ff9d-4aeb-a101-eb0e787336e2",
             "title": "Leche",
-            "disambiguation": "",
-            "video": false
+            "length": 279000
           },
           {
-            "disambiguation": "",
-            "video": false,
             "title": "Education",
             "length": 136000,
+            "disambiguation": "",
+            "video": false,
             "id": "d20ce24b-532a-4e95-8bc4-b898525974f5"
           }
         ]
       },
       "details": {
         "47542963-4e65-43fb-ae43-5090cab0ec36": {
-          "relations": [],
-          "aliases": [],
-          "id": "47542963-4e65-43fb-ae43-5090cab0ec36",
-          "isrcs": [],
+          "video": false,
           "title": "Jam",
+          "length": 350000,
+          "releases": [],
+          "id": "47542963-4e65-43fb-ae43-5090cab0ec36",
+          "relations": [
+            {
+              "target-type": "url",
+              "url": {
+                "resource": "https://www.youtube.com/watch?v=E5xtvoOT5n4",
+                "id": "35185e0b-4a4d-4580-906b-e934324fca87"
+              },
+              "source-credit": "",
+              "attribute-values": {},
+              "direction": "forward",
+              "attributes": [],
+              "target-credit": "",
+              "ended": false,
+              "end": null,
+              "attribute-ids": {},
+              "type-id": "7e41ef12-a124-4324-afdb-fdbae687a89c",
+              "type": "free streaming",
+              "begin": null
+            }
+          ],
           "artist-credit": [
             {
               "artist": {
-                "country": "US",
-                "type": "Group",
-                "tags": [],
-                "sort-name": "Alien Hunting",
-                "aliases": [],
-                "id": "8314f847-c982-4ef9-8a33-84c869b5d363",
                 "type-id": "e431f5f6-b5d2-343d-8b36-72607fffb74b",
-                "name": "Alien Hunting",
-                "disambiguation": ""
+                "disambiguation": "",
+                "aliases": [],
+                "sort-name": "Alien Hunting",
+                "tags": [],
+                "type": "Group",
+                "id": "8314f847-c982-4ef9-8a33-84c869b5d363",
+                "country": "US",
+                "name": "Alien Hunting"
               },
               "joinphrase": "",
               "name": "Alien Hunting"
             }
           ],
           "tags": [],
-          "releases": [],
           "disambiguation": "",
-          "video": false,
-          "length": 350000
+          "aliases": [],
+          "isrcs": []
         },
         "93986470-0a12-4fd9-b7d9-41d60e8fc121": {
-          "isrcs": [],
           "artist-credit": [
             {
-              "name": "Alien Hunting",
-              "joinphrase": "",
               "artist": {
-                "sort-name": "Alien Hunting",
-                "type": "Group",
+                "aliases": [],
                 "disambiguation": "",
+                "id": "8314f847-c982-4ef9-8a33-84c869b5d363",
                 "tags": [],
-                "aliases": [],
-                "id": "8314f847-c982-4ef9-8a33-84c869b5d363",
-                "country": "US",
-                "type-id": "e431f5f6-b5d2-343d-8b36-72607fffb74b",
-                "name": "Alien Hunting"
-              }
-            }
-          ],
-          "aliases": [],
-          "length": 439000,
-          "title": "jam 4-14-13",
-          "tags": [],
-          "video": false,
-          "id": "93986470-0a12-4fd9-b7d9-41d60e8fc121",
-          "releases": [],
-          "disambiguation": "",
-          "relations": []
-        },
-        "c21f8e05-ff9d-4aeb-a101-eb0e787336e2": {
-          "video": false,
-          "length": 279000,
-          "releases": [],
-          "disambiguation": "",
-          "title": "Leche",
-          "artist-credit": [
-            {
-              "name": "Alien Hunting",
-              "joinphrase": "",
-              "artist": {
-                "name": "Alien Hunting",
-                "disambiguation": "",
-                "type-id": "e431f5f6-b5d2-343d-8b36-72607fffb74b",
                 "sort-name": "Alien Hunting",
-                "id": "8314f847-c982-4ef9-8a33-84c869b5d363",
-                "aliases": [],
+                "name": "Alien Hunting",
                 "type": "Group",
-                "country": "US",
-                "tags": []
-              }
+                "type-id": "e431f5f6-b5d2-343d-8b36-72607fffb74b",
+                "country": "US"
+              },
+              "joinphrase": "",
+              "name": "Alien Hunting"
             }
           ],
-          "tags": [],
           "relations": [
             {
+              "url": {
+                "id": "6257a600-594a-4b11-b91c-37e6d3abc060",
+                "resource": "https://www.youtube.com/watch?v=jvv-5NDYzt4"
+              },
+              "end": null,
+              "source-credit": "",
+              "ended": false,
+              "attributes": [],
+              "target-credit": "",
+              "attribute-ids": {},
+              "type-id": "7e41ef12-a124-4324-afdb-fdbae687a89c",
+              "attribute-values": {},
+              "type": "free streaming",
+              "begin": null,
               "direction": "forward",
+              "target-type": "url"
+            }
+          ],
+          "releases": [],
+          "tags": [],
+          "disambiguation": "",
+          "isrcs": [],
+          "length": 439000,
+          "id": "93986470-0a12-4fd9-b7d9-41d60e8fc121",
+          "aliases": [],
+          "video": false,
+          "title": "jam 4-14-13"
+        },
+        "c21f8e05-ff9d-4aeb-a101-eb0e787336e2": {
+          "artist-credit": [
+            {
+              "artist": {
+                "disambiguation": "",
+                "country": "US",
+                "name": "Alien Hunting",
+                "aliases": [],
+                "sort-name": "Alien Hunting",
+                "tags": [],
+                "type-id": "e431f5f6-b5d2-343d-8b36-72607fffb74b",
+                "id": "8314f847-c982-4ef9-8a33-84c869b5d363",
+                "type": "Group"
+              },
+              "name": "Alien Hunting",
+              "joinphrase": ""
+            }
+          ],
+          "relations": [
+            {
+              "target-credit": "",
+              "url": {
+                "resource": "https://www.youtube.com/watch?v=VsRtfqxWPS0",
+                "id": "f2f793b3-25e3-4b4c-9c52-dfdc9de5c28b"
+              },
+              "direction": "forward",
+              "attribute-values": {},
+              "type": "free streaming",
+              "type-id": "7e41ef12-a124-4324-afdb-fdbae687a89c",
+              "begin": null,
+              "attributes": [],
+              "ended": false,
+              "target-type": "url",
+              "attribute-ids": {},
+              "end": null,
+              "source-credit": ""
+            },
+            {
+              "target-credit": "",
+              "type-id": "a3005666-a872-32c3-ad06-98af558e99b0",
+              "attribute-values": {},
+              "type": "performance",
+              "direction": "forward",
+              "attribute-ids": {},
+              "ended": false,
+              "target-type": "work",
+              "attributes": [],
+              "begin": null,
               "work": {
-                "type": "Song",
-                "title": "Leche",
+                "disambiguation": "",
+                "attributes": [],
                 "language": "eng",
                 "id": "e928d622-04dd-4080-87b9-60bd3a66c369",
                 "type-id": "f061270a-2fd6-32f1-a641-f0f8676d14e6",
-                "attributes": [],
                 "iswcs": [],
-                "disambiguation": "",
+                "type": "Song",
+                "title": "Leche",
                 "languages": [
                   "eng"
                 ]
               },
-              "target-type": "work",
-              "end": null,
               "source-credit": "",
-              "attribute-values": {},
-              "type-id": "a3005666-a872-32c3-ad06-98af558e99b0",
-              "attribute-ids": {},
-              "ended": false,
-              "type": "performance",
-              "begin": null,
-              "target-credit": "",
-              "attributes": []
+              "end": null
             }
           ],
+          "tags": [],
           "id": "c21f8e05-ff9d-4aeb-a101-eb0e787336e2",
+          "title": "Leche",
+          "releases": [],
+          "disambiguation": "",
           "aliases": [],
-          "isrcs": []
+          "isrcs": [],
+          "length": 279000,
+          "video": false
         },
         "d20ce24b-532a-4e95-8bc4-b898525974f5": {
+          "relations": [
+            {
+              "begin": null,
+              "end": null,
+              "target-type": "url",
+              "target-credit": "",
+              "url": {
+                "resource": "https://www.youtube.com/watch?v=m-A2V4zRdDQ",
+                "id": "1b84a4b0-4191-4b6d-81f0-a0a53def2e4e"
+              },
+              "ended": false,
+              "attribute-values": {},
+              "attributes": [],
+              "type": "free streaming",
+              "attribute-ids": {},
+              "direction": "forward",
+              "type-id": "7e41ef12-a124-4324-afdb-fdbae687a89c",
+              "source-credit": ""
+            },
+            {
+              "work": {
+                "disambiguation": "",
+                "attributes": [],
+                "languages": [
+                  "zxx"
+                ],
+                "iswcs": [],
+                "title": "Education",
+                "type": "Song",
+                "language": "zxx",
+                "type-id": "f061270a-2fd6-32f1-a641-f0f8676d14e6",
+                "id": "7a8c9391-84ed-4423-b32d-2bb34a83e8f9"
+              },
+              "begin": null,
+              "target-credit": "",
+              "ended": false,
+              "target-type": "work",
+              "end": null,
+              "attributes": [],
+              "attribute-values": {},
+              "source-credit": "",
+              "type": "performance",
+              "type-id": "a3005666-a872-32c3-ad06-98af558e99b0",
+              "attribute-ids": {},
+              "direction": "forward"
+            }
+          ],
           "tags": [],
+          "aliases": [],
+          "length": 136000,
+          "disambiguation": "",
+          "isrcs": [],
           "id": "d20ce24b-532a-4e95-8bc4-b898525974f5",
+          "video": false,
           "title": "Education",
           "releases": [],
           "artist-credit": [
             {
-              "joinphrase": "",
-              "name": "Alien Hunting",
               "artist": {
-                "type": "Group",
-                "id": "8314f847-c982-4ef9-8a33-84c869b5d363",
-                "type-id": "e431f5f6-b5d2-343d-8b36-72607fffb74b",
-                "tags": [],
-                "aliases": [],
-                "name": "Alien Hunting",
-                "disambiguation": "",
                 "country": "US",
-                "sort-name": "Alien Hunting"
-              }
-            }
-          ],
-          "relations": [
-            {
-              "ended": false,
-              "target-type": "work",
-              "attribute-ids": {},
-              "begin": null,
-              "attributes": [],
-              "work": {
-                "title": "Education",
-                "languages": [
-                  "zxx"
-                ],
-                "language": "zxx",
-                "iswcs": [],
-                "type-id": "f061270a-2fd6-32f1-a641-f0f8676d14e6",
-                "id": "7a8c9391-84ed-4423-b32d-2bb34a83e8f9",
-                "type": "Song",
-                "attributes": [],
+                "type": "Group",
+                "aliases": [],
+                "type-id": "e431f5f6-b5d2-343d-8b36-72607fffb74b",
+                "sort-name": "Alien Hunting",
+                "tags": [],
+                "id": "8314f847-c982-4ef9-8a33-84c869b5d363",
+                "name": "Alien Hunting",
                 "disambiguation": ""
               },
-              "source-credit": "",
-              "end": null,
-              "target-credit": "",
-              "attribute-values": {},
-              "type": "performance",
-              "type-id": "a3005666-a872-32c3-ad06-98af558e99b0",
-              "direction": "forward"
+              "name": "Alien Hunting",
+              "joinphrase": ""
             }
-          ],
-          "video": false,
-          "disambiguation": "",
-          "aliases": [],
-          "isrcs": [],
-          "length": 136000
+          ]
         }
       }
     },
     "works": {
       "artistWorkRels": {
-        "ipis": [],
-        "life-span": {
-          "ended": true,
-          "begin": null,
-          "end": null
-        },
-        "begin-area": null,
-        "id": "8314f847-c982-4ef9-8a33-84c869b5d363",
         "disambiguation": "",
         "relations": [
           {
-            "attribute-ids": {},
-            "attributes": [],
-            "target-type": "work",
+            "direction": "forward",
+            "type-id": "a442b140-830b-30b0-a4aa-2e36f098b6aa",
+            "begin": null,
+            "attribute-values": {},
+            "target-credit": "",
+            "type": "publishing",
+            "source-credit": "",
+            "end": null,
             "work": {
-              "language": "zxx",
-              "id": "7a8c9391-84ed-4423-b32d-2bb34a83e8f9",
-              "title": "Education",
-              "attributes": [],
-              "type-id": "f061270a-2fd6-32f1-a641-f0f8676d14e6",
-              "disambiguation": "",
-              "type": "Song",
-              "iswcs": [],
               "languages": [
                 "zxx"
-              ]
-            },
-            "source-credit": "",
-            "end": null,
-            "ended": false,
-            "type": "publishing",
-            "target-credit": "",
-            "attribute-values": {},
-            "begin": null,
-            "type-id": "a442b140-830b-30b0-a4aa-2e36f098b6aa",
-            "direction": "forward"
-          },
-          {
-            "end": null,
-            "source-credit": "",
-            "work": {
-              "languages": [
-                "eng"
               ],
+              "disambiguation": "",
               "type": "Song",
               "iswcs": [],
-              "disambiguation": "",
               "attributes": [],
               "type-id": "f061270a-2fd6-32f1-a641-f0f8676d14e6",
-              "title": "I Like Tony Hawk",
-              "id": "81da42cb-4886-43a9-988c-8d89aa27a232",
-              "language": "eng"
+              "title": "Education",
+              "language": "zxx",
+              "id": "7a8c9391-84ed-4423-b32d-2bb34a83e8f9"
             },
             "ended": false,
             "attributes": [],
             "target-type": "work",
-            "attribute-ids": {},
-            "direction": "forward",
-            "type-id": "a442b140-830b-30b0-a4aa-2e36f098b6aa",
-            "begin": null,
-            "attribute-values": {},
-            "target-credit": "",
-            "type": "publishing"
-          },
-          {
-            "type-id": "a442b140-830b-30b0-a4aa-2e36f098b6aa",
-            "direction": "forward",
-            "type": "publishing",
-            "target-credit": "",
-            "begin": null,
-            "attribute-values": {},
-            "target-type": "work",
-            "attributes": [],
-            "ended": false,
-            "work": {
-              "languages": [
-                "eng"
-              ],
-              "type": "Song",
-              "iswcs": [],
-              "disambiguation": "",
-              "language": "eng",
-              "id": "e928d622-04dd-4080-87b9-60bd3a66c369",
-              "type-id": "f061270a-2fd6-32f1-a641-f0f8676d14e6",
-              "attributes": [],
-              "title": "Leche"
-            },
-            "end": null,
-            "source-credit": "",
             "attribute-ids": {}
           },
           {
-            "attribute-values": {},
             "begin": null,
+            "attribute-values": {},
             "type": "publishing",
             "target-credit": "",
             "direction": "forward",
@@ -331,244 +343,306 @@
             "attribute-ids": {},
             "ended": false,
             "work": {
-              "languages": [
-                "eng"
-              ],
               "disambiguation": "",
               "type": "Song",
               "iswcs": [],
-              "id": "d256ff23-b57a-4db9-8bbe-15879bf4aaca",
+              "languages": [
+                "eng"
+              ],
+              "id": "81da42cb-4886-43a9-988c-8d89aa27a232",
               "language": "eng",
-              "attributes": [],
+              "title": "I Like Tony Hawk",
               "type-id": "f061270a-2fd6-32f1-a641-f0f8676d14e6",
-              "title": "Pretty Pizza"
+              "attributes": []
             },
-            "end": null,
             "source-credit": "",
+            "end": null,
             "target-type": "work",
             "attributes": []
+          },
+          {
+            "type-id": "a442b140-830b-30b0-a4aa-2e36f098b6aa",
+            "direction": "forward",
+            "type": "publishing",
+            "target-credit": "",
+            "begin": null,
+            "attribute-values": {},
+            "target-type": "work",
+            "attributes": [],
+            "ended": false,
+            "work": {
+              "disambiguation": "",
+              "type": "Song",
+              "iswcs": [],
+              "languages": [
+                "eng"
+              ],
+              "title": "Leche",
+              "attributes": [],
+              "type-id": "f061270a-2fd6-32f1-a641-f0f8676d14e6",
+              "id": "e928d622-04dd-4080-87b9-60bd3a66c369",
+              "language": "eng"
+            },
+            "source-credit": "",
+            "end": null,
+            "attribute-ids": {}
+          },
+          {
+            "target-type": "work",
+            "attributes": [],
+            "ended": false,
+            "source-credit": "",
+            "end": null,
+            "work": {
+              "language": "eng",
+              "id": "d256ff23-b57a-4db9-8bbe-15879bf4aaca",
+              "attributes": [],
+              "type-id": "f061270a-2fd6-32f1-a641-f0f8676d14e6",
+              "title": "Pretty Pizza",
+              "languages": [
+                "eng"
+              ],
+              "iswcs": [],
+              "type": "Song",
+              "disambiguation": ""
+            },
+            "attribute-ids": {},
+            "type-id": "a442b140-830b-30b0-a4aa-2e36f098b6aa",
+            "direction": "forward",
+            "target-credit": "",
+            "type": "publishing",
+            "begin": null,
+            "attribute-values": {}
           }
         ],
-        "type-id": "e431f5f6-b5d2-343d-8b36-72607fffb74b",
-        "name": "Alien Hunting",
-        "gender-id": null,
-        "country": "US",
+        "begin-area": null,
+        "life-span": {
+          "begin": null,
+          "end": null,
+          "ended": true
+        },
+        "ipis": [],
+        "id": "8314f847-c982-4ef9-8a33-84c869b5d363",
         "type": "Group",
         "isnis": [],
         "end-area": null,
         "area": {
+          "sort-name": "Rockingham County",
           "disambiguation": "",
           "type": null,
-          "sort-name": "Rockingham County",
-          "type-id": null,
+          "id": "99f0937c-69b7-455c-9b13-fe708da6943e",
           "name": "Rockingham County",
-          "id": "99f0937c-69b7-455c-9b13-fe708da6943e"
+          "type-id": null
         },
         "gender": null,
-        "sort-name": "Alien Hunting"
+        "sort-name": "Alien Hunting",
+        "name": "Alien Hunting",
+        "type-id": "e431f5f6-b5d2-343d-8b36-72607fffb74b",
+        "gender-id": null,
+        "country": "US"
       },
       "details": {
         "7a8c9391-84ed-4423-b32d-2bb34a83e8f9": {
-          "aliases": [],
-          "disambiguation": "",
-          "type": "Song",
           "iswcs": [],
-          "type-id": "f061270a-2fd6-32f1-a641-f0f8676d14e6",
+          "tags": [],
+          "id": "7a8c9391-84ed-4423-b32d-2bb34a83e8f9",
+          "disambiguation": "",
           "language": "zxx",
-          "languages": [
-            "zxx"
-          ],
+          "aliases": [],
+          "title": "Education",
           "attributes": [],
+          "type-id": "f061270a-2fd6-32f1-a641-f0f8676d14e6",
           "relations": [
             {
-              "target-credit": "",
-              "direction": "backward",
               "type-id": "a442b140-830b-30b0-a4aa-2e36f098b6aa",
-              "attribute-values": {},
-              "type": "publishing",
-              "attributes": [],
-              "begin": null,
               "attribute-ids": {},
-              "artist": {
-                "sort-name": "Alien Hunting",
-                "name": "Alien Hunting",
-                "disambiguation": "",
-                "country": "US",
-                "type": "Group",
-                "type-id": "e431f5f6-b5d2-343d-8b36-72607fffb74b",
-                "id": "8314f847-c982-4ef9-8a33-84c869b5d363"
-              },
+              "target-credit": "",
+              "attributes": [],
               "target-type": "artist",
+              "begin": null,
+              "direction": "backward",
+              "type": "publishing",
+              "attribute-values": {},
               "ended": false,
-              "end": null,
-              "source-credit": ""
+              "source-credit": "",
+              "artist": {
+                "type-id": "e431f5f6-b5d2-343d-8b36-72607fffb74b",
+                "country": "US",
+                "name": "Alien Hunting",
+                "type": "Group",
+                "id": "8314f847-c982-4ef9-8a33-84c869b5d363",
+                "sort-name": "Alien Hunting",
+                "disambiguation": ""
+              },
+              "end": null
             },
             {
-              "target-credit": "",
-              "direction": "backward",
-              "type-id": "a3005666-a872-32c3-ad06-98af558e99b0",
-              "type": "performance",
-              "attribute-values": {},
-              "attributes": [],
-              "begin": null,
-              "attribute-ids": {},
+              "source-credit": "",
               "ended": false,
-              "target-type": "recording",
-              "end": null,
               "recording": {
+                "id": "d20ce24b-532a-4e95-8bc4-b898525974f5",
                 "length": 136000,
                 "title": "Education",
-                "id": "d20ce24b-532a-4e95-8bc4-b898525974f5",
-                "disambiguation": "",
-                "video": false
+                "video": false,
+                "disambiguation": ""
               },
-              "source-credit": ""
+              "type-id": "a3005666-a872-32c3-ad06-98af558e99b0",
+              "attributes": [],
+              "begin": null,
+              "direction": "backward",
+              "attribute-values": {},
+              "end": null,
+              "target-credit": "",
+              "attribute-ids": {},
+              "target-type": "recording",
+              "type": "performance"
             }
           ],
-          "id": "7a8c9391-84ed-4423-b32d-2bb34a83e8f9",
-          "tags": [],
-          "title": "Education"
+          "type": "Song",
+          "languages": [
+            "zxx"
+          ]
         },
         "81da42cb-4886-43a9-988c-8d89aa27a232": {
-          "type": "Song",
-          "relations": [
-            {
-              "ended": false,
-              "begin": null,
-              "source-credit": "",
-              "target-type": "artist",
-              "type": "publishing",
-              "target-credit": "",
-              "direction": "backward",
-              "attribute-ids": {},
-              "attributes": [],
-              "end": null,
-              "type-id": "a442b140-830b-30b0-a4aa-2e36f098b6aa",
-              "attribute-values": {},
-              "artist": {
-                "name": "Alien Hunting",
-                "type-id": "e431f5f6-b5d2-343d-8b36-72607fffb74b",
-                "id": "8314f847-c982-4ef9-8a33-84c869b5d363",
-                "disambiguation": "",
-                "sort-name": "Alien Hunting",
-                "country": "US",
-                "type": "Group"
-              }
-            }
-          ],
-          "disambiguation": "",
-          "languages": [
-            "eng"
-          ],
-          "tags": [],
-          "language": "eng",
-          "attributes": [],
-          "iswcs": [],
-          "title": "I Like Tony Hawk",
           "id": "81da42cb-4886-43a9-988c-8d89aa27a232",
-          "type-id": "f061270a-2fd6-32f1-a641-f0f8676d14e6",
-          "aliases": []
-        },
-        "e928d622-04dd-4080-87b9-60bd3a66c369": {
-          "disambiguation": "",
-          "languages": [
-            "eng"
-          ],
+          "aliases": [],
           "relations": [
             {
-              "type": "publishing",
-              "target-credit": "",
-              "begin": null,
-              "attribute-values": {},
               "type-id": "a442b140-830b-30b0-a4aa-2e36f098b6aa",
+              "attribute-values": {},
+              "source-credit": "",
+              "end": null,
+              "target-type": "artist",
               "direction": "backward",
-              "attribute-ids": {},
               "attributes": [],
               "artist": {
-                "name": "Alien Hunting",
-                "type-id": "e431f5f6-b5d2-343d-8b36-72607fffb74b",
-                "country": "US",
+                "sort-name": "Alien Hunting",
                 "id": "8314f847-c982-4ef9-8a33-84c869b5d363",
                 "type": "Group",
+                "country": "US",
                 "disambiguation": "",
-                "sort-name": "Alien Hunting"
+                "name": "Alien Hunting",
+                "type-id": "e431f5f6-b5d2-343d-8b36-72607fffb74b"
               },
+              "target-credit": "",
+              "begin": null,
+              "type": "publishing",
+              "ended": false,
+              "attribute-ids": {}
+            }
+          ],
+          "language": "eng",
+          "title": "I Like Tony Hawk",
+          "languages": [
+            "eng"
+          ],
+          "disambiguation": "",
+          "iswcs": [],
+          "type-id": "f061270a-2fd6-32f1-a641-f0f8676d14e6",
+          "tags": [],
+          "type": "Song",
+          "attributes": []
+        },
+        "e928d622-04dd-4080-87b9-60bd3a66c369": {
+          "attributes": [],
+          "relations": [
+            {
+              "end": null,
+              "source-credit": "",
+              "begin": null,
+              "attributes": [],
+              "target-type": "artist",
+              "ended": false,
+              "attribute-ids": {},
+              "artist": {
+                "type": "Group",
+                "type-id": "e431f5f6-b5d2-343d-8b36-72607fffb74b",
+                "id": "8314f847-c982-4ef9-8a33-84c869b5d363",
+                "sort-name": "Alien Hunting",
+                "name": "Alien Hunting",
+                "country": "US",
+                "disambiguation": ""
+              },
+              "direction": "backward",
+              "type": "publishing",
+              "attribute-values": {},
+              "type-id": "a442b140-830b-30b0-a4aa-2e36f098b6aa",
+              "target-credit": ""
+            },
+            {
+              "end": null,
+              "source-credit": "",
+              "recording": {
+                "title": "Leche",
+                "length": 279000,
+                "video": false,
+                "disambiguation": "",
+                "id": "c21f8e05-ff9d-4aeb-a101-eb0e787336e2"
+              },
+              "begin": null,
+              "attributes": [],
+              "target-type": "recording",
+              "ended": false,
+              "attribute-ids": {},
+              "direction": "backward",
+              "attribute-values": {},
+              "type": "performance",
+              "type-id": "a3005666-a872-32c3-ad06-98af558e99b0",
+              "target-credit": ""
+            }
+          ],
+          "id": "e928d622-04dd-4080-87b9-60bd3a66c369",
+          "tags": [],
+          "title": "Leche",
+          "aliases": [],
+          "disambiguation": "",
+          "iswcs": [],
+          "type-id": "f061270a-2fd6-32f1-a641-f0f8676d14e6",
+          "type": "Song",
+          "language": "eng",
+          "languages": [
+            "eng"
+          ]
+        },
+        "d256ff23-b57a-4db9-8bbe-15879bf4aaca": {
+          "attributes": [],
+          "title": "Pretty Pizza",
+          "tags": [],
+          "id": "d256ff23-b57a-4db9-8bbe-15879bf4aaca",
+          "languages": [
+            "eng"
+          ],
+          "disambiguation": "",
+          "relations": [
+            {
+              "target-credit": "",
+              "type": "publishing",
+              "attribute-values": {},
+              "begin": null,
+              "type-id": "a442b140-830b-30b0-a4aa-2e36f098b6aa",
+              "direction": "backward",
+              "attribute-ids": {},
+              "artist": {
+                "disambiguation": "",
+                "type": "Group",
+                "sort-name": "Alien Hunting",
+                "name": "Alien Hunting",
+                "type-id": "e431f5f6-b5d2-343d-8b36-72607fffb74b",
+                "country": "US",
+                "id": "8314f847-c982-4ef9-8a33-84c869b5d363"
+              },
+              "attributes": [],
               "target-type": "artist",
               "end": null,
               "source-credit": "",
               "ended": false
-            },
-            {
-              "type": "performance",
-              "target-credit": "",
-              "attribute-values": {},
-              "begin": null,
-              "type-id": "a3005666-a872-32c3-ad06-98af558e99b0",
-              "direction": "backward",
-              "recording": {
-                "disambiguation": "",
-                "title": "Leche",
-                "length": 279000,
-                "video": false,
-                "id": "c21f8e05-ff9d-4aeb-a101-eb0e787336e2"
-              },
-              "attribute-ids": {},
-              "target-type": "recording",
-              "attributes": [],
-              "ended": false,
-              "source-credit": "",
-              "end": null
             }
           ],
-          "title": "Leche",
-          "attributes": [],
-          "id": "e928d622-04dd-4080-87b9-60bd3a66c369",
-          "tags": [],
-          "type": "Song",
-          "iswcs": [],
           "type-id": "f061270a-2fd6-32f1-a641-f0f8676d14e6",
-          "language": "eng",
-          "aliases": []
-        },
-        "d256ff23-b57a-4db9-8bbe-15879bf4aaca": {
-          "title": "Pretty Pizza",
-          "relations": [
-            {
-              "begin": null,
-              "target-credit": "",
-              "artist": {
-                "type-id": "e431f5f6-b5d2-343d-8b36-72607fffb74b",
-                "name": "Alien Hunting",
-                "disambiguation": "",
-                "type": "Group",
-                "country": "US",
-                "sort-name": "Alien Hunting",
-                "id": "8314f847-c982-4ef9-8a33-84c869b5d363"
-              },
-              "attributes": [],
-              "attribute-ids": {},
-              "ended": false,
-              "type": "publishing",
-              "source-credit": "",
-              "attribute-values": {},
-              "type-id": "a442b140-830b-30b0-a4aa-2e36f098b6aa",
-              "direction": "backward",
-              "target-type": "artist",
-              "end": null
-            }
-          ],
-          "language": "eng",
-          "id": "d256ff23-b57a-4db9-8bbe-15879bf4aaca",
           "aliases": [],
-          "type-id": "f061270a-2fd6-32f1-a641-f0f8676d14e6",
-          "iswcs": [],
-          "disambiguation": "",
-          "languages": [
-            "eng"
-          ],
+          "language": "eng",
           "type": "Song",
-          "tags": [],
-          "attributes": []
+          "iswcs": []
         }
       },
       "recordingFlags": {
@@ -584,146 +658,146 @@
     },
     "members": {
       "main": {
-        "gender": null,
-        "area": {
-          "type-id": null,
-          "sort-name": "Rockingham County",
-          "type": null,
-          "id": "99f0937c-69b7-455c-9b13-fe708da6943e",
-          "disambiguation": "",
-          "name": "Rockingham County"
-        },
-        "id": "8314f847-c982-4ef9-8a33-84c869b5d363",
-        "sort-name": "Alien Hunting",
-        "isnis": [],
         "type-id": "e431f5f6-b5d2-343d-8b36-72607fffb74b",
-        "end-area": null,
+        "disambiguation": "",
         "begin-area": null,
+        "ipis": [],
+        "id": "8314f847-c982-4ef9-8a33-84c869b5d363",
+        "life-span": {
+          "ended": true,
+          "begin": null,
+          "end": null
+        },
         "relations": [
           {
-            "target-credit": "",
-            "ended": false,
-            "attribute-credits": {},
-            "source-credit": "",
-            "begin": null,
-            "target-type": "artist",
             "type": "member of band",
-            "end": null,
-            "type-id": "5be4c609-9afa-4ea0-910b-12ffb71e3821",
-            "attribute-values": {},
-            "artist": {
-              "type": "Person",
-              "name": "Kevin Donovan",
-              "sort-name": "Donovan, Kevin",
-              "country": null,
-              "disambiguation": "",
-              "id": "8ef738ca-3896-47a0-8b59-abcfad20fc66",
-              "type-id": "b6e035f4-3ce9-331c-97df-83397230b0df"
-            },
+            "ended": false,
             "attribute-ids": {
               "drums (drum set)": "12092505-6ee1-46af-a15a-b5b468b6b155"
             },
-            "direction": "backward",
             "attributes": [
               "drums (drum set)"
-            ]
+            ],
+            "attribute-credits": {},
+            "artist": {
+              "type-id": "b6e035f4-3ce9-331c-97df-83397230b0df",
+              "disambiguation": "",
+              "name": "Kevin Donovan",
+              "type": "Person",
+              "country": null,
+              "id": "8ef738ca-3896-47a0-8b59-abcfad20fc66",
+              "sort-name": "Donovan, Kevin"
+            },
+            "target-credit": "",
+            "begin": null,
+            "end": null,
+            "target-type": "artist",
+            "direction": "backward",
+            "type-id": "5be4c609-9afa-4ea0-910b-12ffb71e3821",
+            "source-credit": "",
+            "attribute-values": {}
           },
           {
+            "direction": "backward",
+            "target-type": "artist",
             "end": null,
             "attribute-values": {},
+            "source-credit": "",
             "type-id": "5be4c609-9afa-4ea0-910b-12ffb71e3821",
-            "artist": {
-              "type": "Person",
-              "name": "Jon McCoy",
-              "sort-name": "McCoy, Jon",
-              "disambiguation": "",
-              "country": "US",
-              "id": "33c830f0-d5be-4baf-b8db-3dc754e74c16",
-              "type-id": "b6e035f4-3ce9-331c-97df-83397230b0df"
-            },
-            "direction": "backward",
             "attribute-ids": {
               "electric guitar": "7ee8ebf5-3aed-4fc8-8004-49f4a8c45a87"
+            },
+            "ended": false,
+            "type": "member of band",
+            "begin": null,
+            "target-credit": "",
+            "artist": {
+              "name": "Jon McCoy",
+              "disambiguation": "",
+              "type-id": "b6e035f4-3ce9-331c-97df-83397230b0df",
+              "sort-name": "McCoy, Jon",
+              "id": "33c830f0-d5be-4baf-b8db-3dc754e74c16",
+              "country": "US",
+              "type": "Person"
             },
             "attributes": [
               "electric guitar"
             ],
-            "target-credit": "",
-            "attribute-credits": {},
-            "ended": false,
-            "begin": null,
-            "source-credit": "",
-            "target-type": "artist",
-            "type": "member of band"
+            "attribute-credits": {}
           },
           {
-            "attribute-values": {},
-            "type-id": "5be4c609-9afa-4ea0-910b-12ffb71e3821",
-            "artist": {
-              "country": null,
-              "sort-name": "Nikitas, Ben",
-              "disambiguation": "",
-              "id": "03a5593d-7cb7-4e22-9f1f-a1ce216ee972",
-              "type-id": "b6e035f4-3ce9-331c-97df-83397230b0df",
-              "name": "Ben Nikitas",
-              "type": "Person"
-            },
-            "end": null,
             "attributes": [
               "electric bass guitar"
             ],
-            "direction": "backward",
+            "attribute-credits": {},
+            "artist": {
+              "country": null,
+              "type": "Person",
+              "id": "03a5593d-7cb7-4e22-9f1f-a1ce216ee972",
+              "sort-name": "Nikitas, Ben",
+              "type-id": "b6e035f4-3ce9-331c-97df-83397230b0df",
+              "name": "Ben Nikitas",
+              "disambiguation": ""
+            },
+            "target-credit": "",
+            "begin": null,
+            "type": "member of band",
+            "ended": false,
             "attribute-ids": {
               "electric bass guitar": "0b9d87fa-93fa-4956-8b6a-a419566cc915"
             },
-            "target-credit": "",
-            "target-type": "artist",
-            "type": "member of band",
-            "ended": false,
-            "attribute-credits": {},
-            "begin": null,
-            "source-credit": ""
-          },
-          {
-            "artist": {
-              "name": "Gerold Ventola",
-              "type-id": "b6e035f4-3ce9-331c-97df-83397230b0df",
-              "disambiguation": "",
-              "id": "9b7eadbf-82a7-4180-a76b-1ceb44dbc197",
-              "country": null,
-              "sort-name": "Ventola, Gerald",
-              "type": "Person"
-            },
             "type-id": "5be4c609-9afa-4ea0-910b-12ffb71e3821",
+            "source-credit": "",
             "attribute-values": {},
             "end": null,
+            "target-type": "artist",
+            "direction": "backward"
+          },
+          {
+            "type-id": "5be4c609-9afa-4ea0-910b-12ffb71e3821",
+            "attribute-values": {},
+            "source-credit": "",
+            "end": null,
+            "direction": "backward",
+            "target-type": "artist",
+            "artist": {
+              "disambiguation": "",
+              "name": "Gerold Ventola",
+              "type-id": "b6e035f4-3ce9-331c-97df-83397230b0df",
+              "id": "9b7eadbf-82a7-4180-a76b-1ceb44dbc197",
+              "sort-name": "Ventola, Gerald",
+              "type": "Person",
+              "country": null
+            },
+            "attribute-credits": {},
             "attributes": [
               "lead vocals"
             ],
-            "direction": "backward",
+            "begin": null,
+            "target-credit": "",
+            "type": "member of band",
             "attribute-ids": {
               "lead vocals": "8e2a3255-87c2-4809-a174-98cb3704f1a5"
             },
-            "target-credit": "",
-            "type": "member of band",
-            "target-type": "artist",
-            "begin": null,
-            "source-credit": "",
-            "attribute-credits": {},
             "ended": false
           }
         ],
-        "life-span": {
-          "end": null,
-          "ended": true,
-          "begin": null
-        },
-        "type": "Group",
-        "gender-id": null,
+        "gender": null,
         "name": "Alien Hunting",
-        "ipis": [],
-        "disambiguation": "",
-        "country": "US"
+        "gender-id": null,
+        "end-area": null,
+        "type": "Group",
+        "isnis": [],
+        "country": "US",
+        "area": {
+          "type-id": null,
+          "disambiguation": "",
+          "name": "Rockingham County",
+          "type": null,
+          "sort-name": "Rockingham County",
+          "id": "99f0937c-69b7-455c-9b13-fe708da6943e"
+        },
+        "sort-name": "Alien Hunting"
       },
       "subgroups": {}
     }

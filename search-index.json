@@ -256,14 +256,14 @@
     "c": "artist",
     "u": "/archive/by-artist/alien-hunting/about.html",
     "d": "Alien Hunting — About",
-    "b": "Alien Hunting · about · magmacrunch media archive › by artist › alien hunting // alien hunting // ABOUT ← back links news photography works coming soon..."
+    "b": "Alien Hunting · about · magmacrunch media archive › by artist › alien hunting // alien hunting // ABOUT ← back links news photography recordings works coming soon..."
   },
   {
     "t": "Alien Hunting · archive · magmacrunch media",
     "c": "artist",
     "u": "/archive/by-artist/alien-hunting/index.html",
     "d": "artist archive — recordings, works, events, releases",
-    "b": "Alien Hunting · archive · magmacrunch media archive › by artist › alien hunting photo: Gerald Ventola // artist archive // ALIEN HUNTING about links news photography works"
+    "b": "Alien Hunting · archive · magmacrunch media archive › by artist › alien hunting photo: Gerald Ventola // artist archive // ALIEN HUNTING about links news photography recordings works"
   },
   {
     "t": "Alien Hunting · links · magmacrunch media",
@@ -277,21 +277,28 @@
     "c": "artist",
     "u": "/archive/by-artist/alien-hunting/news.html",
     "d": "Alien Hunting — News",
-    "b": "Alien Hunting · news · magmacrunch media archive › by artist › alien hunting // alien hunting // NEWS ← back about links photography works Posts from the band's Facebook page, word for word. 2016-07-09 Remember the good ol days? shared a video: Jam 1-3-13 2014-01-14 killer jam today. two new songs on the way. we still exist. 😉 2013-11-27 This happened. 2013-11-03 Yo 2013-09-02 New song! youtube.com/watch?v=m-A2V4zRdDQ . The song is Education . 2013-07-31 2013-07-26 New song! (Rpugh recording) it's about pizza shared a video, no longer online. The song is Pretty Pizza . 2013-06-06 2013-05-30 d..."
+    "b": "Alien Hunting · news · magmacrunch media archive › by artist › alien hunting // alien hunting // NEWS ← back about links photography recordings works Posts from the band's Facebook page, word for word. 2016-07-09 Remember the good ol days? shared a video: Jam 1-3-13 2014-01-14 killer jam today. two new songs on the way. we still exist. 😉 2013-11-27 This happened. 2013-11-03 Yo 2013-09-02 New song! youtube.com/watch?v=m-A2V4zRdDQ . The song is Education . 2013-07-31 2013-07-26 New song! (Rpugh recording) it's about pizza shared a video, no longer online. The song is Pretty Pizza . 2013-06-06 2..."
   },
   {
     "t": "Alien Hunting · photography · magmacrunch media",
     "c": "artist",
     "u": "/archive/by-artist/alien-hunting/photography.html",
     "d": "Alien Hunting — Photography",
-    "b": "Alien Hunting · photography · magmacrunch media archive › by artist › alien hunting // alien hunting // PHOTOGRAPHY ← back about links news works // photos by Gerald Ventola // photo: Gerald Ventola photo: Gerald Ventola photo: Gerald Ventola photo: Gerald Ventola ← drag to scroll → // alien hunting // alien hunting alien hunting alien hunting alien hunting alien hunting alien hunting alien hunting alien hunting alien hunting alien hunting alien hunting alien hunting alien hunting alien hunting ← drag to scroll → // from the band's facebook // practice room, Frogwood Manor alien hunting ← drag..."
+    "b": "Alien Hunting · photography · magmacrunch media archive › by artist › alien hunting // alien hunting // PHOTOGRAPHY ← back about links news recordings works // photos by Gerald Ventola // photo: Gerald Ventola photo: Gerald Ventola photo: Gerald Ventola photo: Gerald Ventola ← drag to scroll → // alien hunting // alien hunting alien hunting alien hunting alien hunting alien hunting alien hunting alien hunting alien hunting alien hunting alien hunting alien hunting alien hunting alien hunting alien hunting ← drag to scroll → // from the band's facebook // practice room, Frogwood Manor alien hun..."
+  },
+  {
+    "t": "Alien Hunting · recordings · magmacrunch media",
+    "c": "artist",
+    "u": "/archive/by-artist/alien-hunting/recordings.html",
+    "d": "Alien Hunting — Recordings",
+    "b": "Alien Hunting · recordings · magmacrunch media RECORDINGS ← back about links news photography works loading recordings…"
   },
   {
     "t": "Alien Hunting · works · magmacrunch media",
     "c": "artist",
     "u": "/archive/by-artist/alien-hunting/works.html",
     "d": "Alien Hunting — Works",
-    "b": "Alien Hunting · works · magmacrunch media WORKS ← back about links news photography loading works…"
+    "b": "Alien Hunting · works · magmacrunch media WORKS ← back about links news photography recordings loading works…"
   },
   {
     "t": "Audio Sound Paper, et al. · about · magmacrunch media",
@@ -907,49 +914,56 @@
     "c": "artist",
     "u": "/archive/by-artist/millstone/about.html",
     "d": "Millstone — About",
-    "b": "Millstone · about · magmacrunch media archive › by artist › millstone // millstone // ABOUT ← back events links news photography works Millstone was a rock band from Southern New Hampshire, together from the fall of 2003 to the spring of 2004: Dave Hayes and Dave Robinson on guitar and vocals, Jake McCoy on drums, and Keith Galvin on bass and vocals. Their own website described them in two words: \"Simply rock.\" It started when Jake and Dave got together on a whim to jam. The two Daves began playing together, then joined up with Jake and practiced at his house almost every day. They took the na..."
+    "b": "Millstone · about · magmacrunch media archive › by artist › millstone // millstone // ABOUT ← back events links news photography recordings works Millstone was a rock band from Southern New Hampshire, together from the fall of 2003 to the spring of 2004: Dave Hayes and Dave Robinson on guitar and vocals, Jake McCoy on drums, and Keith Galvin on bass and vocals. Their own website described them in two words: \"Simply rock.\" It started when Jake and Dave got together on a whim to jam. The two Daves began playing together, then joined up with Jake and practiced at his house almost every day. They ..."
   },
   {
     "t": "Millstone · events · magmacrunch media",
     "c": "artist",
     "u": "/archive/by-artist/millstone/events.html",
     "d": "Millstone — Events",
-    "b": "Millstone · events · magmacrunch media archive › by artist › millstone // millstone // EVENTS ← back about links news photography works loading events… FROM THE NEWS POSTS 2004-02 Battle of the Bands 2004, Salem High School Entered by Hayes and Robinson on February 6, for a battle the band's Shows page dates February 12; admission three dollars. Millstone did not make the prelims. 2004-01-22 Searles Castle, Windham, NH 7:00 to 9:30, with (e)X-treme, Tear Method, Lucky Shot and For the Experience. \"Every band did great, and best of all no one was killed.\" 2003-10-31 Halloween 2003, Frogwood Man..."
+    "b": "Millstone · events · magmacrunch media archive › by artist › millstone // millstone // EVENTS ← back about links news photography recordings works loading events… FROM THE NEWS POSTS 2004-02 Battle of the Bands 2004, Salem High School Entered by Hayes and Robinson on February 6, for a battle the band's Shows page dates February 12; admission three dollars. Millstone did not make the prelims. 2004-01-22 Searles Castle, Windham, NH 7:00 to 9:30, with (e)X-treme, Tear Method, Lucky Shot and For the Experience. \"Every band did great, and best of all no one was killed.\" 2003-10-31 Halloween 2003, F..."
   },
   {
     "t": "Millstone · archive · magmacrunch media",
     "c": "artist",
     "u": "/archive/by-artist/millstone/index.html",
     "d": "artist archive — recordings, works, events, releases",
-    "b": "Millstone · archive · magmacrunch media archive › by artist › millstone // artist archive // MILLSTONE SIMPLY ROCK. about events links news photography works"
+    "b": "Millstone · archive · magmacrunch media archive › by artist › millstone // artist archive // MILLSTONE SIMPLY ROCK. about events links news photography recordings works"
   },
   {
     "t": "Millstone · links · magmacrunch media",
     "c": "artist",
     "u": "/archive/by-artist/millstone/links.html",
     "d": "Millstone — Links",
-    "b": "Millstone · links · magmacrunch media archive › by artist › millstone // millstone // LINKS ← back about events news photography works THE ORIGINAL SITE millstone.bappy.com built in 2003 on bappy.com's free site builder, still online in November 2026 MusicBrainz members, shows and works THE BAND'S FAVORITE LINKS, 2004 Kept as text: most of these addresses are long gone. soundclick.com/bands/6/yelloworanges.htm change-course.tk : Great kids and a great band fortheexperience.bappy.com svt.se/hogafflahage/hogafflaHage_site/Kor/hestekor.swf sadcafe.com : Good local venue savestheday.com : Great si..."
+    "b": "Millstone · links · magmacrunch media archive › by artist › millstone // millstone // LINKS ← back about events news photography recordings works THE ORIGINAL SITE millstone.bappy.com built in 2003 on bappy.com's free site builder, still online in November 2026 MusicBrainz members, shows and works THE BAND'S FAVORITE LINKS, 2004 Kept as text: most of these addresses are long gone. soundclick.com/bands/6/yelloworanges.htm change-course.tk : Great kids and a great band fortheexperience.bappy.com svt.se/hogafflahage/hogafflaHage_site/Kor/hestekor.swf sadcafe.com : Good local venue savestheday.com..."
   },
   {
     "t": "Millstone · news · magmacrunch media",
     "c": "artist",
     "u": "/archive/by-artist/millstone/news.html",
     "d": "Millstone — News",
-    "b": "Millstone · news · magmacrunch media archive › by artist › millstone // millstone // NEWS ← back about events links photography works Every post from millstone.bappy.com, word for word, spelling and all. The site gave month and day only; the years are read from the order of the posts. 2004-04-24 It's been a long time since we've practiced. We hope to pick it back up again over the summer, but we're not sure. Hayes has got tennis and Kieths got everything under the sun, iuncluding Evenstar among other things. As for now we're just maxin' and relaxin'. . . kinda. Keep in touch 2004-02-25 Well, w..."
+    "b": "Millstone · news · magmacrunch media archive › by artist › millstone // millstone // NEWS ← back about events links photography recordings works Every post from millstone.bappy.com, word for word, spelling and all. The site gave month and day only; the years are read from the order of the posts. 2004-04-24 It's been a long time since we've practiced. We hope to pick it back up again over the summer, but we're not sure. Hayes has got tennis and Kieths got everything under the sun, iuncluding Evenstar among other things. As for now we're just maxin' and relaxin'. . . kinda. Keep in touch 2004-02..."
   },
   {
     "t": "Millstone · photography · magmacrunch media",
     "c": "artist",
     "u": "/archive/by-artist/millstone/photography.html",
     "d": "Millstone — Photography",
-    "b": "Millstone · photography · magmacrunch media archive › by artist › millstone // millstone // PHOTOGRAPHY ← back about events links news works Every photo from millstone.bappy.com, 2003 and 2004, saved at the size it was posted, with the captions the band gave them. Uncaptioned ones were page headers there. Early Millstone way back at Halloween Dave Hayes Jake McCoy Dave Robinson Hayes' Arsenal Jake on His Set Dave and Dave Bobby (the Roadie) and Jon (The Bouncer) Early Millstone Early Millstone Practice 1-7-04 Not another picture... (Dave H) Is it just me, or does Jake always seem to have his m..."
+    "b": "Millstone · photography · magmacrunch media archive › by artist › millstone // millstone // PHOTOGRAPHY ← back about events links news recordings works Every photo from millstone.bappy.com, 2003 and 2004, saved at the size it was posted, with the captions the band gave them. Uncaptioned ones were page headers there. Early Millstone way back at Halloween Dave Hayes Jake McCoy Dave Robinson Hayes' Arsenal Jake on His Set Dave and Dave Bobby (the Roadie) and Jon (The Bouncer) Early Millstone Early Millstone Practice 1-7-04 Not another picture... (Dave H) Is it just me, or does Jake always seem to..."
+  },
+  {
+    "t": "Millstone · recordings · magmacrunch media",
+    "c": "artist",
+    "u": "/archive/by-artist/millstone/recordings.html",
+    "d": "Millstone — Recordings",
+    "b": "Millstone · recordings · magmacrunch media archive › by artist › millstone // millstone // RECORDINGS ← back about events links news photography works loading recordings…"
   },
   {
     "t": "Millstone · works · magmacrunch media",
     "c": "artist",
     "u": "/archive/by-artist/millstone/works.html",
     "d": "Millstone — Works",
-    "b": "Millstone · works · magmacrunch media archive › by artist › millstone // millstone // WORKS ← back about events links news photography loading works… FROM THE 2004 SITE The original songs as the band numbered them on its Songs page, with what the news posts say about each. Stalemate lyrics by Keith; practice take 2003-12-15 Can't Stand the Cold Shoulder Red Tear Nothing Even Matters Over the Treetops Fatal Wound A Nation Divided Blue Like Eternity A Night to Remember (Believe!) My Last Goodbye A New Hope written 2003-11-03; vocals by Robinson Nothing Society by Dave Hayes; acoustic 4-track 200..."
+    "b": "Millstone · works · magmacrunch media archive › by artist › millstone // millstone // WORKS ← back about events links news photography recordings loading works… FROM THE 2004 SITE The original songs as the band numbered them on its Songs page, with what the news posts say about each. Stalemate lyrics by Keith; practice take 2003-12-15 Can't Stand the Cold Shoulder Red Tear Nothing Even Matters Over the Treetops Fatal Wound A Nation Divided Blue Like Eternity A Night to Remember (Believe!) My Last Goodbye A New Hope written 2003-11-03; vocals by Robinson Nothing Society by Dave Hayes; acoustic ..."
   },
   {
     "t": "SVFP · about · magmacrunch media",

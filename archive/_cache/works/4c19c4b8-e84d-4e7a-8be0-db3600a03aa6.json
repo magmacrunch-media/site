@@ -1,237 +1,237 @@
 {
-  "fetchedAt": "2026-11-05T04:11:48.972Z",
+  "fetchedAt": "2026-11-21T07:54:04.723Z",
   "entityType": "work",
   "uuid": "4c19c4b8-e84d-4e7a-8be0-db3600a03aa6",
   "name": "starting again",
   "data": {
-    "title": "Starting Again",
-    "tags": [],
-    "language": "eng",
-    "iswcs": [
-      "T-343.354.621-1"
-    ],
-    "relations": [
-      {
-        "direction": "backward",
-        "end": null,
-        "attribute-values": {},
-        "artist": {
-          "name": "Jon McCoy",
-          "id": "33c830f0-d5be-4baf-b8db-3dc754e74c16",
-          "disambiguation": "",
-          "sort-name": "McCoy, Jon",
-          "country": "US",
-          "type-id": "b6e035f4-3ce9-331c-97df-83397230b0df",
-          "type": "Person"
-        },
-        "attributes": [],
-        "type": "composer",
-        "type-id": "d59d99ea-23d4-4a80-b066-edca32ee158f",
-        "target-type": "artist",
-        "begin": null,
-        "target-credit": "JHM",
-        "attribute-ids": {},
-        "source-credit": "",
-        "ended": false
-      },
-      {
-        "attribute-values": {},
-        "direction": "backward",
-        "end": null,
-        "attribute-ids": {},
-        "begin": null,
-        "target-credit": "JHM",
-        "source-credit": "",
-        "ended": false,
-        "type": "lyricist",
-        "type-id": "3e48faba-ec01-47fd-8e89-30e81161661c",
-        "attributes": [],
-        "artist": {
-          "name": "Jon McCoy",
-          "id": "33c830f0-d5be-4baf-b8db-3dc754e74c16",
-          "sort-name": "McCoy, Jon",
-          "type-id": "b6e035f4-3ce9-331c-97df-83397230b0df",
-          "country": "US",
-          "type": "Person",
-          "disambiguation": ""
-        },
-        "target-type": "artist"
-      },
-      {
-        "target-type": "artist",
-        "artist": {
-          "name": "Jon McCoy",
-          "id": "33c830f0-d5be-4baf-b8db-3dc754e74c16",
-          "disambiguation": "",
-          "sort-name": "McCoy, Jon",
-          "type-id": "b6e035f4-3ce9-331c-97df-83397230b0df",
-          "type": "Person",
-          "country": "US"
-        },
-        "attributes": [],
-        "type": "publishing",
-        "type-id": "a442b140-830b-30b0-a4aa-2e36f098b6aa",
-        "source-credit": "",
-        "ended": true,
-        "target-credit": "",
-        "begin": "2024-03-14",
-        "attribute-ids": {},
-        "end": "2024-03-14",
-        "direction": "backward",
-        "attribute-values": {}
-      },
-      {
-        "source-credit": "",
-        "ended": true,
-        "attribute-ids": {},
-        "begin": "2024-03",
-        "target-credit": "",
-        "target-type": "recording",
-        "type": "performance",
-        "type-id": "a3005666-a872-32c3-ad06-98af558e99b0",
-        "attributes": [],
-        "recording": {
-          "id": "54625954-31f1-47ae-b409-fe98a6d8ee9b",
-          "disambiguation": "",
-          "title": "Starting Again",
-          "length": 169000,
-          "video": false
-        },
-        "attribute-values": {},
-        "end": "2024-03",
-        "direction": "backward"
-      }
-    ],
-    "id": "4c19c4b8-e84d-4e7a-8be0-db3600a03aa6",
-    "aliases": [],
-    "disambiguation": "",
-    "type-id": "f061270a-2fd6-32f1-a641-f0f8676d14e6",
-    "type": "Song",
     "languages": [
       "eng"
     ],
+    "tags": [],
+    "disambiguation": "",
+    "language": "eng",
+    "type": "Song",
+    "relations": [
+      {
+        "target-credit": "JHM",
+        "begin": null,
+        "source-credit": "",
+        "ended": false,
+        "type": "composer",
+        "target-type": "artist",
+        "end": null,
+        "artist": {
+          "name": "Jon McCoy",
+          "sort-name": "McCoy, Jon",
+          "disambiguation": "",
+          "country": "US",
+          "id": "33c830f0-d5be-4baf-b8db-3dc754e74c16",
+          "type-id": "b6e035f4-3ce9-331c-97df-83397230b0df",
+          "type": "Person"
+        },
+        "attribute-values": {},
+        "type-id": "d59d99ea-23d4-4a80-b066-edca32ee158f",
+        "direction": "backward",
+        "attribute-ids": {},
+        "attributes": []
+      },
+      {
+        "target-credit": "JHM",
+        "target-type": "artist",
+        "type": "lyricist",
+        "ended": false,
+        "source-credit": "",
+        "begin": null,
+        "attribute-values": {},
+        "type-id": "3e48faba-ec01-47fd-8e89-30e81161661c",
+        "artist": {
+          "type": "Person",
+          "name": "Jon McCoy",
+          "type-id": "b6e035f4-3ce9-331c-97df-83397230b0df",
+          "sort-name": "McCoy, Jon",
+          "disambiguation": "",
+          "country": "US",
+          "id": "33c830f0-d5be-4baf-b8db-3dc754e74c16"
+        },
+        "end": null,
+        "attributes": [],
+        "attribute-ids": {},
+        "direction": "backward"
+      },
+      {
+        "end": "2024-03-14",
+        "artist": {
+          "sort-name": "McCoy, Jon",
+          "disambiguation": "",
+          "id": "33c830f0-d5be-4baf-b8db-3dc754e74c16",
+          "country": "US",
+          "type-id": "b6e035f4-3ce9-331c-97df-83397230b0df",
+          "name": "Jon McCoy",
+          "type": "Person"
+        },
+        "attribute-values": {},
+        "type-id": "a442b140-830b-30b0-a4aa-2e36f098b6aa",
+        "attribute-ids": {},
+        "direction": "backward",
+        "attributes": [],
+        "target-credit": "",
+        "source-credit": "",
+        "begin": "2024-03-14",
+        "ended": true,
+        "type": "publishing",
+        "target-type": "artist"
+      },
+      {
+        "target-credit": "",
+        "source-credit": "",
+        "begin": "2024-03",
+        "ended": true,
+        "recording": {
+          "disambiguation": "",
+          "id": "54625954-31f1-47ae-b409-fe98a6d8ee9b",
+          "video": false,
+          "length": 169000,
+          "title": "Starting Again"
+        },
+        "type": "performance",
+        "target-type": "recording",
+        "end": "2024-03",
+        "type-id": "a3005666-a872-32c3-ad06-98af558e99b0",
+        "attribute-values": {},
+        "attribute-ids": {},
+        "direction": "backward",
+        "attributes": []
+      }
+    ],
+    "type-id": "f061270a-2fd6-32f1-a641-f0f8676d14e6",
+    "aliases": [],
+    "id": "4c19c4b8-e84d-4e7a-8be0-db3600a03aa6",
     "attributes": [
       {
-        "value": "82514353",
         "type-id": "c8ac7e55-fd45-3002-9f89-e8b43911a479",
+        "value": "82514353",
         "type": "BMI ID"
       },
       {
         "type": "ASCAP ID",
-        "type-id": "d833318c-6c6a-370e-8b16-9cb15873ba76",
-        "value": "939102621"
+        "value": "939102621",
+        "type-id": "d833318c-6c6a-370e-8b16-9cb15873ba76"
       }
-    ]
+    ],
+    "iswcs": [
+      "T-343.354.621-1"
+    ],
+    "title": "Starting Again"
   },
   "recordings": {
     "54625954-31f1-47ae-b409-fe98a6d8ee9b": {
-      "first-release-date": "2024-03-14",
-      "id": "54625954-31f1-47ae-b409-fe98a6d8ee9b",
-      "video": false,
       "relations": [
         {
           "target-type": "place",
-          "attributes": [],
-          "attribute-ids": {},
-          "end": "2024-03",
-          "begin": "2024-03",
-          "attribute-values": {},
-          "ended": true,
-          "target-credit": "",
-          "direction": "backward",
           "type": "recorded at",
+          "ended": true,
+          "begin": "2024-03",
+          "source-credit": "",
           "place": {
-            "disambiguation": "",
-            "area": {
-              "type-id": "6fd8f29a-3d0a-32fc-980d-ea697b69da78",
-              "disambiguation": "",
-              "id": "eeab8640-d52e-440a-af1a-425a1754975a",
-              "name": "San Luis Obispo",
-              "type": "City",
-              "sort-name": "San Luis Obispo"
-            },
             "coordinates": null,
             "type": "Studio",
-            "type-id": "05fa6a09-ff92-3d34-bdbb-5141d3c24f38",
-            "address": "",
+            "area": {
+              "type": "City",
+              "disambiguation": "",
+              "id": "eeab8640-d52e-440a-af1a-425a1754975a",
+              "sort-name": "San Luis Obispo",
+              "type-id": "6fd8f29a-3d0a-32fc-980d-ea697b69da78",
+              "name": "San Luis Obispo"
+            },
             "name": "The Toadstool",
-            "id": "b5f56999-d7e5-43e0-87a1-2df9a7abfd4f"
+            "address": "",
+            "id": "b5f56999-d7e5-43e0-87a1-2df9a7abfd4f",
+            "disambiguation": "",
+            "type-id": "05fa6a09-ff92-3d34-bdbb-5141d3c24f38"
           },
-          "source-credit": "",
-          "type-id": "ad462279-14b0-4180-9b58-571d0eef7c51"
+          "target-credit": "",
+          "attributes": [],
+          "direction": "backward",
+          "attribute-ids": {},
+          "type-id": "ad462279-14b0-4180-9b58-571d0eef7c51",
+          "attribute-values": {},
+          "end": "2024-03"
         }
       ],
       "title": "Starting Again",
-      "length": 169000,
-      "disambiguation": "",
+      "first-release-date": "2024-03-14",
       "releases": [
         {
           "quality": "normal",
-          "id": "0a907b3c-4e86-4201-bd64-3fc05a00f379",
-          "date": "2024-03-14",
+          "country": "XW",
           "disambiguation": "",
-          "status-id": "4e304316-386d-3409-af2e-78857eec5cfe",
-          "barcode": "",
-          "status": "Official",
-          "packaging-id": null,
           "text-representation": {
             "script": null,
             "language": "eng"
           },
+          "status-id": "4e304316-386d-3409-af2e-78857eec5cfe",
+          "id": "0a907b3c-4e86-4201-bd64-3fc05a00f379",
           "release-events": [
             {
               "date": "2024-03-14",
               "area": {
-                "type-id": null,
-                "disambiguation": "",
-                "id": "525d4e18-3d00-31b9-a58b-a146a916de8f",
-                "name": "[Worldwide]",
-                "type": null,
-                "sort-name": "[Worldwide]",
                 "iso-3166-1-codes": [
                   "XW"
-                ]
+                ],
+                "type": null,
+                "name": "[Worldwide]",
+                "type-id": null,
+                "sort-name": "[Worldwide]",
+                "disambiguation": "",
+                "id": "525d4e18-3d00-31b9-a58b-a146a916de8f"
+              }
+            }
+          ],
+          "date": "2024-03-14",
+          "packaging": null,
+          "barcode": "",
+          "packaging-id": null,
+          "title": "Starting Again",
+          "status": "Official"
+        },
+        {
+          "country": "XW",
+          "quality": "normal",
+          "disambiguation": "",
+          "text-representation": {
+            "script": null,
+            "language": "eng"
+          },
+          "status-id": "4e304316-386d-3409-af2e-78857eec5cfe",
+          "id": "f658a043-c8a1-4627-8eac-7970ae80c1d2",
+          "date": "2025-05-01",
+          "release-events": [
+            {
+              "date": "2025-05-01",
+              "area": {
+                "iso-3166-1-codes": [
+                  "XW"
+                ],
+                "type": null,
+                "name": "[Worldwide]",
+                "type-id": null,
+                "id": "525d4e18-3d00-31b9-a58b-a146a916de8f",
+                "disambiguation": "",
+                "sort-name": "[Worldwide]"
               }
             }
           ],
           "packaging": null,
-          "country": "XW",
-          "title": "Starting Again"
-        },
-        {
-          "text-representation": {
-            "language": "eng",
-            "script": null
-          },
-          "title": "Long Way Home",
-          "country": "XW",
-          "packaging": null,
-          "release-events": [
-            {
-              "area": {
-                "name": "[Worldwide]",
-                "id": "525d4e18-3d00-31b9-a58b-a146a916de8f",
-                "disambiguation": "",
-                "type-id": null,
-                "iso-3166-1-codes": [
-                  "XW"
-                ],
-                "sort-name": "[Worldwide]",
-                "type": null
-              },
-              "date": "2025-05-01"
-            }
-          ],
-          "date": "2025-05-01",
-          "id": "f658a043-c8a1-4627-8eac-7970ae80c1d2",
-          "quality": "normal",
+          "barcode": "056870688022",
           "packaging-id": null,
           "status": "Official",
-          "barcode": "056870688022",
-          "status-id": "4e304316-386d-3409-af2e-78857eec5cfe",
-          "disambiguation": ""
+          "title": "Long Way Home"
         }
-      ]
+      ],
+      "length": 169000,
+      "disambiguation": "",
+      "id": "54625954-31f1-47ae-b409-fe98a6d8ee9b",
+      "video": false
     }
   }
 }

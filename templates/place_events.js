@@ -31,7 +31,7 @@
                         <div class="event-poster" id="art-${e.id}"></div>
                         <div class="event-info"><h3>${esc(e.name)}</h3><p>loading details…</p></div>
                     </div>
-                `)});let completed=0,failed=0;for(let i=0;i<allEvents.length;i++){const e=allEvents[i];try{const d2=await cached(`event/${e.id}?inc=place-rels+artist-rels&fmt=json`,_cache?.subpages?.events?.details?.[e.id]);const isCancelled=d2.cancelled===true;if(isCancelled)document.getElementById(`event-${e.id}`)?.classList.add("cancelled");const performers=(d2.relations?.filter(r=>r["target-type"]==="artist"&&PERFORMER_TYPES.includes(r.type))||[]).map(r=>{const wasCancelled=Array.isArray(r.attributes)&&r.attributes.includes("cancelled");const typeLabel=r.type!=="main performer"?` (${r.type})`:"";return archiveLink(r.artist.id,r.artist.name,"artist")+typeLabel+(wasCancelled?' <span class="performer-cancelled">(cancelled)</span>':"")}).join(", ");const eventType=d2.type?d2.type.toLowerCase()==="concert"?"show":esc(d2.type.toLowerCase()):"event";document.querySelector(`#event-${e.id} .event-info`).innerHTML=`
+                `)});let completed=0,failed=0;for(let i=0;i<allEvents.length;i++){const e=allEvents[i];try{const d2=await cached(`event/${e.id}?inc=place-rels+artist-rels+url-rels&fmt=json`,_cache?.subpages?.events?.details?.[e.id]);const isCancelled=d2.cancelled===true;if(isCancelled)document.getElementById(`event-${e.id}`)?.classList.add("cancelled");const performers=(d2.relations?.filter(r=>r["target-type"]==="artist"&&PERFORMER_TYPES.includes(r.type))||[]).map(r=>{const wasCancelled=Array.isArray(r.attributes)&&r.attributes.includes("cancelled");const typeLabel=r.type!=="main performer"?` (${r.type})`:"";return archiveLink(r.artist.id,r.artist.name,"artist")+typeLabel+(wasCancelled?' <span class="performer-cancelled">(cancelled)</span>':"")}).join(", ");const eventType=d2.type?d2.type.toLowerCase()==="concert"?"show":esc(d2.type.toLowerCase()):"event";document.querySelector(`#event-${e.id} .event-info`).innerHTML=`
                         <h3>
                             <a href="https://musicbrainz.org/event/${esc(d2.id)}" target="_blank" rel="noopener">${esc(d2.name)}</a>
                             <span class="event-type">[${eventType}]</span>
@@ -39,6 +39,7 @@
                         </h3>
                         <p><strong>date</strong>${esc(d2["life-span"]?.begin||"unknown")}${d2.time?` at ${esc(d2.time)}`:""}</p>
                         ${performers?`<p><strong>performers</strong>${performers}</p>`:""}
+                        ${window.mbLinks?window.mbLinks(d2.relations):""}
                     `;loadPoster(e.id);completed++}catch{document.querySelector(`#event-${e.id} .event-info`).innerHTML=`
                         <h3>${esc(e.name)}</h3>
                         <p style="color:var(--rose);opacity:0.7;">failed to load. <a href="https://musicbrainz.org/event/${esc(e.id)}" target="_blank" rel="noopener">view on MusicBrainz</a></p>
