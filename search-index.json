@@ -914,7 +914,7 @@
     "c": "artist",
     "u": "/archive/by-artist/millstone/about.html",
     "d": "Millstone — About",
-    "b": "Millstone · about · magmacrunch media archive › by artist › millstone // millstone // ABOUT ← back events links news photography recordings works Millstone was a rock band from Southern New Hampshire, together from the fall of 2003 to the spring of 2004: Dave Hayes and Dave Robinson on guitar and vocals, Jake McCoy on drums, and Keith Galvin on bass and vocals. Their own website described them in two words: \"Simply rock.\" It started when Jake and Dave got together on a whim to jam. The two Daves began playing together, then joined up with Jake and practiced at his house almost every day. They ..."
+    "b": "Millstone · about · magmacrunch media archive › by artist › millstone // millstone // ABOUT ← back events links news photography recordings works // members // Dave Hayes guitar, vocals Dave Robinson guitar, vocals Jake McCoy drums, percussion Keith Galvin bass, vocals (from Dec 2003) also around Bobby T. photographer, roadie Jon the bouncer Cassandra “Cassie&rdquo Ray; keys, vocals (lined up for the demo) Millstone was a rock band from Southern New Hampshire, together from the fall of 2003 to the spring of 2004: Dave Hayes and Dave Robinson on guitar and vocals, Jake McCoy on drums, and Keith..."
   },
   {
     "t": "Millstone · events · magmacrunch media",
@@ -970,7 +970,7 @@
     "c": "artist",
     "u": "/archive/by-artist/svfp/about.html",
     "d": "Svfp — About",
-    "b": "SVFP · about · magmacrunch media archive › by artist › svfp // sex van floor plan // ABOUT ← back documentary events links lyrics photography recordings releases works Sex Van Floor Plan (SVFP) is a riot-grrrl inspired band formed in 2024 in State College, Pennsylvania. First established as a trio by young folx Rho, Chuck, and Ellis (on guitar, lead vocals, and bass, respectively), the group recruited Jake as a drummer in early 2025. The band went on to play 16 shows in the state over the course of a year, releasing a single in 2025 and an EP in 2026. Additionally, they were featured in a docu..."
+    "b": "SVFP · about · magmacrunch media archive › by artist › svfp // sex van floor plan // ABOUT ← back documentary events links lyrics photography recordings releases works // members // Rho K. guitar, background vocals Chuck J'OB lead vocals Ellis Grey bass Jake A. McCoy drums (from 2025) also around E recording · honorary 5th member Allison Tocmo documentary Mariella Lionato documentary Sage Gamba EP art Sex Van Floor Plan (SVFP) is a riot-grrrl inspired band formed in 2024 in State College, Pennsylvania. First established as a trio by young folx Rho, Chuck, and Ellis (on guitar, lead vocals, and..."
   },
   {
     "t": "SVFP · documentary · magmacrunch media",
@@ -984,7 +984,7 @@
     "c": "artist",
     "u": "/archive/by-artist/svfp/events.html",
     "d": "Svfp — Events",
-    "b": "SVFP · events · magmacrunch media archive › by artist › svfp // sex van floor plan // EVENTS ← back about documentary links lyrics photography recordings releases works ◀ ▶ loading events…"
+    "b": "SVFP · events · magmacrunch media archive › by artist › svfp // sex van floor plan // EVENTS ← back about documentary links lyrics photography recordings releases works loading events… const FLYERS = [ { title: \"@ The Spice Rack\", date: \"Jun 14, 2025\", img: \"../../../assets/flyers/svfp/spicerack-june2025-show_1.png\", status: \"\" }, { title: \"@ The Spice Rack\", date: \"Jun 14, 2025\", img: \"../../../assets/flyers/svfp/spicerack-june2025-show_2.png\", status: \"\" }, { title: \"@ The Spice Rack — Mud Wrasslin'\", date: \"Jul 4, 2025\", img: \"../../../assets/flyers/svfp/spicerack-july2025-show_got-shut-dow..."
   },
   {
     "t": "SVFP · Sex Van Floor Plan · archive · magmacrunch media",
