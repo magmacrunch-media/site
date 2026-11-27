@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-11-27T22:56:43.353Z",
+  "fetchedAt": "2026-11-27T23:02:19.749Z",
   "manual": {},
   "sites": {
     "beehiveskirace.bandcamp.com": {
@@ -173,7 +173,11 @@
       "id": "f23efd54-e690-4be9-999a-c92ad23b7de2",
       "name": "The Ragetones"
     },
-    "thestatetheatre.org": null,
+    "thestatetheatre.org": {
+      "type": "place",
+      "id": "db72dc58-2d09-489f-a5f7-9b3472170a5c",
+      "name": "The State Theatre"
+    },
     "trtlprk.wixsite.com/website": {
       "type": "artist",
       "id": "6bcf5b5b-c7ce-4626-a88c-b326303cf7e7",
