@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-11-27T05:15:36.743Z",
+  "fetchedAt": "2026-11-27T05:24:31.228Z",
   "sites": {
     "beehiveskirace.bandcamp.com": {
       "type": "artist",
@@ -105,7 +105,11 @@
       "id": "b04581e2-4923-417a-af28-1500c533cedf",
       "name": "Lilith"
     },
-    "maammusic.com": null,
+    "maammusic.com": {
+      "type": "artist",
+      "id": "c9abbda2-83f3-48c6-8a00-81d737ccb6bb",
+      "name": "Ma'aM"
+    },
     "madamereapermusic.com": {
       "type": "artist",
       "id": "b863f14a-a09f-4bcf-abe7-40140c00f803",
@@ -128,6 +132,11 @@
       "type": "artist",
       "id": "87242861-24c5-4a02-a6ec-17073c6df847",
       "name": "Purple Lung"
+    },
+    "savestheday.com": {
+      "type": "artist",
+      "id": "593f8594-83ad-4df4-a9b8-e4d225f55440",
+      "name": "Saves the Day"
     },
     "smashtacklers.bandcamp.com": {
       "type": "artist",
@@ -166,6 +175,11 @@
       "type": "artist",
       "id": "115cd88d-2486-4a5c-9537-d2d81244055f",
       "name": "Sorry Mom"
+    },
+    "weezer.com": {
+      "type": "artist",
+      "id": "6fe07aa5-fec0-4eca-a456-f29bff451b04",
+      "name": "Weezer"
     },
     "wnyu.org/playlists/23098524": null
   }
