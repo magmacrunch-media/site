@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-11-27T18:52:51.465Z",
+  "fetchedAt": "2026-11-27T18:56:45.958Z",
   "manual": {},
   "sites": {
     "beehiveskirace.bandcamp.com": {
@@ -22,7 +22,11 @@
       "id": "4818c7b3-a651-4393-ae00-e8548d9c593c",
       "name": "Candy Ambulance"
     },
-    "carseatheadrest.com": null,
+    "carseatheadrest.com": {
+      "type": "artist",
+      "id": "0fabbc1d-8d94-4a61-bd1d-1099ad1e4559",
+      "name": "Car Seat Headrest"
+    },
     "chestymalone.com": {
       "type": "artist",
       "id": "78edca30-f45c-4f50-8093-7321249fbcee",
@@ -99,7 +103,11 @@
       "id": "56d982e7-c6e5-49bd-a4ec-888ab7fcaf04",
       "name": "Kiande Amedha"
     },
-    "letigre.world": null,
+    "letigre.world": {
+      "type": "artist",
+      "id": "2d67239c-aa40-4ad5-a807-9052b66857a6",
+      "name": "Le Tigre"
+    },
     "library.rockhall.com/riot_grrrl": null,
     "lilithworldwide.com": {
       "type": "artist",
