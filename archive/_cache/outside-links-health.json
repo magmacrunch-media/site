@@ -1,5 +1,5 @@
 {
-  "checkedAt": "2026-11-27T05:36:15.237Z",
+  "checkedAt": "2026-11-27T17:10:31.592Z",
   "sites": {
     "https://beehiveskirace.bandcamp.com/": {
       "state": "ok",
@@ -35,13 +35,13 @@
       "state": "ok",
       "status": 200,
       "final": "https://www.cpsisaband.com/",
-      "wayback": null
+      "wayback": "20261127164014"
     },
     "https://crashouttheband.com/": {
       "state": "ok",
       "status": 200,
       "final": "https://crashouttheband.com/",
-      "wayback": null
+      "wayback": "20261127164130"
     },
     "https://www.thecure.com/": {
       "state": "ok",
@@ -83,7 +83,7 @@
       "state": "ok",
       "status": 200,
       "final": "https://kiandeamedha.bandcamp.com/",
-      "wayback": null
+      "wayback": "20261127164644"
     },
     "https://www.letigre.world/": {
       "state": "ok",
@@ -113,7 +113,7 @@
       "state": "ok",
       "status": 200,
       "final": "https://www.marscounsel.com/",
-      "wayback": null
+      "wayback": "20261127164811"
     },
     "https://www.nodoubt.com/": {
       "state": "ok",
@@ -131,7 +131,7 @@
       "state": "ok",
       "status": 200,
       "final": "https://theragetones.weebly.com/",
-      "wayback": null
+      "wayback": "20261127164934"
     },
     "https://savestheday.com/": {
       "state": "ok",
@@ -161,7 +161,7 @@
       "state": "ok",
       "status": 200,
       "final": "https://trtlprk.wixsite.com/website",
-      "wayback": null
+      "wayback": "20261127165057"
     },
     "https://weezer.com/": {
       "state": "ok",
@@ -257,7 +257,7 @@
       "state": "ok",
       "status": 200,
       "final": "https://wnyu.org/playlists/23098524",
-      "wayback": null
+      "wayback": "20261127170535"
     },
     "https://musicbrainz.org/": {
       "state": "ok",
