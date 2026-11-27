@@ -1,296 +1,308 @@
 {
-  "fetchedAt": "2026-11-21T08:23:41.453Z",
+  "fetchedAt": "2026-11-27T03:44:57.114Z",
   "entityType": "label",
   "uuid": "ad82d124-e41e-49e8-9bf9-53e836b44336",
   "name": "The Slop Collective",
   "responses": {
     "artist-rels": {
-      "label-code": null,
-      "name": "The Slop Collective",
-      "type": "Creative Agency",
-      "isnis": [],
-      "country": null,
+      "id": "ad82d124-e41e-49e8-9bf9-53e836b44336",
       "sort-name": "The Slop Collective",
-      "area": {
-        "name": "State College",
-        "disambiguation": "",
-        "type-id": null,
-        "sort-name": "State College",
-        "id": "b1ea26d4-2993-4edb-8a66-a0f58fe39496",
-        "type": null
-      },
+      "isnis": [],
       "type-id": "eb91c0bb-bf46-4c7b-82fd-b237f49c515e",
+      "area": {
+        "id": "b1ea26d4-2993-4edb-8a66-a0f58fe39496",
+        "type": null,
+        "disambiguation": "",
+        "sort-name": "State College",
+        "type-id": null,
+        "name": "State College"
+      },
+      "label-code": null,
+      "country": null,
       "disambiguation": "",
+      "name": "The Slop Collective",
       "ipis": [],
+      "type": "Creative Agency",
       "relations": [
         {
-          "attribute-ids": {},
           "ended": false,
-          "type": "executive position at",
           "begin": null,
+          "source-credit": "",
+          "target-type": "artist",
+          "type": "executive position at",
           "target-credit": "",
+          "direction": "backward",
+          "attribute-ids": {},
+          "attributes": [],
+          "end": null,
+          "attribute-values": {},
+          "type-id": "e375b657-ed87-4ea3-97ef-2c6b7a5ff226",
           "artist": {
-            "type": "Person",
+            "disambiguation": "",
             "country": "US",
             "sort-name": "Grey, Ellis",
             "id": "aa5ccc77-a82e-465e-a9d5-79cf4098a926",
             "type-id": "b6e035f4-3ce9-331c-97df-83397230b0df",
-            "disambiguation": "",
-            "name": "Ellis Grey"
-          },
-          "attributes": [],
-          "direction": "backward",
-          "target-type": "artist",
-          "end": null,
-          "source-credit": "",
-          "attribute-values": {},
-          "type-id": "e375b657-ed87-4ea3-97ef-2c6b7a5ff226"
+            "name": "Ellis Grey",
+            "type": "Person"
+          }
         },
         {
+          "attributes": [],
           "attribute-ids": {},
-          "ended": false,
-          "type": "executive position at",
-          "begin": null,
-          "target-credit": "",
+          "direction": "backward",
+          "attribute-values": {},
+          "type-id": "e375b657-ed87-4ea3-97ef-2c6b7a5ff226",
           "artist": {
-            "type": "Person",
-            "country": "US",
             "sort-name": "J'OB, Chuck",
+            "disambiguation": "",
+            "country": "US",
             "id": "c8ba82bf-cfa1-49a0-98bf-0cf8f931099f",
             "type-id": "b6e035f4-3ce9-331c-97df-83397230b0df",
             "name": "Chuck J'OB",
-            "disambiguation": ""
+            "type": "Person"
           },
-          "attributes": [],
-          "direction": "backward",
-          "target-type": "artist",
           "end": null,
-          "attribute-values": {},
-          "source-credit": "",
-          "type-id": "e375b657-ed87-4ea3-97ef-2c6b7a5ff226"
-        },
-        {
+          "target-type": "artist",
           "type": "executive position at",
-          "attribute-ids": {},
           "ended": false,
-          "artist": {
-            "country": "US",
-            "type": "Person",
-            "id": "b0d4d4fd-d500-4439-b401-5c15f231e41f",
-            "sort-name": "K., Rho",
-            "type-id": "b6e035f4-3ce9-331c-97df-83397230b0df",
-            "disambiguation": "",
-            "name": "Rho K."
-          },
-          "attributes": [],
-          "begin": null,
-          "target-credit": "",
-          "end": null,
-          "direction": "backward",
-          "target-type": "artist",
-          "type-id": "e375b657-ed87-4ea3-97ef-2c6b7a5ff226",
           "source-credit": "",
-          "attribute-values": {}
-        },
-        {
-          "artist": {
-            "country": "US",
-            "type": "Group",
-            "sort-name": "Sex Van Floor Plan",
-            "id": "260e4953-a937-4355-8389-d1baaf24eca5",
-            "type-id": "e431f5f6-b5d2-343d-8b36-72607fffb74b",
-            "name": "Sex Van Floor Plan",
-            "disambiguation": ""
-          },
-          "attributes": [],
-          "begin": "2025",
-          "target-credit": "",
-          "type": "owner",
-          "attribute-ids": {},
-          "ended": false,
-          "type-id": "610fa594-eeaa-407b-a9f1-49f509ab5559",
-          "source-credit": "",
-          "attribute-values": {},
-          "end": null,
-          "direction": "backward",
-          "target-type": "artist"
-        }
-      ],
-      "life-span": {
-        "begin": "2025",
-        "ended": false,
-        "end": null
-      },
-      "id": "ad82d124-e41e-49e8-9bf9-53e836b44336"
-    },
-    "label-rels": {
-      "life-span": {
-        "begin": "2025",
-        "ended": false,
-        "end": null
-      },
-      "relations": [],
-      "type": "Creative Agency",
-      "ipis": [],
-      "name": "The Slop Collective",
-      "country": null,
-      "disambiguation": "",
-      "label-code": null,
-      "area": {
-        "type": null,
-        "disambiguation": "",
-        "id": "b1ea26d4-2993-4edb-8a66-a0f58fe39496",
-        "sort-name": "State College",
-        "type-id": null,
-        "name": "State College"
-      },
-      "type-id": "eb91c0bb-bf46-4c7b-82fd-b237f49c515e",
-      "isnis": [],
-      "sort-name": "The Slop Collective",
-      "id": "ad82d124-e41e-49e8-9bf9-53e836b44336"
-    },
-    "event-rels": {
-      "ipis": [],
-      "life-span": {
-        "ended": false,
-        "begin": "2025",
-        "end": null
-      },
-      "id": "ad82d124-e41e-49e8-9bf9-53e836b44336",
-      "relations": [
-        {
-          "direction": "backward",
-          "target-type": "event",
-          "event": {
-            "setlist": "",
-            "type-id": "ef55e8d7-3d00-394a-8012-f5506a29ff0b",
-            "time": "19:00",
-            "name": "Film and Gender, Shirthole, Sex Van Floor Plan, Toy",
-            "disambiguation": "",
-            "type": "Concert",
-            "life-span": {
-              "end": "2025-11-15",
-              "ended": true,
-              "begin": "2025-11-15"
-            },
-            "cancelled": false,
-            "id": "8a5504df-1439-4a10-9a4c-e6bf92c53a7b"
-          },
-          "end": null,
-          "attribute-values": {},
-          "source-credit": "",
-          "type-id": "09bd2cba-6160-408b-b191-afef7480ce54",
-          "attribute-ids": {},
-          "ended": false,
-          "type": "presented",
-          "begin": null,
-          "target-credit": "",
-          "attributes": []
-        },
-        {
-          "event": {
-            "time": "19:30",
-            "type-id": "ef55e8d7-3d00-394a-8012-f5506a29ff0b",
-            "setlist": "",
-            "disambiguation": "McSlamahan's",
-            "name": "Mandatory Abortion, Aetheress, By My Blood, Violence",
-            "type": "Concert",
-            "id": "3db43632-296d-4652-9620-56f6e667350a",
-            "life-span": {
-              "ended": true,
-              "begin": "2025-09-27",
-              "end": "2025-09-27"
-            },
-            "cancelled": false
-          },
-          "end": null,
-          "direction": "backward",
-          "target-type": "event",
-          "type-id": "09bd2cba-6160-408b-b191-afef7480ce54",
-          "source-credit": "",
-          "attribute-values": {},
-          "type": "presented",
-          "attribute-ids": {},
-          "ended": false,
-          "attributes": [],
           "begin": null,
           "target-credit": ""
         },
         {
-          "attributes": [],
-          "begin": null,
-          "target-credit": "",
-          "type": "presented",
           "attribute-ids": {},
-          "ended": false,
-          "type-id": "09bd2cba-6160-408b-b191-afef7480ce54",
-          "source-credit": "",
+          "direction": "backward",
+          "attributes": [],
+          "end": null,
+          "artist": {
+            "disambiguation": "",
+            "sort-name": "K., Rho",
+            "country": "US",
+            "id": "b0d4d4fd-d500-4439-b401-5c15f231e41f",
+            "type-id": "b6e035f4-3ce9-331c-97df-83397230b0df",
+            "name": "Rho K.",
+            "type": "Person"
+          },
+          "type-id": "e375b657-ed87-4ea3-97ef-2c6b7a5ff226",
           "attribute-values": {},
+          "source-credit": "",
+          "begin": null,
+          "ended": false,
+          "type": "executive position at",
+          "target-type": "artist",
+          "target-credit": ""
+        },
+        {
+          "attributes": [],
+          "direction": "backward",
+          "attribute-ids": {},
+          "artist": {
+            "type": "Group",
+            "name": "Sex Van Floor Plan",
+            "type-id": "e431f5f6-b5d2-343d-8b36-72607fffb74b",
+            "sort-name": "Sex Van Floor Plan",
+            "country": "US",
+            "disambiguation": "",
+            "id": "260e4953-a937-4355-8389-d1baaf24eca5"
+          },
+          "attribute-values": {},
+          "type-id": "610fa594-eeaa-407b-a9f1-49f509ab5559",
+          "end": null,
+          "type": "owner",
+          "target-type": "artist",
+          "begin": "2025",
+          "source-credit": "",
+          "ended": false,
+          "target-credit": ""
+        }
+      ],
+      "life-span": {
+        "begin": "2025",
+        "ended": false,
+        "end": null
+      }
+    },
+    "label-rels": {
+      "ipis": [],
+      "label-code": null,
+      "life-span": {
+        "end": null,
+        "begin": "2025",
+        "ended": false
+      },
+      "id": "ad82d124-e41e-49e8-9bf9-53e836b44336",
+      "isnis": [],
+      "disambiguation": "",
+      "area": {
+        "type": null,
+        "name": "State College",
+        "id": "b1ea26d4-2993-4edb-8a66-a0f58fe39496",
+        "sort-name": "State College",
+        "type-id": null,
+        "disambiguation": ""
+      },
+      "type": "Creative Agency",
+      "name": "The Slop Collective",
+      "type-id": "eb91c0bb-bf46-4c7b-82fd-b237f49c515e",
+      "sort-name": "The Slop Collective",
+      "country": null,
+      "relations": []
+    },
+    "event-rels": {
+      "life-span": {
+        "ended": false,
+        "begin": "2025",
+        "end": null
+      },
+      "ipis": [],
+      "id": "ad82d124-e41e-49e8-9bf9-53e836b44336",
+      "disambiguation": "",
+      "relations": [
+        {
+          "type-id": "09bd2cba-6160-408b-b191-afef7480ce54",
           "event": {
-            "type": "Concert",
+            "time": "19:00",
+            "id": "8a5504df-1439-4a10-9a4c-e6bf92c53a7b",
             "life-span": {
               "ended": true,
-              "begin": "2025-10-30",
-              "end": "2025-10-30"
+              "end": "2025-11-15",
+              "begin": "2025-11-15"
             },
-            "cancelled": false,
-            "id": "11bb0aab-36e9-4f5d-89a8-d69c25850ca8",
-            "time": "19:00",
-            "setlist": "",
             "type-id": "ef55e8d7-3d00-394a-8012-f5506a29ff0b",
-            "name": "Zeno-ween: Sex Van Floor Plan, DMV, Wet Vag, Beating Up Scotty",
+            "name": "Film and Gender, Shirthole, Sex Van Floor Plan, Toy",
+            "setlist": "",
+            "type": "Concert",
+            "cancelled": false,
             "disambiguation": ""
           },
-          "end": null,
           "direction": "backward",
-          "target-type": "event"
+          "type": "presented",
+          "target-credit": "",
+          "begin": null,
+          "attribute-values": {},
+          "target-type": "event",
+          "attributes": [],
+          "ended": false,
+          "source-credit": "",
+          "end": null,
+          "attribute-ids": {}
+        },
+        {
+          "attribute-ids": {},
+          "attributes": [],
+          "target-type": "event",
+          "source-credit": "",
+          "end": null,
+          "ended": false,
+          "target-credit": "",
+          "type": "presented",
+          "attribute-values": {},
+          "begin": null,
+          "event": {
+            "name": "Mandatory Abortion, Aetheress, By My Blood, Violence",
+            "type-id": "ef55e8d7-3d00-394a-8012-f5506a29ff0b",
+            "life-span": {
+              "begin": "2025-09-27",
+              "end": "2025-09-27",
+              "ended": true
+            },
+            "id": "3db43632-296d-4652-9620-56f6e667350a",
+            "time": "19:30",
+            "cancelled": false,
+            "type": "Concert",
+            "disambiguation": "McSlamahan's",
+            "setlist": ""
+          },
+          "type-id": "09bd2cba-6160-408b-b191-afef7480ce54",
+          "direction": "backward"
+        },
+        {
+          "attribute-ids": {},
+          "target-type": "event",
+          "attributes": [],
+          "ended": false,
+          "end": null,
+          "source-credit": "",
+          "target-credit": "",
+          "type": "presented",
+          "begin": null,
+          "attribute-values": {},
+          "event": {
+            "setlist": "",
+            "type": "Concert",
+            "disambiguation": "",
+            "cancelled": false,
+            "time": "19:00",
+            "id": "11bb0aab-36e9-4f5d-89a8-d69c25850ca8",
+            "type-id": "ef55e8d7-3d00-394a-8012-f5506a29ff0b",
+            "life-span": {
+              "begin": "2025-10-30",
+              "end": "2025-10-30",
+              "ended": true
+            },
+            "name": "Zeno-ween: Sex Van Floor Plan, DMV, Wet Vag, Beating Up Scotty"
+          },
+          "type-id": "09bd2cba-6160-408b-b191-afef7480ce54",
+          "direction": "backward"
         }
       ],
       "type-id": "eb91c0bb-bf46-4c7b-82fd-b237f49c515e",
-      "disambiguation": "",
+      "name": "The Slop Collective",
       "country": null,
       "type": "Creative Agency",
       "isnis": [],
+      "label-code": null,
       "area": {
-        "sort-name": "State College",
-        "id": "b1ea26d4-2993-4edb-8a66-a0f58fe39496",
         "type": null,
         "disambiguation": "",
+        "sort-name": "State College",
         "name": "State College",
-        "type-id": null
+        "type-id": null,
+        "id": "b1ea26d4-2993-4edb-8a66-a0f58fe39496"
       },
-      "sort-name": "The Slop Collective",
-      "label-code": null,
-      "name": "The Slop Collective"
+      "sort-name": "The Slop Collective"
     },
     "recording-rels": {
-      "disambiguation": "",
       "country": null,
-      "life-span": {
-        "ended": false,
-        "end": null,
-        "begin": "2025"
-      },
-      "type-id": "eb91c0bb-bf46-4c7b-82fd-b237f49c515e",
-      "type": "Creative Agency",
-      "sort-name": "The Slop Collective",
-      "relations": [],
-      "isnis": [],
       "name": "The Slop Collective",
+      "type-id": "eb91c0bb-bf46-4c7b-82fd-b237f49c515e",
+      "sort-name": "The Slop Collective",
       "area": {
-        "type": null,
-        "id": "b1ea26d4-2993-4edb-8a66-a0f58fe39496",
-        "type-id": null,
         "name": "State College",
+        "type-id": null,
+        "id": "b1ea26d4-2993-4edb-8a66-a0f58fe39496",
+        "type": null,
         "disambiguation": "",
         "sort-name": "State College"
       },
-      "ipis": [],
       "label-code": null,
-      "id": "ad82d124-e41e-49e8-9bf9-53e836b44336"
+      "isnis": [],
+      "type": "Creative Agency",
+      "id": "ad82d124-e41e-49e8-9bf9-53e836b44336",
+      "ipis": [],
+      "life-span": {
+        "ended": false,
+        "begin": "2025",
+        "end": null
+      },
+      "relations": [],
+      "disambiguation": ""
     },
     "work-rels": {
-      "id": "ad82d124-e41e-49e8-9bf9-53e836b44336",
+      "type-id": "eb91c0bb-bf46-4c7b-82fd-b237f49c515e",
+      "relations": [],
+      "country": null,
+      "life-span": {
+        "end": null,
+        "ended": false,
+        "begin": "2025"
+      },
+      "ipis": [],
+      "label-code": null,
+      "isnis": [],
+      "type": "Creative Agency",
+      "name": "The Slop Collective",
       "area": {
         "sort-name": "State College",
         "type-id": null,
@@ -299,188 +311,217 @@
         "disambiguation": "",
         "name": "State College"
       },
+      "id": "ad82d124-e41e-49e8-9bf9-53e836b44336",
       "sort-name": "The Slop Collective",
-      "disambiguation": "",
-      "relations": [],
+      "disambiguation": ""
+    },
+    "release-rels": {
+      "ipis": [],
+      "area": {
+        "sort-name": "State College",
+        "disambiguation": "",
+        "name": "State College",
+        "id": "b1ea26d4-2993-4edb-8a66-a0f58fe39496",
+        "type-id": null,
+        "type": null
+      },
+      "label-code": null,
+      "id": "ad82d124-e41e-49e8-9bf9-53e836b44336",
+      "sort-name": "The Slop Collective",
+      "relations": [
+        {
+          "target-credit": "",
+          "direction": "forward",
+          "release": {
+            "country": "US",
+            "disambiguation": "",
+            "status": null,
+            "barcode": "",
+            "text-representation": {
+              "language": "eng",
+              "script": null
+            },
+            "release-events": [
+              {
+                "date": "2026-06-26",
+                "area": {
+                  "name": "United States",
+                  "disambiguation": "",
+                  "sort-name": "United States",
+                  "type": null,
+                  "iso-3166-1-codes": [
+                    "US"
+                  ],
+                  "id": "489ce91b-6658-3307-9877-795b68554c98",
+                  "type-id": null
+                }
+              }
+            ],
+            "packaging-id": null,
+            "packaging": null,
+            "status-id": null,
+            "date": "2026-06-26",
+            "id": "b4c632cd-81b8-4dd4-be45-aac271493d3e",
+            "title": "iou a pack of american spirits",
+            "quality": "normal"
+          },
+          "type-id": "835e514a-c5bc-44f7-be7b-92452a3f5d60",
+          "attribute-values": {},
+          "type": "manufactured",
+          "attributes": [],
+          "begin": "2026-06-26",
+          "attribute-ids": {},
+          "target-type": "release",
+          "ended": true,
+          "end": "2026-06-26",
+          "source-credit": ""
+        },
+        {
+          "attribute-ids": {},
+          "target-type": "release",
+          "ended": true,
+          "attributes": [],
+          "begin": "2026-06",
+          "source-credit": "",
+          "end": "2026-06",
+          "target-credit": "",
+          "type-id": "835e514a-c5bc-44f7-be7b-92452a3f5d60",
+          "attribute-values": {},
+          "type": "manufactured",
+          "release": {
+            "country": "US",
+            "disambiguation": "",
+            "status": null,
+            "barcode": "",
+            "text-representation": {
+              "language": "eng",
+              "script": null
+            },
+            "packaging-id": null,
+            "release-events": [
+              {
+                "date": "2026-06-26",
+                "area": {
+                  "type-id": null,
+                  "id": "489ce91b-6658-3307-9877-795b68554c98",
+                  "iso-3166-1-codes": [
+                    "US"
+                  ],
+                  "type": null,
+                  "disambiguation": "",
+                  "name": "United States",
+                  "sort-name": "United States"
+                }
+              }
+            ],
+            "packaging": null,
+            "status-id": null,
+            "date": "2026-06-26",
+            "id": "d5e8fd0c-34e3-44f1-8880-35e7c86dc2d4",
+            "title": "Sex Van Floor Plan",
+            "quality": "normal"
+          },
+          "direction": "forward"
+        }
+      ],
+      "isnis": [],
+      "name": "The Slop Collective",
+      "life-span": {
+        "ended": false,
+        "end": null,
+        "begin": "2025"
+      },
       "type-id": "eb91c0bb-bf46-4c7b-82fd-b237f49c515e",
+      "type": "Creative Agency",
+      "country": null,
+      "disambiguation": ""
+    },
+    "url-rels": {
+      "isnis": [],
+      "type": "Creative Agency",
+      "country": null,
+      "area": {
+        "sort-name": "State College",
+        "id": "b1ea26d4-2993-4edb-8a66-a0f58fe39496",
+        "type": null,
+        "name": "State College",
+        "disambiguation": "",
+        "type-id": null
+      },
+      "sort-name": "The Slop Collective",
+      "label-code": null,
+      "name": "The Slop Collective",
+      "ipis": [],
       "life-span": {
         "end": null,
         "ended": false,
         "begin": "2025"
       },
-      "country": null,
-      "isnis": [],
-      "ipis": [],
-      "label-code": null,
-      "name": "The Slop Collective",
-      "type": "Creative Agency"
-    },
-    "release-rels": {
-      "disambiguation": "",
-      "area": {
-        "name": "State College",
-        "disambiguation": "",
-        "type": null,
-        "sort-name": "State College",
-        "id": "b1ea26d4-2993-4edb-8a66-a0f58fe39496",
-        "type-id": null
-      },
       "id": "ad82d124-e41e-49e8-9bf9-53e836b44336",
-      "sort-name": "The Slop Collective",
-      "ipis": [],
-      "label-code": null,
-      "isnis": [],
-      "type": "Creative Agency",
-      "name": "The Slop Collective",
-      "type-id": "eb91c0bb-bf46-4c7b-82fd-b237f49c515e",
       "relations": [
         {
-          "release": {
-            "id": "b4c632cd-81b8-4dd4-be45-aac271493d3e",
-            "status-id": null,
-            "title": "iou a pack of american spirits",
-            "status": null,
-            "quality": "normal",
-            "release-events": [
-              {
-                "area": {
-                  "disambiguation": "",
-                  "sort-name": "United States",
-                  "id": "489ce91b-6658-3307-9877-795b68554c98",
-                  "name": "United States",
-                  "type": null,
-                  "iso-3166-1-codes": [
-                    "US"
-                  ],
-                  "type-id": null
-                },
-                "date": "2026-06-26"
-              }
-            ],
-            "barcode": "",
-            "date": "2026-06-26",
-            "disambiguation": "",
-            "packaging": null,
-            "country": "US",
-            "text-representation": {
-              "language": "eng",
-              "script": null
-            },
-            "packaging-id": null
-          },
+          "attribute-values": {},
           "source-credit": "",
-          "ended": true,
-          "end": "2026-06-26",
-          "target-credit": "",
-          "type-id": "835e514a-c5bc-44f7-be7b-92452a3f5d60",
-          "attribute-ids": {},
-          "attributes": [],
-          "begin": "2026-06-26",
-          "direction": "forward",
-          "target-type": "release",
-          "attribute-values": {},
-          "type": "manufactured"
-        },
-        {
-          "attributes": [],
-          "target-credit": "",
-          "type-id": "835e514a-c5bc-44f7-be7b-92452a3f5d60",
-          "attribute-ids": {},
-          "attribute-values": {},
-          "type": "manufactured",
-          "begin": "2026-06",
-          "direction": "forward",
-          "target-type": "release",
-          "release": {
-            "country": "US",
-            "packaging": null,
-            "packaging-id": null,
-            "text-representation": {
-              "language": "eng",
-              "script": null
-            },
-            "barcode": "",
-            "release-events": [
-              {
-                "date": "2026-06-26",
-                "area": {
-                  "id": "489ce91b-6658-3307-9877-795b68554c98",
-                  "sort-name": "United States",
-                  "disambiguation": "",
-                  "type-id": null,
-                  "iso-3166-1-codes": [
-                    "US"
-                  ],
-                  "name": "United States",
-                  "type": null
-                }
-              }
-            ],
-            "disambiguation": "",
-            "date": "2026-06-26",
-            "quality": "normal",
-            "id": "d5e8fd0c-34e3-44f1-8880-35e7c86dc2d4",
-            "status": null,
-            "title": "Sex Van Floor Plan",
-            "status-id": null
-          },
-          "end": "2026-06",
-          "source-credit": "",
-          "ended": true
-        }
-      ],
-      "country": null,
-      "life-span": {
-        "ended": false,
-        "begin": "2025",
-        "end": null
-      }
-    },
-    "url-rels": {
-      "country": null,
-      "disambiguation": "",
-      "life-span": {
-        "ended": false,
-        "begin": "2025",
-        "end": null
-      },
-      "type": "Creative Agency",
-      "type-id": "eb91c0bb-bf46-4c7b-82fd-b237f49c515e",
-      "relations": [
-        {
-          "url": {
-            "id": "6190e4c1-ca6c-4583-b3e7-5af3cb2aee80",
-            "resource": "https://www.discogs.com/label/4614897"
-          },
-          "direction": "forward",
-          "attribute-values": {},
-          "type": "discogs",
           "type-id": "5b987f87-25bc-4a2d-b3f1-3618795b8207",
-          "target-credit": "",
+          "target-type": "url",
+          "direction": "forward",
           "end": null,
-          "source-credit": "",
+          "target-credit": "",
+          "url": {
+            "resource": "https://www.discogs.com/label/4614897",
+            "id": "6190e4c1-ca6c-4583-b3e7-5af3cb2aee80"
+          },
           "begin": null,
           "attributes": [],
           "ended": false,
-          "target-type": "url",
-          "attribute-ids": {}
+          "attribute-ids": {},
+          "type": "discogs"
         }
       ],
-      "sort-name": "The Slop Collective",
-      "isnis": [],
-      "name": "The Slop Collective",
-      "ipis": [],
-      "label-code": null,
-      "area": {
-        "disambiguation": "",
-        "name": "State College",
-        "sort-name": "State College",
-        "id": "b1ea26d4-2993-4edb-8a66-a0f58fe39496",
-        "type-id": null,
-        "type": null
-      },
-      "id": "ad82d124-e41e-49e8-9bf9-53e836b44336"
+      "type-id": "eb91c0bb-bf46-4c7b-82fd-b237f49c515e",
+      "disambiguation": ""
     }
   },
-  "releaseUrls": {}
+  "releaseUrls": {
+    "b4c632cd-81b8-4dd4-be45-aac271493d3e": [
+      {
+        "begin": null,
+        "end": null,
+        "target-type": "url",
+        "ended": false,
+        "target-credit": "",
+        "url": {
+          "resource": "https://magmacrunch.com/music/physical-media/floppy-disk/iou-american-spirits/",
+          "id": "68a6a05e-dc99-4a62-9a4b-22f91bcf794b"
+        },
+        "attribute-values": {},
+        "attributes": [],
+        "attribute-ids": {},
+        "direction": "forward",
+        "type-id": "823656dd-0309-4247-b282-b92d287d59c5",
+        "type": "discography entry",
+        "source-credit": ""
+      }
+    ],
+    "d5e8fd0c-34e3-44f1-8880-35e7c86dc2d4": [
+      {
+        "begin": null,
+        "attribute-values": {},
+        "target-credit": "",
+        "type": "discography entry",
+        "direction": "forward",
+        "type-id": "823656dd-0309-4247-b282-b92d287d59c5",
+        "attribute-ids": {},
+        "ended": false,
+        "source-credit": "",
+        "url": {
+          "id": "a8057210-b5fa-447e-a007-486dcbcc0506",
+          "resource": "https://magmacrunch.com/music/physical-media/cd/sex-van-floor-plan/"
+        },
+        "end": null,
+        "target-type": "url",
+        "attributes": []
+      }
+    ]
+  }
 }
