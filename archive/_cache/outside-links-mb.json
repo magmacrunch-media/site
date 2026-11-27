@@ -1,0 +1,172 @@
+{
+  "fetchedAt": "2026-11-27T05:15:36.743Z",
+  "sites": {
+    "beehiveskirace.bandcamp.com": {
+      "type": "artist",
+      "id": "fe2241d7-85da-4eb0-a6af-af31540d2953",
+      "name": "Bee Hive Ski Race"
+    },
+    "bikinikill.com": {
+      "type": "artist",
+      "id": "1397d045-1603-41fc-80b9-712c18360145",
+      "name": "Bikini Kill"
+    },
+    "cafe210.net": {
+      "type": "place",
+      "id": "9626c1a8-c3ea-49d6-83ad-80461e35f219",
+      "name": "Cafe 210 West"
+    },
+    "candyambulance.bandcamp.com": {
+      "type": "artist",
+      "id": "4818c7b3-a651-4393-ae00-e8548d9c593c",
+      "name": "Candy Ambulance"
+    },
+    "carseatheadrest.com": null,
+    "chestymalone.com": {
+      "type": "artist",
+      "id": "78edca30-f45c-4f50-8093-7321249fbcee",
+      "name": "Chesty Malone and The Slice ’em Ups"
+    },
+    "coffeeroastersnh.com": {
+      "type": "place",
+      "id": "32ded9a6-77b6-4c5a-ab7b-39858a5b0438",
+      "name": "Coffee Coffee"
+    },
+    "cpsisaband.com": {
+      "type": "artist",
+      "id": "36d153ea-2f68-4464-a68d-b38e5cc76cd7",
+      "name": "CPS"
+    },
+    "crashouttheband.com": {
+      "type": "artist",
+      "id": "c2966e98-d305-4264-b22b-473750b9b5fa",
+      "name": "Crashout"
+    },
+    "dazeyandthescouts.bandcamp.com": {
+      "type": "artist",
+      "id": "a7fd3cbf-15cc-4a8a-b59f-587b5784feb2",
+      "name": "Dazey and the Scouts"
+    },
+    "facebook.com/bonfiresnh": null,
+    "instagram.com/chowchowmedia": {
+      "type": "label",
+      "id": "0d72640d-1075-4e98-87e7-903194ae1d3c",
+      "name": "ChowChow Media"
+    },
+    "instagram.com/dance_off_productions": {
+      "type": "label",
+      "id": "02d75034-93f1-4b8a-ae27-e698faf17604",
+      "name": "Dance Off Productions"
+    },
+    "instagram.com/gigantosaurus_band": {
+      "type": "artist",
+      "id": "686d79cb-ade0-47d4-b86f-1e5162e9cc92",
+      "name": "Gigantosaurus"
+    },
+    "instagram.com/holemilkpa": {
+      "type": "artist",
+      "id": "e69f3861-5601-47c8-a087-0bfcce8fa01d",
+      "name": "Hole Milk"
+    },
+    "instagram.com/homelessonmars": {
+      "type": "artist",
+      "id": "c8534610-13da-4b52-ab4e-94aa07e5a38f",
+      "name": "Homeless On Mars"
+    },
+    "instagram.com/thebrewery_statecollege": {
+      "type": "place",
+      "id": "f27f838d-ba4c-428c-9a40-c312c2be3388",
+      "name": "The Brewery"
+    },
+    "instagram.com/themansion_psu": {
+      "type": "place",
+      "id": "52b094ed-5aac-4dc3-9e9f-a9cb87d000bd",
+      "name": "The Mansion"
+    },
+    "instagram.com/thespicerack.sc": {
+      "type": "place",
+      "id": "b6239c7a-cc83-4c2d-868c-4f9c79ef8673",
+      "name": "The Spice Rack"
+    },
+    "jvktheband.com": {
+      "type": "artist",
+      "id": "5b9bc2ae-2707-45ff-a846-52f61cdcca42",
+      "name": "JVK"
+    },
+    "kiandeamedha.bandcamp.com": {
+      "type": "artist",
+      "id": "56d982e7-c6e5-49bd-a4ec-888ab7fcaf04",
+      "name": "Kiande Amedha"
+    },
+    "letigre.world": null,
+    "library.rockhall.com/riot_grrrl": null,
+    "liliththeband.bandcamp.com": {
+      "type": "artist",
+      "id": "b04581e2-4923-417a-af28-1500c533cedf",
+      "name": "Lilith"
+    },
+    "maammusic.com": null,
+    "madamereapermusic.com": {
+      "type": "artist",
+      "id": "b863f14a-a09f-4bcf-abe7-40140c00f803",
+      "name": "Madame Reaper"
+    },
+    "marscounsel.com": {
+      "type": "artist",
+      "id": "d25e614c-95c6-4128-bdd6-7ec2e8d949be",
+      "name": "Mars Counsel"
+    },
+    "musicbrainz.org": null,
+    "musicbrainz.org/artist/9567c0fc-9756-4bf8-bdf9-7ca123fba3bb": null,
+    "musicbrainz.org/place/98cb63d8-6e2a-44f5-971e-a2a19253aa11": null,
+    "nodoubt.com": {
+      "type": "artist",
+      "id": "fbd2a255-1d57-4d31-ac11-65b671c19958",
+      "name": "No Doubt"
+    },
+    "purplelung.bandcamp.com": {
+      "type": "artist",
+      "id": "87242861-24c5-4a02-a6ec-17073c6df847",
+      "name": "Purple Lung"
+    },
+    "smashtacklers.bandcamp.com": {
+      "type": "artist",
+      "id": "5b706397-20ac-4434-94b3-d10f0cb35b9f",
+      "name": "The Smash Tacklers"
+    },
+    "suburbandowngrade.bandcamp.com": {
+      "type": "artist",
+      "id": "ac6c357a-dc65-4560-9b7a-ce38cd81911d",
+      "name": "Suburban Downgrade"
+    },
+    "thecure.com": {
+      "type": "artist",
+      "id": "69ee3720-a7cb-4402-b48d-a02c366f2bcf",
+      "name": "The Cure"
+    },
+    "themoviedb.org/movie/653664-dinner-in-america": null,
+    "themoviedb.org/movie/985-eraserhead": null,
+    "theragetones.weebly.com": {
+      "type": "artist",
+      "id": "f23efd54-e690-4be9-999a-c92ad23b7de2",
+      "name": "The Ragetones"
+    },
+    "thestatetheatre.org": null,
+    "trtlprk.wixsite.com/website": {
+      "type": "artist",
+      "id": "6bcf5b5b-c7ce-4626-a88c-b326303cf7e7",
+      "name": "Turtle Park"
+    },
+    "trumpetblossom.com": {
+      "type": "place",
+      "id": "5ba1a903-0f6f-4d06-a657-16255e07df86",
+      "name": "Trumpet Blossom Cafe"
+    },
+    "wearesorrymom.bandcamp.com": {
+      "type": "artist",
+      "id": "115cd88d-2486-4a5c-9537-d2d81244055f",
+      "name": "Sorry Mom"
+    },
+    "wnyu.org/playlists/23098524": null
+  }
+}
