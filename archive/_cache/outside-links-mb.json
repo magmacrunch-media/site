@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-11-27T18:56:45.958Z",
+  "fetchedAt": "2026-11-27T22:56:43.353Z",
   "manual": {},
   "sites": {
     "beehiveskirace.bandcamp.com": {
@@ -52,7 +52,11 @@
       "id": "a7fd3cbf-15cc-4a8a-b59f-587b5784feb2",
       "name": "Dazey and the Scouts"
     },
-    "facebook.com/bonfiresnh": null,
+    "facebook.com/bonfiresnh": {
+      "type": "artist",
+      "id": "22e14913-bb52-463d-af4f-b158ae255521",
+      "name": "Bonfires"
+    },
     "instagram.com/chowchowmedia": {
       "type": "label",
       "id": "0d72640d-1075-4e98-87e7-903194ae1d3c",
