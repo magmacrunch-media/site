@@ -1,0 +1,275 @@
+{
+  "checkedAt": "2026-11-27T05:36:15.237Z",
+  "sites": {
+    "https://beehiveskirace.bandcamp.com/": {
+      "state": "ok",
+      "status": 200,
+      "final": "https://beehiveskirace.bandcamp.com/",
+      "wayback": "20260121202528"
+    },
+    "https://bikinikill.com/": {
+      "state": "ok",
+      "status": 200,
+      "final": "https://bikinikill.com/",
+      "wayback": "20261031054007"
+    },
+    "https://candyambulance.bandcamp.com/": {
+      "state": "ok",
+      "status": 200,
+      "final": "https://candyambulance.bandcamp.com/",
+      "wayback": "20230323213256"
+    },
+    "https://www.carseatheadrest.com/": {
+      "state": "ok",
+      "status": 200,
+      "final": "https://www.carseatheadrest.com/",
+      "wayback": "20261030204447"
+    },
+    "https://www.chestymalone.com/": {
+      "state": "ok",
+      "status": 200,
+      "final": "https://www.chestymalone.com/",
+      "wayback": "20260909090742"
+    },
+    "https://www.cpsisaband.com/": {
+      "state": "ok",
+      "status": 200,
+      "final": "https://www.cpsisaband.com/",
+      "wayback": null
+    },
+    "https://crashouttheband.com/": {
+      "state": "ok",
+      "status": 200,
+      "final": "https://crashouttheband.com/",
+      "wayback": null
+    },
+    "https://www.thecure.com/": {
+      "state": "ok",
+      "status": 200,
+      "final": "https://www.thecure.com/",
+      "wayback": "20261109105637"
+    },
+    "https://dazeyandthescouts.bandcamp.com/": {
+      "state": "ok",
+      "status": 200,
+      "final": "https://dazeyandthescouts.bandcamp.com/",
+      "wayback": "20230227031720"
+    },
+    "https://www.instagram.com/gigantosaurus_band/": {
+      "state": "ok",
+      "status": 200,
+      "final": "https://www.instagram.com/gigantosaurus_band/",
+      "wayback": null
+    },
+    "https://www.instagram.com/holemilkpa/": {
+      "state": "ok",
+      "status": 200,
+      "final": "https://www.instagram.com/holemilkpa/",
+      "wayback": null
+    },
+    "https://www.instagram.com/homelessonmars/": {
+      "state": "ok",
+      "status": 200,
+      "final": "https://www.instagram.com/homelessonmars/",
+      "wayback": null
+    },
+    "https://jvktheband.com/": {
+      "state": "ok",
+      "status": 200,
+      "final": "https://jvktheband.com/",
+      "wayback": "20261028225253"
+    },
+    "https://kiandeamedha.bandcamp.com/": {
+      "state": "ok",
+      "status": 200,
+      "final": "https://kiandeamedha.bandcamp.com/",
+      "wayback": null
+    },
+    "https://www.letigre.world/": {
+      "state": "ok",
+      "status": 200,
+      "final": "https://www.letigre.world/",
+      "wayback": "20260920003251"
+    },
+    "https://www.lilithworldwide.com/": {
+      "state": "down",
+      "status": 404,
+      "final": "https://www.lilithworldwide.com/",
+      "wayback": "20230330115143"
+    },
+    "https://www.maammusic.com/": {
+      "state": "ok",
+      "status": 200,
+      "final": "https://maammusic.com/",
+      "wayback": "20241202110316"
+    },
+    "https://madamereapermusic.com/": {
+      "state": "ok",
+      "status": 200,
+      "final": "https://madamereapermusic.com/",
+      "wayback": "20250319023728"
+    },
+    "https://www.marscounsel.com/": {
+      "state": "ok",
+      "status": 200,
+      "final": "https://www.marscounsel.com/",
+      "wayback": null
+    },
+    "https://www.nodoubt.com/": {
+      "state": "ok",
+      "status": 200,
+      "final": "https://www.nodoubt.com/",
+      "wayback": "20261031080415"
+    },
+    "https://purplelung.bandcamp.com/": {
+      "state": "ok",
+      "status": 200,
+      "final": "https://purplelung.bandcamp.com/",
+      "wayback": "20260306222227"
+    },
+    "https://theragetones.weebly.com/": {
+      "state": "ok",
+      "status": 200,
+      "final": "https://theragetones.weebly.com/",
+      "wayback": null
+    },
+    "https://savestheday.com/": {
+      "state": "ok",
+      "status": 200,
+      "final": "https://savestheday.com/",
+      "wayback": "20261031030427"
+    },
+    "https://smashtacklers.bandcamp.com/": {
+      "state": "ok",
+      "status": 200,
+      "final": "https://smashtacklers.bandcamp.com/",
+      "wayback": "20260210154601"
+    },
+    "https://wearesorrymom.bandcamp.com/": {
+      "state": "ok",
+      "status": 200,
+      "final": "https://wearesorrymom.bandcamp.com/",
+      "wayback": "20260809163526"
+    },
+    "https://suburbandowngrade.bandcamp.com/": {
+      "state": "ok",
+      "status": 200,
+      "final": "https://suburbandowngrade.bandcamp.com/",
+      "wayback": "20250823122827"
+    },
+    "https://trtlprk.wixsite.com/website": {
+      "state": "ok",
+      "status": 200,
+      "final": "https://trtlprk.wixsite.com/website",
+      "wayback": null
+    },
+    "https://weezer.com/": {
+      "state": "ok",
+      "status": 200,
+      "final": "https://weezer.com/",
+      "wayback": "20261102175528"
+    },
+    "https://musicbrainz.org/artist/9567c0fc-9756-4bf8-bdf9-7ca123fba3bb": {
+      "state": "ok",
+      "status": 200,
+      "final": "https://musicbrainz.org/artist/9567c0fc-9756-4bf8-bdf9-7ca123fba3bb",
+      "wayback": null
+    },
+    "https://www.instagram.com/thebrewery_statecollege/": {
+      "state": "ok",
+      "status": 200,
+      "final": "https://www.instagram.com/thebrewery_statecollege/",
+      "wayback": null
+    },
+    "https://www.cafe210.net/": {
+      "state": "ok",
+      "status": 200,
+      "final": "https://www.cafe210.net/",
+      "wayback": "20260922194810"
+    },
+    "https://coffeeroastersnh.com/": {
+      "state": "error",
+      "status": null,
+      "why": "UND_ERR_SOCKET",
+      "wayback": "20261006232859"
+    },
+    "https://musicbrainz.org/place/98cb63d8-6e2a-44f5-971e-a2a19253aa11": {
+      "state": "ok",
+      "status": 200,
+      "final": "https://musicbrainz.org/place/98cb63d8-6e2a-44f5-971e-a2a19253aa11",
+      "wayback": null
+    },
+    "https://www.instagram.com/themansion_psu/": {
+      "state": "ok",
+      "status": 200,
+      "final": "https://www.instagram.com/themansion_psu/",
+      "wayback": null
+    },
+    "https://www.instagram.com/thespicerack.sc/": {
+      "state": "ok",
+      "status": 200,
+      "final": "https://www.instagram.com/thespicerack.sc/",
+      "wayback": null
+    },
+    "https://thestatetheatre.org/": {
+      "state": "ok",
+      "status": 200,
+      "final": "https://thestatetheatre.org/",
+      "wayback": "20261021180802"
+    },
+    "https://www.trumpetblossom.com/": {
+      "state": "ok",
+      "status": 200,
+      "final": "https://www.trumpetblossom.com/",
+      "wayback": "20260923165531"
+    },
+    "https://www.instagram.com/chowchowmedia/": {
+      "state": "ok",
+      "status": 200,
+      "final": "https://www.instagram.com/chowchowmedia/",
+      "wayback": "20260731212931"
+    },
+    "https://www.instagram.com/dance_off_productions/": {
+      "state": "ok",
+      "status": 200,
+      "final": "https://www.instagram.com/dance_off_productions/",
+      "wayback": null
+    },
+    "https://www.themoviedb.org/movie/653664-dinner-in-america": {
+      "state": "blocked",
+      "status": 403,
+      "final": "https://www.themoviedb.org/movie/653664-dinner-in-america",
+      "wayback": "20260819023849"
+    },
+    "https://www.themoviedb.org/movie/985-eraserhead": {
+      "state": "blocked",
+      "status": 403,
+      "final": "https://www.themoviedb.org/movie/985-eraserhead",
+      "wayback": "20261001183329"
+    },
+    "https://www.facebook.com/bonfiresNH": {
+      "state": "ok",
+      "status": 200,
+      "final": "https://www.facebook.com/bonfiresNH",
+      "wayback": null
+    },
+    "https://wnyu.org/playlists/23098524": {
+      "state": "ok",
+      "status": 200,
+      "final": "https://wnyu.org/playlists/23098524",
+      "wayback": null
+    },
+    "https://musicbrainz.org/": {
+      "state": "ok",
+      "status": 200,
+      "final": "https://musicbrainz.org/",
+      "wayback": "20261126220304"
+    },
+    "https://library.rockhall.com/riot_grrrl": {
+      "state": "ok",
+      "status": 200,
+      "final": "https://library.rockhall.com/riot_grrrl",
+      "wayback": "20260805171957"
+    }
+  }
+}

@@ -1,5 +1,6 @@
 {
-  "fetchedAt": "2026-11-27T05:24:31.228Z",
+  "fetchedAt": "2026-11-27T05:32:41.610Z",
+  "manual": {},
   "sites": {
     "beehiveskirace.bandcamp.com": {
       "type": "artist",
@@ -100,7 +101,7 @@
     },
     "letigre.world": null,
     "library.rockhall.com/riot_grrrl": null,
-    "liliththeband.bandcamp.com": {
+    "lilithworldwide.com": {
       "type": "artist",
       "id": "b04581e2-4923-417a-af28-1500c533cedf",
       "name": "Lilith"
